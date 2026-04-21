@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
 namespace PlayerHand
@@ -11,16 +12,26 @@ namespace PlayerHand
         [SerializeField]
         private SpriteRenderer visual;
         [SerializeField]
-        private Sprite[] sprites;
+        private VisualState[] sprites;
+        [SerializeField] 
+        private float zMovementSpeed;
 
+        [Serializable]
+        private struct VisualState
+        {
+            public string key;
+            public Sprite visual;
+            public float z;
+        }
+        
         private void OnValidate()
         {
             this.visual = GetComponent<SpriteRenderer>();
             
             bool hasEmptySprites = false;
-            foreach (Sprite sprite in this.sprites)
+            foreach (VisualState sprite in this.sprites)
             {
-                if (sprite) continue;
+                if (sprite.visual) continue;
                 hasEmptySprites = true;
                 break;
             }
@@ -28,15 +39,11 @@ namespace PlayerHand
             this.enabled = this.visual && !hasEmptySprites && this.sprites.Length > 0;
         }
 
-        public void SetSprite(string key)
+        public void SetSprite(string key, MovementHandler movementHandler)
         {
-            this.visual.sprite = key switch
-            {
-                "Pointing" => this.sprites[0],
-                "Open" => this.sprites[1],
-                "Closed" => this.sprites[2],
-                _ => this.visual.sprite
-            };
+            VisualState state = this.sprites.First(a => a.key == key);
+            this.visual.sprite = state.visual;
+            movementHandler.SetPositionZ(state.z, this.zMovementSpeed);
         }
     }
 }

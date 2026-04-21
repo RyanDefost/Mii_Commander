@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace PlayerHand
@@ -20,7 +21,12 @@ namespace PlayerHand
         [SerializeField] private float accelerationRate = 2f;
         
         private float currentBoost = 1f;
+        private float originalZPosition;
         
+        private float zMovementSpeed;
+        private float desiredZPosition;
+        private bool animatingZ;
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;
@@ -35,21 +41,29 @@ namespace PlayerHand
 
         private void Awake()
         {
+            this.originalZPosition = this.transform.position.z;
             UpdateMouseBounds(0);
             AspectRatioTracker.OnAspectRatioChanged += UpdateMouseBounds;
         }
 
-        private void UpdateMouseBounds(float _) => this.mouseBounds = GenerateBounds(this.camRef, this.mouseBounds.center);
+        private void UpdateMouseBounds(float _) => this.mouseBounds = GenerateBounds(this.camRef, this.transform.position);
 
         public void HandleDeltaOffset(Vector2 origin, Vector2 delta)
         {
+            float cameraZ = this.camRef.transform.position.z;
+            float currentDist = Mathf.Abs(this.transform.position.z - cameraZ);
+            float originalDist = Mathf.Abs(this.originalZPosition - cameraZ);
+
+            float depthScale = currentDist / originalDist;
+            float dynamicMax = this.maxSensitivity * depthScale;
+            
             this.currentBoost = delta.sqrMagnitude < 0.001f
                 ? 1f
                 : Mathf.MoveTowards(this.currentBoost,
-                    this.maxSensitivity,
+                    dynamicMax,
                     this.accelerationRate * Time.deltaTime);
             
-            Vector2 boostedDelta = delta * this.currentBoost * this.baseSensitivity;
+            Vector2 boostedDelta = delta * this.currentBoost * this.baseSensitivity * depthScale;
             SetMousePosition(origin + boostedDelta * Time.deltaTime);
         }
 
@@ -62,6 +76,28 @@ namespace PlayerHand
                 this.transform.position = this.mouseBounds.ClosestPoint(this.transform.position);
         }
         
+        public void SetPositionZ(float newZ, float movementSpeed)
+        {
+            this.desiredZPosition = newZ;
+            this.zMovementSpeed = movementSpeed;
+            this.animatingZ = true;
+        }
+
+        private void Update()
+        {
+            if (!this.animatingZ)
+                return;
+            
+            Vector3 vector3 = this.transform.position;
+            vector3.z = Mathf.Lerp(vector3.z, this.desiredZPosition, Time.deltaTime * this.zMovementSpeed);
+            this.transform.position = vector3;
+            
+            UpdateMouseBounds(0);
+            
+            if (Mathf.Approximately(this.desiredZPosition, vector3.z))
+                this.animatingZ = false;
+        }
+
         private static Bounds GenerateBounds(Camera camRef, Vector3 origin)
         {
             float z = Mathf.Abs(camRef.transform.position.z - origin.z);

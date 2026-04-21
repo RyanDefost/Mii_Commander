@@ -38,7 +38,7 @@ namespace PlayerHand
             this.grabAction = this.inputActionMap.FindAction("Grab");
 
             this.moveAction.performed += (obj) => OnHandMove(obj, this.transform, this.movementHandler);
-            this.grabAction.performed += (obj) => OnMouseGrab(obj, ref this.grabbing, this.visualHandler);
+            this.grabAction.performed += (obj) => OnMouseGrab(obj, ref this.grabbing, this.visualHandler, this.movementHandler);
         
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -47,24 +47,24 @@ namespace PlayerHand
         private void Update()
         {
             if (this.grabAction != null && this.grabbing)
-                CheckOnGrabReleased(ref this.grabbing, this.grabAction, this.visualHandler);
+                CheckOnGrabReleased(ref this.grabbing, this.grabAction, this.visualHandler, this.movementHandler);
         }
 
         private static void OnHandMove(InputAction.CallbackContext obj, Transform transform,
             MovementHandler movementHandler) =>
             movementHandler.HandleDeltaOffset(transform.position.XY(), obj.ReadValue<Vector2>());
 
-        private static void OnMouseGrab(InputAction.CallbackContext obj, ref bool grabbing, VisualHandler visualHandler)
+        private static void OnMouseGrab(InputAction.CallbackContext obj, ref bool grabbing, VisualHandler visualHandler, MovementHandler movementHandler)
         {
             if (!obj.ReadValueAsButton()) return;
-            visualHandler.SetSprite("Closed");
+            visualHandler.SetSprite("Closed", movementHandler);
             grabbing = true;
         }
     
-        private static void CheckOnGrabReleased(ref bool grabbing, InputAction grabAction, VisualHandler visualHandler)
+        private static void CheckOnGrabReleased(ref bool grabbing, InputAction grabAction, VisualHandler visualHandler, MovementHandler movementHandler)
         {
             if (grabAction.ReadValue<float>() > 0) return;
-            visualHandler.SetSprite("Open");
+            visualHandler.SetSprite("Open", movementHandler);
             grabbing = false;
         }
     }

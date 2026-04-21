@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 2018210010}
   - component: {fileID: 2018210009}
   m_Layer: 0
-  m_Name: Mouse
+  m_Name: PlayerHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -442,9 +442,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHand.VisualHandler
   visual: {fileID: 2018210007}
   sprites:
-  - {fileID: 869785222, guid: 3a71221f88b4f7a4f8451d97645c0f64, type: 3}
-  - {fileID: -889398729, guid: 3a71221f88b4f7a4f8451d97645c0f64, type: 3}
-  - {fileID: 698026573, guid: 3a71221f88b4f7a4f8451d97645c0f64, type: 3}
+  - key: Open
+    visual: {fileID: -889398729, guid: 3a71221f88b4f7a4f8451d97645c0f64, type: 3}
+    z: -5
+  - key: Closed
+    visual: {fileID: 698026573, guid: 3a71221f88b4f7a4f8451d97645c0f64, type: 3}
+    z: -6
+  - key: Pointing
+    visual: {fileID: 869785222, guid: 3a71221f88b4f7a4f8451d97645c0f64, type: 3}
+    z: -5
+  zMovementSpeed: 2
 --- !u!1 &2023516380
 GameObject:
   m_ObjectHideFlags: 0
