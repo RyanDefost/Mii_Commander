@@ -9,7 +9,7 @@ namespace PlayerHand
     /// </summary>
     [RequireComponent(typeof(SpriteRenderer), typeof(VisualHandler), typeof(MovementHandler)), 
      RequireComponent(typeof(InteractionHandler))]
-    public class MouseController : MonoBehaviour
+    public class PlayerHandManager : MonoBehaviour
     {
         [SerializeField]
         private VisualHandler visualHandler;
@@ -25,6 +25,7 @@ namespace PlayerHand
         private InputAction grabAction;
         
         private bool grabbing = false;
+        public Action OnGrabReleased;
 
         private void OnValidate()
         {
@@ -50,8 +51,9 @@ namespace PlayerHand
 
         private void Update()
         {
-            if (this.grabAction != null && this.grabbing)
-                CheckOnGrabReleased(ref this.grabbing, this.grabAction, this.visualHandler, this.movementHandler);
+            if (this.grabAction == null || !this.grabbing) return;
+            if (CheckOnGrabReleased(ref this.grabbing, this.grabAction, this.visualHandler, this.movementHandler))
+                this.OnGrabReleased.Invoke();
         }
 
         private static void OnHandMove(InputAction.CallbackContext obj, Transform transform,
@@ -65,12 +67,17 @@ namespace PlayerHand
             interactionHandler.CurrentHover.Trigger();
         }
     
-        private static void CheckOnGrabReleased(ref bool grabbing, InputAction grabAction, VisualHandler visualHandler,
+        /// <summary>
+        /// Checks if grab was released
+        /// </summary>
+        /// <returns>true when grab was released</returns>
+        private static bool CheckOnGrabReleased(ref bool grabbing, InputAction grabAction, VisualHandler visualHandler,
             MovementHandler movementHandler)
         {
-            if (grabAction.ReadValue<float>() > 0) return;
+            if (grabAction.ReadValue<float>() > 0) return false;
             visualHandler.SetSprite("Pointing", movementHandler);
             grabbing = false;
+            return true;
         }
 
         public void SetStateToGrabbing()
