@@ -7,13 +7,16 @@ namespace PlayerHand
     /// <summary>
     /// Keeps track of mouse input and the hand state
     /// </summary>
-    [RequireComponent(typeof(SpriteRenderer), typeof(VisualHandler), typeof(MovementHandler))]
+    [RequireComponent(typeof(SpriteRenderer), typeof(VisualHandler), typeof(MovementHandler)), 
+     RequireComponent(typeof(InteractionHandler))]
     public class MouseController : MonoBehaviour
     {
         [SerializeField]
         private VisualHandler visualHandler;
         [SerializeField]
         private MovementHandler movementHandler;
+        [SerializeField]
+        private InteractionHandler interactionHandler;
         [Space]
         [SerializeField]
         private InputActionAsset inputActionAsset;
@@ -27,7 +30,8 @@ namespace PlayerHand
         {
             this.visualHandler = GetComponent<VisualHandler>();
             this.movementHandler = GetComponent<MovementHandler>();
-            this.enabled = this.visualHandler.enabled && this.movementHandler.enabled && this.inputActionAsset;
+            this.interactionHandler = GetComponent<InteractionHandler>();
+            this.enabled = this.visualHandler.enabled && this.movementHandler.enabled && this.interactionHandler.enabled && this.inputActionAsset;
         }
 
         private void Awake()
@@ -38,7 +42,7 @@ namespace PlayerHand
             this.grabAction = this.inputActionMap.FindAction("Grab");
 
             this.moveAction.performed += (obj) => OnHandMove(obj, this.transform, this.movementHandler);
-            this.grabAction.performed += (obj) => OnMouseGrab(obj, ref this.grabbing, this.visualHandler, this.movementHandler);
+            this.grabAction.performed += (obj) => OnInteract(obj, this.interactionHandler);
         
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -54,18 +58,25 @@ namespace PlayerHand
             MovementHandler movementHandler) =>
             movementHandler.HandleDeltaOffset(transform.position.XY(), obj.ReadValue<Vector2>());
 
-        private static void OnMouseGrab(InputAction.CallbackContext obj, ref bool grabbing, VisualHandler visualHandler, MovementHandler movementHandler)
+        private static void OnInteract(InputAction.CallbackContext obj, InteractionHandler interactionHandler)
         {
             if (!obj.ReadValueAsButton()) return;
-            visualHandler.SetSprite("Closed", movementHandler);
-            grabbing = true;
+            if (!interactionHandler.CurrentHover) return;
+            interactionHandler.CurrentHover.Trigger();
         }
     
-        private static void CheckOnGrabReleased(ref bool grabbing, InputAction grabAction, VisualHandler visualHandler, MovementHandler movementHandler)
+        private static void CheckOnGrabReleased(ref bool grabbing, InputAction grabAction, VisualHandler visualHandler,
+            MovementHandler movementHandler)
         {
             if (grabAction.ReadValue<float>() > 0) return;
-            visualHandler.SetSprite("Open", movementHandler);
+            visualHandler.SetSprite("Pointing", movementHandler);
             grabbing = false;
+        }
+
+        public void SetStateToGrabbing()
+        {
+            this.visualHandler.SetSprite("Closed", this.movementHandler);
+            this.grabbing = true;
         }
     }
 }

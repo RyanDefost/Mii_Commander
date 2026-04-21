@@ -23,7 +23,10 @@ namespace PlayerHand
             public Sprite visual;
             public float z;
         }
-        
+
+        private string currentState;
+        public string CurrentState { get => this.currentState; private set => this.currentState = value; }
+
         private void OnValidate()
         {
             this.visual = GetComponent<SpriteRenderer>();
@@ -44,6 +47,7 @@ namespace PlayerHand
             VisualState state = this.sprites.First(a => a.key == key);
             this.visual.sprite = state.visual;
             movementHandler.SetPositionZ(state.z, this.zMovementSpeed);
+            this.CurrentState = key;
         }
     }
 }
