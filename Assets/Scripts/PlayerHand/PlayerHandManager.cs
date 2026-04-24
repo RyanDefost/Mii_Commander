@@ -44,11 +44,23 @@ namespace PlayerHand
             this.moveAction = this.inputActionMap.FindAction("Move");
             this.grabAction = this.inputActionMap.FindAction("Grab");
 
-            this.moveAction.performed += (obj) => OnHandMove(obj, this.transform, this.movementHandler);
-            this.grabAction.performed += (obj) => OnInteract(obj, this.interactionHandler);
+            this.moveAction.performed += OnMoveActionOnPerformed;
+            this.grabAction.performed += OnGrabActionOnPerformed;
         
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+
+            ComponentRegistry.AddToRegistry(this);
+        }
+
+        private void OnMoveActionOnPerformed(InputAction.CallbackContext obj) => OnHandMove(obj, this.transform, this.movementHandler);
+        private void OnGrabActionOnPerformed(InputAction.CallbackContext obj) => OnInteract(obj, this.interactionHandler);
+
+        private void OnDestroy()
+        {
+            ComponentRegistry.RemoveFromRegistry(this);
+            this.moveAction.performed -= OnMoveActionOnPerformed;
+            this.grabAction.performed -= OnGrabActionOnPerformed;
         }
 
         private void Update()

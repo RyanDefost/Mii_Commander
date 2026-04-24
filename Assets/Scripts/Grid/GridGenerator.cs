@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -191,5 +193,8 @@ namespace Grid
                 if (state >= this.materials.Length) state = 0;
             }
         }
+
+        public List<Vector3?> GetAllPositions() => this.positions.Select(pos => (Vector3?)pos).ToList();
+        public Vector3 GetPosAt(int index) => this.positions[index];
     }
 }

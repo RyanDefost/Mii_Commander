@@ -245,6 +245,7 @@ GameObject:
   - component: {fileID: 594832482}
   - component: {fileID: 594832481}
   - component: {fileID: 594832485}
+  - component: {fileID: 594832486}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -417,6 +418,19 @@ MonoBehaviour:
   - {x: 1.8428574, y: 2.8428574, z: -4.809}
   cellSize: {x: 0.61428577, y: 0.61428577}
   cellMesh: {fileID: 4300000, guid: d72dae5c74db30144af474c0d0f06c52, type: 2}
+--- !u!114 &594832486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594832480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01cce0f6596b4e50871c40c78acb1230, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Grid.GridManager
+  generator: {fileID: 594832485}
 --- !u!1 &705374796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1691,11 +1705,11 @@ MonoBehaviour:
     z: -5
   - key: Closed
     visual: {fileID: 698026573, guid: 3a71221f88b4f7a4f8451d97645c0f64, type: 3}
-    z: -6
+    z: -5.5
   - key: Pointing
     visual: {fileID: 869785222, guid: 3a71221f88b4f7a4f8451d97645c0f64, type: 3}
     z: -5
-  zMovementSpeed: 2
+  zMovementSpeed: 5
 --- !u!114 &2018210012
 MonoBehaviour:
   m_ObjectHideFlags: 0

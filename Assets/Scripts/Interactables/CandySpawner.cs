@@ -10,7 +10,7 @@ public class CandySpawner : MonoBehaviour
     private PlayerHandManager playerHandManager;
     [SerializeField]
     private GameObject candyPrefab;
-    private ObjectPool<CandyInstance> candyPool;
+    private ObjectPool<CandyGroupInstance> candyPool;
     
     private void OnValidate()
     {
@@ -19,15 +19,15 @@ public class CandySpawner : MonoBehaviour
         this.enabled = this.candyPrefab && this.playerHandManager;
     }
 
-    private void Awake() => this.candyPool = new ObjectPool<CandyInstance>();
+    private void Awake() => this.candyPool = new ObjectPool<CandyGroupInstance>();
 
     public void AddToHand()
     {
-        CandyInstance result = this.candyPool.RequestObject();
+        CandyGroupInstance result = this.candyPool.RequestObject();
 
         if (result == null)
         {
-            result = new CandyInstance(this.playerHandManager,
+            result = new CandyGroupInstance(this.playerHandManager,
                 this.candyPrefab,
                 this.playerHandManager.transform,
                 5);
