@@ -1,6 +1,8 @@
 ﻿using System;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
+using UnityEngine.UI;
 
 namespace PlayerHand
 {
@@ -19,13 +21,34 @@ namespace PlayerHand
         [SerializeField] private float baseSensitivity = 1f;
         [SerializeField] private float maxSensitivity = 3f;
         [SerializeField] private float accelerationRate = 2f;
+        [Space]
+        [SerializeField] private int referenceWindowHeight = 1080;
+        
+        private float liveBaseSensitivity;
+        private float liveMaxSensitivity;
+        private float liveAccelerationRate;
+        private float currentSensitivity;
         
         private float currentBoost = 1f;
         private float originalZPosition;
         
         private float zMovementSpeed;
+        private Vector3 desiredPos;
         private float desiredZPosition;
         private bool animatingZ;
+
+        private Vector3 lastPosition;
+        public Vector2 MovementDirection { get; private set;  }
+        public Vector2 Velocity { get; private set;  }
+        public Vector2 ThrowForce { get; private set;  }
+        
+        private Vector3 desiredVelocity;
+        [SerializeField]
+        private float maxVelocity = 50f;
+        [SerializeField]
+        private AnimationCurve throwForceRange;
+
+        [SerializeField] private Text tempText;
 
         private void OnDrawGizmos()
         {
@@ -35,6 +58,8 @@ namespace PlayerHand
 
         private void OnValidate()
         {
+            if (Application.isPlaying)
+                return;
             this.camRef = Camera.main;
             this.enabled = this.camRef;
         }
@@ -42,11 +67,29 @@ namespace PlayerHand
         private void Awake()
         {
             this.originalZPosition = this.transform.position.z;
-            UpdateMouseBounds(0);
-            AspectRatioTracker.OnAspectRatioChanged += UpdateMouseBounds;
+            UpdateMouseBounds();
+            UpdateLiveSensitivityVars();
+            ResolutionTracker.OnResolutionChanged += UpdateMouseBounds;
+            ResolutionTracker.OnResolutionChanged += UpdateLiveSensitivityVars;
+        }
+        
+        private void OnDestroy()
+        {
+            ResolutionTracker.OnResolutionChanged -= UpdateMouseBounds;
+            ResolutionTracker.OnResolutionChanged -= UpdateLiveSensitivityVars;
         }
 
-        private void UpdateMouseBounds(float _) => this.mouseBounds = GenerateBounds(this.camRef, this.transform.position);
+        private void UpdateMouseBounds(int _ = 1, int __ = 1) => this.mouseBounds = GenerateBounds(this.camRef, this.transform.position);
+        
+        private void UpdateLiveSensitivityVars(int _ = 1, int screenHeight = 1)
+        {
+            if (screenHeight == 1)
+                screenHeight = this.referenceWindowHeight;
+            float resolutionScale = (float)screenHeight / this.referenceWindowHeight;
+            this.liveBaseSensitivity = this.baseSensitivity * resolutionScale;
+            this.liveMaxSensitivity = this.maxSensitivity * resolutionScale;
+            this.liveAccelerationRate = this.accelerationRate * resolutionScale;
+        }
 
         public void HandleDeltaOffset(Vector2 origin, Vector2 delta)
         {
@@ -55,16 +98,17 @@ namespace PlayerHand
             float originalDist = Mathf.Abs(this.originalZPosition - cameraZ);
 
             float depthScale = currentDist / originalDist;
-            float dynamicMax = this.maxSensitivity * depthScale;
+            float dynamicMax = this.liveMaxSensitivity * depthScale;
             
             this.currentBoost = delta.sqrMagnitude < 0.001f
                 ? 1f
                 : Mathf.MoveTowards(this.currentBoost,
                     dynamicMax,
-                    this.accelerationRate * Time.deltaTime);
+                    this.liveAccelerationRate * Time.deltaTime);
+            this.currentSensitivity = this.currentBoost * this.liveBaseSensitivity;
             
-            Vector2 boostedDelta = delta * this.currentBoost * this.baseSensitivity * depthScale;
-            SetMousePosition(origin + boostedDelta * Time.deltaTime);
+            Vector2 boostedDelta = delta * this.currentSensitivity * Time.deltaTime;
+            SetMousePosition(origin + boostedDelta);
         }
 
         private void SetMousePosition(Vector2 newPosition)
@@ -84,6 +128,39 @@ namespace PlayerHand
         }
 
         private void Update()
+        {
+            UpdateVelocity();
+            AnimateZ();
+                    
+            this.lastPosition = this.transform.position;
+        }
+
+        private void UpdateVelocity()
+        {
+            Vector3 diff = this.transform.position - this.lastPosition;
+            this.MovementDirection = diff.normalized;
+            
+            Vector3 newVelocity = diff.normalized * Mathf.Min(diff.magnitude / Time.deltaTime, this.maxVelocity);
+            if (newVelocity.magnitude > this.Velocity.magnitude)
+                this.Velocity = newVelocity;
+            else
+            {
+                if (this.desiredVelocity.magnitude > this.Velocity.magnitude)
+                    this.desiredVelocity = newVelocity;
+                this.Velocity = Vector3.Lerp(this.Velocity, this.desiredVelocity, Time.deltaTime * this.accelerationRate);
+            }
+
+            this.tempText.text = this.Velocity.ToString();
+
+            this.ThrowForce = this.MovementDirection * this.throwForceRange.Evaluate(this.Velocity.magnitude / this.maxVelocity);
+            
+            // lower current acceleration
+            this.currentBoost -= this.accelerationRate * Time.deltaTime;
+            if (this.currentBoost < this.baseSensitivity)
+                this.currentBoost = this.baseSensitivity;
+        }
+
+        private void AnimateZ()
         {
             if (!this.animatingZ)
                 return;

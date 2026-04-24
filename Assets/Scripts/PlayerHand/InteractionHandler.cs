@@ -22,6 +22,8 @@ namespace PlayerHand
 
         private void OnValidate()
         {
+            if (Application.isPlaying)
+                return;
             this.camRef = Camera.main;
             this.movementHandler = GetComponent<MovementHandler>();
             this.visualHandler = GetComponent<VisualHandler>();

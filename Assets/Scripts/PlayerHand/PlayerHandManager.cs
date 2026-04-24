@@ -24,11 +24,13 @@ namespace PlayerHand
         private InputAction moveAction;
         private InputAction grabAction;
         
-        private bool grabbing = false;
-        public Action OnGrabReleased;
+        private bool grabbing;
+        public Action<Vector2, Vector2> OnGrabReleased; // passes hand movementDir, and throw force
 
         private void OnValidate()
         {
+            if (Application.isPlaying)
+                return;
             this.visualHandler = GetComponent<VisualHandler>();
             this.movementHandler = GetComponent<MovementHandler>();
             this.interactionHandler = GetComponent<InteractionHandler>();
@@ -53,7 +55,7 @@ namespace PlayerHand
         {
             if (this.grabAction == null || !this.grabbing) return;
             if (CheckOnGrabReleased(ref this.grabbing, this.grabAction, this.visualHandler, this.movementHandler))
-                this.OnGrabReleased.Invoke();
+                this.OnGrabReleased.Invoke(this.movementHandler.MovementDirection,  this.movementHandler.ThrowForce);
         }
 
         private static void OnHandMove(InputAction.CallbackContext obj, Transform transform,

@@ -94,7 +94,7 @@ public class ReadmeEditor : Editor
 
     protected override void OnHeaderGUI()
     {
-        var readme = (Readme)target;
+        var readme = (Readme)this.target;
         Init();
 
         var iconWidth = Mathf.Min(EditorGUIUtility.currentViewWidth / 3f - 20f, 128f);
@@ -111,7 +111,7 @@ public class ReadmeEditor : Editor
             {
 
                 GUILayout.FlexibleSpace();
-                GUILayout.Label(readme.title, TitleStyle);
+                GUILayout.Label(readme.title, this.TitleStyle);
                 GUILayout.FlexibleSpace();
             }
             GUILayout.EndVertical();
@@ -122,19 +122,19 @@ public class ReadmeEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        var readme = (Readme)target;
+        var readme = (Readme)this.target;
         Init();
 
         foreach (var section in readme.sections)
         {
             if (!string.IsNullOrEmpty(section.heading))
             {
-                GUILayout.Label(section.heading, HeadingStyle);
+                GUILayout.Label(section.heading, this.HeadingStyle);
             }
 
             if (!string.IsNullOrEmpty(section.text))
             {
-                GUILayout.Label(section.text, BodyStyle);
+                GUILayout.Label(section.text, this.BodyStyle);
             }
 
             if (!string.IsNullOrEmpty(section.linkText))
@@ -148,7 +148,7 @@ public class ReadmeEditor : Editor
             GUILayout.Space(k_Space);
         }
 
-        if (GUILayout.Button("Remove Readme Assets", ButtonStyle))
+        if (GUILayout.Button("Remove Readme Assets", this.ButtonStyle))
         {
             RemoveTutorial();
         }
@@ -158,7 +158,7 @@ public class ReadmeEditor : Editor
 
     GUIStyle LinkStyle
     {
-        get { return m_LinkStyle; }
+        get { return this.m_LinkStyle; }
     }
 
     [SerializeField]
@@ -166,7 +166,7 @@ public class ReadmeEditor : Editor
 
     GUIStyle TitleStyle
     {
-        get { return m_TitleStyle; }
+        get { return this.m_TitleStyle; }
     }
 
     [SerializeField]
@@ -174,7 +174,7 @@ public class ReadmeEditor : Editor
 
     GUIStyle HeadingStyle
     {
-        get { return m_HeadingStyle; }
+        get { return this.m_HeadingStyle; }
     }
 
     [SerializeField]
@@ -182,7 +182,7 @@ public class ReadmeEditor : Editor
 
     GUIStyle BodyStyle
     {
-        get { return m_BodyStyle; }
+        get { return this.m_BodyStyle; }
     }
 
     [SerializeField]
@@ -190,7 +190,7 @@ public class ReadmeEditor : Editor
 
     GUIStyle ButtonStyle
     {
-        get { return m_ButtonStyle; }
+        get { return this.m_ButtonStyle; }
     }
 
     [SerializeField]
@@ -198,45 +198,45 @@ public class ReadmeEditor : Editor
 
     void Init()
     {
-        if (m_Initialized)
+        if (this.m_Initialized)
             return;
-        m_BodyStyle = new GUIStyle(EditorStyles.label);
-        m_BodyStyle.wordWrap = true;
-        m_BodyStyle.fontSize = 14;
-        m_BodyStyle.richText = true;
+        this.m_BodyStyle = new GUIStyle(EditorStyles.label);
+        this.m_BodyStyle.wordWrap = true;
+        this.m_BodyStyle.fontSize = 14;
+        this.m_BodyStyle.richText = true;
 
-        m_TitleStyle = new GUIStyle(m_BodyStyle);
-        m_TitleStyle.fontSize = 26;
+        this.m_TitleStyle = new GUIStyle(this.m_BodyStyle);
+        this.m_TitleStyle.fontSize = 26;
 
-        m_HeadingStyle = new GUIStyle(m_BodyStyle);
-        m_HeadingStyle.fontStyle = FontStyle.Bold;
-        m_HeadingStyle.fontSize = 18;
+        this.m_HeadingStyle = new GUIStyle(this.m_BodyStyle);
+        this.m_HeadingStyle.fontStyle = FontStyle.Bold;
+        this.m_HeadingStyle.fontSize = 18;
 
-        m_LinkStyle = new GUIStyle(m_BodyStyle);
-        m_LinkStyle.wordWrap = false;
+        this.m_LinkStyle = new GUIStyle(this.m_BodyStyle);
+        this.m_LinkStyle.wordWrap = false;
 
         // Match selection color which works nicely for both light and dark skins
-        m_LinkStyle.normal.textColor = new Color(0x00 / 255f, 0x78 / 255f, 0xDA / 255f, 1f);
-        m_LinkStyle.stretchWidth = false;
+        this.m_LinkStyle.normal.textColor = new Color(0x00 / 255f, 0x78 / 255f, 0xDA / 255f, 1f);
+        this.m_LinkStyle.stretchWidth = false;
 
-        m_ButtonStyle = new GUIStyle(EditorStyles.miniButton);
-        m_ButtonStyle.fontStyle = FontStyle.Bold;
+        this.m_ButtonStyle = new GUIStyle(EditorStyles.miniButton);
+        this.m_ButtonStyle.fontStyle = FontStyle.Bold;
 
-        m_Initialized = true;
+        this.m_Initialized = true;
     }
 
     bool LinkLabel(GUIContent label, params GUILayoutOption[] options)
     {
-        var position = GUILayoutUtility.GetRect(label, LinkStyle, options);
+        var position = GUILayoutUtility.GetRect(label, this.LinkStyle, options);
 
         Handles.BeginGUI();
-        Handles.color = LinkStyle.normal.textColor;
+        Handles.color = this.LinkStyle.normal.textColor;
         Handles.DrawLine(new Vector3(position.xMin, position.yMax), new Vector3(position.xMax, position.yMax));
         Handles.color = Color.white;
         Handles.EndGUI();
 
         EditorGUIUtility.AddCursorRect(position, MouseCursor.Link);
 
-        return GUI.Button(position, label, LinkStyle);
+        return GUI.Button(position, label, this.LinkStyle);
     }
 }

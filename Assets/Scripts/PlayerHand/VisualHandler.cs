@@ -29,6 +29,9 @@ namespace PlayerHand
 
         private void OnValidate()
         {
+            if (Application.isPlaying)
+                return;
+            
             this.visual = GetComponent<SpriteRenderer>();
             
             bool hasEmptySprites = false;
