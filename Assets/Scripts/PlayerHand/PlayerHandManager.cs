@@ -44,7 +44,6 @@ namespace PlayerHand
             this.moveAction = this.inputActionMap.FindAction("Move");
             this.grabAction = this.inputActionMap.FindAction("Grab");
 
-            this.moveAction.performed += OnMoveActionOnPerformed;
             this.grabAction.performed += OnGrabActionOnPerformed;
         
             Cursor.visible = false;
@@ -53,26 +52,24 @@ namespace PlayerHand
             ComponentRegistry.AddToRegistry(this);
         }
 
-        private void OnMoveActionOnPerformed(InputAction.CallbackContext obj) => OnHandMove(obj, this.transform, this.movementHandler);
         private void OnGrabActionOnPerformed(InputAction.CallbackContext obj) => OnInteract(obj, this.interactionHandler);
 
         private void OnDestroy()
         {
             ComponentRegistry.RemoveFromRegistry(this);
-            this.moveAction.performed -= OnMoveActionOnPerformed;
             this.grabAction.performed -= OnGrabActionOnPerformed;
         }
 
         private void Update()
         {
+            if (this.moveAction != null) 
+                this.movementHandler.ApplyMouseDelta(this.moveAction.ReadValue<Vector2>());
+            
             if (this.grabAction == null || !this.grabbing) return;
             if (CheckOnGrabReleased(ref this.grabbing, this.grabAction, this.visualHandler, this.movementHandler))
                 this.OnGrabReleased.Invoke(this.movementHandler.MovementDirection,  this.movementHandler.ThrowForce);
         }
-
-        private static void OnHandMove(InputAction.CallbackContext obj, Transform transform,
-            MovementHandler movementHandler) =>
-            movementHandler.HandleDeltaOffset(transform.position.XY(), obj.ReadValue<Vector2>());
+            
 
         private static void OnInteract(InputAction.CallbackContext obj, InteractionHandler interactionHandler)
         {

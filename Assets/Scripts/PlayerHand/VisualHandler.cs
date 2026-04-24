@@ -24,8 +24,7 @@ namespace PlayerHand
             public float z;
         }
 
-        private string currentState;
-        public string CurrentState { get => this.currentState; private set => this.currentState = value; }
+        public string CurrentState { get; private set; }
 
         private void OnValidate()
         {
@@ -49,7 +48,7 @@ namespace PlayerHand
         {
             VisualState state = this.sprites.First(a => a.key == key);
             this.visual.sprite = state.visual;
-            movementHandler.SetPositionZ(state.z, this.zMovementSpeed);
+            movementHandler.SetTargetZ(state.z, this.zMovementSpeed);
             this.CurrentState = key;
         }
     }

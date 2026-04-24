@@ -1,191 +1,216 @@
 ﻿using System;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.InputSystem.Controls;
-using UnityEngine.UI;
 
 namespace PlayerHand
 {
     /// <summary>
-    /// Handles and limits player hand movement
+    /// Handles player hand movement with acceleration, velocity tracking, and throw force calculation.
     /// </summary>
     public class MovementHandler : MonoBehaviour
     {
-        [Header("Required components")]
-        [SerializeField]
-        private Camera camRef;
-        [SerializeField]
-        private Bounds mouseBounds;
-        
-        [Header("Velocity Settings")]
+        [Header("Required Components")]
+        [SerializeField] private Camera camRef;
+
+        [Header("Sensitivity")]
         [SerializeField] private float baseSensitivity = 1f;
-        [SerializeField] private float maxSensitivity = 3f;
-        [SerializeField] private float accelerationRate = 2f;
-        [Space]
-        [SerializeField] private int referenceWindowHeight = 1080;
+        [SerializeField] private int referenceScreenHeight = 1080;
+
+        [Header("Acceleration")]
+        [SerializeField] private float accelerationRate = 8f;
+        [SerializeField] private float decelerationRate = 4f;
+        [SerializeField] private float minSpeedMultiplier = 1f;
+        [SerializeField] private float maxSpeedMultiplier = 3f;
+
+        [Header("Velocity & Throwing")]
+        [SerializeField] private float maxVelocity = 50f;
+        [SerializeField] private float velocitySmoothing = 15f;
+        [SerializeField] private AnimationCurve throwForceCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
         
-        private float liveBaseSensitivity;
-        private float liveMaxSensitivity;
-        private float liveAccelerationRate;
-        private float currentSensitivity;
-        
-        private float currentBoost = 1f;
+        // Runtime state
+        private Bounds movementBounds;
         private float originalZPosition;
-        
-        private float zMovementSpeed;
-        private Vector3 desiredPos;
-        private float desiredZPosition;
-        private bool animatingZ;
+        private float targetZPosition;
+        private bool isAnimatingZ;
+        private float zLerpSpeed;
 
-        private Vector3 lastPosition;
-        public Vector2 MovementDirection { get; private set;  }
-        public Vector2 Velocity { get; private set;  }
-        public Vector2 ThrowForce { get; private set;  }
-        
-        private Vector3 desiredVelocity;
-        [SerializeField]
-        private float maxVelocity = 50f;
-        [SerializeField]
-        private AnimationCurve throwForceRange;
+        private float currentSpeedMultiplier = 1f;
+        private float pixelDensityScale = 1f;
 
-        [SerializeField] private Text tempText;
+        private Vector3 previousPosition;
+        private Vector3 smoothedVelocity;
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireCube(this.mouseBounds.center, this.mouseBounds.size);
-        }
+        public Vector2 Velocity => this.smoothedVelocity;
+        public Vector2 MovementDirection =>
+            this.smoothedVelocity.magnitude > 0.001f 
+            ? ((Vector2)this.smoothedVelocity).normalized 
+            : Vector2.zero;
+        public Vector2 ThrowForce { get; private set; }
+
 
         private void OnValidate()
         {
-            if (Application.isPlaying)
-                return;
-            this.camRef = Camera.main;
-            this.enabled = this.camRef;
+            if (!Application.isPlaying) 
+                this.camRef = Camera.main;
         }
 
         private void Awake()
         {
             this.originalZPosition = this.transform.position.z;
-            UpdateMouseBounds();
-            UpdateLiveSensitivityVars();
-            ResolutionTracker.OnResolutionChanged += UpdateMouseBounds;
-            ResolutionTracker.OnResolutionChanged += UpdateLiveSensitivityVars;
-        }
-        
-        private void OnDestroy()
-        {
-            ResolutionTracker.OnResolutionChanged -= UpdateMouseBounds;
-            ResolutionTracker.OnResolutionChanged -= UpdateLiveSensitivityVars;
+            this.targetZPosition = this.originalZPosition;
+            this.previousPosition = this.transform.position;
+
+            RecalculateBounds();
+            RecalculatePixelDensityScale();
+
+            ResolutionTracker.OnResolutionChanged += OnResolutionChanged;
         }
 
-        private void UpdateMouseBounds(int _ = 1, int __ = 1) => this.mouseBounds = GenerateBounds(this.camRef, this.transform.position);
-        
-        private void UpdateLiveSensitivityVars(int _ = 1, int screenHeight = 1)
-        {
-            if (screenHeight == 1)
-                screenHeight = this.referenceWindowHeight;
-            float resolutionScale = (float)screenHeight / this.referenceWindowHeight;
-            this.liveBaseSensitivity = this.baseSensitivity * resolutionScale;
-            this.liveMaxSensitivity = this.maxSensitivity * resolutionScale;
-            this.liveAccelerationRate = this.accelerationRate * resolutionScale;
-        }
+        private void OnDestroy() => ResolutionTracker.OnResolutionChanged -= OnResolutionChanged;
 
-        public void HandleDeltaOffset(Vector2 origin, Vector2 delta)
+        private void OnResolutionChanged(int width, int height)
         {
-            float cameraZ = this.camRef.transform.position.z;
-            float currentDist = Mathf.Abs(this.transform.position.z - cameraZ);
-            float originalDist = Mathf.Abs(this.originalZPosition - cameraZ);
-
-            float depthScale = currentDist / originalDist;
-            float dynamicMax = this.liveMaxSensitivity * depthScale;
-            
-            this.currentBoost = delta.sqrMagnitude < 0.001f
-                ? 1f
-                : Mathf.MoveTowards(this.currentBoost,
-                    dynamicMax,
-                    this.liveAccelerationRate * Time.deltaTime);
-            this.currentSensitivity = this.currentBoost * this.liveBaseSensitivity;
-            
-            Vector2 boostedDelta = delta * this.currentSensitivity * Time.deltaTime;
-            SetMousePosition(origin + boostedDelta);
-        }
-
-        private void SetMousePosition(Vector2 newPosition)
-        {
-            this.transform.position = this.transform.position.OverwriteXY(newPosition);
-            
-            // limit hand position
-            if (!this.mouseBounds.Contains(this.transform.position))
-                this.transform.position = this.mouseBounds.ClosestPoint(this.transform.position);
-        }
-        
-        public void SetPositionZ(float newZ, float movementSpeed)
-        {
-            this.desiredZPosition = newZ;
-            this.zMovementSpeed = movementSpeed;
-            this.animatingZ = true;
+            RecalculateBounds();
+            RecalculatePixelDensityScale();
         }
 
         private void Update()
         {
-            UpdateVelocity();
-            AnimateZ();
-                    
-            this.lastPosition = this.transform.position;
+            float dt = GetSafeDeltaTime();
+
+            UpdateVelocity(dt);
+            UpdateThrowForce();
+            DecaySpeedMultiplier(dt);
+            AnimateZPosition(dt);
+
+            this.previousPosition = this.transform.position;
         }
 
-        private void UpdateVelocity()
+        /// <summary>
+        /// Called from the input handler
+        /// </summary>
+        public void ApplyMouseDelta(Vector2 delta)
         {
-            Vector3 diff = this.transform.position - this.lastPosition;
-            this.MovementDirection = diff.normalized;
-            
-            Vector3 newVelocity = diff.normalized * Mathf.Min(diff.magnitude / Time.deltaTime, this.maxVelocity);
-            if (newVelocity.magnitude > this.Velocity.magnitude)
-                this.Velocity = newVelocity;
-            else
-            {
-                if (this.desiredVelocity.magnitude > this.Velocity.magnitude)
-                    this.desiredVelocity = newVelocity;
-                this.Velocity = Vector3.Lerp(this.Velocity, this.desiredVelocity, Time.deltaTime * this.accelerationRate);
-            }
-
-            this.tempText.text = this.Velocity.ToString();
-
-            this.ThrowForce = this.MovementDirection * this.throwForceRange.Evaluate(this.Velocity.magnitude / this.maxVelocity);
-            
-            // lower current acceleration
-            this.currentBoost -= this.accelerationRate * Time.deltaTime;
-            if (this.currentBoost < this.baseSensitivity)
-                this.currentBoost = this.baseSensitivity;
-        }
-
-        private void AnimateZ()
-        {
-            if (!this.animatingZ)
+            if (delta.sqrMagnitude < 0.0001f)
                 return;
-            
-            Vector3 vector3 = this.transform.position;
-            vector3.z = Mathf.Lerp(vector3.z, this.desiredZPosition, Time.deltaTime * this.zMovementSpeed);
-            this.transform.position = vector3;
-            
-            UpdateMouseBounds(0);
-            
-            if (Mathf.Approximately(this.desiredZPosition, vector3.z))
-                this.animatingZ = false;
+
+            float dt = GetSafeDeltaTime();
+            float inputSpeed = delta.magnitude / dt;
+
+            // Accelerate based on input intensity
+            float accelerationTarget = Mathf.Lerp(this.minSpeedMultiplier, this.maxSpeedMultiplier, 
+                Mathf.Clamp01(inputSpeed / 1000f)); // Normalize input speed
+
+            this.currentSpeedMultiplier = Mathf.MoveTowards(this.currentSpeedMultiplier,
+                accelerationTarget, this.accelerationRate * dt
+            );
+
+            // Apply sensitivity with depth and pixel density compensation
+            float depthScale = GetDepthScale();
+            float effectiveSensitivity = this.baseSensitivity * this.pixelDensityScale * depthScale * this.currentSpeedMultiplier;
+
+            Vector2 movement = delta * effectiveSensitivity;
+            Vector3 newPosition = this.transform.position + new Vector3(movement.x, movement.y, 0f);
+
+            // Clamp to bounds
+            this.transform.position = ClampToBounds(newPosition);
         }
 
-        private static Bounds GenerateBounds(Camera camRef, Vector3 origin)
+        public void SetTargetZ(float z, float speed = -1f)
         {
-            float z = Mathf.Abs(camRef.transform.position.z - origin.z);
+            this.targetZPosition = z;
+            if (speed > 0f) this.zLerpSpeed = speed;
+            this.isAnimatingZ = true;
+        }
 
-            Vector3 bottomLeft = camRef.ScreenToWorldPoint(new Vector3(0, 0, z));
-            Vector3 topRight = camRef.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, z));
+        public void ResetToOriginalZ(float speed = -1f) => SetTargetZ(this.originalZPosition, speed);
+
+        private void UpdateVelocity(float dt)
+        {
+            Vector3 rawVelocity = (this.transform.position - this.previousPosition) / dt;
+            
+            // Clamp raw velocity
+            if (rawVelocity.magnitude > this.maxVelocity)
+                rawVelocity = rawVelocity.normalized * this.maxVelocity;
+
+            // Smooth velocity - faster interpolation when accelerating, slower when decelerating
+            float lerpFactor = rawVelocity.magnitude > this.smoothedVelocity.magnitude
+                ? this.velocitySmoothing * 2f
+                : this.velocitySmoothing;
+
+            this.smoothedVelocity = Vector3.Lerp(this.smoothedVelocity, rawVelocity, lerpFactor * dt);
+        }
+
+        private void UpdateThrowForce()
+        {
+            float normalizedSpeed = Mathf.Clamp01(this.smoothedVelocity.magnitude / this.maxVelocity);
+            float forceMagnitude = this.throwForceCurve.Evaluate(normalizedSpeed);
+            this.ThrowForce = this.MovementDirection * forceMagnitude;
+        }
+
+        private void DecaySpeedMultiplier(float dt) =>
+            this.currentSpeedMultiplier = Mathf.MoveTowards(this.currentSpeedMultiplier,
+                this.minSpeedMultiplier,
+                this.decelerationRate * dt);
+
+        private void AnimateZPosition(float dt)
+        {
+            if (!this.isAnimatingZ)
+                return;
+
+            Vector3 pos = this.transform.position;
+            pos.z = Mathf.Lerp(pos.z, this.targetZPosition, this.zLerpSpeed * dt);
+            this.transform.position = pos;
+
+            RecalculateBounds();
+
+            if (!(Mathf.Abs(pos.z - this.targetZPosition) < 0.001f)) return;
+            pos.z = this.targetZPosition;
+            this.transform.position = pos;
+            this.isAnimatingZ = false;
+        }
+
+        private void RecalculateBounds()
+        {
+            if (!this.camRef)
+                return;
+
+            float z = Mathf.Abs(this.camRef.transform.position.z - this.transform.position.z);
+            Vector3 bottomLeft = this.camRef.ScreenToWorldPoint(new Vector3(0, 0, z));
+            Vector3 topRight = this.camRef.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, z));
 
             Vector3 size = topRight - bottomLeft;
             Vector3 center = bottomLeft + size * 0.5f;
 
-            return new Bounds(center, size);
+            this.movementBounds = new Bounds(center, size);
+        }
+
+        private void RecalculatePixelDensityScale() => 
+            this.pixelDensityScale = (float)Screen.height / this.referenceScreenHeight;
+
+        private float GetDepthScale()
+        {
+            if (!this.camRef)
+                return 1f;
+
+            float cameraZ = this.camRef.transform.position.z;
+            float currentDist = Mathf.Abs(this.transform.position.z - cameraZ);
+            float originalDist = Mathf.Abs(this.originalZPosition - cameraZ);
+
+            return originalDist > 0.001f ? currentDist / originalDist : 1f;
+        }
+
+        private Vector3 ClampToBounds(Vector3 position) => 
+            this.movementBounds.Contains(position) ? position : this.movementBounds.ClosestPoint(position);
+
+        /// <summary>
+        /// clamps deltaTime between a max and min frameRate
+        /// </summary>
+        private static float GetSafeDeltaTime() => Mathf.Clamp(Time.deltaTime, 1f / 240f, 1f / 15f);
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(this.movementBounds.center, this.movementBounds.size);
         }
     }
 }
