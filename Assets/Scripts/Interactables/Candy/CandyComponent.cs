@@ -3,8 +3,10 @@ using PlayerHand;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class CandyComponent : Interactable
+public class CandyComponent : MonoBehaviour
 {
+    [SerializeField]
+    private Interactable interactable;
     [SerializeField]
     private MoveToGridPosition movement;
     [SerializeField]
@@ -15,8 +17,9 @@ public class CandyComponent : Interactable
     {
         if (Application.isPlaying)
             return;
-        this.movement = this.transform.parent.GetComponent<MoveToGridPosition>();
-        this.rb = this.transform.parent.GetComponent<Rigidbody>();
+        this.movement = GetComponent<MoveToGridPosition>();
+        this.rb = GetComponent<Rigidbody>();
+        this.interactable = GetComponentInChildren<Interactable>();
     }
 
     private void Start() => this.playerHandRef = ComponentRegistry.GetComponent<PlayerHandManager>();
@@ -25,10 +28,10 @@ public class CandyComponent : Interactable
     {
         this.movement.SetEnabled(false);
         this.playerHandRef.SetStateToGrabbing();
-        
-        this.transform.parent.SetParent(this.playerHandRef.transform);
+
+        this.transform.SetParent(this.playerHandRef.transform);
         this.rb.constraints = RigidbodyConstraints.FreezePosition;
-        this.transform.parent.transform.localPosition = Vector3.zero;
+        this.transform.localPosition = Vector3.zero;
         
         this.playerHandRef.OnGrabReleased += OnGrabReleased;
     }

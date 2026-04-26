@@ -37,7 +37,7 @@ public class CandyGroupInstance : IPoolable
             Rigidbody rb = gameObject.GetComponent<Rigidbody>();
             rb.constraints = RigidbodyConstraints.FreezePosition;
             
-            CandyComponent component = gameObject.GetComponentInChildren<CandyComponent>();
+            CandyComponent component = gameObject.GetComponent<CandyComponent>();
             this.instances.Add(new CandyInstance(rb, component, gameObject));
         }
 

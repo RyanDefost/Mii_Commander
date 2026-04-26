@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8810899827024833855}
   - component: {fileID: 8897784474759205449}
   - component: {fileID: 6753702778368679204}
+  - component: {fileID: 1365219245064566773}
   m_Layer: 0
   m_Name: Candy
   m_TagString: Untagged
@@ -97,12 +98,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a64a5891147b9d8418018ca3db366be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  offset: 0.25
+  offset: 0.1
   rb: {fileID: 8897784474759205449}
   movementStrength: 5
+  maxVelocity: 20
   dampening: 20
   startTimerTime: 1
   endTimerTime: 10
+--- !u!114 &1365219245064566773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2427277321692252709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aae350310234c44bfcab900b460cb61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CandyComponent
+  interactable: {fileID: 5354653235715831597}
+  movement: {fileID: 6753702778368679204}
+  rb: {fileID: 8897784474759205449}
 --- !u!1 &4573164708967338231
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,8 +130,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4604177271070191025}
   - component: {fileID: 8061346747376912179}
-  - component: {fileID: 485223870371640786}
   - component: {fileID: 32062901998104383}
+  - component: {fileID: 5354653235715831597}
   m_Layer: 0
   m_Name: Interactable
   m_TagString: Untagged
@@ -183,35 +200,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.58546674, y: 0.45722532}
   m_EdgeRadius: 0
---- !u!114 &485223870371640786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4573164708967338231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9aae350310234c44bfcab900b460cb61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CandyComponent
-  interaction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 485223870371640786}
-        m_TargetAssemblyTypeName: CandyComponent, Assembly-CSharp
-        m_MethodName: AddToHand
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  movement: {fileID: 6753702778368679204}
-  rb: {fileID: 8897784474759205449}
 --- !u!114 &32062901998104383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +212,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0553101cd68f0674c8e5d847bf80708f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Billboard
+--- !u!114 &5354653235715831597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573164708967338231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9b6cfc501136949bf3a50b1b3b1999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  interaction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1365219245064566773}
+        m_TargetAssemblyTypeName: CandyComponent, Assembly-CSharp
+        m_MethodName: AddToHand
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4888588487266381217
 GameObject:
   m_ObjectHideFlags: 0
