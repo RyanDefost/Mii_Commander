@@ -46,8 +46,11 @@ public class CandyComponent : Interactable
         rb.transform.parent = rb.transform.parent.parent;
         rb.constraints = RigidbodyConstraints.None;
         Vector3 throwVel = throwForce;
-        throwVel += Quaternion.Euler(0, 0, Random.Range(-90, 90)) * handMovementDir;
-        rb.AddForce(throwVel, ForceMode.Impulse);
+        if (throwForce.magnitude > 0.1f)
+        {
+            throwVel += Quaternion.Euler(0, 0, Random.Range(-90, 90)) * handMovementDir;
+            rb.AddForce(throwVel, ForceMode.Impulse);
+        }
         candyComponent.Initiate();
     }
 }
