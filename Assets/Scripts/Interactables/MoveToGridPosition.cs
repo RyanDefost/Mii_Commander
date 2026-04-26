@@ -13,6 +13,8 @@ public class MoveToGridPosition : MonoBehaviour
     [SerializeField]
     private float movementStrength = 5f;
     [SerializeField]
+    private float maxVelocity = 20f;
+    [SerializeField]
     private float dampening = 2f;
     [SerializeField]
     private float startTimerTime;
@@ -109,16 +111,32 @@ public class MoveToGridPosition : MonoBehaviour
             return;
         Vector3 targetPosition = GetTargetPosition();
         Vector3 diff = targetPosition - this.transform.position;
-        float force = Mathf.Max(diff.magnitude, this.usedMinimumForce);
-        this.rb.AddForce(diff.normalized * force, ForceMode.Force);
 
-        if (diff.magnitude >= 0.1f) return;
-        this.rb.linearVelocity = Vector3.zero;
-        this.transform.position = Vector3.Lerp(this.transform.position, targetPosition, Time.deltaTime * this.dampening);
-        this.rb.Sleep();
-        this.usedMinimumForce = Mathf.Min(this.usedMinimumForce - Time.deltaTime * this.dampening, 0);
-        if (this.rb.linearVelocity.magnitude >= 0.2f) return;
-        SnapToTarget();
+        Vector3 velocity = this.rb.linearVelocity;
+        float dot = velocity.sqrMagnitude > 0.001f
+            ? Vector3.Dot(diff.normalized, velocity.normalized)
+            : 0f;
+
+        // Reduce force when already moving toward target
+        float alignmentFactor = 1f - Mathf.Clamp01(dot); 
+        // dot = 1 → factor = 0 (no extra push)
+        // dot = 0 → factor = 1 (normal)
+        // dot = -1 → factor = 2 (strong correction)
+
+        float force = Mathf.Max(diff.magnitude, this.usedMinimumForce) * alignmentFactor;
+        this.rb.AddForce(diff.normalized * force, ForceMode.Force);
+        
+        if (this.rb.linearVelocity.magnitude > this.maxVelocity)
+            this.rb.linearVelocity = this.rb.linearVelocity.normalized * this.maxVelocity;
+
+        if (!(diff.magnitude < 0.2f)) return;
+        this.rb.linearVelocity *= 1f - Time.deltaTime * this.dampening;
+        this.usedMinimumForce = Mathf.Max(
+            this.usedMinimumForce - Time.deltaTime * this.dampening,
+            0f
+        );
+        if (this.rb.linearVelocity.magnitude < 0.2f)
+            SnapToTarget();
     }
 
     public void ResetTarget()
