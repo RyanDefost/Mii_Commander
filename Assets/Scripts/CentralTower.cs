@@ -5,6 +5,8 @@ public class CentralTower : MonoBehaviour
 {
     [SerializeField] private int health = 10;
     [SerializeField] private GameObject ground;
+    [SerializeField] private Vector2 rangeSpawnDistance;
+    [SerializeField] private Timer timer;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -23,6 +25,7 @@ public class CentralTower : MonoBehaviour
         if (health <= 0)
         {
             Destroy(ground);
+            timer.timeIsRunning = false;
         }
     }
 }

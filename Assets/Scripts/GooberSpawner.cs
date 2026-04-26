@@ -28,8 +28,8 @@ public class GooberSpawner : MonoBehaviour
             if (!(timer > delay)) return;
             
             int randAmount = Random.Range(rangeSpawnAmount.x, rangeSpawnAmount.y);
-            Vector3 randPos = Random.insideUnitCircle.normalized * Random.Range(rangeSpawnDistance.x, rangeSpawnDistance.y);
-            randPos.y = 0;
+            Vector2 randCircle = Random.insideUnitCircle.normalized * Random.Range(rangeSpawnDistance.x, rangeSpawnDistance.y);
+            Vector3 randPos = new Vector3(randCircle.x, 0.0f, randCircle.y);
             
             if(randPos == Vector3.zero) return;
             
