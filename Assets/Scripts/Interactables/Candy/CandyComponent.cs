@@ -23,7 +23,7 @@ public class CandyComponent : Interactable
 
     public void AddToHand()
     {
-        this.movement.enabled = false;
+        this.movement.SetEnabled(false);
         this.playerHandRef.SetStateToGrabbing();
         
         this.transform.parent.SetParent(this.playerHandRef.transform);
@@ -39,7 +39,7 @@ public class CandyComponent : Interactable
         this.playerHandRef.OnGrabReleased -= OnGrabReleased;
     }
 
-    private void Initiate() => this.movement.enabled = true;
+    private void Initiate() => this.movement.SetEnabled(true);
 
     public static void OnGrabReleased(Rigidbody rb, CandyComponent candyComponent, Vector2 handMovementDir, Vector2 throwForce)
     {

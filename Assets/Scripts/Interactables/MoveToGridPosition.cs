@@ -11,8 +11,6 @@ public class MoveToGridPosition : MonoBehaviour
     [SerializeField] 
     private Rigidbody rb;
     [SerializeField]
-    private Interactable interactable;
-    [SerializeField]
     private float movementStrength = 5f;
     [SerializeField]
     private float dampening = 2f;
@@ -29,28 +27,35 @@ public class MoveToGridPosition : MonoBehaviour
     private void OnValidate()
     {
         if (Application.isPlaying) return;
-        this.interactable = GetComponentInChildren<Interactable>();
         this.rb = GetComponent<Rigidbody>();
-        this.enabled = false; // needs to be enabled by a parent component
     }
 
-    private void Start() => this.grid = ComponentRegistry.GetComponent<GridManager>();
+    private void Start()
+    {
+        this.grid = ComponentRegistry.GetComponent<GridManager>();
+        SetEnabled(true);
+    }
 
-    private void OnEnable()
+    public void SetEnabled(bool newState)
+    {
+        if (newState)
+            DoEnable();
+        else
+            DoDisable();
+    }
+    
+    private void DoEnable()
     {
         this.startTimer = new Timer(this.startTimerTime, StartMovement);
         this.onUpdate += UpdateStartTimer;
     }
 
-    private void OnDisable()
+    private void DoDisable()
     {
         this.onUpdate -= UpdateStartTimer;
         this.onUpdate -= ApplyForceTowardsTarget;
         this.onUpdate -= UpdateEndTimer;
-        if (this.target == null)
-            return;
-        this.grid.ReleaseInstance(this.target);
-        this.target = null;
+        ResetTarget();
     }
 
     private void Update() => this.onUpdate?.Invoke();
@@ -66,30 +71,43 @@ public class MoveToGridPosition : MonoBehaviour
         this.onUpdate += ApplyForceTowardsTarget;
         this.onUpdate += UpdateEndTimer;
         this.onUpdate -= UpdateStartTimer;
+        
+        this.startTimer.Reset();
     }
     
     private bool GetTarget()
     {
+        if (this.target != null)
+            return true;
         GridManager grid = ComponentRegistry.GetComponent<GridManager>();
-        this.target = grid.GetNearestGridPosition(this.transform.position, this.interactable);
+        SetTarget(grid.GetNearestPosition(this.transform.position, this.gameObject));
+        grid.SwapGridBuffer();
         return this.target != null;
     }
+    
+    public void SetTarget(GridManager.GridInstance newTarget) => this.target = newTarget;
 
     private void UpdateEndTimer() => this.endTimer.Update(Time.deltaTime);
 
     private Vector3 GetTargetPosition() => this.target.position + Vector3.back * this.offset;
-    
+
     private void SnapToTarget()
     {
+        if (this.target == null)
+            return;
         this.transform.position = GetTargetPosition();
         this.rb.linearVelocity = Vector3.zero;
         this.rb.angularVelocity = Vector3.zero;
         this.rb.Sleep();
         this.onUpdate -= UpdateEndTimer;
+        
+        this.endTimer.Reset();
     }
     
     private void ApplyForceTowardsTarget()
     {
+        if (this.target == null)
+            return;
         Vector3 targetPosition = GetTargetPosition();
         Vector3 diff = targetPosition - this.transform.position;
         float force = Mathf.Max(diff.magnitude, this.usedMinimumForce);
@@ -103,4 +121,14 @@ public class MoveToGridPosition : MonoBehaviour
         if (this.rb.linearVelocity.magnitude >= 0.2f) return;
         SnapToTarget();
     }
+
+    public void ResetTarget()
+    {
+        if (this.target == null)
+            return;
+        this.grid.ReleaseInstance(this.target);
+        this.target = null;
+    }
+
+    public bool HasTarget() => this.target != null;
 }

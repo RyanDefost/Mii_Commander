@@ -92,19 +92,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2427277321692252709}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a64a5891147b9d8418018ca3db366be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
   offset: 0.25
-  grid: {fileID: 0}
   rb: {fileID: 8897784474759205449}
-  interactable: {fileID: 485223870371640786}
   movementStrength: 5
   dampening: 20
   startTimerTime: 1
-  endTimerTime: 15
+  endTimerTime: 10
 --- !u!1 &4573164708967338231
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,7 +447,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7384101113146618662}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0553101cd68f0674c8e5d847bf80708f, type: 3}
   m_Name: 
@@ -464,7 +462,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6148647229302320703}
   - component: {fileID: 6330976683784303132}
-  - component: {fileID: 5191747889252705498}
   - component: {fileID: 7791662194030930810}
   - component: {fileID: 6342010254182029557}
   m_Layer: 0
@@ -548,18 +545,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &5191747889252705498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7798142899282796273}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0553101cd68f0674c8e5d847bf80708f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!65 &7791662194030930810
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -19,7 +19,10 @@ namespace Grid
         [SerializeField]
         private Vector3[] positions;
         [SerializeField]
-        private Vector2 cellSize;
+        private Vector3[] positionsOffGrid;
+        public Vector2 cellSize;
+        public int Width => this.boardSize.x;
+        public int Height => this.boardSize.y;
         [SerializeField]
         private Mesh cellMesh;
 
@@ -41,6 +44,14 @@ namespace Grid
                 int index = position.x + (position.y * this.boardSize.x);
                 this.positions[index] = bottomLeft + offset;
             });
+            
+            this.positionsOffGrid = new Vector3[this.boardSize.x];
+            Vector3 gridBottomLeft = this.boardBounds.center - (this.boardBounds.size * 0.5f);
+            for (int i = 0; i < this.boardSize.x; i++)
+            {
+                Vector3 offset = new((i + 0.5f) * this.cellSize.x, -0.5f * this.cellSize.y, 0);
+                this.positionsOffGrid[i] = gridBottomLeft + offset;
+            }
 
             if (this.cellMesh) return;
             this.cellMesh = GenerateCellMesh();
@@ -61,7 +72,14 @@ namespace Grid
 
             foreach (Vector3 position in this.positions)
             {
+                Gizmos.color = Color.blue;
+                Gizmos.DrawWireSphere(position, 0.1f);
+            }
+            
+            foreach (Vector3 position in this.positionsOffGrid)
+            {
                 Gizmos.color = Color.red;
+                Gizmos.DrawWireCube(position, this.cellSize);
                 Gizmos.DrawWireSphere(position, 0.1f);
             }
         }
@@ -134,7 +152,7 @@ namespace Grid
 #if UNITY_EDITOR
         private void SaveMeshAsset()
         {
-            var scene = SceneManager.GetActiveScene();
+            Scene scene = SceneManager.GetActiveScene();
             if (string.IsNullOrEmpty(scene.path))
             {
                 Debug.LogError("Save the scene before generating/saving the mesh!");
@@ -172,29 +190,70 @@ namespace Grid
 
         private void Start()
         {
-            int state = 0;
-            foreach (Vector3 position in this.positions)
-            {
-                GameObject cell = new()
-                {
-                    transform =
-                    {
-                        parent = this.transform,
-                        position = position + Vector3.back * 0.01f,
-                        name = "gridCell"
-                    }
-                };
-
-                cell.AddComponent<MeshFilter>().sharedMesh = this.cellMesh;
-                MeshRenderer renderer = cell.AddComponent<MeshRenderer>();
-                renderer.sharedMaterial = this.materials[state];
+            if (this.cellMesh == null || this.materials == null || this.materials.Length == 0)
+                return;
             
-                state++;
-                if (state >= this.materials.Length) state = 0;
+            // Prepare lists for mesh combination
+            int totalCells = this.positions.Length;
+            Dictionary<int, List<CombineInstance>> materialGroups = new();
+            
+            // Build CombineInstances per material
+            for (int i = 0; i < totalCells; i++)
+            {
+                int matIndex = i % this.materials.Length;
+                if (!materialGroups.TryGetValue(matIndex, out List<CombineInstance> list))
+                {
+                    list = new List<CombineInstance>();
+                    materialGroups[matIndex] = list;
+                }
+                
+                Vector3 localPos = this.positions[i] - this.transform.position;
+                CombineInstance combine = new()
+                {
+                    mesh = this.cellMesh,
+                    transform = Matrix4x4.TRS(localPos + Vector3.back * 0.01f, Quaternion.identity, Vector3.one)
+                };
+                list.Add(combine);
             }
+            
+            // Create submeshes for different materials
+            List<CombineInstance> subMeshes = new();
+            // List<Mesh> combinedMeshes = new();
+            foreach (KeyValuePair<int, List<CombineInstance>> kvp in materialGroups)
+            {
+                Mesh subMesh = new() { name = $"GridPart_{kvp.Key}" };
+                subMesh.CombineMeshes(kvp.Value.ToArray(), true, true, false);
+                // combinedMeshes.Add(subMesh);
+                CombineInstance subCombine = new()
+                {
+                    mesh = subMesh,
+                    transform = Matrix4x4.identity
+                };
+                subMeshes.Add(subCombine);
+            }
+            
+            // Final combined mesh with multiple material slots if needed
+            Mesh finalMesh = new() { name = "CombinedGridMesh" };
+            finalMesh.CombineMeshes(subMeshes.ToArray(), false, false);
+            
+            // Single unified GameObject
+            GameObject combinedObject = new("CombinedGrid")
+            {
+                transform =
+                {
+                    parent = this.transform,
+                    position = this.transform.position,
+                    rotation = Quaternion.identity
+                }
+            };
+            combinedObject.AddComponent<MeshFilter>().sharedMesh = finalMesh;
+            MeshRenderer meshRenderer = combinedObject.AddComponent<MeshRenderer>();
+            meshRenderer.sharedMaterials = this.materials;
         }
 
         public List<Vector3?> GetAllPositions() => this.positions.Select(pos => (Vector3?)pos).ToList();
+        public List<Vector3?> GetAllOffGridPositions() => this.positionsOffGrid.Select(pos => (Vector3?)pos).ToList();
         public Vector3 GetPosAt(int index) => this.positions[index];
+        public Vector3 GetOffGridPosAt(int index) => this.positionsOffGrid[index];
     }
 }
