@@ -21,7 +21,7 @@ namespace Grid
         {
             this.gridManager.ForAllGridItems(instance =>
             {
-                if (instance == null)
+                if (instance == null || instance.gameObj == null)
                     return;
 
                 MoveToGridPosition moveComponent = instance.gameObj.GetComponent<MoveToGridPosition>();
@@ -30,12 +30,14 @@ namespace Grid
                 moveComponent.ResetTarget();
                 moveComponent.SetTarget(this.gridManager.GetNearestPosition(
                     instance.position + this.gridManager.CellSize.y * Vector3.down, instance.gameObj, instance));
-                
+
                 if (!moveComponent.HasTarget())
+                {
+                    this.gridManager.ReleaseInstance(instance);
                     Destroy(moveComponent.gameObject);
+                }
                 moveComponent.SetEnabled(true);
             });
-            this.gridManager.SwapGridBuffer();
         }
     }
 }

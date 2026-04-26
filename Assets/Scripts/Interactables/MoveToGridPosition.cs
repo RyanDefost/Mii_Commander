@@ -81,7 +81,6 @@ public class MoveToGridPosition : MonoBehaviour
             return true;
         GridManager grid = ComponentRegistry.GetComponent<GridManager>();
         SetTarget(grid.GetNearestPosition(this.transform.position, this.gameObject));
-        grid.SwapGridBuffer();
         return this.target != null;
     }
     

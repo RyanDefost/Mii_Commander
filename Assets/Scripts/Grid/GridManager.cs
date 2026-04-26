@@ -13,9 +13,7 @@ namespace Grid
         private GridGenerator generator;
         private readonly List<GridInstance> gridInstances = new();
         private List<Vector3?> availablePositions;
-        private List<Vector3?> availablePositionsBuffer;
         private List<Vector3?> availableOffGridPositions;
-        private List<Vector3?> availableOffGridPositionsBuffer;
         public Vector2 CellSize { get => this.generator.cellSize; private set => this.generator.cellSize = value; }
 
         public class GridInstance
@@ -41,7 +39,13 @@ namespace Grid
             this.generator = GetComponent<GridGenerator>();
         }
 
-        private void Start() => ComponentRegistry.AddToRegistry(this);
+        private void Start()
+        {
+            ComponentRegistry.AddToRegistry(this);
+            this.availableOffGridPositions ??= this.generator.GetAllOffGridPositions();
+            this.availablePositions ??= this.generator.GetAllPositions();
+        }
+
         private void OnDestroy() => ComponentRegistry.RemoveFromRegistry(this);
 
         public GridInstance GetNearestPosition(Vector3 position, GameObject gameObj, GridInstance previous = null)
@@ -61,27 +65,15 @@ namespace Grid
 
         public GridInstance GetNearestOffGridPosition(Vector3 position, GameObject gameObj, Vector3? posToIgnore = null, bool isAlreadyOffGrid = false)
         {
-            if (this.availableOffGridPositions == null)
-            {
-                this.availableOffGridPositions = this.generator.GetAllOffGridPositions();
-                this.availableOffGridPositionsBuffer = new List<Vector3?>(this.availableOffGridPositions);
-            }
-            int foundIndexOffGrid = GetNearestIndex(position, this.availableOffGridPositionsBuffer, posToIgnore);
-            int foundIndex = GetNearestIndex(position, this.availablePositionsBuffer, posToIgnore);
+            int foundIndexOffGrid = GetNearestIndex(position, this.availableOffGridPositions, posToIgnore);
+            int foundIndex = GetNearestIndex(position, this.availablePositions, posToIgnore);
             
-            if (foundIndexOffGrid == -1)
-            {
-                if (!isAlreadyOffGrid) 
-                    return GetNearestGridPosition(position, gameObj, posToIgnore);
-            }
-            else if (foundIndex != -1)
+            if (foundIndexOffGrid == -1 && !isAlreadyOffGrid)
                 return RegisterGridPosition(gameObj, foundIndex);
-
-            if (foundIndexOffGrid == -1)
+            if (isAlreadyOffGrid)
                 return null;
             
             this.availableOffGridPositions[foundIndexOffGrid] = null;
-            this.availableOffGridPositionsBuffer[foundIndexOffGrid] = null;
             GridInstance newInstance = new(gameObj, foundIndexOffGrid, this.generator, true);
             this.gridInstances.Add(newInstance);
             return newInstance;
@@ -89,30 +81,16 @@ namespace Grid
 
         public GridInstance GetNearestGridPosition(Vector3 position, GameObject gameObj, Vector3? posToIgnore = null)
         {
-            if (this.availablePositions == null)
-            {
-                this.availablePositions = this.generator.GetAllPositions();
-                this.availablePositionsBuffer = new List<Vector3?>(this.availablePositions);
-            }
-            int foundIndex = GetNearestIndex(position, this.availablePositionsBuffer, posToIgnore);
+            int foundIndex = GetNearestIndex(position, this.availablePositions, posToIgnore);
             return foundIndex == -1 ? null : RegisterGridPosition(gameObj, foundIndex);
         }
 
         private GridInstance RegisterGridPosition(GameObject gameObj, int foundIndex)
         {
             this.availablePositions[foundIndex] = null;
-            this.availablePositionsBuffer[foundIndex] = null;
             GridInstance newInstance = new(gameObj, foundIndex, this.generator, false);
             this.gridInstances.Add(newInstance);
             return newInstance;
-        }
-        
-        public void SwapGridBuffer()
-        {
-            if (this.availablePositions != null)
-                this.availablePositionsBuffer = new List<Vector3?>(this.availablePositions);
-            if (this.availableOffGridPositions != null)
-                this.availableOffGridPositionsBuffer = new List<Vector3?>(this.availableOffGridPositions);
         }
 
         private static int GetNearestIndex(Vector3 position, List<Vector3?> positions, Vector3? posToIgnore = null)
