@@ -1,0 +1,208 @@
+\doxysection{Candy\+Group\+Instance Class Reference}
+\hypertarget{class_candy_group_instance}{}\label{class_candy_group_instance}\index{CandyGroupInstance@{CandyGroupInstance}}
+
+
+Inheritance diagram for Candy\+Group\+Instance:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{class_candy_group_instance__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Candy\+Group\+Instance:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_candy_group_instance__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_candy_group_instance_1_1_candy_instance}{Candy\+Instance}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_candy_group_instance_a37c774a28f1b7649a5cbb663854497ed}{Candy\+Group\+Instance}} (\doxymbox{\hyperlink{class_player_hand_1_1_player_hand_manager}{Player\+Hand\+Manager}} player\+Hand\+Manager, Game\+Object prefab, Transform parent, int amount)
+\item 
+void \doxymbox{\hyperlink{class_candy_group_instance_a6e874e1332991f955c086e73e4079497}{On\+Enable\+Object}} ()
+\item 
+void \doxymbox{\hyperlink{class_candy_group_instance_aee8112f2dd91f03fd3d3cabddf53d1f3}{On\+Disable\+Object}} ()
+\item 
+void \doxymbox{\hyperlink{class_candy_group_instance_a9b51a1bd71535c4ccc60fb0afaeb0983}{Set\+Parent}} (Transform parent)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{class_candy_group_instance_a5b68ddb484c8ee550451bd4e9ab25a0f}{Active}}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_candy_group_instance_a3187d09107ab04f8ac6c3846506c9780}{On\+Grab\+Released}} (Vector2 hand\+Movement\+Dir, Vector2 throw\+Force)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly List$<$ \doxymbox{\hyperlink{class_candy_group_instance_1_1_candy_instance}{Candy\+Instance}} $>$ \doxymbox{\hyperlink{class_candy_group_instance_a95235d414a5d1fcacd46f5cedf6bd0a2}{instances}}
+\item 
+readonly \doxymbox{\hyperlink{class_player_hand_1_1_player_hand_manager}{Player\+Hand\+Manager}} \doxymbox{\hyperlink{class_candy_group_instance_a8ae1912eef1c05529e79e649f6b8cfd3}{player\+Hand\+Ref}}
+\end{DoxyCompactItemize}
+
+
+\label{class_candy_group_instance_doc-constructors}
+\Hypertarget{class_candy_group_instance_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_candy_group_instance_a37c774a28f1b7649a5cbb663854497ed}\index{CandyGroupInstance@{CandyGroupInstance}!CandyGroupInstance@{CandyGroupInstance}}
+\index{CandyGroupInstance@{CandyGroupInstance}!CandyGroupInstance@{CandyGroupInstance}}
+\doxysubsubsection{\texorpdfstring{CandyGroupInstance()}{CandyGroupInstance()}}
+{\footnotesize\ttfamily \label{class_candy_group_instance_a37c774a28f1b7649a5cbb663854497ed} 
+Candy\+Group\+Instance.\+Candy\+Group\+Instance (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_player_hand_1_1_player_hand_manager}{Player\+Hand\+Manager}}}]{player\+Hand\+Manager}{, }\item[{Game\+Object}]{prefab}{, }\item[{Transform}]{parent}{, }\item[{int}]{amount}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027\ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ clumpingDist\ =\ 0.3f;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ this.instances\ =\ \textcolor{keyword}{new}\ List<CandyInstance>();}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ amount;\ i++)}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ GameObject\ gameObject\ =\ Object.Instantiate(prefab,\ parent);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ gameObject.transform.localPosition\ =\ Vector3.zero;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ gameObject.transform.position\ +=\ \textcolor{keyword}{new}\ Vector3(\doxymbox{\hyperlink{_candy_component_8cs_a832e8f52fca5a678819ec96269dcb532}{Random}}.Range(-\/clumpingDist,\ clumpingDist),\ \doxymbox{\hyperlink{_candy_component_8cs_a832e8f52fca5a678819ec96269dcb532}{Random}}.Range(-\/clumpingDist,\ clumpingDist),\ 0);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ Rigidbody\ rb\ =\ gameObject.GetComponent<Rigidbody>();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ rb.constraints\ =\ RigidbodyConstraints.FreezePosition;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ CandyComponent\ component\ =\ gameObject.GetComponent<CandyComponent>();}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ this.\doxymbox{\hyperlink{class_candy_group_instance_a95235d414a5d1fcacd46f5cedf6bd0a2}{instances}}.Add(\textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_candy_group_instance_1_1_candy_instance}{CandyInstance}}(rb,\ component,\ gameObject));}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ this.playerHandRef\ =\ playerHandManager;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ playerHandManager.OnGrabReleased\ +=\ \doxymbox{\hyperlink{class_candy_group_instance_a3187d09107ab04f8ac6c3846506c9780}{OnGrabReleased}};}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\label{class_candy_group_instance_doc-func-members}
+\Hypertarget{class_candy_group_instance_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_candy_group_instance_aee8112f2dd91f03fd3d3cabddf53d1f3}\index{CandyGroupInstance@{CandyGroupInstance}!OnDisableObject@{OnDisableObject}}
+\index{OnDisableObject@{OnDisableObject}!CandyGroupInstance@{CandyGroupInstance}}
+\doxysubsubsection{\texorpdfstring{OnDisableObject()}{OnDisableObject()}}
+{\footnotesize\ttfamily \label{class_candy_group_instance_aee8112f2dd91f03fd3d3cabddf53d1f3} 
+void Candy\+Group\+Instance.\+On\+Disable\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Implements \doxymbox{\hyperlink{interface_i_poolable_a427baadd3aa4112f5152d4debdeb552c}{IPoolable}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00054\ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\doxymbox{\hyperlink{class_candy_group_instance_1_1_candy_instance}{CandyInstance}}\ instance\ \textcolor{keywordflow}{in}\ this.\doxymbox{\hyperlink{class_candy_group_instance_a95235d414a5d1fcacd46f5cedf6bd0a2}{instances}})}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ instance.gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ instance.rb.constraints\ =\ RigidbodyConstraints.FreezePosition;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_candy_group_instance_a6e874e1332991f955c086e73e4079497}\index{CandyGroupInstance@{CandyGroupInstance}!OnEnableObject@{OnEnableObject}}
+\index{OnEnableObject@{OnEnableObject}!CandyGroupInstance@{CandyGroupInstance}}
+\doxysubsubsection{\texorpdfstring{OnEnableObject()}{OnEnableObject()}}
+{\footnotesize\ttfamily \label{class_candy_group_instance_a6e874e1332991f955c086e73e4079497} 
+void Candy\+Group\+Instance.\+On\+Enable\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Implements \doxymbox{\hyperlink{interface_i_poolable_aa60ca19dedb72800f94c89c489ef6e86}{IPoolable}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049\ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\doxymbox{\hyperlink{class_candy_group_instance_1_1_candy_instance}{CandyInstance}}\ instance\ \textcolor{keywordflow}{in}\ this.\doxymbox{\hyperlink{class_candy_group_instance_a95235d414a5d1fcacd46f5cedf6bd0a2}{instances}})\ instance.gameObject.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_candy_group_instance_a3187d09107ab04f8ac6c3846506c9780}\index{CandyGroupInstance@{CandyGroupInstance}!OnGrabReleased@{OnGrabReleased}}
+\index{OnGrabReleased@{OnGrabReleased}!CandyGroupInstance@{CandyGroupInstance}}
+\doxysubsubsection{\texorpdfstring{OnGrabReleased()}{OnGrabReleased()}}
+{\footnotesize\ttfamily \label{class_candy_group_instance_a3187d09107ab04f8ac6c3846506c9780} 
+void Candy\+Group\+Instance.\+On\+Grab\+Released (\begin{DoxyParamCaption}\item[{Vector2}]{hand\+Movement\+Dir}{, }\item[{Vector2}]{throw\+Force}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00063\ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\doxymbox{\hyperlink{class_candy_group_instance_1_1_candy_instance}{CandyInstance}}\ instance\ \textcolor{keywordflow}{in}\ this.\doxymbox{\hyperlink{class_candy_group_instance_a95235d414a5d1fcacd46f5cedf6bd0a2}{instances}})\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ CandyComponent.OnGrabReleased(instance.rb,\ instance.component,\ handMovementDir,\ throwForce);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ this.playerHandRef.OnGrabReleased\ -\/=\ \doxymbox{\hyperlink{class_candy_group_instance_a3187d09107ab04f8ac6c3846506c9780}{OnGrabReleased}};}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_candy_group_instance_a9b51a1bd71535c4ccc60fb0afaeb0983}\index{CandyGroupInstance@{CandyGroupInstance}!SetParent@{SetParent}}
+\index{SetParent@{SetParent}!CandyGroupInstance@{CandyGroupInstance}}
+\doxysubsubsection{\texorpdfstring{SetParent()}{SetParent()}}
+{\footnotesize\ttfamily \label{class_candy_group_instance_a9b51a1bd71535c4ccc60fb0afaeb0983} 
+void Candy\+Group\+Instance.\+Set\+Parent (\begin{DoxyParamCaption}\item[{Transform}]{parent}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00070\ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\doxymbox{\hyperlink{class_candy_group_instance_1_1_candy_instance}{CandyInstance}}\ instance\ \textcolor{keywordflow}{in}\ this.\doxymbox{\hyperlink{class_candy_group_instance_a95235d414a5d1fcacd46f5cedf6bd0a2}{instances}})}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ instance.gameObject.transform.parent\ =\ parent;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ instance.gameObject.transform.localPosition\ =\ Vector3.zero;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ instance.gameObject.transform.position\ +=\ \textcolor{keyword}{new}\ Vector3(\doxymbox{\hyperlink{_candy_component_8cs_a832e8f52fca5a678819ec96269dcb532}{Random}}.Range(-\/1,\ 1),\ \doxymbox{\hyperlink{_candy_component_8cs_a832e8f52fca5a678819ec96269dcb532}{Random}}.Range(-\/1,\ 1),\ 0);}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\label{class_candy_group_instance_doc-variable-members}
+\Hypertarget{class_candy_group_instance_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_candy_group_instance_a95235d414a5d1fcacd46f5cedf6bd0a2}\index{CandyGroupInstance@{CandyGroupInstance}!instances@{instances}}
+\index{instances@{instances}!CandyGroupInstance@{CandyGroupInstance}}
+\doxysubsubsection{\texorpdfstring{instances}{instances}}
+{\footnotesize\ttfamily \label{class_candy_group_instance_a95235d414a5d1fcacd46f5cedf6bd0a2} 
+readonly List$<$\doxymbox{\hyperlink{class_candy_group_instance_1_1_candy_instance}{Candy\+Instance}}$>$ Candy\+Group\+Instance.\+instances\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_candy_group_instance_a8ae1912eef1c05529e79e649f6b8cfd3}\index{CandyGroupInstance@{CandyGroupInstance}!playerHandRef@{playerHandRef}}
+\index{playerHandRef@{playerHandRef}!CandyGroupInstance@{CandyGroupInstance}}
+\doxysubsubsection{\texorpdfstring{playerHandRef}{playerHandRef}}
+{\footnotesize\ttfamily \label{class_candy_group_instance_a8ae1912eef1c05529e79e649f6b8cfd3} 
+readonly \doxymbox{\hyperlink{class_player_hand_1_1_player_hand_manager}{Player\+Hand\+Manager}} Candy\+Group\+Instance.\+player\+Hand\+Ref\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\label{class_candy_group_instance_doc-property-members}
+\Hypertarget{class_candy_group_instance_doc-property-members}
+\doxysubsection{Property Documentation}
+\Hypertarget{class_candy_group_instance_a5b68ddb484c8ee550451bd4e9ab25a0f}\index{CandyGroupInstance@{CandyGroupInstance}!Active@{Active}}
+\index{Active@{Active}!CandyGroupInstance@{CandyGroupInstance}}
+\doxysubsubsection{\texorpdfstring{Active}{Active}}
+{\footnotesize\ttfamily \label{class_candy_group_instance_a5b68ddb484c8ee550451bd4e9ab25a0f} 
+bool Candy\+Group\+Instance.\+Active\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Implements \doxymbox{\hyperlink{interface_i_poolable_afbf3ec91ed3c5d68cdbf9ee252ae2116}{IPoolable}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00007\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+C:\+/\+\+Users/\+\+Lucas/\+\+Documents/\+\+School/\+\+HKU/\+\+Present\+Yourself/\+\+Mii\+\_\+\+Commander/\+\+Assets/\+\+Scripts/\+\+Interactables/\+\+Candy/\+\doxymbox{\hyperlink{_candy_group_instance_8cs}{Candy\+Group\+Instance.\+cs}}\end{DoxyCompactItemize}

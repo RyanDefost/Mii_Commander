@@ -1,0 +1,373 @@
+\doxysection{Grid.\+Grid\+Generator Class Reference}
+\hypertarget{class_grid_1_1_grid_generator}{}\label{class_grid_1_1_grid_generator}\index{Grid.GridGenerator@{Grid.GridGenerator}}
+
+
+Inheritance diagram for Grid.\+Grid\+Generator:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{class_grid_1_1_grid_generator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Grid.\+Grid\+Generator:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_grid_1_1_grid_generator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ Vector3?$>$ \doxymbox{\hyperlink{class_grid_1_1_grid_generator_a0b60d7e204c987215e05547ace084048}{Get\+All\+Positions}} ()
+\item 
+List$<$ Vector3?$>$ \doxymbox{\hyperlink{class_grid_1_1_grid_generator_a296bd3b03e3af6bcd37f51a69685b7b9}{Get\+All\+Off\+Grid\+Positions}} ()
+\item 
+Vector3 \doxymbox{\hyperlink{class_grid_1_1_grid_generator_aef5088655630f5e0217a9800bafeefbd}{Get\+Pos\+At}} (int index)
+\item 
+Vector3 \doxymbox{\hyperlink{class_grid_1_1_grid_generator_a5d79b1e2e28da2071a7077db6d06a920}{Get\+Off\+Grid\+Pos\+At}} (int index)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Vector2 \doxymbox{\hyperlink{class_grid_1_1_grid_generator_a954c13c2eefff4cd44c8464ed69e5c9f}{cell\+Size}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{class_grid_1_1_grid_generator_abfa2075a515e12aa66e3f8d072dcb7a4}{Width}}\hspace{0.3cm}{\ttfamily  \+[get]\+}
+\item 
+int \doxymbox{\hyperlink{class_grid_1_1_grid_generator_aafb7cd1959535e6afd3c4c068d464be9}{Height}}\hspace{0.3cm}{\ttfamily  \+[get]\+}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_grid_1_1_grid_generator_a939f4e361e68fdcc7aefe5f7964509db}{On\+Draw\+Gizmos\+Selected}} ()
+\item 
+void \doxymbox{\hyperlink{class_grid_1_1_grid_generator_a6da73434708f7cf21eb129bb91f362e8}{Calculate\+Grid}} (Action$<$ Vector3, Vector3, Vector3, Vector2\+Int $>$ at\+Cell)
+\item 
+Mesh \doxymbox{\hyperlink{class_grid_1_1_grid_generator_ac4198d2529f4a1a79deab83f6c4be08a}{Generate\+Cell\+Mesh}} ()
+\item 
+void \doxymbox{\hyperlink{class_grid_1_1_grid_generator_aaeeec5a6628b1f43df8e81dd3f33dc61}{Start}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Material\+[$\,$]\+ \doxymbox{\hyperlink{class_grid_1_1_grid_generator_a809d3db7ffafc83f796fa62a9f084aed}{materials}}
+\item 
+Bounds \doxymbox{\hyperlink{class_grid_1_1_grid_generator_ab962393ec1e2b626a42f9834fbd95092}{board\+Bounds}}
+\item 
+Vector2\+Int \doxymbox{\hyperlink{class_grid_1_1_grid_generator_abc5c091b40a9152b42bfdcf7e34d8745}{board\+Size}}
+\item 
+Vector3\+[$\,$]\+ \doxymbox{\hyperlink{class_grid_1_1_grid_generator_a264d22d135cd56e2763359d9bf8e2dc9}{positions}}
+\item 
+Vector3\+[$\,$]\+ \doxymbox{\hyperlink{class_grid_1_1_grid_generator_a6a9c03712337f3c65070f8564862b099}{positions\+Off\+Grid}}
+\item 
+Mesh \doxymbox{\hyperlink{class_grid_1_1_grid_generator_a8fb721fcbc970ea40c6e88d16d8321d4}{cell\+Mesh}}
+\end{DoxyCompactItemize}
+
+
+\label{class_grid_1_1_grid_generator_doc-func-members}
+\Hypertarget{class_grid_1_1_grid_generator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_grid_1_1_grid_generator_a6da73434708f7cf21eb129bb91f362e8}\index{Grid.GridGenerator@{Grid.GridGenerator}!CalculateGrid@{CalculateGrid}}
+\index{CalculateGrid@{CalculateGrid}!Grid.GridGenerator@{Grid.GridGenerator}}
+\doxysubsubsection{\texorpdfstring{CalculateGrid()}{CalculateGrid()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_generator_a6da73434708f7cf21eb129bb91f362e8} 
+void Grid.\+Grid\+Generator.\+Calculate\+Grid (\begin{DoxyParamCaption}\item[{Action$<$ Vector3, Vector3, Vector3, Vector2\+Int $>$}]{at\+Cell}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.boardSize.x\ <=\ 0\ ||\ \textcolor{keyword}{this}.boardSize.y\ <=\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ dimensions}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ cellWidth\ =\ this.boardBounds.size.x\ /\ this.boardSize.x;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ cellHeight\ =\ this.boardBounds.size.y\ /\ this.boardSize.y;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ cellSize\ =\ \textcolor{keyword}{new}(cellWidth,\ cellHeight,\ 0.01f);}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ bottomLeft\ =\ this.boardBounds.center\ -\/\ (this.boardBounds.size\ *\ 0.5f);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ x\ =\ 0;\ x\ <\ this.boardSize.x;\ x++)}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ y\ =\ 0;\ y\ <\ this.boardSize.y;\ y++)}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ offset\ =\ \textcolor{keyword}{new}(}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (x\ +\ 0.5f)\ *\ cellWidth,}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (y\ +\ 0.5f)\ *\ cellHeight,}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ atCell.Invoke(offset,\ cellSize,\ bottomLeft,\ \textcolor{keyword}{new}\ Vector2Int(x,\ y));}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_grid_1_1_grid_generator_ac4198d2529f4a1a79deab83f6c4be08a}\index{Grid.GridGenerator@{Grid.GridGenerator}!GenerateCellMesh@{GenerateCellMesh}}
+\index{GenerateCellMesh@{GenerateCellMesh}!Grid.GridGenerator@{Grid.GridGenerator}}
+\doxysubsubsection{\texorpdfstring{GenerateCellMesh()}{GenerateCellMesh()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_generator_ac4198d2529f4a1a79deab83f6c4be08a} 
+Mesh Grid.\+Grid\+Generator.\+Generate\+Cell\+Mesh (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ Mesh\ mesh\ =\ \textcolor{keyword}{new}()\ \{\ name\ =\ \textcolor{stringliteral}{"{}GridCellMesh"{}}\ \};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ halfWidth\ =\ this.cellSize.x\ *\ 0.5f;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ halfHeight\ =\ this.cellSize.y\ *\ 0.5f;}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 1.\ Define\ Vertices\ (relative\ to\ center\ 0,0)}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3[]\ vertices\ =\ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}(-\/halfWidth,\ -\/halfHeight,\ 0),\ \textcolor{comment}{//\ Bottom\ Left\ \ (Index\ 0)}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}(\ halfWidth,\ -\/halfHeight,\ 0),\ \textcolor{comment}{//\ Bottom\ Right\ (Index\ 1)}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}(-\/halfWidth,\ \ halfHeight,\ 0),\ \textcolor{comment}{//\ Top\ Left\ \ \ \ \ (Index\ 2)}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}(\ halfWidth,\ \ halfHeight,\ 0)\ \ \textcolor{comment}{//\ Top\ Right\ \ \ \ (Index\ 3)}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 2.\ Define\ Triangles\ (Clockwise\ winding\ order)}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}[]\ triangles\ =\ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0,\ 2,\ 1,\ \textcolor{comment}{//\ First\ Triangle}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 2,\ 3,\ 1\ \ \textcolor{comment}{//\ Second\ Triangle}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 3.\ Define\ UVs\ (for\ textures)}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ Vector2[]\ uvs\ =\ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}(0,\ 0),}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}(1,\ 0),}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}(0,\ 1),}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}(1,\ 1)}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Assign\ to\ mesh}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ mesh.vertices\ =\ vertices;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ mesh.triangles\ =\ triangles;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ mesh.uv\ =\ uvs;}
+\DoxyCodeLine{00145\ \ \ \ \ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ normals\ so\ it\ reacts\ to\ light}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ mesh.RecalculateNormals();}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mesh;}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_grid_1_1_grid_generator_a296bd3b03e3af6bcd37f51a69685b7b9}\index{Grid.GridGenerator@{Grid.GridGenerator}!GetAllOffGridPositions@{GetAllOffGridPositions}}
+\index{GetAllOffGridPositions@{GetAllOffGridPositions}!Grid.GridGenerator@{Grid.GridGenerator}}
+\doxysubsubsection{\texorpdfstring{GetAllOffGridPositions()}{GetAllOffGridPositions()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_generator_a296bd3b03e3af6bcd37f51a69685b7b9} 
+List$<$ Vector3?$>$ Grid.\+Grid\+Generator.\+Get\+All\+Off\+Grid\+Positions (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00255\ =>\ this.positionsOffGrid.Select(pos\ =>\ (Vector3?)pos).ToList();}
+
+\end{DoxyCode}
+\Hypertarget{class_grid_1_1_grid_generator_a0b60d7e204c987215e05547ace084048}\index{Grid.GridGenerator@{Grid.GridGenerator}!GetAllPositions@{GetAllPositions}}
+\index{GetAllPositions@{GetAllPositions}!Grid.GridGenerator@{Grid.GridGenerator}}
+\doxysubsubsection{\texorpdfstring{GetAllPositions()}{GetAllPositions()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_generator_a0b60d7e204c987215e05547ace084048} 
+List$<$ Vector3?$>$ Grid.\+Grid\+Generator.\+Get\+All\+Positions (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00254\ =>\ this.positions.Select(pos\ =>\ (Vector3?)pos).ToList();}
+
+\end{DoxyCode}
+\Hypertarget{class_grid_1_1_grid_generator_a5d79b1e2e28da2071a7077db6d06a920}\index{Grid.GridGenerator@{Grid.GridGenerator}!GetOffGridPosAt@{GetOffGridPosAt}}
+\index{GetOffGridPosAt@{GetOffGridPosAt}!Grid.GridGenerator@{Grid.GridGenerator}}
+\doxysubsubsection{\texorpdfstring{GetOffGridPosAt()}{GetOffGridPosAt()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_generator_a5d79b1e2e28da2071a7077db6d06a920} 
+Vector3 Grid.\+Grid\+Generator.\+Get\+Off\+Grid\+Pos\+At (\begin{DoxyParamCaption}\item[{int}]{index}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00257\ =>\ this.positionsOffGrid[index];}
+
+\end{DoxyCode}
+\Hypertarget{class_grid_1_1_grid_generator_aef5088655630f5e0217a9800bafeefbd}\index{Grid.GridGenerator@{Grid.GridGenerator}!GetPosAt@{GetPosAt}}
+\index{GetPosAt@{GetPosAt}!Grid.GridGenerator@{Grid.GridGenerator}}
+\doxysubsubsection{\texorpdfstring{GetPosAt()}{GetPosAt()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_generator_aef5088655630f5e0217a9800bafeefbd} 
+Vector3 Grid.\+Grid\+Generator.\+Get\+Pos\+At (\begin{DoxyParamCaption}\item[{int}]{index}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00256\ =>\ this.positions[index];}
+
+\end{DoxyCode}
+\Hypertarget{class_grid_1_1_grid_generator_a939f4e361e68fdcc7aefe5f7964509db}\index{Grid.GridGenerator@{Grid.GridGenerator}!OnDrawGizmosSelected@{OnDrawGizmosSelected}}
+\index{OnDrawGizmosSelected@{OnDrawGizmosSelected}!Grid.GridGenerator@{Grid.GridGenerator}}
+\doxysubsubsection{\texorpdfstring{OnDrawGizmosSelected()}{OnDrawGizmosSelected()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_generator_a939f4e361e68fdcc7aefe5f7964509db} 
+void Grid.\+Grid\+Generator.\+On\+Draw\+Gizmos\+Selected (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.boardSize.x\ <=\ 0\ ||\ \textcolor{keyword}{this}.boardSize.y\ <=\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ outer\ container}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.color\ =\ Color.yellow;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawWireCube(this.boardBounds.center,\ \textcolor{keyword}{this}.boardBounds.size);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ CalculateGrid((offset,\ cellSize,\ bottomLeft,\ \_)\ =>\ Gizmos.DrawWireCube(bottomLeft\ +\ offset,\ cellSize));}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (Vector3\ position\ \textcolor{keywordflow}{in}\ this.positions)}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.color\ =\ Color.blue;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawWireSphere(position,\ 0.1f);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (Vector3\ position\ \textcolor{keywordflow}{in}\ this.positionsOffGrid)}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.color\ =\ Color.red;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawWireCube(position,\ this.cellSize);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawWireSphere(position,\ 0.1f);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_grid_1_1_grid_generator_aaeeec5a6628b1f43df8e81dd3f33dc61}\index{Grid.GridGenerator@{Grid.GridGenerator}!Start@{Start}}
+\index{Start@{Start}!Grid.GridGenerator@{Grid.GridGenerator}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_generator_aaeeec5a6628b1f43df8e81dd3f33dc61} 
+void Grid.\+Grid\+Generator.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.cellMesh\ ==\ \textcolor{keyword}{null}\ ||\ this.materials\ ==\ \textcolor{keyword}{null}\ ||\ this.materials.Length\ ==\ 0)}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Prepare\ lists\ for\ mesh\ combination}}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ totalCells\ =\ this.positions.Length;}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ Dictionary<int,\ List<CombineInstance>>\ materialGroups\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Build\ CombineInstances\ per\ material}}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ totalCells;\ i++)}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ matIndex\ =\ i\ \%\ this.materials.Length;}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!materialGroups.TryGetValue(matIndex,\ out\ List<CombineInstance>\ list))}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list\ =\ \textcolor{keyword}{new}\ List<CombineInstance>();}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ materialGroups[matIndex]\ =\ list;}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ localPos\ =\ this.positions[i]\ -\/\ this.transform.position;}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CombineInstance\ combine\ =\ \textcolor{keyword}{new}()}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mesh\ =\ this.cellMesh,}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ transform\ =\ Matrix4x4.TRS(localPos\ +\ Vector3.back\ *\ 0.01f,\ Quaternion.identity,\ Vector3.one)}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list.Add(combine);}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ submeshes\ for\ different\ materials}}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ List<CombineInstance>\ subMeshes\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ List<Mesh>\ combinedMeshes\ =\ new();}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (KeyValuePair<\textcolor{keywordtype}{int},\ List<CombineInstance>>\ kvp\ \textcolor{keywordflow}{in}\ materialGroups)}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Mesh\ subMesh\ =\ \textcolor{keyword}{new}()\ \{\ name\ =\ \$\textcolor{stringliteral}{"{}GridPart\_\{kvp.Key\}"{}}\ \};}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ subMesh.CombineMeshes(kvp.Value.ToArray(),\ \textcolor{keyword}{true},\ \textcolor{keyword}{true},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ combinedMeshes.Add(subMesh);}}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CombineInstance\ subCombine\ =\ \textcolor{keyword}{new}()}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mesh\ =\ subMesh,}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ transform\ =\ Matrix4x4.identity}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ subMeshes.Add(subCombine);}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Final\ combined\ mesh\ with\ multiple\ material\ slots\ if\ needed}}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ Mesh\ finalMesh\ =\ \textcolor{keyword}{new}()\ \{\ name\ =\ \textcolor{stringliteral}{"{}CombinedGridMesh"{}}\ \};}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ finalMesh.CombineMeshes(subMeshes.ToArray(),\ \textcolor{keyword}{false},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Single\ unified\ GameObject}}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ GameObject\ combinedObject\ =\ \textcolor{keyword}{new}(\textcolor{stringliteral}{"{}CombinedGrid"{}})}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ transform\ =}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent\ =\ this.transform,}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ position\ =\ this.transform.position,}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rotation\ =\ Quaternion.identity}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ combinedObject.AddComponent<MeshFilter>().sharedMesh\ =\ finalMesh;}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ MeshRenderer\ meshRenderer\ =\ combinedObject.AddComponent<MeshRenderer>();}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ meshRenderer.sharedMaterials\ =\ this.materials;}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\label{class_grid_1_1_grid_generator_doc-variable-members}
+\Hypertarget{class_grid_1_1_grid_generator_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_grid_1_1_grid_generator_ab962393ec1e2b626a42f9834fbd95092}\index{Grid.GridGenerator@{Grid.GridGenerator}!boardBounds@{boardBounds}}
+\index{boardBounds@{boardBounds}!Grid.GridGenerator@{Grid.GridGenerator}}
+\doxysubsubsection{\texorpdfstring{boardBounds}{boardBounds}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_generator_ab962393ec1e2b626a42f9834fbd95092} 
+Bounds Grid.\+Grid\+Generator.\+board\+Bounds\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_grid_1_1_grid_generator_abc5c091b40a9152b42bfdcf7e34d8745}\index{Grid.GridGenerator@{Grid.GridGenerator}!boardSize@{boardSize}}
+\index{boardSize@{boardSize}!Grid.GridGenerator@{Grid.GridGenerator}}
+\doxysubsubsection{\texorpdfstring{boardSize}{boardSize}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_generator_abc5c091b40a9152b42bfdcf7e34d8745} 
+Vector2\+Int Grid.\+Grid\+Generator.\+board\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_grid_1_1_grid_generator_a8fb721fcbc970ea40c6e88d16d8321d4}\index{Grid.GridGenerator@{Grid.GridGenerator}!cellMesh@{cellMesh}}
+\index{cellMesh@{cellMesh}!Grid.GridGenerator@{Grid.GridGenerator}}
+\doxysubsubsection{\texorpdfstring{cellMesh}{cellMesh}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_generator_a8fb721fcbc970ea40c6e88d16d8321d4} 
+Mesh Grid.\+Grid\+Generator.\+cell\+Mesh\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_grid_1_1_grid_generator_a954c13c2eefff4cd44c8464ed69e5c9f}\index{Grid.GridGenerator@{Grid.GridGenerator}!cellSize@{cellSize}}
+\index{cellSize@{cellSize}!Grid.GridGenerator@{Grid.GridGenerator}}
+\doxysubsubsection{\texorpdfstring{cellSize}{cellSize}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_generator_a954c13c2eefff4cd44c8464ed69e5c9f} 
+Vector2 Grid.\+Grid\+Generator.\+cell\+Size}
+
+\Hypertarget{class_grid_1_1_grid_generator_a809d3db7ffafc83f796fa62a9f084aed}\index{Grid.GridGenerator@{Grid.GridGenerator}!materials@{materials}}
+\index{materials@{materials}!Grid.GridGenerator@{Grid.GridGenerator}}
+\doxysubsubsection{\texorpdfstring{materials}{materials}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_generator_a809d3db7ffafc83f796fa62a9f084aed} 
+Material \+[$\,$]\+ Grid.\+Grid\+Generator.\+materials\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_grid_1_1_grid_generator_a264d22d135cd56e2763359d9bf8e2dc9}\index{Grid.GridGenerator@{Grid.GridGenerator}!positions@{positions}}
+\index{positions@{positions}!Grid.GridGenerator@{Grid.GridGenerator}}
+\doxysubsubsection{\texorpdfstring{positions}{positions}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_generator_a264d22d135cd56e2763359d9bf8e2dc9} 
+Vector3 \+[$\,$]\+ Grid.\+Grid\+Generator.\+positions\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_grid_1_1_grid_generator_a6a9c03712337f3c65070f8564862b099}\index{Grid.GridGenerator@{Grid.GridGenerator}!positionsOffGrid@{positionsOffGrid}}
+\index{positionsOffGrid@{positionsOffGrid}!Grid.GridGenerator@{Grid.GridGenerator}}
+\doxysubsubsection{\texorpdfstring{positionsOffGrid}{positionsOffGrid}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_generator_a6a9c03712337f3c65070f8564862b099} 
+Vector3 \+[$\,$]\+ Grid.\+Grid\+Generator.\+positions\+Off\+Grid\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\label{class_grid_1_1_grid_generator_doc-property-members}
+\Hypertarget{class_grid_1_1_grid_generator_doc-property-members}
+\doxysubsection{Property Documentation}
+\Hypertarget{class_grid_1_1_grid_generator_aafb7cd1959535e6afd3c4c068d464be9}\index{Grid.GridGenerator@{Grid.GridGenerator}!Height@{Height}}
+\index{Height@{Height}!Grid.GridGenerator@{Grid.GridGenerator}}
+\doxysubsubsection{\texorpdfstring{Height}{Height}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_generator_aafb7cd1959535e6afd3c4c068d464be9} 
+int Grid.\+Grid\+Generator.\+Height\hspace{0.3cm}{\ttfamily [get]}}
+
+\Hypertarget{class_grid_1_1_grid_generator_abfa2075a515e12aa66e3f8d072dcb7a4}\index{Grid.GridGenerator@{Grid.GridGenerator}!Width@{Width}}
+\index{Width@{Width}!Grid.GridGenerator@{Grid.GridGenerator}}
+\doxysubsubsection{\texorpdfstring{Width}{Width}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_generator_abfa2075a515e12aa66e3f8d072dcb7a4} 
+int Grid.\+Grid\+Generator.\+Width\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+C:\+/\+\+Users/\+\+Lucas/\+\+Documents/\+\+School/\+\+HKU/\+\+Present\+Yourself/\+\+Mii\+\_\+\+Commander/\+\+Assets/\+\+Scripts/\+\+Grid/\+\doxymbox{\hyperlink{_grid_generator_8cs}{Grid\+Generator.\+cs}}\end{DoxyCompactItemize}

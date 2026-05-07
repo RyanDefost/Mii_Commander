@@ -1,0 +1,262 @@
+﻿@startuml
+skinparam classAttributeIconSize 10
+set namespaceSeparator none
+left to right direction
+class Billboard {
+-camRef : Camera
+--
+-Awake() : void
+-Update() : void
+}
+class ComponentRegistry {
+-components : Component>
+--
++AddToRegistry() : bool
++RemoveFromRegistry() : bool
++ReplaceInRegistry() : bool
+}
+class FPSCounter {
++FramesPerSec : int
+--
+-OnValidate() : void
+-Start() : void
+-FPS() : IEnumerator
+}
+interface IPoolable {
++Active : bool
+--
++OnEnableObject() : void
++OnDisableObject() : void
+}
+class QuestSystem {
+-[S] questPrefab : GameObject
+-[S] quests : List<Quest>
+--
+-Start() : void
+-LoadQuests() : IEnumerator
+}
+class ResolutionTracker {
++OnResolutionChanged : int>
+-lastResolution : Vector2Int
+--
+-Start() : void
+-Update() : void
+-CheckResolution() : void
+}
+class Timer {
+-currentTime : double
+-maxTime : float
++onEnd : Action
++onPlaying : Action<double>
++running : bool
+--
++Timer() : public
++Timer() : public
++Reset() : void
++Update() : void
++GetCurrentTime() : double
++Add() : void
+}
+class VectorExtensions {
++XY() : Vector2
++OverwriteXY() : Vector3
+}
+class GridGenerator {
+-[S] materials : Material
+-[S] boardBounds : Bounds
+-[S] boardSize : Vector2Int
+-[S] positions : Vector3
+-[S] positionsOffGrid : Vector3
++cellSize : Vector2
++Width : int
++Height : int
+-[S] cellMesh : Mesh
+--
+-OnValidate() : void
+-OnDrawGizmosSelected() : void
+-CalculateGrid() : void
+-GenerateCellMesh() : Mesh
+-SaveMeshAsset() : void
+-Start() : void
++GetAllPositions() : List<Vector3?>
++GetAllOffGridPositions() : List<Vector3?>
++GetPosAt() : Vector3
++GetOffGridPosAt() : Vector3
+}
+class GridManager {
+-[S] generator : GridGenerator
+-gridInstances : List<GridInstance>
+-availablePositions : List<Vector3?>
+-availableOffGridPositions : List<Vector3?>
++CellSize : Vector2
+--
+-OnValidate() : void
+-Start() : void
+-OnDestroy() : void
++GetNearestPosition() : GridInstance
++GetNearestOffGridPosition() : GridInstance
++GetNearestGridPosition() : GridInstance
+-RegisterGridPosition() : GridInstance
+-GetNearestIndex() : int
++ReleaseInstance() : void
+}
+class TurnManager {
+-[S] gridManager : GridManager
+--
+-OnValidate() : void
++NextTurn() : void
+}
+class Interactable {
+-[S] interaction : UnityEvent
+--
++Trigger() : void
+}
+class MoveToGridPosition {
+-[S] grid : GridManager
+-[S] rb : Rigidbody
+-[S] movementStrength : float
+-[S] maxVelocity : float
+-[S] dampening : float
+-[S] startTimerTime : float
+-startTimer : Timer
+-[S] endTimerTime : float
+-endTimer : Timer
+-onUpdate : Action
+-usedMinimumForce : float
+--
+-OnValidate() : void
+-Start() : void
++SetEnabled() : void
+-DoEnable() : void
+-DoDisable() : void
+-Update() : void
+-UpdateStartTimer() : void
+-StartMovement() : void
+-GetTarget() : bool
++SetTarget() : void
+-UpdateEndTimer() : void
+-GetTargetPosition() : Vector3
+-SnapToTarget() : void
++ResetTarget() : void
++HasTarget() : bool
+}
+class CandyComponent {
+-[S] interactable : Interactable
+-[S] movement : MoveToGridPosition
+-[S] rb : Rigidbody
+-playerHandRef : PlayerHandManager
+--
+-OnValidate() : void
+-Start() : void
++AddToHand() : void
+-OnGrabReleased() : void
+-Initiate() : void
++OnGrabReleased() : void
+}
+class CandyGroupInstance {
++Active : bool
+-instances : List<CandyInstance>
+-playerHandRef : PlayerHandManager
+--
++CandyGroupInstance() : public
++OnEnableObject() : void
++OnDisableObject() : void
+-OnGrabReleased() : void
++SetParent() : void
+}
+IPoolable <|-- CandyGroupInstance
+class CandySpawner {
+-[S] playerHandManager : PlayerHandManager
+-[S] candyPrefab : GameObject
+-candyPool : ObjectPool<CandyGroupInstance>
+--
+-OnValidate() : void
+-Awake() : void
++AddToHand() : void
+}
+class InteractionHandler {
+-[S] camRef : Camera
+-[S] movementHandler : MovementHandler
+-[S] visualHandler : VisualHandler
+-[S] layerMaskInteractables : LayerMask
+-currentHover : Interactable
+--
+-OnValidate() : void
+-Update() : void
+-GetClosestToCamera() : RaycastHit2D?
+-OnNoInteractable() : void
+}
+class MovementHandler {
+-[S] movementBounds : Bounds
+-originalZPosition : float
+-isAnimatingZ : bool
+-zLerpSpeed : float
+-currentSpeedMultiplier : float
+-pixelDensityScale : float
+-previousPosition : Vector3
+-smoothedVelocity : Vector3
++Velocity : Vector2
++MovementDirection : Vector2
++ThrowForce : Vector2
+--
+-OnValidate() : void
+-Awake() : void
+-OnDestroy() : void
+-OnResolutionChanged() : void
+-Update() : void
++ApplyMouseDelta() : void
++SetTargetZ() : void
++ResetToOriginalZ() : void
+-UpdateVelocity() : void
+-DecaySpeedMultiplier() : void
+-AnimateZPosition() : void
+-RecalculateBounds() : void
+-RecalculatePixelDensityScale() : void
+-GetDepthScale() : float
+-ClampToBounds() : Vector3
+-GetSafeDeltaTime() : float
+-OnDrawGizmos() : void
+}
+class PlayerHandManager {
+-[S] visualHandler : VisualHandler
+-[S] movementHandler : MovementHandler
+-[S] interactionHandler : InteractionHandler
+-[S] inputActionMap : InputActionMap
+-moveAction : InputAction
+-grabAction : InputAction
+-grabbing : bool
++OnGrabReleased : Vector2>
+--
+-OnValidate() : void
+-Awake() : void
+-OnDestroy() : void
+-Update() : void
+-OnInteract() : void
+-CheckOnGrabReleased() : bool
++SetStateToGrabbing() : void
+}
+class VisualHandler {
+-[S] visual : SpriteRenderer
+-[S] sprites : VisualState
+-[S] zMovementSpeed : float
++CurrentState : string
+--
+-OnValidate() : void
++SetSprite() : void
+}
+GridManager *-- GridGenerator
+TurnManager *-- GridManager
+MoveToGridPosition *-- GridManager
+MoveToGridPosition *-- Timer
+CandyComponent *-- Interactable
+CandyComponent *-- MoveToGridPosition
+CandyComponent *-- PlayerHandManager
+CandyGroupInstance *-- PlayerHandManager
+CandySpawner *-- PlayerHandManager
+InteractionHandler *-- MovementHandler
+InteractionHandler *-- VisualHandler
+InteractionHandler *-- Interactable
+PlayerHandManager *-- VisualHandler
+PlayerHandManager *-- MovementHandler
+PlayerHandManager *-- InteractionHandler
+@enduml

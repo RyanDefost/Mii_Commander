@@ -1,0 +1,310 @@
+\doxysection{Grid.\+Grid\+Manager Class Reference}
+\hypertarget{class_grid_1_1_grid_manager}{}\label{class_grid_1_1_grid_manager}\index{Grid.GridManager@{Grid.GridManager}}
+
+
+Inheritance diagram for Grid.\+Grid\+Manager:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_grid_1_1_grid_manager__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Grid.\+Grid\+Manager:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_grid_1_1_grid_manager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_grid_1_1_grid_manager_1_1_grid_instance}{Grid\+Instance}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_grid_1_1_grid_manager_1_1_grid_instance}{Grid\+Instance}} \doxymbox{\hyperlink{class_grid_1_1_grid_manager_a5b1ee60e831acba5650e64920dc63f06}{Get\+Nearest\+Position}} (Vector3 position, Game\+Object game\+Obj, \doxymbox{\hyperlink{class_grid_1_1_grid_manager_1_1_grid_instance}{Grid\+Instance}} previous=null)
+\item 
+\doxymbox{\hyperlink{class_grid_1_1_grid_manager_1_1_grid_instance}{Grid\+Instance}} \doxymbox{\hyperlink{class_grid_1_1_grid_manager_afd97082422b9a4f9c8e79945a7b75e51}{Get\+Nearest\+Off\+Grid\+Position}} (Vector3 position, Game\+Object game\+Obj, Vector3? pos\+To\+Ignore=null, bool is\+Already\+Off\+Grid=false)
+\item 
+\doxymbox{\hyperlink{class_grid_1_1_grid_manager_1_1_grid_instance}{Grid\+Instance}} \doxymbox{\hyperlink{class_grid_1_1_grid_manager_a692b95f58b88c990ad72911158c297fd}{Get\+Nearest\+Grid\+Position}} (Vector3 position, Game\+Object game\+Obj, Vector3? pos\+To\+Ignore=null)
+\item 
+void \doxymbox{\hyperlink{class_grid_1_1_grid_manager_a1e2a91fac8503047529114bd166d87c8}{Release\+Instance}} (\doxymbox{\hyperlink{class_grid_1_1_grid_manager_1_1_grid_instance}{Grid\+Instance}} target)
+\item 
+void \doxymbox{\hyperlink{class_grid_1_1_grid_manager_a108ad106ff03b94b262881a790517e02}{For\+All\+Grid\+Items}} (Action$<$ \doxymbox{\hyperlink{class_grid_1_1_grid_manager_1_1_grid_instance}{Grid\+Instance}} $>$ action)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Vector2 \doxymbox{\hyperlink{class_grid_1_1_grid_manager_a9480c81c578af06e788de77e34f7fd29}{Cell\+Size}}\hspace{0.3cm}{\ttfamily  \+[get, private set]\+}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_grid_1_1_grid_manager_a2fb5e45ad49589bc0b9be328409d1b60}{On\+Validate}} ()
+\item 
+void \doxymbox{\hyperlink{class_grid_1_1_grid_manager_a473ec745ea73c3ae43b311827958258f}{Start}} ()
+\item 
+void \doxymbox{\hyperlink{class_grid_1_1_grid_manager_a0a01b2d715f07e9bff59c370feba035e}{On\+Destroy}} ()
+\item 
+\doxymbox{\hyperlink{class_grid_1_1_grid_manager_1_1_grid_instance}{Grid\+Instance}} \doxymbox{\hyperlink{class_grid_1_1_grid_manager_af5a26c4e665abb389bf6ece73e6e3ee5}{Register\+Grid\+Position}} (Game\+Object game\+Obj, int found\+Index)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \doxymbox{\hyperlink{class_grid_1_1_grid_manager_a14e5ebaebce944e5386fa9a4b463bab2}{Get\+Nearest\+Index}} (Vector3 position, List$<$ Vector3?$>$ positions, Vector3? pos\+To\+Ignore=null)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_grid_1_1_grid_generator}{Grid\+Generator}} \doxymbox{\hyperlink{class_grid_1_1_grid_manager_a831bbdd81164b32766b6db8d79ec0ef4}{generator}}
+\item 
+readonly List$<$ \doxymbox{\hyperlink{class_grid_1_1_grid_manager_1_1_grid_instance}{Grid\+Instance}} $>$ \doxymbox{\hyperlink{class_grid_1_1_grid_manager_a2018c54095249aad8a93eedaa7e2073c}{grid\+Instances}} = new()
+\item 
+List$<$ Vector3?$>$ \doxymbox{\hyperlink{class_grid_1_1_grid_manager_aef132eb2d5d2212a8637e60b3f028dbc}{available\+Positions}}
+\item 
+List$<$ Vector3?$>$ \doxymbox{\hyperlink{class_grid_1_1_grid_manager_a6192a83a72024c956c0e45cf16b12e8f}{available\+Off\+Grid\+Positions}}
+\end{DoxyCompactItemize}
+
+
+\label{class_grid_1_1_grid_manager_doc-func-members}
+\Hypertarget{class_grid_1_1_grid_manager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_grid_1_1_grid_manager_a108ad106ff03b94b262881a790517e02}\index{Grid.GridManager@{Grid.GridManager}!ForAllGridItems@{ForAllGridItems}}
+\index{ForAllGridItems@{ForAllGridItems}!Grid.GridManager@{Grid.GridManager}}
+\doxysubsubsection{\texorpdfstring{ForAllGridItems()}{ForAllGridItems()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_manager_a108ad106ff03b94b262881a790517e02} 
+void Grid.\+Grid\+Manager.\+For\+All\+Grid\+Items (\begin{DoxyParamCaption}\item[{Action$<$ \doxymbox{\hyperlink{class_grid_1_1_grid_manager_1_1_grid_instance}{Grid\+Instance}} $>$}]{action}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ List<GridInstance>\ tempGridInstances\ =\ \textcolor{keyword}{new}(this.gridInstances);}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ tempGridInstances.Sort((a,\ b)\ =>\ a.position.y.CompareTo(b.position.y));}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ tempGridInstances.ForEach(action);}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_grid_1_1_grid_manager_a692b95f58b88c990ad72911158c297fd}\index{Grid.GridManager@{Grid.GridManager}!GetNearestGridPosition@{GetNearestGridPosition}}
+\index{GetNearestGridPosition@{GetNearestGridPosition}!Grid.GridManager@{Grid.GridManager}}
+\doxysubsubsection{\texorpdfstring{GetNearestGridPosition()}{GetNearestGridPosition()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_manager_a692b95f58b88c990ad72911158c297fd} 
+\doxymbox{\hyperlink{class_grid_1_1_grid_manager_1_1_grid_instance}{Grid\+Instance}} Grid.\+Grid\+Manager.\+Get\+Nearest\+Grid\+Position (\begin{DoxyParamCaption}\item[{Vector3}]{position}{, }\item[{Game\+Object}]{game\+Obj}{, }\item[{Vector3?}]{pos\+To\+Ignore}{ = {\ttfamily null}}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ foundIndex\ =\ GetNearestIndex(position,\ this.availablePositions,\ posToIgnore);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ foundIndex\ ==\ -\/1\ ?\ null\ :\ RegisterGridPosition(gameObj,\ foundIndex);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_grid_1_1_grid_manager_a14e5ebaebce944e5386fa9a4b463bab2}\index{Grid.GridManager@{Grid.GridManager}!GetNearestIndex@{GetNearestIndex}}
+\index{GetNearestIndex@{GetNearestIndex}!Grid.GridManager@{Grid.GridManager}}
+\doxysubsubsection{\texorpdfstring{GetNearestIndex()}{GetNearestIndex()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_manager_a14e5ebaebce944e5386fa9a4b463bab2} 
+int Grid.\+Grid\+Manager.\+Get\+Nearest\+Index (\begin{DoxyParamCaption}\item[{Vector3}]{position}{, }\item[{List$<$ Vector3?$>$}]{positions}{, }\item[{Vector3?}]{pos\+To\+Ignore}{ = {\ttfamily null}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ smallestDistance\ =\ \textcolor{keywordtype}{float}.MaxValue;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ foundIndex\ =\ -\/1;}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ positions.Count;\ i++)}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3?\ availablePosition\ =\ positions[i];}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (availablePosition\ ==\ \textcolor{keyword}{null}\ ||\ (posToIgnore.HasValue\ \&\&\ availablePosition.Value\ ==\ posToIgnore.Value))\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ distance\ =\ Vector3.Distance(position,\ availablePosition.Value);}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(distance\ <=\ smallestDistance))\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ smallestDistance\ =\ distance;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ foundIndex\ =\ i;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ foundIndex;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_grid_1_1_grid_manager_afd97082422b9a4f9c8e79945a7b75e51}\index{Grid.GridManager@{Grid.GridManager}!GetNearestOffGridPosition@{GetNearestOffGridPosition}}
+\index{GetNearestOffGridPosition@{GetNearestOffGridPosition}!Grid.GridManager@{Grid.GridManager}}
+\doxysubsubsection{\texorpdfstring{GetNearestOffGridPosition()}{GetNearestOffGridPosition()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_manager_afd97082422b9a4f9c8e79945a7b75e51} 
+\doxymbox{\hyperlink{class_grid_1_1_grid_manager_1_1_grid_instance}{Grid\+Instance}} Grid.\+Grid\+Manager.\+Get\+Nearest\+Off\+Grid\+Position (\begin{DoxyParamCaption}\item[{Vector3}]{position}{, }\item[{Game\+Object}]{game\+Obj}{, }\item[{Vector3?}]{pos\+To\+Ignore}{ = {\ttfamily null}, }\item[{bool}]{is\+Already\+Off\+Grid}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ foundIndexOffGrid\ =\ GetNearestIndex(position,\ this.availableOffGridPositions,\ posToIgnore);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ foundIndex\ =\ GetNearestIndex(position,\ this.availablePositions,\ posToIgnore);}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (foundIndexOffGrid\ ==\ -\/1\ \&\&\ !isAlreadyOffGrid)}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ RegisterGridPosition(gameObj,\ foundIndex);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isAlreadyOffGrid)}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ this.availableOffGridPositions[foundIndexOffGrid]\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ GridInstance\ newInstance\ =\ \textcolor{keyword}{new}(gameObj,\ foundIndexOffGrid,\ this.generator,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ this.gridInstances.Add(newInstance);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ newInstance;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_grid_1_1_grid_manager_a5b1ee60e831acba5650e64920dc63f06}\index{Grid.GridManager@{Grid.GridManager}!GetNearestPosition@{GetNearestPosition}}
+\index{GetNearestPosition@{GetNearestPosition}!Grid.GridManager@{Grid.GridManager}}
+\doxysubsubsection{\texorpdfstring{GetNearestPosition()}{GetNearestPosition()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_manager_a5b1ee60e831acba5650e64920dc63f06} 
+\doxymbox{\hyperlink{class_grid_1_1_grid_manager_1_1_grid_instance}{Grid\+Instance}} Grid.\+Grid\+Manager.\+Get\+Nearest\+Position (\begin{DoxyParamCaption}\item[{Vector3}]{position}{, }\item[{Game\+Object}]{game\+Obj}{, }\item[{\doxymbox{\hyperlink{class_grid_1_1_grid_manager_1_1_grid_instance}{Grid\+Instance}}}]{previous}{ = {\ttfamily null}}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3?\ posToIgnore\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isBottomRow\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (previous\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ isBottomRow\ =\ previous.index\ <\ this.generator.Width;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ posToIgnore\ =\ previous.position;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isBottomRow)}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GetNearestGridPosition(position,\ gameObj,\ posToIgnore);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GetNearestOffGridPosition(position,\ gameObj,\ posToIgnore,\ previous.offGrid);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_grid_1_1_grid_manager_a0a01b2d715f07e9bff59c370feba035e}\index{Grid.GridManager@{Grid.GridManager}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!Grid.GridManager@{Grid.GridManager}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_manager_a0a01b2d715f07e9bff59c370feba035e} 
+void Grid.\+Grid\+Manager.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049\ =>\ ComponentRegistry.RemoveFromRegistry(\textcolor{keyword}{this});}
+
+\end{DoxyCode}
+\Hypertarget{class_grid_1_1_grid_manager_a2fb5e45ad49589bc0b9be328409d1b60}\index{Grid.GridManager@{Grid.GridManager}!OnValidate@{OnValidate}}
+\index{OnValidate@{OnValidate}!Grid.GridManager@{Grid.GridManager}}
+\doxysubsubsection{\texorpdfstring{OnValidate()}{OnValidate()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_manager_a2fb5e45ad49589bc0b9be328409d1b60} 
+void Grid.\+Grid\+Manager.\+On\+Validate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Application.isPlaying)}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ this.generator\ =\ GetComponent<GridGenerator>();}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_grid_1_1_grid_manager_af5a26c4e665abb389bf6ece73e6e3ee5}\index{Grid.GridManager@{Grid.GridManager}!RegisterGridPosition@{RegisterGridPosition}}
+\index{RegisterGridPosition@{RegisterGridPosition}!Grid.GridManager@{Grid.GridManager}}
+\doxysubsubsection{\texorpdfstring{RegisterGridPosition()}{RegisterGridPosition()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_manager_af5a26c4e665abb389bf6ece73e6e3ee5} 
+\doxymbox{\hyperlink{class_grid_1_1_grid_manager_1_1_grid_instance}{Grid\+Instance}} Grid.\+Grid\+Manager.\+Register\+Grid\+Position (\begin{DoxyParamCaption}\item[{Game\+Object}]{game\+Obj}{, }\item[{int}]{found\+Index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ this.availablePositions[foundIndex]\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ GridInstance\ newInstance\ =\ \textcolor{keyword}{new}(gameObj,\ foundIndex,\ this.generator,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ this.gridInstances.Add(newInstance);}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ newInstance;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_grid_1_1_grid_manager_a1e2a91fac8503047529114bd166d87c8}\index{Grid.GridManager@{Grid.GridManager}!ReleaseInstance@{ReleaseInstance}}
+\index{ReleaseInstance@{ReleaseInstance}!Grid.GridManager@{Grid.GridManager}}
+\doxysubsubsection{\texorpdfstring{ReleaseInstance()}{ReleaseInstance()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_manager_a1e2a91fac8503047529114bd166d87c8} 
+void Grid.\+Grid\+Manager.\+Release\+Instance (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_grid_1_1_grid_manager_1_1_grid_instance}{Grid\+Instance}}}]{target}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!target.offGrid)}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (target.index\ >=\ \textcolor{keyword}{this}.availablePositions.Count\ ||\ target.index\ <\ 0)}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.availablePositions[target.index]\ =\ target.position;}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (target.index\ >=\ \textcolor{keyword}{this}.availableOffGridPositions.Count\ ||\ target.index\ <\ 0)}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.availableOffGridPositions[target.index]\ =\ target.position;}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ this.gridInstances.RemoveSwapBack(target);}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_grid_1_1_grid_manager_a473ec745ea73c3ae43b311827958258f}\index{Grid.GridManager@{Grid.GridManager}!Start@{Start}}
+\index{Start@{Start}!Grid.GridManager@{Grid.GridManager}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_manager_a473ec745ea73c3ae43b311827958258f} 
+void Grid.\+Grid\+Manager.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ ComponentRegistry.AddToRegistry(\textcolor{keyword}{this});}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ this.availableOffGridPositions\ ??=\ this.generator.GetAllOffGridPositions();}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ this.availablePositions\ ??=\ this.generator.GetAllPositions();}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\label{class_grid_1_1_grid_manager_doc-variable-members}
+\Hypertarget{class_grid_1_1_grid_manager_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_grid_1_1_grid_manager_a6192a83a72024c956c0e45cf16b12e8f}\index{Grid.GridManager@{Grid.GridManager}!availableOffGridPositions@{availableOffGridPositions}}
+\index{availableOffGridPositions@{availableOffGridPositions}!Grid.GridManager@{Grid.GridManager}}
+\doxysubsubsection{\texorpdfstring{availableOffGridPositions}{availableOffGridPositions}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_manager_a6192a83a72024c956c0e45cf16b12e8f} 
+List$<$Vector3?$>$ Grid.\+Grid\+Manager.\+available\+Off\+Grid\+Positions\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_grid_1_1_grid_manager_aef132eb2d5d2212a8637e60b3f028dbc}\index{Grid.GridManager@{Grid.GridManager}!availablePositions@{availablePositions}}
+\index{availablePositions@{availablePositions}!Grid.GridManager@{Grid.GridManager}}
+\doxysubsubsection{\texorpdfstring{availablePositions}{availablePositions}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_manager_aef132eb2d5d2212a8637e60b3f028dbc} 
+List$<$Vector3?$>$ Grid.\+Grid\+Manager.\+available\+Positions\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_grid_1_1_grid_manager_a831bbdd81164b32766b6db8d79ec0ef4}\index{Grid.GridManager@{Grid.GridManager}!generator@{generator}}
+\index{generator@{generator}!Grid.GridManager@{Grid.GridManager}}
+\doxysubsubsection{\texorpdfstring{generator}{generator}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_manager_a831bbdd81164b32766b6db8d79ec0ef4} 
+\doxymbox{\hyperlink{class_grid_1_1_grid_generator}{Grid\+Generator}} Grid.\+Grid\+Manager.\+generator\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_grid_1_1_grid_manager_a2018c54095249aad8a93eedaa7e2073c}\index{Grid.GridManager@{Grid.GridManager}!gridInstances@{gridInstances}}
+\index{gridInstances@{gridInstances}!Grid.GridManager@{Grid.GridManager}}
+\doxysubsubsection{\texorpdfstring{gridInstances}{gridInstances}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_manager_a2018c54095249aad8a93eedaa7e2073c} 
+readonly List$<$\doxymbox{\hyperlink{class_grid_1_1_grid_manager_1_1_grid_instance}{Grid\+Instance}}$>$ Grid.\+Grid\+Manager.\+grid\+Instances = new()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\label{class_grid_1_1_grid_manager_doc-property-members}
+\Hypertarget{class_grid_1_1_grid_manager_doc-property-members}
+\doxysubsection{Property Documentation}
+\Hypertarget{class_grid_1_1_grid_manager_a9480c81c578af06e788de77e34f7fd29}\index{Grid.GridManager@{Grid.GridManager}!CellSize@{CellSize}}
+\index{CellSize@{CellSize}!Grid.GridManager@{Grid.GridManager}}
+\doxysubsubsection{\texorpdfstring{CellSize}{CellSize}}
+{\footnotesize\ttfamily \label{class_grid_1_1_grid_manager_a9480c81c578af06e788de77e34f7fd29} 
+Vector2 Grid.\+Grid\+Manager.\+Cell\+Size\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \{\ \textcolor{keyword}{get}\ =>\ this.generator.cellSize;\ \textcolor{keyword}{private}\ \textcolor{keyword}{set}\ =>\ this.generator.cellSize\ =\ value;\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+C:\+/\+\+Users/\+\+Lucas/\+\+Documents/\+\+School/\+\+HKU/\+\+Present\+Yourself/\+\+Mii\+\_\+\+Commander/\+\+Assets/\+\+Scripts/\+\+Grid/\+\doxymbox{\hyperlink{_grid_manager_8cs}{Grid\+Manager.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,127 @@
+\doxysection{Object\+Pool\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_object_pool-1-g}{}\label{class_object_pool-1-g}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+
+
+Collaboration diagram for Object\+Pool\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=201pt]{class_object_pool-1-g__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+T \doxymbox{\hyperlink{class_object_pool-1-g_a1cc6be66188f3a99a3dc28a35e85e97b}{Activate\+Object}} (T item)
+\item 
+T \doxymbox{\hyperlink{class_object_pool-1-g_a61f9766f483c8bef8093e0ff6e5022a8}{Deactivate\+Object}} (T item)
+\item 
+T \doxymbox{\hyperlink{class_object_pool-1-g_af2e407c6ee935d43c1994e39bf9661a4}{Request\+Object}} ()
+\item 
+List$<$ T $>$ \doxymbox{\hyperlink{class_object_pool-1-g_a94bd866ff4d4934d8eee849c1d892e84}{Get\+All\+Items}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly List$<$ T $>$ \doxymbox{\hyperlink{class_object_pool-1-g_ab73f73c365e23bbbe6f2743de3d8daae}{active\+Pool}} = new()
+\item 
+readonly List$<$ T $>$ \doxymbox{\hyperlink{class_object_pool-1-g_a619392bd729e7d33a04681ac0d745724}{inactive\+Pool}} = new()
+\end{DoxyCompactItemize}
+
+
+\label{class_object_pool-1-g_doc-func-members}
+\Hypertarget{class_object_pool-1-g_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_object_pool-1-g_a1cc6be66188f3a99a3dc28a35e85e97b}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!ActivateObject@{ActivateObject}}
+\index{ActivateObject@{ActivateObject}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ActivateObject()}{ActivateObject()}}
+{\footnotesize\ttfamily \label{class_object_pool-1-g_a1cc6be66188f3a99a3dc28a35e85e97b} 
+T Object\+Pool$<$ T $>$.Activate\+Object (\begin{DoxyParamCaption}\item[{T}]{item}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ item.OnEnableObject();}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ item.Active\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.inactivePool.Contains(item))}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ this.inactivePool.Remove(item);}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ this.activePool.Add(item);}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ item;}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_object_pool-1-g_a61f9766f483c8bef8093e0ff6e5022a8}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!DeactivateObject@{DeactivateObject}}
+\index{DeactivateObject@{DeactivateObject}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{DeactivateObject()}{DeactivateObject()}}
+{\footnotesize\ttfamily \label{class_object_pool-1-g_a61f9766f483c8bef8093e0ff6e5022a8} 
+T Object\+Pool$<$ T $>$.Deactivate\+Object (\begin{DoxyParamCaption}\item[{T}]{item}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ item.OnDisableObject();}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ item.Active\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.activePool.Contains(item))}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ this.activePool.Remove(item);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ this.inactivePool.Add(item);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ item;}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_object_pool-1-g_a94bd866ff4d4934d8eee849c1d892e84}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!GetAllItems@{GetAllItems}}
+\index{GetAllItems@{GetAllItems}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{GetAllItems()}{GetAllItems()}}
+{\footnotesize\ttfamily \label{class_object_pool-1-g_a94bd866ff4d4934d8eee849c1d892e84} 
+List$<$ T $>$ Object\+Pool$<$ T $>$.Get\+All\+Items (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00040\ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ List<T>\ ItemList\ =\ \textcolor{keyword}{new}\ List<T>();}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ ItemList.AddRange(this.activePool);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ ItemList.AddRange(this.inactivePool);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ItemList;}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_object_pool-1-g_af2e407c6ee935d43c1994e39bf9661a4}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!RequestObject@{RequestObject}}
+\index{RequestObject@{RequestObject}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{RequestObject()}{RequestObject()}}
+{\footnotesize\ttfamily \label{class_object_pool-1-g_af2e407c6ee935d43c1994e39bf9661a4} 
+T Object\+Pool$<$ T $>$.Request\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ =>\ this.inactivePool.Count\ >\ 0\ ?\ ActivateObject(this.inactivePool[0])\ :\ null;}
+
+\end{DoxyCode}
+
+
+\label{class_object_pool-1-g_doc-variable-members}
+\Hypertarget{class_object_pool-1-g_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_object_pool-1-g_ab73f73c365e23bbbe6f2743de3d8daae}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!activePool@{activePool}}
+\index{activePool@{activePool}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{activePool}{activePool}}
+{\footnotesize\ttfamily \label{class_object_pool-1-g_ab73f73c365e23bbbe6f2743de3d8daae} 
+readonly List$<$T$>$ Object\+Pool$<$ T $>$.active\+Pool = new()\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_object_pool-1-g_a619392bd729e7d33a04681ac0d745724}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!inactivePool@{inactivePool}}
+\index{inactivePool@{inactivePool}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{inactivePool}{inactivePool}}
+{\footnotesize\ttfamily \label{class_object_pool-1-g_a619392bd729e7d33a04681ac0d745724} 
+readonly List$<$T$>$ Object\+Pool$<$ T $>$.inactive\+Pool = new()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+C:\+/\+\+Users/\+\+Lucas/\+\+Documents/\+\+School/\+\+HKU/\+\+Present\+Yourself/\+\+Mii\+\_\+\+Commander/\+\+Assets/\+\+Scripts/\+\doxymbox{\hyperlink{_object_pool_8cs}{Object\+Pool.\+cs}}\end{DoxyCompactItemize}

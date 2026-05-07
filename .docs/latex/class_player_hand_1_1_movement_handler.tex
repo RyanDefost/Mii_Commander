@@ -1,0 +1,600 @@
+\doxysection{Player\+Hand.\+Movement\+Handler Class Reference}
+\hypertarget{class_player_hand_1_1_movement_handler}{}\label{class_player_hand_1_1_movement_handler}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+
+
+Handles player hand movement with acceleration, velocity tracking, and throw force calculation.  
+
+
+
+
+Inheritance diagram for Player\+Hand.\+Movement\+Handler:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_player_hand_1_1_movement_handler__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Player\+Hand.\+Movement\+Handler:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_player_hand_1_1_movement_handler__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a1af76cd06eafe219eb797ef5053ec959}{Apply\+Mouse\+Delta}} (Vector2 delta)
+\begin{DoxyCompactList}\small\item\em Called from the input handler. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a6fc7dc57c94a5f6396f731eac65864fc}{Set\+TargetZ}} (float z, float speed=-\/1f)
+\item 
+void \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a76ff87c8d0e769c48499fd90d9946b7f}{Reset\+To\+OriginalZ}} (float speed=-\/1f)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Vector2 \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a71e385868473b71cd75d3800aeb3e680}{Velocity}}\hspace{0.3cm}{\ttfamily  \+[get]\+}
+\item 
+Vector2 \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a1608c72bc02b9dd073b13e74566b52df}{Movement\+Direction}}\hspace{0.3cm}{\ttfamily  \+[get]\+}
+\item 
+Vector2 \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a3b1b2be8f21a8368453338cc0024e2f9}{Throw\+Force}}\hspace{0.3cm}{\ttfamily  \+[get, private set]\+}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_adaafc133470a082762ace1ae7d751a28}{On\+Validate}} ()
+\item 
+void \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a4b98e12c0f87ce901fcf70fbe4201cd6}{Awake}} ()
+\item 
+void \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a375cc32f822ef696e6b85972d8b09345}{On\+Destroy}} ()
+\item 
+void \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_ad089689ff845c75c8ebdae7839a1b3f6}{On\+Resolution\+Changed}} (int width, int height)
+\item 
+void \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a75747835fb301fbf02bd566f67c24bdc}{Update}} ()
+\item 
+void \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a1817624d6c6f3d0e11b04c706e4e1f08}{Update\+Velocity}} (float dt)
+\item 
+void \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_ac5a6fc95a28141ff09a47870b3ee02cb}{Update\+Throw\+Force}} ()
+\item 
+void \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a1bbb1e4abfdd123a2d95a0f501304a3e}{Decay\+Speed\+Multiplier}} (float dt)
+\item 
+void \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a70ba2e50c8430258207b90f526cd66bc}{Animate\+ZPosition}} (float dt)
+\item 
+void \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a4b2ad34b4a70c617f755168499aca1de}{Recalculate\+Bounds}} ()
+\item 
+void \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a854227fd9fecc2793b6aefed029aa1f3}{Recalculate\+Pixel\+Density\+Scale}} ()
+\item 
+float \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a6dc5cd1592e1a1e391608a050dee1b97}{Get\+Depth\+Scale}} ()
+\item 
+Vector3 \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a986d4eaa31f7ba2fde60b317cf386ca1}{Clamp\+To\+Bounds}} (Vector3 position)
+\item 
+void \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a398d4c7cfd85a4d08838e3c098df666a}{On\+Draw\+Gizmos}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static float \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_ac8333bc3683bd7117e3cf3c8133a5b7d}{Get\+Safe\+Delta\+Time}} ()
+\begin{DoxyCompactList}\small\item\em clamps delta\+Time between a max and min frame\+Rate \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Camera \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a72bea07005d9903d12aa2878b55c58ab}{cam\+Ref}}
+\item 
+float \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_aba1620ae773d47cb554f761d5f1f7091}{base\+Sensitivity}} = 1f
+\item 
+int \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_ad5289351c0e60e847b4e82ee407cdf5d}{reference\+Screen\+Height}} = 1080
+\item 
+float \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a0778563a60a5d131d234805d1585ebcc}{acceleration\+Rate}} = 8f
+\item 
+float \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_af4ccdd1a69e17c3f7a6fa02b403dfc82}{deceleration\+Rate}} = 4f
+\item 
+float \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a071cff819378923bdb855dbad3c27ed0}{min\+Speed\+Multiplier}} = 1f
+\item 
+float \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_aa8c8590fe791f9420fb113f20969c0a5}{max\+Speed\+Multiplier}} = 3f
+\item 
+float \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_af056bb504d59c12e93f4833b5c7a5d6a}{max\+Velocity}} = 50f
+\item 
+float \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a2776a4d166cde63d6c180bcfb7d81f8b}{velocity\+Smoothing}} = 15f
+\item 
+Animation\+Curve \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a8e6846d100be32bd187ff56b4a1c7959}{throw\+Force\+Curve}} = Animation\+Curve.\+Ease\+In\+Out(0f, 0f, 1f, 1f)
+\item 
+Bounds \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a3e1f139db86134acc3455109a9d7a58b}{movement\+Bounds}}
+\item 
+float \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a927b5ddf7a22d8db52d6058344bebf11}{original\+ZPosition}}
+\item 
+float \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a2cc282e5cd908016558c0cf49013c79e}{target\+ZPosition}}
+\item 
+bool \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a4fe40f7031d734ca26f0cfdc076ef632}{is\+AnimatingZ}}
+\item 
+float \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_ad8e9c33cd4886355c7b62b8b80a47263}{z\+Lerp\+Speed}}
+\item 
+float \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_ac9e72ca22ae96da9d2f601e51c3e21ed}{current\+Speed\+Multiplier}} = 1f
+\item 
+float \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a22dbd19de16fa88f06dbe932e99797ac}{pixel\+Density\+Scale}} = 1f
+\item 
+Vector3 \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_ab927aff331f71848b1e0740e630d5751}{previous\+Position}}
+\item 
+Vector3 \doxymbox{\hyperlink{class_player_hand_1_1_movement_handler_a1deefc7abc3383019634992ba3605180}{smoothed\+Velocity}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles player hand movement with acceleration, velocity tracking, and throw force calculation. 
+
+\label{class_player_hand_1_1_movement_handler_doc-func-members}
+\Hypertarget{class_player_hand_1_1_movement_handler_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_player_hand_1_1_movement_handler_a70ba2e50c8430258207b90f526cd66bc}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!AnimateZPosition@{AnimateZPosition}}
+\index{AnimateZPosition@{AnimateZPosition}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{AnimateZPosition()}{AnimateZPosition()}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a70ba2e50c8430258207b90f526cd66bc} 
+void Player\+Hand.\+Movement\+Handler.\+Animate\+ZPosition (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.isAnimatingZ)}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ pos\ =\ this.transform.position;}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ pos.z\ =\ Mathf.Lerp(pos.z,\ \textcolor{keyword}{this}.targetZPosition,\ \textcolor{keyword}{this}.zLerpSpeed\ *\ dt);}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ this.transform.position\ =\ pos;}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ RecalculateBounds();}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(Mathf.Abs(pos.z\ -\/\ \textcolor{keyword}{this}.targetZPosition)\ <\ 0.001f))\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ pos.z\ =\ this.targetZPosition;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ this.transform.position\ =\ pos;}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ this.isAnimatingZ\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_player_hand_1_1_movement_handler_a1af76cd06eafe219eb797ef5053ec959}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!ApplyMouseDelta@{ApplyMouseDelta}}
+\index{ApplyMouseDelta@{ApplyMouseDelta}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{ApplyMouseDelta()}{ApplyMouseDelta()}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a1af76cd06eafe219eb797ef5053ec959} 
+void Player\+Hand.\+Movement\+Handler.\+Apply\+Mouse\+Delta (\begin{DoxyParamCaption}\item[{Vector2}]{delta}{}\end{DoxyParamCaption})}
+
+
+
+Called from the input handler. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delta.sqrMagnitude\ <\ 0.0001f)}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dt\ =\ GetSafeDeltaTime();}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ inputSpeed\ =\ delta.magnitude\ /\ dt;}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Accelerate\ based\ on\ input\ intensity}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ accelerationTarget\ =\ Mathf.Lerp(this.minSpeedMultiplier,\ this.maxSpeedMultiplier,\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Mathf.Clamp01(inputSpeed\ /\ 1000f));\ \textcolor{comment}{//\ Normalize\ input\ speed}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ this.currentSpeedMultiplier\ =\ Mathf.MoveTowards(this.currentSpeedMultiplier,}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ accelerationTarget,\ this.accelerationRate\ *\ dt}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Apply\ sensitivity\ with\ depth\ and\ pixel\ density\ compensation}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ depthScale\ =\ GetDepthScale();}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ effectiveSensitivity\ =\ this.baseSensitivity\ *\ this.pixelDensityScale\ *\ depthScale\ *\ this.currentSpeedMultiplier;}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ Vector2\ movement\ =\ delta\ *\ effectiveSensitivity;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ newPosition\ =\ this.transform.position\ +\ \textcolor{keyword}{new}\ Vector3(movement.x,\ movement.y,\ 0f);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clamp\ to\ bounds}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ this.transform.position\ =\ ClampToBounds(newPosition);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_player_hand_1_1_movement_handler_a4b98e12c0f87ce901fcf70fbe4201cd6}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!Awake@{Awake}}
+\index{Awake@{Awake}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a4b98e12c0f87ce901fcf70fbe4201cd6} 
+void Player\+Hand.\+Movement\+Handler.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ this.originalZPosition\ =\ this.transform.position.z;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ this.targetZPosition\ =\ this.originalZPosition;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ this.previousPosition\ =\ this.transform.position;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ RecalculateBounds();}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ RecalculatePixelDensityScale();}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ ResolutionTracker.OnResolutionChanged\ +=\ OnResolutionChanged;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_player_hand_1_1_movement_handler_a986d4eaa31f7ba2fde60b317cf386ca1}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!ClampToBounds@{ClampToBounds}}
+\index{ClampToBounds@{ClampToBounds}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{ClampToBounds()}{ClampToBounds()}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a986d4eaa31f7ba2fde60b317cf386ca1} 
+Vector3 Player\+Hand.\+Movement\+Handler.\+Clamp\+To\+Bounds (\begin{DoxyParamCaption}\item[{Vector3}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =>\ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ this.movementBounds.Contains(position)\ ?\ position\ :\ this.movementBounds.ClosestPoint(position);}
+
+\end{DoxyCode}
+\Hypertarget{class_player_hand_1_1_movement_handler_a1bbb1e4abfdd123a2d95a0f501304a3e}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!DecaySpeedMultiplier@{DecaySpeedMultiplier}}
+\index{DecaySpeedMultiplier@{DecaySpeedMultiplier}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{DecaySpeedMultiplier()}{DecaySpeedMultiplier()}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a1bbb1e4abfdd123a2d95a0f501304a3e} 
+void Player\+Hand.\+Movement\+Handler.\+Decay\+Speed\+Multiplier (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =>}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ this.currentSpeedMultiplier\ =\ Mathf.MoveTowards(this.currentSpeedMultiplier,}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.minSpeedMultiplier,}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.decelerationRate\ *\ dt);}
+
+\end{DoxyCode}
+\Hypertarget{class_player_hand_1_1_movement_handler_a6dc5cd1592e1a1e391608a050dee1b97}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!GetDepthScale@{GetDepthScale}}
+\index{GetDepthScale@{GetDepthScale}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{GetDepthScale()}{GetDepthScale()}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a6dc5cd1592e1a1e391608a050dee1b97} 
+float Player\+Hand.\+Movement\+Handler.\+Get\+Depth\+Scale (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.camRef)}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1f;}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ cameraZ\ =\ this.camRef.transform.position.z;}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ currentDist\ =\ Mathf.Abs(this.transform.position.z\ -\/\ cameraZ);}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ originalDist\ =\ Mathf.Abs(this.originalZPosition\ -\/\ cameraZ);}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ originalDist\ >\ 0.001f\ ?\ currentDist\ /\ originalDist\ :\ 1f;}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_player_hand_1_1_movement_handler_ac8333bc3683bd7117e3cf3c8133a5b7d}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!GetSafeDeltaTime@{GetSafeDeltaTime}}
+\index{GetSafeDeltaTime@{GetSafeDeltaTime}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{GetSafeDeltaTime()}{GetSafeDeltaTime()}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_ac8333bc3683bd7117e3cf3c8133a5b7d} 
+float Player\+Hand.\+Movement\+Handler.\+Get\+Safe\+Delta\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+clamps delta\+Time between a max and min frame\+Rate 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00208\ =>\ Mathf.Clamp(Time.deltaTime,\ 1f\ /\ 240f,\ 1f\ /\ 15f);}
+
+\end{DoxyCode}
+\Hypertarget{class_player_hand_1_1_movement_handler_a375cc32f822ef696e6b85972d8b09345}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a375cc32f822ef696e6b85972d8b09345} 
+void Player\+Hand.\+Movement\+Handler.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00068\ =>\ ResolutionTracker.OnResolutionChanged\ -\/=\ OnResolutionChanged;}
+
+\end{DoxyCode}
+\Hypertarget{class_player_hand_1_1_movement_handler_a398d4c7cfd85a4d08838e3c098df666a}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!OnDrawGizmos@{OnDrawGizmos}}
+\index{OnDrawGizmos@{OnDrawGizmos}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{OnDrawGizmos()}{OnDrawGizmos()}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a398d4c7cfd85a4d08838e3c098df666a} 
+void Player\+Hand.\+Movement\+Handler.\+On\+Draw\+Gizmos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.color\ =\ Color.yellow;}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawWireCube(this.movementBounds.center,\ \textcolor{keyword}{this}.movementBounds.size);}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_player_hand_1_1_movement_handler_ad089689ff845c75c8ebdae7839a1b3f6}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!OnResolutionChanged@{OnResolutionChanged}}
+\index{OnResolutionChanged@{OnResolutionChanged}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{OnResolutionChanged()}{OnResolutionChanged()}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_ad089689ff845c75c8ebdae7839a1b3f6} 
+void Player\+Hand.\+Movement\+Handler.\+On\+Resolution\+Changed (\begin{DoxyParamCaption}\item[{int}]{width}{, }\item[{int}]{height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ RecalculateBounds();}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ RecalculatePixelDensityScale();}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_player_hand_1_1_movement_handler_adaafc133470a082762ace1ae7d751a28}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!OnValidate@{OnValidate}}
+\index{OnValidate@{OnValidate}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{OnValidate()}{OnValidate()}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_adaafc133470a082762ace1ae7d751a28} 
+void Player\+Hand.\+Movement\+Handler.\+On\+Validate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!Application.isPlaying)\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.camRef\ =\ Camera.main;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_player_hand_1_1_movement_handler_a4b2ad34b4a70c617f755168499aca1de}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!RecalculateBounds@{RecalculateBounds}}
+\index{RecalculateBounds@{RecalculateBounds}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{RecalculateBounds()}{RecalculateBounds()}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a4b2ad34b4a70c617f755168499aca1de} 
+void Player\+Hand.\+Movement\+Handler.\+Recalculate\+Bounds (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.camRef)}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ z\ =\ Mathf.Abs(this.camRef.transform.position.z\ -\/\ \textcolor{keyword}{this}.transform.position.z);}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ bottomLeft\ =\ this.camRef.ScreenToWorldPoint(\textcolor{keyword}{new}\ Vector3(0,\ 0,\ z));}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ topRight\ =\ this.camRef.ScreenToWorldPoint(\textcolor{keyword}{new}\ Vector3(Screen.width,\ Screen.height,\ z));}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ size\ =\ topRight\ -\/\ bottomLeft;}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ center\ =\ bottomLeft\ +\ size\ *\ 0.5f;}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ this.movementBounds\ =\ \textcolor{keyword}{new}\ Bounds(center,\ size);}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_player_hand_1_1_movement_handler_a854227fd9fecc2793b6aefed029aa1f3}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!RecalculatePixelDensityScale@{RecalculatePixelDensityScale}}
+\index{RecalculatePixelDensityScale@{RecalculatePixelDensityScale}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{RecalculatePixelDensityScale()}{RecalculatePixelDensityScale()}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a854227fd9fecc2793b6aefed029aa1f3} 
+void Player\+Hand.\+Movement\+Handler.\+Recalculate\+Pixel\+Density\+Scale (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =>\ }
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ this.pixelDensityScale\ =\ (float)Screen.height\ /\ \textcolor{keyword}{this}.referenceScreenHeight;}
+
+\end{DoxyCode}
+\Hypertarget{class_player_hand_1_1_movement_handler_a76ff87c8d0e769c48499fd90d9946b7f}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!ResetToOriginalZ@{ResetToOriginalZ}}
+\index{ResetToOriginalZ@{ResetToOriginalZ}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{ResetToOriginalZ()}{ResetToOriginalZ()}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a76ff87c8d0e769c48499fd90d9946b7f} 
+void Player\+Hand.\+Movement\+Handler.\+Reset\+To\+OriginalZ (\begin{DoxyParamCaption}\item[{float}]{speed}{ = {\ttfamily -\/1f}}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00125\ =>\ SetTargetZ(this.originalZPosition,\ speed);}
+
+\end{DoxyCode}
+\Hypertarget{class_player_hand_1_1_movement_handler_a6fc7dc57c94a5f6396f731eac65864fc}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!SetTargetZ@{SetTargetZ}}
+\index{SetTargetZ@{SetTargetZ}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{SetTargetZ()}{SetTargetZ()}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a6fc7dc57c94a5f6396f731eac65864fc} 
+void Player\+Hand.\+Movement\+Handler.\+Set\+TargetZ (\begin{DoxyParamCaption}\item[{float}]{z}{, }\item[{float}]{speed}{ = {\ttfamily -\/1f}}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ this.targetZPosition\ =\ z;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (speed\ >\ 0f)\ this.zLerpSpeed\ =\ speed;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ this.isAnimatingZ\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_player_hand_1_1_movement_handler_a75747835fb301fbf02bd566f67c24bdc}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!Update@{Update}}
+\index{Update@{Update}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a75747835fb301fbf02bd566f67c24bdc} 
+void Player\+Hand.\+Movement\+Handler.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dt\ =\ GetSafeDeltaTime();}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ UpdateVelocity(dt);}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ UpdateThrowForce();}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ DecaySpeedMultiplier(dt);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ AnimateZPosition(dt);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ this.previousPosition\ =\ this.transform.position;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_player_hand_1_1_movement_handler_ac5a6fc95a28141ff09a47870b3ee02cb}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!UpdateThrowForce@{UpdateThrowForce}}
+\index{UpdateThrowForce@{UpdateThrowForce}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{UpdateThrowForce()}{UpdateThrowForce()}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_ac5a6fc95a28141ff09a47870b3ee02cb} 
+void Player\+Hand.\+Movement\+Handler.\+Update\+Throw\+Force (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ normalizedSpeed\ =\ Mathf.Clamp01(this.smoothedVelocity.magnitude\ /\ \textcolor{keyword}{this}.maxVelocity);}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ forceMagnitude\ =\ this.throwForceCurve.Evaluate(normalizedSpeed);}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ this.ThrowForce\ =\ this.MovementDirection\ *\ forceMagnitude;}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_player_hand_1_1_movement_handler_a1817624d6c6f3d0e11b04c706e4e1f08}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!UpdateVelocity@{UpdateVelocity}}
+\index{UpdateVelocity@{UpdateVelocity}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{UpdateVelocity()}{UpdateVelocity()}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a1817624d6c6f3d0e11b04c706e4e1f08} 
+void Player\+Hand.\+Movement\+Handler.\+Update\+Velocity (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ rawVelocity\ =\ (this.transform.position\ -\/\ this.previousPosition)\ /\ dt;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clamp\ raw\ velocity}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rawVelocity.magnitude\ >\ \textcolor{keyword}{this}.maxVelocity)}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rawVelocity\ =\ rawVelocity.normalized\ *\ this.maxVelocity;}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Smooth\ velocity\ -\/\ faster\ interpolation\ when\ accelerating,\ slower\ when\ decelerating}}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ lerpFactor\ =\ rawVelocity.magnitude\ >\ this.smoothedVelocity.magnitude}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ this.velocitySmoothing\ *\ 2f}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ this.velocitySmoothing;}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ this.smoothedVelocity\ =\ Vector3.Lerp(this.smoothedVelocity,\ rawVelocity,\ lerpFactor\ *\ dt);}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\label{class_player_hand_1_1_movement_handler_doc-variable-members}
+\Hypertarget{class_player_hand_1_1_movement_handler_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_player_hand_1_1_movement_handler_a0778563a60a5d131d234805d1585ebcc}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!accelerationRate@{accelerationRate}}
+\index{accelerationRate@{accelerationRate}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{accelerationRate}{accelerationRate}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a0778563a60a5d131d234805d1585ebcc} 
+float Player\+Hand.\+Movement\+Handler.\+acceleration\+Rate = 8f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_aba1620ae773d47cb554f761d5f1f7091}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!baseSensitivity@{baseSensitivity}}
+\index{baseSensitivity@{baseSensitivity}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{baseSensitivity}{baseSensitivity}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_aba1620ae773d47cb554f761d5f1f7091} 
+float Player\+Hand.\+Movement\+Handler.\+base\+Sensitivity = 1f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_a72bea07005d9903d12aa2878b55c58ab}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!camRef@{camRef}}
+\index{camRef@{camRef}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{camRef}{camRef}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a72bea07005d9903d12aa2878b55c58ab} 
+Camera Player\+Hand.\+Movement\+Handler.\+cam\+Ref\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_ac9e72ca22ae96da9d2f601e51c3e21ed}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!currentSpeedMultiplier@{currentSpeedMultiplier}}
+\index{currentSpeedMultiplier@{currentSpeedMultiplier}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{currentSpeedMultiplier}{currentSpeedMultiplier}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_ac9e72ca22ae96da9d2f601e51c3e21ed} 
+float Player\+Hand.\+Movement\+Handler.\+current\+Speed\+Multiplier = 1f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_af4ccdd1a69e17c3f7a6fa02b403dfc82}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!decelerationRate@{decelerationRate}}
+\index{decelerationRate@{decelerationRate}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{decelerationRate}{decelerationRate}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_af4ccdd1a69e17c3f7a6fa02b403dfc82} 
+float Player\+Hand.\+Movement\+Handler.\+deceleration\+Rate = 4f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_a4fe40f7031d734ca26f0cfdc076ef632}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!isAnimatingZ@{isAnimatingZ}}
+\index{isAnimatingZ@{isAnimatingZ}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{isAnimatingZ}{isAnimatingZ}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a4fe40f7031d734ca26f0cfdc076ef632} 
+bool Player\+Hand.\+Movement\+Handler.\+is\+AnimatingZ\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_aa8c8590fe791f9420fb113f20969c0a5}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!maxSpeedMultiplier@{maxSpeedMultiplier}}
+\index{maxSpeedMultiplier@{maxSpeedMultiplier}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{maxSpeedMultiplier}{maxSpeedMultiplier}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_aa8c8590fe791f9420fb113f20969c0a5} 
+float Player\+Hand.\+Movement\+Handler.\+max\+Speed\+Multiplier = 3f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_af056bb504d59c12e93f4833b5c7a5d6a}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!maxVelocity@{maxVelocity}}
+\index{maxVelocity@{maxVelocity}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{maxVelocity}{maxVelocity}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_af056bb504d59c12e93f4833b5c7a5d6a} 
+float Player\+Hand.\+Movement\+Handler.\+max\+Velocity = 50f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_a071cff819378923bdb855dbad3c27ed0}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!minSpeedMultiplier@{minSpeedMultiplier}}
+\index{minSpeedMultiplier@{minSpeedMultiplier}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{minSpeedMultiplier}{minSpeedMultiplier}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a071cff819378923bdb855dbad3c27ed0} 
+float Player\+Hand.\+Movement\+Handler.\+min\+Speed\+Multiplier = 1f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_a3e1f139db86134acc3455109a9d7a58b}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!movementBounds@{movementBounds}}
+\index{movementBounds@{movementBounds}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{movementBounds}{movementBounds}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a3e1f139db86134acc3455109a9d7a58b} 
+Bounds Player\+Hand.\+Movement\+Handler.\+movement\+Bounds\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_a927b5ddf7a22d8db52d6058344bebf11}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!originalZPosition@{originalZPosition}}
+\index{originalZPosition@{originalZPosition}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{originalZPosition}{originalZPosition}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a927b5ddf7a22d8db52d6058344bebf11} 
+float Player\+Hand.\+Movement\+Handler.\+original\+ZPosition\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_a22dbd19de16fa88f06dbe932e99797ac}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!pixelDensityScale@{pixelDensityScale}}
+\index{pixelDensityScale@{pixelDensityScale}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{pixelDensityScale}{pixelDensityScale}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a22dbd19de16fa88f06dbe932e99797ac} 
+float Player\+Hand.\+Movement\+Handler.\+pixel\+Density\+Scale = 1f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_ab927aff331f71848b1e0740e630d5751}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!previousPosition@{previousPosition}}
+\index{previousPosition@{previousPosition}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{previousPosition}{previousPosition}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_ab927aff331f71848b1e0740e630d5751} 
+Vector3 Player\+Hand.\+Movement\+Handler.\+previous\+Position\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_ad5289351c0e60e847b4e82ee407cdf5d}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!referenceScreenHeight@{referenceScreenHeight}}
+\index{referenceScreenHeight@{referenceScreenHeight}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{referenceScreenHeight}{referenceScreenHeight}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_ad5289351c0e60e847b4e82ee407cdf5d} 
+int Player\+Hand.\+Movement\+Handler.\+reference\+Screen\+Height = 1080\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_a1deefc7abc3383019634992ba3605180}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!smoothedVelocity@{smoothedVelocity}}
+\index{smoothedVelocity@{smoothedVelocity}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{smoothedVelocity}{smoothedVelocity}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a1deefc7abc3383019634992ba3605180} 
+Vector3 Player\+Hand.\+Movement\+Handler.\+smoothed\+Velocity\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_a2cc282e5cd908016558c0cf49013c79e}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!targetZPosition@{targetZPosition}}
+\index{targetZPosition@{targetZPosition}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{targetZPosition}{targetZPosition}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a2cc282e5cd908016558c0cf49013c79e} 
+float Player\+Hand.\+Movement\+Handler.\+target\+ZPosition\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_a8e6846d100be32bd187ff56b4a1c7959}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!throwForceCurve@{throwForceCurve}}
+\index{throwForceCurve@{throwForceCurve}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{throwForceCurve}{throwForceCurve}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a8e6846d100be32bd187ff56b4a1c7959} 
+Animation\+Curve Player\+Hand.\+Movement\+Handler.\+throw\+Force\+Curve = Animation\+Curve.\+Ease\+In\+Out(0f, 0f, 1f, 1f)\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_a2776a4d166cde63d6c180bcfb7d81f8b}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!velocitySmoothing@{velocitySmoothing}}
+\index{velocitySmoothing@{velocitySmoothing}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{velocitySmoothing}{velocitySmoothing}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a2776a4d166cde63d6c180bcfb7d81f8b} 
+float Player\+Hand.\+Movement\+Handler.\+velocity\+Smoothing = 15f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_ad8e9c33cd4886355c7b62b8b80a47263}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!zLerpSpeed@{zLerpSpeed}}
+\index{zLerpSpeed@{zLerpSpeed}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{zLerpSpeed}{zLerpSpeed}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_ad8e9c33cd4886355c7b62b8b80a47263} 
+float Player\+Hand.\+Movement\+Handler.\+z\+Lerp\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\label{class_player_hand_1_1_movement_handler_doc-property-members}
+\Hypertarget{class_player_hand_1_1_movement_handler_doc-property-members}
+\doxysubsection{Property Documentation}
+\Hypertarget{class_player_hand_1_1_movement_handler_a1608c72bc02b9dd073b13e74566b52df}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!MovementDirection@{MovementDirection}}
+\index{MovementDirection@{MovementDirection}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{MovementDirection}{MovementDirection}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a1608c72bc02b9dd073b13e74566b52df} 
+Vector2 Player\+Hand.\+Movement\+Handler.\+Movement\+Direction\hspace{0.3cm}{\ttfamily [get]}}
+
+\Hypertarget{class_player_hand_1_1_movement_handler_a3b1b2be8f21a8368453338cc0024e2f9}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!ThrowForce@{ThrowForce}}
+\index{ThrowForce@{ThrowForce}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{ThrowForce}{ThrowForce}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a3b1b2be8f21a8368453338cc0024e2f9} 
+Vector2 Player\+Hand.\+Movement\+Handler.\+Throw\+Force\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{private}\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_player_hand_1_1_movement_handler_a71e385868473b71cd75d3800aeb3e680}\index{PlayerHand.MovementHandler@{PlayerHand.MovementHandler}!Velocity@{Velocity}}
+\index{Velocity@{Velocity}!PlayerHand.MovementHandler@{PlayerHand.MovementHandler}}
+\doxysubsubsection{\texorpdfstring{Velocity}{Velocity}}
+{\footnotesize\ttfamily \label{class_player_hand_1_1_movement_handler_a71e385868473b71cd75d3800aeb3e680} 
+Vector2 Player\+Hand.\+Movement\+Handler.\+Velocity\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+C:\+/\+\+Users/\+\+Lucas/\+\+Documents/\+\+School/\+\+HKU/\+\+Present\+Yourself/\+\+Mii\+\_\+\+Commander/\+\+Assets/\+\+Scripts/\+\+Player\+Hand/\+\doxymbox{\hyperlink{_movement_handler_8cs}{Movement\+Handler.\+cs}}\end{DoxyCompactItemize}

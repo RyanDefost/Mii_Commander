@@ -1,0 +1,105 @@
+\doxysection{Grid.\+Turn\+Manager Class Reference}
+\hypertarget{class_grid_1_1_turn_manager}{}\label{class_grid_1_1_turn_manager}\index{Grid.TurnManager@{Grid.TurnManager}}
+
+
+Inheritance diagram for Grid.\+Turn\+Manager:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{class_grid_1_1_turn_manager__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Grid.\+Turn\+Manager:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_grid_1_1_turn_manager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_grid_1_1_turn_manager_a631199681bfaef7511854594161ec107}{Next\+Turn}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_grid_1_1_turn_manager_a034764d61a6d9f3dd310d1687737bc34}{On\+Validate}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_grid_1_1_grid_manager}{Grid\+Manager}} \doxymbox{\hyperlink{class_grid_1_1_turn_manager_a153f499076074e63ab8adf45c81ab597}{grid\+Manager}}
+\end{DoxyCompactItemize}
+
+
+\label{class_grid_1_1_turn_manager_doc-func-members}
+\Hypertarget{class_grid_1_1_turn_manager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_grid_1_1_turn_manager_a631199681bfaef7511854594161ec107}\index{Grid.TurnManager@{Grid.TurnManager}!NextTurn@{NextTurn}}
+\index{NextTurn@{NextTurn}!Grid.TurnManager@{Grid.TurnManager}}
+\doxysubsubsection{\texorpdfstring{NextTurn()}{NextTurn()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_turn_manager_a631199681bfaef7511854594161ec107} 
+void Grid.\+Turn\+Manager.\+Next\+Turn (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ this.gridManager.ForAllGridItems(instance\ =>}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (instance\ ==\ \textcolor{keyword}{null}\ ||\ instance.gameObj\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MoveToGridPosition\ moveComponent\ =\ instance.gameObj.GetComponent<MoveToGridPosition>();}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!moveComponent)}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveComponent.\doxymbox{\hyperlink{class_move_to_grid_position_a8057f494a11c9febc7393b18664a36a8}{ResetTarget}}();}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveComponent.\doxymbox{\hyperlink{class_move_to_grid_position_a52d441a3f333458e59f7e9d1bafcbc7b}{SetTarget}}(this.gridManager.GetNearestPosition(}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ instance.position\ +\ \textcolor{keyword}{this}.gridManager.CellSize.y\ *\ Vector3.down,\ instance.gameObj,\ instance));}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!moveComponent.\doxymbox{\hyperlink{class_move_to_grid_position_a610b635a4eb932f7c59ca05ad9c5cf21}{HasTarget}}())}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.gridManager.ReleaseInstance(instance);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(moveComponent.gameObject);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveComponent.\doxymbox{\hyperlink{class_move_to_grid_position_aa0226d79da6f383bbd8f136099ae1e0e}{SetEnabled}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_grid_1_1_turn_manager_a034764d61a6d9f3dd310d1687737bc34}\index{Grid.TurnManager@{Grid.TurnManager}!OnValidate@{OnValidate}}
+\index{OnValidate@{OnValidate}!Grid.TurnManager@{Grid.TurnManager}}
+\doxysubsubsection{\texorpdfstring{OnValidate()}{OnValidate()}}
+{\footnotesize\ttfamily \label{class_grid_1_1_turn_manager_a034764d61a6d9f3dd310d1687737bc34} 
+void Grid.\+Turn\+Manager.\+On\+Validate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Application.isPlaying)}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ this.gridManager\ =\ GetComponent<GridManager>();}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ this.enabled\ =\ this.gridManager;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\label{class_grid_1_1_turn_manager_doc-variable-members}
+\Hypertarget{class_grid_1_1_turn_manager_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_grid_1_1_turn_manager_a153f499076074e63ab8adf45c81ab597}\index{Grid.TurnManager@{Grid.TurnManager}!gridManager@{gridManager}}
+\index{gridManager@{gridManager}!Grid.TurnManager@{Grid.TurnManager}}
+\doxysubsubsection{\texorpdfstring{gridManager}{gridManager}}
+{\footnotesize\ttfamily \label{class_grid_1_1_turn_manager_a153f499076074e63ab8adf45c81ab597} 
+\doxymbox{\hyperlink{class_grid_1_1_grid_manager}{Grid\+Manager}} Grid.\+Turn\+Manager.\+grid\+Manager\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+C:\+/\+\+Users/\+\+Lucas/\+\+Documents/\+\+School/\+\+HKU/\+\+Present\+Yourself/\+\+Mii\+\_\+\+Commander/\+\+Assets/\+\+Scripts/\+\+Grid/\+\doxymbox{\hyperlink{_turn_manager_8cs}{Turn\+Manager.\+cs}}\end{DoxyCompactItemize}

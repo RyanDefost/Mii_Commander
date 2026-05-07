@@ -1,0 +1,3 @@
+@startuml inline_umlgraph_1.svg
+!include full_project.puml
+@enduml

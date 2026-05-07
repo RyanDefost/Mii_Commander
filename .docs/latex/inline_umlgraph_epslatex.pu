@@ -1,0 +1,3 @@
+@startuml inline_umlgraph_2.eps
+!include full_project.puml
+@enduml

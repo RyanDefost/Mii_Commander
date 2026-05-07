@@ -1,0 +1,9 @@
+<map id="PlayerHand.VisualHandler.VisualState" name="PlayerHand.VisualHandler.VisualState">
+<area shape="rect" id="Node000001" title=" " alt="" coords="11,147,178,232"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,48,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="36,72,55,122,60,132,54,132,50,124,34,77"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="72,5,117,75"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="96,72,97,130,92,129,93,77"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="158,5,194,75"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="169,73,149,124,143,134,139,131,144,121,165,76"/>
+</map>

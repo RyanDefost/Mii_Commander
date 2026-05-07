@@ -1,0 +1,101 @@
+\doxysection{Component\+Registry Class Reference}
+\hypertarget{class_component_registry}{}\label{class_component_registry}\index{ComponentRegistry@{ComponentRegistry}}
+
+
+Collaboration diagram for Component\+Registry:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{class_component_registry__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \doxymbox{\hyperlink{class_component_registry_ada1775506a8f11a9605a63c2ab4cefdc}{Add\+To\+Registry}} (Component component)
+\item 
+static bool \doxymbox{\hyperlink{class_component_registry_a75c83b2b4dddef2b06bfbba30eb71758}{Remove\+From\+Registry}} (Component component)
+\item 
+static bool \doxymbox{\hyperlink{class_component_registry_a2e6de7a1b05d47e272a1a4529ba6cff6}{Replace\+In\+Registry}} (Component component)
+\item 
+static T \doxymbox{\hyperlink{class_component_registry_aff187f743e900267a375be5333c4e983}{Get\+Component$<$ T $>$}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static Dictionary$<$ string, Component $>$ \doxymbox{\hyperlink{class_component_registry_ab63888e32e4e891fdfd403dba4b368f4}{components}} = new()
+\end{DoxyCompactItemize}
+
+
+\label{class_component_registry_doc-func-members}
+\Hypertarget{class_component_registry_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_component_registry_ada1775506a8f11a9605a63c2ab4cefdc}\index{ComponentRegistry@{ComponentRegistry}!AddToRegistry@{AddToRegistry}}
+\index{AddToRegistry@{AddToRegistry}!ComponentRegistry@{ComponentRegistry}}
+\doxysubsubsection{\texorpdfstring{AddToRegistry()}{AddToRegistry()}}
+{\footnotesize\ttfamily \label{class_component_registry_ada1775506a8f11a9605a63c2ab4cefdc} 
+bool Component\+Registry.\+Add\+To\+Registry (\begin{DoxyParamCaption}\item[{Component}]{component}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009\ =>\ \doxymbox{\hyperlink{class_component_registry_ab63888e32e4e891fdfd403dba4b368f4}{components}}.TryAdd(component.GetType().ToString(),\ component);}
+
+\end{DoxyCode}
+\Hypertarget{class_component_registry_aff187f743e900267a375be5333c4e983}\index{ComponentRegistry@{ComponentRegistry}!GetComponent$<$ T $>$@{GetComponent$<$ T $>$}}
+\index{GetComponent$<$ T $>$@{GetComponent$<$ T $>$}!ComponentRegistry@{ComponentRegistry}}
+\doxysubsubsection{\texorpdfstring{GetComponent$<$ T $>$()}{GetComponent< T >()}}
+{\footnotesize\ttfamily \label{class_component_registry_aff187f743e900267a375be5333c4e983} 
+T Component\+Registry.\+Get\+Component$<$ T $>$ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Component}]\end{description}
+\end{Desc}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ :\ Component\ =>\ (T)\doxymbox{\hyperlink{class_component_registry_ab63888e32e4e891fdfd403dba4b368f4}{components}}.GetValueOrDefault(typeof(T).ToString());}
+
+\end{DoxyCode}
+\Hypertarget{class_component_registry_a75c83b2b4dddef2b06bfbba30eb71758}\index{ComponentRegistry@{ComponentRegistry}!RemoveFromRegistry@{RemoveFromRegistry}}
+\index{RemoveFromRegistry@{RemoveFromRegistry}!ComponentRegistry@{ComponentRegistry}}
+\doxysubsubsection{\texorpdfstring{RemoveFromRegistry()}{RemoveFromRegistry()}}
+{\footnotesize\ttfamily \label{class_component_registry_a75c83b2b4dddef2b06bfbba30eb71758} 
+bool Component\+Registry.\+Remove\+From\+Registry (\begin{DoxyParamCaption}\item[{Component}]{component}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ =>\ \doxymbox{\hyperlink{class_component_registry_ab63888e32e4e891fdfd403dba4b368f4}{components}}.Remove(component.GetType().ToString());}
+
+\end{DoxyCode}
+\Hypertarget{class_component_registry_a2e6de7a1b05d47e272a1a4529ba6cff6}\index{ComponentRegistry@{ComponentRegistry}!ReplaceInRegistry@{ReplaceInRegistry}}
+\index{ReplaceInRegistry@{ReplaceInRegistry}!ComponentRegistry@{ComponentRegistry}}
+\doxysubsubsection{\texorpdfstring{ReplaceInRegistry()}{ReplaceInRegistry()}}
+{\footnotesize\ttfamily \label{class_component_registry_a2e6de7a1b05d47e272a1a4529ba6cff6} 
+bool Component\+Registry.\+Replace\+In\+Registry (\begin{DoxyParamCaption}\item[{Component}]{component}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ name\ =\ component.GetType().ToString();}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_component_registry_ab63888e32e4e891fdfd403dba4b368f4}{components}}.Remove(name);}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_component_registry_ada1775506a8f11a9605a63c2ab4cefdc}{AddToRegistry}}(component);}
+\DoxyCodeLine{00017\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\label{class_component_registry_doc-variable-members}
+\Hypertarget{class_component_registry_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_component_registry_ab63888e32e4e891fdfd403dba4b368f4}\index{ComponentRegistry@{ComponentRegistry}!components@{components}}
+\index{components@{components}!ComponentRegistry@{ComponentRegistry}}
+\doxysubsubsection{\texorpdfstring{components}{components}}
+{\footnotesize\ttfamily \label{class_component_registry_ab63888e32e4e891fdfd403dba4b368f4} 
+Dictionary$<$string, Component$>$ Component\+Registry.\+components = new()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+C:\+/\+\+Users/\+\+Lucas/\+\+Documents/\+\+School/\+\+HKU/\+\+Present\+Yourself/\+\+Mii\+\_\+\+Commander/\+\+Assets/\+\+Scripts/\+\doxymbox{\hyperlink{_component_registry_8cs}{Component\+Registry.\+cs}}\end{DoxyCompactItemize}
