@@ -1,0 +1,220 @@
+﻿@startuml
+skinparam classAttributeIconSize 10
+set namespaceSeparator none
+left to right direction
+
+class Billboard {
+}
+
+class ComponentRegistry {
+    + AddToRegistry() : bool
+    + RemoveFromRegistry() : bool
+    + ReplaceInRegistry() : bool
+}
+
+class FPSCounter {
+    + FramesPerSec : int
+    --
+    - OnValidate() : void
+}
+
+interface IPoolable {
+    + Active : bool
+    --
+    + OnEnableObject() : void
+    + OnDisableObject() : void
+}
+
+class QuestSystem {
+    - [S] questPrefab : GameObject
+    - [S] quests : List<Quest>
+}
+
+class Quest {
+    + pointRequirement : int
+    --
+    + GetText() : string
+}
+
+class ResolutionTracker {
+    + OnResolutionChanged : int
+}
+
+class Timer {
+    + onEnd : Action
+    + onPlaying : Action<double>
+    + running : bool
+    --
+    + Timer() : public
+    + Timer() : public
+    + Reset() : void
+    + Update() : void
+    + GetCurrentTime() : double
+    + Add() : void
+}
+
+class VectorExtensions {
+    + XY() : Vector2
+    + OverwriteXY() : Vector3
+}
+
+class GridGenerator {
+    - [S] materials : Material
+    - [S] boardBounds : Bounds
+    - [S] boardSize : Vector2Int
+    - [S] positions : Vector3
+    - [S] positionsOffGrid : Vector3
+    + cellSize : Vector2
+    + Width : int
+    + Height : int
+    - [S] cellMesh : Mesh
+    --
+    + GetAllPositions() : List<Vector3?>
+    + GetAllOffGridPositions() : List<Vector3?>
+    + GetPosAt() : Vector3
+    + GetOffGridPosAt() : Vector3
+}
+
+class GridManager {
+    - [S] generator : GridGenerator
+    + CellSize : Vector2
+    --
+    + GetNearestPosition() : GridInstance
+    + GetNearestOffGridPosition() : GridInstance
+    + GetNearestGridPosition() : GridInstance
+    + ReleaseInstance() : void
+}
+
+class GridInstance {
+    + position : Vector3
+    + index : int
+    + gameObj : GameObject
+    + offGrid : bool
+    --
+    + GridInstance() : public
+}
+
+class TurnManager {
+    - [S] gridManager : GridManager
+    --
+    + NextTurn() : void
+}
+
+class Interactable {
+    - [S] interaction : UnityEvent
+    --
+    + Trigger() : void
+}
+
+class MoveToGridPosition {
+    - [S] grid : GridManager
+    - [S] rb : Rigidbody
+    - [S] movementStrength : float
+    - [S] maxVelocity : float
+    - [S] dampening : float
+    - [S] startTimerTime : float
+    - [S] endTimerTime : float
+    --
+    + SetEnabled() : void
+    + SetTarget() : void
+    + ResetTarget() : void
+    + HasTarget() : bool
+}
+
+class CandyComponent {
+    - [S] interactable : Interactable
+    - [S] movement : MoveToGridPosition
+    - [S] rb : Rigidbody
+    --
+    + AddToHand() : void
+    + OnGrabReleased() : void
+}
+
+class CandyGroupInstance {
+    + Active : bool
+    --
+    + CandyGroupInstance() : public
+    + OnEnableObject() : void
+    + OnDisableObject() : void
+    + SetParent() : void
+}
+
+class CandyInstance {
+    + rb : Rigidbody
+    + component : CandyComponent
+    + gameObject : GameObject
+    --
+    + CandyInstance() : public
+}
+
+class CandySpawner {
+    - [S] playerHandManager : PlayerHandManager
+    - [S] candyPrefab : GameObject
+    --
+    + AddToHand() : void
+}
+
+class InteractionHandler {
+    - [S] camRef : Camera
+    - [S] movementHandler : MovementHandler
+    - [S] visualHandler : VisualHandler
+    - [S] layerMaskInteractables : LayerMask
+}
+
+class MovementHandler {
+    - [S] movementBounds : Bounds
+    + Velocity : Vector2
+    + MovementDirection : Vector2
+    + ThrowForce : Vector2
+    --
+    + ApplyMouseDelta() : void
+    + SetTargetZ() : void
+    + ResetToOriginalZ() : void
+}
+
+class PlayerHandManager {
+    - [S] visualHandler : VisualHandler
+    - [S] movementHandler : MovementHandler
+    - [S] interactionHandler : InteractionHandler
+    - [S] inputActionMap : InputActionMap
+    + OnGrabReleased : Vector2
+    --
+    + SetStateToGrabbing() : void
+}
+
+class VisualHandler {
+    - [S] visual : SpriteRenderer
+    - [S] sprites : VisualState
+    - [S] zMovementSpeed : float
+    + CurrentState : string
+    --
+    + SetSprite() : void
+}
+
+struct VisualState {
+    + key : string
+    + visual : Sprite
+    + z : float
+}
+
+' Relationships
+IPoolable <|-- CandyGroupInstance
+GridManager --* GridGenerator
+TurnManager --> GridManager
+MoveToGridPosition --* GridManager
+MoveToGridPosition --* Timer
+CandyComponent --* Interactable
+CandyComponent --* MoveToGridPosition
+CandyComponent --> PlayerHandManager
+CandyGroupInstance --> PlayerHandManager
+CandyInstance --> CandyComponent
+CandySpawner --> PlayerHandManager
+InteractionHandler --* MovementHandler
+InteractionHandler --* VisualHandler
+InteractionHandler --* Interactable
+PlayerHandManager --* VisualHandler
+PlayerHandManager --* MovementHandler
+PlayerHandManager --* InteractionHandler
+VisualHandler --* VisualState
+
+@enduml

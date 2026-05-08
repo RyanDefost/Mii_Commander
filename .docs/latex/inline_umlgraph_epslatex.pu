@@ -1,3 +1,9 @@
-@startuml inline_umlgraph_2.eps
+@startuml inline_umlgraph_4.eps
 !include full_project.puml
+@enduml
+@startuml inline_umlgraph_5.eps
+!include public_project.puml
+@enduml
+@startuml inline_umlgraph_6.eps
+!include desired_design.puml
 @enduml

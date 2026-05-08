@@ -23,7 +23,8 @@ if exist "rtf" (
 
 echo.
 echo Step 1: Generating PlantUML data from C# scripts...
-powershell -NoProfile -ExecutionPolicy Bypass -File "update_uml.ps1"
+powershell -NoProfile -ExecutionPolicy Bypass -File "update_uml.ps1" -OutputName "full_project.puml"
+powershell -NoProfile -ExecutionPolicy Bypass -File "update_uml.ps1" -OutputName "public_project.puml" -HidePrivate
 
 echo.
 echo Step 2: Running Doxygen...

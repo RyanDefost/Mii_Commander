@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['map_0',['Project Architecture Map',['../index.html',1,'']]]
+  ['design_0',['Desired project design',['../index.html#autotoc_md5',1,'']]],
+  ['desired_20project_20design_1',['Desired project design',['../index.html#autotoc_md5',1,'']]]
 ];

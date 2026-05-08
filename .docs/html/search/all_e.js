@@ -11,5 +11,7 @@ var searchData=
   ['positions_8',['positions',['../class_grid_1_1_grid_generator.html#a264d22d135cd56e2763359d9bf8e2dc9',1,'Grid::GridGenerator']]],
   ['positionsoffgrid_9',['positionsOffGrid',['../class_grid_1_1_grid_generator.html#a6a9c03712337f3c65070f8564862b099',1,'Grid::GridGenerator']]],
   ['previousposition_10',['previousPosition',['../class_player_hand_1_1_movement_handler.html#ab927aff331f71848b1e0740e630d5751',1,'PlayerHand::MovementHandler']]],
-  ['project_20architecture_20map_11',['Project Architecture Map',['../index.html',1,'']]]
+  ['project_20architecture_20map_11',['Project Architecture Map',['../index.html',1,'']]],
+  ['project_20design_12',['Desired project design',['../index.html#autotoc_md5',1,'']]],
+  ['public_20api_20serialized_20fields_13',['Public API &amp;amp; Serialized Fields',['../index.html#autotoc_md3',1,'']]]
 ];

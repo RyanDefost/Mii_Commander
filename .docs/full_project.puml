@@ -35,6 +35,11 @@ class QuestSystem {
 -Start() : void
 -LoadQuests() : IEnumerator
 }
+class Quest {
++pointRequirement : int
+--
++GetText() : string
+}
 class ResolutionTracker {
 +OnResolutionChanged : int>
 -lastResolution : Vector2Int
@@ -99,6 +104,14 @@ class GridManager {
 -RegisterGridPosition() : GridInstance
 -GetNearestIndex() : int
 +ReleaseInstance() : void
+}
+class GridInstance {
++position : Vector3
++index : int
++gameObj : GameObject
++offGrid : bool
+--
++GridInstance() : public
 }
 class TurnManager {
 -[S] gridManager : GridManager
@@ -165,6 +178,13 @@ class CandyGroupInstance {
 +SetParent() : void
 }
 IPoolable <|-- CandyGroupInstance
+class CandyInstance {
++rb : Rigidbody
++component : CandyComponent
++gameObject : GameObject
+--
++CandyInstance() : public
+}
 class CandySpawner {
 -[S] playerHandManager : PlayerHandManager
 -[S] candyPrefab : GameObject
@@ -244,19 +264,26 @@ class VisualHandler {
 -OnValidate() : void
 +SetSprite() : void
 }
-GridManager *-- GridGenerator
-TurnManager *-- GridManager
-MoveToGridPosition *-- GridManager
-MoveToGridPosition *-- Timer
-CandyComponent *-- Interactable
-CandyComponent *-- MoveToGridPosition
-CandyComponent *-- PlayerHandManager
-CandyGroupInstance *-- PlayerHandManager
-CandySpawner *-- PlayerHandManager
-InteractionHandler *-- MovementHandler
-InteractionHandler *-- VisualHandler
-InteractionHandler *-- Interactable
-PlayerHandManager *-- VisualHandler
-PlayerHandManager *-- MovementHandler
-PlayerHandManager *-- InteractionHandler
+struct VisualState {
++key : string
++visual : Sprite
++z : float
+}
+GridManager --* GridGenerator
+TurnManager --> GridManager
+MoveToGridPosition --* GridManager
+MoveToGridPosition --* Timer
+CandyComponent --* Interactable
+CandyComponent --* MoveToGridPosition
+CandyComponent --> PlayerHandManager
+CandyGroupInstance --> PlayerHandManager
+CandyInstance --> CandyComponent
+CandySpawner --> PlayerHandManager
+InteractionHandler --* MovementHandler
+InteractionHandler --* VisualHandler
+InteractionHandler --* Interactable
+PlayerHandManager --* VisualHandler
+PlayerHandManager --* MovementHandler
+PlayerHandManager --* InteractionHandler
+VisualHandler --* VisualState
 @enduml
