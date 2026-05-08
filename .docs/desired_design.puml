@@ -12,6 +12,20 @@ class ComponentRegistry {
     + ReplaceInRegistry() : bool
 }
 
+class SynergyLookUp {
+    - [S] synergies : ISynergy[]
+    --
+    + FindAllSynergies(GridInstance[]) : SynergyResult[]
+}
+
+interface ISynergy {
+    + CheckForSynergy(GridInstance[]) : SynergyResult
+}
+
+class SynergyResult {
+    + resultsToInvoke : Action[]
+}
+
 class FPSCounter {
     + FramesPerSec : int
     --
@@ -25,15 +39,43 @@ interface IPoolable {
     + OnDisableObject() : void
 }
 
-class QuestSystem {
+class QuestManager {
     - [S] questPrefab : GameObject
-    - [S] quests : List<Quest>
+    - quests : List<IQuest>
+    --
+    + SetQuests() : void
 }
 
-class Quest {
-    + pointRequirement : int
+interface IQuest {
+    + GetText() : string
+    + CheckCondition() : bool
+}
+
+class PointQuest {
+    + [S] pointRequirement : int
     --
     + GetText() : string
+    + CheckCondition() : bool
+}
+
+class GameManager {
+    + scoreManager : ScoreManager
+    + levelRef : LevelData
+    + turnManager : TurnManager
+}
+
+class LevelData {
+    + [S] pointRequirement : int
+    + [S] baseTurnAmount : int
+    + [S] quests : List<IQuest>
+}
+
+class ScoreManager {
+    - score : int
+    + Score : int
+    --
+    + SetGoal(int pointRequirement) : void
+    + SetScore(int newScore) : void
 }
 
 class ResolutionTracker {
@@ -200,6 +242,7 @@ struct VisualState {
 ' Relationships
 IPoolable <|-- CandyGroupInstance
 GridManager --* GridGenerator
+GridManager --* GridInstance
 TurnManager --> GridManager
 MoveToGridPosition --* GridManager
 MoveToGridPosition --* Timer
@@ -216,5 +259,15 @@ PlayerHandManager --* VisualHandler
 PlayerHandManager --* MovementHandler
 PlayerHandManager --* InteractionHandler
 VisualHandler --* VisualState
+GameManager --* ScoreManager
+GameManager --* LevelData
+GameManager --* TurnManager
+GameManager --* QuestManager
+LevelData --* IQuest
+QuestManager --> IQuest
+PointQuest --|> IQuest
+SynergyLookUp --* ISynergy
+SynergyLookUp --> SynergyResult
+SynergyLookUp --> GridInstance
 
 @enduml
