@@ -91,11 +91,13 @@ rectangle "Component registry" {
     MonoBehaviour(GridManager, GM)
     MonoBehaviour(SynergyLookUp, SL)
     MonoBehaviour(GameManager, GaM)
+    MonoBehaviour(CandyTypeLookup, CTL)
 
     ComponentRegistry --* PHM
     ComponentRegistry --* GM
     ComponentRegistry --* SL
     ComponentRegistry --* GaM
+    ComponentRegistry --* CTL
 }
 
 MonoBehaviour(SynergyLookUp) {
@@ -269,14 +271,41 @@ MonoBehaviour(GridRotatable){
     PrivateSerialized(grid : MoveManager)
 }
 
-MonoBehaviour(CandyActor) {
+MonoBehaviour(BoardItem) {
     PrivateSerialized(interactable : Interactable)
-    PrivateSerialized(movement : GridMoveable)
+    PrivateSerialized(itemComponents : Component[])
     PrivateSerialized(rb : Rigidbody)
+    + AddToHand() : Action
+    + OnGrabReleased() : Action
+    + OnActivate() : Action
+}
+note bottom of BoardItem : OnActivate adds points for candy, or triggers enviroment items
+
+MonoBehaviour(LevelItem){
+    PrivateSerialized(mover : GridMoveable)
+    PrivateSerialized(rotator : GridRotatable)
+    PrivateSerialized(gridRef : GridManager)
+}
+
+MonoBehaviour(CandyMover){}
+MonoBehaviour(CandyLocker){}
+MonoBehaviour(CandySplitter){}
+MonoBehaviour(CandyCombiner){}
+MonoBehaviour(CandyCollector){}
+MonoBehaviour(CandyPusher){}
+
+MonoBehaviour(CandyActor) {
     PrivateSerialized(points : float)
-    --
-    + AddToHand() : void
-    + OnGrabReleased() : void
+    PrivateSerialized(candyType : int)
+}
+
+MonoBehaviour(CandyTypeLookup) {
+    + options CandyTypeOption[]
+}
+
+class CandyTypeOption {
+    + name : string
+    + index : int
 }
 
 class CandyGroupHandle {
@@ -364,19 +393,20 @@ GridManager --> GridInstance
 TurnManager --> GridManager
 
 MoveToGridPosition --|> GridMoveable
-GridMoveable --> GridManager
+GridMoveable - GridRotatable
 GridMoveable --> MoveManager
-GridRotatable --> GridManager
 GridRotatable --> MoveManager
 MoveToGridPosition --* Timer
-CandyActor --* Interactable
-CandyActor --* GridMoveable
+CandyActor --|> BoardItem
+BoardItem --* Interactable
+GridMoveable --* BoardItem
+GridRotatable --* BoardItem
 CandyGroupHandle --> CandyHandle
 CandyHandle --> CandyActor
 PlayerDeck --> PlayerHandManager
 PlayerDeck --> CandyGroupHandle
 PlayerDeck --* DeckOption
-InteractionHandler --* Interactable
+InteractionHandler --> Interactable
 PlayerHandManager --* PlayerHandles
 PlayerHandles *--* VisualHandler
 PlayerHandles *--* MovementHandler
@@ -396,5 +426,18 @@ SynergyLookUp --> SynergyResult
 SynergyLookUp --> GridInstance
 ISynergy --> SynergyResult
 FourInARowSynergy -u-|> ISynergy
+CandyActor --> CandyTypeLookup
+CandyTypeLookup --* CandyTypeOption
+
+LevelItem --|> BoardItem
+LevelItem --* GridMoveable
+LevelItem --* GridRotatable
+LevelItem --> GridManager
+CandyMover --|> LevelItem
+CandyLocker --|> LevelItem
+CandySplitter --|> LevelItem
+CandyCombiner --|> LevelItem
+CandyCollector --|> LevelItem
+CandyPusher --|> LevelItem
 
 @enduml
