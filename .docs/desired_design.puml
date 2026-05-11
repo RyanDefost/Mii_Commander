@@ -87,12 +87,14 @@ rectangle "Component registry" {
         + RemoveFromRegistry() : bool
         + ReplaceInRegistry() : bool
     }
+    MonoBehaviour(ResolutionTracker, RT)
     MonoBehaviour(PlayerHandManager, PHM)
     MonoBehaviour(GridManager, GM)
     MonoBehaviour(SynergyLookUp, SL)
     MonoBehaviour(GameManager, GaM)
     MonoBehaviour(CandyTypeLookup, CTL)
 
+    ComponentRegistry --* RT
     ComponentRegistry --* PHM
     ComponentRegistry --* GM
     ComponentRegistry --* SL
@@ -100,23 +102,26 @@ rectangle "Component registry" {
     ComponentRegistry --* CTL
 }
 
-MonoBehaviour(SynergyLookUp) {
-    PrivateSerialized(synergies : ISynergy[])
-    --
-    + FindAllSynergies(GridInstance[]) : SynergyResult[]
+rectangle "Synergie system" {
+    MonoBehaviour(SynergyLookUp) {
+        PrivateSerialized(synergies : ISynergy[])
+        --
+        + FindAllSynergies(GridInstance[]) : SynergyResult[]
+    }
+
+    interface ISynergy {
+        + CheckForSynergy(GridInstance[]) : SynergyResult
+    }
+
+    class SynergyResult {
+        + resultsToInvoke : Action[]
+    }
+
+    ScriptableObject(FourInARowSynergy) {
+        + CheckForSynergy(GridInstance[]) : SynergyResult
+    }
 }
 
-interface ISynergy {
-    + CheckForSynergy(GridInstance[]) : SynergyResult
-}
-
-class SynergyResult {
-    + resultsToInvoke : Action[]
-}
-
-ScriptableObject(FourInARowSynergy) {
-    + CheckForSynergy(GridInstance[]) : SynergyResult
-}
 
 class ObjectPool<IPoolable> {
     - List<T> activePool
@@ -135,51 +140,86 @@ interface IPoolable {
     + OnDisableObject() : void
 }
 
-MonoBehaviour(QuestManager) {
-    PrivateSerialized(questPrefab : GameObject)
-    - quests : List<IQuest>
-    --
-    + SetQuests() : void
-}
+rectangle "Managers - there should only be one per level"{
+    MonoBehaviour(QuestManager) {
+        PrivateSerialized(questPrefab : GameObject)
+        - quests : List<IQuest>
+        --
+        + SetQuests() : void
+    }
 
-interface IQuest {
-    + GetText() : string
-    + CheckCondition() : bool
-}
+    interface IQuest {
+        + GetText() : string
+        + CheckCondition() : bool
+    }
 
-ScriptableObject(PointQuest) {
-    + [S] pointRequirement : int
-    --
-    + GetText() : string
-    + CheckCondition() : bool
-}
+    ScriptableObject(PointQuest) {
+        + [S] pointRequirement : int
+        --
+        + GetText() : string
+        + CheckCondition() : bool
+    }
 
-MonoBehaviour(GameManager) {
-    PrivateSerialized(scoreManager : ScoreManager)
-    PrivateSerialized(moveManager : MoveManager)
-    PrivateSerialized(levelRef : LevelData)
-    PrivateSerialized(turnManager : TurnManager)
-}
+    MonoBehaviour(GameManager) {
+        PrivateSerialized(scoreManager : ScoreManager)
+        PrivateSerialized(moveManager : MoveManager)
+        PrivateSerialized(levelRef : LevelData)
+        PrivateSerialized(turnManager : TurnManager)
+    }
 
-ScriptableObject(LevelData) {
-    PublicSerialized(pointRequirement : int)
-    PublicSerialized(baseTurnAmount : int)
-    PublicSerialized(quests : List<IQuest>)
-}
+    MonoBehaviour(MoveManager) {
+        - moves : int
+        + Moves : int
+        --
+        + SetScore(int newScore) : void
+    }
 
-MonoBehaviour(MoveManager) {
-    - moves : int
-    + Moves : int
-    --
-    + SetScore(int newScore) : void
-}
+    MonoBehaviour(ScoreManager) {
+        - score : int
+        + Score : int
+        --
+        + SetGoal(int pointRequirement) : void
+        + SetScore(int newScore) : void
+    }
 
-MonoBehaviour(ScoreManager) {
-    - score : int
-    + Score : int
-    --
-    + SetGoal(int pointRequirement) : void
-    + SetScore(int newScore) : void
+    MonoBehaviour(GridManager) {
+        PrivateSerialized(generator : GridGenerator)
+        + CellSize : Vector2
+        --
+        + GetNearestPosition() : GridInstance
+        + GetNearestOffGridPosition() : GridInstance
+        + GetNearestGridPosition() : GridInstance
+        + ReleaseInstance() : void
+    }
+
+    MonoBehaviour(GridGenerator) {
+        PrivateSerialized(materials : Material)
+        PrivateSerialized(boardBounds : Bounds)
+        PrivateSerialized(boardSize : Vector2Int)
+        PrivateSerialized(positions : Vector3)
+        PrivateSerialized(positionsOffGrid : Vector3)
+        + cellSize : Vector2
+        + Width : int
+        + Height : int
+        PrivateSerialized(cellMesh : Mesh)
+        --
+        + GetAllPositions() : List<Vector3?>
+        + GetAllOffGridPositions() : List<Vector3?>
+        + GetPosAt() : Vector3
+        + GetOffGridPosAt() : Vector3
+    }
+
+    ScriptableObject(LevelData) {
+        PublicSerialized(pointRequirement : int)
+        PublicSerialized(baseTurnAmount : int)
+        PublicSerialized(quests : List<IQuest>)
+    }
+
+    MonoBehaviour(TurnManager) {
+        PrivateSerialized(gridManager : GridManager)
+        --
+        + NextTurn() : void
+    }
 }
 
 MonoBehaviour(ResolutionTracker) {
@@ -199,33 +239,6 @@ class Timer {
     + Add() : void
 }
 
-MonoBehaviour(GridGenerator) {
-    PrivateSerialized(materials : Material)
-    PrivateSerialized(boardBounds : Bounds)
-    PrivateSerialized(boardSize : Vector2Int)
-    PrivateSerialized(positions : Vector3)
-    PrivateSerialized(positionsOffGrid : Vector3)
-    + cellSize : Vector2
-    + Width : int
-    + Height : int
-    PrivateSerialized(cellMesh : Mesh)
-    --
-    + GetAllPositions() : List<Vector3?>
-    + GetAllOffGridPositions() : List<Vector3?>
-    + GetPosAt() : Vector3
-    + GetOffGridPosAt() : Vector3
-}
-
-MonoBehaviour(GridManager) {
-    PrivateSerialized(generator : GridGenerator)
-    + CellSize : Vector2
-    --
-    + GetNearestPosition() : GridInstance
-    + GetNearestOffGridPosition() : GridInstance
-    + GetNearestGridPosition() : GridInstance
-    + ReleaseInstance() : void
-}
-
 class GridInstance {
     + position : Vector3
     + index : int
@@ -235,153 +248,169 @@ class GridInstance {
     + GridInstance() : public
 }
 
-MonoBehaviour(TurnManager) {
-    PrivateSerialized(gridManager : GridManager)
+rectangle "Item"{
+    MonoBehaviour(Interactable) {
+        PrivateSerialized(interaction : UnityEvent)
+        --
+        + Trigger() : void
+    }
+
+    MonoBehaviour(MoveToGridPosition) {
+        PrivateSerialized(rb : Rigidbody)
+        PrivateSerialized(movementStrength : float)
+        PrivateSerialized(maxVelocity : float)
+        PrivateSerialized(dampening : float)
+        PrivateSerialized(startTimerTime : float)
+        PrivateSerialized(endTimerTime : float)
+        --
+        + SetEnabled() : void
+        + SetTarget() : void
+        + ResetTarget() : void
+        + HasTarget() : bool
+    }
+
+    MonoBehaviour(GridMoveable){
+        PrivateSerialized(grid : GridManager)
+        PrivateSerialized(grid : MoveManager)
+    }
+
+    MonoBehaviour(GridRotatable){
+        PrivateSerialized(grid : GridManager)
+        PrivateSerialized(grid : MoveManager)
+    }
+
+    MonoBehaviour(BoardItem) {
+        PrivateSerialized(interactable : Interactable)
+        PrivateSerialized(itemComponents : Component[])
+        PrivateSerialized(rb : Rigidbody)
+        + AddToHand() : Action
+        + OnGrabReleased() : Action
+        + OnActivate() : Action
+    }
+    note bottom of BoardItem : OnActivate adds points for candy, or triggers enviroment items
+
+    rectangle "Per Level"{
+        MonoBehaviour(LevelItem){
+            PrivateSerialized(mover : GridMoveable)
+            PrivateSerialized(rotator : GridRotatable)
+            PrivateSerialized(gridRef : GridManager)
+        }
+
+        MonoBehaviour(CandyMover){}
+        MonoBehaviour(CandyLocker){}
+        MonoBehaviour(CandySplitter){}
+        MonoBehaviour(CandyCombiner){}
+        MonoBehaviour(CandyCollector){}
+        MonoBehaviour(CandyPusher){}
+    }
+
+    rectangle "Candy specific" {
+        MonoBehaviour(CandyActor) {
+            PrivateSerialized(points : float)
+            PrivateSerialized(candyType : int)
+        }
+
+        MonoBehaviour(CandyTypeLookup) {
+            + options CandyTypeOption[]
+        }
+
+        class CandyTypeOption {
+            + name : string
+            + index : int
+        }
+
+        class CandyGroupHandle {
+            - CandyHandle[] usedCandy
+            + Active : bool
+            --
+            + CandyGroupHandle() : public
+            + OnEnableObject() : void
+            + OnDisableObject() : void
+            + SetParent() : void
+        }
+
+        class CandyHandle {
+            + rb : Rigidbody
+            + component : CandyActor
+            + gameObject : GameObject
+            --
+            + CandyHandle() : public
+        }
+
+        MonoBehaviour(PlayerDeck) {
+            PrivateSerialized(playerHandManager : PlayerHandManager)
+            PrivateSerialized(options : DeckOption[])
+            --
+            + AddToHand() : void
+        }
+
+        ScriptableObject(DeckOption){
+            PrivateSerialized(chance : float)
+            PrivateSerialized(name : string)
+            PrivateSerialized(candyPrefab : GameObject)
+        }
+        note left of DeckOption : candyPrefab would have to have a CandyActor component
+    }
+}
+
+rectangle "PlayerController"{
+    MonoBehaviour(InteractionHandler) {
+        PrivateSerialized(camRef : Camera)
+        PrivateSerialized(layerMaskInteractables : LayerMask)
+    }
+
+    MonoBehaviour(MovementHandler) {
+        PrivateSerialized(movementBounds : Bounds)
+        + Velocity : Vector2
+        + MovementDirection : Vector2
+        + ThrowForce : Vector2
+        --
+        + ApplyMouseDelta() : void
+        + SetTargetZ() : void
+        + ResetToOriginalZ() : void
+    }
+
+    MonoBehaviour(PlayerHandManager) {
+        PrivateSerialized(handles : PlayerHandles)
+        + OnGrabReleased : Vector2
+        --
+        + SetStateToGrabbing() : void
+    }
+
+    class PlayerHandles{
+        PrivateSerialized(visualHandler : VisualHandler)
+        PrivateSerialized(movementHandler : MovementHandler)
+        PrivateSerialized(interactionHandler : InteractionHandler)
+    }
+
+    MonoBehaviour(VisualHandler) {
+        PrivateSerialized(visual : SpriteRenderer)
+        PrivateSerialized(sprites : VisualState)
+        PrivateSerialized(zMovementSpeed : float)
+        + CurrentState : string
+        --
+        + SetSprite() : void
+    }
+
+    struct VisualState {
+        + key : string
+        + visual : Sprite
+        + z : float
+    }
+}
+
+MonoBehaviour(ItemShop) {
+    PrivateSerialized(options : ShopOption)
     --
-    + NextTurn() : void
+    + BuyOption(int index) : void
 }
+ItemShop --> ScoreManager
+ItemShop --* ShopOption
 
-MonoBehaviour(Interactable) {
-    PrivateSerialized(interaction : UnityEvent)
-    --
-    + Trigger() : void
-}
-
-MonoBehaviour(MoveToGridPosition) {
-    PrivateSerialized(rb : Rigidbody)
-    PrivateSerialized(movementStrength : float)
-    PrivateSerialized(maxVelocity : float)
-    PrivateSerialized(dampening : float)
-    PrivateSerialized(startTimerTime : float)
-    PrivateSerialized(endTimerTime : float)
-    --
-    + SetEnabled() : void
-    + SetTarget() : void
-    + ResetTarget() : void
-    + HasTarget() : bool
-}
-
-MonoBehaviour(GridMoveable){
-    PrivateSerialized(grid : GridManager)
-    PrivateSerialized(grid : MoveManager)
-}
-
-MonoBehaviour(GridRotatable){
-    PrivateSerialized(grid : GridManager)
-    PrivateSerialized(grid : MoveManager)
-}
-
-MonoBehaviour(BoardItem) {
-    PrivateSerialized(interactable : Interactable)
-    PrivateSerialized(itemComponents : Component[])
-    PrivateSerialized(rb : Rigidbody)
-    + AddToHand() : Action
-    + OnGrabReleased() : Action
-    + OnActivate() : Action
-}
-note bottom of BoardItem : OnActivate adds points for candy, or triggers enviroment items
-
-MonoBehaviour(LevelItem){
-    PrivateSerialized(mover : GridMoveable)
-    PrivateSerialized(rotator : GridRotatable)
-    PrivateSerialized(gridRef : GridManager)
-}
-
-MonoBehaviour(CandyMover){}
-MonoBehaviour(CandyLocker){}
-MonoBehaviour(CandySplitter){}
-MonoBehaviour(CandyCombiner){}
-MonoBehaviour(CandyCollector){}
-MonoBehaviour(CandyPusher){}
-
-MonoBehaviour(CandyActor) {
-    PrivateSerialized(points : float)
-    PrivateSerialized(candyType : int)
-}
-
-MonoBehaviour(CandyTypeLookup) {
-    + options CandyTypeOption[]
-}
-
-class CandyTypeOption {
-    + name : string
-    + index : int
-}
-
-class CandyGroupHandle {
-    - CandyHandle[] usedCandy
-    + Active : bool
-    --
-    + CandyGroupHandle() : public
-    + OnEnableObject() : void
-    + OnDisableObject() : void
-    + SetParent() : void
-}
-
-class CandyHandle {
-    + rb : Rigidbody
-    + component : CandyActor
-    + gameObject : GameObject
-    --
-    + CandyHandle() : public
-}
-
-MonoBehaviour(PlayerDeck) {
-    PrivateSerialized(playerHandManager : PlayerHandManager)
-    PrivateSerialized(options : DeckOption[])
-    --
-    + AddToHand() : void
-}
-
-ScriptableObject(DeckOption){
-    PrivateSerialized(chance : float)
-    PrivateSerialized(name : string)
-    PrivateSerialized(candyPrefab : GameObject)
-}
-note left of DeckOption : candyPrefab would have to have a CandyActor component
-
-MonoBehaviour(InteractionHandler) {
-    PrivateSerialized(camRef : Camera)
-    PrivateSerialized(layerMaskInteractables : LayerMask)
-}
-
-MonoBehaviour(MovementHandler) {
-    PrivateSerialized(movementBounds : Bounds)
-    + Velocity : Vector2
-    + MovementDirection : Vector2
-    + ThrowForce : Vector2
-    --
-    + ApplyMouseDelta() : void
-    + SetTargetZ() : void
-    + ResetToOriginalZ() : void
-}
-
-MonoBehaviour(PlayerHandManager) {
-    PrivateSerialized(handles : PlayerHandles)
-    + OnGrabReleased : Vector2
-    --
-    + SetStateToGrabbing() : void
-}
-
-class PlayerHandles{
-    PrivateSerialized(visualHandler : VisualHandler)
-    PrivateSerialized(movementHandler : MovementHandler)
-    PrivateSerialized(interactionHandler : InteractionHandler)
-}
-
-MonoBehaviour(VisualHandler) {
-    PrivateSerialized(visual : SpriteRenderer)
-    PrivateSerialized(sprites : VisualState)
-    PrivateSerialized(zMovementSpeed : float)
-    + CurrentState : string
-    --
-    + SetSprite() : void
-}
-
-struct VisualState {
-    + key : string
-    + visual : Sprite
-    + z : float
+class ShopOption{
+    PublicSerialized(prefab : GameObject)
+    PublicSerialized(cost : float)
+    PublicSerialized(index : int)
 }
 
 ' Relationships
@@ -389,7 +418,7 @@ ObjectPool --> IPoolable
 CandyGroupHandle -u-|> IPoolable
 CandyHandle -u-|> IPoolable
 GridManager --* GridGenerator
-GridManager --> GridInstance
+GridManager --* GridInstance
 TurnManager --> GridManager
 
 MoveToGridPosition --|> GridMoveable
@@ -413,11 +442,12 @@ PlayerHandles *--* MovementHandler
 PlayerHandles *--* InteractionHandler
 MovementHandler --> ResolutionTracker
 VisualHandler --* VisualState
-GameManager --* MoveManager
-GameManager --* ScoreManager
-GameManager --* LevelData
-GameManager --* TurnManager
-GameManager --* QuestManager
+GameManager -* MoveManager
+GameManager -* ScoreManager
+GameManager -* LevelData
+GameManager -* TurnManager
+GameManager -* QuestManager
+
 LevelData --* IQuest
 QuestManager --> IQuest
 PointQuest -u-|> IQuest
@@ -433,11 +463,11 @@ LevelItem --|> BoardItem
 LevelItem --* GridMoveable
 LevelItem --* GridRotatable
 LevelItem --> GridManager
-CandyMover --|> LevelItem
-CandyLocker --|> LevelItem
-CandySplitter --|> LevelItem
-CandyCombiner --|> LevelItem
-CandyCollector --|> LevelItem
-CandyPusher --|> LevelItem
+CandyMover -|> LevelItem
+CandyLocker -|> LevelItem
+CandySplitter -|> LevelItem
+CandyCombiner -|> LevelItem
+CandyCollector -|> LevelItem
+CandyPusher -|> LevelItem
 
 @enduml
