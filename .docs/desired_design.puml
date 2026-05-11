@@ -3,17 +3,103 @@ skinparam classAttributeIconSize 10
 set namespaceSeparator none
 left to right direction
 
-class Billboard {
+skinparam BackgroundColor #FDFDFD
+skinparam RoundCorner 8
+
+' Style for the grouping box
+skinparam rectangle {
+    BackgroundColor #e1eaee
+    BorderColor #555a5e
+    BorderStyle dashed
+    FontColor #7F8C8D
 }
 
-class ComponentRegistry {
-    + AddToRegistry() : bool
-    + RemoveFromRegistry() : bool
-    + ReplaceInRegistry() : bool
+skinparam class {
+    ' Default Style
+    BackgroundColor #EDF2F7
+    BorderColor #A0AEC0
+    FontColor #2D3748
+    
+    ' Specific style for MonoBehaviours
+    BackgroundColor<<MB>> #D1D9E6
+    BorderColor<<MB>> #8A9AAB
+
+    ' ScriptableObject Style (Sage/Mint Green)
+    BackgroundColor<<SO>> #D2E4D8
+    BorderColor<<SO>> #94B49F
 }
 
-class SynergyLookUp {
-    - [S] synergies : ISynergy[]
+' Custom macro for easy typing: MonoBehaviour(ClassName)
+!define MonoBehaviour(x) class x << (M,#8A9AAB) MB >>
+!define MonoBehaviour(x, alias) class "x" as alias << (M,#8A9AAB) MB >>
+!define ScriptableObject(x) class x << (S,#94B49F) SO >>
+!define PrivateSerialized(x) - [<color:#00C732>S</color>] x
+!define PublicSerialized(x) + [<color:#00C732>S</color>] x
+
+rectangle "Example" {
+    class ExampleClass{
+        + publicName : Type
+        - privateName : Type
+        + PublicAttribute : Type
+        --
+        + PublicMethod(Params) : ReturnType
+        - PrivateMethod(Params) : ReturnType
+    }
+
+    MonoBehaviour(ExampleMonoBehaviour) {
+        PublicSerialized(publicName : Type)
+        PrivateSerialized(privateName : Type)
+        --
+        + PublicMethod(Params) : ReturnType
+    }
+
+    ScriptableObject(ExampleScriptableObject) {
+        PublicSerialized(publicName : Type)
+        PrivateSerialized(privateName : Type)
+        --
+        + PublicMethod(Params) : ReturnType
+    }
+}
+
+rectangle "Standalone MB" {
+    MonoBehaviour(Billboard) {
+    }
+
+    MonoBehaviour(FPSCounter) {
+        + FramesPerSec : int
+        PrivateSerialized(frequency: float)
+        PrivateSerialized(counter : Text)
+        --
+        - OnValidate() : void
+    }
+}
+
+rectangle "Static helpers" {
+    class VectorExtensions {
+        + XY() : Vector2
+        + OverwriteXY() : Vector3
+    }
+}
+
+rectangle "Component registry" {
+    class ComponentRegistry {
+        + AddToRegistry() : bool
+        + RemoveFromRegistry() : bool
+        + ReplaceInRegistry() : bool
+    }
+    MonoBehaviour(PlayerHandManager, PHM)
+    MonoBehaviour(GridManager, GM)
+    MonoBehaviour(SynergyLookUp, SL)
+    MonoBehaviour(GameManager, GaM)
+
+    ComponentRegistry --* PHM
+    ComponentRegistry --* GM
+    ComponentRegistry --* SL
+    ComponentRegistry --* GaM
+}
+
+MonoBehaviour(SynergyLookUp) {
+    PrivateSerialized(synergies : ISynergy[])
     --
     + FindAllSynergies(GridInstance[]) : SynergyResult[]
 }
@@ -26,10 +112,18 @@ class SynergyResult {
     + resultsToInvoke : Action[]
 }
 
-class FPSCounter {
-    + FramesPerSec : int
+ScriptableObject(FourInARowSynergy) {
+    + CheckForSynergy(GridInstance[]) : SynergyResult
+}
+
+class ObjectPool<IPoolable> {
+    - List<T> activePool
+    - List<T> inactivePool
     --
-    - OnValidate() : void
+    + ActivateObject(T item) : T
+    + DeactivateObject(T item) : T
+    + RequestObject() : T
+    + GetAllItems() : List<T>
 }
 
 interface IPoolable {
@@ -39,8 +133,8 @@ interface IPoolable {
     + OnDisableObject() : void
 }
 
-class QuestManager {
-    - [S] questPrefab : GameObject
+MonoBehaviour(QuestManager) {
+    PrivateSerialized(questPrefab : GameObject)
     - quests : List<IQuest>
     --
     + SetQuests() : void
@@ -51,26 +145,34 @@ interface IQuest {
     + CheckCondition() : bool
 }
 
-class PointQuest {
+ScriptableObject(PointQuest) {
     + [S] pointRequirement : int
     --
     + GetText() : string
     + CheckCondition() : bool
 }
 
-class GameManager {
-    + scoreManager : ScoreManager
-    + levelRef : LevelData
-    + turnManager : TurnManager
+MonoBehaviour(GameManager) {
+    PrivateSerialized(scoreManager : ScoreManager)
+    PrivateSerialized(moveManager : MoveManager)
+    PrivateSerialized(levelRef : LevelData)
+    PrivateSerialized(turnManager : TurnManager)
 }
 
-class LevelData {
-    + [S] pointRequirement : int
-    + [S] baseTurnAmount : int
-    + [S] quests : List<IQuest>
+ScriptableObject(LevelData) {
+    PublicSerialized(pointRequirement : int)
+    PublicSerialized(baseTurnAmount : int)
+    PublicSerialized(quests : List<IQuest>)
 }
 
-class ScoreManager {
+MonoBehaviour(MoveManager) {
+    - moves : int
+    + Moves : int
+    --
+    + SetScore(int newScore) : void
+}
+
+MonoBehaviour(ScoreManager) {
     - score : int
     + Score : int
     --
@@ -78,7 +180,7 @@ class ScoreManager {
     + SetScore(int newScore) : void
 }
 
-class ResolutionTracker {
+MonoBehaviour(ResolutionTracker) {
     + OnResolutionChanged : int
 }
 
@@ -95,21 +197,16 @@ class Timer {
     + Add() : void
 }
 
-class VectorExtensions {
-    + XY() : Vector2
-    + OverwriteXY() : Vector3
-}
-
-class GridGenerator {
-    - [S] materials : Material
-    - [S] boardBounds : Bounds
-    - [S] boardSize : Vector2Int
-    - [S] positions : Vector3
-    - [S] positionsOffGrid : Vector3
+MonoBehaviour(GridGenerator) {
+    PrivateSerialized(materials : Material)
+    PrivateSerialized(boardBounds : Bounds)
+    PrivateSerialized(boardSize : Vector2Int)
+    PrivateSerialized(positions : Vector3)
+    PrivateSerialized(positionsOffGrid : Vector3)
     + cellSize : Vector2
     + Width : int
     + Height : int
-    - [S] cellMesh : Mesh
+    PrivateSerialized(cellMesh : Mesh)
     --
     + GetAllPositions() : List<Vector3?>
     + GetAllOffGridPositions() : List<Vector3?>
@@ -117,8 +214,8 @@ class GridGenerator {
     + GetOffGridPosAt() : Vector3
 }
 
-class GridManager {
-    - [S] generator : GridGenerator
+MonoBehaviour(GridManager) {
+    PrivateSerialized(generator : GridGenerator)
     + CellSize : Vector2
     --
     + GetNearestPosition() : GridInstance
@@ -136,26 +233,25 @@ class GridInstance {
     + GridInstance() : public
 }
 
-class TurnManager {
-    - [S] gridManager : GridManager
+MonoBehaviour(TurnManager) {
+    PrivateSerialized(gridManager : GridManager)
     --
     + NextTurn() : void
 }
 
-class Interactable {
-    - [S] interaction : UnityEvent
+MonoBehaviour(Interactable) {
+    PrivateSerialized(interaction : UnityEvent)
     --
     + Trigger() : void
 }
 
-class MoveToGridPosition {
-    - [S] grid : GridManager
-    - [S] rb : Rigidbody
-    - [S] movementStrength : float
-    - [S] maxVelocity : float
-    - [S] dampening : float
-    - [S] startTimerTime : float
-    - [S] endTimerTime : float
+MonoBehaviour(MoveToGridPosition) {
+    PrivateSerialized(rb : Rigidbody)
+    PrivateSerialized(movementStrength : float)
+    PrivateSerialized(maxVelocity : float)
+    PrivateSerialized(dampening : float)
+    PrivateSerialized(startTimerTime : float)
+    PrivateSerialized(endTimerTime : float)
     --
     + SetEnabled() : void
     + SetTarget() : void
@@ -163,48 +259,65 @@ class MoveToGridPosition {
     + HasTarget() : bool
 }
 
-class CandyComponent {
-    - [S] interactable : Interactable
-    - [S] movement : MoveToGridPosition
-    - [S] rb : Rigidbody
+MonoBehaviour(GridMoveable){
+    PrivateSerialized(grid : GridManager)
+    PrivateSerialized(grid : MoveManager)
+}
+
+MonoBehaviour(GridRotatable){
+    PrivateSerialized(grid : GridManager)
+    PrivateSerialized(grid : MoveManager)
+}
+
+MonoBehaviour(CandyActor) {
+    PrivateSerialized(interactable : Interactable)
+    PrivateSerialized(movement : GridMoveable)
+    PrivateSerialized(rb : Rigidbody)
+    PrivateSerialized(points : float)
     --
     + AddToHand() : void
     + OnGrabReleased() : void
 }
 
-class CandyGroupInstance {
+class CandyGroupHandle {
+    - CandyHandle[] usedCandy
     + Active : bool
     --
-    + CandyGroupInstance() : public
+    + CandyGroupHandle() : public
     + OnEnableObject() : void
     + OnDisableObject() : void
     + SetParent() : void
 }
 
-class CandyInstance {
+class CandyHandle {
     + rb : Rigidbody
-    + component : CandyComponent
+    + component : CandyActor
     + gameObject : GameObject
     --
-    + CandyInstance() : public
+    + CandyHandle() : public
 }
 
-class CandySpawner {
-    - [S] playerHandManager : PlayerHandManager
-    - [S] candyPrefab : GameObject
+MonoBehaviour(PlayerDeck) {
+    PrivateSerialized(playerHandManager : PlayerHandManager)
+    PrivateSerialized(options : DeckOption[])
     --
     + AddToHand() : void
 }
 
-class InteractionHandler {
-    - [S] camRef : Camera
-    - [S] movementHandler : MovementHandler
-    - [S] visualHandler : VisualHandler
-    - [S] layerMaskInteractables : LayerMask
+ScriptableObject(DeckOption){
+    PrivateSerialized(chance : float)
+    PrivateSerialized(name : string)
+    PrivateSerialized(candyPrefab : GameObject)
+}
+note left of DeckOption : candyPrefab would have to have a CandyActor component
+
+MonoBehaviour(InteractionHandler) {
+    PrivateSerialized(camRef : Camera)
+    PrivateSerialized(layerMaskInteractables : LayerMask)
 }
 
-class MovementHandler {
-    - [S] movementBounds : Bounds
+MonoBehaviour(MovementHandler) {
+    PrivateSerialized(movementBounds : Bounds)
     + Velocity : Vector2
     + MovementDirection : Vector2
     + ThrowForce : Vector2
@@ -214,20 +327,23 @@ class MovementHandler {
     + ResetToOriginalZ() : void
 }
 
-class PlayerHandManager {
-    - [S] visualHandler : VisualHandler
-    - [S] movementHandler : MovementHandler
-    - [S] interactionHandler : InteractionHandler
-    - [S] inputActionMap : InputActionMap
+MonoBehaviour(PlayerHandManager) {
+    PrivateSerialized(handles : PlayerHandles)
     + OnGrabReleased : Vector2
     --
     + SetStateToGrabbing() : void
 }
 
-class VisualHandler {
-    - [S] visual : SpriteRenderer
-    - [S] sprites : VisualState
-    - [S] zMovementSpeed : float
+class PlayerHandles{
+    PrivateSerialized(visualHandler : VisualHandler)
+    PrivateSerialized(movementHandler : MovementHandler)
+    PrivateSerialized(interactionHandler : InteractionHandler)
+}
+
+MonoBehaviour(VisualHandler) {
+    PrivateSerialized(visual : SpriteRenderer)
+    PrivateSerialized(sprites : VisualState)
+    PrivateSerialized(zMovementSpeed : float)
     + CurrentState : string
     --
     + SetSprite() : void
@@ -240,34 +356,45 @@ struct VisualState {
 }
 
 ' Relationships
-IPoolable <|-- CandyGroupInstance
+ObjectPool --> IPoolable
+CandyGroupHandle -u-|> IPoolable
+CandyHandle -u-|> IPoolable
 GridManager --* GridGenerator
-GridManager --* GridInstance
+GridManager --> GridInstance
 TurnManager --> GridManager
-MoveToGridPosition --* GridManager
+
+MoveToGridPosition --|> GridMoveable
+GridMoveable --> GridManager
+GridMoveable --> MoveManager
+GridRotatable --> GridManager
+GridRotatable --> MoveManager
 MoveToGridPosition --* Timer
-CandyComponent --* Interactable
-CandyComponent --* MoveToGridPosition
-CandyComponent --> PlayerHandManager
-CandyGroupInstance --> PlayerHandManager
-CandyInstance --> CandyComponent
-CandySpawner --> PlayerHandManager
-InteractionHandler --* MovementHandler
-InteractionHandler --* VisualHandler
+CandyActor --* Interactable
+CandyActor --* GridMoveable
+CandyGroupHandle --> CandyHandle
+CandyHandle --> CandyActor
+PlayerDeck --> PlayerHandManager
+PlayerDeck --> CandyGroupHandle
+PlayerDeck --* DeckOption
 InteractionHandler --* Interactable
-PlayerHandManager --* VisualHandler
-PlayerHandManager --* MovementHandler
-PlayerHandManager --* InteractionHandler
+PlayerHandManager --* PlayerHandles
+PlayerHandles *--* VisualHandler
+PlayerHandles *--* MovementHandler
+PlayerHandles *--* InteractionHandler
+MovementHandler --> ResolutionTracker
 VisualHandler --* VisualState
+GameManager --* MoveManager
 GameManager --* ScoreManager
 GameManager --* LevelData
 GameManager --* TurnManager
 GameManager --* QuestManager
 LevelData --* IQuest
 QuestManager --> IQuest
-PointQuest --|> IQuest
+PointQuest -u-|> IQuest
 SynergyLookUp --* ISynergy
 SynergyLookUp --> SynergyResult
 SynergyLookUp --> GridInstance
+ISynergy --> SynergyResult
+FourInARowSynergy -u-|> ISynergy
 
 @enduml

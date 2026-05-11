@@ -1,193 +1,173 @@
 ﻿@startuml
-skinparam classAttributeIconSize 10
+
 set namespaceSeparator none
 left to right direction
-class Billboard {
+
+skinparam BackgroundColor #FDFDFD
+skinparam RoundCorner 8
+
+skinparam class {
+    BackgroundColor #EDF2F7
+    BorderColor #A0AEC0
+    FontColor #2D3748
+
+    BackgroundColor<<MB>> #D1D9E6
+    BorderColor<<MB>> #8A9AAB
+
+    BackgroundColor<<SO>> #D2E4D8
+    BorderColor<<SO>> #94B49F
+}
+
+hide empty members
+
+!define MonoBehaviour(x) class x << (M,#8A9AAB) MB >>
+!define ScriptableObject(x) class x << (S,#94B49F) SO >>
+!define PrivateSerialized(x) - [<color:#00C732>S</color>] x
+!define PublicSerialized(x) + [<color:#00C732>S</color>] x
+
+MonoBehaviour(Billboard) {
 }
 class ComponentRegistry {
-+AddToRegistry() : bool
-+RemoveFromRegistry() : bool
-+ReplaceInRegistry() : bool
+  + AddToRegistry() : static bool
+  + RemoveFromRegistry() : static bool
+  + ReplaceInRegistry() : static bool
 }
-class FPSCounter {
-+FramesPerSec : int
---
--OnValidate() : void
+MonoBehaviour(FPSCounter) {
 }
 interface IPoolable {
-+Active : bool
---
-+OnEnableObject() : void
-+OnDisableObject() : void
 }
-class QuestSystem {
--[S] questPrefab : GameObject
--[S] quests : List<Quest>
+MonoBehaviour(QuestSystem) {
+  + pointRequirement : int
+  + GetText() : string
 }
 class Quest {
-+pointRequirement : int
---
-+GetText() : string
+  + pointRequirement : int
+  + GetText() : string
 }
-class ResolutionTracker {
-+OnResolutionChanged : int>
+MonoBehaviour(ResolutionTracker) {
+  + OnResolutionChanged : static Action<int, int>
 }
 class Timer {
-+onEnd : Action
-+onPlaying : Action<double>
-+running : bool
---
-+Timer() : public
-+Timer() : public
-+Reset() : void
-+Update() : void
-+GetCurrentTime() : double
-+Add() : void
+  + onEnd : Action
+  + onPlaying : Action<double>
+  + running : bool
+  + Reset() : void
+  + Update() : void
+  + CheckIfEndIsReached() : void
+  + GetFormattedTime() : string
+  + GetCurrentTime() : double
+  + Add() : void
 }
 class VectorExtensions {
-+XY() : Vector2
-+OverwriteXY() : Vector3
+  + XY() : static Vector2
+  + OverwriteXY() : static Vector3
 }
-class GridGenerator {
--[S] materials : Material
--[S] boardBounds : Bounds
--[S] boardSize : Vector2Int
--[S] positions : Vector3
--[S] positionsOffGrid : Vector3
-+cellSize : Vector2
-+Width : int
-+Height : int
--[S] cellMesh : Mesh
---
-+GetAllPositions() : List<Vector3?>
-+GetAllOffGridPositions() : List<Vector3?>
-+GetPosAt() : Vector3
-+GetOffGridPosAt() : Vector3
+MonoBehaviour(GridGenerator) {
+  + cellSize : Vector2
+  + Width : int
+  + Height : int
+  + GetAllPositions() : List<Vector3?>
+  + GetAllOffGridPositions() : List<Vector3?>
+  + GetPosAt() : Vector3
+  + GetOffGridPosAt() : Vector3
 }
-class GridManager {
--[S] generator : GridGenerator
-+CellSize : Vector2
---
-+GetNearestPosition() : GridInstance
-+GetNearestOffGridPosition() : GridInstance
-+GetNearestGridPosition() : GridInstance
-+ReleaseInstance() : void
+MonoBehaviour(GridManager) {
+  + position : Vector3
+  + index : readonly int
+  + gameObj : readonly GameObject
+  + offGrid : bool
+  + GetNearestPosition() : GridInstance
+  + GetNearestOffGridPosition() : GridInstance
+  + GetNearestGridPosition() : GridInstance
+  + ReleaseInstance() : void
+  + ForAllGridItems() : void
 }
 class GridInstance {
-+position : Vector3
-+index : int
-+gameObj : GameObject
-+offGrid : bool
---
-+GridInstance() : public
+  + position : Vector3
+  + index : readonly int
+  + gameObj : readonly GameObject
+  + offGrid : bool
 }
-class TurnManager {
--[S] gridManager : GridManager
---
-+NextTurn() : void
+MonoBehaviour(TurnManager) {
+  + NextTurn() : void
 }
-class Interactable {
--[S] interaction : UnityEvent
---
-+Trigger() : void
+MonoBehaviour(Interactable) {
+  + Trigger() : void
 }
-class MoveToGridPosition {
--[S] grid : GridManager
--[S] rb : Rigidbody
--[S] movementStrength : float
--[S] maxVelocity : float
--[S] dampening : float
--[S] startTimerTime : float
--[S] endTimerTime : float
---
-+SetEnabled() : void
-+SetTarget() : void
-+ResetTarget() : void
-+HasTarget() : bool
+MonoBehaviour(MoveToGridPosition) {
+  + SetEnabled() : void
+  + SetTarget() : void
+  + ResetTarget() : void
+  + HasTarget() : bool
 }
-class CandyComponent {
--[S] interactable : Interactable
--[S] movement : MoveToGridPosition
--[S] rb : Rigidbody
---
-+AddToHand() : void
-+OnGrabReleased() : void
+MonoBehaviour(CandyComponent) {
+  + AddToHand() : void
+  + OnGrabReleased() : static void
 }
 class CandyGroupInstance {
-+Active : bool
---
-+CandyGroupInstance() : public
-+OnEnableObject() : void
-+OnDisableObject() : void
-+SetParent() : void
+  + rb : readonly Rigidbody
+  + component : readonly CandyComponent
+  + gameObject : readonly GameObject
+  + OnEnableObject() : void
+  + OnDisableObject() : void
+  + SetParent() : void
 }
-IPoolable <|-- CandyGroupInstance
 class CandyInstance {
-+rb : Rigidbody
-+component : CandyComponent
-+gameObject : GameObject
---
-+CandyInstance() : public
+  + rb : readonly Rigidbody
+  + component : readonly CandyComponent
+  + gameObject : readonly GameObject
 }
-class CandySpawner {
--[S] playerHandManager : PlayerHandManager
--[S] candyPrefab : GameObject
---
-+AddToHand() : void
+MonoBehaviour(CandySpawner) {
+  + AddToHand() : void
 }
-class InteractionHandler {
--[S] camRef : Camera
--[S] movementHandler : MovementHandler
--[S] visualHandler : VisualHandler
--[S] layerMaskInteractables : LayerMask
+MonoBehaviour(InteractionHandler) {
 }
-class MovementHandler {
--[S] movementBounds : Bounds
-+Velocity : Vector2
-+MovementDirection : Vector2
-+ThrowForce : Vector2
---
-+ApplyMouseDelta() : void
-+SetTargetZ() : void
-+ResetToOriginalZ() : void
+MonoBehaviour(MovementHandler) {
+  + Velocity : Vector2
+  + MovementDirection : Vector2
+  + ApplyMouseDelta() : void
+  + SetTargetZ() : void
+  + ResetToOriginalZ() : void
 }
-class PlayerHandManager {
--[S] visualHandler : VisualHandler
--[S] movementHandler : MovementHandler
--[S] interactionHandler : InteractionHandler
--[S] inputActionMap : InputActionMap
-+OnGrabReleased : Vector2>
---
-+SetStateToGrabbing() : void
+MonoBehaviour(PlayerHandManager) {
+  + OnGrabReleased : Action<Vector2, Vector2>
+  + SetStateToGrabbing() : void
 }
-class VisualHandler {
--[S] visual : SpriteRenderer
--[S] sprites : VisualState
--[S] zMovementSpeed : float
-+CurrentState : string
---
-+SetSprite() : void
+MonoBehaviour(VisualHandler) {
+  + key : string
+  + visual : Sprite
+  + z : float
+  + SetSprite() : void
 }
 struct VisualState {
-+key : string
-+visual : Sprite
-+z : float
+  + key : string
+  + visual : Sprite
+  + z : float
 }
-GridManager --* GridGenerator
-TurnManager --> GridManager
-MoveToGridPosition --* GridManager
-MoveToGridPosition --* Timer
-CandyComponent --* Interactable
-CandyComponent --* MoveToGridPosition
+
+CandyComponent --> Interactable
+CandyComponent --> MoveToGridPosition
 CandyComponent --> PlayerHandManager
+CandyGroupInstance --> CandyComponent
+CandyGroupInstance --> CandyInstance
 CandyGroupInstance --> PlayerHandManager
 CandyInstance --> CandyComponent
+CandySpawner --> CandyGroupInstance
 CandySpawner --> PlayerHandManager
-InteractionHandler --* MovementHandler
-InteractionHandler --* VisualHandler
-InteractionHandler --* Interactable
-PlayerHandManager --* VisualHandler
-PlayerHandManager --* MovementHandler
-PlayerHandManager --* InteractionHandler
-VisualHandler --* VisualState
+GridManager --> GridGenerator
+GridManager --> GridInstance
+InteractionHandler --> Interactable
+InteractionHandler --> MovementHandler
+InteractionHandler --> VisualHandler
+IPoolable <|.. CandyGroupInstance
+MoveToGridPosition --> GridInstance
+MoveToGridPosition --> GridManager
+MoveToGridPosition --> Timer
+PlayerHandManager --> InteractionHandler
+PlayerHandManager --> MovementHandler
+PlayerHandManager --> VisualHandler
+QuestSystem --> Quest
+TurnManager --> GridManager
+TurnManager --> MoveToGridPosition
+VisualHandler --> VisualState
 @enduml
