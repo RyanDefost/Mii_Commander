@@ -2,6 +2,9 @@ using System;
 using Grid;
 using UnityEngine;
 
+/// <summary>
+/// Animates a piece of candy towards a grid position, via physics
+/// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class MoveToGridPosition : MonoBehaviour
 {
@@ -48,7 +51,7 @@ public class MoveToGridPosition : MonoBehaviour
     
     private void DoEnable()
     {
-        this.startTimer = new Timer(this.startTimerTime, StartMovement);
+        this.startTimer = new Timer(this.startTimerTime,  false, true, StartMovement);
         this.onUpdate += UpdateStartTimer;
     }
 
@@ -61,20 +64,20 @@ public class MoveToGridPosition : MonoBehaviour
     }
 
     private void Update() => this.onUpdate?.Invoke();
-    private void UpdateStartTimer() => this.startTimer.Update(Time.deltaTime);
+    private void UpdateStartTimer() => this.startTimer.UpdateTime(Time.deltaTime);
 
     private void StartMovement()
     {
         if (!GetTarget())
             return;
         this.usedMinimumForce = this.movementStrength;
-        this.endTimer = new Timer(this.endTimerTime, SnapToTarget);
+        this.endTimer = new Timer(this.endTimerTime, false, true, SnapToTarget);
         
         this.onUpdate += ApplyForceTowardsTarget;
         this.onUpdate += UpdateEndTimer;
         this.onUpdate -= UpdateStartTimer;
         
-        this.startTimer.Reset();
+        this.startTimer.ResetAndReplay();
     }
     
     private bool GetTarget()
@@ -88,7 +91,7 @@ public class MoveToGridPosition : MonoBehaviour
     
     public void SetTarget(GridManager.GridInstance newTarget) => this.target = newTarget;
 
-    private void UpdateEndTimer() => this.endTimer.Update(Time.deltaTime);
+    private void UpdateEndTimer() => this.endTimer.UpdateTime(Time.deltaTime);
 
     private Vector3 GetTargetPosition() => this.target.position + Vector3.back * this.offset;
 
@@ -102,7 +105,7 @@ public class MoveToGridPosition : MonoBehaviour
         this.rb.Sleep();
         this.onUpdate -= UpdateEndTimer;
         
-        this.endTimer.Reset();
+        this.endTimer.ResetAndReplay();
     }
     
     private void ApplyForceTowardsTarget()

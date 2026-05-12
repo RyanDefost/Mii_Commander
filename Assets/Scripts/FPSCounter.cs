@@ -3,12 +3,16 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// An FPS counter that Lucas stole from stack overflow, then connected to a Text component
+/// </summary>
 public class FPSCounter : MonoBehaviour
 {
-    public int FramesPerSec { get; protected set; }
-
-    [SerializeField] private float frequency = 0.5f;
     [SerializeField] private Text counter;
+    [SerializeField] private float updateInterval = 0.5f;
+    
+    private float accumulatedTime = 0f;
+    private int frameCount = 0;
 
     private void OnValidate()
     {
@@ -17,25 +21,16 @@ public class FPSCounter : MonoBehaviour
         this.counter = GetComponent<Text>();
     }
 
-    private void Start()
+    private void Start() => this.counter.text = "";
+
+    private void Update()
     {
-        this.counter.text = "";
-        StartCoroutine(FPS());
-    }
+        this.accumulatedTime += Time.unscaledDeltaTime;
+        this.frameCount++;
 
-    private IEnumerator FPS()
-    {
-        for (; ; )
-        {
-            int lastFrameCount = Time.frameCount;
-            float lastTime = Time.realtimeSinceStartup;
-            yield return new WaitForSeconds(this.frequency);
-
-            float timeSpan = Time.realtimeSinceStartup - lastTime;
-            int frameCount = Time.frameCount - lastFrameCount;
-
-            this.FramesPerSec = Mathf.RoundToInt(frameCount / timeSpan);
-            this.counter.text = "FPS: " + this.FramesPerSec.ToString();
-        }
+        if (!(this.accumulatedTime >= this.updateInterval)) return;
+        this.counter.text = $"FPS: {this.frameCount / this.accumulatedTime:F0}";
+        this.accumulatedTime = 0f;
+        this.frameCount = 0;
     }
 }

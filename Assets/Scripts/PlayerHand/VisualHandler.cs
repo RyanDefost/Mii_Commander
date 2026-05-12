@@ -44,6 +44,8 @@ namespace PlayerHand
             this.enabled = this.visual && !hasEmptySprites && this.sprites.Length > 0;
         }
 
+        /// <param name="key">Name of the desired visual state</param>
+        /// <param name="movementHandler">Requires movement handle, to update Z position</param>
         public void SetSprite(string key, MovementHandler movementHandler)
         {
             VisualState state = this.sprites.First(a => a.key == key);
