@@ -1,0 +1,16 @@
+<map id="PlayerHand.VisualHandler" name="PlayerHand.VisualHandler">
+<area shape="rect" id="Node000001" title="Used for setting and keeping track of the player hand visuals." alt="" coords="155,304,319,427"/>
+<area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="5,155,106,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,232,177,303,172,305,101,237"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="130,155,227,224"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="191,221,214,288,209,288,188,226"/>
+<area shape="rect" id="Node000004" href="$struct_player_hand_1_1_visual_handler_1_1_visual_state.html" title=" " alt="" coords="252,147,420,232"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="314,230,282,291,278,288,310,233"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="248,5,290,75"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="277,72,296,122,301,132,295,131,291,124,276,77"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="315,5,359,75"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="338,72,339,131,334,129,335,77"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="427,5,463,75"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="452,72,457,109,457,150,450,193,434,233,414,261,390,285,335,324,333,319,387,281,410,258,429,231,445,192,451,150,452,109,450,77"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="429,68,394,124,385,136,381,132,390,121,425,72"/>
+</map>

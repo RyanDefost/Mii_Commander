@@ -23,7 +23,7 @@ namespace PlayerHand
         private InputActionMap inputActionMap;
         private InputAction moveAction;
         private InputAction grabAction;
-        
+
         private bool grabbing;
         public Action<Vector2, Vector2> OnGrabReleased; // passes hand movementDir, and throw force
 

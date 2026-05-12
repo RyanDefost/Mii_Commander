@@ -1,0 +1,5 @@
+<map id="PlayerHand.MovementHandler" name="PlayerHand.MovementHandler">
+<area shape="rect" id="Node000001" title="Handles player hand movement with acceleration, velocity tracking, and throw force calculation." alt="" coords="5,123,200,1179"/>
+<area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="52,5,153,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,87,105,123,100,123,103,92"/>
+</map>
