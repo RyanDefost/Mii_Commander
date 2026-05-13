@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7643aa0683d43179627076f23d6f96f, type: 3}
   m_Name: TempLevelData
   m_EditorClassIdentifier: Assembly-CSharp::Managers.LevelRef
-  pointRequirement: 0
-  baseTurnAmount: 0
+  pointRequirement: 500
+  baseTurnAmount: 30
