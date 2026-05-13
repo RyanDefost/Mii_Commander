@@ -1,6 +1,4 @@
-using System;
 using Grid;
-using Managers;
 using UnityEngine;
 
 namespace Managers
