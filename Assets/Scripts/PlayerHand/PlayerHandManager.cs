@@ -24,10 +24,8 @@ namespace PlayerHand
         private InputAction moveAction;
         private InputAction grabAction;
 
-<<<<<<< HEAD
-        private bool CanGrab;
-=======
->>>>>>> origin/Develop
+
+        private bool canGrab;
         private bool grabbing;
         public Action<Vector2, Vector2> OnGrabReleased; // passes hand movementDir, and throw force
 
@@ -43,7 +41,7 @@ namespace PlayerHand
 
         private void Awake()
         {
-            this.CanGrab = true;
+            this.canGrab = true;
             
             this.inputActionMap = this.inputActionAsset.FindActionMap("Player");
             this.inputActionMap.Enable();
@@ -78,7 +76,7 @@ namespace PlayerHand
 
         private void OnInteract(InputAction.CallbackContext obj, InteractionHandler interactionHandler)
         {
-            if(!this.CanGrab) return;
+            if(!this.canGrab) return;
             
             if (!obj.ReadValueAsButton()) return;
             if (!interactionHandler.CurrentHover) return;
@@ -104,6 +102,6 @@ namespace PlayerHand
             this.grabbing = true;
         }
         
-        public void SetCanGrab(bool canGrab) =>  this.CanGrab = canGrab;
+        public void SetCanGrab(bool canGrab) =>  this.canGrab = canGrab;
     }
 }
