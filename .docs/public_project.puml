@@ -1,0 +1,173 @@
+﻿@startuml
+
+set namespaceSeparator none
+left to right direction
+
+skinparam BackgroundColor #FDFDFD
+skinparam RoundCorner 8
+
+skinparam class {
+    BackgroundColor #EDF2F7
+    BorderColor #A0AEC0
+    FontColor #2D3748
+
+    BackgroundColor<<MB>> #D1D9E6
+    BorderColor<<MB>> #8A9AAB
+
+    BackgroundColor<<SO>> #D2E4D8
+    BorderColor<<SO>> #94B49F
+}
+
+hide empty members
+
+!define MonoBehaviour(x) class x << (M,#8A9AAB) MB >>
+!define ScriptableObject(x) class x << (S,#94B49F) SO >>
+!define PrivateSerialized(x) - [<color:#00C732>S</color>] x
+!define PublicSerialized(x) + [<color:#00C732>S</color>] x
+
+MonoBehaviour(Billboard) {
+}
+class ComponentRegistry {
+  + AddToRegistry() : static bool
+  + RemoveFromRegistry() : static bool
+  + ReplaceInRegistry() : static bool
+}
+MonoBehaviour(FPSCounter) {
+}
+interface IPoolable {
+}
+MonoBehaviour(QuestSystem) {
+  + pointRequirement : int
+  + GetText() : string
+}
+class Quest {
+  + pointRequirement : int
+  + GetText() : string
+}
+MonoBehaviour(ResolutionTracker) {
+  + OnResolutionChanged : static Action<int, int>
+}
+class Timer {
+  + onEnd : Action
+  + onPlaying : Action<double>
+  + running : bool
+  + Reset() : void
+  + Update() : void
+  + CheckIfEndIsReached() : void
+  + GetFormattedTime() : string
+  + GetCurrentTime() : double
+  + Add() : void
+}
+class VectorExtensions {
+  + XY() : static Vector2
+  + OverwriteXY() : static Vector3
+}
+MonoBehaviour(GridGenerator) {
+  + cellSize : Vector2
+  + Width : int
+  + Height : int
+  + GetAllPositions() : List<Vector3?>
+  + GetAllOffGridPositions() : List<Vector3?>
+  + GetPosAt() : Vector3
+  + GetOffGridPosAt() : Vector3
+}
+MonoBehaviour(GridManager) {
+  + position : Vector3
+  + index : readonly int
+  + gameObj : readonly GameObject
+  + offGrid : bool
+  + GetNearestPosition() : GridInstance
+  + GetNearestOffGridPosition() : GridInstance
+  + GetNearestGridPosition() : GridInstance
+  + ReleaseInstance() : void
+  + ForAllGridItems() : void
+}
+class GridInstance {
+  + position : Vector3
+  + index : readonly int
+  + gameObj : readonly GameObject
+  + offGrid : bool
+}
+MonoBehaviour(TurnManager) {
+  + NextTurn() : void
+}
+MonoBehaviour(Interactable) {
+  + Trigger() : void
+}
+MonoBehaviour(MoveToGridPosition) {
+  + SetEnabled() : void
+  + SetTarget() : void
+  + ResetTarget() : void
+  + HasTarget() : bool
+}
+MonoBehaviour(CandyComponent) {
+  + AddToHand() : void
+  + OnGrabReleased() : static void
+}
+class CandyGroupInstance {
+  + rb : readonly Rigidbody
+  + component : readonly CandyComponent
+  + gameObject : readonly GameObject
+  + OnEnableObject() : void
+  + OnDisableObject() : void
+  + SetParent() : void
+}
+class CandyInstance {
+  + rb : readonly Rigidbody
+  + component : readonly CandyComponent
+  + gameObject : readonly GameObject
+}
+MonoBehaviour(CandySpawner) {
+  + AddToHand() : void
+}
+MonoBehaviour(InteractionHandler) {
+}
+MonoBehaviour(MovementHandler) {
+  + Velocity : Vector2
+  + MovementDirection : Vector2
+  + ApplyMouseDelta() : void
+  + SetTargetZ() : void
+  + ResetToOriginalZ() : void
+}
+MonoBehaviour(PlayerHandManager) {
+  + OnGrabReleased : Action<Vector2, Vector2>
+  + SetStateToGrabbing() : void
+}
+MonoBehaviour(VisualHandler) {
+  + key : string
+  + visual : Sprite
+  + z : float
+  + SetSprite() : void
+}
+struct VisualState {
+  + key : string
+  + visual : Sprite
+  + z : float
+}
+
+CandyComponent --> Interactable
+CandyComponent --> MoveToGridPosition
+CandyComponent --> PlayerHandManager
+CandyGroupInstance --> CandyComponent
+CandyGroupInstance --> CandyInstance
+CandyGroupInstance --> PlayerHandManager
+CandyInstance --> CandyComponent
+CandySpawner --> CandyGroupInstance
+CandySpawner --> PlayerHandManager
+GridManager --> GridGenerator
+GridManager --> GridInstance
+InteractionHandler --> Interactable
+InteractionHandler --> MovementHandler
+InteractionHandler --> VisualHandler
+IPoolable <|.. CandyGroupInstance
+MoveToGridPosition --> GridInstance
+MoveToGridPosition --> GridManager
+MoveToGridPosition --> Timer
+PlayerHandManager --> InteractionHandler
+PlayerHandManager --> MovementHandler
+PlayerHandManager --> VisualHandler
+QuestSystem --> Quest
+TurnManager --> GridManager
+TurnManager --> MoveToGridPosition
+VisualHandler --> VisualState
+@enduml

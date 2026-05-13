@@ -86,7 +86,7 @@ namespace PlayerHand
         }
 
         /// <summary>
-        /// Called from the input handler
+        /// Called from the input handler inside the PlayerHandManager
         /// </summary>
         public void ApplyMouseDelta(Vector2 delta)
         {
@@ -115,6 +115,9 @@ namespace PlayerHand
             this.transform.position = ClampToBounds(newPosition);
         }
 
+        /// <summary>
+        /// Sets the Z position, to move/animate towards
+        /// </summary>
         public void SetTargetZ(float z, float speed = -1f)
         {
             this.targetZPosition = z;

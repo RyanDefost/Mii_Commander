@@ -1,0 +1,9 @@
+@startuml inline_umlgraph_4.png
+!include full_project.puml
+@enduml
+@startuml inline_umlgraph_5.png
+!include public_project.puml
+@enduml
+@startuml inline_umlgraph_6.png
+!include desired_design.puml
+@enduml

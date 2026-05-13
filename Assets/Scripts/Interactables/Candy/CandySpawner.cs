@@ -4,6 +4,9 @@ using PlayerHand;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+/// <summary>
+/// Spawns candy within the player hand, using a pool of grouped candy.
+/// </summary>
 public class CandySpawner : MonoBehaviour
 {
     [SerializeField]
@@ -21,6 +24,7 @@ public class CandySpawner : MonoBehaviour
 
     private void Awake() => this.candyPool = new ObjectPool<CandyGroupInstance>();
 
+    /// <summary>Gets a randomized hand full of candy and adds it to the hand</summary>
     public void AddToHand()
     {
         CandyGroupInstance result = this.candyPool.RequestObject();

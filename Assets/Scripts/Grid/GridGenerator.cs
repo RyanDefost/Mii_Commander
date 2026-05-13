@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 
 namespace Grid
 {
+    /// <summary>
+    /// Handles the possible positions within the grid, and generates the mesh
+    /// </summary>
     public class GridGenerator : MonoBehaviour
     {
         [SerializeField]

@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace PlayerHand
 {
+    /// <summary>
+    /// Lets the player hand interact with interactables
+    /// </summary>
     public class InteractionHandler : MonoBehaviour
     {
         [SerializeField]
@@ -32,31 +35,36 @@ namespace PlayerHand
 
         private void Update()
         {
-            if (this.visualHandler.CurrentState == "Closed")
+            if (this.visualHandler.CurrentState == "Closed") // already interacting / holding
                 return;
             
+            // Cast ray underneath hand
             RaycastHit2D[] results = new RaycastHit2D[5];
             int size = Physics2D.RaycastNonAlloc(this.transform.position, Vector3.forward, results, 20f, this.layerMaskInteractables);
             if (size <= 0)
             {
-                OnNoInteractable();
+                ResetHover();
                 return;
             }
 
-            RaycastHit2D? found = GetClosestToCamera(results);
+            // Get closest interactable
+            RaycastHit2D? found = GetClosestInteractableToCamera(results);
             if (found == null)
             {
-                OnNoInteractable();
+                ResetHover();
                 return;
             }
 
+            // Log most likely to interact with
             Interactable interactable = found.Value.collider.GetComponent<Interactable>();
             if (!interactable) return;
             this.visualHandler.SetSprite("Open", this.movementHandler);
             this.CurrentHover = interactable;
         }
 
-        private RaycastHit2D? GetClosestToCamera(RaycastHit2D[] hits)
+        /// <param name="hits">a list of raycast hits, where all hits are with a interactable object</param>
+        /// <returns>Closest interactable, or null</returns>
+        private RaycastHit2D? GetClosestInteractableToCamera(RaycastHit2D[] hits)
         {
             RaycastHit2D? found = null;
             float smallestDistance = float.PositiveInfinity;
@@ -79,7 +87,7 @@ namespace PlayerHand
             return found;
         }
 
-        private void OnNoInteractable()
+        private void ResetHover()
         {
             this.CurrentHover = null;
             if (this.visualHandler.CurrentState != "Closed")
