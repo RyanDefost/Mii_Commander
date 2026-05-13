@@ -2,6 +2,10 @@
 using PlayerHand;
 using UnityEngine;
 
+/// <summary>
+/// A class for managing multiple candy instances,
+/// this would make it more efficient to reuse dead candy when adding multiple to the hand
+/// </summary>
 public class CandyGroupInstance : IPoolable
 {
     public bool Active { get; set; }
@@ -9,6 +13,11 @@ public class CandyGroupInstance : IPoolable
     private readonly List<CandyInstance> instances;
     private readonly PlayerHandManager playerHandRef;
     
+    /// <summary>
+    /// Manages the data of a candy instance,
+    /// counterpart to the CandyComponent that handles its in game logic
+    /// TODO move to its own file
+    /// </summary>
     private class CandyInstance
     {
         public readonly Rigidbody rb;

@@ -1,6 +1,9 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// A simple component, that makes the transform follow the camera
+/// </summary>
 public class Billboard : MonoBehaviour
 {
     private Camera camRef;

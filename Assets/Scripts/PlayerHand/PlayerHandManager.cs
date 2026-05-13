@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 namespace PlayerHand
 {
     /// <summary>
-    /// Keeps track of mouse input and the hand state
+    /// Manages all playerHand handlers, and keeps track of mouse input and the hand state
     /// </summary>
     [RequireComponent(typeof(SpriteRenderer), typeof(VisualHandler), typeof(MovementHandler)), 
      RequireComponent(typeof(InteractionHandler))]
@@ -44,7 +44,7 @@ namespace PlayerHand
             this.moveAction = this.inputActionMap.FindAction("Move");
             this.grabAction = this.inputActionMap.FindAction("Grab");
 
-            this.grabAction.performed += OnGrabActionOnPerformed;
+            this.grabAction.performed += OnGrabActionPerformed;
         
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -52,12 +52,10 @@ namespace PlayerHand
             ComponentRegistry.AddToRegistry(this);
         }
 
-        private void OnGrabActionOnPerformed(InputAction.CallbackContext obj) => OnInteract(obj, this.interactionHandler);
-
         private void OnDestroy()
         {
             ComponentRegistry.RemoveFromRegistry(this);
-            this.grabAction.performed -= OnGrabActionOnPerformed;
+            this.grabAction.performed -= OnGrabActionPerformed;
         }
 
         private void Update()
@@ -69,7 +67,8 @@ namespace PlayerHand
             if (CheckOnGrabReleased(ref this.grabbing, this.grabAction, this.visualHandler, this.movementHandler))
                 this.OnGrabReleased.Invoke(this.movementHandler.MovementDirection,  this.movementHandler.ThrowForce);
         }
-            
+        
+        private void OnGrabActionPerformed(InputAction.CallbackContext obj) => OnInteract(obj, this.interactionHandler);
 
         private static void OnInteract(InputAction.CallbackContext obj, InteractionHandler interactionHandler)
         {
@@ -90,7 +89,7 @@ namespace PlayerHand
             grabbing = false;
             return true;
         }
-
+        
         public void SetStateToGrabbing()
         {
             this.visualHandler.SetSprite("Closed", this.movementHandler);

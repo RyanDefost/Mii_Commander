@@ -1,6 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
+/// <summary>
+/// Tracks the resolution of the current project, when it changes it calls a event
+/// </summary>
 public class ResolutionTracker : MonoBehaviour
 {
     public static Action<int, int> OnResolutionChanged;

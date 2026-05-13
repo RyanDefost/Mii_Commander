@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace Grid
 {
+    
+    /// <summary>
+    /// Handles turns on the grid, moving anything on the grid down
+    /// </summary>
     [RequireComponent(typeof(GridManager))]
     public class TurnManager : MonoBehaviour
     {
@@ -17,6 +21,7 @@ namespace Grid
             this.enabled = this.gridManager;
         }
 
+        /// <summary>Moves all relevant items downwards</summary>
         public void NextTurn()
         {
             this.gridManager.ForAllGridItems(instance =>

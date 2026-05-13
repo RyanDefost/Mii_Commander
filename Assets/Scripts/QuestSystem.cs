@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Keeps track of all quests within the level
+/// </summary>
 public class QuestSystem : MonoBehaviour
 {
     [SerializeField]
@@ -18,10 +21,7 @@ public class QuestSystem : MonoBehaviour
         public string GetText() => $"Get {this.pointRequirement} points";
     }
     
-    private void Start()
-    {
-        StartCoroutine(LoadQuests());
-    }
+    private void Start() => StartCoroutine(LoadQuests());
 
     private IEnumerator LoadQuests()
     {
