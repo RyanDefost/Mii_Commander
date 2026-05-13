@@ -6,37 +6,18 @@ using UnityEngine;
 /// A class for managing multiple candy instances,
 /// this would make it more efficient to reuse dead candy when adding multiple to the hand
 /// </summary>
-public class CandyGroupInstance : IPoolable
+public class CandyGroupHandle : IPoolable
 {
     public bool Active { get; set; }
 
-    private readonly List<CandyInstance> instances;
+    private readonly List<CandyHandle> instances;
     private readonly PlayerHandManager playerHandRef;
-    
-    /// <summary>
-    /// Manages the data of a candy instance,
-    /// counterpart to the CandyComponent that handles its in game logic
-    /// TODO move to its own file
-    /// </summary>
-    private class CandyInstance
-    {
-        public readonly Rigidbody rb;
-        public readonly CandyComponent component;
-        public readonly GameObject gameObject;
 
-        public CandyInstance(Rigidbody rb, CandyComponent candyComponent, GameObject gameObject)
-        {
-            this.rb = rb;
-            this.component = candyComponent;
-            this.gameObject = gameObject;
-        }
-    }
-
-    public CandyGroupInstance(PlayerHandManager playerHandManager, GameObject prefab, Transform parent, int amount)
+    public CandyGroupHandle(PlayerHandManager playerHandManager, GameObject prefab, Transform parent, int amount)
     {
         const float clumpingDist = 0.3f;
         
-        this.instances = new List<CandyInstance>();
+        this.instances = new List<CandyHandle>();
         for (int i = 0; i < amount; i++)
         {
             GameObject gameObject = Object.Instantiate(prefab, parent);
@@ -46,8 +27,8 @@ public class CandyGroupInstance : IPoolable
             Rigidbody rb = gameObject.GetComponent<Rigidbody>();
             rb.constraints = RigidbodyConstraints.FreezePosition;
             
-            CandyComponent component = gameObject.GetComponent<CandyComponent>();
-            this.instances.Add(new CandyInstance(rb, component, gameObject));
+            CandyActor actor = gameObject.GetComponent<CandyActor>();
+            this.instances.Add(new CandyHandle(rb, actor, gameObject));
         }
 
         this.playerHandRef = playerHandManager;
@@ -56,12 +37,12 @@ public class CandyGroupInstance : IPoolable
     
     public void OnEnableObject()
     {
-        foreach (CandyInstance instance in this.instances) instance.gameObject.SetActive(true);
+        foreach (CandyHandle instance in this.instances) instance.gameObject.SetActive(true);
     }
 
     public void OnDisableObject()
     {
-        foreach (CandyInstance instance in this.instances)
+        foreach (CandyHandle instance in this.instances)
         {
             instance.gameObject.SetActive(false);
             instance.rb.constraints = RigidbodyConstraints.FreezePosition;
@@ -70,14 +51,14 @@ public class CandyGroupInstance : IPoolable
 
     private void OnGrabReleased(Vector2 handMovementDir, Vector2 throwForce)
     {
-        foreach (CandyInstance instance in this.instances) 
-            CandyComponent.OnGrabReleased(instance.rb, instance.component, handMovementDir, throwForce);
+        foreach (CandyHandle instance in this.instances) 
+            CandyActor.OnGrabReleased(instance.rb, instance.actor, handMovementDir, throwForce);
         this.playerHandRef.OnGrabReleased -= OnGrabReleased;
     }
 
     public void SetParent(Transform parent)
     {
-        foreach (CandyInstance instance in this.instances)
+        foreach (CandyHandle instance in this.instances)
         {
             instance.gameObject.transform.parent = parent;
             instance.gameObject.transform.localPosition = Vector3.zero;

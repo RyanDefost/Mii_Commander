@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
+﻿using System.Collections.Generic;
 
 /// <summary>
 /// Simple object pool, used for reusing poolable objects

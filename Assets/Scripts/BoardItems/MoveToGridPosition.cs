@@ -6,7 +6,7 @@ using UnityEngine;
 /// Animates a piece of candy towards a grid position, via physics
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
-public class MoveToGridPosition : MonoBehaviour
+public class MoveToGridPosition : GridMoveable
 {
     [SerializeField]
     private float offset = 0.25f;
@@ -40,22 +40,14 @@ public class MoveToGridPosition : MonoBehaviour
         this.grid = ComponentRegistry.GetComponent<GridManager>();
         SetEnabled(true);
     }
-
-    public void SetEnabled(bool newState)
-    {
-        if (newState)
-            DoEnable();
-        else
-            DoDisable();
-    }
     
-    private void DoEnable()
+    protected override void DoEnable()
     {
         this.startTimer = new Timer(this.startTimerTime,  false, true, StartMovement);
         this.onUpdate += UpdateStartTimer;
     }
 
-    private void DoDisable()
+    protected override void DoDisable()
     {
         this.onUpdate -= UpdateStartTimer;
         this.onUpdate -= ApplyForceTowardsTarget;
