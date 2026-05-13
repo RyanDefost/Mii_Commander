@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace Grid
 {
+    /// <summary>
+    /// Manages everything inside of the grid
+    /// </summary>
     [RequireComponent(typeof(GridGenerator))]
     public class GridManager : MonoBehaviour
     {
@@ -16,6 +19,9 @@ namespace Grid
         private List<Vector3?> availableOffGridPositions;
         public Vector2 CellSize { get => this.generator.cellSize; private set => this.generator.cellSize = value; }
 
+        /// <summary>
+        /// Representation of a taken grid position
+        /// </summary>
         public class GridInstance
         {
             public Vector3 position;
@@ -48,6 +54,7 @@ namespace Grid
 
         private void OnDestroy() => ComponentRegistry.RemoveFromRegistry(this);
 
+        /// <summary>Tries to get a near available position both on grid and off grid</summary>
         public GridInstance GetNearestPosition(Vector3 position, GameObject gameObj, GridInstance previous = null)
         {
             Vector3? posToIgnore = null;
@@ -63,6 +70,7 @@ namespace Grid
             return GetNearestOffGridPosition(position, gameObj, posToIgnore, previous.offGrid);
         }
 
+        /// <summary>Used in case the grid is full, a last row underneath the board. Try to get a available position</summary>
         public GridInstance GetNearestOffGridPosition(Vector3 position, GameObject gameObj, Vector3? posToIgnore = null, bool isAlreadyOffGrid = false)
         {
             int foundIndexOffGrid = GetNearestIndex(position, this.availableOffGridPositions, posToIgnore);
@@ -79,12 +87,16 @@ namespace Grid
             return newInstance;
         }
 
+        /// <summary>Tries to find the nearest available position on the board</summary>
         public GridInstance GetNearestGridPosition(Vector3 position, GameObject gameObj, Vector3? posToIgnore = null)
         {
             int foundIndex = GetNearestIndex(position, this.availablePositions, posToIgnore);
             return foundIndex == -1 ? null : RegisterGridPosition(gameObj, foundIndex);
         }
 
+        /// <summary>
+        /// Creates a grid instance, and makes sure the position isnt taken again
+        /// </summary>
         private GridInstance RegisterGridPosition(GameObject gameObj, int foundIndex)
         {
             this.availablePositions[foundIndex] = null;
@@ -93,6 +105,13 @@ namespace Grid
             return newInstance;
         }
 
+        /// <summary>
+        /// Gets the nearest position from a collection of positions
+        /// </summary>
+        /// <param name="position">position to check near</param>
+        /// <param name="positions">collection to look through</param>
+        /// <param name="posToIgnore">optional position to ignore from the collection</param>
+        /// <returns>index of nearest position</returns>
         private static int GetNearestIndex(Vector3 position, List<Vector3?> positions, Vector3? posToIgnore = null)
         {
             float smallestDistance = float.MaxValue;
@@ -109,6 +128,9 @@ namespace Grid
             return foundIndex;
         }
 
+        /// <summary>
+        /// Removes a taken position in the grid, and makes it a available once more
+        /// </summary>
         public void ReleaseInstance(GridInstance target)
         {
             if (!target.offGrid)
@@ -127,6 +149,10 @@ namespace Grid
             this.gridInstances.RemoveSwapBack(target);
         }
 
+        /// <summary>
+        /// A method to call a method on all taken grid objects
+        /// </summary>
+        /// <param name="action">to invoke on all taken positions</param>
         public void ForAllGridItems(Action<GridInstance> action)
         {
             List<GridInstance> tempGridInstances = new(this.gridInstances);

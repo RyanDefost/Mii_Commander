@@ -3,6 +3,9 @@ using PlayerHand;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+/// <summary>
+/// Manages the in game logic of a piece of candy
+/// </summary>
 public class CandyComponent : MonoBehaviour
 {
     [SerializeField]
@@ -24,6 +27,11 @@ public class CandyComponent : MonoBehaviour
 
     private void Start() => this.playerHandRef = ComponentRegistry.GetComponent<PlayerHandManager>();
 
+    /// <summary>
+    /// Restricts its own physics,
+    /// adds to the player hand,
+    /// and hooks into the player hand events
+    /// </summary>
     public void AddToHand()
     {
         this.movement.SetEnabled(false);
@@ -36,14 +44,20 @@ public class CandyComponent : MonoBehaviour
         this.playerHandRef.OnGrabReleased += OnGrabReleased;
     }
 
+    /// <summary>
+    /// Frees its physics restrictions,
+    /// and adds any force the hand wanted to impose on it
+    /// </summary>
     private void OnGrabReleased(Vector2 handMovementDir, Vector2 throwForce)
     {
         OnGrabReleased(this.rb, this, handMovementDir, throwForce);
         this.playerHandRef.OnGrabReleased -= OnGrabReleased;
     }
 
+    /// <summary>Called when released and on the playing field</summary>
     private void Initiate() => this.movement.SetEnabled(true);
 
+    /// <summary>Static function that handles the throwing logic</summary>
     public static void OnGrabReleased(Rigidbody rb, CandyComponent candyComponent, Vector2 handMovementDir, Vector2 throwForce)
     {
         rb.transform.parent = rb.transform.parent.parent;
