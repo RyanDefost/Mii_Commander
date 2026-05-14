@@ -3,14 +3,13 @@ using Grid;
 using UnityEngine;
 
 /// <summary>
-/// Animates a piece of candy towards a grid position, via physics
+/// Animates a piece of candy towards a grid position, via physics, I forgot how it works...
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class MoveToGridPosition : GridMoveable
 {
     [SerializeField]
     private float offset = 0.25f;
-    private GridManager grid;
     [SerializeField] 
     private Rigidbody rb;
     [SerializeField]
@@ -26,19 +25,12 @@ public class MoveToGridPosition : GridMoveable
     private float endTimerTime = 15f;
     private Timer endTimer;
     private Action onUpdate;
-    private GridManager.GridInstance target;
     private float usedMinimumForce;
 
-    private void OnValidate()
+    protected override void CustomOnValidate()
     {
         if (Application.isPlaying) return;
         this.rb = GetComponent<Rigidbody>();
-    }
-
-    private void Start()
-    {
-        this.grid = ComponentRegistry.GetComponent<GridManager>();
-        SetEnabled(true);
     }
     
     protected override void DoEnable()
@@ -71,25 +63,14 @@ public class MoveToGridPosition : GridMoveable
         
         this.startTimer.ResetAndReplay();
     }
-    
-    private bool GetTarget()
-    {
-        if (this.target != null)
-            return true;
-        GridManager grid = ComponentRegistry.GetComponent<GridManager>();
-        SetTarget(grid.GetNearestPosition(this.transform.position, this.gameObject));
-        return this.target != null;
-    }
-    
-    public void SetTarget(GridManager.GridInstance newTarget) => this.target = newTarget;
 
     private void UpdateEndTimer() => this.endTimer.UpdateTime(Time.deltaTime);
 
-    private Vector3 GetTargetPosition() => this.target.position + Vector3.back * this.offset;
+    private Vector3 GetTargetPosition() => this.Target.position + Vector3.back * this.offset;
 
     private void SnapToTarget()
     {
-        if (this.target == null)
+        if (this.Target == null)
             return;
         this.transform.position = GetTargetPosition();
         this.rb.linearVelocity = Vector3.zero;
@@ -102,7 +83,7 @@ public class MoveToGridPosition : GridMoveable
     
     private void ApplyForceTowardsTarget()
     {
-        if (this.target == null)
+        if (this.Target == null)
             return;
         Vector3 targetPosition = GetTargetPosition();
         Vector3 diff = targetPosition - this.transform.position;
@@ -133,14 +114,4 @@ public class MoveToGridPosition : GridMoveable
         if (this.rb.linearVelocity.magnitude < 0.2f)
             SnapToTarget();
     }
-
-    public void ResetTarget()
-    {
-        if (this.target == null)
-            return;
-        this.grid.ReleaseInstance(this.target);
-        this.target = null;
-    }
-
-    public bool HasTarget() => this.target != null;
 }

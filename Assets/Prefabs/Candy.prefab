@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a64a5891147b9d8418018ca3db366be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  boardItem: {fileID: 0}
+  boardItem: {fileID: 1365219245064566773}
   offset: 0.1
   rb: {fileID: 8897784474759205449}
   movementStrength: 5
@@ -124,7 +124,7 @@ MonoBehaviour:
   - {fileID: 6753702778368679204}
   - {fileID: 8982616026848609941}
   rb: {fileID: 8897784474759205449}
-  points: 0
+  points: 2
   candyType: 0
   movement: {fileID: 6753702778368679204}
   handHandler: {fileID: 8982616026848609941}
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527bb24077f544c085719fef87b8a17a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandHandler
-  boardItem: {fileID: 0}
+  boardItem: {fileID: 1365219245064566773}
 --- !u!1 &4573164708967338231
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,8 +248,8 @@ MonoBehaviour:
   interaction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1365219245064566773}
-        m_TargetAssemblyTypeName: CandyComponent, Assembly-CSharp
+      - m_Target: {fileID: 8982616026848609941}
+        m_TargetAssemblyTypeName: HandHandler, Assembly-CSharp
         m_MethodName: AddToHand
         m_Mode: 1
         m_Arguments:
