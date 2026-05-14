@@ -8,7 +8,7 @@ using UnityEngine;
 public class CandyActor : BoardItem
 {
     [SerializeField] private float points;
-    [SerializeField] private int candyType; // index reference to lookup
+    public int candyType; // index reference to lookup
     
     [SerializeField]
     private MoveToGridPosition movement;

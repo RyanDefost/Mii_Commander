@@ -466,8 +466,9 @@ GameObject:
   - component: {fileID: 705374799}
   - component: {fileID: 705374800}
   - component: {fileID: 705374801}
+  - component: {fileID: 705374802}
   m_Layer: 0
-  m_Name: Candybox
+  m_Name: PlayerDeck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -645,7 +646,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CandySpawner
   playerHandManager: {fileID: 2018210009}
-  candyPrefab: {fileID: 2427277321692252709, guid: d2d0231140d814541bd628f37b73ca0c, type: 3}
+  options:
+  - name: SweetSourDefaultDeck
+    possibleCandies:
+    - chance: 50
+      typeIndex: 0
+    - chance: 50
+      typeIndex: 1
+--- !u!114 &705374802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705374796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6d8a474c774aec9b49b92c0cdd991c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CandyTypeLookup
+  options:
+  - name: Sweet
+    candyPrefab: {fileID: 2427277321692252709, guid: d2d0231140d814541bd628f37b73ca0c, type: 3}
+    index: 0
+  - name: Sour
+    candyPrefab: {fileID: 2427277321692252709, guid: e28cc7eff9843884c8af3aae2ec583f3, type: 3}
+    index: 1
 --- !u!1 &745027579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,8 +1386,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 637a12b5322544ab9a51a10c904c50a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FPSCounter
-  frequency: 0.5
   counter: {fileID: 1148917902}
+  updateInterval: 0.5
 --- !u!114 &1148917902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2535,8 +2561,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 637a12b5322544ab9a51a10c904c50a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FPSCounter
-  frequency: 0.5
   counter: {fileID: 2046187766}
+  updateInterval: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
