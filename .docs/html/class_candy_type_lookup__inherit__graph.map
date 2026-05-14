@@ -1,0 +1,5 @@
+<map id="CandyTypeLookup" name="CandyTypeLookup">
+<area shape="rect" id="Node000001" title="Lookup table for all candy types, and their data Possible to change per level since it&#39;s a registered..." alt="" coords="5,123,166,267"/>
+<area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="36,5,136,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,87,88,123,83,122,85,92"/>
+</map>

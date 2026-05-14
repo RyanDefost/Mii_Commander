@@ -27,14 +27,31 @@ hide empty members
 
 MonoBehaviour(Billboard) {
 }
-class ComponentRegistry {
-  + AddToRegistry() : static bool
-  + RemoveFromRegistry() : static bool
-  + ReplaceInRegistry() : static bool
+MonoBehaviour(CandyTypeLookup) {
+  + name : string
+  + candyPrefab : GameObject
+  + index : int
+  + Get() : CandyTypeOption
 }
-MonoBehaviour(FPSCounter) {
+class CandyTypeOption {
+  + name : string
+  + candyPrefab : GameObject
+  + index : int
 }
-interface IPoolable {
+MonoBehaviour(PlayerDeck) {
+  + chance : float
+  + typeIndex : int
+  + GetCandy() : void
+  + AddToHand() : void
+}
+class DeckOption {
+  + chance : float
+  + typeIndex : int
+  + GetCandy() : void
+}
+class CandyOption {
+  + chance : float
+  + typeIndex : int
 }
 MonoBehaviour(QuestSystem) {
   + pointRequirement : int
@@ -44,23 +61,44 @@ class Quest {
   + pointRequirement : int
   + GetText() : string
 }
-MonoBehaviour(ResolutionTracker) {
-  + OnResolutionChanged : static Action<int, int>
+MonoBehaviour(BoardItem) {
+  + OnAddToHand : Action
+  + OnInitiate : Action
+  + Initiate() : void
 }
-class Timer {
-  + onEnd : Action
-  + onPlaying : Action<double>
-  + running : bool
-  + Reset() : void
-  + Update() : void
-  + CheckIfEndIsReached() : void
-  + GetFormattedTime() : string
-  + GetCurrentTime() : double
-  + Add() : void
+MonoBehaviour(BoardItemComponent) {
+  + ConnectToBoardItem() : virtual void
 }
-class VectorExtensions {
-  + XY() : static Vector2
-  + OverwriteXY() : static Vector3
+class GridMoveable {
+  + ConnectToBoardItem() : override void
+  + SetEnabled() : void
+  + SetTarget() : void
+  + ResetTarget() : void
+  + HasTarget() : bool
+}
+class HandHandler {
+  + ConnectToBoardItem() : override void
+  + AddToHand() : void
+  + OnGrabReleased() : static void
+}
+MonoBehaviour(Interactable) {
+  + Trigger() : void
+}
+class MoveToGridPosition {
+}
+class CandyActor {
+  + candyType : int
+  + OnGrabReleased() : static void
+}
+class CandyGroupHandle {
+  + OnEnableObject() : void
+  + OnDisableObject() : void
+  + SetParent() : void
+}
+class CandyHandle {
+  + rb : readonly Rigidbody
+  + actor : readonly CandyActor
+  + gameObject : readonly GameObject
 }
 MonoBehaviour(GridGenerator) {
   + cellSize : Vector2
@@ -91,34 +129,35 @@ class GridInstance {
 MonoBehaviour(TurnManager) {
   + NextTurn() : void
 }
-MonoBehaviour(Interactable) {
-  + Trigger() : void
+class ComponentRegistry {
+  + AddToRegistry() : static bool
+  + RemoveFromRegistry() : static bool
+  + ReplaceInRegistry() : static bool
 }
-MonoBehaviour(MoveToGridPosition) {
-  + SetEnabled() : void
-  + SetTarget() : void
-  + ResetTarget() : void
-  + HasTarget() : bool
+MonoBehaviour(FPSCounter) {
 }
-MonoBehaviour(CandyComponent) {
-  + AddToHand() : void
-  + OnGrabReleased() : static void
+interface IPoolable {
 }
-class CandyGroupInstance {
-  + rb : readonly Rigidbody
-  + component : readonly CandyComponent
-  + gameObject : readonly GameObject
-  + OnEnableObject() : void
-  + OnDisableObject() : void
-  + SetParent() : void
+MonoBehaviour(ResolutionTracker) {
+  + OnResolutionChanged : static Action<int, int>
 }
-class CandyInstance {
-  + rb : readonly Rigidbody
-  + component : readonly CandyComponent
-  + gameObject : readonly GameObject
+class Timer {
+  + UpdateTime() : void
+  + Reset() : void
+  + ResetAndReplay() : void
+  + Stop() : void
+  + Play() : void
+  + AddToMaxTime() : void
+  + RegisterOnEndListener() : void
+  + UnregisterOnEndListener() : void
+  + RegisterOnPlayingListener() : void
+  + UnregisterOnPlayingListener() : void
+  + GetSecondsInTimeFormatted() : static string
+  + GetCurrentTimeFormatted() : string
 }
-MonoBehaviour(CandySpawner) {
-  + AddToHand() : void
+class VectorExtensions {
+  + XY() : static Vector2
+  + OverwriteXY() : static Vector3
 }
 MonoBehaviour(InteractionHandler) {
 }
@@ -145,24 +184,36 @@ struct VisualState {
   + z : float
 }
 
-CandyComponent --> Interactable
-CandyComponent --> MoveToGridPosition
-CandyComponent --> PlayerHandManager
-CandyGroupInstance --> CandyComponent
-CandyGroupInstance --> CandyInstance
-CandyGroupInstance --> PlayerHandManager
-CandyInstance --> CandyComponent
-CandySpawner --> CandyGroupInstance
-CandySpawner --> PlayerHandManager
+BoardItem <|-- CandyActor
+BoardItem --> BoardItemComponent
+BoardItem --> Interactable
+BoardItemComponent <|-- GridMoveable
+BoardItemComponent <|-- HandHandler
+BoardItemComponent --> BoardItem
+CandyActor --> HandHandler
+CandyActor --> MoveToGridPosition
+CandyGroupHandle --> CandyActor
+CandyGroupHandle --> CandyHandle
+CandyGroupHandle --> PlayerHandManager
+CandyHandle --> CandyActor
+CandyTypeLookup --> CandyTypeOption
+DeckOption --> CandyOption
+DeckOption --> CandyTypeLookup
 GridManager --> GridGenerator
 GridManager --> GridInstance
+GridMoveable <|-- MoveToGridPosition
+GridMoveable --> GridManager
+HandHandler --> PlayerHandManager
 InteractionHandler --> Interactable
 InteractionHandler --> MovementHandler
 InteractionHandler --> VisualHandler
-IPoolable <|.. CandyGroupInstance
-MoveToGridPosition --> GridInstance
-MoveToGridPosition --> GridManager
+IPoolable <|.. CandyGroupHandle
 MoveToGridPosition --> Timer
+PlayerDeck --> CandyGroupHandle
+PlayerDeck --> CandyOption
+PlayerDeck --> CandyTypeLookup
+PlayerDeck --> DeckOption
+PlayerDeck --> PlayerHandManager
 PlayerHandManager --> InteractionHandler
 PlayerHandManager --> MovementHandler
 PlayerHandManager --> VisualHandler

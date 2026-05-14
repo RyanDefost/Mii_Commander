@@ -1,0 +1,18 @@
+<map id="BoardItemComponent" name="BoardItemComponent">
+<area shape="rect" id="Node000001" title="A component that&#39;s able to hook into the functions of a board item." alt="" coords="5,147,213,275"/>
+<area shape="rect" id="Node000003" href="$class_board_item.html" title="Holds all board item events, used to let board item specific components hook into logic and represent..." alt="" coords="179,368,387,501"/>
+<area shape="poly" id="edge7_Node000003_Node000001" title=" " alt="" coords="52,277,46,293,41,310,42,327,49,343,71,368,99,388,130,403,165,416,159,418,128,408,96,392,68,372,44,345,37,328,36,309,41,291,53,272"/>
+<area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="187,5,288,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,89,159,148,155,146,204,84"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="245,88,278,368,272,368,241,91"/>
+<area shape="rect" id="Node000004" href="$class_interactable.html" title="A simple class for hooking into interactions, player pickup etc." alt="" coords="288,176,387,245"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="266,85,320,176,315,176,264,90"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="179,369,157,346,141,320,130,293,131,288,145,317,161,342,184,368"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="331,243,305,353,300,350,327,247"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="312,5,387,75"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="348,72,343,160,338,158,346,77"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="411,176,480,245"/>
+<area shape="poly" id="edge8_Node000003_Node000006" title=" " alt="" coords="441,243,427,295,416,321,401,346,390,358,387,354,396,342,411,319,422,293,437,247"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="504,176,552,245"/>
+<area shape="poly" id="edge9_Node000003_Node000007" title=" " alt="" coords="517,244,491,296,473,322,452,346,403,383,400,379,449,342,469,319,487,294,513,247"/>
+</map>

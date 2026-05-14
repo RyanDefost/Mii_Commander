@@ -1,6 +1,9 @@
 ﻿using PlayerHand;
 using UnityEngine;
 
+/// <summary>
+/// Lets a boardItem connect to the player hand
+/// </summary>
 public class HandHandler : BoardItemComponent
 {
     private PlayerHandManager playerHandRef;

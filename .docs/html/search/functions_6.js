@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['initiate_0',['Initiate',['../class_candy_component.html#a72cd866f747da80176e85d0dc8f15847',1,'CandyComponent']]]
+  ['initiate_0',['Initiate',['../class_board_item.html#aae0747156612c7495f20f4eff324b207',1,'BoardItem']]]
 ];

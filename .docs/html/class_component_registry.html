@@ -120,6 +120,9 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('class_componen
   <div class="headertitle"><div class="title">ComponentRegistry Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A register, so a unique named list, of components to keep safe, and make accessible.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Collaboration diagram for ComponentRegistry:</div>
 <div class="dyncontent">
@@ -135,9 +138,11 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-attribs" class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:ab63888e32e4e891fdfd403dba4b368f4" id="r_ab63888e32e4e891fdfd403dba4b368f4"><td class="memItemLeft">static Dictionary&lt; string, Component &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ab63888e32e4e891fdfd403dba4b368f4">components</a> = new()</td></tr>
+<tr class="memitem:aa58d555673afeaf7267e4c2030523212" id="r_aa58d555673afeaf7267e4c2030523212"><td class="memItemLeft">static readonly Dictionary&lt; string, Component &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aa58d555673afeaf7267e4c2030523212">Components</a> = new()</td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A register, so a unique named list, of components to keep safe, and make accessible. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="ada1775506a8f11a9605a63c2ab4cefdc" name="ada1775506a8f11a9605a63c2ab4cefdc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ada1775506a8f11a9605a63c2ab4cefdc">&#9670;&#160;</a></span>AddToRegistry()</h2>
 
@@ -160,8 +165,15 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">    9</span>=&gt; <a class="code hl_variable" href="#ab63888e32e4e891fdfd403dba4b368f4">components</a>.TryAdd(component.GetType().ToString(), component);</div>
-<div class="ttc" id="aclass_component_registry_html_ab63888e32e4e891fdfd403dba4b368f4"><div class="ttname"><a href="#ab63888e32e4e891fdfd403dba4b368f4">ComponentRegistry.components</a></div><div class="ttdeci">static Dictionary&lt; string, Component &gt; components</div><div class="ttdef"><b>Definition</b> ComponentRegistry.cs:7</div></div>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">component</td><td>The component to make accessible globally</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A bool that's false on failure, meaning there's already a component of the same type inside the register</dd></dl>
+<div class="fragment"><div class="line"><span class="lineno">   13</span>=&gt; <a class="code hl_variable" href="#aa58d555673afeaf7267e4c2030523212">Components</a>.TryAdd(component.GetType().ToString(), component);</div>
+<div class="ttc" id="aclass_component_registry_html_aa58d555673afeaf7267e4c2030523212"><div class="ttname"><a href="#aa58d555673afeaf7267e4c2030523212">ComponentRegistry.Components</a></div><div class="ttdeci">static readonly Dictionary&lt; string, Component &gt; Components</div><div class="ttdef"><b>Definition</b> ComponentRegistry.cs:9</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -187,6 +199,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type to get from the register</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The desired component of type, or null</dd></dl>
 <div class="typeconstraint">
 <dl><dt><b>Type Constraints</b></dt><dd>
 <table border="0" cellspacing="2" cellpadding="0">
@@ -195,7 +214,7 @@ Static Private Attributes</h2></td></tr>
 </dd>
 </dl>
 </div>
-<div class="fragment"><div class="line"><span class="lineno">   19</span>: Component =&gt; (T)<a class="code hl_variable" href="#ab63888e32e4e891fdfd403dba4b368f4">components</a>.GetValueOrDefault(typeof(T).ToString());</div>
+<div class="fragment"><div class="line"><span class="lineno">   30</span>: Component =&gt; (T)<a class="code hl_variable" href="#aa58d555673afeaf7267e4c2030523212">Components</a>.GetValueOrDefault(typeof(T).ToString());</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -221,7 +240,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   11</span>=&gt; <a class="code hl_variable" href="#ab63888e32e4e891fdfd403dba4b368f4">components</a>.Remove(component.GetType().ToString());</div>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">component</td><td>The component to remove from global access</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A bool that's false when the component was not found in the register</dd></dl>
+<div class="fragment"><div class="line"><span class="lineno">   17</span>=&gt; <a class="code hl_variable" href="#aa58d555673afeaf7267e4c2030523212">Components</a>.Remove(component.GetType().ToString());</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -247,18 +273,25 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   13</span>    {</div>
-<div class="line"><span class="lineno">   14</span>        <span class="keywordtype">string</span> name = component.GetType().ToString();</div>
-<div class="line"><span class="lineno">   15</span>        <a class="code hl_variable" href="#ab63888e32e4e891fdfd403dba4b368f4">components</a>.Remove(name);</div>
-<div class="line"><span class="lineno">   16</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="#ada1775506a8f11a9605a63c2ab4cefdc">AddToRegistry</a>(component);</div>
-<div class="line"><span class="lineno">   17</span>    }</div>
-<div class="ttc" id="aclass_component_registry_html_ada1775506a8f11a9605a63c2ab4cefdc"><div class="ttname"><a href="#ada1775506a8f11a9605a63c2ab4cefdc">ComponentRegistry.AddToRegistry</a></div><div class="ttdeci">static bool AddToRegistry(Component component)</div><div class="ttdef"><b>Definition</b> ComponentRegistry.cs:9</div></div>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">component</td><td>The component to make accessible globally</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Should not be able to return false, but returns false on failure</dd></dl>
+<div class="fragment"><div class="line"><span class="lineno">   22</span>    {</div>
+<div class="line"><span class="lineno">   23</span>        <span class="keywordtype">string</span> name = component.GetType().ToString();</div>
+<div class="line"><span class="lineno">   24</span>        <a class="code hl_variable" href="#aa58d555673afeaf7267e4c2030523212">Components</a>.Remove(name);</div>
+<div class="line"><span class="lineno">   25</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="#ada1775506a8f11a9605a63c2ab4cefdc">AddToRegistry</a>(component);</div>
+<div class="line"><span class="lineno">   26</span>    }</div>
+<div class="ttc" id="aclass_component_registry_html_ada1775506a8f11a9605a63c2ab4cefdc"><div class="ttname"><a href="#ada1775506a8f11a9605a63c2ab4cefdc">ComponentRegistry.AddToRegistry</a></div><div class="ttdeci">static bool AddToRegistry(Component component)</div><div class="ttdef"><b>Definition</b> ComponentRegistry.cs:13</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
-<a id="ab63888e32e4e891fdfd403dba4b368f4" name="ab63888e32e4e891fdfd403dba4b368f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab63888e32e4e891fdfd403dba4b368f4">&#9670;&#160;</a></span>components</h2>
+<a id="aa58d555673afeaf7267e4c2030523212" name="aa58d555673afeaf7267e4c2030523212"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa58d555673afeaf7267e4c2030523212">&#9670;&#160;</a></span>Components</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -267,7 +300,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Dictionary&lt;string, Component&gt; ComponentRegistry.components = new()</td>
+          <td class="memname">readonly Dictionary&lt;string, Component&gt; ComponentRegistry.Components = new()</td>
         </tr>
       </table>
   </td>
@@ -280,7 +313,7 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/Lucas/Documents/School/HKU/PresentYourself/Mii_Commander/Assets/Scripts/<a class="el" href="_component_registry_8cs.html">ComponentRegistry.cs</a></li>
+<li>C:/Users/Lucas/Documents/School/HKU/PresentYourself/Mii_Commander/Assets/Scripts/MiscHelper/<a class="el" href="_component_registry_8cs.html">ComponentRegistry.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

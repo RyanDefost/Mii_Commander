@@ -1,0 +1,11 @@
+<map id="PlayerDeck.DeckOption" name="PlayerDeck.DeckOption">
+<area shape="rect" id="Node000001" title="Contains a list of possible candies, handles the distribution of random candy from deck." alt="" coords="5,304,215,389"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="52,155,94,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,222,99,288,94,288,80,226"/>
+<area shape="rect" id="Node000003" href="$class_player_deck_1_1_deck_option_1_1_candy_option.html" title="Weighted candy lookup reference." alt="" coords="119,147,312,232"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="190,230,150,292,146,288,186,233"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="152,5,188,75"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="168,72,171,98,176,122,180,132,174,131,171,123,166,99,167,77"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="247,5,272,75"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="251,72,235,132,230,130,248,77"/>
+</map>

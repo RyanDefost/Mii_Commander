@@ -1,0 +1,11 @@
+<map id="BoardItemComponent" name="BoardItemComponent">
+<area shape="rect" id="Node000001" title="A component that&#39;s able to hook into the functions of a board item." alt="" coords="129,123,337,251"/>
+<area shape="rect" id="Node000003" href="$class_grid_moveable.html" title="Makes it so that a board item gets to move to another place on the board TODO: If the player is not a..." alt="" coords="15,299,214,688"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="202,267,192,300,187,298,204,262"/>
+<area shape="rect" id="Node000005" href="$class_hand_handler.html" title="Lets a boardItem connect to the player hand." alt="" coords="238,349,468,637"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="263,262,300,350,294,350,263,267"/>
+<area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="183,5,283,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="233,87,236,123,230,123,233,92"/>
+<area shape="rect" id="Node000004" href="$class_move_to_grid_position.html" title="Animates a piece of candy towards a grid position, via physics, I forgot how it works...." alt="" coords="5,736,223,1211"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="115,700,117,736,112,736,114,705"/>
+</map>

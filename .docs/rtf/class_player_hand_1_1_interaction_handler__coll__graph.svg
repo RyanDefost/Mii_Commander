@@ -11,25 +11,25 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
-<polygon fill="#999999" stroke="none" points="782,-124 640.5,-124 640.5,0 782,0 782,-124"/>
+<g id="a_Node000001"><a xlink:title="Lets the player hand interact with interactables.">
+<polygon fill="#999999" stroke="none" points="788.12,-124 634.38,-124 634.38,0 788.12,0 788.12,-124"/>
 <text xml:space="preserve" text-anchor="start" x="644.5" y="-110.25" font-family="Helvetica,sans-Serif" font-size="10.00">PlayerHand.InteractionHandler</text>
-<text xml:space="preserve" text-anchor="start" x="645.38" y="-94.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text xml:space="preserve" text-anchor="start" x="656.25" y="-94.25" font-family="Helvetica,sans-Serif" font-size="10.00">Interactable CurrentHover</text>
-<text xml:space="preserve" text-anchor="start" x="646.88" y="-78.25" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text xml:space="preserve" text-anchor="start" x="656.25" y="-78.25" font-family="Helvetica,sans-Serif" font-size="10.00">void OnValidate()</text>
-<text xml:space="preserve" text-anchor="start" x="646.88" y="-62.25" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text xml:space="preserve" text-anchor="start" x="656.25" y="-62.25" font-family="Helvetica,sans-Serif" font-size="10.00">void Update()</text>
-<text xml:space="preserve" text-anchor="start" x="646.88" y="-46.25" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text xml:space="preserve" text-anchor="start" x="656.25" y="-46.25" font-family="Helvetica,sans-Serif" font-size="10.00">RaycastHit2D? GetClosest</text>
-<text xml:space="preserve" text-anchor="start" x="656.25" y="-34.25" font-family="Helvetica,sans-Serif" font-size="10.00">ToCamera(RaycastHit2D</text>
-<text xml:space="preserve" text-anchor="start" x="656.25" y="-22.25" font-family="Helvetica,sans-Serif" font-size="10.00">[] hits)</text>
-<text xml:space="preserve" text-anchor="start" x="646.88" y="-6.25" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text xml:space="preserve" text-anchor="start" x="656.25" y="-6.25" font-family="Helvetica,sans-Serif" font-size="10.00">void OnNoInteractable()</text>
-<polygon fill="#666666" stroke="#666666" points="640.5,-106 640.5,-106 782,-106 782,-106 640.5,-106"/>
-<polygon fill="#666666" stroke="#666666" points="640.5,-90 640.5,-90 654.25,-90 654.25,-90 640.5,-90"/>
-<polygon fill="#666666" stroke="#666666" points="654.25,-90 654.25,-90 782,-90 782,-90 654.25,-90"/>
-<polygon fill="none" stroke="#666666" points="640.5,0 640.5,-124 782,-124 782,0 640.5,0"/>
+<text xml:space="preserve" text-anchor="start" x="638.38" y="-94.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text xml:space="preserve" text-anchor="start" x="648.38" y="-94.25" font-family="Helvetica,sans-Serif" font-size="10.00">Interactable CurrentHover</text>
+<text xml:space="preserve" text-anchor="start" x="639.88" y="-78.25" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text xml:space="preserve" text-anchor="start" x="648.38" y="-78.25" font-family="Helvetica,sans-Serif" font-size="10.00">void OnValidate()</text>
+<text xml:space="preserve" text-anchor="start" x="639.88" y="-62.25" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text xml:space="preserve" text-anchor="start" x="648.38" y="-62.25" font-family="Helvetica,sans-Serif" font-size="10.00">void Update()</text>
+<text xml:space="preserve" text-anchor="start" x="639.88" y="-46.25" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text xml:space="preserve" text-anchor="start" x="648.38" y="-46.25" font-family="Helvetica,sans-Serif" font-size="10.00">RaycastHit2D? GetClosest</text>
+<text xml:space="preserve" text-anchor="start" x="648.38" y="-34.25" font-family="Helvetica,sans-Serif" font-size="10.00">InteractableToCamera(Raycast</text>
+<text xml:space="preserve" text-anchor="start" x="648.38" y="-22.25" font-family="Helvetica,sans-Serif" font-size="10.00">Hit2D[] hits)</text>
+<text xml:space="preserve" text-anchor="start" x="639.88" y="-6.25" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text xml:space="preserve" text-anchor="start" x="648.38" y="-6.25" font-family="Helvetica,sans-Serif" font-size="10.00">void ResetHover()</text>
+<polygon fill="#666666" stroke="#666666" points="634.38,-106 634.38,-106 788.12,-106 788.12,-106 634.38,-106"/>
+<polygon fill="#666666" stroke="#666666" points="634.38,-90 634.38,-90 646.38,-90 646.38,-90 634.38,-90"/>
+<polygon fill="#666666" stroke="#666666" points="646.38,-90 646.38,-90 788.12,-90 788.12,-90 646.38,-90"/>
+<polygon fill="none" stroke="#666666" points="634.38,0 634.38,-124 788.12,-124 788.12,0 634.38,0"/>
 </a>
 </g>
 </g>
@@ -167,7 +167,7 @@
 <!-- Node17 -->
 <g id="Node000017" class="node">
 <title>Node17</title>
-<g id="a_Node000017"><a xlink:href="$class_interactable.html" xlink:title=" ">
+<g id="a_Node000017"><a xlink:href="$class_interactable.html" xlink:title="A simple class for hooking into interactions, player pickup etc.">
 <polygon fill="white" stroke="none" points="796.38,-458 722.12,-458 722.12,-406 796.38,-406 796.38,-458"/>
 <text xml:space="preserve" text-anchor="start" x="733.75" y="-444.25" font-family="Helvetica,sans-Serif" font-size="10.00">Interactable</text>
 <text xml:space="preserve" text-anchor="start" x="757.75" y="-428.25" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
@@ -206,8 +206,8 @@
 <g id="edge25_Node000001_Node000003" class="edge">
 <title>Node3&#45;&gt;Node1</title>
 <g id="a_edge25_Node000001_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M19.52,-819.18C14.18,-721.16 8.55,-357.69 201.75,-178 262.9,-121.13 499.77,-86.57 627.87,-71.65"/>
-<polygon fill="none" stroke="#63b8ff" points="627.86,-71.65 633.37,-66.99 639.78,-70.28 634.28,-74.94 627.86,-71.65"/>
+<path fill="none" stroke="#63b8ff" d="M19.52,-819.18C14.18,-721.16 8.55,-357.69 201.75,-178 261.95,-122.01 492.51,-87.64 621.88,-72.35"/>
+<polygon fill="none" stroke="#63b8ff" points="621.64,-72.38 627.14,-67.71 633.56,-70.99 628.06,-75.66 621.64,-72.38"/>
 </a>
 </g>
 <text xml:space="preserve" text-anchor="start" x="204.75" y="-428.25" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">&#45;camRef</text>
@@ -226,8 +226,8 @@
 <g id="edge26_Node000001_Node000004" class="edge">
 <title>Node4&#45;&gt;Node1</title>
 <g id="a_edge26_Node000001_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M400.2,-340.29C450.64,-280.46 521.15,-202.3 591.75,-142 603.61,-131.87 616.84,-121.96 630.04,-112.77"/>
-<polygon fill="none" stroke="#63b8ff" points="629.95,-112.83 632.65,-106.15 639.86,-106.07 637.16,-112.76 629.95,-112.83"/>
+<path fill="none" stroke="#63b8ff" d="M400.2,-340.29C450.64,-280.46 521.15,-202.3 591.75,-142 601.78,-133.43 612.79,-125.02 623.93,-117.07"/>
+<polygon fill="none" stroke="#63b8ff" points="624.05,-116.99 626.68,-110.27 633.89,-110.12 631.26,-116.83 624.05,-116.99"/>
 </a>
 </g>
 <text xml:space="preserve" text-anchor="start" x="594.75" y="-147.25" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">&#45;movementHandler</text>
@@ -426,8 +426,8 @@
 <g id="edge35_Node000001_Node000011" class="edge">
 <title>Node11&#45;&gt;Node1</title>
 <g id="a_edge35_Node000001_Node000011"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M967.51,-386.17C972.23,-324.23 971.25,-212.18 914.25,-142 884.8,-105.74 836.51,-86.08 794.42,-75.44"/>
-<polygon fill="none" stroke="#63b8ff" points="794.43,-75.44 787.67,-77.96 782.75,-72.69 789.51,-70.17 794.43,-75.44"/>
+<path fill="none" stroke="#63b8ff" d="M967.51,-386.17C972.23,-324.23 971.25,-212.18 914.25,-142 886.22,-107.48 841.11,-88.01 800.52,-77.04"/>
+<polygon fill="none" stroke="#63b8ff" points="800.61,-77.06 793.81,-79.47 788.97,-74.12 795.77,-71.71 800.61,-77.06"/>
 </a>
 </g>
 <text xml:space="preserve" text-anchor="start" x="926.55" y="-147.25" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">&#45;visualHandler</text>

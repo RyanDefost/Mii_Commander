@@ -1,10 +1,10 @@
 <map id="Grid.TurnManager" name="Grid.TurnManager">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,1171,128,1261"/>
+<area shape="rect" id="Node000001" title="Handles turns on the grid, moving anything on the grid down." alt="" coords="5,1171,128,1261"/>
 <area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="16,5,117,75"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,89,69,1171,64,1171,64,90"/>
-<area shape="rect" id="Node000003" href="$class_grid_1_1_grid_manager.html" title=" " alt="" coords="117,581,422,1099"/>
+<area shape="rect" id="Node000003" href="$class_grid_1_1_grid_manager.html" title="Manages everything inside of the grid." alt="" coords="117,581,422,1099"/>
 <area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="73,86,103,265,125,376,151,487,178,581,173,582,146,489,120,377,98,266,73,92"/>
-<area shape="rect" id="Node000004" href="$class_grid_1_1_grid_generator.html" title=" " alt="" coords="160,168,378,488"/>
+<area shape="rect" id="Node000004" href="$class_grid_1_1_grid_generator.html" title="Handles the possible positions within the grid, and generates the mesh." alt="" coords="160,168,378,488"/>
 <area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="101,84,113,97,163,168,158,169,109,100,103,89"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="132,1097,101,1157,97,1154,128,1101"/>
 <area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="270,485,272,565,267,564,269,490"/>

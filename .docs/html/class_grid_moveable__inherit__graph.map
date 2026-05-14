@@ -1,0 +1,9 @@
+<map id="GridMoveable" name="GridMoveable">
+<area shape="rect" id="Node000001" title="Makes it so that a board item gets to move to another place on the board TODO: If the player is not a..." alt="" coords="15,299,214,688"/>
+<area shape="rect" id="Node000004" href="$class_move_to_grid_position.html" title="Animates a piece of candy towards a grid position, via physics, I forgot how it works...." alt="" coords="5,736,223,1211"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="115,700,117,736,112,736,114,705"/>
+<area shape="rect" id="Node000002" href="$class_board_item_component.html" title="A component that&#39;s able to hook into the functions of a board item." alt="" coords="10,123,218,251"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,263,117,299,112,299,114,268"/>
+<area shape="rect" id="Node000003" href="$class_mono_behaviour.html" title=" " alt="" coords="64,5,165,75"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="114,87,117,123,112,123,114,92"/>
+</map>

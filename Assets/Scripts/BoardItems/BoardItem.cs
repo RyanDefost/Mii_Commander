@@ -2,6 +2,11 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+/// <summary>
+/// Holds all board item events,
+/// used to let board item specific components hook into logic
+/// and represent a single toy/item
+/// </summary>
 public class BoardItem : MonoBehaviour
 {
     [SerializeField]

@@ -16,6 +16,9 @@ public class PlayerDeck : MonoBehaviour
     private List<DeckOption> options = new();
     private int currentOption = 0;
 
+    /// <summary>
+    /// Contains a list of possible candies, handles the distribution of random candy from deck
+    /// </summary>
     [Serializable]
     public class DeckOption
     {
@@ -24,6 +27,9 @@ public class PlayerDeck : MonoBehaviour
         [SerializeField]
         private CandyOption[] possibleCandies;
 
+        /// <summary>
+        /// Weighted candy lookup reference
+        /// </summary>
         [Serializable]
         private class CandyOption
         {
@@ -32,6 +38,11 @@ public class PlayerDeck : MonoBehaviour
             public int typeIndex;
         }
 
+        /// <summary>
+        /// Gets a candy from the weighted candylist
+        /// </summary>
+        /// <param name="prefab">prefab to instantiate</param>
+        /// <param name="typeIndex">reference to the candy lookup table</param>
         public void GetCandy(out GameObject prefab, out int typeIndex)
         {
             typeIndex = -1;

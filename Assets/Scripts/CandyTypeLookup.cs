@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Lookup table for all candy types, and their data
+/// Possible to change per level since it's a registered component
+/// </summary>
 public class CandyTypeLookup : MonoBehaviour
 {
     [SerializeField]
@@ -28,5 +32,11 @@ public class CandyTypeLookup : MonoBehaviour
     }
 
     private void Awake() => ComponentRegistry.AddToRegistry(this);
+    
+    /// <summary>
+    /// Exposes candy from lookup table
+    /// </summary>
+    /// <param name="typeIndex">index of candy wish to get</param>
+    /// <returns>requested candy</returns>
     public CandyTypeOption Get(int typeIndex) => this.options[typeIndex];
 }

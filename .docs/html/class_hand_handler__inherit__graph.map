@@ -1,0 +1,7 @@
+<map id="HandHandler" name="HandHandler">
+<area shape="rect" id="Node000001" title="Lets a boardItem connect to the player hand." alt="" coords="5,299,236,587"/>
+<area shape="rect" id="Node000002" href="$class_board_item_component.html" title="A component that&#39;s able to hook into the functions of a board item." alt="" coords="17,123,225,251"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,263,123,299,118,299,120,268"/>
+<area shape="rect" id="Node000003" href="$class_mono_behaviour.html" title=" " alt="" coords="70,5,171,75"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="121,87,123,123,118,123,120,92"/>
+</map>

@@ -1,5 +1,5 @@
 <map id="Interactable" name="Interactable">
-<area shape="rect" id="Node000001" title=" " alt="" coords="62,147,161,216"/>
+<area shape="rect" id="Node000001" title="A simple class for hooking into interactions, player pickup etc." alt="" coords="62,147,161,216"/>
 <area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="5,5,106,75"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,86,101,147,96,147,73,91"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="130,5,206,75"/>

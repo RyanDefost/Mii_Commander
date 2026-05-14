@@ -1,12 +1,18 @@
 var searchData=
 [
-  ['setenabled_0',['SetEnabled',['../class_move_to_grid_position.html#aa0226d79da6f383bbd8f136099ae1e0e',1,'MoveToGridPosition']]],
-  ['setparent_1',['SetParent',['../class_candy_group_instance.html#a9b51a1bd71535c4ccc60fb0afaeb0983',1,'CandyGroupInstance']]],
-  ['setsprite_2',['SetSprite',['../class_player_hand_1_1_visual_handler.html#ab721e54f058bf6f905d732ca5e3f0063',1,'PlayerHand::VisualHandler']]],
-  ['setstatetograbbing_3',['SetStateToGrabbing',['../class_player_hand_1_1_player_hand_manager.html#aacdc406229143236a83878cf855d706c',1,'PlayerHand::PlayerHandManager']]],
-  ['settarget_4',['SetTarget',['../class_move_to_grid_position.html#a52d441a3f333458e59f7e9d1bafcbc7b',1,'MoveToGridPosition']]],
-  ['settargetz_5',['SetTargetZ',['../class_player_hand_1_1_movement_handler.html#a6fc7dc57c94a5f6396f731eac65864fc',1,'PlayerHand::MovementHandler']]],
-  ['snaptotarget_6',['SnapToTarget',['../class_move_to_grid_position.html#a1e22fe055667e3973efbf5582f7eb643',1,'MoveToGridPosition']]],
-  ['start_7',['Start',['../class_f_p_s_counter.html#a9b2870f1a974e5d8293911886c5465c0',1,'FPSCounter.Start()'],['../class_grid_1_1_grid_generator.html#aaeeec5a6628b1f43df8e81dd3f33dc61',1,'Grid.GridGenerator.Start()'],['../class_grid_1_1_grid_manager.html#a473ec745ea73c3ae43b311827958258f',1,'Grid.GridManager.Start()'],['../class_candy_component.html#a81020c049003e9c0a9694310ceafa766',1,'CandyComponent.Start()'],['../class_move_to_grid_position.html#ae6bddd939aeda0669cc648710de8e61f',1,'MoveToGridPosition.Start()'],['../class_quest_system.html#a8dd9dbd1fcea301f2429975774c8728a',1,'QuestSystem.Start()'],['../class_resolution_tracker.html#ac2f397f49226cd1cc5330b54b8f49977',1,'ResolutionTracker.Start()']]],
-  ['startmovement_8',['StartMovement',['../class_move_to_grid_position.html#a9b12196da44bbbd14524d2c173b089f1',1,'MoveToGridPosition']]]
+  ['recalculatebounds_0',['RecalculateBounds',['../class_player_hand_1_1_movement_handler.html#a4b2ad34b4a70c617f755168499aca1de',1,'PlayerHand::MovementHandler']]],
+  ['recalculatepixeldensityscale_1',['RecalculatePixelDensityScale',['../class_player_hand_1_1_movement_handler.html#a854227fd9fecc2793b6aefed029aa1f3',1,'PlayerHand::MovementHandler']]],
+  ['registergridposition_2',['RegisterGridPosition',['../class_grid_1_1_grid_manager.html#af5a26c4e665abb389bf6ece73e6e3ee5',1,'Grid::GridManager']]],
+  ['registeronendlistener_3',['RegisterOnEndListener',['../class_timer.html#ae3e58f1c074dc1dc06a3ab125b8a9994',1,'Timer']]],
+  ['registeronplayinglistener_4',['RegisterOnPlayingListener',['../class_timer.html#acf8f5e725d6e66ac9658361f811045b9',1,'Timer']]],
+  ['releaseinstance_5',['ReleaseInstance',['../class_grid_1_1_grid_manager.html#a1e2a91fac8503047529114bd166d87c8',1,'Grid::GridManager']]],
+  ['removefrompool_6',['RemoveFromPool',['../class_object_pool-1-g.html#adee5368a69a65ff45d0f2af9f1b3656f',1,'ObjectPool-1-g']]],
+  ['removefromregistry_7',['RemoveFromRegistry',['../class_component_registry.html#a75c83b2b4dddef2b06bfbba30eb71758',1,'ComponentRegistry']]],
+  ['replaceinregistry_8',['ReplaceInRegistry',['../class_component_registry.html#a2e6de7a1b05d47e272a1a4529ba6cff6',1,'ComponentRegistry']]],
+  ['requestobject_9',['RequestObject',['../class_object_pool-1-g.html#af2e407c6ee935d43c1994e39bf9661a4',1,'ObjectPool-1-g']]],
+  ['reset_10',['Reset',['../class_timer.html#a076af8892f86d50320215cfece9f2ab9',1,'Timer']]],
+  ['resetandreplay_11',['ResetAndReplay',['../class_timer.html#af050f049bbddff63c50a0ecd7141dd6d',1,'Timer']]],
+  ['resethover_12',['ResetHover',['../class_player_hand_1_1_interaction_handler.html#a29768ade450b331e1ed1bd7504d24723',1,'PlayerHand::InteractionHandler']]],
+  ['resettarget_13',['ResetTarget',['../class_grid_moveable.html#a62aed54cbfec41f7a202c9113c85e2cd',1,'GridMoveable']]],
+  ['resettooriginalz_14',['ResetToOriginalZ',['../class_player_hand_1_1_movement_handler.html#a76ff87c8d0e769c48499fd90d9946b7f',1,'PlayerHand::MovementHandler']]]
 ];

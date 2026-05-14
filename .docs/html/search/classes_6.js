@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['objectpool_2d1_2dg_0',['ObjectPool-1-g',['../class_object_pool-1-g.html',1,'']]]
+  ['interactable_0',['Interactable',['../class_interactable.html',1,'']]],
+  ['interactionhandler_1',['InteractionHandler',['../class_player_hand_1_1_interaction_handler.html',1,'PlayerHand']]],
+  ['ipoolable_2',['IPoolable',['../interface_i_poolable.html',1,'']]]
 ];

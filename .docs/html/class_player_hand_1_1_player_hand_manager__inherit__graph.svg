@@ -58,7 +58,7 @@ var sectionId = 'dynsection-0';
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Keeps track of mouse input and the hand state.">
+<g id="a_Node000001"><a xlink:title="Manages all playerHand handlers, and keeps track of mouse input and the hand state.">
 <polygon fill="#999999" stroke="none" points="199.5,-424 0,-424 0,0 199.5,0 199.5,-424"/>
 <text xml:space="preserve" text-anchor="start" x="28.5" y="-410.25" font-family="Helvetica,sans-Serif" font-size="10.00">PlayerHand.PlayerHandManager</text>
 <text xml:space="preserve" text-anchor="start" x="4" y="-394.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
@@ -90,12 +90,12 @@ var sectionId = 'dynsection-0';
 <text xml:space="preserve" text-anchor="start" x="5.5" y="-170.25" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
 <text xml:space="preserve" text-anchor="start" x="14" y="-170.25" font-family="Helvetica,sans-Serif" font-size="10.00">void Awake()</text>
 <text xml:space="preserve" text-anchor="start" x="5.5" y="-154.25" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text xml:space="preserve" text-anchor="start" x="14" y="-154.25" font-family="Helvetica,sans-Serif" font-size="10.00">void OnGrabActionOnPerformed</text>
-<text xml:space="preserve" text-anchor="start" x="14" y="-142.25" font-family="Helvetica,sans-Serif" font-size="10.00">(InputAction.CallbackContext obj)</text>
-<text xml:space="preserve" text-anchor="start" x="5.5" y="-126.25" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text xml:space="preserve" text-anchor="start" x="14" y="-126.25" font-family="Helvetica,sans-Serif" font-size="10.00">void OnDestroy()</text>
-<text xml:space="preserve" text-anchor="start" x="5.5" y="-110.25" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text xml:space="preserve" text-anchor="start" x="14" y="-110.25" font-family="Helvetica,sans-Serif" font-size="10.00">void Update()</text>
+<text xml:space="preserve" text-anchor="start" x="14" y="-154.25" font-family="Helvetica,sans-Serif" font-size="10.00">void OnDestroy()</text>
+<text xml:space="preserve" text-anchor="start" x="5.5" y="-138.25" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text xml:space="preserve" text-anchor="start" x="14" y="-138.25" font-family="Helvetica,sans-Serif" font-size="10.00">void Update()</text>
+<text xml:space="preserve" text-anchor="start" x="5.5" y="-122.25" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text xml:space="preserve" text-anchor="start" x="14" y="-122.25" font-family="Helvetica,sans-Serif" font-size="10.00">void OnGrabActionPerformed</text>
+<text xml:space="preserve" text-anchor="start" x="14" y="-110.25" font-family="Helvetica,sans-Serif" font-size="10.00">(InputAction.CallbackContext obj)</text>
 <text xml:space="preserve" text-anchor="start" x="5.5" y="-94.25" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
 <text xml:space="preserve" text-anchor="start" x="14" y="-94.25" font-family="Helvetica,sans-Serif" font-size="10.00">static void OnInteract</text>
 <text xml:space="preserve" text-anchor="start" x="14" y="-82.25" font-family="Helvetica,sans-Serif" font-size="10.00">(InputAction.CallbackContext</text>

@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="A simple class for hooking into interactions, player pickup etc.">
 <polygon fill="#999999" stroke="none" points="116.88,-52 42.62,-52 42.62,0 116.88,0 116.88,-52"/>
 <text xml:space="preserve" text-anchor="start" x="54.25" y="-38.25" font-family="Helvetica,sans-Serif" font-size="10.00">Interactable</text>
 <text xml:space="preserve" text-anchor="start" x="78.25" y="-22.25" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>

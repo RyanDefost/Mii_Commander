@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['timer_2ecs_0',['Timer.cs',['../_timer_8cs.html',1,'']]],
-  ['turnmanager_2ecs_1',['TurnManager.cs',['../_turn_manager_8cs.html',1,'']]]
+  ['resolutiontracker_2ecs_0',['ResolutionTracker.cs',['../_resolution_tracker_8cs.html',1,'']]]
 ];
