@@ -40,7 +40,7 @@ namespace Grid
                     this.gridManager.ReleaseInstance(instance);
                     Destroy(moveComponent.gameObject);
                 }
-                moveComponent.SetEnabled(true);
+                moveComponent.SetMoving(true);
             });
         }
     }

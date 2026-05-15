@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8982616026848609941}
   - component: {fileID: 3466412694289119816}
   - component: {fileID: 3198954631575277286}
+  - component: {fileID: 6574632748961841022}
   m_Layer: 0
   m_Name: Lemon
   m_TagString: Untagged
@@ -118,7 +119,23 @@ MonoBehaviour:
   interactable: {fileID: 5354653235715831597}
   components:
   - {fileID: 8982616026848609941}
+  - {fileID: 6574632748961841022}
   rb: {fileID: 8897784474759205449}
+--- !u!114 &6574632748961841022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2427277321692252709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b3e95951bf145978fa93e84c17abbd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridMoveable
+  boardItem: {fileID: 3198954631575277286}
+  offset: 0.25
+  minimalDist: 1
 --- !u!1 &3114438722924965209
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5983572208469154556
 Transform:
   m_ObjectHideFlags: 0
@@ -226,7 +243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1704328483421325278
 Transform:
   m_ObjectHideFlags: 0

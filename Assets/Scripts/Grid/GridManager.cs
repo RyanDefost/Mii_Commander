@@ -46,9 +46,9 @@ namespace Grid
 
         private void Start()
         {
-            ComponentRegistry.AddToRegistry(this);
             this.availableOffGridPositions ??= this.generator.GetAllOffGridPositions();
             this.availablePositions ??= this.generator.GetAllPositions();
+            ComponentRegistry.AddToRegistry(this);
         }
 
         private void OnDestroy() => ComponentRegistry.RemoveFromRegistry(this);

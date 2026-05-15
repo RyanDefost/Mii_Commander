@@ -8,8 +8,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class MoveToGridPosition : GridMoveable
 {
-    [SerializeField]
-    private float offset = 0.25f;
     [SerializeField] 
     private Rigidbody rb;
     [SerializeField]
@@ -19,12 +17,11 @@ public class MoveToGridPosition : GridMoveable
     [SerializeField]
     private float dampening = 2f;
     [SerializeField]
-    private float startTimerTime;
-    private Timer startTimer;
+    private float startDelay;
+    private Timer startDelayTimer;
     [SerializeField]
     private float endTimerTime = 15f;
     private Timer endTimer;
-    private Action onUpdate;
     private float usedMinimumForce;
 
     protected override void CustomOnValidate()
@@ -33,46 +30,43 @@ public class MoveToGridPosition : GridMoveable
         this.rb = GetComponent<Rigidbody>();
     }
     
-    protected override void DoEnable()
+    protected override void TriggerMovementToTarget()
     {
-        this.startTimer = new Timer(this.startTimerTime,  false, true, StartMovement);
-        this.onUpdate += UpdateStartTimer;
+        this.startDelayTimer = new Timer(this.startDelay,  false, true, EnableMovement);
+        this.onUpdate += UpdateStartDelayTimer;
     }
 
-    protected override void DoDisable()
+    protected override void StopMovementToTarget()
     {
-        this.onUpdate -= UpdateStartTimer;
+        this.onUpdate -= UpdateStartDelayTimer;
         this.onUpdate -= ApplyForceTowardsTarget;
         this.onUpdate -= UpdateEndTimer;
         ResetTarget();
     }
 
-    private void Update() => this.onUpdate?.Invoke();
-    private void UpdateStartTimer() => this.startTimer.UpdateTime(Time.deltaTime);
+    private void UpdateStartDelayTimer() => this.startDelayTimer.UpdateTime(Time.deltaTime);
 
-    private void StartMovement()
+    private void EnableMovement()
     {
-        if (!GetTarget())
+        if (!UpdateTarget())
             return;
         this.usedMinimumForce = this.movementStrength;
         this.endTimer = new Timer(this.endTimerTime, false, true, SnapToTarget);
         
         this.onUpdate += ApplyForceTowardsTarget;
         this.onUpdate += UpdateEndTimer;
-        this.onUpdate -= UpdateStartTimer;
+        this.onUpdate -= UpdateStartDelayTimer;
         
-        this.startTimer.ResetAndReplay();
+        this.startDelayTimer.ResetAndReplay();
     }
 
     private void UpdateEndTimer() => this.endTimer.UpdateTime(Time.deltaTime);
 
-    private Vector3 GetTargetPosition() => this.Target.position + Vector3.back * this.offset;
-
-    private void SnapToTarget()
+    protected override void SnapToTarget()
     {
         if (this.Target == null)
             return;
-        this.transform.position = GetTargetPosition();
+        base.SnapToTarget();
         this.rb.linearVelocity = Vector3.zero;
         this.rb.angularVelocity = Vector3.zero;
         this.rb.Sleep();
