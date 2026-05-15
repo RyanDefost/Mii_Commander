@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,6 +20,7 @@ public class BoardItem : MonoBehaviour
 
     public Action OnAddToHand;
     public Action OnInitiate;
+    public Action OnAddToBoard;
     
     private void OnValidate()
     {
@@ -40,4 +42,11 @@ public class BoardItem : MonoBehaviour
     
     /// <summary>Called when released and on the playing field</summary>
     public void Initiate() => this.OnInitiate?.Invoke();
+
+    public T GetBoardComponent<T>() where T : BoardItemComponent
+    {
+        BoardItemComponent found = this.components.FirstOrDefault(c => c is T);
+        if (!found) return null;
+        return (T)found;
+    }
 }

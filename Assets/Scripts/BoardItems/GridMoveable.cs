@@ -88,6 +88,7 @@ public class GridMoveable : BoardItemComponent
         if (this.Target == null)
             return;
         this.transform.position = GetTargetPosition();
+        this.boardItem.OnAddToBoard?.Invoke();
     }
     
     protected bool UpdateTarget()

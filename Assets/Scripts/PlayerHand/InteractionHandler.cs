@@ -34,7 +34,7 @@ namespace PlayerHand
 
         private void Update()
         {
-            if (this.visualHandler.CurrentState == "Closed") // already interacting / holding
+            if (IsHoldingInteractable())
                 return;
             
             // Cast ray underneath hand
@@ -89,8 +89,10 @@ namespace PlayerHand
         private void ResetHover()
         {
             this.CurrentHover = null;
-            if (this.visualHandler.CurrentState != "Closed")
+            if (!IsHoldingInteractable())
                 this.visualHandler.SetSprite("Pointing", this.movementHandler);
         }
+
+        public bool IsHoldingInteractable() => this.visualHandler.CurrentState == "Closed";
     }
 }

@@ -1,5 +1,7 @@
-﻿using PlayerHand;
+﻿using System;
+using PlayerHand;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// Lets a boardItem connect to the player hand
@@ -7,6 +9,7 @@ using UnityEngine;
 public class HandHandler : BoardItemComponent
 {
     private PlayerHandManager playerHandRef;
+    public Action OnHandGrabRelease; 
     
     public override void ConnectToBoardItem()
     { 
@@ -31,6 +34,7 @@ public class HandHandler : BoardItemComponent
     {
         OnGrabReleased(this.boardItem.Rb, this.boardItem, handMovementDir, throwForce);
         this.playerHandRef.OnGrabReleased -= OnGrabReleased;
+        this.OnHandGrabRelease?.Invoke();
     }
     
     /// <summary>

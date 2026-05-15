@@ -1720,6 +1720,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1525283136}
   - component: {fileID: 1525283135}
+  - component: {fileID: 1525283137}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1754,6 +1755,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1525283137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525283134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b17f8ff196c4fb68c4ff0fa3132fc8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeviceTracker
 --- !u!1 &1616721428
 GameObject:
   m_ObjectHideFlags: 0
@@ -2219,6 +2232,7 @@ GameObject:
   - component: {fileID: 2018210010}
   - component: {fileID: 2018210009}
   - component: {fileID: 2018210012}
+  - component: {fileID: 2018210013}
   m_Layer: 0
   m_Name: PlayerHand
   m_TagString: Untagged
@@ -2312,9 +2326,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f41653d7f1c284a99fbe1e9f20fcab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHand.MouseController
+  gamePadExtraSensitivity: 20
   visualHandler: {fileID: 2018210011}
   movementHandler: {fileID: 2018210010}
   interactionHandler: {fileID: 2018210012}
+  itemRotationHandler: {fileID: 2018210013}
   inputActionAsset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!114 &2018210010
 MonoBehaviour:
@@ -2403,6 +2419,19 @@ MonoBehaviour:
   layerMaskInteractables:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2018210013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018210005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4014752f750f4908a4b3a877fda7b6a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHand.ItemRotationHandler
+  interactionHandler: {fileID: 2018210012}
 --- !u!1 &2023516380
 GameObject:
   m_ObjectHideFlags: 0

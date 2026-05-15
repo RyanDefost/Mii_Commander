@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3466412694289119816}
   - component: {fileID: 3198954631575277286}
   - component: {fileID: 6574632748961841022}
+  - component: {fileID: 2204325606334268918}
   m_Layer: 0
   m_Name: Lemon
   m_TagString: Untagged
@@ -120,6 +121,7 @@ MonoBehaviour:
   components:
   - {fileID: 8982616026848609941}
   - {fileID: 6574632748961841022}
+  - {fileID: 2204325606334268918}
   rb: {fileID: 8897784474759205449}
 --- !u!114 &6574632748961841022
 MonoBehaviour:
@@ -136,6 +138,22 @@ MonoBehaviour:
   boardItem: {fileID: 3198954631575277286}
   offset: 0.25
   minimalDist: 1
+--- !u!114 &2204325606334268918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2427277321692252709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2fce3ae2a964bdda59ec939c7ba2a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridRotatable
+  boardItem: {fileID: 3198954631575277286}
+  handHandler: {fileID: 8982616026848609941}
+  rotationSpeed: 50
+  stepAngle: 2
 --- !u!1 &3114438722924965209
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b9b6cfc501136949bf3a50b1b3b1999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  boardItem: {fileID: 3198954631575277286}
   interaction:
     m_PersistentCalls:
       m_Calls:
