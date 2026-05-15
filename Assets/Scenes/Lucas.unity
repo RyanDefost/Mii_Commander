@@ -560,6 +560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b9b6cfc501136949bf3a50b1b3b1999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  boardItem: {fileID: 0}
   interaction:
     m_PersistentCalls:
       m_Calls:
@@ -904,6 +905,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2204325606334268918, guid: c283c6c7b4efc844a9b3f17d04b83761, type: 3}
+      propertyPath: stepAngle
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2427277321692252709, guid: c283c6c7b4efc844a9b3f17d04b83761, type: 3}
       propertyPath: m_Name
       value: Lemon
@@ -2128,6 +2133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b9b6cfc501136949bf3a50b1b3b1999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  boardItem: {fileID: 0}
   interaction:
     m_PersistentCalls:
       m_Calls:
@@ -2432,6 +2438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHand.ItemRotationHandler
   interactionHandler: {fileID: 2018210012}
+  gamePadExtraSpeed: 2
 --- !u!1 &2023516380
 GameObject:
   m_ObjectHideFlags: 0

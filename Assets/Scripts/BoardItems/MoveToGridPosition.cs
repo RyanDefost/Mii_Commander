@@ -32,6 +32,7 @@ public class MoveToGridPosition : GridMoveable
     
     protected override void TriggerMovementToTarget()
     {
+        ResetTarget();
         this.startDelayTimer = new Timer(this.startDelay,  false, true, EnableMovement);
         this.onUpdate += UpdateStartDelayTimer;
     }
