@@ -1,6 +1,7 @@
 var class_player_hand_1_1_interaction_handler =
 [
     [ "GetClosestInteractableToCamera", "class_player_hand_1_1_interaction_handler.html#aed1c4c2fadbf847fa36f87c86aad3d6b", null ],
+    [ "IsHoldingInteractable", "class_player_hand_1_1_interaction_handler.html#a8b48ede5a0dec8a33fcb1d0136ef3886", null ],
     [ "OnValidate", "class_player_hand_1_1_interaction_handler.html#adbeb56823e642382e3f8d9d94bf96eb9", null ],
     [ "ResetHover", "class_player_hand_1_1_interaction_handler.html#a29768ade450b331e1ed1bd7504d24723", null ],
     [ "Update", "class_player_hand_1_1_interaction_handler.html#aae722353d9aead56778d2bceb1cb75a0", null ],

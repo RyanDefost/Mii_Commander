@@ -7,6 +7,7 @@ var annotated_dup =
     ] ],
     [ "PlayerHand", "namespace_player_hand.html", [
       [ "InteractionHandler", "class_player_hand_1_1_interaction_handler.html", "class_player_hand_1_1_interaction_handler" ],
+      [ "ItemRotationHandler", "class_player_hand_1_1_item_rotation_handler.html", "class_player_hand_1_1_item_rotation_handler" ],
       [ "MovementHandler", "class_player_hand_1_1_movement_handler.html", "class_player_hand_1_1_movement_handler" ],
       [ "PlayerHandManager", "class_player_hand_1_1_player_hand_manager.html", "class_player_hand_1_1_player_hand_manager" ],
       [ "VisualHandler", "class_player_hand_1_1_visual_handler.html", "class_player_hand_1_1_visual_handler" ]
@@ -19,8 +20,10 @@ var annotated_dup =
     [ "CandyHandle", "class_candy_handle.html", "class_candy_handle" ],
     [ "CandyTypeLookup", "class_candy_type_lookup.html", "class_candy_type_lookup" ],
     [ "ComponentRegistry", "class_component_registry.html", "class_component_registry" ],
+    [ "DeviceTracker", "class_device_tracker.html", "class_device_tracker" ],
     [ "FPSCounter", "class_f_p_s_counter.html", "class_f_p_s_counter" ],
     [ "GridMoveable", "class_grid_moveable.html", "class_grid_moveable" ],
+    [ "GridRotatable", "class_grid_rotatable.html", "class_grid_rotatable" ],
     [ "HandHandler", "class_hand_handler.html", "class_hand_handler" ],
     [ "Interactable", "class_interactable.html", "class_interactable" ],
     [ "IPoolable", "interface_i_poolable.html", "interface_i_poolable" ],

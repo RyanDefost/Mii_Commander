@@ -7,7 +7,8 @@ var searchData=
   ['instances_4',['instances',['../class_candy_group_handle.html#a4bf7ef7b831f877880191dfd0256ec88',1,'CandyGroupHandle']]],
   ['interactable_5',['interactable',['../class_board_item.html#a684c45c02374cdf0d47cd0f7d946c467',1,'BoardItem']]],
   ['interaction_6',['interaction',['../class_interactable.html#aa1d901b508c7c3d045a5d5c4e39077cd',1,'Interactable']]],
-  ['interactionhandler_7',['interactionHandler',['../class_player_hand_1_1_player_hand_manager.html#a8c2df7b8aca0ca0a1d29d92a4af672df',1,'PlayerHand::PlayerHandManager']]],
+  ['interactionhandler_7',['interactionHandler',['../class_player_hand_1_1_item_rotation_handler.html#a15ef1d3372dc3008fdcb6d9227e6eb61',1,'PlayerHand.ItemRotationHandler.interactionHandler'],['../class_player_hand_1_1_player_hand_manager.html#a8c2df7b8aca0ca0a1d29d92a4af672df',1,'PlayerHand.PlayerHandManager.interactionHandler']]],
   ['isanimatingz_8',['isAnimatingZ',['../class_player_hand_1_1_movement_handler.html#a4fe40f7031d734ca26f0cfdc076ef632',1,'PlayerHand::MovementHandler']]],
-  ['isrunning_9',['isRunning',['../class_timer.html#a20ea3757f43477ef7b98329b358b09f6',1,'Timer']]]
+  ['isrunning_9',['isRunning',['../class_timer.html#a20ea3757f43477ef7b98329b358b09f6',1,'Timer']]],
+  ['itemrotationhandler_10',['itemRotationHandler',['../class_player_hand_1_1_player_hand_manager.html#a1c28b432079b96b7a4edbf53dadb91e9',1,'PlayerHand::PlayerHandManager']]]
 ];

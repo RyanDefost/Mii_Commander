@@ -102,6 +102,9 @@ MonoBehaviour(BoardItem) {
   - set : private
   + OnAddToHand : Action
   + OnInitiate : Action
+  + OnAddToBoard : Action
+  - found : BoardItemComponent
+  - null : return
   - OnValidate() : void
   - Start() : void
   - CustomOnValidate() : virtual void
@@ -116,23 +119,54 @@ MonoBehaviour(BoardItemComponent) {
 class GridMoveable {
   - grid : GridManager
   - set : private
+  PrivateSerialized(offset : float)
+  PrivateSerialized(minimalDist : float)
+  - previousDist : float?
+  - onUpdate : Action
+  - dist : float
   - true : return
   - Start() : void
   + ConnectToBoardItem() : override void
   - OnDestroy() : void
+  - Update() : void
   - OnAddToHand() : void
   - OnInitiate() : void
-  + SetEnabled() : void
-  - DoDisable() : else
-  - DoDisable() : virtual void
-  - DoEnable() : virtual void
-  - GetTarget() : bool
+  + SetMoving() : void
+  - StopMovementToTarget() : else
+  - StopMovementToTarget() : virtual void
+  - TriggerMovementToTarget() : virtual void
+  - AwaitDistanceToTarget() : void
+  - SnapToTarget() : virtual void
+  - UpdateTarget() : bool
+  - TriggerUpdateTarget() : void
   + SetTarget() : void
   + ResetTarget() : void
   + HasTarget() : bool
+  - GetTargetPosition() : Vector3
+}
+class GridRotatable {
+  PrivateSerialized(handHandler : HandHandler)
+  PrivateSerialized(rotationSpeed : float)
+  PrivateSerialized(stepAngle : float)
+  - progression : float
+  - lockedRotation : bool
+  - lastRotation : Vector3
+  - angle : float
+  - currentAngles : Vector3
+  - snappedZ : float
+  - CustomOnValidate() : override void
+  + ConnectToBoardItem() : override void
+  - OnDestroy() : void
+  + RotateClockWise() : void
+  - SnapToNearestCardinalZ() : void
+  - OnAddToHand() : void
+  - OnGrabReleased() : void
+  - OnAddToBoard() : void
+  - Update() : void
 }
 class HandHandler {
   - playerHandRef : PlayerHandManager
+  + OnHandGrabRelease : Action
   - throwVel : Vector3
   + ConnectToBoardItem() : override void
   - OnDestroy() : void
@@ -142,20 +176,20 @@ class HandHandler {
   + OnGrabReleased() : static void
 }
 MonoBehaviour(Interactable) {
+  + boardItem : BoardItem
   PrivateSerialized(interaction : UnityEvent)
   + Trigger() : void
+  + HasBoardItemParent() : bool
 }
 class MoveToGridPosition {
-  PrivateSerialized(offset : float)
   PrivateSerialized(rb : Rigidbody)
   PrivateSerialized(movementStrength : float)
   PrivateSerialized(maxVelocity : float)
   PrivateSerialized(dampening : float)
-  PrivateSerialized(startTimerTime : float)
-  - startTimer : Timer
+  PrivateSerialized(startDelay : float)
+  - startDelayTimer : Timer
   PrivateSerialized(endTimerTime : float)
   - endTimer : Timer
-  - onUpdate : Action
   - usedMinimumForce : float
   - targetPosition : Vector3
   - diff : Vector3
@@ -164,15 +198,13 @@ class MoveToGridPosition {
   - alignmentFactor : float
   - force : float
   - CustomOnValidate() : override void
-  - DoEnable() : override void
+  - TriggerMovementToTarget() : override void
   - Timer() : new
-  - DoDisable() : override void
-  - Update() : void
-  - UpdateStartTimer() : void
-  - StartMovement() : void
+  - StopMovementToTarget() : override void
+  - UpdateStartDelayTimer() : void
+  - EnableMovement() : void
   - UpdateEndTimer() : void
-  - GetTargetPosition() : Vector3
-  - SnapToTarget() : void
+  - SnapToTarget() : override void
   - ApplyForceTowardsTarget() : void
 }
 class CandyActor {
@@ -324,11 +356,35 @@ MonoBehaviour(TurnManager) {
 }
 class ComponentRegistry {
   - Components : static readonly Dictionary<string, Component>
+  - Subscribers : static readonly List<Subscriber>
+  + ComponentType : string
+  + toCall : Action
+  - type : string
+  - result : bool
+  - result : return
+  - subscriber : Subscriber[]
   - name : string
+  - found : Subscriber
+  - toCall : type,
   + AddToRegistry() : static bool
+  - TryCallSubscribers() : static void
   + RemoveFromRegistry() : static bool
   + ReplaceInRegistry() : static bool
   - AddToRegistry() : return
+}
+class Subscriber {
+  + ComponentType : string
+  + toCall : Action
+}
+MonoBehaviour(DeviceTracker) {
+  - set : private
+  - action : InputAction
+  - currentDevice : InputDevice
+  - Start() : void
+  - OnEnable() : void
+  - OnDisable() : void
+  - OnActionChange() : void
+  - not() : change is
 }
 MonoBehaviour(FPSCounter) {
   PrivateSerialized(counter : Text)
@@ -407,6 +463,20 @@ MonoBehaviour(InteractionHandler) {
   - GetClosestInteractableToCamera() : RaycastHit2D?
   - Vector3() : new
   - ResetHover() : void
+  + IsHoldingInteractable() : bool
+}
+MonoBehaviour(ItemRotationHandler) {
+  PrivateSerialized(interactionHandler : InteractionHandler)
+  PrivateSerialized(gamePadExtraSpeed : float)
+  - rotateAction : NonSerialized] public InputAction
+  - lastStickDirection : Vector2
+  - currentItem : Interactable
+  - rotatable : GridRotatable
+  - value : object
+  - currentDir : Vector2
+  - angleDelta : float
+  - OnValidate() : void
+  - Update() : void
 }
 MonoBehaviour(MovementHandler) {
   PrivateSerialized(camRef : Camera)
@@ -475,15 +545,19 @@ MonoBehaviour(MovementHandler) {
   - OnDrawGizmos() : void
 }
 MonoBehaviour(PlayerHandManager) {
+  PrivateSerialized(gamePadExtraSensitivity : float)
   PrivateSerialized(visualHandler : VisualHandler)
   PrivateSerialized(movementHandler : MovementHandler)
   PrivateSerialized(interactionHandler : InteractionHandler)
+  PrivateSerialized(itemRotationHandler : ItemRotationHandler)
   - inputActionAsset : Space] [SerializeField] private InputActionAsset
   - inputActionMap : InputActionMap
   - moveAction : InputAction
   - grabAction : InputAction
   - grabbing : bool
   + OnGrabReleased : Action<Vector2, Vector2>
+  - deviceTracker : DeviceTracker
+  - delta : Vector2
   - false : return
   - true : return
   - OnValidate() : void
@@ -518,6 +592,7 @@ BoardItem <|-- CandyActor
 BoardItem --> BoardItemComponent
 BoardItem --> Interactable
 BoardItemComponent <|-- GridMoveable
+BoardItemComponent <|-- GridRotatable
 BoardItemComponent <|-- HandHandler
 BoardItemComponent --> BoardItem
 CandyActor --> HandHandler
@@ -527,24 +602,32 @@ CandyGroupHandle --> CandyHandle
 CandyGroupHandle --> PlayerHandManager
 CandyHandle --> CandyActor
 CandyTypeLookup --> CandyTypeOption
+ComponentRegistry --> Subscriber
 DeckOption --> CandyOption
 DeckOption --> CandyTypeLookup
 GridManager --> GridGenerator
 GridManager --> GridInstance
 GridMoveable <|-- MoveToGridPosition
 GridMoveable --> GridManager
+GridRotatable --> HandHandler
 HandHandler --> PlayerHandManager
+Interactable --> BoardItem
 InteractionHandler --> Interactable
 InteractionHandler --> MovementHandler
 InteractionHandler --> VisualHandler
 IPoolable <|.. CandyGroupHandle
+ItemRotationHandler --> GridRotatable
+ItemRotationHandler --> Interactable
+ItemRotationHandler --> InteractionHandler
 MoveToGridPosition --> Timer
 PlayerDeck --> CandyGroupHandle
 PlayerDeck --> CandyOption
 PlayerDeck --> CandyTypeLookup
 PlayerDeck --> DeckOption
 PlayerDeck --> PlayerHandManager
+PlayerHandManager --> DeviceTracker
 PlayerHandManager --> InteractionHandler
+PlayerHandManager --> ItemRotationHandler
 PlayerHandManager --> MovementHandler
 PlayerHandManager --> VisualHandler
 QuestSystem --> Quest

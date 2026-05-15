@@ -64,6 +64,7 @@ class Quest {
 MonoBehaviour(BoardItem) {
   + OnAddToHand : Action
   + OnInitiate : Action
+  + OnAddToBoard : Action
   + Initiate() : void
 }
 MonoBehaviour(BoardItemComponent) {
@@ -71,18 +72,25 @@ MonoBehaviour(BoardItemComponent) {
 }
 class GridMoveable {
   + ConnectToBoardItem() : override void
-  + SetEnabled() : void
+  + SetMoving() : void
   + SetTarget() : void
   + ResetTarget() : void
   + HasTarget() : bool
 }
+class GridRotatable {
+  + ConnectToBoardItem() : override void
+  + RotateClockWise() : void
+}
 class HandHandler {
+  + OnHandGrabRelease : Action
   + ConnectToBoardItem() : override void
   + AddToHand() : void
   + OnGrabReleased() : static void
 }
 MonoBehaviour(Interactable) {
+  + boardItem : BoardItem
   + Trigger() : void
+  + HasBoardItemParent() : bool
 }
 class MoveToGridPosition {
 }
@@ -130,9 +138,17 @@ MonoBehaviour(TurnManager) {
   + NextTurn() : void
 }
 class ComponentRegistry {
+  + ComponentType : string
+  + toCall : Action
   + AddToRegistry() : static bool
   + RemoveFromRegistry() : static bool
   + ReplaceInRegistry() : static bool
+}
+class Subscriber {
+  + ComponentType : string
+  + toCall : Action
+}
+MonoBehaviour(DeviceTracker) {
 }
 MonoBehaviour(FPSCounter) {
 }
@@ -160,6 +176,9 @@ class VectorExtensions {
   + OverwriteXY() : static Vector3
 }
 MonoBehaviour(InteractionHandler) {
+  + IsHoldingInteractable() : bool
+}
+MonoBehaviour(ItemRotationHandler) {
 }
 MonoBehaviour(MovementHandler) {
   + Velocity : Vector2
@@ -188,6 +207,7 @@ BoardItem <|-- CandyActor
 BoardItem --> BoardItemComponent
 BoardItem --> Interactable
 BoardItemComponent <|-- GridMoveable
+BoardItemComponent <|-- GridRotatable
 BoardItemComponent <|-- HandHandler
 BoardItemComponent --> BoardItem
 CandyActor --> HandHandler
@@ -197,24 +217,32 @@ CandyGroupHandle --> CandyHandle
 CandyGroupHandle --> PlayerHandManager
 CandyHandle --> CandyActor
 CandyTypeLookup --> CandyTypeOption
+ComponentRegistry --> Subscriber
 DeckOption --> CandyOption
 DeckOption --> CandyTypeLookup
 GridManager --> GridGenerator
 GridManager --> GridInstance
 GridMoveable <|-- MoveToGridPosition
 GridMoveable --> GridManager
+GridRotatable --> HandHandler
 HandHandler --> PlayerHandManager
+Interactable --> BoardItem
 InteractionHandler --> Interactable
 InteractionHandler --> MovementHandler
 InteractionHandler --> VisualHandler
 IPoolable <|.. CandyGroupHandle
+ItemRotationHandler --> GridRotatable
+ItemRotationHandler --> Interactable
+ItemRotationHandler --> InteractionHandler
 MoveToGridPosition --> Timer
 PlayerDeck --> CandyGroupHandle
 PlayerDeck --> CandyOption
 PlayerDeck --> CandyTypeLookup
 PlayerDeck --> DeckOption
 PlayerDeck --> PlayerHandManager
+PlayerHandManager --> DeviceTracker
 PlayerHandManager --> InteractionHandler
+PlayerHandManager --> ItemRotationHandler
 PlayerHandManager --> MovementHandler
 PlayerHandManager --> VisualHandler
 QuestSystem --> Quest

@@ -20,5 +20,8 @@ var searchData=
   ['resettarget_17',['ResetTarget',['../class_grid_moveable.html#a62aed54cbfec41f7a202c9113c85e2cd',1,'GridMoveable']]],
   ['resettooriginalz_18',['ResetToOriginalZ',['../class_player_hand_1_1_movement_handler.html#a76ff87c8d0e769c48499fd90d9946b7f',1,'PlayerHand::MovementHandler']]],
   ['resolutiontracker_19',['ResolutionTracker',['../class_resolution_tracker.html',1,'']]],
-  ['resolutiontracker_2ecs_20',['ResolutionTracker.cs',['../_resolution_tracker_8cs.html',1,'']]]
+  ['resolutiontracker_2ecs_20',['ResolutionTracker.cs',['../_resolution_tracker_8cs.html',1,'']]],
+  ['rotateaction_21',['rotateAction',['../class_player_hand_1_1_item_rotation_handler.html#a660e44f6905347e05eb5b65fed809c38',1,'PlayerHand::ItemRotationHandler']]],
+  ['rotateclockwise_22',['RotateClockWise',['../class_grid_rotatable.html#af59d9c13f0d0625d2e5c64036602db3e',1,'GridRotatable']]],
+  ['rotationspeed_23',['rotationSpeed',['../class_grid_rotatable.html#a1ef7b3e848b5864557a228a387ccfb20',1,'GridRotatable']]]
 ];

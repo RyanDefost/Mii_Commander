@@ -9,5 +9,6 @@ var class_hand_handler =
     [ "OnGrabReleased", "class_hand_handler.html#a29b3650034d1d8b35406b62c82ca2acd", null ],
     [ "OnValidate", "class_hand_handler.html#a2fa5182c957f732c7d34da3e0c5f9c92", null ],
     [ "boardItem", "class_hand_handler.html#abdc37bbf43d8b710e1e261653f33cf54", null ],
+    [ "OnHandGrabRelease", "class_hand_handler.html#a7b4ce8cead68d9b8f71d77a5d196f0e6", null ],
     [ "playerHandRef", "class_hand_handler.html#a03cd3482fb157a0df468716526037d07", null ]
 ];

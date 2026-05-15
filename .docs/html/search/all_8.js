@@ -11,11 +11,15 @@ var searchData=
   ['interactable_2ecs_8',['Interactable.cs',['../_interactable_8cs.html',1,'']]],
   ['interaction_9',['interaction',['../class_interactable.html#aa1d901b508c7c3d045a5d5c4e39077cd',1,'Interactable']]],
   ['interactionhandler_10',['InteractionHandler',['../class_player_hand_1_1_interaction_handler.html',1,'PlayerHand']]],
-  ['interactionhandler_11',['interactionHandler',['../class_player_hand_1_1_player_hand_manager.html#a8c2df7b8aca0ca0a1d29d92a4af672df',1,'PlayerHand::PlayerHandManager']]],
+  ['interactionhandler_11',['interactionHandler',['../class_player_hand_1_1_item_rotation_handler.html#a15ef1d3372dc3008fdcb6d9227e6eb61',1,'PlayerHand.ItemRotationHandler.interactionHandler'],['../class_player_hand_1_1_player_hand_manager.html#a8c2df7b8aca0ca0a1d29d92a4af672df',1,'PlayerHand.PlayerHandManager.interactionHandler']]],
   ['interactionhandler_2ecs_12',['InteractionHandler.cs',['../_interaction_handler_8cs.html',1,'']]],
   ['ipoolable_13',['IPoolable',['../interface_i_poolable.html',1,'']]],
   ['ipoolable_2ecs_14',['IPoolable.cs',['../_i_poolable_8cs.html',1,'']]],
   ['isanimatingz_15',['isAnimatingZ',['../class_player_hand_1_1_movement_handler.html#a4fe40f7031d734ca26f0cfdc076ef632',1,'PlayerHand::MovementHandler']]],
-  ['isrunning_16',['IsRunning',['../class_timer.html#a04e268e139fc3bdaf541dddc3ee599fe',1,'Timer']]],
-  ['isrunning_17',['isRunning',['../class_timer.html#a20ea3757f43477ef7b98329b358b09f6',1,'Timer']]]
+  ['isholdinginteractable_16',['IsHoldingInteractable',['../class_player_hand_1_1_interaction_handler.html#a8b48ede5a0dec8a33fcb1d0136ef3886',1,'PlayerHand::InteractionHandler']]],
+  ['isrunning_17',['IsRunning',['../class_timer.html#a04e268e139fc3bdaf541dddc3ee599fe',1,'Timer']]],
+  ['isrunning_18',['isRunning',['../class_timer.html#a20ea3757f43477ef7b98329b358b09f6',1,'Timer']]],
+  ['itemrotationhandler_19',['ItemRotationHandler',['../class_player_hand_1_1_item_rotation_handler.html',1,'PlayerHand']]],
+  ['itemrotationhandler_20',['itemRotationHandler',['../class_player_hand_1_1_player_hand_manager.html#a1c28b432079b96b7a4edbf53dadb91e9',1,'PlayerHand::PlayerHandManager']]],
+  ['itemrotationhandler_2ecs_21',['ItemRotationHandler.cs',['../_item_rotation_handler_8cs.html',1,'']]]
 ];

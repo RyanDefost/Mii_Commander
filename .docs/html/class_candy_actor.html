@@ -138,6 +138,7 @@ Collaboration diagram for CandyActor:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aae0747156612c7495f20f4eff324b207" id="r_aae0747156612c7495f20f4eff324b207"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#aae0747156612c7495f20f4eff324b207">Initiate</a> ()</td></tr>
 <tr class="memdesc:aae0747156612c7495f20f4eff324b207"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when released and on the playing field.  <br /></td></tr>
+<tr class="memitem:a136315afd7c091159d6eb33f3d0b6ad5" id="r_a136315afd7c091159d6eb33f3d0b6ad5"><td class="memItemLeft">T&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#a136315afd7c091159d6eb33f3d0b6ad5">GetBoardComponent&lt; T &gt;</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -148,6 +149,7 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:aba5486a28ecd67a4ce95c9642cb79855" id="r_aba5486a28ecd67a4ce95c9642cb79855"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#aba5486a28ecd67a4ce95c9642cb79855">candyType</a></td></tr>
 <tr class="memitem:a949560ca6e921760354b6397c35ee3eb" id="r_a949560ca6e921760354b6397c35ee3eb"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#a949560ca6e921760354b6397c35ee3eb">OnAddToHand</a></td></tr>
 <tr class="memitem:ad87a4083cc320e3b586b6ad1dbbe0d40" id="r_ad87a4083cc320e3b586b6ad1dbbe0d40"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#ad87a4083cc320e3b586b6ad1dbbe0d40">OnInitiate</a></td></tr>
+<tr class="memitem:af9f8b133f3476af4bf5aa65fbdd8fae0" id="r_af9f8b133f3476af4bf5aa65fbdd8fae0"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#af9f8b133f3476af4bf5aa65fbdd8fae0">OnAddToBoard</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -205,6 +207,46 @@ Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a136315afd7c091159d6eb33f3d0b6ad5" name="a136315afd7c091159d6eb33f3d0b6ad5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a136315afd7c091159d6eb33f3d0b6ad5">&#9670;&#160;</a></span>GetBoardComponent&lt; T &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T BoardItem.GetBoardComponent&lt; T &gt; </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inherited">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="typeconstraint">
+<dl><dt><b>Type Constraints</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em><a class="el" href="class_board_item_component.html">BoardItemComponent</a></em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>                                            : BoardItemComponent</div>
+<div class="line"><span class="lineno">   47</span>    {</div>
+<div class="line"><span class="lineno">   48</span>        BoardItemComponent found = this.<a class="code hl_variable" href="class_board_item.html#a1fb6090de83301ef7afd398b4ac96bc5">components</a>.FirstOrDefault(c =&gt; c is T);</div>
+<div class="line"><span class="lineno">   49</span>        <span class="keywordflow">if</span> (!found) <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">return</span> (T)found;</div>
+<div class="line"><span class="lineno">   51</span>    }</div>
+<div class="ttc" id="aclass_board_item_html_a1fb6090de83301ef7afd398b4ac96bc5"><div class="ttname"><a href="class_board_item.html#a1fb6090de83301ef7afd398b4ac96bc5">BoardItem.components</a></div><div class="ttdeci">BoardItemComponent[] components</div><div class="ttdef"><b>Definition</b> BoardItem.cs:16</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="aae0747156612c7495f20f4eff324b207" name="aae0747156612c7495f20f4eff324b207"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aae0747156612c7495f20f4eff324b207">&#9670;&#160;</a></span>Initiate()</h2>
 
@@ -229,8 +271,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Called when released and on the playing field. </p>
-<div class="fragment"><div class="line"><span class="lineno">   42</span>=&gt; this.<a class="code hl_variable" href="class_board_item.html#ad87a4083cc320e3b586b6ad1dbbe0d40">OnInitiate</a>?.Invoke();</div>
-<div class="ttc" id="aclass_board_item_html_ad87a4083cc320e3b586b6ad1dbbe0d40"><div class="ttname"><a href="class_board_item.html#ad87a4083cc320e3b586b6ad1dbbe0d40">BoardItem.OnInitiate</a></div><div class="ttdeci">Action OnInitiate</div><div class="ttdef"><b>Definition</b> BoardItem.cs:21</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   44</span>=&gt; this.<a class="code hl_variable" href="class_board_item.html#ad87a4083cc320e3b586b6ad1dbbe0d40">OnInitiate</a>?.Invoke();</div>
+<div class="ttc" id="aclass_board_item_html_ad87a4083cc320e3b586b6ad1dbbe0d40"><div class="ttname"><a href="class_board_item.html#ad87a4083cc320e3b586b6ad1dbbe0d40">BoardItem.OnInitiate</a></div><div class="ttdeci">Action OnInitiate</div><div class="ttdef"><b>Definition</b> BoardItem.cs:22</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -272,7 +314,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   24</span>                                                                                                                      =&gt; </div>
 <div class="line"><span class="lineno">   25</span>        HandHandler.OnGrabReleased(<a class="code hl_variable" href="class_board_item.html#a12b109c2ffb024e8b28781a1d0f2809f">rb</a>, boardItem, handMovementDir, throwForce);</div>
-<div class="ttc" id="aclass_board_item_html_a12b109c2ffb024e8b28781a1d0f2809f"><div class="ttname"><a href="class_board_item.html#a12b109c2ffb024e8b28781a1d0f2809f">BoardItem.rb</a></div><div class="ttdeci">Rigidbody rb</div><div class="ttdef"><b>Definition</b> BoardItem.cs:17</div></div>
+<div class="ttc" id="aclass_board_item_html_a12b109c2ffb024e8b28781a1d0f2809f"><div class="ttname"><a href="class_board_item.html#a12b109c2ffb024e8b28781a1d0f2809f">BoardItem.rb</a></div><div class="ttdeci">Rigidbody rb</div><div class="ttdef"><b>Definition</b> BoardItem.cs:18</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -298,14 +340,14 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   24</span>    {</div>
-<div class="line"><span class="lineno">   25</span>        <span class="keywordflow">if</span> (Application.isPlaying)</div>
-<div class="line"><span class="lineno">   26</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   27</span>        this.rb = GetComponent&lt;Rigidbody&gt;();</div>
-<div class="line"><span class="lineno">   28</span>        this.interactable = GetComponentInChildren&lt;Interactable&gt;();</div>
-<div class="line"><span class="lineno">   29</span>        </div>
-<div class="line"><span class="lineno">   30</span>        this.components = GetComponentsInChildren&lt;BoardItemComponent&gt;();</div>
-<div class="line"><span class="lineno">   31</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>    {</div>
+<div class="line"><span class="lineno">   27</span>        <span class="keywordflow">if</span> (Application.isPlaying)</div>
+<div class="line"><span class="lineno">   28</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   29</span>        this.rb = GetComponent&lt;Rigidbody&gt;();</div>
+<div class="line"><span class="lineno">   30</span>        this.interactable = GetComponentInChildren&lt;Interactable&gt;();</div>
+<div class="line"><span class="lineno">   31</span>        </div>
+<div class="line"><span class="lineno">   32</span>        this.components = GetComponentsInChildren&lt;BoardItemComponent&gt;();</div>
+<div class="line"><span class="lineno">   33</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -331,12 +373,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   34</span>    {</div>
-<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">foreach</span> (BoardItemComponent boardItemComponent <span class="keywordflow">in</span> this.<a class="code hl_variable" href="class_board_item.html#a1fb6090de83301ef7afd398b4ac96bc5">components</a>) </div>
-<div class="line"><span class="lineno">   36</span>            boardItemComponent.<a class="code hl_function" href="class_board_item_component.html#a8bfba0af81c157c68dfc7193db5d9887">ConnectToBoardItem</a>();</div>
-<div class="line"><span class="lineno">   37</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   36</span>    {</div>
+<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">foreach</span> (BoardItemComponent boardItemComponent <span class="keywordflow">in</span> this.<a class="code hl_variable" href="class_board_item.html#a1fb6090de83301ef7afd398b4ac96bc5">components</a>) </div>
+<div class="line"><span class="lineno">   38</span>            boardItemComponent.<a class="code hl_function" href="class_board_item_component.html#a8bfba0af81c157c68dfc7193db5d9887">ConnectToBoardItem</a>();</div>
+<div class="line"><span class="lineno">   39</span>    }</div>
 <div class="ttc" id="aclass_board_item_component_html_a8bfba0af81c157c68dfc7193db5d9887"><div class="ttname"><a href="class_board_item_component.html#a8bfba0af81c157c68dfc7193db5d9887">BoardItemComponent.ConnectToBoardItem</a></div><div class="ttdeci">virtual void ConnectToBoardItem()</div><div class="ttdoc">Function for hooking into the various boardItem actions, make sure to unhook on destroy.</div><div class="ttdef"><b>Definition</b> BoardItemComponent.cs:23</div></div>
-<div class="ttc" id="aclass_board_item_html_a1fb6090de83301ef7afd398b4ac96bc5"><div class="ttname"><a href="class_board_item.html#a1fb6090de83301ef7afd398b4ac96bc5">BoardItem.components</a></div><div class="ttdeci">BoardItemComponent[] components</div><div class="ttdef"><b>Definition</b> BoardItem.cs:15</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -437,6 +478,28 @@ Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af9f8b133f3476af4bf5aa65fbdd8fae0" name="af9f8b133f3476af4bf5aa65fbdd8fae0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9f8b133f3476af4bf5aa65fbdd8fae0">&#9670;&#160;</a></span>OnAddToBoard</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Action BoardItem.OnAddToBoard</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inherited">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -551,7 +614,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   18</span>{ <span class="keyword">get</span> =&gt; this.<a class="code hl_variable" href="class_board_item.html#a12b109c2ffb024e8b28781a1d0f2809f">rb</a>; <span class="keyword">private</span> <span class="keyword">set</span> =&gt; this.rb = value; }</div>
+<div class="fragment"><div class="line"><span class="lineno">   19</span>{ <span class="keyword">get</span> =&gt; this.<a class="code hl_variable" href="class_board_item.html#a12b109c2ffb024e8b28781a1d0f2809f">rb</a>; <span class="keyword">private</span> <span class="keyword">set</span> =&gt; this.rb = value; }</div>
 </div><!-- fragment -->
 </div>
 </div>

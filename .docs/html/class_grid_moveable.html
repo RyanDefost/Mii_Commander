@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('class_grid_mov
 </div><!--header-->
 <div class="contents">
 
-<p>Makes it so that a board item gets to move to another place on the board TODO: If the player is not allowed to move the piece it should snap back to previous target.  
+<p>Makes a board item move to a target position on the grid. TODO: If the player is not allowed to move the piece it should snap back to previous target.  
  <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for GridMoveable:</div>
@@ -138,21 +138,24 @@ Collaboration diagram for GridMoveable:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7361c4ec8d8754495627a260a2f378ca" id="r_a7361c4ec8d8754495627a260a2f378ca"><td class="memItemLeft">override void&#160;</td><td class="memItemRight"><a class="el" href="#a7361c4ec8d8754495627a260a2f378ca">ConnectToBoardItem</a> ()</td></tr>
 <tr class="memdesc:a7361c4ec8d8754495627a260a2f378ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function for hooking into the various boardItem actions, make sure to unhook on destroy.  <br /></td></tr>
-<tr class="memitem:a3c8231633f11c03ae187ebc07cb256f2" id="r_a3c8231633f11c03ae187ebc07cb256f2"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a3c8231633f11c03ae187ebc07cb256f2">SetEnabled</a> (bool newState)</td></tr>
+<tr class="memitem:a38f13831bfea8acda67fe4c40d6b79c8" id="r_a38f13831bfea8acda67fe4c40d6b79c8"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a38f13831bfea8acda67fe4c40d6b79c8">SetMoving</a> (bool newState)</td></tr>
 <tr class="memitem:ac22be57bc2a530cda7c781a5b6770715" id="r_ac22be57bc2a530cda7c781a5b6770715"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ac22be57bc2a530cda7c781a5b6770715">SetTarget</a> (<a class="el" href="class_grid_1_1_grid_manager_1_1_grid_instance.html">GridManager.GridInstance</a> newTarget)</td></tr>
 <tr class="memitem:a62aed54cbfec41f7a202c9113c85e2cd" id="r_a62aed54cbfec41f7a202c9113c85e2cd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a62aed54cbfec41f7a202c9113c85e2cd">ResetTarget</a> ()</td></tr>
 <tr class="memitem:a055e40f60a43d5ede705b7d13c1c9bf3" id="r_a055e40f60a43d5ede705b7d13c1c9bf3"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a055e40f60a43d5ede705b7d13c1c9bf3">HasTarget</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a8a56267730d1bdea2d8cd24e7fd9043f" id="r_a8a56267730d1bdea2d8cd24e7fd9043f"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a8a56267730d1bdea2d8cd24e7fd9043f">DoDisable</a> ()</td></tr>
-<tr class="memitem:a936c361fb31dad1afea93f84c078ee94" id="r_a936c361fb31dad1afea93f84c078ee94"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a936c361fb31dad1afea93f84c078ee94">DoEnable</a> ()</td></tr>
-<tr class="memitem:a1d9569be009634db2cff227e4a2ca23a" id="r_a1d9569be009634db2cff227e4a2ca23a"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a1d9569be009634db2cff227e4a2ca23a">GetTarget</a> ()</td></tr>
+<tr class="memitem:aae9532da67fbf41ab793707df0864e0c" id="r_aae9532da67fbf41ab793707df0864e0c"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#aae9532da67fbf41ab793707df0864e0c">StopMovementToTarget</a> ()</td></tr>
+<tr class="memitem:ad3b904cdc188809fad3f37c40bfc32c8" id="r_ad3b904cdc188809fad3f37c40bfc32c8"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#ad3b904cdc188809fad3f37c40bfc32c8">TriggerMovementToTarget</a> ()</td></tr>
+<tr class="memitem:aeb8b6afe6051445e6a231f1ebcb98363" id="r_aeb8b6afe6051445e6a231f1ebcb98363"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#aeb8b6afe6051445e6a231f1ebcb98363">SnapToTarget</a> ()</td></tr>
+<tr class="memitem:a85e4842845cba2a3d08b6e13dc7dd46a" id="r_a85e4842845cba2a3d08b6e13dc7dd46a"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a85e4842845cba2a3d08b6e13dc7dd46a">UpdateTarget</a> ()</td></tr>
+<tr class="memitem:a0818215ac98b04cdd03dd313fbf65d87" id="r_a0818215ac98b04cdd03dd313fbf65d87"><td class="memItemLeft">Vector3&#160;</td><td class="memItemRight"><a class="el" href="#a0818215ac98b04cdd03dd313fbf65d87">GetTargetPosition</a> ()</td></tr>
 <tr class="memitem:a700e24890a170e7561871e1b636415b3" id="r_a700e24890a170e7561871e1b636415b3"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="class_board_item_component.html#a700e24890a170e7561871e1b636415b3">CustomOnValidate</a> ()</td></tr>
 <tr class="memdesc:a700e24890a170e7561871e1b636415b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">OnValidate so that <a class="el" href="class_board_item_component.html" title="A component that&#39;s able to hook into the functions of a board item.">BoardItemComponent</a>'s OnValidate doesnt get overwritten.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
+<tr class="memitem:a9e1b657ef1f7cfe30c04df9853e655c5" id="r_a9e1b657ef1f7cfe30c04df9853e655c5"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="#a9e1b657ef1f7cfe30c04df9853e655c5">onUpdate</a></td></tr>
 <tr class="memitem:abdc37bbf43d8b710e1e261653f33cf54" id="r_abdc37bbf43d8b710e1e261653f33cf54"><td class="memItemLeft"><a class="el" href="class_board_item.html">BoardItem</a>&#160;</td><td class="memItemRight"><a class="el" href="class_board_item_component.html#abdc37bbf43d8b710e1e261653f33cf54">boardItem</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-properties" class="groupheader"><a id="properties" name="properties"></a>
@@ -163,17 +166,75 @@ Properties</h2></td></tr>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a204ccebeea5b6a301aabc236fb597fcc" id="r_a204ccebeea5b6a301aabc236fb597fcc"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a204ccebeea5b6a301aabc236fb597fcc">Start</a> ()</td></tr>
 <tr class="memitem:a1aa0368e2a9bab213c7b68703ebcf7f9" id="r_a1aa0368e2a9bab213c7b68703ebcf7f9"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a1aa0368e2a9bab213c7b68703ebcf7f9">OnDestroy</a> ()</td></tr>
+<tr class="memitem:ac1d5f78b651631098877a71e24ef78e8" id="r_ac1d5f78b651631098877a71e24ef78e8"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ac1d5f78b651631098877a71e24ef78e8">Update</a> ()</td></tr>
 <tr class="memitem:a961c47ec2fe99bff7dc814dd74a4e50a" id="r_a961c47ec2fe99bff7dc814dd74a4e50a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a961c47ec2fe99bff7dc814dd74a4e50a">OnAddToHand</a> ()</td></tr>
 <tr class="memitem:af7f7ab7ba63ab7fb524c34a7097ff11d" id="r_af7f7ab7ba63ab7fb524c34a7097ff11d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af7f7ab7ba63ab7fb524c34a7097ff11d">OnInitiate</a> ()</td></tr>
+<tr class="memitem:a41d6d6280fa6141f129e56c921c6301a" id="r_a41d6d6280fa6141f129e56c921c6301a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a41d6d6280fa6141f129e56c921c6301a">AwaitDistanceToTarget</a> ()</td></tr>
+<tr class="memitem:a576efe9566d325145e1e135fd3e5dcfd" id="r_a576efe9566d325145e1e135fd3e5dcfd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a576efe9566d325145e1e135fd3e5dcfd">TriggerUpdateTarget</a> ()</td></tr>
 <tr class="memitem:a2fa5182c957f732c7d34da3e0c5f9c92" id="r_a2fa5182c957f732c7d34da3e0c5f9c92"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_board_item_component.html#a2fa5182c957f732c7d34da3e0c5f9c92">OnValidate</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:accc1483c4867ffc0812ec35161296f0d" id="r_accc1483c4867ffc0812ec35161296f0d"><td class="memItemLeft"><a class="el" href="class_grid_1_1_grid_manager.html">GridManager</a>&#160;</td><td class="memItemRight"><a class="el" href="#accc1483c4867ffc0812ec35161296f0d">grid</a></td></tr>
+<tr class="memitem:a5681760c1032a720a73f0e0fb3574a3c" id="r_a5681760c1032a720a73f0e0fb3574a3c"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a5681760c1032a720a73f0e0fb3574a3c">offset</a> = 0.25f</td></tr>
+<tr class="memitem:a0b0fb3b697aaf0c9ac3d113d8da82385" id="r_a0b0fb3b697aaf0c9ac3d113d8da82385"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a0b0fb3b697aaf0c9ac3d113d8da82385">minimalDist</a> = 1f</td></tr>
+<tr class="memitem:afc6e08e8c33d76a424fc2e839123366c" id="r_afc6e08e8c33d76a424fc2e839123366c"><td class="memItemLeft">float?&#160;</td><td class="memItemRight"><a class="el" href="#afc6e08e8c33d76a424fc2e839123366c">previousDist</a> = null</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Makes it so that a board item gets to move to another place on the board TODO: If the player is not allowed to move the piece it should snap back to previous target. </p>
+<div class="textblock"><p>Makes a board item move to a target position on the grid. TODO: If the player is not allowed to move the piece it should snap back to previous target. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a41d6d6280fa6141f129e56c921c6301a" name="a41d6d6280fa6141f129e56c921c6301a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41d6d6280fa6141f129e56c921c6301a">&#9670;&#160;</a></span>AwaitDistanceToTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GridMoveable.AwaitDistanceToTarget </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   65</span>    {</div>
+<div class="line"><span class="lineno">   66</span>        <span class="keywordflow">if</span> (this.<a class="code hl_property" href="#acd300657904942dea187611c7eda1df1">Target</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   67</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   68</span>        <span class="keywordtype">float</span> dist = Vector3.Distance(this.transform.position, <span class="keyword">this</span>.Target.position);</div>
+<div class="line"><span class="lineno">   69</span>        this.previousDist ??= dist;</div>
+<div class="line"><span class="lineno">   70</span>        </div>
+<div class="line"><span class="lineno">   71</span>        <span class="keywordflow">if</span> (dist &gt; this.<a class="code hl_variable" href="#a0b0fb3b697aaf0c9ac3d113d8da82385">minimalDist</a>)</div>
+<div class="line"><span class="lineno">   72</span>        {</div>
+<div class="line"><span class="lineno">   73</span>            <span class="keywordflow">if</span> (dist &gt; this.<a class="code hl_variable" href="#afc6e08e8c33d76a424fc2e839123366c">previousDist</a>)</div>
+<div class="line"><span class="lineno">   74</span>            {</div>
+<div class="line"><span class="lineno">   75</span>                <a class="code hl_function" href="#a62aed54cbfec41f7a202c9113c85e2cd">ResetTarget</a>();</div>
+<div class="line"><span class="lineno">   76</span>                <a class="code hl_function" href="#a576efe9566d325145e1e135fd3e5dcfd">TriggerUpdateTarget</a>();</div>
+<div class="line"><span class="lineno">   77</span>                this.previousDist = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   78</span>            }</div>
+<div class="line"><span class="lineno">   79</span>            this.previousDist = dist;</div>
+<div class="line"><span class="lineno">   80</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   81</span>        }</div>
+<div class="line"><span class="lineno">   82</span>        this.onUpdate += <a class="code hl_function" href="#aeb8b6afe6051445e6a231f1ebcb98363">SnapToTarget</a>;</div>
+<div class="line"><span class="lineno">   83</span>        this.onUpdate -= <a class="code hl_function" href="#a41d6d6280fa6141f129e56c921c6301a">AwaitDistanceToTarget</a>;</div>
+<div class="line"><span class="lineno">   84</span>    }</div>
+<div class="ttc" id="aclass_grid_moveable_html_a0b0fb3b697aaf0c9ac3d113d8da82385"><div class="ttname"><a href="#a0b0fb3b697aaf0c9ac3d113d8da82385">GridMoveable.minimalDist</a></div><div class="ttdeci">float minimalDist</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:16</div></div>
+<div class="ttc" id="aclass_grid_moveable_html_a41d6d6280fa6141f129e56c921c6301a"><div class="ttname"><a href="#a41d6d6280fa6141f129e56c921c6301a">GridMoveable.AwaitDistanceToTarget</a></div><div class="ttdeci">void AwaitDistanceToTarget()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:64</div></div>
+<div class="ttc" id="aclass_grid_moveable_html_a576efe9566d325145e1e135fd3e5dcfd"><div class="ttname"><a href="#a576efe9566d325145e1e135fd3e5dcfd">GridMoveable.TriggerUpdateTarget</a></div><div class="ttdeci">void TriggerUpdateTarget()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:106</div></div>
+<div class="ttc" id="aclass_grid_moveable_html_a62aed54cbfec41f7a202c9113c85e2cd"><div class="ttname"><a href="#a62aed54cbfec41f7a202c9113c85e2cd">GridMoveable.ResetTarget</a></div><div class="ttdeci">void ResetTarget()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:110</div></div>
+<div class="ttc" id="aclass_grid_moveable_html_acd300657904942dea187611c7eda1df1"><div class="ttname"><a href="#acd300657904942dea187611c7eda1df1">GridMoveable.Target</a></div><div class="ttdeci">GridManager.GridInstance Target</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:12</div></div>
+<div class="ttc" id="aclass_grid_moveable_html_aeb8b6afe6051445e6a231f1ebcb98363"><div class="ttname"><a href="#aeb8b6afe6051445e6a231f1ebcb98363">GridMoveable.SnapToTarget</a></div><div class="ttdeci">virtual void SnapToTarget()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:86</div></div>
+<div class="ttc" id="aclass_grid_moveable_html_afc6e08e8c33d76a424fc2e839123366c"><div class="ttname"><a href="#afc6e08e8c33d76a424fc2e839123366c">GridMoveable.previousDist</a></div><div class="ttdeci">float? previousDist</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:17</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a7361c4ec8d8754495627a260a2f378ca" name="a7361c4ec8d8754495627a260a2f378ca"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7361c4ec8d8754495627a260a2f378ca">&#9670;&#160;</a></span>ConnectToBoardItem()</h2>
 
@@ -200,12 +261,12 @@ Private Attributes</h2></td></tr>
 <p>Function for hooking into the various boardItem actions, make sure to unhook on destroy. </p>
 
 <p>Reimplemented from <a class="el" href="class_board_item_component.html#a8bfba0af81c157c68dfc7193db5d9887">BoardItemComponent</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   19</span>    { </div>
-<div class="line"><span class="lineno">   20</span>        this.boardItem.OnAddToHand += <a class="code hl_function" href="#a961c47ec2fe99bff7dc814dd74a4e50a">OnAddToHand</a>; </div>
-<div class="line"><span class="lineno">   21</span>        this.boardItem.OnInitiate += <a class="code hl_function" href="#af7f7ab7ba63ab7fb524c34a7097ff11d">OnInitiate</a>;</div>
-<div class="line"><span class="lineno">   22</span>    }</div>
-<div class="ttc" id="aclass_grid_moveable_html_a961c47ec2fe99bff7dc814dd74a4e50a"><div class="ttname"><a href="#a961c47ec2fe99bff7dc814dd74a4e50a">GridMoveable.OnAddToHand</a></div><div class="ttdeci">void OnAddToHand()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:30</div></div>
-<div class="ttc" id="aclass_grid_moveable_html_af7f7ab7ba63ab7fb524c34a7097ff11d"><div class="ttname"><a href="#af7f7ab7ba63ab7fb524c34a7097ff11d">GridMoveable.OnInitiate</a></div><div class="ttdeci">void OnInitiate()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:31</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>    { </div>
+<div class="line"><span class="lineno">   28</span>        this.boardItem.OnAddToHand += <a class="code hl_function" href="#a961c47ec2fe99bff7dc814dd74a4e50a">OnAddToHand</a>; </div>
+<div class="line"><span class="lineno">   29</span>        this.boardItem.OnInitiate += <a class="code hl_function" href="#af7f7ab7ba63ab7fb524c34a7097ff11d">OnInitiate</a>;</div>
+<div class="line"><span class="lineno">   30</span>    }</div>
+<div class="ttc" id="aclass_grid_moveable_html_a961c47ec2fe99bff7dc814dd74a4e50a"><div class="ttname"><a href="#a961c47ec2fe99bff7dc814dd74a4e50a">GridMoveable.OnAddToHand</a></div><div class="ttdeci">void OnAddToHand()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:40</div></div>
+<div class="ttc" id="aclass_grid_moveable_html_af7f7ab7ba63ab7fb524c34a7097ff11d"><div class="ttname"><a href="#af7f7ab7ba63ab7fb524c34a7097ff11d">GridMoveable.OnInitiate</a></div><div class="ttdeci">void OnInitiate()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:41</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -234,13 +295,13 @@ Private Attributes</h2></td></tr>
 
 <p>OnValidate so that <a class="el" href="class_board_item_component.html" title="A component that&#39;s able to hook into the functions of a board item.">BoardItemComponent</a>'s OnValidate doesnt get overwritten. </p>
 
-<p>Reimplemented in <a class="el" href="class_move_to_grid_position.html#aebc45640349ca3e1cd2250b79348d1e5">MoveToGridPosition</a>.</p>
+<p>Reimplemented in <a class="el" href="class_grid_rotatable.html#a5e84123a11b6033f4da824affd4712df">GridRotatable</a>, and <a class="el" href="class_move_to_grid_position.html#aebc45640349ca3e1cd2250b79348d1e5">MoveToGridPosition</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   20</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a8a56267730d1bdea2d8cd24e7fd9043f" name="a8a56267730d1bdea2d8cd24e7fd9043f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a56267730d1bdea2d8cd24e7fd9043f">&#9670;&#160;</a></span>DoDisable()</h2>
+<a id="a0818215ac98b04cdd03dd313fbf65d87" name="a0818215ac98b04cdd03dd313fbf65d87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0818215ac98b04cdd03dd313fbf65d87">&#9670;&#160;</a></span>GetTargetPosition()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -249,63 +310,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void GridMoveable.DoDisable </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented in <a class="el" href="class_move_to_grid_position.html#ac6cfdbd54bb2e6b82aa5ac131201d924">MoveToGridPosition</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   41</span>{}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a936c361fb31dad1afea93f84c078ee94" name="a936c361fb31dad1afea93f84c078ee94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a936c361fb31dad1afea93f84c078ee94">&#9670;&#160;</a></span>DoEnable()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void GridMoveable.DoEnable </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented in <a class="el" href="class_move_to_grid_position.html#a4242a79bec30e08ae8ce466f52c8865c">MoveToGridPosition</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   42</span>{}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a1d9569be009634db2cff227e4a2ca23a" name="a1d9569be009634db2cff227e4a2ca23a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d9569be009634db2cff227e4a2ca23a">&#9670;&#160;</a></span>GetTarget()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool GridMoveable.GetTarget </td>
+          <td class="memname">Vector3 GridMoveable.GetTargetPosition </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -317,16 +322,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   45</span>    {</div>
-<div class="line"><span class="lineno">   46</span>        <span class="keywordflow">if</span> (this.<a class="code hl_property" href="#acd300657904942dea187611c7eda1df1">Target</a> != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">   47</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   48</span>        this.grid ??= ComponentRegistry.GetComponent&lt;GridManager&gt;();</div>
-<div class="line"><span class="lineno">   49</span>        <a class="code hl_function" href="#ac22be57bc2a530cda7c781a5b6770715">SetTarget</a>(this.<a class="code hl_variable" href="#accc1483c4867ffc0812ec35161296f0d">grid</a>.GetNearestPosition(<span class="keyword">this</span>.transform.position, <span class="keyword">this</span>.gameObject));</div>
-<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">return</span> this.Target != <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   51</span>    }</div>
-<div class="ttc" id="aclass_grid_moveable_html_ac22be57bc2a530cda7c781a5b6770715"><div class="ttname"><a href="#ac22be57bc2a530cda7c781a5b6770715">GridMoveable.SetTarget</a></div><div class="ttdeci">void SetTarget(GridManager.GridInstance newTarget)</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:53</div></div>
-<div class="ttc" id="aclass_grid_moveable_html_accc1483c4867ffc0812ec35161296f0d"><div class="ttname"><a href="#accc1483c4867ffc0812ec35161296f0d">GridMoveable.grid</a></div><div class="ttdeci">GridManager grid</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:9</div></div>
-<div class="ttc" id="aclass_grid_moveable_html_acd300657904942dea187611c7eda1df1"><div class="ttname"><a href="#acd300657904942dea187611c7eda1df1">GridMoveable.Target</a></div><div class="ttdeci">GridManager.GridInstance Target</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:10</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  120</span>=&gt; this.Target.position + Vector3.back * this.<a class="code hl_variable" href="#a5681760c1032a720a73f0e0fb3574a3c">offset</a>;</div>
+<div class="ttc" id="aclass_grid_moveable_html_a5681760c1032a720a73f0e0fb3574a3c"><div class="ttname"><a href="#a5681760c1032a720a73f0e0fb3574a3c">GridMoveable.offset</a></div><div class="ttdeci">float offset</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:14</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -344,7 +341,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   63</span>=&gt; this.Target != <span class="keyword">null</span>;</div>
+<div class="fragment"><div class="line"><span class="lineno">  118</span>=&gt; this.Target != <span class="keyword">null</span>;</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -370,8 +367,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   30</span>=&gt; <a class="code hl_function" href="#a3c8231633f11c03ae187ebc07cb256f2">SetEnabled</a>(<span class="keyword">false</span>);</div>
-<div class="ttc" id="aclass_grid_moveable_html_a3c8231633f11c03ae187ebc07cb256f2"><div class="ttname"><a href="#a3c8231633f11c03ae187ebc07cb256f2">GridMoveable.SetEnabled</a></div><div class="ttdeci">void SetEnabled(bool newState)</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:33</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>=&gt; <a class="code hl_function" href="#a38f13831bfea8acda67fe4c40d6b79c8">SetMoving</a>(<span class="keyword">false</span>);</div>
+<div class="ttc" id="aclass_grid_moveable_html_a38f13831bfea8acda67fe4c40d6b79c8"><div class="ttname"><a href="#a38f13831bfea8acda67fe4c40d6b79c8">GridMoveable.SetMoving</a></div><div class="ttdeci">void SetMoving(bool newState)</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:43</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -397,10 +394,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   25</span>    {</div>
-<div class="line"><span class="lineno">   26</span>        this.boardItem.OnAddToHand -= <a class="code hl_function" href="#a961c47ec2fe99bff7dc814dd74a4e50a">OnAddToHand</a>; </div>
-<div class="line"><span class="lineno">   27</span>        this.boardItem.OnInitiate -= <a class="code hl_function" href="#af7f7ab7ba63ab7fb524c34a7097ff11d">OnInitiate</a>;</div>
-<div class="line"><span class="lineno">   28</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   33</span>    {</div>
+<div class="line"><span class="lineno">   34</span>        this.boardItem.OnAddToHand -= <a class="code hl_function" href="#a961c47ec2fe99bff7dc814dd74a4e50a">OnAddToHand</a>; </div>
+<div class="line"><span class="lineno">   35</span>        this.boardItem.OnInitiate -= <a class="code hl_function" href="#af7f7ab7ba63ab7fb524c34a7097ff11d">OnInitiate</a>;</div>
+<div class="line"><span class="lineno">   36</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -426,7 +423,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   31</span>=&gt; <a class="code hl_function" href="#a3c8231633f11c03ae187ebc07cb256f2">SetEnabled</a>(<span class="keyword">true</span>);</div>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>=&gt; <a class="code hl_function" href="#a38f13831bfea8acda67fe4c40d6b79c8">SetMoving</a>(<span class="keyword">true</span>);</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -476,37 +473,38 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   56</span>    {</div>
-<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">if</span> (this.<a class="code hl_property" href="#acd300657904942dea187611c7eda1df1">Target</a> == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">   58</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   59</span>        this.<a class="code hl_variable" href="#accc1483c4867ffc0812ec35161296f0d">grid</a>.ReleaseInstance(this.<a class="code hl_property" href="#acd300657904942dea187611c7eda1df1">Target</a>);</div>
-<div class="line"><span class="lineno">   60</span>        this.Target = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   61</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  111</span>    {</div>
+<div class="line"><span class="lineno">  112</span>        <span class="keywordflow">if</span> (this.<a class="code hl_property" href="#acd300657904942dea187611c7eda1df1">Target</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  113</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  114</span>        this.<a class="code hl_variable" href="#accc1483c4867ffc0812ec35161296f0d">grid</a>.ReleaseInstance(this.<a class="code hl_property" href="#acd300657904942dea187611c7eda1df1">Target</a>);</div>
+<div class="line"><span class="lineno">  115</span>        this.Target = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  116</span>    }</div>
+<div class="ttc" id="aclass_grid_moveable_html_accc1483c4867ffc0812ec35161296f0d"><div class="ttname"><a href="#accc1483c4867ffc0812ec35161296f0d">GridMoveable.grid</a></div><div class="ttdeci">GridManager grid</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:11</div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a3c8231633f11c03ae187ebc07cb256f2" name="a3c8231633f11c03ae187ebc07cb256f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c8231633f11c03ae187ebc07cb256f2">&#9670;&#160;</a></span>SetEnabled()</h2>
+<a id="a38f13831bfea8acda67fe4c40d6b79c8" name="a38f13831bfea8acda67fe4c40d6b79c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38f13831bfea8acda67fe4c40d6b79c8">&#9670;&#160;</a></span>SetMoving()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void GridMoveable.SetEnabled </td>
+          <td class="memname">void GridMoveable.SetMoving </td>
           <td>(</td>
           <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>newState</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   34</span>    {</div>
-<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">if</span> (newState)</div>
-<div class="line"><span class="lineno">   36</span>            <a class="code hl_function" href="#a936c361fb31dad1afea93f84c078ee94">DoEnable</a>();</div>
-<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   38</span>            <a class="code hl_function" href="#a8a56267730d1bdea2d8cd24e7fd9043f">DoDisable</a>();</div>
-<div class="line"><span class="lineno">   39</span>    }</div>
-<div class="ttc" id="aclass_grid_moveable_html_a8a56267730d1bdea2d8cd24e7fd9043f"><div class="ttname"><a href="#a8a56267730d1bdea2d8cd24e7fd9043f">GridMoveable.DoDisable</a></div><div class="ttdeci">virtual void DoDisable()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:41</div></div>
-<div class="ttc" id="aclass_grid_moveable_html_a936c361fb31dad1afea93f84c078ee94"><div class="ttname"><a href="#a936c361fb31dad1afea93f84c078ee94">GridMoveable.DoEnable</a></div><div class="ttdeci">virtual void DoEnable()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:42</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   44</span>    {</div>
+<div class="line"><span class="lineno">   45</span>        <span class="keywordflow">if</span> (newState)</div>
+<div class="line"><span class="lineno">   46</span>            <a class="code hl_function" href="#ad3b904cdc188809fad3f37c40bfc32c8">TriggerMovementToTarget</a>();</div>
+<div class="line"><span class="lineno">   47</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   48</span>            <a class="code hl_function" href="#aae9532da67fbf41ab793707df0864e0c">StopMovementToTarget</a>();</div>
+<div class="line"><span class="lineno">   49</span>    }</div>
+<div class="ttc" id="aclass_grid_moveable_html_aae9532da67fbf41ab793707df0864e0c"><div class="ttname"><a href="#aae9532da67fbf41ab793707df0864e0c">GridMoveable.StopMovementToTarget</a></div><div class="ttdeci">virtual void StopMovementToTarget()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:51</div></div>
+<div class="ttc" id="aclass_grid_moveable_html_ad3b904cdc188809fad3f37c40bfc32c8"><div class="ttname"><a href="#ad3b904cdc188809fad3f37c40bfc32c8">GridMoveable.TriggerMovementToTarget</a></div><div class="ttdeci">virtual void TriggerMovementToTarget()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:58</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -524,7 +522,42 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   53</span>=&gt; this.Target = newTarget;</div>
+<div class="fragment"><div class="line"><span class="lineno">  108</span>=&gt; this.Target = newTarget;</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aeb8b6afe6051445e6a231f1ebcb98363" name="aeb8b6afe6051445e6a231f1ebcb98363"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb8b6afe6051445e6a231f1ebcb98363">&#9670;&#160;</a></span>SnapToTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void GridMoveable.SnapToTarget </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="class_move_to_grid_position.html#a2bcf28ee7602b582c486acc10e5075b9">MoveToGridPosition</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   87</span>    {</div>
+<div class="line"><span class="lineno">   88</span>        <span class="keywordflow">if</span> (this.<a class="code hl_property" href="#acd300657904942dea187611c7eda1df1">Target</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   89</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   90</span>        this.transform.position = <a class="code hl_function" href="#a0818215ac98b04cdd03dd313fbf65d87">GetTargetPosition</a>();</div>
+<div class="line"><span class="lineno">   91</span>        this.<a class="code hl_variable" href="class_board_item_component.html#abdc37bbf43d8b710e1e261653f33cf54">boardItem</a>.OnAddToBoard?.Invoke();</div>
+<div class="line"><span class="lineno">   92</span>    }</div>
+<div class="ttc" id="aclass_board_item_component_html_abdc37bbf43d8b710e1e261653f33cf54"><div class="ttname"><a href="class_board_item_component.html#abdc37bbf43d8b710e1e261653f33cf54">BoardItemComponent.boardItem</a></div><div class="ttdeci">BoardItem boardItem</div><div class="ttdef"><b>Definition</b> BoardItemComponent.cs:9</div></div>
+<div class="ttc" id="aclass_grid_moveable_html_a0818215ac98b04cdd03dd313fbf65d87"><div class="ttname"><a href="#a0818215ac98b04cdd03dd313fbf65d87">GridMoveable.GetTargetPosition</a></div><div class="ttdeci">Vector3 GetTargetPosition()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:120</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -550,10 +583,163 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   13</span>    {</div>
-<div class="line"><span class="lineno">   14</span>        this.grid = ComponentRegistry.GetComponent&lt;GridManager&gt;();</div>
-<div class="line"><span class="lineno">   15</span>        <a class="code hl_function" href="#a3c8231633f11c03ae187ebc07cb256f2">SetEnabled</a>(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   16</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   21</span>    {</div>
+<div class="line"><span class="lineno">   22</span>        this.grid = ComponentRegistry.GetComponent&lt;GridManager&gt;();</div>
+<div class="line"><span class="lineno">   23</span>        <a class="code hl_function" href="#a38f13831bfea8acda67fe4c40d6b79c8">SetMoving</a>(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   24</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aae9532da67fbf41ab793707df0864e0c" name="aae9532da67fbf41ab793707df0864e0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae9532da67fbf41ab793707df0864e0c">&#9670;&#160;</a></span>StopMovementToTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void GridMoveable.StopMovementToTarget </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="class_move_to_grid_position.html#a05805d94fac1427ad6b5ba901cecbd07">MoveToGridPosition</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   52</span>    {</div>
+<div class="line"><span class="lineno">   53</span>        this.onUpdate -= <a class="code hl_function" href="#aeb8b6afe6051445e6a231f1ebcb98363">SnapToTarget</a>;</div>
+<div class="line"><span class="lineno">   54</span>        this.onUpdate -= <a class="code hl_function" href="#a41d6d6280fa6141f129e56c921c6301a">AwaitDistanceToTarget</a>;</div>
+<div class="line"><span class="lineno">   55</span>        <a class="code hl_function" href="#a62aed54cbfec41f7a202c9113c85e2cd">ResetTarget</a>(); <span class="comment">// TODO: logic for limited player moves here</span></div>
+<div class="line"><span class="lineno">   56</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad3b904cdc188809fad3f37c40bfc32c8" name="ad3b904cdc188809fad3f37c40bfc32c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3b904cdc188809fad3f37c40bfc32c8">&#9670;&#160;</a></span>TriggerMovementToTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void GridMoveable.TriggerMovementToTarget </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="class_move_to_grid_position.html#aeaf3a955c64e136e3dde15e81f7c274d">MoveToGridPosition</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   59</span>    {</div>
+<div class="line"><span class="lineno">   60</span>        <a class="code hl_function" href="#a576efe9566d325145e1e135fd3e5dcfd">TriggerUpdateTarget</a>();</div>
+<div class="line"><span class="lineno">   61</span>        this.onUpdate += <a class="code hl_function" href="#a41d6d6280fa6141f129e56c921c6301a">AwaitDistanceToTarget</a>;</div>
+<div class="line"><span class="lineno">   62</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a576efe9566d325145e1e135fd3e5dcfd" name="a576efe9566d325145e1e135fd3e5dcfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a576efe9566d325145e1e135fd3e5dcfd">&#9670;&#160;</a></span>TriggerUpdateTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GridMoveable.TriggerUpdateTarget </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  106</span>=&gt; <a class="code hl_function" href="#a85e4842845cba2a3d08b6e13dc7dd46a">UpdateTarget</a>();</div>
+<div class="ttc" id="aclass_grid_moveable_html_a85e4842845cba2a3d08b6e13dc7dd46a"><div class="ttname"><a href="#a85e4842845cba2a3d08b6e13dc7dd46a">GridMoveable.UpdateTarget</a></div><div class="ttdeci">bool UpdateTarget()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:94</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac1d5f78b651631098877a71e24ef78e8" name="ac1d5f78b651631098877a71e24ef78e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1d5f78b651631098877a71e24ef78e8">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GridMoveable.Update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   38</span>=&gt; this.<a class="code hl_variable" href="#a9e1b657ef1f7cfe30c04df9853e655c5">onUpdate</a>?.Invoke();</div>
+<div class="ttc" id="aclass_grid_moveable_html_a9e1b657ef1f7cfe30c04df9853e655c5"><div class="ttname"><a href="#a9e1b657ef1f7cfe30c04df9853e655c5">GridMoveable.onUpdate</a></div><div class="ttdeci">Action onUpdate</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:18</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a85e4842845cba2a3d08b6e13dc7dd46a" name="a85e4842845cba2a3d08b6e13dc7dd46a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85e4842845cba2a3d08b6e13dc7dd46a">&#9670;&#160;</a></span>UpdateTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GridMoveable.UpdateTarget </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   95</span>    {</div>
+<div class="line"><span class="lineno">   96</span>        <span class="keywordflow">if</span> (this.<a class="code hl_property" href="#acd300657904942dea187611c7eda1df1">Target</a> != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   97</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   98</span>        this.grid ??= ComponentRegistry.GetComponent&lt;GridManager&gt;();</div>
+<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">if</span> (this.<a class="code hl_variable" href="#accc1483c4867ffc0812ec35161296f0d">grid</a>)</div>
+<div class="line"><span class="lineno">  100</span>            <a class="code hl_function" href="#ac22be57bc2a530cda7c781a5b6770715">SetTarget</a>(this.<a class="code hl_variable" href="#accc1483c4867ffc0812ec35161296f0d">grid</a>.GetNearestPosition(<span class="keyword">this</span>.transform.position, <span class="keyword">this</span>.gameObject));</div>
+<div class="line"><span class="lineno">  101</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  102</span>            ComponentRegistry.TrySubscribeForComponent&lt;GridManager&gt;(<a class="code hl_function" href="#a576efe9566d325145e1e135fd3e5dcfd">TriggerUpdateTarget</a>);</div>
+<div class="line"><span class="lineno">  103</span>        <span class="keywordflow">return</span> this.Target != <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  104</span>    }</div>
+<div class="ttc" id="aclass_grid_moveable_html_ac22be57bc2a530cda7c781a5b6770715"><div class="ttname"><a href="#ac22be57bc2a530cda7c781a5b6770715">GridMoveable.SetTarget</a></div><div class="ttdeci">void SetTarget(GridManager.GridInstance newTarget)</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:108</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -602,6 +788,94 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a0b0fb3b697aaf0c9ac3d113d8da82385" name="a0b0fb3b697aaf0c9ac3d113d8da82385"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b0fb3b697aaf0c9ac3d113d8da82385">&#9670;&#160;</a></span>minimalDist</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float GridMoveable.minimalDist = 1f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5681760c1032a720a73f0e0fb3574a3c" name="a5681760c1032a720a73f0e0fb3574a3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5681760c1032a720a73f0e0fb3574a3c">&#9670;&#160;</a></span>offset</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float GridMoveable.offset = 0.25f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9e1b657ef1f7cfe30c04df9853e655c5" name="a9e1b657ef1f7cfe30c04df9853e655c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e1b657ef1f7cfe30c04df9853e655c5">&#9670;&#160;</a></span>onUpdate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Action GridMoveable.onUpdate</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afc6e08e8c33d76a424fc2e839123366c" name="afc6e08e8c33d76a424fc2e839123366c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc6e08e8c33d76a424fc2e839123366c">&#9670;&#160;</a></span>previousDist</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float? GridMoveable.previousDist = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a name="doc-property-members" id="doc-property-members"></a><h2 id="header-doc-property-members" class="groupheader">Property Documentation</h2>
 <a id="acd300657904942dea187611c7eda1df1" name="acd300657904942dea187611c7eda1df1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acd300657904942dea187611c7eda1df1">&#9670;&#160;</a></span>Target</h2>
@@ -622,7 +896,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   10</span>{ <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
+<div class="fragment"><div class="line"><span class="lineno">   12</span>{ <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
 </div><!-- fragment -->
 </div>
 </div>

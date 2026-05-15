@@ -1,43 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$class_mono_behaviour.html" title=" " alt="" coords="5,385,117,412"/>
-<area shape="rect" id="Node000001" href="$class_billboard.html" title="A simple component, that makes the transform follow the camera." alt="" coords="235,5,306,32"/>
-<area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="59,369,62,302,76,214,89,168,107,122,131,79,163,42,179,30,197,23,236,17,232,20,199,28,181,35,166,46,136,82,112,124,94,169,81,215,67,303,64,370"/>
-<area shape="rect" id="Node000002" href="$class_board_item.html" title="Holds all board item events, used to let board item specific components hook into logic and represent..." alt="" coords="230,56,311,83"/>
-<area shape="poly" id="edge3_Node000000_Node000002" title=" " alt="" coords="61,369,67,311,82,236,95,197,113,159,135,124,163,93,194,75,231,68,227,72,196,80,166,97,139,127,118,162,100,199,88,238,72,312,66,370"/>
-<area shape="rect" id="Node000004" href="$class_board_item_component.html" title="A component that&#39;s able to hook into the functions of a board item." alt="" coords="196,107,344,133"/>
-<area shape="poly" id="edge5_Node000000_Node000004" title=" " alt="" coords="63,370,72,320,89,259,119,197,139,168,163,143,197,126,194,131,166,147,143,172,123,199,94,261,77,322,68,371"/>
-<area shape="rect" id="Node000008" href="$class_candy_type_lookup.html" title="Lookup table for all candy types, and their data Possible to change per level since it&#39;s a registered..." alt="" coords="206,157,335,184"/>
-<area shape="poly" id="edge9_Node000000_Node000008" title=" " alt="" coords="66,369,78,330,97,282,125,234,143,213,163,194,183,182,207,175,204,179,185,187,166,198,147,216,130,237,102,284,83,331,71,371"/>
-<area shape="rect" id="Node000009" href="$class_f_p_s_counter.html" title="An FPS counter that Lucas stole from stack overflow, then connected to a Text component." alt="" coords="224,208,317,235"/>
-<area shape="poly" id="edge10_Node000000_Node000009" title=" " alt="" coords="71,370,106,306,132,273,163,244,192,230,225,223,221,227,194,235,166,249,136,276,110,309,76,372"/>
-<area shape="rect" id="Node000010" href="$class_grid_1_1_grid_generator.html" title="Handles the possible positions within the grid, and generates the mesh." alt="" coords="205,259,336,285"/>
-<area shape="poly" id="edge11_Node000000_Node000010" title=" " alt="" coords="79,372,115,332,138,312,163,295,206,280,203,284,166,300,142,316,119,336,84,374"/>
-<area shape="rect" id="Node000011" href="$class_grid_1_1_grid_manager.html" title="Manages everything inside of the grid." alt="" coords="209,309,332,336"/>
-<area shape="poly" id="edge12_Node000000_Node000011" title=" " alt="" coords="98,376,164,346,210,333,206,337,166,350,102,379"/>
-<area shape="rect" id="Node000012" href="$class_grid_1_1_turn_manager.html" title="Handles turns on the grid, moving anything on the grid down." alt="" coords="208,360,333,387"/>
-<area shape="poly" id="edge13_Node000000_Node000012" title=" " alt="" coords="131,388,209,379,205,383,134,392"/>
-<area shape="rect" id="Node000013" href="$class_interactable.html" title="A simple class for hooking into interactions, player pickup etc." alt="" coords="226,411,315,437"/>
-<area shape="poly" id="edge14_Node000000_Node000013" title=" " alt="" coords="131,405,227,417,223,420,133,410"/>
-<area shape="rect" id="Node000014" href="$class_player_deck.html" title="Spawns candy within the player hand, using a pool of grouped candy." alt="" coords="226,461,315,488"/>
-<area shape="poly" id="edge15_Node000000_Node000014" title=" " alt="" coords="99,417,166,447,228,465,223,468,164,452,101,422"/>
-<area shape="rect" id="Node000015" href="$class_player_hand_1_1_interaction_handler.html" title="Lets the player hand interact with interactables." alt="" coords="171,512,370,539"/>
-<area shape="poly" id="edge16_Node000000_Node000015" title=" " alt="" coords="81,422,119,462,142,481,166,498,193,510,188,512,163,502,138,486,115,466,82,427"/>
-<area shape="rect" id="Node000016" href="$class_player_hand_1_1_movement_handler.html" title="Handles player hand movement with acceleration, velocity tracking, and throw force calculation." alt="" coords="171,563,370,589"/>
-<area shape="poly" id="edge17_Node000000_Node000016" title=" " alt="" coords="74,424,110,488,136,521,166,548,189,561,184,563,163,553,132,525,106,491,73,429"/>
-<area shape="rect" id="Node000017" href="$class_player_hand_1_1_player_hand_manager.html" title="Manages all playerHand handlers, and keeps track of mouse input and the hand state." alt="" coords="165,613,376,640"/>
-<area shape="poly" id="edge18_Node000000_Node000017" title=" " alt="" coords="69,425,83,466,102,513,130,560,147,581,166,599,187,612,181,613,163,603,143,585,125,563,97,515,78,468,69,430"/>
-<area shape="rect" id="Node000018" href="$class_player_hand_1_1_visual_handler.html" title="Used for setting and keeping track of the player hand visuals." alt="" coords="183,664,358,691"/>
-<area shape="poly" id="edge19_Node000000_Node000018" title=" " alt="" coords="66,425,77,476,94,536,123,598,143,626,166,650,185,663,180,664,163,654,139,629,119,601,89,538,72,477,65,430"/>
-<area shape="rect" id="Node000019" href="$class_quest_system.html" title="Keeps track of all quests within the level." alt="" coords="220,715,321,741"/>
-<area shape="poly" id="edge20_Node000000_Node000019" title=" " alt="" coords="63,425,72,486,88,559,100,598,118,636,139,670,166,701,191,716,222,726,216,726,189,721,163,705,135,674,113,638,95,600,82,561,67,486,63,430"/>
-<area shape="rect" id="Node000020" href="$class_resolution_tracker.html" title="Tracks the resolution of the current project, when it changes it calls a event." alt="" coords="207,765,334,792"/>
-<area shape="poly" id="edge21_Node000000_Node000020" title=" " alt="" coords="62,425,67,495,81,582,94,628,112,673,136,715,166,751,185,764,209,775,204,774,183,769,163,755,131,718,107,675,89,630,76,583,62,495,61,431"/>
-<area shape="rect" id="Node000003" href="$class_candy_actor.html" title="Manages the in game logic of a piece of candy." alt="" coords="430,56,520,83"/>
-<area shape="poly" id="edge4_Node000002_Node000003" title=" " alt="" coords="325,67,431,68,427,71,328,72"/>
-<area shape="rect" id="Node000005" href="$class_grid_moveable.html" title="Makes it so that a board item gets to move to another place on the board TODO: If the player is not a..." alt="" coords="424,107,525,133"/>
-<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="359,118,426,119,421,121,361,122"/>
-<area shape="rect" id="Node000007" href="$class_hand_handler.html" title="Lets a boardItem connect to the player hand." alt="" coords="426,157,523,184"/>
-<area shape="poly" id="edge8_Node000004_Node000007" title=" " alt="" coords="343,135,377,143,428,157,423,159,375,148,345,140"/>
-<area shape="rect" id="Node000006" href="$class_move_to_grid_position.html" title="Animates a piece of candy towards a grid position, via physics, I forgot how it works...." alt="" coords="573,107,712,133"/>
-<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="540,118,575,119,570,121,542,122"/>
+<area shape="rect" id="Node000000" href="$interface_i_poolable.html" title="Makes an object be able to be used within a objectPool." alt="" coords="5,5,81,32"/>
+<area shape="rect" id="Node000001" href="$class_candy_group_handle.html" title="A class for managing multiple candy instances, this would make it more efficient to reuse dead candy ..." alt="" coords="129,5,264,32"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="96,16,131,18,126,19,96,21"/>
 </map>

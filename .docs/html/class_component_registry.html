@@ -126,19 +126,31 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('class_componen
 <div class="dynheader">
 Collaboration diagram for ComponentRegistry:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_component_registry__coll__graph.svg" width="227" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_component_registry__coll__graph.svg" width="408" height="456"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:Subscriber" id="r_Subscriber"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="class_component_registry_1_1_subscriber.html">Subscriber</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a subscriber for additions to the component register.  <a href="class_component_registry_1_1_subscriber.html#details">More...</a><br /></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ada1775506a8f11a9605a63c2ab4cefdc" id="r_ada1775506a8f11a9605a63c2ab4cefdc"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#ada1775506a8f11a9605a63c2ab4cefdc">AddToRegistry</a> (Component component)</td></tr>
 <tr class="memitem:a75c83b2b4dddef2b06bfbba30eb71758" id="r_a75c83b2b4dddef2b06bfbba30eb71758"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a75c83b2b4dddef2b06bfbba30eb71758">RemoveFromRegistry</a> (Component component)</td></tr>
 <tr class="memitem:a2e6de7a1b05d47e272a1a4529ba6cff6" id="r_a2e6de7a1b05d47e272a1a4529ba6cff6"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a2e6de7a1b05d47e272a1a4529ba6cff6">ReplaceInRegistry</a> (Component component)</td></tr>
 <tr class="memitem:aff187f743e900267a375be5333c4e983" id="r_aff187f743e900267a375be5333c4e983"><td class="memItemLeft">static T&#160;</td><td class="memItemRight"><a class="el" href="#aff187f743e900267a375be5333c4e983">GetComponent&lt; T &gt;</a> ()</td></tr>
+<tr class="memitem:a9e50e6f99e819a303b10ff452e51801b" id="r_a9e50e6f99e819a303b10ff452e51801b"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a9e50e6f99e819a303b10ff452e51801b">TrySubscribeForComponent&lt; T &gt;</a> (Action toCall)</td></tr>
+<tr class="memdesc:a9e50e6f99e819a303b10ff452e51801b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lets you call something the moment a certain component is registered.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-static-methods" class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a8db18f3a640879a7ec56624a3175d0fa" id="r_a8db18f3a640879a7ec56624a3175d0fa"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a8db18f3a640879a7ec56624a3175d0fa">TryCallSubscribers</a> (string type)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-attribs" class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:aa58d555673afeaf7267e4c2030523212" id="r_aa58d555673afeaf7267e4c2030523212"><td class="memItemLeft">static readonly Dictionary&lt; string, Component &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aa58d555673afeaf7267e4c2030523212">Components</a> = new()</td></tr>
+<tr class="memitem:ad4c0f5c13e1d84d8c1d1bc3392a5295b" id="r_ad4c0f5c13e1d84d8c1d1bc3392a5295b"><td class="memItemLeft">static readonly List&lt; <a class="el" href="class_component_registry_1_1_subscriber.html">Subscriber</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ad4c0f5c13e1d84d8c1d1bc3392a5295b">Subscribers</a> = new()</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A register, so a unique named list, of components to keep safe, and make accessible. </p>
@@ -172,8 +184,14 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A bool that's false on failure, meaning there's already a component of the same type inside the register</dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">   13</span>=&gt; <a class="code hl_variable" href="#aa58d555673afeaf7267e4c2030523212">Components</a>.TryAdd(component.GetType().ToString(), component);</div>
-<div class="ttc" id="aclass_component_registry_html_aa58d555673afeaf7267e4c2030523212"><div class="ttname"><a href="#aa58d555673afeaf7267e4c2030523212">ComponentRegistry.Components</a></div><div class="ttdeci">static readonly Dictionary&lt; string, Component &gt; Components</div><div class="ttdef"><b>Definition</b> ComponentRegistry.cs:9</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   24</span>    {</div>
+<div class="line"><span class="lineno">   25</span>        <span class="keywordtype">string</span> type = component.GetType().ToString();</div>
+<div class="line"><span class="lineno">   26</span>        <span class="keywordtype">bool</span> result = <a class="code hl_variable" href="#aa58d555673afeaf7267e4c2030523212">Components</a>.TryAdd(type, component);</div>
+<div class="line"><span class="lineno">   27</span>        <a class="code hl_function" href="#a8db18f3a640879a7ec56624a3175d0fa">TryCallSubscribers</a>(type);</div>
+<div class="line"><span class="lineno">   28</span>        <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">   29</span>    }</div>
+<div class="ttc" id="aclass_component_registry_html_a8db18f3a640879a7ec56624a3175d0fa"><div class="ttname"><a href="#a8db18f3a640879a7ec56624a3175d0fa">ComponentRegistry.TryCallSubscribers</a></div><div class="ttdeci">static void TryCallSubscribers(string type)</div><div class="ttdef"><b>Definition</b> ComponentRegistry.cs:31</div></div>
+<div class="ttc" id="aclass_component_registry_html_aa58d555673afeaf7267e4c2030523212"><div class="ttname"><a href="#aa58d555673afeaf7267e4c2030523212">ComponentRegistry.Components</a></div><div class="ttdeci">static readonly Dictionary&lt; string, Component &gt; Components</div><div class="ttdef"><b>Definition</b> ComponentRegistry.cs:11</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -214,7 +232,7 @@ Static Private Attributes</h2></td></tr>
 </dd>
 </dl>
 </div>
-<div class="fragment"><div class="line"><span class="lineno">   30</span>: Component =&gt; (T)<a class="code hl_variable" href="#aa58d555673afeaf7267e4c2030523212">Components</a>.GetValueOrDefault(typeof(T).ToString());</div>
+<div class="fragment"><div class="line"><span class="lineno">   57</span>: Component =&gt; (T)<a class="code hl_variable" href="#aa58d555673afeaf7267e4c2030523212">Components</a>.GetValueOrDefault(typeof(T).ToString());</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -247,7 +265,7 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A bool that's false when the component was not found in the register</dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">   17</span>=&gt; <a class="code hl_variable" href="#aa58d555673afeaf7267e4c2030523212">Components</a>.Remove(component.GetType().ToString());</div>
+<div class="fragment"><div class="line"><span class="lineno">   44</span>=&gt; <a class="code hl_variable" href="#aa58d555673afeaf7267e4c2030523212">Components</a>.Remove(component.GetType().ToString());</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -280,12 +298,94 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Should not be able to return false, but returns false on failure</dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">   22</span>    {</div>
-<div class="line"><span class="lineno">   23</span>        <span class="keywordtype">string</span> name = component.GetType().ToString();</div>
-<div class="line"><span class="lineno">   24</span>        <a class="code hl_variable" href="#aa58d555673afeaf7267e4c2030523212">Components</a>.Remove(name);</div>
-<div class="line"><span class="lineno">   25</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="#ada1775506a8f11a9605a63c2ab4cefdc">AddToRegistry</a>(component);</div>
-<div class="line"><span class="lineno">   26</span>    }</div>
-<div class="ttc" id="aclass_component_registry_html_ada1775506a8f11a9605a63c2ab4cefdc"><div class="ttname"><a href="#ada1775506a8f11a9605a63c2ab4cefdc">ComponentRegistry.AddToRegistry</a></div><div class="ttdeci">static bool AddToRegistry(Component component)</div><div class="ttdef"><b>Definition</b> ComponentRegistry.cs:13</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>    {</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keywordtype">string</span> name = component.GetType().ToString();</div>
+<div class="line"><span class="lineno">   51</span>        <a class="code hl_variable" href="#aa58d555673afeaf7267e4c2030523212">Components</a>.Remove(name);</div>
+<div class="line"><span class="lineno">   52</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="#ada1775506a8f11a9605a63c2ab4cefdc">AddToRegistry</a>(component);</div>
+<div class="line"><span class="lineno">   53</span>    }</div>
+<div class="ttc" id="aclass_component_registry_html_ada1775506a8f11a9605a63c2ab4cefdc"><div class="ttname"><a href="#ada1775506a8f11a9605a63c2ab4cefdc">ComponentRegistry.AddToRegistry</a></div><div class="ttdeci">static bool AddToRegistry(Component component)</div><div class="ttdef"><b>Definition</b> ComponentRegistry.cs:23</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8db18f3a640879a7ec56624a3175d0fa" name="a8db18f3a640879a7ec56624a3175d0fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8db18f3a640879a7ec56624a3175d0fa">&#9670;&#160;</a></span>TryCallSubscribers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ComponentRegistry.TryCallSubscribers </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>type</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   32</span>    {</div>
+<div class="line"><span class="lineno">   33</span>        <a class="code hl_class" href="class_component_registry_1_1_subscriber.html">Subscriber</a>[] subscriber = <a class="code hl_variable" href="#ad4c0f5c13e1d84d8c1d1bc3392a5295b">Subscribers</a>.Where(s =&gt; s.ComponentType == type).ToArray();</div>
+<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">if</span> (subscriber.Length == 0) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_component_registry_1_1_subscriber.html">Subscriber</a> sub <span class="keywordflow">in</span> subscriber)</div>
+<div class="line"><span class="lineno">   36</span>        {</div>
+<div class="line"><span class="lineno">   37</span>            sub.toCall?.Invoke();</div>
+<div class="line"><span class="lineno">   38</span>            <a class="code hl_variable" href="#ad4c0f5c13e1d84d8c1d1bc3392a5295b">Subscribers</a>.Remove(sub);</div>
+<div class="line"><span class="lineno">   39</span>        }</div>
+<div class="line"><span class="lineno">   40</span>    }</div>
+<div class="ttc" id="aclass_component_registry_1_1_subscriber_html"><div class="ttname"><a href="class_component_registry_1_1_subscriber.html">ComponentRegistry.Subscriber</a></div><div class="ttdoc">Represents a subscriber for additions to the component register.</div><div class="ttdef"><b>Definition</b> ComponentRegistry.cs:16</div></div>
+<div class="ttc" id="aclass_component_registry_html_ad4c0f5c13e1d84d8c1d1bc3392a5295b"><div class="ttname"><a href="#ad4c0f5c13e1d84d8c1d1bc3392a5295b">ComponentRegistry.Subscribers</a></div><div class="ttdeci">static readonly List&lt; Subscriber &gt; Subscribers</div><div class="ttdef"><b>Definition</b> ComponentRegistry.cs:12</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9e50e6f99e819a303b10ff452e51801b" name="a9e50e6f99e819a303b10ff452e51801b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e50e6f99e819a303b10ff452e51801b">&#9670;&#160;</a></span>TrySubscribeForComponent&lt; T &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ComponentRegistry.TrySubscribeForComponent&lt; T &gt; </td>
+          <td>(</td>
+          <td class="paramtype">Action</td>          <td class="paramname"><span class="paramname"><em>toCall</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lets you call something the moment a certain component is registered. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">toCall</td><td>This method/action will be called and removed once the type is added to the registry</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type to get from the register</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">   63</span>    {</div>
+<div class="line"><span class="lineno">   64</span>        <span class="keywordtype">string</span> type = typeof(T).ToString();</div>
+<div class="line"><span class="lineno">   65</span>        <a class="code hl_class" href="class_component_registry_1_1_subscriber.html">Subscriber</a> found = <a class="code hl_variable" href="#ad4c0f5c13e1d84d8c1d1bc3392a5295b">Subscribers</a>.FirstOrDefault(s =&gt; s.ComponentType == type &amp;&amp; s.toCall == toCall);</div>
+<div class="line"><span class="lineno">   66</span>        <span class="keywordflow">if</span> (found != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   67</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   68</span>        <a class="code hl_variable" href="#ad4c0f5c13e1d84d8c1d1bc3392a5295b">Subscribers</a>.Add(<span class="keyword">new</span> <a class="code hl_class" href="class_component_registry_1_1_subscriber.html">Subscriber</a> { ComponentType = type, toCall = toCall });</div>
+<div class="line"><span class="lineno">   69</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -301,6 +401,28 @@ Static Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">readonly Dictionary&lt;string, Component&gt; ComponentRegistry.Components = new()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad4c0f5c13e1d84d8c1d1bc3392a5295b" name="ad4c0f5c13e1d84d8c1d1bc3392a5295b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4c0f5c13e1d84d8c1d1bc3392a5295b">&#9670;&#160;</a></span>Subscribers</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly List&lt;<a class="el" href="class_component_registry_1_1_subscriber.html">Subscriber</a>&gt; ComponentRegistry.Subscribers = new()</td>
         </tr>
       </table>
   </td>

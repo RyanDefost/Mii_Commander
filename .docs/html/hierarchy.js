@@ -18,9 +18,11 @@ var hierarchy =
         [ "GridMoveable", "class_grid_moveable.html", [
           [ "MoveToGridPosition", "class_move_to_grid_position.html", null ]
         ] ],
+        [ "GridRotatable", "class_grid_rotatable.html", null ],
         [ "HandHandler", "class_hand_handler.html", null ]
       ] ],
       [ "CandyTypeLookup", "class_candy_type_lookup.html", null ],
+      [ "DeviceTracker", "class_device_tracker.html", null ],
       [ "FPSCounter", "class_f_p_s_counter.html", null ],
       [ "Grid.GridGenerator", "class_grid_1_1_grid_generator.html", null ],
       [ "Grid.GridManager", "class_grid_1_1_grid_manager.html", null ],
@@ -28,6 +30,7 @@ var hierarchy =
       [ "Interactable", "class_interactable.html", null ],
       [ "PlayerDeck", "class_player_deck.html", null ],
       [ "PlayerHand.InteractionHandler", "class_player_hand_1_1_interaction_handler.html", null ],
+      [ "PlayerHand.ItemRotationHandler", "class_player_hand_1_1_item_rotation_handler.html", null ],
       [ "PlayerHand.MovementHandler", "class_player_hand_1_1_movement_handler.html", null ],
       [ "PlayerHand.PlayerHandManager", "class_player_hand_1_1_player_hand_manager.html", null ],
       [ "PlayerHand.VisualHandler", "class_player_hand_1_1_visual_handler.html", null ],
@@ -36,6 +39,7 @@ var hierarchy =
     ] ],
     [ "ObjectPool&lt; T &gt;", "class_object_pool-1-g.html", null ],
     [ "QuestSystem.Quest", "class_quest_system_1_1_quest.html", null ],
+    [ "ComponentRegistry.Subscriber", "class_component_registry_1_1_subscriber.html", null ],
     [ "Timer", "class_timer.html", null ],
     [ "VectorExtensions", "class_vector_extensions.html", null ],
     [ "PlayerHand.VisualHandler.VisualState", "struct_player_hand_1_1_visual_handler_1_1_visual_state.html", null ]

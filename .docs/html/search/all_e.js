@@ -15,8 +15,10 @@ var searchData=
   ['positions_12',['positions',['../class_grid_1_1_grid_generator.html#a264d22d135cd56e2763359d9bf8e2dc9',1,'Grid::GridGenerator']]],
   ['positionsoffgrid_13',['positionsOffGrid',['../class_grid_1_1_grid_generator.html#a6a9c03712337f3c65070f8564862b099',1,'Grid::GridGenerator']]],
   ['possiblecandies_14',['possibleCandies',['../class_player_deck_1_1_deck_option.html#ac3d7557c48afcb0d9a638ad64ec66818',1,'PlayerDeck::DeckOption']]],
-  ['previousposition_15',['previousPosition',['../class_player_hand_1_1_movement_handler.html#ab927aff331f71848b1e0740e630d5751',1,'PlayerHand::MovementHandler']]],
-  ['project_20architecture_20map_16',['Project Architecture Map',['../index.html',1,'']]],
-  ['project_20design_17',['Desired project design',['../index.html#autotoc_md5',1,'']]],
-  ['public_20api_20serialized_20fields_18',['Public API &amp;amp; Serialized Fields',['../index.html#autotoc_md3',1,'']]]
+  ['previousdist_15',['previousDist',['../class_grid_moveable.html#afc6e08e8c33d76a424fc2e839123366c',1,'GridMoveable']]],
+  ['previousposition_16',['previousPosition',['../class_player_hand_1_1_movement_handler.html#ab927aff331f71848b1e0740e630d5751',1,'PlayerHand::MovementHandler']]],
+  ['progression_17',['progression',['../class_grid_rotatable.html#a47bf8ba62e02da51f9525a9b8ce56cbb',1,'GridRotatable']]],
+  ['project_20architecture_20map_18',['Project Architecture Map',['../index.html',1,'']]],
+  ['project_20design_19',['Desired project design',['../index.html#autotoc_md5',1,'']]],
+  ['public_20api_20serialized_20fields_20',['Public API &amp;amp; Serialized Fields',['../index.html#autotoc_md3',1,'']]]
 ];

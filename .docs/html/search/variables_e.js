@@ -9,5 +9,7 @@ var searchData=
   ['positions_6',['positions',['../class_grid_1_1_grid_generator.html#a264d22d135cd56e2763359d9bf8e2dc9',1,'Grid::GridGenerator']]],
   ['positionsoffgrid_7',['positionsOffGrid',['../class_grid_1_1_grid_generator.html#a6a9c03712337f3c65070f8564862b099',1,'Grid::GridGenerator']]],
   ['possiblecandies_8',['possibleCandies',['../class_player_deck_1_1_deck_option.html#ac3d7557c48afcb0d9a638ad64ec66818',1,'PlayerDeck::DeckOption']]],
-  ['previousposition_9',['previousPosition',['../class_player_hand_1_1_movement_handler.html#ab927aff331f71848b1e0740e630d5751',1,'PlayerHand::MovementHandler']]]
+  ['previousdist_9',['previousDist',['../class_grid_moveable.html#afc6e08e8c33d76a424fc2e839123366c',1,'GridMoveable']]],
+  ['previousposition_10',['previousPosition',['../class_player_hand_1_1_movement_handler.html#ab927aff331f71848b1e0740e630d5751',1,'PlayerHand::MovementHandler']]],
+  ['progression_11',['progression',['../class_grid_rotatable.html#a47bf8ba62e02da51f9525a9b8ce56cbb',1,'GridRotatable']]]
 ];

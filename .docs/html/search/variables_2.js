@@ -9,9 +9,10 @@ var searchData=
   ['chance_6',['chance',['../class_player_deck_1_1_deck_option_1_1_candy_option.html#ab18d1846cf9064439f57e6b50cc090a2',1,'PlayerDeck::DeckOption::CandyOption']]],
   ['components_7',['Components',['../class_component_registry.html#aa58d555673afeaf7267e4c2030523212',1,'ComponentRegistry']]],
   ['components_8',['components',['../class_board_item.html#a1fb6090de83301ef7afd398b4ac96bc5',1,'BoardItem']]],
-  ['counter_9',['counter',['../class_f_p_s_counter.html#a02a7626a23b00f595d3ab89f857595c5',1,'FPSCounter']]],
-  ['currenthover_10',['currentHover',['../class_player_hand_1_1_interaction_handler.html#aa2760ac697e4a0988a2066719ea98bf7',1,'PlayerHand::InteractionHandler']]],
-  ['currentoption_11',['currentOption',['../class_player_deck.html#a3bddf4f705c67763c0c71d2a896fce88',1,'PlayerDeck']]],
-  ['currentspeedmultiplier_12',['currentSpeedMultiplier',['../class_player_hand_1_1_movement_handler.html#ac9e72ca22ae96da9d2f601e51c3e21ed',1,'PlayerHand::MovementHandler']]],
-  ['currenttime_13',['currentTime',['../class_timer.html#a6aa901e5847d6b7b0710894f963703b7',1,'Timer']]]
+  ['componenttype_9',['ComponentType',['../class_component_registry_1_1_subscriber.html#a8517bdc9788e24eed08e149ca51c4d4c',1,'ComponentRegistry::Subscriber']]],
+  ['counter_10',['counter',['../class_f_p_s_counter.html#a02a7626a23b00f595d3ab89f857595c5',1,'FPSCounter']]],
+  ['currenthover_11',['currentHover',['../class_player_hand_1_1_interaction_handler.html#aa2760ac697e4a0988a2066719ea98bf7',1,'PlayerHand::InteractionHandler']]],
+  ['currentoption_12',['currentOption',['../class_player_deck.html#a3bddf4f705c67763c0c71d2a896fce88',1,'PlayerDeck']]],
+  ['currentspeedmultiplier_13',['currentSpeedMultiplier',['../class_player_hand_1_1_movement_handler.html#ac9e72ca22ae96da9d2f601e51c3e21ed',1,'PlayerHand::MovementHandler']]],
+  ['currenttime_14',['currentTime',['../class_timer.html#a6aa901e5847d6b7b0710894f963703b7',1,'Timer']]]
 ];

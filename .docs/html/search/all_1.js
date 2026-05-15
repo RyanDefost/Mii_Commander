@@ -5,7 +5,7 @@ var searchData=
   ['billboard_2ecs_2',['Billboard.cs',['../_billboard_8cs.html',1,'']]],
   ['boardbounds_3',['boardBounds',['../class_grid_1_1_grid_generator.html#ab962393ec1e2b626a42f9834fbd95092',1,'Grid::GridGenerator']]],
   ['boarditem_4',['BoardItem',['../class_board_item.html',1,'']]],
-  ['boarditem_5',['boardItem',['../class_board_item_component.html#abdc37bbf43d8b710e1e261653f33cf54',1,'BoardItemComponent']]],
+  ['boarditem_5',['boardItem',['../class_board_item_component.html#abdc37bbf43d8b710e1e261653f33cf54',1,'BoardItemComponent.boardItem'],['../class_interactable.html#af8613ade61270fc048c0e2f7ebb7496c',1,'Interactable.boardItem']]],
   ['boarditem_2ecs_6',['BoardItem.cs',['../_board_item_8cs.html',1,'']]],
   ['boarditemcomponent_7',['BoardItemComponent',['../class_board_item_component.html',1,'']]],
   ['boarditemcomponent_2ecs_8',['BoardItemComponent.cs',['../_board_item_component_8cs.html',1,'']]],

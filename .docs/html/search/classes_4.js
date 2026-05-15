@@ -3,5 +3,6 @@ var searchData=
   ['gridgenerator_0',['GridGenerator',['../class_grid_1_1_grid_generator.html',1,'Grid']]],
   ['gridinstance_1',['GridInstance',['../class_grid_1_1_grid_manager_1_1_grid_instance.html',1,'Grid::GridManager']]],
   ['gridmanager_2',['GridManager',['../class_grid_1_1_grid_manager.html',1,'Grid']]],
-  ['gridmoveable_3',['GridMoveable',['../class_grid_moveable.html',1,'']]]
+  ['gridmoveable_3',['GridMoveable',['../class_grid_moveable.html',1,'']]],
+  ['gridrotatable_4',['GridRotatable',['../class_grid_rotatable.html',1,'']]]
 ];

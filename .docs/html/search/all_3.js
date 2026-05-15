@@ -7,7 +7,8 @@ var searchData=
   ['deckoption_4',['DeckOption',['../class_player_deck_1_1_deck_option.html',1,'PlayerDeck']]],
   ['design_5',['Desired project design',['../index.html#autotoc_md5',1,'']]],
   ['desired_20project_20design_6',['Desired project design',['../index.html#autotoc_md5',1,'']]],
-  ['diagrams_2edox_7',['diagrams.dox',['../diagrams_8dox.html',1,'']]],
-  ['dodisable_8',['DoDisable',['../class_grid_moveable.html#a8a56267730d1bdea2d8cd24e7fd9043f',1,'GridMoveable.DoDisable()'],['../class_move_to_grid_position.html#ac6cfdbd54bb2e6b82aa5ac131201d924',1,'MoveToGridPosition.DoDisable()']]],
-  ['doenable_9',['DoEnable',['../class_grid_moveable.html#a936c361fb31dad1afea93f84c078ee94',1,'GridMoveable.DoEnable()'],['../class_move_to_grid_position.html#a4242a79bec30e08ae8ce466f52c8865c',1,'MoveToGridPosition.DoEnable()']]]
+  ['devicetracker_7',['DeviceTracker',['../class_device_tracker.html',1,'']]],
+  ['devicetracker_8',['deviceTracker',['../class_player_hand_1_1_player_hand_manager.html#aaa777bf6d3b3819af9579a9f2a0d7418',1,'PlayerHand::PlayerHandManager']]],
+  ['devicetracker_2ecs_9',['DeviceTracker.cs',['../_device_tracker_8cs.html',1,'']]],
+  ['diagrams_2edox_10',['diagrams.dox',['../diagrams_8dox.html',1,'']]]
 ];

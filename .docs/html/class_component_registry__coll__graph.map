@@ -1,5 +1,7 @@
 <map id="ComponentRegistry" name="ComponentRegistry">
-<area shape="rect" id="Node000001" title="A register, so a unique named list, of components to keep safe, and make accessible." alt="" coords="5,163,221,360"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="34,5,193,91"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,88,116,146,111,145,113,93"/>
+<area shape="rect" id="Node000001" title="A register, so a unique named list, of components to keep safe, and make accessible." alt="" coords="82,163,298,451"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,164,91"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,88,127,147,122,147,101,93"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="188,5,403,91"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="280,88,258,148,253,146,277,93"/>
 </map>
