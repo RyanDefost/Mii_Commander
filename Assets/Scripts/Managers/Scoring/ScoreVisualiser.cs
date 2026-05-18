@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,29 +10,23 @@ namespace Managers.Scoring
     public class ScoreVisualiser: MonoBehaviour
     {
         [SerializeField] private Slider slider;
+        [SerializeField] private TextMeshProUGUI text;
         
         private GameManager gameManager;
         private ScoreManager scoreManager;
         
         [Header("Slider Settings")]
-        [SerializeField] private float applySpeed = 0.5f;
-        [SerializeField] private float lerpTime = 0.5f;
-        private Coroutine runningRoutine;
+        [Range(0.1f,5f)][SerializeField] private float applySpeed = 2.5f;
         
-        int interpolationFramesCount = 300; 
-        int elapsedFrames = 0;
+        private Coroutine runningRoutine;
         
         private void Start()
         {
             this.gameManager = ComponentRegistry.GetComponent<GameManager>();
             this.scoreManager = this.gameManager.ScoreManager;
             this.scoreManager.OnChangeScore += SetVisuals;
-        }
-
-        private void InitVisual(Slider slider)
-        {
-            slider.minValue = 0;
-            slider.maxValue = scoreManager.GetGoal();
+            
+            SetVisuals();
         }
         
         private void SetVisuals()
@@ -40,19 +35,19 @@ namespace Managers.Scoring
             int goal = scoreManager.GetGoal();
             float fractionValue = CalculateFractionValue(score, goal);
             
+            this.text.text = score.ToString();
+            
             if(this.runningRoutine != null) StopCoroutine(this.runningRoutine);
             this.runningRoutine = StartCoroutine(GradualApply(fractionValue));
         }
 
         private IEnumerator GradualApply(float finalValue)
         {
-            while (!Mathf.Approximately(this.slider.value, finalValue))
+            float startValue = this.slider.value;
+            for (float i = 0; i < 1; i += (applySpeed * Time.deltaTime))
             {
-                Debug.Log("Gradually applied " + finalValue);
-                float interpolationRatio = (float)elapsedFrames / interpolationFramesCount;
-                this.slider.value = Mathf.Lerp(this.slider.value, finalValue, interpolationRatio);
-                
-                yield return new WaitForSeconds(applySpeed);
+                this.slider.value = Mathf.Lerp(startValue, finalValue, i);  
+                yield return new WaitForSeconds(Time.deltaTime);
             }
             
             this.slider.value = finalValue;

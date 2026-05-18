@@ -12,7 +12,9 @@ namespace Managers.Scoring
 
         public Action OnChangeScore;
         public Action OnReachedGoal;
-    
+
+        private void Awake() => this.score = startScore;
+
         public void AddScore(int score) => SetScore(this.score + score);
         public void RemoveScore(int score)  => SetScore(this.score - score);
         
