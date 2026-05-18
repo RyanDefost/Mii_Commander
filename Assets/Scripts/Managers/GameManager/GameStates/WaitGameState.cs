@@ -9,6 +9,8 @@ namespace Managers.GameStates
         
         public override void Start()
         {
+            this.Owner.TurnManager.OnreachedEnd += SetScore;
+            
             //Let player interact
             this.playerHandRef = ComponentRegistry.GetComponent<PlayerHandManager>();
             this.playerHandRef.SetCanGrab(false);
@@ -26,7 +28,14 @@ namespace Managers.GameStates
 
         public override void Exit()
         {
+            this.Owner.TurnManager.OnreachedEnd -= SetScore;
+            
             Debug.Log("EXIT WaitGameState");
+        }
+
+        private void SetScore(MoveToGridPosition moveComponent)
+        {
+            this.Owner.ScoreManager.AddScore(-5);
         }
     }
 }

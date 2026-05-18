@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Grid;
 using Managers.GameStates;
-using Unity.VisualScripting;
+using Managers.Scoring;
 using UnityEngine;
 
 namespace Managers
@@ -16,7 +16,9 @@ namespace Managers
         [SerializeField] private TurnManager turnManager;
         public TurnManager TurnManager { get => this.turnManager; private set => this.turnManager = value; }
         
-        //[SerializeField] private ScoreManager scoreManager;
+        [SerializeField] private ScoreManager scoreManager;
+        public  ScoreManager ScoreManager { get => this.scoreManager; private set => this.scoreManager = value; }
+        
         //[SerializeField] private QuestManager questManager;
         
         [Header("Game Settings")]
@@ -32,17 +34,18 @@ namespace Managers
             
             this.moveManager = FindFirstObjectByType<MoveManager>();
             this.turnManager = FindFirstObjectByType<TurnManager>();
+            this.scoreManager = FindFirstObjectByType<ScoreManager>();
             //this.questManager = FindFirstObjectByType<QuestManager>();
-            //this.scoreManager = FindFirstObjectByType<ScoreManager>();
         }
+
+        private void Awake() => ComponentRegistry.AddToRegistry(this);
 
         private void Start()
         {
-            ComponentRegistry.AddToRegistry(this);
             InitStates();
             InitGame();
         }
-        
+
         private void OnDestroy() => ComponentRegistry.RemoveFromRegistry(this);
 
         private void Update()

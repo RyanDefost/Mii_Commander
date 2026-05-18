@@ -13,6 +13,8 @@ namespace Grid
         [SerializeField]
         private GridManager gridManager;
 
+        public Action<MoveToGridPosition> OnreachedEnd;
+        
         private void OnValidate()
         {
             if (Application.isPlaying)
@@ -39,6 +41,7 @@ namespace Grid
                 if (!moveComponent.HasTarget())
                 {
                     this.gridManager.ReleaseInstance(instance);
+                    OnreachedEnd?.Invoke(moveComponent);
                     Destroy(moveComponent.gameObject);
                 }
                 moveComponent.SetEnabled(true);

@@ -41,6 +41,8 @@ namespace PlayerHand
 
         private void Awake()
         {
+            ComponentRegistry.AddToRegistry(this);
+            
             this.canGrab = true;
             
             this.inputActionMap = this.inputActionAsset.FindActionMap("Player");
@@ -52,8 +54,6 @@ namespace PlayerHand
         
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-
-            ComponentRegistry.AddToRegistry(this);
         }
 
         private void OnDestroy()
