@@ -25,10 +25,10 @@ namespace Grid
         {
             this.gridManager.ForAllGridItems(instance =>
             {
-                if (instance == null || instance.gameObj == null)
+                if (instance == null || !instance.gameObj)
                     return;
 
-                MoveToGridPosition moveComponent = instance.gameObj.GetComponent<MoveToGridPosition>();
+                GridMoveable moveComponent = instance.gameObj.GetComponent<GridMoveable>();
                 if (!moveComponent)
                     return;
                 moveComponent.ResetTarget();

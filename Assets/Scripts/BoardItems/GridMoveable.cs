@@ -17,12 +17,8 @@ public class GridMoveable : BoardItemComponent
     private float? previousDist = null;
     protected Action onUpdate;
 
-    private void Start()
-    {
-        this.grid = ComponentRegistry.GetComponent<GridManager>();
-        SetMoving(true);
-    }
-    
+    private void Start() => this.grid = ComponentRegistry.GetComponent<GridManager>();
+
     public override void ConnectToBoardItem()
     { 
         this.boardItem.OnAddToHand += OnAddToHand; 
@@ -103,7 +99,7 @@ public class GridMoveable : BoardItemComponent
         return this.Target != null;
     }
     
-    private void TriggerUpdateTarget() => UpdateTarget();
+    protected void TriggerUpdateTarget() => UpdateTarget();
     
     public void SetTarget(GridManager.GridInstance newTarget) => this.Target = newTarget;
     
