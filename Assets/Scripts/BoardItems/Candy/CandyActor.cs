@@ -7,7 +7,9 @@ using UnityEngine;
 [RequireComponent(typeof(MoveToGridPosition), typeof(HandHandler))]
 public class CandyActor : BoardItem
 {
-    [SerializeField] private float points;
+    [SerializeField] private int points;
+    public int Points { get => points; private set => points = value; }
+
     public int candyType; // index reference to lookup
     
     [SerializeField]

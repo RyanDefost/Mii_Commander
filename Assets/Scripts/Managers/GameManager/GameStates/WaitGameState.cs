@@ -9,7 +9,7 @@ namespace Managers.GameStates
         
         public override void Start()
         {
-            this.Owner.TurnManager.OnreachedEnd += SetScore;
+            this.Owner.TurnManager.OnreachedEnd += TrySetScore;
             
             //Let player interact
             this.playerHandRef = ComponentRegistry.GetComponent<PlayerHandManager>();
@@ -28,14 +28,17 @@ namespace Managers.GameStates
 
         public override void Exit()
         {
-            this.Owner.TurnManager.OnreachedEnd -= SetScore;
+            this.Owner.TurnManager.OnreachedEnd -= TrySetScore;
             
             Debug.Log("EXIT WaitGameState");
         }
 
-        private void SetScore(MoveToGridPosition moveComponent)
+        private void TrySetScore(GridMoveable moveable)
         {
-            this.Owner.ScoreManager.AddScore(-5);
+            if (moveable.gameObject.TryGetComponent<CandyActor>(out CandyActor candyActor))
+            {
+                this.Owner.ScoreManager.AddScore(candyActor.Points);
+            }
         }
     }
 }
