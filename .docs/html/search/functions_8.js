@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nextturn_0',['NextTurn',['../class_grid_1_1_turn_manager.html#a631199681bfaef7511854594161ec107',1,'Grid::TurnManager']]]
+  ['loadquests_0',['LoadQuests',['../class_quest_system.html#ab5172ff07f59e023395a025b190ffa6f',1,'QuestSystem']]]
 ];

@@ -1,0 +1,19 @@
+<map id="BoardItem" name="BoardItem">
+<area shape="rect" id="Node000001" title="Holds all board item events, used to let board item specific components hook into logic and represent..." alt="" coords="240,189,448,360"/>
+<area shape="rect" id="Node000003" href="$class_interactable.html" title="A simple class for hooking into interactions, player pickup etc." alt="" coords="324,451,506,541"/>
+<area shape="poly" id="edge4_Node000003_Node000001" title=" " alt="" coords="429,357,443,383,447,409,443,436,439,432,442,409,437,385,427,362"/>
+<area shape="rect" id="Node000005" href="$class_board_item_component.html" title="A component that&#39;s able to hook into the functions of a board item." alt="" coords="5,432,213,560"/>
+<area shape="poly" id="edge8_Node000005_Node000001" title=" " alt="" coords="238,307,180,339,152,360,129,385,115,416,110,414,125,383,149,356,177,334,242,303"/>
+<area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="152,5,253,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="231,85,296,189,290,190,230,90"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="200,87,198,169,198,263,205,349,213,383,224,407,244,430,269,448,296,463,327,476,321,476,294,468,266,453,240,433,219,409,208,384,200,350,193,263,193,169,198,92"/>
+<area shape="poly" id="edge7_Node000005_Node000002" title=" " alt="" coords="187,86,148,221,128,302,113,384,110,433,105,432,108,384,123,301,143,220,185,91"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="380,450,359,409,351,379,354,374,363,407,385,452"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="537,240,612,309"/>
+<area shape="poly" id="edge5_Node000003_Node000004" title=" " alt="" coords="569,307,553,359,526,410,496,442,494,437,522,406,549,357,565,311"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="175,430,240,373,244,370,178,434"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="294,5,362,75"/>
+<area shape="poly" id="edge9_Node000001_Node000006" title=" " alt="" coords="331,72,340,173,334,172,329,77"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="387,5,434,75"/>
+<area shape="poly" id="edge10_Node000001_Node000007" title=" " alt="" coords="403,72,375,174,370,172,400,77"/>
+</map>

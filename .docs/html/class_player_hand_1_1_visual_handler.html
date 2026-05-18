@@ -218,12 +218,19 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   48</span>        {</div>
-<div class="line"><span class="lineno">   49</span>            VisualState state = this.sprites.First(a =&gt; a.key == key);</div>
-<div class="line"><span class="lineno">   50</span>            this.visual.sprite = state.visual;</div>
-<div class="line"><span class="lineno">   51</span>            movementHandler.SetTargetZ(state.z, <span class="keyword">this</span>.zMovementSpeed);</div>
-<div class="line"><span class="lineno">   52</span>            this.CurrentState = key;</div>
-<div class="line"><span class="lineno">   53</span>        }</div>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Name of the desired visual state</td></tr>
+    <tr><td class="paramname">movementHandler</td><td>Requires movement handle, to update Z position</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">   50</span>        {</div>
+<div class="line"><span class="lineno">   51</span>            VisualState state = this.sprites.First(a =&gt; a.key == key);</div>
+<div class="line"><span class="lineno">   52</span>            this.visual.sprite = state.visual;</div>
+<div class="line"><span class="lineno">   53</span>            movementHandler.SetTargetZ(state.z, <span class="keyword">this</span>.zMovementSpeed);</div>
+<div class="line"><span class="lineno">   54</span>            this.CurrentState = key;</div>
+<div class="line"><span class="lineno">   55</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

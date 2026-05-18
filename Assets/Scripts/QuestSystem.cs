@@ -14,6 +14,9 @@ public class QuestSystem : MonoBehaviour
     [SerializeField]
     private List<Quest> quests;
 
+    /// <summary>
+    /// Represents a single quest, needs to be refactored TODO
+    /// </summary>
     [Serializable]
     private class Quest
     {

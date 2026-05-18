@@ -1,5 +1,5 @@
 <map id="Grid.GridManager" name="Grid.GridManager">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,123,310,773"/>
+<area shape="rect" id="Node000001" title="Manages everything inside of the grid." alt="" coords="5,123,310,773"/>
 <area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="108,5,208,75"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,87,160,123,155,123,158,92"/>
 </map>

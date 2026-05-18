@@ -120,10 +120,13 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('interface_i_po
   <div class="headertitle"><div class="title">IPoolable Interface Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Makes an object be able to be used within a objectPool.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for IPoolable:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="interface_i_poolable__inherit__graph.svg" width="227" height="475"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="interface_i_poolable__inherit__graph.svg" width="240" height="475"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Collaboration diagram for IPoolable:</div>
@@ -134,13 +137,17 @@ Collaboration diagram for IPoolable:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa60ca19dedb72800f94c89c489ef6e86" id="r_aa60ca19dedb72800f94c89c489ef6e86"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa60ca19dedb72800f94c89c489ef6e86">OnEnableObject</a> ()</td></tr>
+<tr class="memdesc:aa60ca19dedb72800f94c89c489ef6e86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triggers when an object gets set to the active state.  <br /></td></tr>
 <tr class="memitem:a427baadd3aa4112f5152d4debdeb552c" id="r_a427baadd3aa4112f5152d4debdeb552c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a427baadd3aa4112f5152d4debdeb552c">OnDisableObject</a> ()</td></tr>
+<tr class="memdesc:a427baadd3aa4112f5152d4debdeb552c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triggers when an object gets set to the inactive state.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-properties" class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:afbf3ec91ed3c5d68cdbf9ee252ae2116" id="r_afbf3ec91ed3c5d68cdbf9ee252ae2116"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#afbf3ec91ed3c5d68cdbf9ee252ae2116">Active</a><code> [get, set]</code></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Makes an object be able to be used within a objectPool. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a427baadd3aa4112f5152d4debdeb552c" name="a427baadd3aa4112f5152d4debdeb552c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a427baadd3aa4112f5152d4debdeb552c">&#9670;&#160;</a></span>OnDisableObject()</h2>
 
@@ -156,7 +163,9 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_candy_group_instance.html#aee8112f2dd91f03fd3d3cabddf53d1f3">CandyGroupInstance</a>.</p>
+<p>Triggers when an object gets set to the inactive state. </p>
+
+<p>Implemented in <a class="el" href="class_candy_group_handle.html#a34f1daf015f686582b234dc5b1fd8ffb">CandyGroupHandle</a>.</p>
 
 </div>
 </div>
@@ -175,7 +184,9 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_candy_group_instance.html#a6e874e1332991f955c086e73e4079497">CandyGroupInstance</a>.</p>
+<p>Triggers when an object gets set to the active state. </p>
+
+<p>Implemented in <a class="el" href="class_candy_group_handle.html#a83b6e53fa74be6fd8e753df1697933df">CandyGroupHandle</a>.</p>
 
 </div>
 </div>
@@ -200,13 +211,13 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_candy_group_instance.html#a5b68ddb484c8ee550451bd4e9ab25a0f">CandyGroupInstance</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    3</span>{ <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<p>Implemented in <a class="el" href="class_candy_group_handle.html#a987be010c3cfdf7855d0335fe80ad1fe">CandyGroupHandle</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    7</span>{ <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this interface was generated from the following file:<ul>
-<li>C:/Users/Lucas/Documents/School/HKU/PresentYourself/Mii_Commander/Assets/Scripts/<a class="el" href="_i_poolable_8cs.html">IPoolable.cs</a></li>
+<li>C:/Users/Lucas/Documents/School/HKU/PresentYourself/Mii_Commander/Assets/Scripts/MiscHelper/<a class="el" href="_i_poolable_8cs.html">IPoolable.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

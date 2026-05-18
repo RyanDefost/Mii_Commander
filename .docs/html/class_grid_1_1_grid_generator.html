@@ -120,6 +120,9 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('class_grid_1_1
   <div class="headertitle"><div class="title">Grid.GridGenerator Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Handles the possible positions within the grid, and generates the mesh.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Grid.GridGenerator:</div>
 <div class="dyncontent">
@@ -163,7 +166,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a6a9c03712337f3c65070f8564862b099" id="r_a6a9c03712337f3c65070f8564862b099"><td class="memItemLeft">Vector3[]&#160;</td><td class="memItemRight"><a class="el" href="#a6a9c03712337f3c65070f8564862b099">positionsOffGrid</a></td></tr>
 <tr class="memitem:a8fb721fcbc970ea40c6e88d16d8321d4" id="r_a8fb721fcbc970ea40c6e88d16d8321d4"><td class="memItemLeft">Mesh&#160;</td><td class="memItemRight"><a class="el" href="#a8fb721fcbc970ea40c6e88d16d8321d4">cellMesh</a></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Handles the possible positions within the grid, and generates the mesh. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a6da73434708f7cf21eb129bb91f362e8" name="a6da73434708f7cf21eb129bb91f362e8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6da73434708f7cf21eb129bb91f362e8">&#9670;&#160;</a></span>CalculateGrid()</h2>
 
@@ -186,29 +191,29 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   88</span>        {</div>
-<div class="line"><span class="lineno">   89</span>            <span class="keywordflow">if</span> (this.boardSize.x &lt;= 0 || <span class="keyword">this</span>.boardSize.y &lt;= 0) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   90</span> </div>
-<div class="line"><span class="lineno">   91</span>            <span class="comment">// Calculate dimensions</span></div>
-<div class="line"><span class="lineno">   92</span>            <span class="keywordtype">float</span> cellWidth = this.boardBounds.size.x / this.boardSize.x;</div>
-<div class="line"><span class="lineno">   93</span>            <span class="keywordtype">float</span> cellHeight = this.boardBounds.size.y / this.boardSize.y;</div>
-<div class="line"><span class="lineno">   94</span>            Vector3 cellSize = <span class="keyword">new</span>(cellWidth, cellHeight, 0.01f);</div>
-<div class="line"><span class="lineno">   95</span>            Vector3 bottomLeft = this.boardBounds.center - (this.boardBounds.size * 0.5f);</div>
-<div class="line"><span class="lineno">   96</span> </div>
-<div class="line"><span class="lineno">   97</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; this.boardSize.x; x++)</div>
-<div class="line"><span class="lineno">   98</span>            {</div>
-<div class="line"><span class="lineno">   99</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; this.boardSize.y; y++)</div>
-<div class="line"><span class="lineno">  100</span>                {</div>
-<div class="line"><span class="lineno">  101</span>                    Vector3 offset = <span class="keyword">new</span>(</div>
-<div class="line"><span class="lineno">  102</span>                        (x + 0.5f) * cellWidth,</div>
-<div class="line"><span class="lineno">  103</span>                        (y + 0.5f) * cellHeight,</div>
-<div class="line"><span class="lineno">  104</span>                        0</div>
-<div class="line"><span class="lineno">  105</span>                    );</div>
-<div class="line"><span class="lineno">  106</span>                </div>
-<div class="line"><span class="lineno">  107</span>                    atCell.Invoke(offset, cellSize, bottomLeft, <span class="keyword">new</span> Vector2Int(x, y));</div>
-<div class="line"><span class="lineno">  108</span>                }</div>
-<div class="line"><span class="lineno">  109</span>            }</div>
-<div class="line"><span class="lineno">  110</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   91</span>        {</div>
+<div class="line"><span class="lineno">   92</span>            <span class="keywordflow">if</span> (this.boardSize.x &lt;= 0 || <span class="keyword">this</span>.boardSize.y &lt;= 0) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>            <span class="comment">// Calculate dimensions</span></div>
+<div class="line"><span class="lineno">   95</span>            <span class="keywordtype">float</span> cellWidth = this.boardBounds.size.x / this.boardSize.x;</div>
+<div class="line"><span class="lineno">   96</span>            <span class="keywordtype">float</span> cellHeight = this.boardBounds.size.y / this.boardSize.y;</div>
+<div class="line"><span class="lineno">   97</span>            Vector3 cellSize = <span class="keyword">new</span>(cellWidth, cellHeight, 0.01f);</div>
+<div class="line"><span class="lineno">   98</span>            Vector3 bottomLeft = this.boardBounds.center - (this.boardBounds.size * 0.5f);</div>
+<div class="line"><span class="lineno">   99</span> </div>
+<div class="line"><span class="lineno">  100</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; this.boardSize.x; x++)</div>
+<div class="line"><span class="lineno">  101</span>            {</div>
+<div class="line"><span class="lineno">  102</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; this.boardSize.y; y++)</div>
+<div class="line"><span class="lineno">  103</span>                {</div>
+<div class="line"><span class="lineno">  104</span>                    Vector3 offset = <span class="keyword">new</span>(</div>
+<div class="line"><span class="lineno">  105</span>                        (x + 0.5f) * cellWidth,</div>
+<div class="line"><span class="lineno">  106</span>                        (y + 0.5f) * cellHeight,</div>
+<div class="line"><span class="lineno">  107</span>                        0</div>
+<div class="line"><span class="lineno">  108</span>                    );</div>
+<div class="line"><span class="lineno">  109</span>                </div>
+<div class="line"><span class="lineno">  110</span>                    atCell.Invoke(offset, cellSize, bottomLeft, <span class="keyword">new</span> Vector2Int(x, y));</div>
+<div class="line"><span class="lineno">  111</span>                }</div>
+<div class="line"><span class="lineno">  112</span>            }</div>
+<div class="line"><span class="lineno">  113</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -234,44 +239,44 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  113</span>        {</div>
-<div class="line"><span class="lineno">  114</span>            Mesh mesh = <span class="keyword">new</span>() { name = <span class="stringliteral">&quot;GridCellMesh&quot;</span> };</div>
-<div class="line"><span class="lineno">  115</span> </div>
-<div class="line"><span class="lineno">  116</span>            <span class="keywordtype">float</span> halfWidth = this.cellSize.x * 0.5f;</div>
-<div class="line"><span class="lineno">  117</span>            <span class="keywordtype">float</span> halfHeight = this.cellSize.y * 0.5f;</div>
+<div class="fragment"><div class="line"><span class="lineno">  116</span>        {</div>
+<div class="line"><span class="lineno">  117</span>            Mesh mesh = <span class="keyword">new</span>() { name = <span class="stringliteral">&quot;GridCellMesh&quot;</span> };</div>
 <div class="line"><span class="lineno">  118</span> </div>
-<div class="line"><span class="lineno">  119</span>            <span class="comment">// 1. Define Vertices (relative to center 0,0)</span></div>
-<div class="line"><span class="lineno">  120</span>            Vector3[] vertices = {</div>
-<div class="line"><span class="lineno">  121</span>                <span class="keyword">new</span>(-halfWidth, -halfHeight, 0), <span class="comment">// Bottom Left  (Index 0)</span></div>
-<div class="line"><span class="lineno">  122</span>                <span class="keyword">new</span>( halfWidth, -halfHeight, 0), <span class="comment">// Bottom Right (Index 1)</span></div>
-<div class="line"><span class="lineno">  123</span>                <span class="keyword">new</span>(-halfWidth,  halfHeight, 0), <span class="comment">// Top Left     (Index 2)</span></div>
-<div class="line"><span class="lineno">  124</span>                <span class="keyword">new</span>( halfWidth,  halfHeight, 0)  <span class="comment">// Top Right    (Index 3)</span></div>
-<div class="line"><span class="lineno">  125</span>            };</div>
-<div class="line"><span class="lineno">  126</span> </div>
-<div class="line"><span class="lineno">  127</span>            <span class="comment">// 2. Define Triangles (Clockwise winding order)</span></div>
-<div class="line"><span class="lineno">  128</span>            <span class="keywordtype">int</span>[] triangles = {</div>
-<div class="line"><span class="lineno">  129</span>                0, 2, 1, <span class="comment">// First Triangle</span></div>
-<div class="line"><span class="lineno">  130</span>                2, 3, 1  <span class="comment">// Second Triangle</span></div>
-<div class="line"><span class="lineno">  131</span>            };</div>
-<div class="line"><span class="lineno">  132</span> </div>
-<div class="line"><span class="lineno">  133</span>            <span class="comment">// 3. Define UVs (for textures)</span></div>
-<div class="line"><span class="lineno">  134</span>            Vector2[] uvs = {</div>
-<div class="line"><span class="lineno">  135</span>                <span class="keyword">new</span>(0, 0),</div>
-<div class="line"><span class="lineno">  136</span>                <span class="keyword">new</span>(1, 0),</div>
-<div class="line"><span class="lineno">  137</span>                <span class="keyword">new</span>(0, 1),</div>
-<div class="line"><span class="lineno">  138</span>                <span class="keyword">new</span>(1, 1)</div>
-<div class="line"><span class="lineno">  139</span>            };</div>
-<div class="line"><span class="lineno">  140</span> </div>
-<div class="line"><span class="lineno">  141</span>            <span class="comment">// Assign to mesh</span></div>
-<div class="line"><span class="lineno">  142</span>            mesh.vertices = vertices;</div>
-<div class="line"><span class="lineno">  143</span>            mesh.triangles = triangles;</div>
-<div class="line"><span class="lineno">  144</span>            mesh.uv = uvs;</div>
-<div class="line"><span class="lineno">  145</span>    </div>
-<div class="line"><span class="lineno">  146</span>            <span class="comment">// Calculate normals so it reacts to light</span></div>
-<div class="line"><span class="lineno">  147</span>            mesh.RecalculateNormals();</div>
-<div class="line"><span class="lineno">  148</span> </div>
-<div class="line"><span class="lineno">  149</span>            <span class="keywordflow">return</span> mesh;</div>
-<div class="line"><span class="lineno">  150</span>        }</div>
+<div class="line"><span class="lineno">  119</span>            <span class="keywordtype">float</span> halfWidth = this.cellSize.x * 0.5f;</div>
+<div class="line"><span class="lineno">  120</span>            <span class="keywordtype">float</span> halfHeight = this.cellSize.y * 0.5f;</div>
+<div class="line"><span class="lineno">  121</span> </div>
+<div class="line"><span class="lineno">  122</span>            <span class="comment">// 1. Define Vertices (relative to center 0,0)</span></div>
+<div class="line"><span class="lineno">  123</span>            Vector3[] vertices = {</div>
+<div class="line"><span class="lineno">  124</span>                <span class="keyword">new</span>(-halfWidth, -halfHeight, 0), <span class="comment">// Bottom Left  (Index 0)</span></div>
+<div class="line"><span class="lineno">  125</span>                <span class="keyword">new</span>( halfWidth, -halfHeight, 0), <span class="comment">// Bottom Right (Index 1)</span></div>
+<div class="line"><span class="lineno">  126</span>                <span class="keyword">new</span>(-halfWidth,  halfHeight, 0), <span class="comment">// Top Left     (Index 2)</span></div>
+<div class="line"><span class="lineno">  127</span>                <span class="keyword">new</span>( halfWidth,  halfHeight, 0)  <span class="comment">// Top Right    (Index 3)</span></div>
+<div class="line"><span class="lineno">  128</span>            };</div>
+<div class="line"><span class="lineno">  129</span> </div>
+<div class="line"><span class="lineno">  130</span>            <span class="comment">// 2. Define Triangles (Clockwise winding order)</span></div>
+<div class="line"><span class="lineno">  131</span>            <span class="keywordtype">int</span>[] triangles = {</div>
+<div class="line"><span class="lineno">  132</span>                0, 2, 1, <span class="comment">// First Triangle</span></div>
+<div class="line"><span class="lineno">  133</span>                2, 3, 1  <span class="comment">// Second Triangle</span></div>
+<div class="line"><span class="lineno">  134</span>            };</div>
+<div class="line"><span class="lineno">  135</span> </div>
+<div class="line"><span class="lineno">  136</span>            <span class="comment">// 3. Define UVs (for textures)</span></div>
+<div class="line"><span class="lineno">  137</span>            Vector2[] uvs = {</div>
+<div class="line"><span class="lineno">  138</span>                <span class="keyword">new</span>(0, 0),</div>
+<div class="line"><span class="lineno">  139</span>                <span class="keyword">new</span>(1, 0),</div>
+<div class="line"><span class="lineno">  140</span>                <span class="keyword">new</span>(0, 1),</div>
+<div class="line"><span class="lineno">  141</span>                <span class="keyword">new</span>(1, 1)</div>
+<div class="line"><span class="lineno">  142</span>            };</div>
+<div class="line"><span class="lineno">  143</span> </div>
+<div class="line"><span class="lineno">  144</span>            <span class="comment">// Assign to mesh</span></div>
+<div class="line"><span class="lineno">  145</span>            mesh.vertices = vertices;</div>
+<div class="line"><span class="lineno">  146</span>            mesh.triangles = triangles;</div>
+<div class="line"><span class="lineno">  147</span>            mesh.uv = uvs;</div>
+<div class="line"><span class="lineno">  148</span>    </div>
+<div class="line"><span class="lineno">  149</span>            <span class="comment">// Calculate normals so it reacts to light</span></div>
+<div class="line"><span class="lineno">  150</span>            mesh.RecalculateNormals();</div>
+<div class="line"><span class="lineno">  151</span> </div>
+<div class="line"><span class="lineno">  152</span>            <span class="keywordflow">return</span> mesh;</div>
+<div class="line"><span class="lineno">  153</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -289,7 +294,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  255</span>=&gt; this.positionsOffGrid.Select(pos =&gt; (Vector3?)pos).ToList();</div>
+<div class="fragment"><div class="line"><span class="lineno">  258</span>=&gt; this.positionsOffGrid.Select(pos =&gt; (Vector3?)pos).ToList();</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -307,7 +312,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  254</span>=&gt; this.positions.Select(pos =&gt; (Vector3?)pos).ToList();</div>
+<div class="fragment"><div class="line"><span class="lineno">  257</span>=&gt; this.positions.Select(pos =&gt; (Vector3?)pos).ToList();</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -325,7 +330,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  257</span>=&gt; this.positionsOffGrid[index];</div>
+<div class="fragment"><div class="line"><span class="lineno">  260</span>=&gt; this.positionsOffGrid[index];</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -343,7 +348,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  256</span>=&gt; this.positions[index];</div>
+<div class="fragment"><div class="line"><span class="lineno">  259</span>=&gt; this.positions[index];</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -369,28 +374,28 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   64</span>        {</div>
-<div class="line"><span class="lineno">   65</span>            <span class="keywordflow">if</span> (this.boardSize.x &lt;= 0 || <span class="keyword">this</span>.boardSize.y &lt;= 0) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>            <span class="comment">// Draw the outer container</span></div>
-<div class="line"><span class="lineno">   68</span>            Gizmos.color = Color.yellow;</div>
-<div class="line"><span class="lineno">   69</span>            Gizmos.DrawWireCube(this.boardBounds.center, <span class="keyword">this</span>.boardBounds.size);</div>
-<div class="line"><span class="lineno">   70</span> </div>
-<div class="line"><span class="lineno">   71</span>            CalculateGrid((offset, cellSize, bottomLeft, _) =&gt; Gizmos.DrawWireCube(bottomLeft + offset, cellSize));</div>
-<div class="line"><span class="lineno">   72</span> </div>
-<div class="line"><span class="lineno">   73</span>            <span class="keywordflow">foreach</span> (Vector3 position <span class="keywordflow">in</span> this.positions)</div>
-<div class="line"><span class="lineno">   74</span>            {</div>
-<div class="line"><span class="lineno">   75</span>                Gizmos.color = Color.blue;</div>
-<div class="line"><span class="lineno">   76</span>                Gizmos.DrawWireSphere(position, 0.1f);</div>
-<div class="line"><span class="lineno">   77</span>            }</div>
-<div class="line"><span class="lineno">   78</span>            </div>
-<div class="line"><span class="lineno">   79</span>            <span class="keywordflow">foreach</span> (Vector3 position <span class="keywordflow">in</span> this.positionsOffGrid)</div>
-<div class="line"><span class="lineno">   80</span>            {</div>
-<div class="line"><span class="lineno">   81</span>                Gizmos.color = Color.red;</div>
-<div class="line"><span class="lineno">   82</span>                Gizmos.DrawWireCube(position, this.cellSize);</div>
-<div class="line"><span class="lineno">   83</span>                Gizmos.DrawWireSphere(position, 0.1f);</div>
-<div class="line"><span class="lineno">   84</span>            }</div>
-<div class="line"><span class="lineno">   85</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   67</span>        {</div>
+<div class="line"><span class="lineno">   68</span>            <span class="keywordflow">if</span> (this.boardSize.x &lt;= 0 || <span class="keyword">this</span>.boardSize.y &lt;= 0) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   69</span> </div>
+<div class="line"><span class="lineno">   70</span>            <span class="comment">// Draw the outer container</span></div>
+<div class="line"><span class="lineno">   71</span>            Gizmos.color = Color.yellow;</div>
+<div class="line"><span class="lineno">   72</span>            Gizmos.DrawWireCube(this.boardBounds.center, <span class="keyword">this</span>.boardBounds.size);</div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span>            CalculateGrid((offset, cellSize, bottomLeft, _) =&gt; Gizmos.DrawWireCube(bottomLeft + offset, cellSize));</div>
+<div class="line"><span class="lineno">   75</span> </div>
+<div class="line"><span class="lineno">   76</span>            <span class="keywordflow">foreach</span> (Vector3 position <span class="keywordflow">in</span> this.positions)</div>
+<div class="line"><span class="lineno">   77</span>            {</div>
+<div class="line"><span class="lineno">   78</span>                Gizmos.color = Color.blue;</div>
+<div class="line"><span class="lineno">   79</span>                Gizmos.DrawWireSphere(position, 0.1f);</div>
+<div class="line"><span class="lineno">   80</span>            }</div>
+<div class="line"><span class="lineno">   81</span>            </div>
+<div class="line"><span class="lineno">   82</span>            <span class="keywordflow">foreach</span> (Vector3 position <span class="keywordflow">in</span> this.positionsOffGrid)</div>
+<div class="line"><span class="lineno">   83</span>            {</div>
+<div class="line"><span class="lineno">   84</span>                Gizmos.color = Color.red;</div>
+<div class="line"><span class="lineno">   85</span>                Gizmos.DrawWireCube(position, this.cellSize);</div>
+<div class="line"><span class="lineno">   86</span>                Gizmos.DrawWireSphere(position, 0.1f);</div>
+<div class="line"><span class="lineno">   87</span>            }</div>
+<div class="line"><span class="lineno">   88</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -416,67 +421,67 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  192</span>        {</div>
-<div class="line"><span class="lineno">  193</span>            <span class="keywordflow">if</span> (this.cellMesh == <span class="keyword">null</span> || this.materials == <span class="keyword">null</span> || this.materials.Length == 0)</div>
-<div class="line"><span class="lineno">  194</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  195</span>            </div>
-<div class="line"><span class="lineno">  196</span>            <span class="comment">// Prepare lists for mesh combination</span></div>
-<div class="line"><span class="lineno">  197</span>            <span class="keywordtype">int</span> totalCells = this.positions.Length;</div>
-<div class="line"><span class="lineno">  198</span>            Dictionary&lt;int, List&lt;CombineInstance&gt;&gt; materialGroups = <span class="keyword">new</span>();</div>
-<div class="line"><span class="lineno">  199</span>            </div>
-<div class="line"><span class="lineno">  200</span>            <span class="comment">// Build CombineInstances per material</span></div>
-<div class="line"><span class="lineno">  201</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; totalCells; i++)</div>
-<div class="line"><span class="lineno">  202</span>            {</div>
-<div class="line"><span class="lineno">  203</span>                <span class="keywordtype">int</span> matIndex = i % this.materials.Length;</div>
-<div class="line"><span class="lineno">  204</span>                <span class="keywordflow">if</span> (!materialGroups.TryGetValue(matIndex, out List&lt;CombineInstance&gt; list))</div>
-<div class="line"><span class="lineno">  205</span>                {</div>
-<div class="line"><span class="lineno">  206</span>                    list = <span class="keyword">new</span> List&lt;CombineInstance&gt;();</div>
-<div class="line"><span class="lineno">  207</span>                    materialGroups[matIndex] = list;</div>
-<div class="line"><span class="lineno">  208</span>                }</div>
-<div class="line"><span class="lineno">  209</span>                </div>
-<div class="line"><span class="lineno">  210</span>                Vector3 localPos = this.positions[i] - this.transform.position;</div>
-<div class="line"><span class="lineno">  211</span>                CombineInstance combine = <span class="keyword">new</span>()</div>
-<div class="line"><span class="lineno">  212</span>                {</div>
-<div class="line"><span class="lineno">  213</span>                    mesh = this.cellMesh,</div>
-<div class="line"><span class="lineno">  214</span>                    transform = Matrix4x4.TRS(localPos + Vector3.back * 0.01f, Quaternion.identity, Vector3.one)</div>
-<div class="line"><span class="lineno">  215</span>                };</div>
-<div class="line"><span class="lineno">  216</span>                list.Add(combine);</div>
-<div class="line"><span class="lineno">  217</span>            }</div>
-<div class="line"><span class="lineno">  218</span>            </div>
-<div class="line"><span class="lineno">  219</span>            <span class="comment">// Create submeshes for different materials</span></div>
-<div class="line"><span class="lineno">  220</span>            List&lt;CombineInstance&gt; subMeshes = <span class="keyword">new</span>();</div>
-<div class="line"><span class="lineno">  221</span>            <span class="comment">// List&lt;Mesh&gt; combinedMeshes = new();</span></div>
-<div class="line"><span class="lineno">  222</span>            <span class="keywordflow">foreach</span> (KeyValuePair&lt;<span class="keywordtype">int</span>, List&lt;CombineInstance&gt;&gt; kvp <span class="keywordflow">in</span> materialGroups)</div>
-<div class="line"><span class="lineno">  223</span>            {</div>
-<div class="line"><span class="lineno">  224</span>                Mesh subMesh = <span class="keyword">new</span>() { name = $<span class="stringliteral">&quot;GridPart_{kvp.Key}&quot;</span> };</div>
-<div class="line"><span class="lineno">  225</span>                subMesh.CombineMeshes(kvp.Value.ToArray(), <span class="keyword">true</span>, <span class="keyword">true</span>, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  226</span>                <span class="comment">// combinedMeshes.Add(subMesh);</span></div>
-<div class="line"><span class="lineno">  227</span>                CombineInstance subCombine = <span class="keyword">new</span>()</div>
-<div class="line"><span class="lineno">  228</span>                {</div>
-<div class="line"><span class="lineno">  229</span>                    mesh = subMesh,</div>
-<div class="line"><span class="lineno">  230</span>                    transform = Matrix4x4.identity</div>
-<div class="line"><span class="lineno">  231</span>                };</div>
-<div class="line"><span class="lineno">  232</span>                subMeshes.Add(subCombine);</div>
-<div class="line"><span class="lineno">  233</span>            }</div>
-<div class="line"><span class="lineno">  234</span>            </div>
-<div class="line"><span class="lineno">  235</span>            <span class="comment">// Final combined mesh with multiple material slots if needed</span></div>
-<div class="line"><span class="lineno">  236</span>            Mesh finalMesh = <span class="keyword">new</span>() { name = <span class="stringliteral">&quot;CombinedGridMesh&quot;</span> };</div>
-<div class="line"><span class="lineno">  237</span>            finalMesh.CombineMeshes(subMeshes.ToArray(), <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  238</span>            </div>
-<div class="line"><span class="lineno">  239</span>            <span class="comment">// Single unified GameObject</span></div>
-<div class="line"><span class="lineno">  240</span>            GameObject combinedObject = <span class="keyword">new</span>(<span class="stringliteral">&quot;CombinedGrid&quot;</span>)</div>
-<div class="line"><span class="lineno">  241</span>            {</div>
-<div class="line"><span class="lineno">  242</span>                transform =</div>
-<div class="line"><span class="lineno">  243</span>                {</div>
-<div class="line"><span class="lineno">  244</span>                    parent = this.transform,</div>
-<div class="line"><span class="lineno">  245</span>                    position = this.transform.position,</div>
-<div class="line"><span class="lineno">  246</span>                    rotation = Quaternion.identity</div>
-<div class="line"><span class="lineno">  247</span>                }</div>
-<div class="line"><span class="lineno">  248</span>            };</div>
-<div class="line"><span class="lineno">  249</span>            combinedObject.AddComponent&lt;MeshFilter&gt;().sharedMesh = finalMesh;</div>
-<div class="line"><span class="lineno">  250</span>            MeshRenderer meshRenderer = combinedObject.AddComponent&lt;MeshRenderer&gt;();</div>
-<div class="line"><span class="lineno">  251</span>            meshRenderer.sharedMaterials = this.materials;</div>
-<div class="line"><span class="lineno">  252</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  195</span>        {</div>
+<div class="line"><span class="lineno">  196</span>            <span class="keywordflow">if</span> (this.cellMesh == <span class="keyword">null</span> || this.materials == <span class="keyword">null</span> || this.materials.Length == 0)</div>
+<div class="line"><span class="lineno">  197</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  198</span>            </div>
+<div class="line"><span class="lineno">  199</span>            <span class="comment">// Prepare lists for mesh combination</span></div>
+<div class="line"><span class="lineno">  200</span>            <span class="keywordtype">int</span> totalCells = this.positions.Length;</div>
+<div class="line"><span class="lineno">  201</span>            Dictionary&lt;int, List&lt;CombineInstance&gt;&gt; materialGroups = <span class="keyword">new</span>();</div>
+<div class="line"><span class="lineno">  202</span>            </div>
+<div class="line"><span class="lineno">  203</span>            <span class="comment">// Build CombineInstances per material</span></div>
+<div class="line"><span class="lineno">  204</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; totalCells; i++)</div>
+<div class="line"><span class="lineno">  205</span>            {</div>
+<div class="line"><span class="lineno">  206</span>                <span class="keywordtype">int</span> matIndex = i % this.materials.Length;</div>
+<div class="line"><span class="lineno">  207</span>                <span class="keywordflow">if</span> (!materialGroups.TryGetValue(matIndex, out List&lt;CombineInstance&gt; list))</div>
+<div class="line"><span class="lineno">  208</span>                {</div>
+<div class="line"><span class="lineno">  209</span>                    list = <span class="keyword">new</span> List&lt;CombineInstance&gt;();</div>
+<div class="line"><span class="lineno">  210</span>                    materialGroups[matIndex] = list;</div>
+<div class="line"><span class="lineno">  211</span>                }</div>
+<div class="line"><span class="lineno">  212</span>                </div>
+<div class="line"><span class="lineno">  213</span>                Vector3 localPos = this.positions[i] - this.transform.position;</div>
+<div class="line"><span class="lineno">  214</span>                CombineInstance combine = <span class="keyword">new</span>()</div>
+<div class="line"><span class="lineno">  215</span>                {</div>
+<div class="line"><span class="lineno">  216</span>                    mesh = this.cellMesh,</div>
+<div class="line"><span class="lineno">  217</span>                    transform = Matrix4x4.TRS(localPos + Vector3.back * 0.01f, Quaternion.identity, Vector3.one)</div>
+<div class="line"><span class="lineno">  218</span>                };</div>
+<div class="line"><span class="lineno">  219</span>                list.Add(combine);</div>
+<div class="line"><span class="lineno">  220</span>            }</div>
+<div class="line"><span class="lineno">  221</span>            </div>
+<div class="line"><span class="lineno">  222</span>            <span class="comment">// Create submeshes for different materials</span></div>
+<div class="line"><span class="lineno">  223</span>            List&lt;CombineInstance&gt; subMeshes = <span class="keyword">new</span>();</div>
+<div class="line"><span class="lineno">  224</span>            <span class="comment">// List&lt;Mesh&gt; combinedMeshes = new();</span></div>
+<div class="line"><span class="lineno">  225</span>            <span class="keywordflow">foreach</span> (KeyValuePair&lt;<span class="keywordtype">int</span>, List&lt;CombineInstance&gt;&gt; kvp <span class="keywordflow">in</span> materialGroups)</div>
+<div class="line"><span class="lineno">  226</span>            {</div>
+<div class="line"><span class="lineno">  227</span>                Mesh subMesh = <span class="keyword">new</span>() { name = $<span class="stringliteral">&quot;GridPart_{kvp.Key}&quot;</span> };</div>
+<div class="line"><span class="lineno">  228</span>                subMesh.CombineMeshes(kvp.Value.ToArray(), <span class="keyword">true</span>, <span class="keyword">true</span>, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  229</span>                <span class="comment">// combinedMeshes.Add(subMesh);</span></div>
+<div class="line"><span class="lineno">  230</span>                CombineInstance subCombine = <span class="keyword">new</span>()</div>
+<div class="line"><span class="lineno">  231</span>                {</div>
+<div class="line"><span class="lineno">  232</span>                    mesh = subMesh,</div>
+<div class="line"><span class="lineno">  233</span>                    transform = Matrix4x4.identity</div>
+<div class="line"><span class="lineno">  234</span>                };</div>
+<div class="line"><span class="lineno">  235</span>                subMeshes.Add(subCombine);</div>
+<div class="line"><span class="lineno">  236</span>            }</div>
+<div class="line"><span class="lineno">  237</span>            </div>
+<div class="line"><span class="lineno">  238</span>            <span class="comment">// Final combined mesh with multiple material slots if needed</span></div>
+<div class="line"><span class="lineno">  239</span>            Mesh finalMesh = <span class="keyword">new</span>() { name = <span class="stringliteral">&quot;CombinedGridMesh&quot;</span> };</div>
+<div class="line"><span class="lineno">  240</span>            finalMesh.CombineMeshes(subMeshes.ToArray(), <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  241</span>            </div>
+<div class="line"><span class="lineno">  242</span>            <span class="comment">// Single unified GameObject</span></div>
+<div class="line"><span class="lineno">  243</span>            GameObject combinedObject = <span class="keyword">new</span>(<span class="stringliteral">&quot;CombinedGrid&quot;</span>)</div>
+<div class="line"><span class="lineno">  244</span>            {</div>
+<div class="line"><span class="lineno">  245</span>                transform =</div>
+<div class="line"><span class="lineno">  246</span>                {</div>
+<div class="line"><span class="lineno">  247</span>                    parent = this.transform,</div>
+<div class="line"><span class="lineno">  248</span>                    position = this.transform.position,</div>
+<div class="line"><span class="lineno">  249</span>                    rotation = Quaternion.identity</div>
+<div class="line"><span class="lineno">  250</span>                }</div>
+<div class="line"><span class="lineno">  251</span>            };</div>
+<div class="line"><span class="lineno">  252</span>            combinedObject.AddComponent&lt;MeshFilter&gt;().sharedMesh = finalMesh;</div>
+<div class="line"><span class="lineno">  253</span>            MeshRenderer meshRenderer = combinedObject.AddComponent&lt;MeshRenderer&gt;();</div>
+<div class="line"><span class="lineno">  254</span>            meshRenderer.sharedMaterials = this.materials;</div>
+<div class="line"><span class="lineno">  255</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

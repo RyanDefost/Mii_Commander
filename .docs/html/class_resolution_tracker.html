@@ -120,6 +120,9 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('class_resoluti
   <div class="headertitle"><div class="title">ResolutionTracker Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Tracks the resolution of the current project, when it changes it calls a event.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for ResolutionTracker:</div>
 <div class="dyncontent">
@@ -145,7 +148,9 @@ Private Member Functions</h2></td></tr>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:aeecace55ce9d7198eaefe7ea32783885" id="r_aeecace55ce9d7198eaefe7ea32783885"><td class="memItemLeft">static Vector2Int&#160;</td><td class="memItemRight"><a class="el" href="#aeecace55ce9d7198eaefe7ea32783885">lastResolution</a></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Tracks the resolution of the current project, when it changes it calls a event. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="adf5bcd6a6e81c6a395c1ca00e7791cc0" name="adf5bcd6a6e81c6a395c1ca00e7791cc0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adf5bcd6a6e81c6a395c1ca00e7791cc0">&#9670;&#160;</a></span>CheckResolution()</h2>
 
@@ -168,18 +173,18 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   18</span>    {</div>
-<div class="line"><span class="lineno">   19</span>        <span class="keywordtype">int</span> currentWidth = Screen.width;</div>
-<div class="line"><span class="lineno">   20</span>        <span class="keywordtype">int</span> currentHeight = Screen.height;</div>
-<div class="line"><span class="lineno">   21</span> </div>
-<div class="line"><span class="lineno">   22</span>        <span class="keywordflow">if</span> (currentWidth == <a class="code hl_variable" href="#aeecace55ce9d7198eaefe7ea32783885">lastResolution</a>.x &amp;&amp; currentHeight == <a class="code hl_variable" href="#aeecace55ce9d7198eaefe7ea32783885">lastResolution</a>.y) </div>
-<div class="line"><span class="lineno">   23</span>            <span class="keywordflow">return</span>;</div>
+<div class="fragment"><div class="line"><span class="lineno">   21</span>    {</div>
+<div class="line"><span class="lineno">   22</span>        <span class="keywordtype">int</span> currentWidth = Screen.width;</div>
+<div class="line"><span class="lineno">   23</span>        <span class="keywordtype">int</span> currentHeight = Screen.height;</div>
 <div class="line"><span class="lineno">   24</span> </div>
-<div class="line"><span class="lineno">   25</span>        <a class="code hl_variable" href="#a954cb8853cd1e533c7937cdda977b59e">OnResolutionChanged</a>.Invoke(currentWidth, currentHeight);</div>
-<div class="line"><span class="lineno">   26</span>        <a class="code hl_variable" href="#aeecace55ce9d7198eaefe7ea32783885">lastResolution</a> = <span class="keyword">new</span> Vector2Int(currentWidth, currentHeight);</div>
-<div class="line"><span class="lineno">   27</span>    }</div>
-<div class="ttc" id="aclass_resolution_tracker_html_a954cb8853cd1e533c7937cdda977b59e"><div class="ttname"><a href="#a954cb8853cd1e533c7937cdda977b59e">ResolutionTracker.OnResolutionChanged</a></div><div class="ttdeci">static Action&lt; int, int &gt; OnResolutionChanged</div><div class="ttdef"><b>Definition</b> ResolutionTracker.cs:6</div></div>
-<div class="ttc" id="aclass_resolution_tracker_html_aeecace55ce9d7198eaefe7ea32783885"><div class="ttname"><a href="#aeecace55ce9d7198eaefe7ea32783885">ResolutionTracker.lastResolution</a></div><div class="ttdeci">static Vector2Int lastResolution</div><div class="ttdef"><b>Definition</b> ResolutionTracker.cs:7</div></div>
+<div class="line"><span class="lineno">   25</span>        <span class="keywordflow">if</span> (currentWidth == <a class="code hl_variable" href="#aeecace55ce9d7198eaefe7ea32783885">lastResolution</a>.x &amp;&amp; currentHeight == <a class="code hl_variable" href="#aeecace55ce9d7198eaefe7ea32783885">lastResolution</a>.y) </div>
+<div class="line"><span class="lineno">   26</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   27</span> </div>
+<div class="line"><span class="lineno">   28</span>        <a class="code hl_variable" href="#a954cb8853cd1e533c7937cdda977b59e">OnResolutionChanged</a>.Invoke(currentWidth, currentHeight);</div>
+<div class="line"><span class="lineno">   29</span>        <a class="code hl_variable" href="#aeecace55ce9d7198eaefe7ea32783885">lastResolution</a> = <span class="keyword">new</span> Vector2Int(currentWidth, currentHeight);</div>
+<div class="line"><span class="lineno">   30</span>    }</div>
+<div class="ttc" id="aclass_resolution_tracker_html_a954cb8853cd1e533c7937cdda977b59e"><div class="ttname"><a href="#a954cb8853cd1e533c7937cdda977b59e">ResolutionTracker.OnResolutionChanged</a></div><div class="ttdeci">static Action&lt; int, int &gt; OnResolutionChanged</div><div class="ttdef"><b>Definition</b> ResolutionTracker.cs:9</div></div>
+<div class="ttc" id="aclass_resolution_tracker_html_aeecace55ce9d7198eaefe7ea32783885"><div class="ttname"><a href="#aeecace55ce9d7198eaefe7ea32783885">ResolutionTracker.lastResolution</a></div><div class="ttdeci">static Vector2Int lastResolution</div><div class="ttdef"><b>Definition</b> ResolutionTracker.cs:10</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -205,11 +210,11 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   10</span>    {</div>
-<div class="line"><span class="lineno">   11</span>        <a class="code hl_variable" href="#a954cb8853cd1e533c7937cdda977b59e">OnResolutionChanged</a> ??= delegate { };</div>
-<div class="line"><span class="lineno">   12</span>        <a class="code hl_function" href="#adf5bcd6a6e81c6a395c1ca00e7791cc0">CheckResolution</a>();</div>
-<div class="line"><span class="lineno">   13</span>    }</div>
-<div class="ttc" id="aclass_resolution_tracker_html_adf5bcd6a6e81c6a395c1ca00e7791cc0"><div class="ttname"><a href="#adf5bcd6a6e81c6a395c1ca00e7791cc0">ResolutionTracker.CheckResolution</a></div><div class="ttdeci">void CheckResolution()</div><div class="ttdef"><b>Definition</b> ResolutionTracker.cs:17</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   13</span>    {</div>
+<div class="line"><span class="lineno">   14</span>        <a class="code hl_variable" href="#a954cb8853cd1e533c7937cdda977b59e">OnResolutionChanged</a> ??= delegate { };</div>
+<div class="line"><span class="lineno">   15</span>        <a class="code hl_function" href="#adf5bcd6a6e81c6a395c1ca00e7791cc0">CheckResolution</a>();</div>
+<div class="line"><span class="lineno">   16</span>    }</div>
+<div class="ttc" id="aclass_resolution_tracker_html_adf5bcd6a6e81c6a395c1ca00e7791cc0"><div class="ttname"><a href="#adf5bcd6a6e81c6a395c1ca00e7791cc0">ResolutionTracker.CheckResolution</a></div><div class="ttdeci">void CheckResolution()</div><div class="ttdef"><b>Definition</b> ResolutionTracker.cs:20</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -235,7 +240,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   15</span>=&gt; <a class="code hl_function" href="#adf5bcd6a6e81c6a395c1ca00e7791cc0">CheckResolution</a>();</div>
+<div class="fragment"><div class="line"><span class="lineno">   18</span>=&gt; <a class="code hl_function" href="#adf5bcd6a6e81c6a395c1ca00e7791cc0">CheckResolution</a>();</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -285,7 +290,7 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/Lucas/Documents/School/HKU/PresentYourself/Mii_Commander/Assets/Scripts/<a class="el" href="_resolution_tracker_8cs.html">ResolutionTracker.cs</a></li>
+<li>C:/Users/Lucas/Documents/School/HKU/PresentYourself/Mii_Commander/Assets/Scripts/MiscHelper/<a class="el" href="_resolution_tracker_8cs.html">ResolutionTracker.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -120,26 +120,55 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('class_interact
   <div class="headertitle"><div class="title">Interactable Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A simple class for hooking into interactions, player pickup etc.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Interactable:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_interactable__inherit__graph.svg" width="164" height="198"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_interactable__inherit__graph.svg" width="194" height="240"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Collaboration diagram for Interactable:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_interactable__coll__graph.svg" width="220" height="222"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_interactable__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5e78666911c054edafc27235192f366e" id="r_a5e78666911c054edafc27235192f366e"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a5e78666911c054edafc27235192f366e">Trigger</a> ()</td></tr>
+<tr class="memitem:ad55caaec7aab49f61b5246cee2fd416a" id="r_ad55caaec7aab49f61b5246cee2fd416a"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ad55caaec7aab49f61b5246cee2fd416a">HasBoardItemParent</a> ()</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:af8613ade61270fc048c0e2f7ebb7496c" id="r_af8613ade61270fc048c0e2f7ebb7496c"><td class="memItemLeft"><a class="el" href="class_board_item.html">BoardItem</a>&#160;</td><td class="memItemRight"><a class="el" href="#af8613ade61270fc048c0e2f7ebb7496c">boardItem</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:aa1d901b508c7c3d045a5d5c4e39077cd" id="r_aa1d901b508c7c3d045a5d5c4e39077cd"><td class="memItemLeft">UnityEvent&#160;</td><td class="memItemRight"><a class="el" href="#aa1d901b508c7c3d045a5d5c4e39077cd">interaction</a></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A simple class for hooking into interactions, player pickup etc. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="ad55caaec7aab49f61b5246cee2fd416a" name="ad55caaec7aab49f61b5246cee2fd416a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad55caaec7aab49f61b5246cee2fd416a">&#9670;&#160;</a></span>HasBoardItemParent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Interactable.HasBoardItemParent </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   15</span>=&gt; this.<a class="code hl_variable" href="#af8613ade61270fc048c0e2f7ebb7496c">boardItem</a>;</div>
+<div class="ttc" id="aclass_interactable_html_af8613ade61270fc048c0e2f7ebb7496c"><div class="ttname"><a href="#af8613ade61270fc048c0e2f7ebb7496c">Interactable.boardItem</a></div><div class="ttdeci">BoardItem boardItem</div><div class="ttdef"><b>Definition</b> Interactable.cs:9</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a5e78666911c054edafc27235192f366e" name="a5e78666911c054edafc27235192f366e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5e78666911c054edafc27235192f366e">&#9670;&#160;</a></span>Trigger()</h2>
 
@@ -154,12 +183,26 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">    9</span>=&gt; this.<a class="code hl_variable" href="#aa1d901b508c7c3d045a5d5c4e39077cd">interaction</a>.Invoke();</div>
-<div class="ttc" id="aclass_interactable_html_aa1d901b508c7c3d045a5d5c4e39077cd"><div class="ttname"><a href="#aa1d901b508c7c3d045a5d5c4e39077cd">Interactable.interaction</a></div><div class="ttdeci">UnityEvent interaction</div><div class="ttdef"><b>Definition</b> Interactable.cs:7</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   13</span>=&gt; this.<a class="code hl_variable" href="#aa1d901b508c7c3d045a5d5c4e39077cd">interaction</a>.Invoke();</div>
+<div class="ttc" id="aclass_interactable_html_aa1d901b508c7c3d045a5d5c4e39077cd"><div class="ttname"><a href="#aa1d901b508c7c3d045a5d5c4e39077cd">Interactable.interaction</a></div><div class="ttdeci">UnityEvent interaction</div><div class="ttdef"><b>Definition</b> Interactable.cs:11</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
+<a id="af8613ade61270fc048c0e2f7ebb7496c" name="af8613ade61270fc048c0e2f7ebb7496c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8613ade61270fc048c0e2f7ebb7496c">&#9670;&#160;</a></span>boardItem</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_board_item.html">BoardItem</a> Interactable.boardItem</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aa1d901b508c7c3d045a5d5c4e39077cd" name="aa1d901b508c7c3d045a5d5c4e39077cd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa1d901b508c7c3d045a5d5c4e39077cd">&#9670;&#160;</a></span>interaction</h2>
 
@@ -183,7 +226,7 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/Lucas/Documents/School/HKU/PresentYourself/Mii_Commander/Assets/Scripts/Interactables/<a class="el" href="_interactable_8cs.html">Interactable.cs</a></li>
+<li>C:/Users/Lucas/Documents/School/HKU/PresentYourself/Mii_Commander/Assets/Scripts/BoardItems/<a class="el" href="_interactable_8cs.html">Interactable.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

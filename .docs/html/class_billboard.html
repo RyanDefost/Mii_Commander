@@ -120,6 +120,9 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('class_billboar
   <div class="headertitle"><div class="title">Billboard Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A simple component, that makes the transform follow the camera.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Billboard:</div>
 <div class="dyncontent">
@@ -140,7 +143,9 @@ Private Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:adc464f5ef705bc471711ce85af8b02ee" id="r_adc464f5ef705bc471711ce85af8b02ee"><td class="memItemLeft">Camera&#160;</td><td class="memItemRight"><a class="el" href="#adc464f5ef705bc471711ce85af8b02ee">camRef</a></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A simple component, that makes the transform follow the camera. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a3bacdb5a79947fdee7cac2a119a765b2" name="a3bacdb5a79947fdee7cac2a119a765b2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3bacdb5a79947fdee7cac2a119a765b2">&#9670;&#160;</a></span>Awake()</h2>
 
@@ -163,7 +168,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">    8</span>=&gt; this.camRef = Camera.main;</div>
+<div class="fragment"><div class="line"><span class="lineno">   10</span>=&gt; this.camRef = Camera.main;</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -189,8 +194,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">    9</span>=&gt; this.transform.LookAt(this.<a class="code hl_variable" href="#adc464f5ef705bc471711ce85af8b02ee">camRef</a>.transform.position, -Vector3.up);</div>
-<div class="ttc" id="aclass_billboard_html_adc464f5ef705bc471711ce85af8b02ee"><div class="ttname"><a href="#adc464f5ef705bc471711ce85af8b02ee">Billboard.camRef</a></div><div class="ttdeci">Camera camRef</div><div class="ttdef"><b>Definition</b> Billboard.cs:6</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   11</span>=&gt; this.transform.LookAt(this.<a class="code hl_variable" href="#adc464f5ef705bc471711ce85af8b02ee">camRef</a>.transform.position, -Vector3.up);</div>
+<div class="ttc" id="aclass_billboard_html_adc464f5ef705bc471711ce85af8b02ee"><div class="ttname"><a href="#adc464f5ef705bc471711ce85af8b02ee">Billboard.camRef</a></div><div class="ttdeci">Camera camRef</div><div class="ttdef"><b>Definition</b> Billboard.cs:8</div></div>
 </div><!-- fragment -->
 </div>
 </div>

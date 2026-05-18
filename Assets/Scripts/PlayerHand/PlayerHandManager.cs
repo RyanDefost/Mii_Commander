@@ -8,26 +8,31 @@ namespace PlayerHand
     /// Manages all playerHand handlers, and keeps track of mouse input and the hand state
     /// </summary>
     [RequireComponent(typeof(SpriteRenderer), typeof(VisualHandler), typeof(MovementHandler)), 
-     RequireComponent(typeof(InteractionHandler))]
+     RequireComponent(typeof(InteractionHandler), typeof(ItemRotationHandler))]
     public class PlayerHandManager : MonoBehaviour
     {
+        [SerializeField]
+        private float gamePadExtraSensitivity = 20;
         [SerializeField]
         private VisualHandler visualHandler;
         [SerializeField]
         private MovementHandler movementHandler;
         [SerializeField]
         private InteractionHandler interactionHandler;
+        [SerializeField]
+        private ItemRotationHandler itemRotationHandler;
         [Space]
         [SerializeField]
         private InputActionAsset inputActionAsset;
         private InputActionMap inputActionMap;
         private InputAction moveAction;
         private InputAction grabAction;
-
-
+        
         private bool canGrab;
         private bool grabbing;
         public Action<Vector2, Vector2> OnGrabReleased; // passes hand movementDir, and throw force
+
+        private DeviceTracker deviceTracker;
 
         private void OnValidate()
         {
@@ -36,6 +41,7 @@ namespace PlayerHand
             this.visualHandler = GetComponent<VisualHandler>();
             this.movementHandler = GetComponent<MovementHandler>();
             this.interactionHandler = GetComponent<InteractionHandler>();
+            this.itemRotationHandler = GetComponent<ItemRotationHandler>();
             this.enabled = this.visualHandler.enabled && this.movementHandler.enabled && this.interactionHandler.enabled && this.inputActionAsset;
         }
 
@@ -47,6 +53,7 @@ namespace PlayerHand
             this.inputActionMap.Enable();
             this.moveAction = this.inputActionMap.FindAction("Move");
             this.grabAction = this.inputActionMap.FindAction("Grab");
+            this.itemRotationHandler.rotateAction = this.inputActionMap.FindAction("Rotate");
 
             this.grabAction.performed += OnGrabActionPerformed;
         
@@ -64,8 +71,14 @@ namespace PlayerHand
 
         private void Update()
         {
-            if (this.moveAction != null) 
-                this.movementHandler.ApplyMouseDelta(this.moveAction.ReadValue<Vector2>());
+            if (this.moveAction != null)
+            {
+                this.deviceTracker ??= ComponentRegistry.GetComponent<DeviceTracker>();
+                Vector2 delta = this.moveAction.ReadValue<Vector2>();
+                if (this.deviceTracker && this.deviceTracker.LastDevice is Gamepad)
+                    delta *= this.gamePadExtraSensitivity;
+                this.movementHandler.ApplyMouseDelta(delta);
+            }
             
             if (this.grabAction == null || !this.grabbing) return;
             if (CheckOnGrabReleased(ref this.grabbing, this.grabAction, this.visualHandler, this.movementHandler))
@@ -77,7 +90,6 @@ namespace PlayerHand
         private void OnInteract(InputAction.CallbackContext obj, InteractionHandler interactionHandler)
         {
             if(!this.canGrab) return;
-            
             if (!obj.ReadValueAsButton()) return;
             if (!interactionHandler.CurrentHover) return;
             interactionHandler.CurrentHover.Trigger();

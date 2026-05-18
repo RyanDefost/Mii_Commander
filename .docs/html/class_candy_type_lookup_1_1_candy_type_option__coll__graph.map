@@ -1,0 +1,9 @@
+<map id="CandyTypeLookup.CandyTypeOption" name="CandyTypeLookup.CandyTypeOption">
+<area shape="rect" id="Node000001" title=" " alt="" coords="19,147,208,232"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,48,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="38,72,62,121,69,133,64,133,58,124,37,77"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="72,5,155,75"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="115,72,116,130,111,129,112,77"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="221,5,246,75"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="228,72,220,100,206,124,195,137,191,133,202,121,215,98,225,76"/>
+</map>

@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="Tracks the resolution of the current project, when it changes it calls a event.">
 <polygon fill="#999999" stroke="none" points="154.5,-112 0,-112 0,0 154.5,0 154.5,-112"/>
 <text xml:space="preserve" text-anchor="start" x="37.5" y="-98.25" font-family="Helvetica,sans-Serif" font-size="10.00">ResolutionTracker</text>
 <text xml:space="preserve" text-anchor="start" x="4" y="-82.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['resolutiontracker_2ecs_0',['ResolutionTracker.cs',['../_resolution_tracker_8cs.html',1,'']]]
+  ['questsystem_2ecs_0',['QuestSystem.cs',['../_quest_system_8cs.html',1,'']]]
 ];

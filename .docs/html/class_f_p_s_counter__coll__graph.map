@@ -1,9 +1,11 @@
 <map id="FPSCounter" name="FPSCounter">
-<area shape="rect" id="Node000001" title=" " alt="" coords="81,147,214,259"/>
+<area shape="rect" id="Node000001" title="An FPS counter that Lucas stole from stack overflow, then connected to a Text component." alt="" coords="131,168,250,280"/>
 <area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="5,5,106,75"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="83,85,119,146,114,147,81,90"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,84,152,168,147,169,88,89"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="130,5,166,75"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="149,72,150,130,145,129,146,77"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="230,5,266,75"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="241,72,221,124,214,135,210,131,216,121,237,76"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="145,72,146,108,151,143,154,153,148,151,146,145,141,108,143,77"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="215,5,251,75"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="227,73,209,153,205,150,223,77"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="366,5,391,75"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="374,73,363,111,342,146,306,176,267,199,264,194,303,172,338,142,358,109,370,77"/>
 </map>

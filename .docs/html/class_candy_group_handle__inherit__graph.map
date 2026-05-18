@@ -1,0 +1,5 @@
+<map id="CandyGroupHandle" name="CandyGroupHandle">
+<area shape="rect" id="Node000001" title="A class for managing multiple candy instances, this would make it more efficient to reuse dead candy ..." alt="" coords="5,144,234,469"/>
+<area shape="rect" id="Node000002" href="$interface_i_poolable.html" title="Makes an object be able to be used within a objectPool." alt="" coords="40,5,199,96"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,108,122,145,117,144,119,113"/>
+</map>
