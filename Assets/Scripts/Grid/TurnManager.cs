@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Grid
 {
@@ -12,6 +13,8 @@ namespace Grid
         [SerializeField]
         private GridManager gridManager;
 
+        public Action<GridMoveable> OnreachedEnd;
+        
         private void OnValidate()
         {
             if (Application.isPlaying)
@@ -38,6 +41,8 @@ namespace Grid
                 if (!moveComponent.HasTarget())
                 {
                     this.gridManager.ReleaseInstance(instance);
+                    OnreachedEnd?.Invoke(moveComponent);
+                    
                     Destroy(moveComponent.gameObject);
                 }
                 moveComponent.SetMoving(true);
