@@ -536,6 +536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Managers.Scoring.ScoreVisualiser
   slider: {fileID: 1129538933}
   applySpeed: 0
+  lerpTime: 0.5
 --- !u!1 &354764388
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,6 +551,7 @@ GameObject:
   - component: {fileID: 354764391}
   - component: {fileID: 354764389}
   - component: {fileID: 354764390}
+  - component: {fileID: 354764395}
   m_Layer: 0
   m_Name: PlayerHand
   m_TagString: Untagged
@@ -569,9 +571,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f41653d7f1c284a99fbe1e9f20fcab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHand.MouseController
+  gamePadExtraSensitivity: 20
   visualHandler: {fileID: 354764392}
   movementHandler: {fileID: 354764391}
   interactionHandler: {fileID: 354764390}
+  itemRotationHandler: {fileID: 354764395}
   inputActionAsset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!114 &354764390
 MonoBehaviour:
@@ -734,6 +738,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &354764395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354764388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4014752f750f4908a4b3a877fda7b6a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHand.ItemRotationHandler
+  interactionHandler: {fileID: 354764390}
+  gamePadExtraSpeed: 2
 --- !u!1 &510673820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,7 +1647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CandySpawner
   playerHandManager: {fileID: 354764389}
-  candyPrefab: {fileID: 2427277321692252709, guid: d2d0231140d814541bd628f37b73ca0c, type: 3}
+  options: []
 --- !u!61 &1039124615
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1688,6 +1706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b9b6cfc501136949bf3a50b1b3b1999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  boardItem: {fileID: 0}
   interaction:
     m_PersistentCalls:
       m_Calls:
@@ -2569,6 +2588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b9b6cfc501136949bf3a50b1b3b1999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  boardItem: {fileID: 0}
   interaction:
     m_PersistentCalls:
       m_Calls:
