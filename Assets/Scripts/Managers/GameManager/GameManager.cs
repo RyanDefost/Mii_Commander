@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Grid;
 using Managers.GameStates;
-using Managers.Scoring;
+using Scoring;
 using UnityEngine;
 
 namespace Managers
@@ -58,6 +58,7 @@ namespace Managers
             this.gameStateMachine = new FiniteStateMachine<GameManager>(this, new PlayGameState());
             
             this.moveManager.SetInitialMoveAmount(levelData.baseTurnAmount);
+            this.scoreManager.SetGoal(levelData.pointRequirement);
         }
 
         private void InitStates()

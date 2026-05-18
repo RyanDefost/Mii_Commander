@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+using Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Managers.Scoring
+namespace Scoring
 {
+    /// <summary>
+    /// Visualises UI elements based on the actions and values from the ScoreManager.
+    /// </summary>
     public class ScoreVisualiser: MonoBehaviour
     {
         [SerializeField] private Slider slider;
@@ -35,7 +38,7 @@ namespace Managers.Scoring
             int goal = scoreManager.GetGoal();
             float fractionValue = CalculateFractionValue(score, goal);
             
-            this.text.text = score.ToString();
+            this.text.text = $"{score.ToString()}/{goal.ToString()}";
             
             if(this.runningRoutine != null) StopCoroutine(this.runningRoutine);
             this.runningRoutine = StartCoroutine(GradualApply(fractionValue));
