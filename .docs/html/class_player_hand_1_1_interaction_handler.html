@@ -120,10 +120,13 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('class_player_h
   <div class="headertitle"><div class="title">PlayerHand.InteractionHandler Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Lets the player hand interact with interactables.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for PlayerHand.InteractionHandler:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_player_hand_1_1_interaction_handler__inherit__graph.svg" width="238" height="416"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_player_hand_1_1_interaction_handler__inherit__graph.svg" width="238" height="438"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Collaboration diagram for PlayerHand.InteractionHandler:</div>
@@ -131,6 +134,10 @@ Collaboration diagram for PlayerHand.InteractionHandler:</div>
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_player_hand_1_1_interaction_handler__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a8b48ede5a0dec8a33fcb1d0136ef3886" id="r_a8b48ede5a0dec8a33fcb1d0136ef3886"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a8b48ede5a0dec8a33fcb1d0136ef3886">IsHoldingInteractable</a> ()</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-properties" class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:af7e92b37a05a4515b4d02ae91f37e04d" id="r_af7e92b37a05a4515b4d02ae91f37e04d"><td class="memItemLeft"><a class="el" href="class_interactable.html">Interactable</a>&#160;</td><td class="memItemRight"><a class="el" href="#af7e92b37a05a4515b4d02ae91f37e04d">CurrentHover</a><code> [get, private set]</code></td></tr>
@@ -139,8 +146,8 @@ Properties</h2></td></tr>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:adbeb56823e642382e3f8d9d94bf96eb9" id="r_adbeb56823e642382e3f8d9d94bf96eb9"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#adbeb56823e642382e3f8d9d94bf96eb9">OnValidate</a> ()</td></tr>
 <tr class="memitem:aae722353d9aead56778d2bceb1cb75a0" id="r_aae722353d9aead56778d2bceb1cb75a0"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aae722353d9aead56778d2bceb1cb75a0">Update</a> ()</td></tr>
-<tr class="memitem:a7aa0686540509161cdb58a2cd54dd4eb" id="r_a7aa0686540509161cdb58a2cd54dd4eb"><td class="memItemLeft">RaycastHit2D?&#160;</td><td class="memItemRight"><a class="el" href="#a7aa0686540509161cdb58a2cd54dd4eb">GetClosestToCamera</a> (RaycastHit2D[] hits)</td></tr>
-<tr class="memitem:a9a3f270dad4804a4f72b9cf2888bd32e" id="r_a9a3f270dad4804a4f72b9cf2888bd32e"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9a3f270dad4804a4f72b9cf2888bd32e">OnNoInteractable</a> ()</td></tr>
+<tr class="memitem:aed1c4c2fadbf847fa36f87c86aad3d6b" id="r_aed1c4c2fadbf847fa36f87c86aad3d6b"><td class="memItemLeft">RaycastHit2D?&#160;</td><td class="memItemRight"><a class="el" href="#aed1c4c2fadbf847fa36f87c86aad3d6b">GetClosestInteractableToCamera</a> (RaycastHit2D[] hits)</td></tr>
+<tr class="memitem:a29768ade450b331e1ed1bd7504d24723" id="r_a29768ade450b331e1ed1bd7504d24723"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a29768ade450b331e1ed1bd7504d24723">ResetHover</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -150,9 +157,11 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a647648c0d731974dce5909472edb8c7e" id="r_a647648c0d731974dce5909472edb8c7e"><td class="memItemLeft">LayerMask&#160;</td><td class="memItemRight"><a class="el" href="#a647648c0d731974dce5909472edb8c7e">layerMaskInteractables</a></td></tr>
 <tr class="memitem:aa2760ac697e4a0988a2066719ea98bf7" id="r_aa2760ac697e4a0988a2066719ea98bf7"><td class="memItemLeft"><a class="el" href="class_interactable.html">Interactable</a>&#160;</td><td class="memItemRight"><a class="el" href="#aa2760ac697e4a0988a2066719ea98bf7">currentHover</a></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a7aa0686540509161cdb58a2cd54dd4eb" name="a7aa0686540509161cdb58a2cd54dd4eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7aa0686540509161cdb58a2cd54dd4eb">&#9670;&#160;</a></span>GetClosestToCamera()</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Lets the player hand interact with interactables. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="aed1c4c2fadbf847fa36f87c86aad3d6b" name="aed1c4c2fadbf847fa36f87c86aad3d6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed1c4c2fadbf847fa36f87c86aad3d6b">&#9670;&#160;</a></span>GetClosestInteractableToCamera()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -161,7 +170,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">RaycastHit2D? PlayerHand.InteractionHandler.GetClosestToCamera </td>
+          <td class="memname">RaycastHit2D? PlayerHand.InteractionHandler.GetClosestInteractableToCamera </td>
           <td>(</td>
           <td class="paramtype">RaycastHit2D[]</td>          <td class="paramname"><span class="paramname"><em>hits</em></span></td><td>)</td>
           <td></td>
@@ -173,57 +182,52 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   60</span>        {</div>
-<div class="line"><span class="lineno">   61</span>            RaycastHit2D? found = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   62</span>            <span class="keywordtype">float</span> smallestDistance = <span class="keywordtype">float</span>.PositiveInfinity;</div>
-<div class="line"><span class="lineno">   63</span>            <span class="keywordflow">foreach</span> (RaycastHit2D hit <span class="keywordflow">in</span> hits)</div>
-<div class="line"><span class="lineno">   64</span>            {</div>
-<div class="line"><span class="lineno">   65</span>                <span class="keywordflow">if</span> (!hit.collider) <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">   66</span>                </div>
-<div class="line"><span class="lineno">   67</span>                <span class="keywordtype">float</span> currentDistance = Vector3.Distance(</div>
-<div class="line"><span class="lineno">   68</span>                    <span class="keyword">new</span> Vector3(hit.transform.position.x, hit.transform.position.y, <span class="keyword">this</span>.camRef.transform.position.z), </div>
-<div class="line"><span class="lineno">   69</span>                    hit.transform.position);</div>
-<div class="line"><span class="lineno">   70</span>                </div>
-<div class="line"><span class="lineno">   71</span>                SpriteRenderer visual =  hit.collider.GetComponent&lt;SpriteRenderer&gt;();</div>
-<div class="line"><span class="lineno">   72</span>                <span class="keywordflow">if</span> (visual)</div>
-<div class="line"><span class="lineno">   73</span>                    currentDistance += visual.sortingOrder;</div>
-<div class="line"><span class="lineno">   74</span>                <span class="keywordflow">if</span> (!(currentDistance &lt; smallestDistance)) <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">   75</span>                found = hit;</div>
-<div class="line"><span class="lineno">   76</span>                smallestDistance = currentDistance;</div>
-<div class="line"><span class="lineno">   77</span>            }</div>
-<div class="line"><span class="lineno">   78</span> </div>
-<div class="line"><span class="lineno">   79</span>            <span class="keywordflow">return</span> found;</div>
-<div class="line"><span class="lineno">   80</span>        }</div>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hits</td><td>a list of raycast hits, where all hits are with a interactable object</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Closest interactable, or null</dd></dl>
+<div class="fragment"><div class="line"><span class="lineno">   67</span>        {</div>
+<div class="line"><span class="lineno">   68</span>            RaycastHit2D? found = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   69</span>            <span class="keywordtype">float</span> smallestDistance = <span class="keywordtype">float</span>.PositiveInfinity;</div>
+<div class="line"><span class="lineno">   70</span>            <span class="keywordflow">foreach</span> (RaycastHit2D hit <span class="keywordflow">in</span> hits)</div>
+<div class="line"><span class="lineno">   71</span>            {</div>
+<div class="line"><span class="lineno">   72</span>                <span class="keywordflow">if</span> (!hit.collider) <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   73</span>                </div>
+<div class="line"><span class="lineno">   74</span>                <span class="keywordtype">float</span> currentDistance = Vector3.Distance(</div>
+<div class="line"><span class="lineno">   75</span>                    <span class="keyword">new</span> Vector3(hit.transform.position.x, hit.transform.position.y, <span class="keyword">this</span>.camRef.transform.position.z), </div>
+<div class="line"><span class="lineno">   76</span>                    hit.transform.position);</div>
+<div class="line"><span class="lineno">   77</span>                </div>
+<div class="line"><span class="lineno">   78</span>                SpriteRenderer visual =  hit.collider.GetComponent&lt;SpriteRenderer&gt;();</div>
+<div class="line"><span class="lineno">   79</span>                <span class="keywordflow">if</span> (visual)</div>
+<div class="line"><span class="lineno">   80</span>                    currentDistance += visual.sortingOrder;</div>
+<div class="line"><span class="lineno">   81</span>                <span class="keywordflow">if</span> (!(currentDistance &lt; smallestDistance)) <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   82</span>                found = hit;</div>
+<div class="line"><span class="lineno">   83</span>                smallestDistance = currentDistance;</div>
+<div class="line"><span class="lineno">   84</span>            }</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>            <span class="keywordflow">return</span> found;</div>
+<div class="line"><span class="lineno">   87</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a9a3f270dad4804a4f72b9cf2888bd32e" name="a9a3f270dad4804a4f72b9cf2888bd32e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a3f270dad4804a4f72b9cf2888bd32e">&#9670;&#160;</a></span>OnNoInteractable()</h2>
+<a id="a8b48ede5a0dec8a33fcb1d0136ef3886" name="a8b48ede5a0dec8a33fcb1d0136ef3886"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b48ede5a0dec8a33fcb1d0136ef3886">&#9670;&#160;</a></span>IsHoldingInteractable()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void PlayerHand.InteractionHandler.OnNoInteractable </td>
+          <td class="memname">bool PlayerHand.InteractionHandler.IsHoldingInteractable </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   83</span>        {</div>
-<div class="line"><span class="lineno">   84</span>            this.CurrentHover = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   85</span>            <span class="keywordflow">if</span> (this.visualHandler.CurrentState != <span class="stringliteral">&quot;Closed&quot;</span>)</div>
-<div class="line"><span class="lineno">   86</span>                this.visualHandler.SetSprite(<span class="stringliteral">&quot;Pointing&quot;</span>, this.movementHandler);</div>
-<div class="line"><span class="lineno">   87</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   96</span>=&gt; this.visualHandler.CurrentState == <span class="stringliteral">&quot;Closed&quot;</span>;</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -249,14 +253,44 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   24</span>        {</div>
-<div class="line"><span class="lineno">   25</span>            <span class="keywordflow">if</span> (Application.isPlaying)</div>
-<div class="line"><span class="lineno">   26</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   27</span>            this.camRef = Camera.main;</div>
-<div class="line"><span class="lineno">   28</span>            this.movementHandler = GetComponent&lt;MovementHandler&gt;();</div>
-<div class="line"><span class="lineno">   29</span>            this.visualHandler = GetComponent&lt;VisualHandler&gt;();</div>
-<div class="line"><span class="lineno">   30</span>            this.enabled = this.movementHandler &amp;&amp; this.visualHandler;</div>
-<div class="line"><span class="lineno">   31</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>        {</div>
+<div class="line"><span class="lineno">   27</span>            <span class="keywordflow">if</span> (Application.isPlaying)</div>
+<div class="line"><span class="lineno">   28</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   29</span>            this.camRef = Camera.main;</div>
+<div class="line"><span class="lineno">   30</span>            this.movementHandler = GetComponent&lt;MovementHandler&gt;();</div>
+<div class="line"><span class="lineno">   31</span>            this.visualHandler = GetComponent&lt;VisualHandler&gt;();</div>
+<div class="line"><span class="lineno">   32</span>            this.enabled = this.movementHandler &amp;&amp; this.visualHandler;</div>
+<div class="line"><span class="lineno">   33</span>        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a29768ade450b331e1ed1bd7504d24723" name="a29768ade450b331e1ed1bd7504d24723"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29768ade450b331e1ed1bd7504d24723">&#9670;&#160;</a></span>ResetHover()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlayerHand.InteractionHandler.ResetHover </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   90</span>        {</div>
+<div class="line"><span class="lineno">   91</span>            this.CurrentHover = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   92</span>            <span class="keywordflow">if</span> (!IsHoldingInteractable())</div>
+<div class="line"><span class="lineno">   93</span>                this.visualHandler.SetSprite(<span class="stringliteral">&quot;Pointing&quot;</span>, this.movementHandler);</div>
+<div class="line"><span class="lineno">   94</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -282,30 +316,33 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   34</span>        {</div>
-<div class="line"><span class="lineno">   35</span>            <span class="keywordflow">if</span> (this.visualHandler.CurrentState == <span class="stringliteral">&quot;Closed&quot;</span>)</div>
-<div class="line"><span class="lineno">   36</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   37</span>            </div>
-<div class="line"><span class="lineno">   38</span>            RaycastHit2D[] results = <span class="keyword">new</span> RaycastHit2D[5];</div>
-<div class="line"><span class="lineno">   39</span>            <span class="keywordtype">int</span> size = Physics2D.RaycastNonAlloc(this.transform.position, Vector3.forward, results, 20f, <span class="keyword">this</span>.layerMaskInteractables);</div>
-<div class="line"><span class="lineno">   40</span>            <span class="keywordflow">if</span> (size &lt;= 0)</div>
-<div class="line"><span class="lineno">   41</span>            {</div>
-<div class="line"><span class="lineno">   42</span>                OnNoInteractable();</div>
-<div class="line"><span class="lineno">   43</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   44</span>            }</div>
-<div class="line"><span class="lineno">   45</span> </div>
-<div class="line"><span class="lineno">   46</span>            RaycastHit2D? found = GetClosestToCamera(results);</div>
-<div class="line"><span class="lineno">   47</span>            <span class="keywordflow">if</span> (found == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">   48</span>            {</div>
-<div class="line"><span class="lineno">   49</span>                OnNoInteractable();</div>
-<div class="line"><span class="lineno">   50</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   51</span>            }</div>
-<div class="line"><span class="lineno">   52</span> </div>
-<div class="line"><span class="lineno">   53</span>            Interactable interactable = found.Value.collider.GetComponent&lt;Interactable&gt;();</div>
-<div class="line"><span class="lineno">   54</span>            <span class="keywordflow">if</span> (!interactable) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   55</span>            this.visualHandler.SetSprite(<span class="stringliteral">&quot;Open&quot;</span>, this.movementHandler);</div>
-<div class="line"><span class="lineno">   56</span>            this.CurrentHover = interactable;</div>
-<div class="line"><span class="lineno">   57</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   36</span>        {</div>
+<div class="line"><span class="lineno">   37</span>            <span class="keywordflow">if</span> (IsHoldingInteractable())</div>
+<div class="line"><span class="lineno">   38</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   39</span>            </div>
+<div class="line"><span class="lineno">   40</span>            <span class="comment">// Cast ray underneath hand</span></div>
+<div class="line"><span class="lineno">   41</span>            RaycastHit2D[] results = <span class="keyword">new</span> RaycastHit2D[5];</div>
+<div class="line"><span class="lineno">   42</span>            <span class="keywordtype">int</span> size = Physics2D.RaycastNonAlloc(this.transform.position, Vector3.forward, results, 20f, <span class="keyword">this</span>.layerMaskInteractables);</div>
+<div class="line"><span class="lineno">   43</span>            <span class="keywordflow">if</span> (size &lt;= 0)</div>
+<div class="line"><span class="lineno">   44</span>            {</div>
+<div class="line"><span class="lineno">   45</span>                ResetHover();</div>
+<div class="line"><span class="lineno">   46</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   47</span>            }</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>            <span class="comment">// Get closest interactable</span></div>
+<div class="line"><span class="lineno">   50</span>            RaycastHit2D? found = GetClosestInteractableToCamera(results);</div>
+<div class="line"><span class="lineno">   51</span>            <span class="keywordflow">if</span> (found == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   52</span>            {</div>
+<div class="line"><span class="lineno">   53</span>                ResetHover();</div>
+<div class="line"><span class="lineno">   54</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   55</span>            }</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>            <span class="comment">// Log most likely to interact with</span></div>
+<div class="line"><span class="lineno">   58</span>            Interactable interactable = found.Value.collider.GetComponent&lt;Interactable&gt;();</div>
+<div class="line"><span class="lineno">   59</span>            <span class="keywordflow">if</span> (!interactable) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   60</span>            this.visualHandler.SetSprite(<span class="stringliteral">&quot;Open&quot;</span>, this.movementHandler);</div>
+<div class="line"><span class="lineno">   61</span>            this.CurrentHover = interactable;</div>
+<div class="line"><span class="lineno">   62</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -440,10 +477,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   18</span>                                         { </div>
-<div class="line"><span class="lineno">   19</span>            <span class="keyword">get</span> =&gt; this.currentHover;</div>
-<div class="line"><span class="lineno">   20</span>            <span class="keyword">private</span> <span class="keyword">set</span> =&gt; this.currentHover = value; </div>
-<div class="line"><span class="lineno">   21</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   20</span>                                         { </div>
+<div class="line"><span class="lineno">   21</span>            <span class="keyword">get</span> =&gt; this.currentHover;</div>
+<div class="line"><span class="lineno">   22</span>            <span class="keyword">private</span> <span class="keyword">set</span> =&gt; this.currentHover = value; </div>
+<div class="line"><span class="lineno">   23</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

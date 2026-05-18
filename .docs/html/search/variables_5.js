@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['frequency_0',['frequency',['../class_f_p_s_counter.html#a5ac834abc09b3204a9dc734ea74f8863',1,'FPSCounter']]]
+  ['framecount_0',['frameCount',['../class_f_p_s_counter.html#a1fbdfc8f2eaed06c46543fc4a45cfa2a',1,'FPSCounter']]]
 ];

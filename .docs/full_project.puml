@@ -30,30 +30,56 @@ MonoBehaviour(Billboard) {
   - Awake() : void
   - Update() : void
 }
-class ComponentRegistry {
-  - components : static Dictionary<string, Component>
-  - name : string
-  + AddToRegistry() : static bool
-  + RemoveFromRegistry() : static bool
-  + ReplaceInRegistry() : static bool
-  - AddToRegistry() : return
-}
-MonoBehaviour(FPSCounter) {
-  - set : protected
-  PrivateSerialized(frequency : float)
-  PrivateSerialized(counter : Text)
-  - lastFrameCount : int
-  - lastTime : float
-  - timeSpan : float
-  - frameCount : int
+MonoBehaviour(CandyTypeLookup) {
+  PrivateSerialized(options : List<CandyTypeOption>)
+  + name : string
+  + candyPrefab : GameObject
+  + index : int
+  - i : int
+  - option : CandyTypeOption
   - OnValidate() : void
-  - Start() : void
-  - FPS() : IEnumerator
-  - WaitForSeconds() : yield return new
+  - Awake() : void
+  + Get() : CandyTypeOption
 }
-interface IPoolable {
-  - OnEnableObject() : void
-  - OnDisableObject() : void
+class CandyTypeOption {
+  + name : string
+  + candyPrefab : GameObject
+  + index : int
+}
+MonoBehaviour(PlayerDeck) {
+  PrivateSerialized(playerHandManager : PlayerHandManager)
+  - candyPool : ObjectPool<CandyGroupHandle>
+  PrivateSerialized(options : List<DeckOption>)
+  - currentOption : int
+  PrivateSerialized(name : string)
+  PrivateSerialized(possibleCandies : CandyOption[])
+  + chance : float
+  + typeIndex : int
+  - lookupRef : CandyTypeLookup
+  - totalWeight : float
+  - randomValue : float
+  - processedWeight : float
+  - result : CandyGroupHandle
+  + GetCandy() : void
+  - OnValidate() : void
+  - Awake() : void
+  + AddToHand() : void
+  - CandyGroupHandle() : new
+}
+class DeckOption {
+  PrivateSerialized(name : string)
+  PrivateSerialized(possibleCandies : CandyOption[])
+  + chance : float
+  + typeIndex : int
+  - lookupRef : CandyTypeLookup
+  - totalWeight : float
+  - randomValue : float
+  - processedWeight : float
+  + GetCandy() : void
+}
+class CandyOption {
+  + chance : float
+  + typeIndex : int
 }
 MonoBehaviour(QuestSystem) {
   PrivateSerialized(questPrefab : GameObject)
@@ -69,37 +95,148 @@ class Quest {
   + pointRequirement : int
   + GetText() : string
 }
-MonoBehaviour(ResolutionTracker) {
-  + OnResolutionChanged : static Action<int, int>
-  - lastResolution : static Vector2Int
-  - currentWidth : int
-  - currentHeight : int
+MonoBehaviour(BoardItem) {
+  PrivateSerialized(interactable : Interactable)
+  - components : SerializeField, HideInInspector] private BoardItemComponent[]
+  PrivateSerialized(rb : Rigidbody)
+  - set : private
+  + OnAddToHand : Action
+  + OnInitiate : Action
+  + OnAddToBoard : Action
+  - found : BoardItemComponent
+  - null : return
+  - OnValidate() : void
   - Start() : void
+  - CustomOnValidate() : virtual void
+  + Initiate() : void
+}
+MonoBehaviour(BoardItemComponent) {
+  - boardItem : SerializeField, HideInInspector] protected BoardItem
+  - OnValidate() : void
+  - CustomOnValidate() : virtual void
+  + ConnectToBoardItem() : virtual void
+}
+class GridMoveable {
+  - grid : GridManager
+  - set : private
+  PrivateSerialized(offset : float)
+  PrivateSerialized(minimalDist : float)
+  - previousDist : float?
+  - onUpdate : Action
+  - dist : float
+  - true : return
+  - Start() : void
+  + ConnectToBoardItem() : override void
+  - OnDestroy() : void
   - Update() : void
-  - CheckResolution() : void
-  - Vector2Int() : new
+  - OnAddToHand() : void
+  - OnInitiate() : void
+  + SetMoving() : void
+  - StopMovementToTarget() : else
+  - StopMovementToTarget() : virtual void
+  - TriggerMovementToTarget() : virtual void
+  - AwaitDistanceToTarget() : void
+  - SnapToTarget() : virtual void
+  - UpdateTarget() : bool
+  - TriggerUpdateTarget() : void
+  + SetTarget() : void
+  + ResetTarget() : void
+  + HasTarget() : bool
+  - GetTargetPosition() : Vector3
 }
-class Timer {
-  - currentTime : double
-  - maxTime : float
-  + onEnd : Action
-  + onPlaying : Action<double>
-  + running : bool
-  - timeSpan : TimeSpan
-  - countDown : bool
-  - Timer() : public
-  + Reset() : void
-  + Update() : void
-  + CheckIfEndIsReached() : void
-  - GetFormattedTime() : string
-  + GetFormattedTime() : string
-  - GetFormattedTime() : countDown ?
-  + GetCurrentTime() : double
-  + Add() : void
+class GridRotatable {
+  PrivateSerialized(handHandler : HandHandler)
+  PrivateSerialized(rotationSpeed : float)
+  PrivateSerialized(stepAngle : float)
+  - progression : float
+  - lockedRotation : bool
+  - lastRotation : Vector3
+  - angle : float
+  - currentAngles : Vector3
+  - snappedZ : float
+  - CustomOnValidate() : override void
+  + ConnectToBoardItem() : override void
+  - OnDestroy() : void
+  + RotateClockWise() : void
+  - SnapToNearestCardinalZ() : void
+  - OnAddToHand() : void
+  - OnGrabReleased() : void
+  - OnAddToBoard() : void
+  - Update() : void
 }
-class VectorExtensions {
-  + XY() : static Vector2
-  + OverwriteXY() : static Vector3
+class HandHandler {
+  - playerHandRef : PlayerHandManager
+  + OnHandGrabRelease : Action
+  - throwVel : Vector3
+  + ConnectToBoardItem() : override void
+  - OnDestroy() : void
+  - OnAddToHand() : void
+  - OnGrabReleased() : void
+  + AddToHand() : void
+  + OnGrabReleased() : static void
+}
+MonoBehaviour(Interactable) {
+  + boardItem : BoardItem
+  PrivateSerialized(interaction : UnityEvent)
+  + Trigger() : void
+  + HasBoardItemParent() : bool
+}
+class MoveToGridPosition {
+  PrivateSerialized(rb : Rigidbody)
+  PrivateSerialized(movementStrength : float)
+  PrivateSerialized(maxVelocity : float)
+  PrivateSerialized(dampening : float)
+  PrivateSerialized(startDelay : float)
+  - startDelayTimer : Timer
+  PrivateSerialized(endTimerTime : float)
+  - endTimer : Timer
+  - usedMinimumForce : float
+  - targetPosition : Vector3
+  - diff : Vector3
+  - velocity : Vector3
+  - dot : float
+  - alignmentFactor : float
+  - force : float
+  - CustomOnValidate() : override void
+  - TriggerMovementToTarget() : override void
+  - Timer() : new
+  - StopMovementToTarget() : override void
+  - UpdateStartDelayTimer() : void
+  - EnableMovement() : void
+  - UpdateEndTimer() : void
+  - SnapToTarget() : override void
+  - ApplyForceTowardsTarget() : void
+}
+class CandyActor {
+  PrivateSerialized(points : float)
+  + candyType : int
+  PrivateSerialized(movement : MoveToGridPosition)
+  PrivateSerialized(handHandler : HandHandler)
+  - CustomOnValidate() : override void
+  + OnGrabReleased() : static void
+}
+class CandyGroupHandle {
+  - instances : readonly List<CandyHandle>
+  - playerHandRef : readonly PlayerHandManager
+  - clumpingDist : const float
+  - i : int
+  - amount : i <
+  - gameObject : GameObject
+  - rb : Rigidbody
+  - actor : CandyActor
+  - CandyGroupHandle() : public
+  - Vector3() : new
+  - CandyHandle() : new
+  + OnEnableObject() : void
+  + OnDisableObject() : void
+  - OnGrabReleased() : void
+  + SetParent() : void
+}
+class CandyHandle {
+  + rb : readonly Rigidbody
+  + actor : readonly CandyActor
+  + gameObject : readonly GameObject
+  - CandyHandle() : public
 }
 MonoBehaviour(GridGenerator) {
   PrivateSerialized(materials : Material[])
@@ -217,99 +354,94 @@ MonoBehaviour(TurnManager) {
   - OnValidate() : void
   + NextTurn() : void
 }
-MonoBehaviour(Interactable) {
-  PrivateSerialized(interaction : UnityEvent)
-  + Trigger() : void
+class ComponentRegistry {
+  - Components : static readonly Dictionary<string, Component>
+  - Subscribers : static readonly List<Subscriber>
+  + ComponentType : string
+  + toCall : Action
+  - type : string
+  - result : bool
+  - result : return
+  - subscriber : Subscriber[]
+  - name : string
+  - found : Subscriber
+  - toCall : type,
+  + AddToRegistry() : static bool
+  - TryCallSubscribers() : static void
+  + RemoveFromRegistry() : static bool
+  + ReplaceInRegistry() : static bool
+  - AddToRegistry() : return
 }
-MonoBehaviour(MoveToGridPosition) {
-  PrivateSerialized(offset : float)
-  - grid : GridManager
-  PrivateSerialized(rb : Rigidbody)
-  PrivateSerialized(movementStrength : float)
-  PrivateSerialized(maxVelocity : float)
-  PrivateSerialized(dampening : float)
-  PrivateSerialized(startTimerTime : float)
-  - startTimer : Timer
-  PrivateSerialized(endTimerTime : float)
-  - endTimer : Timer
-  - onUpdate : Action
-  - target : GridManager.GridInstance
-  - usedMinimumForce : float
-  - true : return
-  - targetPosition : Vector3
-  - diff : Vector3
-  - velocity : Vector3
-  - dot : float
-  - alignmentFactor : float
-  - force : float
+class Subscriber {
+  + ComponentType : string
+  + toCall : Action
+}
+MonoBehaviour(DeviceTracker) {
+  - set : private
+  - action : InputAction
+  - currentDevice : InputDevice
+  - Start() : void
+  - OnEnable() : void
+  - OnDisable() : void
+  - OnActionChange() : void
+  - not() : change is
+}
+MonoBehaviour(FPSCounter) {
+  PrivateSerialized(counter : Text)
+  PrivateSerialized(updateInterval : float)
+  - accumulatedTime : float
+  - frameCount : int
   - OnValidate() : void
   - Start() : void
-  + SetEnabled() : void
-  - DoDisable() : else
-  - DoEnable() : void
-  - Timer() : new
-  - DoDisable() : void
   - Update() : void
-  - UpdateStartTimer() : void
-  - StartMovement() : void
-  - GetTarget() : bool
-  + SetTarget() : void
-  - UpdateEndTimer() : void
-  - GetTargetPosition() : Vector3
-  - SnapToTarget() : void
-  - ApplyForceTowardsTarget() : void
-  + ResetTarget() : void
-  + HasTarget() : bool
 }
-MonoBehaviour(CandyComponent) {
-  PrivateSerialized(interactable : Interactable)
-  PrivateSerialized(movement : MoveToGridPosition)
-  PrivateSerialized(rb : Rigidbody)
-  - playerHandRef : PlayerHandManager
-  - throwVel : Vector3
-  - OnValidate() : void
+interface IPoolable {
+  - OnEnableObject() : void
+  - OnDisableObject() : void
+}
+MonoBehaviour(ResolutionTracker) {
+  + OnResolutionChanged : static Action<int, int>
+  - lastResolution : static Vector2Int
+  - currentWidth : int
+  - currentHeight : int
   - Start() : void
-  + AddToHand() : void
-  - OnGrabReleased() : void
-  - Initiate() : void
-  + OnGrabReleased() : static void
+  - Update() : void
+  - CheckResolution() : void
+  - Vector2Int() : new
 }
-class CandyGroupInstance {
-  - instances : readonly List<CandyInstance>
-  - playerHandRef : readonly PlayerHandManager
-  + rb : readonly Rigidbody
-  + component : readonly CandyComponent
-  + gameObject : readonly GameObject
-  - clumpingDist : const float
-  - i : int
-  - amount : i <
-  - gameObject : GameObject
-  - rb : Rigidbody
-  - component : CandyComponent
-  - CandyInstance() : public
-  - CandyGroupInstance() : public
-  - Vector3() : new
-  - CandyInstance() : new
-  + OnEnableObject() : void
-  + OnDisableObject() : void
-  - OnGrabReleased() : void
-  + SetParent() : void
+class Timer {
+  - currentTime : double
+  - maxTime : float
+  - isRunning : bool
+  - shouldLoop : bool
+  - set : private
+  - onEnd : Action
+  - onPlaying : Action<double>
+  - shouldLoop : float maxTime, bool
+  - playOnConstruction : false, bool
+  - onEnd : true, Action
+  - onPlaying : null, Action<double>
+  - timeSpan : TimeSpan
+  - countDown : bool
+  - Timer() : public
+  + UpdateTime() : void
+  - CheckIfEndIsReached() : void
+  + Reset() : void
+  + ResetAndReplay() : void
+  + Stop() : void
+  + Play() : void
+  + AddToMaxTime() : void
+  + RegisterOnEndListener() : void
+  + UnregisterOnEndListener() : void
+  + RegisterOnPlayingListener() : void
+  + UnregisterOnPlayingListener() : void
+  + GetSecondsInTimeFormatted() : static string
+  + GetCurrentTimeFormatted() : string
+  - GetSecondsInTimeFormatted() : countDown ?
 }
-class CandyInstance {
-  + rb : readonly Rigidbody
-  + component : readonly CandyComponent
-  + gameObject : readonly GameObject
-  - CandyInstance() : public
-}
-MonoBehaviour(CandySpawner) {
-  PrivateSerialized(playerHandManager : PlayerHandManager)
-  PrivateSerialized(candyPrefab : GameObject)
-  - candyPool : ObjectPool<CandyGroupInstance>
-  - result : CandyGroupInstance
-  - OnValidate() : void
-  - Awake() : void
-  + AddToHand() : void
-  - CandyGroupInstance() : new
+class VectorExtensions {
+  + XY() : static Vector2
+  + OverwriteXY() : static Vector3
 }
 MonoBehaviour(InteractionHandler) {
   PrivateSerialized(camRef : Camera)
@@ -328,9 +460,23 @@ MonoBehaviour(InteractionHandler) {
   - found : return
   - OnValidate() : void
   - Update() : void
-  - GetClosestToCamera() : RaycastHit2D?
+  - GetClosestInteractableToCamera() : RaycastHit2D?
   - Vector3() : new
-  - OnNoInteractable() : void
+  - ResetHover() : void
+  + IsHoldingInteractable() : bool
+}
+MonoBehaviour(ItemRotationHandler) {
+  PrivateSerialized(interactionHandler : InteractionHandler)
+  PrivateSerialized(gamePadExtraSpeed : float)
+  - rotateAction : NonSerialized] public InputAction
+  - lastStickDirection : Vector2
+  - currentItem : Interactable
+  - rotatable : GridRotatable
+  - value : object
+  - currentDir : Vector2
+  - angleDelta : float
+  - OnValidate() : void
+  - Update() : void
 }
 MonoBehaviour(MovementHandler) {
   PrivateSerialized(camRef : Camera)
@@ -399,22 +545,26 @@ MonoBehaviour(MovementHandler) {
   - OnDrawGizmos() : void
 }
 MonoBehaviour(PlayerHandManager) {
+  PrivateSerialized(gamePadExtraSensitivity : float)
   PrivateSerialized(visualHandler : VisualHandler)
   PrivateSerialized(movementHandler : MovementHandler)
   PrivateSerialized(interactionHandler : InteractionHandler)
+  PrivateSerialized(itemRotationHandler : ItemRotationHandler)
   - inputActionAsset : Space] [SerializeField] private InputActionAsset
   - inputActionMap : InputActionMap
   - moveAction : InputAction
   - grabAction : InputAction
   - grabbing : bool
   + OnGrabReleased : Action<Vector2, Vector2>
+  - deviceTracker : DeviceTracker
+  - delta : Vector2
   - false : return
   - true : return
   - OnValidate() : void
   - Awake() : void
-  - OnGrabActionOnPerformed() : void
   - OnDestroy() : void
   - Update() : void
+  - OnGrabActionPerformed() : void
   - OnInteract() : static void
   - CheckOnGrabReleased() : static bool
   + SetStateToGrabbing() : void
@@ -438,25 +588,46 @@ struct VisualState {
   + z : float
 }
 
-CandyComponent --> Interactable
-CandyComponent --> MoveToGridPosition
-CandyComponent --> PlayerHandManager
-CandyGroupInstance --> CandyComponent
-CandyGroupInstance --> CandyInstance
-CandyGroupInstance --> PlayerHandManager
-CandyInstance --> CandyComponent
-CandySpawner --> CandyGroupInstance
-CandySpawner --> PlayerHandManager
+BoardItem <|-- CandyActor
+BoardItem --> BoardItemComponent
+BoardItem --> Interactable
+BoardItemComponent <|-- GridMoveable
+BoardItemComponent <|-- GridRotatable
+BoardItemComponent <|-- HandHandler
+BoardItemComponent --> BoardItem
+CandyActor --> HandHandler
+CandyActor --> MoveToGridPosition
+CandyGroupHandle --> CandyActor
+CandyGroupHandle --> CandyHandle
+CandyGroupHandle --> PlayerHandManager
+CandyHandle --> CandyActor
+CandyTypeLookup --> CandyTypeOption
+ComponentRegistry --> Subscriber
+DeckOption --> CandyOption
+DeckOption --> CandyTypeLookup
 GridManager --> GridGenerator
 GridManager --> GridInstance
+GridMoveable <|-- MoveToGridPosition
+GridMoveable --> GridManager
+GridRotatable --> HandHandler
+HandHandler --> PlayerHandManager
+Interactable --> BoardItem
 InteractionHandler --> Interactable
 InteractionHandler --> MovementHandler
 InteractionHandler --> VisualHandler
-IPoolable <|.. CandyGroupInstance
-MoveToGridPosition --> GridInstance
-MoveToGridPosition --> GridManager
+IPoolable <|.. CandyGroupHandle
+ItemRotationHandler --> GridRotatable
+ItemRotationHandler --> Interactable
+ItemRotationHandler --> InteractionHandler
 MoveToGridPosition --> Timer
+PlayerDeck --> CandyGroupHandle
+PlayerDeck --> CandyOption
+PlayerDeck --> CandyTypeLookup
+PlayerDeck --> DeckOption
+PlayerDeck --> PlayerHandManager
+PlayerHandManager --> DeviceTracker
 PlayerHandManager --> InteractionHandler
+PlayerHandManager --> ItemRotationHandler
 PlayerHandManager --> MovementHandler
 PlayerHandManager --> VisualHandler
 QuestSystem --> Quest

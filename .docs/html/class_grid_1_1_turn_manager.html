@@ -120,6 +120,9 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('class_grid_1_1
   <div class="headertitle"><div class="title">Grid.TurnManager Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Handles turns on the grid, moving anything on the grid down.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Grid.TurnManager:</div>
 <div class="dyncontent">
@@ -134,6 +137,7 @@ Collaboration diagram for Grid.TurnManager:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a631199681bfaef7511854594161ec107" id="r_a631199681bfaef7511854594161ec107"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a631199681bfaef7511854594161ec107">NextTurn</a> ()</td></tr>
+<tr class="memdesc:a631199681bfaef7511854594161ec107"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves all relevant items downwards.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -143,7 +147,9 @@ Private Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a153f499076074e63ab8adf45c81ab597" id="r_a153f499076074e63ab8adf45c81ab597"><td class="memItemLeft"><a class="el" href="class_grid_1_1_grid_manager.html">GridManager</a>&#160;</td><td class="memItemRight"><a class="el" href="#a153f499076074e63ab8adf45c81ab597">gridManager</a></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Handles turns on the grid, moving anything on the grid down. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a631199681bfaef7511854594161ec107" name="a631199681bfaef7511854594161ec107"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a631199681bfaef7511854594161ec107">&#9670;&#160;</a></span>NextTurn()</h2>
 
@@ -158,31 +164,33 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   21</span>        {</div>
-<div class="line"><span class="lineno">   22</span>            this.gridManager.ForAllGridItems(instance =&gt;</div>
-<div class="line"><span class="lineno">   23</span>            {</div>
-<div class="line"><span class="lineno">   24</span>                <span class="keywordflow">if</span> (instance == <span class="keyword">null</span> || instance.gameObj == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">   25</span>                    <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   26</span> </div>
-<div class="line"><span class="lineno">   27</span>                MoveToGridPosition moveComponent = instance.gameObj.GetComponent&lt;MoveToGridPosition&gt;();</div>
-<div class="line"><span class="lineno">   28</span>                <span class="keywordflow">if</span> (!moveComponent)</div>
+
+<p>Moves all relevant items downwards. </p>
+<div class="fragment"><div class="line"><span class="lineno">   25</span>        {</div>
+<div class="line"><span class="lineno">   26</span>            this.gridManager.ForAllGridItems(instance =&gt;</div>
+<div class="line"><span class="lineno">   27</span>            {</div>
+<div class="line"><span class="lineno">   28</span>                <span class="keywordflow">if</span> (instance == <span class="keyword">null</span> || instance.gameObj == <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">   29</span>                    <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   30</span>                moveComponent.<a class="code hl_function" href="class_move_to_grid_position.html#a8057f494a11c9febc7393b18664a36a8">ResetTarget</a>();</div>
-<div class="line"><span class="lineno">   31</span>                moveComponent.<a class="code hl_function" href="class_move_to_grid_position.html#a52d441a3f333458e59f7e9d1bafcbc7b">SetTarget</a>(this.gridManager.GetNearestPosition(</div>
-<div class="line"><span class="lineno">   32</span>                    instance.position + <span class="keyword">this</span>.gridManager.CellSize.y * Vector3.down, instance.gameObj, instance));</div>
-<div class="line"><span class="lineno">   33</span> </div>
-<div class="line"><span class="lineno">   34</span>                <span class="keywordflow">if</span> (!moveComponent.<a class="code hl_function" href="class_move_to_grid_position.html#a610b635a4eb932f7c59ca05ad9c5cf21">HasTarget</a>())</div>
-<div class="line"><span class="lineno">   35</span>                {</div>
-<div class="line"><span class="lineno">   36</span>                    this.gridManager.ReleaseInstance(instance);</div>
-<div class="line"><span class="lineno">   37</span>                    Destroy(moveComponent.gameObject);</div>
-<div class="line"><span class="lineno">   38</span>                }</div>
-<div class="line"><span class="lineno">   39</span>                moveComponent.<a class="code hl_function" href="class_move_to_grid_position.html#aa0226d79da6f383bbd8f136099ae1e0e">SetEnabled</a>(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   40</span>            });</div>
-<div class="line"><span class="lineno">   41</span>        }</div>
-<div class="ttc" id="aclass_move_to_grid_position_html_a52d441a3f333458e59f7e9d1bafcbc7b"><div class="ttname"><a href="class_move_to_grid_position.html#a52d441a3f333458e59f7e9d1bafcbc7b">MoveToGridPosition.SetTarget</a></div><div class="ttdeci">void SetTarget(GridManager.GridInstance newTarget)</div><div class="ttdef"><b>Definition</b> MoveToGridPosition.cs:89</div></div>
-<div class="ttc" id="aclass_move_to_grid_position_html_a610b635a4eb932f7c59ca05ad9c5cf21"><div class="ttname"><a href="class_move_to_grid_position.html#a610b635a4eb932f7c59ca05ad9c5cf21">MoveToGridPosition.HasTarget</a></div><div class="ttdeci">bool HasTarget()</div><div class="ttdef"><b>Definition</b> MoveToGridPosition.cs:150</div></div>
-<div class="ttc" id="aclass_move_to_grid_position_html_a8057f494a11c9febc7393b18664a36a8"><div class="ttname"><a href="class_move_to_grid_position.html#a8057f494a11c9febc7393b18664a36a8">MoveToGridPosition.ResetTarget</a></div><div class="ttdeci">void ResetTarget()</div><div class="ttdef"><b>Definition</b> MoveToGridPosition.cs:142</div></div>
-<div class="ttc" id="aclass_move_to_grid_position_html_aa0226d79da6f383bbd8f136099ae1e0e"><div class="ttname"><a href="class_move_to_grid_position.html#aa0226d79da6f383bbd8f136099ae1e0e">MoveToGridPosition.SetEnabled</a></div><div class="ttdeci">void SetEnabled(bool newState)</div><div class="ttdef"><b>Definition</b> MoveToGridPosition.cs:41</div></div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>                MoveToGridPosition moveComponent = instance.gameObj.GetComponent&lt;MoveToGridPosition&gt;();</div>
+<div class="line"><span class="lineno">   32</span>                <span class="keywordflow">if</span> (!moveComponent)</div>
+<div class="line"><span class="lineno">   33</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   34</span>                moveComponent.<a class="code hl_function" href="class_grid_moveable.html#a62aed54cbfec41f7a202c9113c85e2cd">ResetTarget</a>();</div>
+<div class="line"><span class="lineno">   35</span>                moveComponent.<a class="code hl_function" href="class_grid_moveable.html#ac22be57bc2a530cda7c781a5b6770715">SetTarget</a>(this.gridManager.GetNearestPosition(</div>
+<div class="line"><span class="lineno">   36</span>                    instance.position + <span class="keyword">this</span>.gridManager.CellSize.y * Vector3.down, instance.gameObj, instance));</div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span>                <span class="keywordflow">if</span> (!moveComponent.<a class="code hl_function" href="class_grid_moveable.html#a055e40f60a43d5ede705b7d13c1c9bf3">HasTarget</a>())</div>
+<div class="line"><span class="lineno">   39</span>                {</div>
+<div class="line"><span class="lineno">   40</span>                    this.gridManager.ReleaseInstance(instance);</div>
+<div class="line"><span class="lineno">   41</span>                    Destroy(moveComponent.gameObject);</div>
+<div class="line"><span class="lineno">   42</span>                }</div>
+<div class="line"><span class="lineno">   43</span>                moveComponent.<a class="code hl_function" href="class_grid_moveable.html#a38f13831bfea8acda67fe4c40d6b79c8">SetMoving</a>(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   44</span>            });</div>
+<div class="line"><span class="lineno">   45</span>        }</div>
+<div class="ttc" id="aclass_grid_moveable_html_a055e40f60a43d5ede705b7d13c1c9bf3"><div class="ttname"><a href="class_grid_moveable.html#a055e40f60a43d5ede705b7d13c1c9bf3">GridMoveable.HasTarget</a></div><div class="ttdeci">bool HasTarget()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:118</div></div>
+<div class="ttc" id="aclass_grid_moveable_html_a38f13831bfea8acda67fe4c40d6b79c8"><div class="ttname"><a href="class_grid_moveable.html#a38f13831bfea8acda67fe4c40d6b79c8">GridMoveable.SetMoving</a></div><div class="ttdeci">void SetMoving(bool newState)</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:43</div></div>
+<div class="ttc" id="aclass_grid_moveable_html_a62aed54cbfec41f7a202c9113c85e2cd"><div class="ttname"><a href="class_grid_moveable.html#a62aed54cbfec41f7a202c9113c85e2cd">GridMoveable.ResetTarget</a></div><div class="ttdeci">void ResetTarget()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:110</div></div>
+<div class="ttc" id="aclass_grid_moveable_html_ac22be57bc2a530cda7c781a5b6770715"><div class="ttname"><a href="class_grid_moveable.html#ac22be57bc2a530cda7c781a5b6770715">GridMoveable.SetTarget</a></div><div class="ttdeci">void SetTarget(GridManager.GridInstance newTarget)</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:108</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -208,12 +216,12 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   13</span>        {</div>
-<div class="line"><span class="lineno">   14</span>            <span class="keywordflow">if</span> (Application.isPlaying)</div>
-<div class="line"><span class="lineno">   15</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   16</span>            this.gridManager = GetComponent&lt;GridManager&gt;();</div>
-<div class="line"><span class="lineno">   17</span>            this.enabled = this.gridManager;</div>
-<div class="line"><span class="lineno">   18</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   16</span>        {</div>
+<div class="line"><span class="lineno">   17</span>            <span class="keywordflow">if</span> (Application.isPlaying)</div>
+<div class="line"><span class="lineno">   18</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   19</span>            this.gridManager = GetComponent&lt;GridManager&gt;();</div>
+<div class="line"><span class="lineno">   20</span>            this.enabled = this.gridManager;</div>
+<div class="line"><span class="lineno">   21</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Grid
 {
@@ -44,7 +43,7 @@ namespace Grid
                     OnreachedEnd?.Invoke(moveComponent);
                     Destroy(moveComponent.gameObject);
                 }
-                moveComponent.SetEnabled(true);
+                moveComponent.SetMoving(true);
             });
         }
     }

@@ -1,0 +1,7 @@
+<map id="PlayerDeck.DeckOption.CandyOption" name="PlayerDeck.DeckOption.CandyOption">
+<area shape="rect" id="Node000001" title="Weighted candy lookup reference." alt="" coords="5,147,199,232"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="40,5,76,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="56,72,58,98,63,122,66,132,61,131,58,123,53,99,54,77"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="135,5,160,75"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="139,73,122,132,117,130,135,77"/>
+</map>

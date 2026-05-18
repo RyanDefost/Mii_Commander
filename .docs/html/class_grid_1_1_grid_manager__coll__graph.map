@@ -1,8 +1,8 @@
 <map id="Grid.GridManager" name="Grid.GridManager">
-<area shape="rect" id="Node000001" title=" " alt="" coords="314,581,619,1099"/>
+<area shape="rect" id="Node000001" title="Manages everything inside of the grid." alt="" coords="314,581,619,1099"/>
 <area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="5,5,106,75"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,87,83,168,108,269,144,379,191,487,249,582,317,672,312,673,245,585,187,489,139,381,103,270,77,169,64,92"/>
-<area shape="rect" id="Node000003" href="$class_grid_1_1_grid_generator.html" title=" " alt="" coords="201,168,419,488"/>
+<area shape="rect" id="Node000003" href="$class_grid_1_1_grid_generator.html" title="Handles the possible positions within the grid, and generates the mesh." alt="" coords="201,168,419,488"/>
 <area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="95,83,204,204,199,206,96,88"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="359,485,385,565,380,565,358,490"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="130,5,195,75"/>

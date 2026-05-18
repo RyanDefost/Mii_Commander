@@ -1,5 +1,5 @@
 <map id="FPSCounter" name="FPSCounter">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,123,138,277"/>
-<area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="22,5,122,75"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,87,74,123,69,123,71,92"/>
+<area shape="rect" id="Node000001" title="An FPS counter that Lucas stole from stack overflow, then connected to a Text component." alt="" coords="5,123,157,299"/>
+<area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="31,5,132,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,87,84,123,79,123,81,92"/>
 </map>

@@ -22,7 +22,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="This static class is used for creating extensions on Unity&#39;s vector classes Adding extra functionalit...">
 <polygon fill="#999999" stroke="none" points="144.75,-92 0,-92 0,0 144.75,0 144.75,-92"/>
 <text xml:space="preserve" text-anchor="start" x="34.12" y="-78.25" font-family="Helvetica,sans-Serif" font-size="10.00">VectorExtensions</text>
 <text xml:space="preserve" text-anchor="start" x="70.88" y="-62.25" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>

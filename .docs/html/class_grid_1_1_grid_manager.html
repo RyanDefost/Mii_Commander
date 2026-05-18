@@ -120,6 +120,9 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('class_grid_1_1
   <div class="headertitle"><div class="title">Grid.GridManager Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Manages everything inside of the grid.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Grid.GridManager:</div>
 <div class="dyncontent">
@@ -134,14 +137,20 @@ Collaboration diagram for Grid.GridManager:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:GridInstance" id="r_GridInstance"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="class_grid_1_1_grid_manager_1_1_grid_instance.html">GridInstance</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Representation of a taken grid position.  <a href="class_grid_1_1_grid_manager_1_1_grid_instance.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5b1ee60e831acba5650e64920dc63f06" id="r_a5b1ee60e831acba5650e64920dc63f06"><td class="memItemLeft"><a class="el" href="class_grid_1_1_grid_manager_1_1_grid_instance.html">GridInstance</a>&#160;</td><td class="memItemRight"><a class="el" href="#a5b1ee60e831acba5650e64920dc63f06">GetNearestPosition</a> (Vector3 position, GameObject gameObj, <a class="el" href="class_grid_1_1_grid_manager_1_1_grid_instance.html">GridInstance</a> previous=null)</td></tr>
+<tr class="memdesc:a5b1ee60e831acba5650e64920dc63f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to get a near available position both on grid and off grid.  <br /></td></tr>
 <tr class="memitem:afd97082422b9a4f9c8e79945a7b75e51" id="r_afd97082422b9a4f9c8e79945a7b75e51"><td class="memItemLeft"><a class="el" href="class_grid_1_1_grid_manager_1_1_grid_instance.html">GridInstance</a>&#160;</td><td class="memItemRight"><a class="el" href="#afd97082422b9a4f9c8e79945a7b75e51">GetNearestOffGridPosition</a> (Vector3 position, GameObject gameObj, Vector3? posToIgnore=null, bool isAlreadyOffGrid=false)</td></tr>
+<tr class="memdesc:afd97082422b9a4f9c8e79945a7b75e51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used in case the grid is full, a last row underneath the board. Try to get a available position.  <br /></td></tr>
 <tr class="memitem:a692b95f58b88c990ad72911158c297fd" id="r_a692b95f58b88c990ad72911158c297fd"><td class="memItemLeft"><a class="el" href="class_grid_1_1_grid_manager_1_1_grid_instance.html">GridInstance</a>&#160;</td><td class="memItemRight"><a class="el" href="#a692b95f58b88c990ad72911158c297fd">GetNearestGridPosition</a> (Vector3 position, GameObject gameObj, Vector3? posToIgnore=null)</td></tr>
+<tr class="memdesc:a692b95f58b88c990ad72911158c297fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to find the nearest available position on the board.  <br /></td></tr>
 <tr class="memitem:a1e2a91fac8503047529114bd166d87c8" id="r_a1e2a91fac8503047529114bd166d87c8"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a1e2a91fac8503047529114bd166d87c8">ReleaseInstance</a> (<a class="el" href="class_grid_1_1_grid_manager_1_1_grid_instance.html">GridInstance</a> target)</td></tr>
+<tr class="memdesc:a1e2a91fac8503047529114bd166d87c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a taken position in the grid, and makes it a available once more.  <br /></td></tr>
 <tr class="memitem:a108ad106ff03b94b262881a790517e02" id="r_a108ad106ff03b94b262881a790517e02"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a108ad106ff03b94b262881a790517e02">ForAllGridItems</a> (Action&lt; <a class="el" href="class_grid_1_1_grid_manager_1_1_grid_instance.html">GridInstance</a> &gt; action)</td></tr>
+<tr class="memdesc:a108ad106ff03b94b262881a790517e02"><td class="mdescLeft">&#160;</td><td class="mdescRight">A method to call a method on all taken grid objects.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-properties" class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -153,10 +162,12 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a473ec745ea73c3ae43b311827958258f" id="r_a473ec745ea73c3ae43b311827958258f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a473ec745ea73c3ae43b311827958258f">Start</a> ()</td></tr>
 <tr class="memitem:a0a01b2d715f07e9bff59c370feba035e" id="r_a0a01b2d715f07e9bff59c370feba035e"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0a01b2d715f07e9bff59c370feba035e">OnDestroy</a> ()</td></tr>
 <tr class="memitem:af5a26c4e665abb389bf6ece73e6e3ee5" id="r_af5a26c4e665abb389bf6ece73e6e3ee5"><td class="memItemLeft"><a class="el" href="class_grid_1_1_grid_manager_1_1_grid_instance.html">GridInstance</a>&#160;</td><td class="memItemRight"><a class="el" href="#af5a26c4e665abb389bf6ece73e6e3ee5">RegisterGridPosition</a> (GameObject gameObj, int foundIndex)</td></tr>
+<tr class="memdesc:af5a26c4e665abb389bf6ece73e6e3ee5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a grid instance, and makes sure the position isnt taken again.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-methods" class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
 <tr class="memitem:a14e5ebaebce944e5386fa9a4b463bab2" id="r_a14e5ebaebce944e5386fa9a4b463bab2"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a14e5ebaebce944e5386fa9a4b463bab2">GetNearestIndex</a> (Vector3 position, List&lt; Vector3?&gt; positions, Vector3? posToIgnore=null)</td></tr>
+<tr class="memdesc:a14e5ebaebce944e5386fa9a4b463bab2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the nearest position from a collection of positions.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -165,7 +176,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aef132eb2d5d2212a8637e60b3f028dbc" id="r_aef132eb2d5d2212a8637e60b3f028dbc"><td class="memItemLeft">List&lt; Vector3?&gt;&#160;</td><td class="memItemRight"><a class="el" href="#aef132eb2d5d2212a8637e60b3f028dbc">availablePositions</a></td></tr>
 <tr class="memitem:a6192a83a72024c956c0e45cf16b12e8f" id="r_a6192a83a72024c956c0e45cf16b12e8f"><td class="memItemLeft">List&lt; Vector3?&gt;&#160;</td><td class="memItemRight"><a class="el" href="#a6192a83a72024c956c0e45cf16b12e8f">availableOffGridPositions</a></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Manages everything inside of the grid. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a108ad106ff03b94b262881a790517e02" name="a108ad106ff03b94b262881a790517e02"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a108ad106ff03b94b262881a790517e02">&#9670;&#160;</a></span>ForAllGridItems()</h2>
 
@@ -180,11 +193,19 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  131</span>        {</div>
-<div class="line"><span class="lineno">  132</span>            List&lt;GridInstance&gt; tempGridInstances = <span class="keyword">new</span>(this.gridInstances);</div>
-<div class="line"><span class="lineno">  133</span>            tempGridInstances.Sort((a, b) =&gt; a.position.y.CompareTo(b.position.y));</div>
-<div class="line"><span class="lineno">  134</span>            tempGridInstances.ForEach(action);</div>
-<div class="line"><span class="lineno">  135</span>        }</div>
+
+<p>A method to call a method on all taken grid objects. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action</td><td>to invoke on all taken positions</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">  156</span>        {</div>
+<div class="line"><span class="lineno">  157</span>            List&lt;GridInstance&gt; tempGridInstances = <span class="keyword">new</span>(this.gridInstances);</div>
+<div class="line"><span class="lineno">  158</span>            tempGridInstances.Sort((a, b) =&gt; a.position.y.CompareTo(b.position.y));</div>
+<div class="line"><span class="lineno">  159</span>            tempGridInstances.ForEach(action);</div>
+<div class="line"><span class="lineno">  160</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -211,10 +232,12 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   83</span>        {</div>
-<div class="line"><span class="lineno">   84</span>            <span class="keywordtype">int</span> foundIndex = GetNearestIndex(position, this.availablePositions, posToIgnore);</div>
-<div class="line"><span class="lineno">   85</span>            <span class="keywordflow">return</span> foundIndex == -1 ? null : RegisterGridPosition(gameObj, foundIndex);</div>
-<div class="line"><span class="lineno">   86</span>        }</div>
+
+<p>Tries to find the nearest available position on the board. </p>
+<div class="fragment"><div class="line"><span class="lineno">   91</span>        {</div>
+<div class="line"><span class="lineno">   92</span>            <span class="keywordtype">int</span> foundIndex = GetNearestIndex(position, this.availablePositions, posToIgnore);</div>
+<div class="line"><span class="lineno">   93</span>            <span class="keywordflow">return</span> foundIndex == -1 ? null : RegisterGridPosition(gameObj, foundIndex);</div>
+<div class="line"><span class="lineno">   94</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -249,20 +272,31 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   97</span>        {</div>
-<div class="line"><span class="lineno">   98</span>            <span class="keywordtype">float</span> smallestDistance = <span class="keywordtype">float</span>.MaxValue;</div>
-<div class="line"><span class="lineno">   99</span>            <span class="keywordtype">int</span> foundIndex = -1;</div>
-<div class="line"><span class="lineno">  100</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; positions.Count; i++)</div>
-<div class="line"><span class="lineno">  101</span>            {</div>
-<div class="line"><span class="lineno">  102</span>                Vector3? availablePosition = positions[i];</div>
-<div class="line"><span class="lineno">  103</span>                <span class="keywordflow">if</span> (availablePosition == <span class="keyword">null</span> || (posToIgnore.HasValue &amp;&amp; availablePosition.Value == posToIgnore.Value)) <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  104</span>                <span class="keywordtype">float</span> distance = Vector3.Distance(position, availablePosition.Value);</div>
-<div class="line"><span class="lineno">  105</span>                <span class="keywordflow">if</span> (!(distance &lt;= smallestDistance)) <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  106</span>                smallestDistance = distance;</div>
-<div class="line"><span class="lineno">  107</span>                foundIndex = i;</div>
-<div class="line"><span class="lineno">  108</span>            }</div>
-<div class="line"><span class="lineno">  109</span>            <span class="keywordflow">return</span> foundIndex;</div>
-<div class="line"><span class="lineno">  110</span>        }</div>
+
+<p>Gets the nearest position from a collection of positions. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>position to check near</td></tr>
+    <tr><td class="paramname">positions</td><td>collection to look through</td></tr>
+    <tr><td class="paramname">posToIgnore</td><td>optional position to ignore from the collection</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>index of nearest position</dd></dl>
+<div class="fragment"><div class="line"><span class="lineno">  115</span>        {</div>
+<div class="line"><span class="lineno">  116</span>            <span class="keywordtype">float</span> smallestDistance = <span class="keywordtype">float</span>.MaxValue;</div>
+<div class="line"><span class="lineno">  117</span>            <span class="keywordtype">int</span> foundIndex = -1;</div>
+<div class="line"><span class="lineno">  118</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; positions.Count; i++)</div>
+<div class="line"><span class="lineno">  119</span>            {</div>
+<div class="line"><span class="lineno">  120</span>                Vector3? availablePosition = positions[i];</div>
+<div class="line"><span class="lineno">  121</span>                <span class="keywordflow">if</span> (availablePosition == <span class="keyword">null</span> || (posToIgnore.HasValue &amp;&amp; availablePosition.Value == posToIgnore.Value)) <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  122</span>                <span class="keywordtype">float</span> distance = Vector3.Distance(position, availablePosition.Value);</div>
+<div class="line"><span class="lineno">  123</span>                <span class="keywordflow">if</span> (!(distance &lt;= smallestDistance)) <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  124</span>                smallestDistance = distance;</div>
+<div class="line"><span class="lineno">  125</span>                foundIndex = i;</div>
+<div class="line"><span class="lineno">  126</span>            }</div>
+<div class="line"><span class="lineno">  127</span>            <span class="keywordflow">return</span> foundIndex;</div>
+<div class="line"><span class="lineno">  128</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -294,20 +328,22 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   67</span>        {</div>
-<div class="line"><span class="lineno">   68</span>            <span class="keywordtype">int</span> foundIndexOffGrid = GetNearestIndex(position, this.availableOffGridPositions, posToIgnore);</div>
-<div class="line"><span class="lineno">   69</span>            <span class="keywordtype">int</span> foundIndex = GetNearestIndex(position, this.availablePositions, posToIgnore);</div>
-<div class="line"><span class="lineno">   70</span>            </div>
-<div class="line"><span class="lineno">   71</span>            <span class="keywordflow">if</span> (foundIndexOffGrid == -1 &amp;&amp; !isAlreadyOffGrid)</div>
-<div class="line"><span class="lineno">   72</span>                <span class="keywordflow">return</span> RegisterGridPosition(gameObj, foundIndex);</div>
-<div class="line"><span class="lineno">   73</span>            <span class="keywordflow">if</span> (isAlreadyOffGrid)</div>
-<div class="line"><span class="lineno">   74</span>                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   75</span>            </div>
-<div class="line"><span class="lineno">   76</span>            this.availableOffGridPositions[foundIndexOffGrid] = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   77</span>            GridInstance newInstance = <span class="keyword">new</span>(gameObj, foundIndexOffGrid, this.generator, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   78</span>            this.gridInstances.Add(newInstance);</div>
-<div class="line"><span class="lineno">   79</span>            <span class="keywordflow">return</span> newInstance;</div>
-<div class="line"><span class="lineno">   80</span>        }</div>
+
+<p>Used in case the grid is full, a last row underneath the board. Try to get a available position. </p>
+<div class="fragment"><div class="line"><span class="lineno">   74</span>        {</div>
+<div class="line"><span class="lineno">   75</span>            <span class="keywordtype">int</span> foundIndexOffGrid = GetNearestIndex(position, this.availableOffGridPositions, posToIgnore);</div>
+<div class="line"><span class="lineno">   76</span>            <span class="keywordtype">int</span> foundIndex = GetNearestIndex(position, this.availablePositions, posToIgnore);</div>
+<div class="line"><span class="lineno">   77</span>            </div>
+<div class="line"><span class="lineno">   78</span>            <span class="keywordflow">if</span> (foundIndexOffGrid == -1 &amp;&amp; !isAlreadyOffGrid)</div>
+<div class="line"><span class="lineno">   79</span>                <span class="keywordflow">return</span> RegisterGridPosition(gameObj, foundIndex);</div>
+<div class="line"><span class="lineno">   80</span>            <span class="keywordflow">if</span> (isAlreadyOffGrid)</div>
+<div class="line"><span class="lineno">   81</span>                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   82</span>            </div>
+<div class="line"><span class="lineno">   83</span>            this.availableOffGridPositions[foundIndexOffGrid] = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   84</span>            GridInstance newInstance = <span class="keyword">new</span>(gameObj, foundIndexOffGrid, this.generator, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   85</span>            this.gridInstances.Add(newInstance);</div>
+<div class="line"><span class="lineno">   86</span>            <span class="keywordflow">return</span> newInstance;</div>
+<div class="line"><span class="lineno">   87</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -334,19 +370,21 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   52</span>        {</div>
-<div class="line"><span class="lineno">   53</span>            Vector3? posToIgnore = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   54</span>            <span class="keywordtype">bool</span> isBottomRow = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   55</span>            <span class="keywordflow">if</span> (previous != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">   56</span>            {</div>
-<div class="line"><span class="lineno">   57</span>                isBottomRow = previous.index &lt; this.generator.Width;</div>
-<div class="line"><span class="lineno">   58</span>                posToIgnore = previous.position;</div>
-<div class="line"><span class="lineno">   59</span>            }</div>
-<div class="line"><span class="lineno">   60</span>            </div>
-<div class="line"><span class="lineno">   61</span>            <span class="keywordflow">if</span> (!isBottomRow)</div>
-<div class="line"><span class="lineno">   62</span>                <span class="keywordflow">return</span> GetNearestGridPosition(position, gameObj, posToIgnore);</div>
-<div class="line"><span class="lineno">   63</span>            <span class="keywordflow">return</span> GetNearestOffGridPosition(position, gameObj, posToIgnore, previous.offGrid);</div>
-<div class="line"><span class="lineno">   64</span>        }</div>
+
+<p>Tries to get a near available position both on grid and off grid. </p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>        {</div>
+<div class="line"><span class="lineno">   59</span>            Vector3? posToIgnore = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   60</span>            <span class="keywordtype">bool</span> isBottomRow = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   61</span>            <span class="keywordflow">if</span> (previous != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   62</span>            {</div>
+<div class="line"><span class="lineno">   63</span>                isBottomRow = previous.index &lt; this.generator.Width;</div>
+<div class="line"><span class="lineno">   64</span>                posToIgnore = previous.position;</div>
+<div class="line"><span class="lineno">   65</span>            }</div>
+<div class="line"><span class="lineno">   66</span>            </div>
+<div class="line"><span class="lineno">   67</span>            <span class="keywordflow">if</span> (!isBottomRow)</div>
+<div class="line"><span class="lineno">   68</span>                <span class="keywordflow">return</span> GetNearestGridPosition(position, gameObj, posToIgnore);</div>
+<div class="line"><span class="lineno">   69</span>            <span class="keywordflow">return</span> GetNearestOffGridPosition(position, gameObj, posToIgnore, previous.offGrid);</div>
+<div class="line"><span class="lineno">   70</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -372,7 +410,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   49</span>=&gt; ComponentRegistry.RemoveFromRegistry(<span class="keyword">this</span>);</div>
+<div class="fragment"><div class="line"><span class="lineno">   54</span>=&gt; ComponentRegistry.RemoveFromRegistry(<span class="keyword">this</span>);</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -398,11 +436,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   36</span>        {</div>
-<div class="line"><span class="lineno">   37</span>            <span class="keywordflow">if</span> (Application.isPlaying)</div>
-<div class="line"><span class="lineno">   38</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   39</span>            this.generator = GetComponent&lt;GridGenerator&gt;();</div>
-<div class="line"><span class="lineno">   40</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>        {</div>
+<div class="line"><span class="lineno">   42</span>            <span class="keywordflow">if</span> (Application.isPlaying)</div>
+<div class="line"><span class="lineno">   43</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   44</span>            this.generator = GetComponent&lt;GridGenerator&gt;();</div>
+<div class="line"><span class="lineno">   45</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -432,12 +470,14 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   89</span>        {</div>
-<div class="line"><span class="lineno">   90</span>            this.availablePositions[foundIndex] = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   91</span>            GridInstance newInstance = <span class="keyword">new</span>(gameObj, foundIndex, this.generator, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   92</span>            this.gridInstances.Add(newInstance);</div>
-<div class="line"><span class="lineno">   93</span>            <span class="keywordflow">return</span> newInstance;</div>
-<div class="line"><span class="lineno">   94</span>        }</div>
+
+<p>Creates a grid instance, and makes sure the position isnt taken again. </p>
+<div class="fragment"><div class="line"><span class="lineno">  100</span>        {</div>
+<div class="line"><span class="lineno">  101</span>            this.availablePositions[foundIndex] = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  102</span>            GridInstance newInstance = <span class="keyword">new</span>(gameObj, foundIndex, this.generator, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  103</span>            this.gridInstances.Add(newInstance);</div>
+<div class="line"><span class="lineno">  104</span>            <span class="keywordflow">return</span> newInstance;</div>
+<div class="line"><span class="lineno">  105</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -455,22 +495,24 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  113</span>        {</div>
-<div class="line"><span class="lineno">  114</span>            <span class="keywordflow">if</span> (!target.offGrid)</div>
-<div class="line"><span class="lineno">  115</span>            {</div>
-<div class="line"><span class="lineno">  116</span>                <span class="keywordflow">if</span> (target.index &gt;= <span class="keyword">this</span>.availablePositions.Count || target.index &lt; 0)</div>
-<div class="line"><span class="lineno">  117</span>                    <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  118</span>                this.availablePositions[target.index] = target.position;</div>
-<div class="line"><span class="lineno">  119</span>            }</div>
-<div class="line"><span class="lineno">  120</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  121</span>            {</div>
-<div class="line"><span class="lineno">  122</span>                <span class="keywordflow">if</span> (target.index &gt;= <span class="keyword">this</span>.availableOffGridPositions.Count || target.index &lt; 0)</div>
-<div class="line"><span class="lineno">  123</span>                    <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  124</span>                this.availableOffGridPositions[target.index] = target.position;</div>
-<div class="line"><span class="lineno">  125</span>            }</div>
-<div class="line"><span class="lineno">  126</span> </div>
-<div class="line"><span class="lineno">  127</span>            this.gridInstances.RemoveSwapBack(target);</div>
-<div class="line"><span class="lineno">  128</span>        }</div>
+
+<p>Removes a taken position in the grid, and makes it a available once more. </p>
+<div class="fragment"><div class="line"><span class="lineno">  134</span>        {</div>
+<div class="line"><span class="lineno">  135</span>            <span class="keywordflow">if</span> (!target.offGrid)</div>
+<div class="line"><span class="lineno">  136</span>            {</div>
+<div class="line"><span class="lineno">  137</span>                <span class="keywordflow">if</span> (target.index &gt;= <span class="keyword">this</span>.availablePositions.Count || target.index &lt; 0)</div>
+<div class="line"><span class="lineno">  138</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  139</span>                this.availablePositions[target.index] = target.position;</div>
+<div class="line"><span class="lineno">  140</span>            }</div>
+<div class="line"><span class="lineno">  141</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  142</span>            {</div>
+<div class="line"><span class="lineno">  143</span>                <span class="keywordflow">if</span> (target.index &gt;= <span class="keyword">this</span>.availableOffGridPositions.Count || target.index &lt; 0)</div>
+<div class="line"><span class="lineno">  144</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  145</span>                this.availableOffGridPositions[target.index] = target.position;</div>
+<div class="line"><span class="lineno">  146</span>            }</div>
+<div class="line"><span class="lineno">  147</span> </div>
+<div class="line"><span class="lineno">  148</span>            this.gridInstances.RemoveSwapBack(target);</div>
+<div class="line"><span class="lineno">  149</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -496,11 +538,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   43</span>        {</div>
-<div class="line"><span class="lineno">   44</span>            ComponentRegistry.AddToRegistry(<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   45</span>            this.availableOffGridPositions ??= this.generator.GetAllOffGridPositions();</div>
-<div class="line"><span class="lineno">   46</span>            this.availablePositions ??= this.generator.GetAllPositions();</div>
-<div class="line"><span class="lineno">   47</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>        {</div>
+<div class="line"><span class="lineno">   49</span>            this.availableOffGridPositions ??= this.generator.GetAllOffGridPositions();</div>
+<div class="line"><span class="lineno">   50</span>            this.availablePositions ??= this.generator.GetAllPositions();</div>
+<div class="line"><span class="lineno">   51</span>            ComponentRegistry.AddToRegistry(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   52</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -613,7 +655,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   17</span>{ <span class="keyword">get</span> =&gt; this.generator.cellSize; <span class="keyword">private</span> <span class="keyword">set</span> =&gt; this.generator.cellSize = value; }</div>
+<div class="fragment"><div class="line"><span class="lineno">   19</span>{ <span class="keyword">get</span> =&gt; this.generator.cellSize; <span class="keyword">private</span> <span class="keyword">set</span> =&gt; this.generator.cellSize = value; }</div>
 </div><!-- fragment -->
 </div>
 </div>

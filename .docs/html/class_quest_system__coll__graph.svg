@@ -22,7 +22,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="Keeps track of all quests within the level.">
 <polygon fill="#999999" stroke="none" points="189.62,-68 59.88,-68 59.88,0 189.62,0 189.62,-68"/>
 <text xml:space="preserve" text-anchor="start" x="94.75" y="-54.25" font-family="Helvetica,sans-Serif" font-size="10.00">QuestSystem</text>
 <text xml:space="preserve" text-anchor="start" x="123.25" y="-38.25" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>

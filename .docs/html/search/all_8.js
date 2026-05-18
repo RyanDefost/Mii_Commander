@@ -1,19 +1,25 @@
 var searchData=
 [
   ['inactivepool_0',['inactivePool',['../class_object_pool-1-g.html#a619392bd729e7d33a04681ac0d745724',1,'ObjectPool-1-g']]],
-  ['index_1',['index',['../class_grid_1_1_grid_manager_1_1_grid_instance.html#adc2a7043dfa1032d73d8594dff2abf69',1,'Grid::GridManager::GridInstance']]],
-  ['initiate_2',['Initiate',['../class_candy_component.html#a72cd866f747da80176e85d0dc8f15847',1,'CandyComponent']]],
+  ['index_1',['index',['../class_candy_type_lookup_1_1_candy_type_option.html#a357de8bef9e8c55fe2564c47daee377e',1,'CandyTypeLookup.CandyTypeOption.index'],['../class_grid_1_1_grid_manager_1_1_grid_instance.html#adc2a7043dfa1032d73d8594dff2abf69',1,'Grid.GridManager.GridInstance.index']]],
+  ['initiate_2',['Initiate',['../class_board_item.html#aae0747156612c7495f20f4eff324b207',1,'BoardItem']]],
   ['inputactionasset_3',['inputActionAsset',['../class_player_hand_1_1_player_hand_manager.html#a6fc914f17942d8e572479fba85349e55',1,'PlayerHand::PlayerHandManager']]],
   ['inputactionmap_4',['inputActionMap',['../class_player_hand_1_1_player_hand_manager.html#a6daedc1494b68d59f18b0ec62dddf2f0',1,'PlayerHand::PlayerHandManager']]],
-  ['instances_5',['instances',['../class_candy_group_instance.html#a95235d414a5d1fcacd46f5cedf6bd0a2',1,'CandyGroupInstance']]],
+  ['instances_5',['instances',['../class_candy_group_handle.html#a4bf7ef7b831f877880191dfd0256ec88',1,'CandyGroupHandle']]],
   ['interactable_6',['Interactable',['../class_interactable.html',1,'']]],
-  ['interactable_7',['interactable',['../class_candy_component.html#a177801f995ec24553a44caa29d5763a6',1,'CandyComponent']]],
+  ['interactable_7',['interactable',['../class_board_item.html#a684c45c02374cdf0d47cd0f7d946c467',1,'BoardItem']]],
   ['interactable_2ecs_8',['Interactable.cs',['../_interactable_8cs.html',1,'']]],
   ['interaction_9',['interaction',['../class_interactable.html#aa1d901b508c7c3d045a5d5c4e39077cd',1,'Interactable']]],
   ['interactionhandler_10',['InteractionHandler',['../class_player_hand_1_1_interaction_handler.html',1,'PlayerHand']]],
-  ['interactionhandler_11',['interactionHandler',['../class_player_hand_1_1_player_hand_manager.html#a8c2df7b8aca0ca0a1d29d92a4af672df',1,'PlayerHand::PlayerHandManager']]],
+  ['interactionhandler_11',['interactionHandler',['../class_player_hand_1_1_item_rotation_handler.html#a15ef1d3372dc3008fdcb6d9227e6eb61',1,'PlayerHand.ItemRotationHandler.interactionHandler'],['../class_player_hand_1_1_player_hand_manager.html#a8c2df7b8aca0ca0a1d29d92a4af672df',1,'PlayerHand.PlayerHandManager.interactionHandler']]],
   ['interactionhandler_2ecs_12',['InteractionHandler.cs',['../_interaction_handler_8cs.html',1,'']]],
   ['ipoolable_13',['IPoolable',['../interface_i_poolable.html',1,'']]],
   ['ipoolable_2ecs_14',['IPoolable.cs',['../_i_poolable_8cs.html',1,'']]],
-  ['isanimatingz_15',['isAnimatingZ',['../class_player_hand_1_1_movement_handler.html#a4fe40f7031d734ca26f0cfdc076ef632',1,'PlayerHand::MovementHandler']]]
+  ['isanimatingz_15',['isAnimatingZ',['../class_player_hand_1_1_movement_handler.html#a4fe40f7031d734ca26f0cfdc076ef632',1,'PlayerHand::MovementHandler']]],
+  ['isholdinginteractable_16',['IsHoldingInteractable',['../class_player_hand_1_1_interaction_handler.html#a8b48ede5a0dec8a33fcb1d0136ef3886',1,'PlayerHand::InteractionHandler']]],
+  ['isrunning_17',['IsRunning',['../class_timer.html#a04e268e139fc3bdaf541dddc3ee599fe',1,'Timer']]],
+  ['isrunning_18',['isRunning',['../class_timer.html#a20ea3757f43477ef7b98329b358b09f6',1,'Timer']]],
+  ['itemrotationhandler_19',['ItemRotationHandler',['../class_player_hand_1_1_item_rotation_handler.html',1,'PlayerHand']]],
+  ['itemrotationhandler_20',['itemRotationHandler',['../class_player_hand_1_1_player_hand_manager.html#a1c28b432079b96b7a4edbf53dadb91e9',1,'PlayerHand::PlayerHandManager']]],
+  ['itemrotationhandler_2ecs_21',['ItemRotationHandler.cs',['../_item_rotation_handler_8cs.html',1,'']]]
 ];

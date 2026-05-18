@@ -120,6 +120,9 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('class_quest_sy
   <div class="headertitle"><div class="title">QuestSystem Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Keeps track of all quests within the level.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for QuestSystem:</div>
 <div class="dyncontent">
@@ -134,6 +137,7 @@ Collaboration diagram for QuestSystem:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:Quest" id="r_Quest"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="class_quest_system_1_1_quest.html">Quest</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a single quest, needs to be refactored TODO.  <a href="class_quest_system_1_1_quest.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -145,7 +149,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:abd6b60bd577a9b9cdba9a2846fc0bdd4" id="r_abd6b60bd577a9b9cdba9a2846fc0bdd4"><td class="memItemLeft">GameObject&#160;</td><td class="memItemRight"><a class="el" href="#abd6b60bd577a9b9cdba9a2846fc0bdd4">questPrefab</a></td></tr>
 <tr class="memitem:a8a59bd13826e08588d6d2275c29a5b93" id="r_a8a59bd13826e08588d6d2275c29a5b93"><td class="memItemLeft">List&lt; <a class="el" href="class_quest_system_1_1_quest.html">Quest</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a8a59bd13826e08588d6d2275c29a5b93">quests</a></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Keeps track of all quests within the level. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="ab5172ff07f59e023395a025b190ffa6f" name="ab5172ff07f59e023395a025b190ffa6f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab5172ff07f59e023395a025b190ffa6f">&#9670;&#160;</a></span>LoadQuests()</h2>
 
@@ -168,18 +174,18 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   27</span>    {</div>
-<div class="line"><span class="lineno">   28</span>        yield <span class="keywordflow">return</span> <span class="keyword">new</span> WaitForSeconds(5);</div>
-<div class="line"><span class="lineno">   29</span>        <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_quest_system_1_1_quest.html">Quest</a> quest <span class="keywordflow">in</span> this.<a class="code hl_variable" href="#a8a59bd13826e08588d6d2275c29a5b93">quests</a>)</div>
-<div class="line"><span class="lineno">   30</span>        {</div>
-<div class="line"><span class="lineno">   31</span>            GameObject questObj = Instantiate(this.<a class="code hl_variable" href="#abd6b60bd577a9b9cdba9a2846fc0bdd4">questPrefab</a>, this.transform);</div>
-<div class="line"><span class="lineno">   32</span>            questObj.GetComponentInChildren&lt;TextMeshProUGUI&gt;().text = quest.GetText();</div>
-<div class="line"><span class="lineno">   33</span>            yield <span class="keywordflow">return</span> <span class="keyword">new</span> WaitForSeconds(0.2f);</div>
-<div class="line"><span class="lineno">   34</span>        }</div>
-<div class="line"><span class="lineno">   35</span>    }</div>
-<div class="ttc" id="aclass_quest_system_1_1_quest_html"><div class="ttname"><a href="class_quest_system_1_1_quest.html">QuestSystem.Quest</a></div><div class="ttdef"><b>Definition</b> QuestSystem.cs:16</div></div>
-<div class="ttc" id="aclass_quest_system_html_a8a59bd13826e08588d6d2275c29a5b93"><div class="ttname"><a href="#a8a59bd13826e08588d6d2275c29a5b93">QuestSystem.quests</a></div><div class="ttdeci">List&lt; Quest &gt; quests</div><div class="ttdef"><b>Definition</b> QuestSystem.cs:12</div></div>
-<div class="ttc" id="aclass_quest_system_html_abd6b60bd577a9b9cdba9a2846fc0bdd4"><div class="ttname"><a href="#abd6b60bd577a9b9cdba9a2846fc0bdd4">QuestSystem.questPrefab</a></div><div class="ttdeci">GameObject questPrefab</div><div class="ttdef"><b>Definition</b> QuestSystem.cs:10</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   30</span>    {</div>
+<div class="line"><span class="lineno">   31</span>        yield <span class="keywordflow">return</span> <span class="keyword">new</span> WaitForSeconds(5);</div>
+<div class="line"><span class="lineno">   32</span>        <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_quest_system_1_1_quest.html">Quest</a> quest <span class="keywordflow">in</span> this.<a class="code hl_variable" href="#a8a59bd13826e08588d6d2275c29a5b93">quests</a>)</div>
+<div class="line"><span class="lineno">   33</span>        {</div>
+<div class="line"><span class="lineno">   34</span>            GameObject questObj = Instantiate(this.<a class="code hl_variable" href="#abd6b60bd577a9b9cdba9a2846fc0bdd4">questPrefab</a>, this.transform);</div>
+<div class="line"><span class="lineno">   35</span>            questObj.GetComponentInChildren&lt;TextMeshProUGUI&gt;().text = quest.GetText();</div>
+<div class="line"><span class="lineno">   36</span>            yield <span class="keywordflow">return</span> <span class="keyword">new</span> WaitForSeconds(0.2f);</div>
+<div class="line"><span class="lineno">   37</span>        }</div>
+<div class="line"><span class="lineno">   38</span>    }</div>
+<div class="ttc" id="aclass_quest_system_1_1_quest_html"><div class="ttname"><a href="class_quest_system_1_1_quest.html">QuestSystem.Quest</a></div><div class="ttdoc">Represents a single quest, needs to be refactored TODO.</div><div class="ttdef"><b>Definition</b> QuestSystem.cs:22</div></div>
+<div class="ttc" id="aclass_quest_system_html_a8a59bd13826e08588d6d2275c29a5b93"><div class="ttname"><a href="#a8a59bd13826e08588d6d2275c29a5b93">QuestSystem.quests</a></div><div class="ttdeci">List&lt; Quest &gt; quests</div><div class="ttdef"><b>Definition</b> QuestSystem.cs:15</div></div>
+<div class="ttc" id="aclass_quest_system_html_abd6b60bd577a9b9cdba9a2846fc0bdd4"><div class="ttname"><a href="#abd6b60bd577a9b9cdba9a2846fc0bdd4">QuestSystem.questPrefab</a></div><div class="ttdeci">GameObject questPrefab</div><div class="ttdef"><b>Definition</b> QuestSystem.cs:13</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -205,10 +211,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   22</span>    {</div>
-<div class="line"><span class="lineno">   23</span>        StartCoroutine(<a class="code hl_function" href="#ab5172ff07f59e023395a025b190ffa6f">LoadQuests</a>());</div>
-<div class="line"><span class="lineno">   24</span>    }</div>
-<div class="ttc" id="aclass_quest_system_html_ab5172ff07f59e023395a025b190ffa6f"><div class="ttname"><a href="#ab5172ff07f59e023395a025b190ffa6f">QuestSystem.LoadQuests</a></div><div class="ttdeci">IEnumerator LoadQuests()</div><div class="ttdef"><b>Definition</b> QuestSystem.cs:26</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>=&gt; StartCoroutine(<a class="code hl_function" href="#ab5172ff07f59e023395a025b190ffa6f">LoadQuests</a>());</div>
+<div class="ttc" id="aclass_quest_system_html_ab5172ff07f59e023395a025b190ffa6f"><div class="ttname"><a href="#ab5172ff07f59e023395a025b190ffa6f">QuestSystem.LoadQuests</a></div><div class="ttdeci">IEnumerator LoadQuests()</div><div class="ttdef"><b>Definition</b> QuestSystem.cs:29</div></div>
 </div><!-- fragment -->
 </div>
 </div>

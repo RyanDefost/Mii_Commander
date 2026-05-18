@@ -58,7 +58,7 @@ var sectionId = 'dynsection-1';
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="Handles turns on the grid, moving anything on the grid down.">
 <polygon fill="#999999" stroke="none" points="92.25,-68 0,-68 0,0 92.25,0 92.25,-68"/>
 <text xml:space="preserve" text-anchor="start" x="7.12" y="-54.25" font-family="Helvetica,sans-Serif" font-size="10.00">Grid.TurnManager</text>
 <text xml:space="preserve" text-anchor="start" x="44.62" y="-38.25" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
@@ -98,7 +98,7 @@ var sectionId = 'dynsection-1';
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="class_grid_1_1_grid_manager.html" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="class_grid_1_1_grid_manager.html" target="_top" xlink:title="Manages everything inside of the grid.">
 <polygon fill="white" stroke="none" points="312.5,-510 83.75,-510 83.75,-122 312.5,-122 312.5,-510"/>
 <text xml:space="preserve" text-anchor="start" x="159.88" y="-496.25" font-family="Helvetica,sans-Serif" font-size="10.00">Grid.GridManager</text>
 <text xml:space="preserve" text-anchor="start" x="87.75" y="-480.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
@@ -158,7 +158,7 @@ var sectionId = 'dynsection-1';
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="class_grid_1_1_grid_generator.html" target="_top" xlink:title=" ">
+<g id="a_Node000004"><a xlink:href="class_grid_1_1_grid_generator.html" target="_top" xlink:title="Handles the possible positions within the grid, and generates the mesh.">
 <polygon fill="white" stroke="none" points="279.88,-820 116.38,-820 116.38,-580 279.88,-580 279.88,-820"/>
 <text xml:space="preserve" text-anchor="start" x="157.25" y="-806.25" font-family="Helvetica,sans-Serif" font-size="10.00">Grid.GridGenerator</text>
 <text xml:space="preserve" text-anchor="start" x="120.38" y="-790.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>

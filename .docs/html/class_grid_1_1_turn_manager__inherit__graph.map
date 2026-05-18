@@ -1,5 +1,5 @@
 <map id="Grid.TurnManager" name="Grid.TurnManager">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,123,178,213"/>
+<area shape="rect" id="Node000001" title="Handles turns on the grid, moving anything on the grid down." alt="" coords="5,123,178,213"/>
 <area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="42,5,142,75"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,87,94,124,89,122,91,92"/>
 </map>

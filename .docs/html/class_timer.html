@@ -120,41 +120,59 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('class_timer.ht
   <div class="headertitle"><div class="title">Timer Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A simple timer that sends out events for timer based functions.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Collaboration diagram for Timer:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_timer__coll__graph.svg" width="470" height="440"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_timer__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9b595ee039f9f1f905be5556b9fbc05b" id="r_a9b595ee039f9f1f905be5556b9fbc05b"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a9b595ee039f9f1f905be5556b9fbc05b">Timer</a> (float maxTime, Action onEnd)</td></tr>
-<tr class="memitem:a6758321db82c2d52bd9699b48ad997b1" id="r_a6758321db82c2d52bd9699b48ad997b1"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a6758321db82c2d52bd9699b48ad997b1">Timer</a> (float maxTime)</td></tr>
+<tr class="memitem:a41d982fe727007f8d5b52403b2152922" id="r_a41d982fe727007f8d5b52403b2152922"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a41d982fe727007f8d5b52403b2152922">Timer</a> (float maxTime, bool shouldLoop=false, bool playOnConstruction=true, Action onEnd=null, Action&lt; double &gt; onPlaying=null)</td></tr>
+<tr class="memitem:a0c169ab1627a40e5abdebc596730d48f" id="r_a0c169ab1627a40e5abdebc596730d48f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0c169ab1627a40e5abdebc596730d48f">UpdateTime</a> (double dt)</td></tr>
+<tr class="memdesc:a0c169ab1627a40e5abdebc596730d48f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Brings the timer's current time forward until finished.  <br /></td></tr>
 <tr class="memitem:a076af8892f86d50320215cfece9f2ab9" id="r_a076af8892f86d50320215cfece9f2ab9"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a076af8892f86d50320215cfece9f2ab9">Reset</a> ()</td></tr>
-<tr class="memitem:aef93c514f79ef698aaba541e7984cdae" id="r_aef93c514f79ef698aaba541e7984cdae"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aef93c514f79ef698aaba541e7984cdae">Update</a> (double dt)</td></tr>
-<tr class="memitem:a9b4bd0e2b0917133b1b03712f9136711" id="r_a9b4bd0e2b0917133b1b03712f9136711"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9b4bd0e2b0917133b1b03712f9136711">CheckIfEndIsReached</a> ()</td></tr>
-<tr class="memitem:aada477111554188ccfc97215de992a4e" id="r_aada477111554188ccfc97215de992a4e"><td class="memItemLeft">string&#160;</td><td class="memItemRight"><a class="el" href="#aada477111554188ccfc97215de992a4e">GetFormattedTime</a> (bool countDown=false)</td></tr>
-<tr class="memitem:a5be5d2d1fe4c934f30391216b116a3cd" id="r_a5be5d2d1fe4c934f30391216b116a3cd"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#a5be5d2d1fe4c934f30391216b116a3cd">GetCurrentTime</a> ()</td></tr>
-<tr class="memitem:a9d710a2d21840cc17a9b702d30731548" id="r_a9d710a2d21840cc17a9b702d30731548"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9d710a2d21840cc17a9b702d30731548">Add</a> (float time)</td></tr>
+<tr class="memitem:af050f049bbddff63c50a0ecd7141dd6d" id="r_af050f049bbddff63c50a0ecd7141dd6d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af050f049bbddff63c50a0ecd7141dd6d">ResetAndReplay</a> ()</td></tr>
+<tr class="memitem:abd6454fc5a2bad2f2af9afdcdfb9ae22" id="r_abd6454fc5a2bad2f2af9afdcdfb9ae22"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#abd6454fc5a2bad2f2af9afdcdfb9ae22">Stop</a> ()</td></tr>
+<tr class="memitem:a69c8a7b2630f5bad50440345acf46afc" id="r_a69c8a7b2630f5bad50440345acf46afc"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a69c8a7b2630f5bad50440345acf46afc">Play</a> ()</td></tr>
+<tr class="memitem:a678bef26ac9fca5663a5cef4ffaa1f7b" id="r_a678bef26ac9fca5663a5cef4ffaa1f7b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a678bef26ac9fca5663a5cef4ffaa1f7b">AddToMaxTime</a> (float time)</td></tr>
+<tr class="memitem:ae3e58f1c074dc1dc06a3ab125b8a9994" id="r_ae3e58f1c074dc1dc06a3ab125b8a9994"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ae3e58f1c074dc1dc06a3ab125b8a9994">RegisterOnEndListener</a> (Action listener)</td></tr>
+<tr class="memitem:a2efd620eb75f0960d3c66cf1c5d0863a" id="r_a2efd620eb75f0960d3c66cf1c5d0863a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2efd620eb75f0960d3c66cf1c5d0863a">UnregisterOnEndListener</a> (Action listener)</td></tr>
+<tr class="memitem:acf8f5e725d6e66ac9658361f811045b9" id="r_acf8f5e725d6e66ac9658361f811045b9"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#acf8f5e725d6e66ac9658361f811045b9">RegisterOnPlayingListener</a> (Action&lt; double &gt; listener)</td></tr>
+<tr class="memitem:a275ee3b90a69bda880057aeb316204ac" id="r_a275ee3b90a69bda880057aeb316204ac"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a275ee3b90a69bda880057aeb316204ac">UnregisterOnPlayingListener</a> (Action&lt; double &gt; listener)</td></tr>
+<tr class="memitem:a026414468ed84394f140cbe062cc1d54" id="r_a026414468ed84394f140cbe062cc1d54"><td class="memItemLeft">string&#160;</td><td class="memItemRight"><a class="el" href="#a026414468ed84394f140cbe062cc1d54">GetCurrentTimeFormatted</a> (bool countDown=false)</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a5107f40c85dd367c01b29097fbf57769" id="r_a5107f40c85dd367c01b29097fbf57769"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="#a5107f40c85dd367c01b29097fbf57769">onEnd</a></td></tr>
-<tr class="memitem:ae6327d5bc958a519263620f83a217175" id="r_ae6327d5bc958a519263620f83a217175"><td class="memItemLeft">Action&lt; double &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ae6327d5bc958a519263620f83a217175">onPlaying</a></td></tr>
-<tr class="memitem:aaa0018f2b29a6324d09d803aa77c72bf" id="r_aaa0018f2b29a6324d09d803aa77c72bf"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aaa0018f2b29a6324d09d803aa77c72bf">running</a></td></tr>
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:aa9d2765634157109b6d53518ebdcb83a" id="r_aa9d2765634157109b6d53518ebdcb83a"><td class="memItemLeft">static string&#160;</td><td class="memItemRight"><a class="el" href="#aa9d2765634157109b6d53518ebdcb83a">GetSecondsInTimeFormatted</a> (double time)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-properties" class="groupheader"><a id="properties" name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:a04e268e139fc3bdaf541dddc3ee599fe" id="r_a04e268e139fc3bdaf541dddc3ee599fe"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a04e268e139fc3bdaf541dddc3ee599fe">IsRunning</a><code> [get, private set]</code></td></tr>
+<tr class="memitem:a17d9ce703274a25917af263d20ab166a" id="r_a17d9ce703274a25917af263d20ab166a"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a17d9ce703274a25917af263d20ab166a">MaxTime</a><code> [get, private set]</code></td></tr>
+<tr class="memitem:aba22aafc410712b7e94355fb094af778" id="r_aba22aafc410712b7e94355fb094af778"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#aba22aafc410712b7e94355fb094af778">CurrentTime</a><code> [get, private set]</code></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a2881847d368a3dce885df1d2fa2b2745" id="r_a2881847d368a3dce885df1d2fa2b2745"><td class="memItemLeft">string&#160;</td><td class="memItemRight"><a class="el" href="#a2881847d368a3dce885df1d2fa2b2745">GetFormattedTime</a> (double time)</td></tr>
+<tr class="memitem:a9b4bd0e2b0917133b1b03712f9136711" id="r_a9b4bd0e2b0917133b1b03712f9136711"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9b4bd0e2b0917133b1b03712f9136711">CheckIfEndIsReached</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a6aa901e5847d6b7b0710894f963703b7" id="r_a6aa901e5847d6b7b0710894f963703b7"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#a6aa901e5847d6b7b0710894f963703b7">currentTime</a> = 0</td></tr>
-<tr class="memitem:a32d0c78ba75026468e34e41308c83981" id="r_a32d0c78ba75026468e34e41308c83981"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a32d0c78ba75026468e34e41308c83981">maxTime</a> = 0</td></tr>
+<tr class="memitem:a6aa901e5847d6b7b0710894f963703b7" id="r_a6aa901e5847d6b7b0710894f963703b7"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#a6aa901e5847d6b7b0710894f963703b7">currentTime</a></td></tr>
+<tr class="memitem:a32d0c78ba75026468e34e41308c83981" id="r_a32d0c78ba75026468e34e41308c83981"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a32d0c78ba75026468e34e41308c83981">maxTime</a></td></tr>
+<tr class="memitem:a20ea3757f43477ef7b98329b358b09f6" id="r_a20ea3757f43477ef7b98329b358b09f6"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a20ea3757f43477ef7b98329b358b09f6">isRunning</a></td></tr>
+<tr class="memitem:a2dd3d4f06c78f14085f8ab28db74051e" id="r_a2dd3d4f06c78f14085f8ab28db74051e"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a2dd3d4f06c78f14085f8ab28db74051e">shouldLoop</a></td></tr>
+<tr class="memitem:a5107f40c85dd367c01b29097fbf57769" id="r_a5107f40c85dd367c01b29097fbf57769"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="#a5107f40c85dd367c01b29097fbf57769">onEnd</a></td></tr>
+<tr class="memitem:ae6327d5bc958a519263620f83a217175" id="r_ae6327d5bc958a519263620f83a217175"><td class="memItemLeft">Action&lt; double &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ae6327d5bc958a519263620f83a217175">onPlaying</a></td></tr>
 </table>
-<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a9b595ee039f9f1f905be5556b9fbc05b" name="a9b595ee039f9f1f905be5556b9fbc05b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b595ee039f9f1f905be5556b9fbc05b">&#9670;&#160;</a></span>Timer() <span class="overload">[1/2]</span></h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A simple timer that sends out events for timer based functions. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a41d982fe727007f8d5b52403b2152922" name="a41d982fe727007f8d5b52403b2152922"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41d982fe727007f8d5b52403b2152922">&#9670;&#160;</a></span>Timer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -167,57 +185,67 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Action</td>          <td class="paramname"><span class="paramname"><em>onEnd</em></span>&#160;)</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>shouldLoop</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>, </td>
         </tr>
-      </table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   12</span>    {</div>
-<div class="line"><span class="lineno">   13</span>        this.maxTime = <a class="code hl_variable" href="#a32d0c78ba75026468e34e41308c83981">maxTime</a>;</div>
-<div class="line"><span class="lineno">   14</span>        this.onEnd = <a class="code hl_variable" href="#a5107f40c85dd367c01b29097fbf57769">onEnd</a>;</div>
-<div class="line"><span class="lineno">   15</span>        this.running = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   16</span>    }</div>
-<div class="ttc" id="aclass_timer_html_a32d0c78ba75026468e34e41308c83981"><div class="ttname"><a href="#a32d0c78ba75026468e34e41308c83981">Timer.maxTime</a></div><div class="ttdeci">float maxTime</div><div class="ttdef"><b>Definition</b> Timer.cs:6</div></div>
-<div class="ttc" id="aclass_timer_html_a5107f40c85dd367c01b29097fbf57769"><div class="ttname"><a href="#a5107f40c85dd367c01b29097fbf57769">Timer.onEnd</a></div><div class="ttdeci">Action onEnd</div><div class="ttdef"><b>Definition</b> Timer.cs:7</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a6758321db82c2d52bd9699b48ad997b1" name="a6758321db82c2d52bd9699b48ad997b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6758321db82c2d52bd9699b48ad997b1">&#9670;&#160;</a></span>Timer() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">Timer.Timer </td>
-          <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>maxTime</em></span></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>playOnConstruction</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Action</td>          <td class="paramname"><span class="paramname"><em>onEnd</em></span><span class="paramdefsep"> = </span><span class="paramdefval">null</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Action&lt; double &gt;</td>          <td class="paramname"><span class="paramname"><em>onPlaying</em></span><span class="paramdefsep"> = </span><span class="paramdefval">null</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   19</span>    {</div>
-<div class="line"><span class="lineno">   20</span>        this.maxTime = <a class="code hl_variable" href="#a32d0c78ba75026468e34e41308c83981">maxTime</a>;</div>
-<div class="line"><span class="lineno">   21</span>        this.running = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   22</span>    }</div>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">maxTime</td><td>time until the timer is finished</td></tr>
+    <tr><td class="paramname">shouldLoop</td><td>Dictates if the timer should restart and replay after reaching the end</td></tr>
+    <tr><td class="paramname">playOnConstruction</td><td>Dictates if the <a class="el" href="class_timer.html" title="A simple timer that sends out events for timer based functions.">Timer</a> should be running after creation</td></tr>
+    <tr><td class="paramname">onEnd</td><td>Action called at the end of the timer</td></tr>
+    <tr><td class="paramname">onPlaying</td><td>Action called during every timer update (if its playing) takes the parameter currentTime</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>    {</div>
+<div class="line"><span class="lineno">   27</span>        this.maxTime = <a class="code hl_variable" href="#a32d0c78ba75026468e34e41308c83981">maxTime</a>;</div>
+<div class="line"><span class="lineno">   28</span>        this.onEnd = <a class="code hl_variable" href="#a5107f40c85dd367c01b29097fbf57769">onEnd</a>;</div>
+<div class="line"><span class="lineno">   29</span>        this.onPlaying = <a class="code hl_variable" href="#ae6327d5bc958a519263620f83a217175">onPlaying</a>;</div>
+<div class="line"><span class="lineno">   30</span>        this.shouldLoop = <a class="code hl_variable" href="#a2dd3d4f06c78f14085f8ab28db74051e">shouldLoop</a>;</div>
+<div class="line"><span class="lineno">   31</span>        <span class="keywordflow">if</span> (playOnConstruction)</div>
+<div class="line"><span class="lineno">   32</span>            <a class="code hl_function" href="#a69c8a7b2630f5bad50440345acf46afc">Play</a>();</div>
+<div class="line"><span class="lineno">   33</span>    }</div>
+<div class="ttc" id="aclass_timer_html_a2dd3d4f06c78f14085f8ab28db74051e"><div class="ttname"><a href="#a2dd3d4f06c78f14085f8ab28db74051e">Timer.shouldLoop</a></div><div class="ttdeci">bool shouldLoop</div><div class="ttdef"><b>Definition</b> Timer.cs:11</div></div>
+<div class="ttc" id="aclass_timer_html_a32d0c78ba75026468e34e41308c83981"><div class="ttname"><a href="#a32d0c78ba75026468e34e41308c83981">Timer.maxTime</a></div><div class="ttdeci">float maxTime</div><div class="ttdef"><b>Definition</b> Timer.cs:9</div></div>
+<div class="ttc" id="aclass_timer_html_a5107f40c85dd367c01b29097fbf57769"><div class="ttname"><a href="#a5107f40c85dd367c01b29097fbf57769">Timer.onEnd</a></div><div class="ttdeci">Action onEnd</div><div class="ttdef"><b>Definition</b> Timer.cs:17</div></div>
+<div class="ttc" id="aclass_timer_html_a69c8a7b2630f5bad50440345acf46afc"><div class="ttname"><a href="#a69c8a7b2630f5bad50440345acf46afc">Timer.Play</a></div><div class="ttdeci">void Play()</div><div class="ttdef"><b>Definition</b> Timer.cs:65</div></div>
+<div class="ttc" id="aclass_timer_html_ae6327d5bc958a519263620f83a217175"><div class="ttname"><a href="#ae6327d5bc958a519263620f83a217175">Timer.onPlaying</a></div><div class="ttdeci">Action&lt; double &gt; onPlaying</div><div class="ttdef"><b>Definition</b> Timer.cs:18</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a9d710a2d21840cc17a9b702d30731548" name="a9d710a2d21840cc17a9b702d30731548"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d710a2d21840cc17a9b702d30731548">&#9670;&#160;</a></span>Add()</h2>
+<a id="a678bef26ac9fca5663a5cef4ffaa1f7b" name="a678bef26ac9fca5663a5cef4ffaa1f7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a678bef26ac9fca5663a5cef4ffaa1f7b">&#9670;&#160;</a></span>AddToMaxTime()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Timer.Add </td>
+          <td class="memname">void Timer.AddToMaxTime </td>
           <td>(</td>
           <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>time</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   55</span>=&gt; this.maxTime += time;</div>
+<div class="fragment"><div class="line"><span class="lineno">   67</span>=&gt; this.maxTime += time;</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -226,74 +254,14 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Timer.CheckIfEndIsReached </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   40</span>    {</div>
-<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">if</span> (!(this.<a class="code hl_variable" href="#a6aa901e5847d6b7b0710894f963703b7">currentTime</a> &gt;= this.<a class="code hl_variable" href="#a32d0c78ba75026468e34e41308c83981">maxTime</a>)) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   42</span>        this.<a class="code hl_variable" href="#a5107f40c85dd367c01b29097fbf57769">onEnd</a>?.Invoke();</div>
-<div class="line"><span class="lineno">   43</span>        this.running = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   44</span>    }</div>
-<div class="ttc" id="aclass_timer_html_a6aa901e5847d6b7b0710894f963703b7"><div class="ttname"><a href="#a6aa901e5847d6b7b0710894f963703b7">Timer.currentTime</a></div><div class="ttdeci">double currentTime</div><div class="ttdef"><b>Definition</b> Timer.cs:5</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a5be5d2d1fe4c934f30391216b116a3cd" name="a5be5d2d1fe4c934f30391216b116a3cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5be5d2d1fe4c934f30391216b116a3cd">&#9670;&#160;</a></span>GetCurrentTime()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double Timer.GetCurrentTime </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   54</span>=&gt; this.<a class="code hl_variable" href="#a6aa901e5847d6b7b0710894f963703b7">currentTime</a>;</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="aada477111554188ccfc97215de992a4e" name="aada477111554188ccfc97215de992a4e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aada477111554188ccfc97215de992a4e">&#9670;&#160;</a></span>GetFormattedTime() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string Timer.GetFormattedTime </td>
-          <td>(</td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>countDown</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   52</span>=&gt; countDown ? <a class="code hl_function" href="#a2881847d368a3dce885df1d2fa2b2745">GetFormattedTime</a>(this.<a class="code hl_variable" href="#a32d0c78ba75026468e34e41308c83981">maxTime</a> - this.<a class="code hl_variable" href="#a6aa901e5847d6b7b0710894f963703b7">currentTime</a>) : <a class="code hl_function" href="#a2881847d368a3dce885df1d2fa2b2745">GetFormattedTime</a>(this.<a class="code hl_variable" href="#a6aa901e5847d6b7b0710894f963703b7">currentTime</a>);</div>
-<div class="ttc" id="aclass_timer_html_a2881847d368a3dce885df1d2fa2b2745"><div class="ttname"><a href="#a2881847d368a3dce885df1d2fa2b2745">Timer.GetFormattedTime</a></div><div class="ttdeci">string GetFormattedTime(double time)</div><div class="ttdef"><b>Definition</b> Timer.cs:46</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a2881847d368a3dce885df1d2fa2b2745" name="a2881847d368a3dce885df1d2fa2b2745"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2881847d368a3dce885df1d2fa2b2745">&#9670;&#160;</a></span>GetFormattedTime() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">string Timer.GetFormattedTime </td>
+          <td class="memname">void Timer.CheckIfEndIsReached </td>
           <td>(</td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>time</em></span></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -303,10 +271,124 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   47</span>    {</div>
-<div class="line"><span class="lineno">   48</span>        TimeSpan timeSpan = TimeSpan.FromSeconds(time);</div>
-<div class="line"><span class="lineno">   49</span>        <span class="keywordflow">return</span> $<span class="stringliteral">&quot;{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}&quot;</span>;</div>
-<div class="line"><span class="lineno">   50</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>    {</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">if</span> (!(this.<a class="code hl_variable" href="#a6aa901e5847d6b7b0710894f963703b7">currentTime</a> &gt;= this.<a class="code hl_variable" href="#a32d0c78ba75026468e34e41308c83981">maxTime</a>)) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   51</span>        this.<a class="code hl_variable" href="#a5107f40c85dd367c01b29097fbf57769">onEnd</a>?.Invoke();</div>
+<div class="line"><span class="lineno">   52</span>        <a class="code hl_function" href="#abd6454fc5a2bad2f2af9afdcdfb9ae22">Stop</a>();</div>
+<div class="line"><span class="lineno">   53</span>        <span class="keywordflow">if</span> (this.<a class="code hl_variable" href="#a2dd3d4f06c78f14085f8ab28db74051e">shouldLoop</a>)</div>
+<div class="line"><span class="lineno">   54</span>            <a class="code hl_function" href="#af050f049bbddff63c50a0ecd7141dd6d">ResetAndReplay</a>();</div>
+<div class="line"><span class="lineno">   55</span>    }</div>
+<div class="ttc" id="aclass_timer_html_a6aa901e5847d6b7b0710894f963703b7"><div class="ttname"><a href="#a6aa901e5847d6b7b0710894f963703b7">Timer.currentTime</a></div><div class="ttdeci">double currentTime</div><div class="ttdef"><b>Definition</b> Timer.cs:8</div></div>
+<div class="ttc" id="aclass_timer_html_abd6454fc5a2bad2f2af9afdcdfb9ae22"><div class="ttname"><a href="#abd6454fc5a2bad2f2af9afdcdfb9ae22">Timer.Stop</a></div><div class="ttdeci">void Stop()</div><div class="ttdef"><b>Definition</b> Timer.cs:64</div></div>
+<div class="ttc" id="aclass_timer_html_af050f049bbddff63c50a0ecd7141dd6d"><div class="ttname"><a href="#af050f049bbddff63c50a0ecd7141dd6d">Timer.ResetAndReplay</a></div><div class="ttdeci">void ResetAndReplay()</div><div class="ttdef"><b>Definition</b> Timer.cs:58</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a026414468ed84394f140cbe062cc1d54" name="a026414468ed84394f140cbe062cc1d54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a026414468ed84394f140cbe062cc1d54">&#9670;&#160;</a></span>GetCurrentTimeFormatted()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Timer.GetCurrentTimeFormatted </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>countDown</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   89</span>=&gt; countDown ? <a class="code hl_function" href="#aa9d2765634157109b6d53518ebdcb83a">GetSecondsInTimeFormatted</a>(this.<a class="code hl_variable" href="#a32d0c78ba75026468e34e41308c83981">maxTime</a> - this.<a class="code hl_variable" href="#a6aa901e5847d6b7b0710894f963703b7">currentTime</a>) : <a class="code hl_function" href="#aa9d2765634157109b6d53518ebdcb83a">GetSecondsInTimeFormatted</a>(this.<a class="code hl_variable" href="#a6aa901e5847d6b7b0710894f963703b7">currentTime</a>);</div>
+<div class="ttc" id="aclass_timer_html_aa9d2765634157109b6d53518ebdcb83a"><div class="ttname"><a href="#aa9d2765634157109b6d53518ebdcb83a">Timer.GetSecondsInTimeFormatted</a></div><div class="ttdeci">static string GetSecondsInTimeFormatted(double time)</div><div class="ttdef"><b>Definition</b> Timer.cs:83</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa9d2765634157109b6d53518ebdcb83a" name="aa9d2765634157109b6d53518ebdcb83a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9d2765634157109b6d53518ebdcb83a">&#9670;&#160;</a></span>GetSecondsInTimeFormatted()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Timer.GetSecondsInTimeFormatted </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>time</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   84</span>    {</div>
+<div class="line"><span class="lineno">   85</span>        TimeSpan timeSpan = TimeSpan.FromSeconds(time);</div>
+<div class="line"><span class="lineno">   86</span>        <span class="keywordflow">return</span> $<span class="stringliteral">&quot;{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}&quot;</span>;</div>
+<div class="line"><span class="lineno">   87</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a69c8a7b2630f5bad50440345acf46afc" name="a69c8a7b2630f5bad50440345acf46afc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69c8a7b2630f5bad50440345acf46afc">&#9670;&#160;</a></span>Play()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Timer.Play </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   65</span>=&gt; this.isRunning = <span class="keyword">true</span>;</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae3e58f1c074dc1dc06a3ab125b8a9994" name="ae3e58f1c074dc1dc06a3ab125b8a9994"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3e58f1c074dc1dc06a3ab125b8a9994">&#9670;&#160;</a></span>RegisterOnEndListener()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Timer.RegisterOnEndListener </td>
+          <td>(</td>
+          <td class="paramtype">Action</td>          <td class="paramname"><span class="paramname"><em>listener</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   70</span>    {</div>
+<div class="line"><span class="lineno">   71</span>        <span class="keywordflow">if</span> (listener == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   72</span>        this.onEnd += listener;</div>
+<div class="line"><span class="lineno">   73</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="acf8f5e725d6e66ac9658361f811045b9" name="acf8f5e725d6e66ac9658361f811045b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf8f5e725d6e66ac9658361f811045b9">&#9670;&#160;</a></span>RegisterOnPlayingListener()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Timer.RegisterOnPlayingListener </td>
+          <td>(</td>
+          <td class="paramtype">Action&lt; double &gt;</td>          <td class="paramname"><span class="paramname"><em>listener</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   77</span>    {</div>
+<div class="line"><span class="lineno">   78</span>        <span class="keywordflow">if</span> (listener == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   79</span>        this.onPlaying += listener;</div>
+<div class="line"><span class="lineno">   80</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -324,37 +406,117 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   25</span>    {</div>
-<div class="line"><span class="lineno">   26</span>        this.currentTime = 0;</div>
-<div class="line"><span class="lineno">   27</span>        this.running = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   28</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   57</span>=&gt; this.currentTime = 0;</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="aef93c514f79ef698aaba541e7984cdae" name="aef93c514f79ef698aaba541e7984cdae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef93c514f79ef698aaba541e7984cdae">&#9670;&#160;</a></span>Update()</h2>
+<a id="af050f049bbddff63c50a0ecd7141dd6d" name="af050f049bbddff63c50a0ecd7141dd6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af050f049bbddff63c50a0ecd7141dd6d">&#9670;&#160;</a></span>ResetAndReplay()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Timer.Update </td>
+          <td class="memname">void Timer.ResetAndReplay </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   59</span>    {</div>
+<div class="line"><span class="lineno">   60</span>        <a class="code hl_function" href="#a076af8892f86d50320215cfece9f2ab9">Reset</a>();</div>
+<div class="line"><span class="lineno">   61</span>        <a class="code hl_function" href="#a69c8a7b2630f5bad50440345acf46afc">Play</a>();</div>
+<div class="line"><span class="lineno">   62</span>    }</div>
+<div class="ttc" id="aclass_timer_html_a076af8892f86d50320215cfece9f2ab9"><div class="ttname"><a href="#a076af8892f86d50320215cfece9f2ab9">Timer.Reset</a></div><div class="ttdeci">void Reset()</div><div class="ttdef"><b>Definition</b> Timer.cs:57</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abd6454fc5a2bad2f2af9afdcdfb9ae22" name="abd6454fc5a2bad2f2af9afdcdfb9ae22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd6454fc5a2bad2f2af9afdcdfb9ae22">&#9670;&#160;</a></span>Stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Timer.Stop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   64</span>=&gt; this.isRunning = <span class="keyword">false</span>;</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2efd620eb75f0960d3c66cf1c5d0863a" name="a2efd620eb75f0960d3c66cf1c5d0863a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2efd620eb75f0960d3c66cf1c5d0863a">&#9670;&#160;</a></span>UnregisterOnEndListener()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Timer.UnregisterOnEndListener </td>
+          <td>(</td>
+          <td class="paramtype">Action</td>          <td class="paramname"><span class="paramname"><em>listener</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   74</span>=&gt; this.onEnd -= listener;</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a275ee3b90a69bda880057aeb316204ac" name="a275ee3b90a69bda880057aeb316204ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a275ee3b90a69bda880057aeb316204ac">&#9670;&#160;</a></span>UnregisterOnPlayingListener()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Timer.UnregisterOnPlayingListener </td>
+          <td>(</td>
+          <td class="paramtype">Action&lt; double &gt;</td>          <td class="paramname"><span class="paramname"><em>listener</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   81</span>=&gt; this.onPlaying -= listener;</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0c169ab1627a40e5abdebc596730d48f" name="a0c169ab1627a40e5abdebc596730d48f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c169ab1627a40e5abdebc596730d48f">&#9670;&#160;</a></span>UpdateTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Timer.UpdateTime </td>
           <td>(</td>
           <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>dt</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   31</span>    {</div>
-<div class="line"><span class="lineno">   32</span>        <span class="keywordflow">if</span> (!this.<a class="code hl_variable" href="#aaa0018f2b29a6324d09d803aa77c72bf">running</a>)</div>
-<div class="line"><span class="lineno">   33</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   34</span>        this.currentTime += dt;</div>
-<div class="line"><span class="lineno">   35</span>        this.<a class="code hl_variable" href="#ae6327d5bc958a519263620f83a217175">onPlaying</a>?.Invoke(this.<a class="code hl_variable" href="#a6aa901e5847d6b7b0710894f963703b7">currentTime</a>);</div>
-<div class="line"><span class="lineno">   36</span>        <a class="code hl_function" href="#a9b4bd0e2b0917133b1b03712f9136711">CheckIfEndIsReached</a>();</div>
-<div class="line"><span class="lineno">   37</span>    }</div>
-<div class="ttc" id="aclass_timer_html_a9b4bd0e2b0917133b1b03712f9136711"><div class="ttname"><a href="#a9b4bd0e2b0917133b1b03712f9136711">Timer.CheckIfEndIsReached</a></div><div class="ttdeci">void CheckIfEndIsReached()</div><div class="ttdef"><b>Definition</b> Timer.cs:39</div></div>
-<div class="ttc" id="aclass_timer_html_aaa0018f2b29a6324d09d803aa77c72bf"><div class="ttname"><a href="#aaa0018f2b29a6324d09d803aa77c72bf">Timer.running</a></div><div class="ttdeci">bool running</div><div class="ttdef"><b>Definition</b> Timer.cs:9</div></div>
-<div class="ttc" id="aclass_timer_html_ae6327d5bc958a519263620f83a217175"><div class="ttname"><a href="#ae6327d5bc958a519263620f83a217175">Timer.onPlaying</a></div><div class="ttdeci">Action&lt; double &gt; onPlaying</div><div class="ttdef"><b>Definition</b> Timer.cs:8</div></div>
+
+<p>Brings the timer's current time forward until finished. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dt</td><td>Delta time, time in between frames</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>    {</div>
+<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">if</span> (!this.<a class="code hl_variable" href="#a20ea3757f43477ef7b98329b358b09f6">isRunning</a>)</div>
+<div class="line"><span class="lineno">   42</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   43</span>        this.currentTime += dt;</div>
+<div class="line"><span class="lineno">   44</span>        this.<a class="code hl_variable" href="#ae6327d5bc958a519263620f83a217175">onPlaying</a>?.Invoke(this.<a class="code hl_variable" href="#a6aa901e5847d6b7b0710894f963703b7">currentTime</a>);</div>
+<div class="line"><span class="lineno">   45</span>        <a class="code hl_function" href="#a9b4bd0e2b0917133b1b03712f9136711">CheckIfEndIsReached</a>();</div>
+<div class="line"><span class="lineno">   46</span>    }</div>
+<div class="ttc" id="aclass_timer_html_a20ea3757f43477ef7b98329b358b09f6"><div class="ttname"><a href="#a20ea3757f43477ef7b98329b358b09f6">Timer.isRunning</a></div><div class="ttdeci">bool isRunning</div><div class="ttdef"><b>Definition</b> Timer.cs:10</div></div>
+<div class="ttc" id="aclass_timer_html_a9b4bd0e2b0917133b1b03712f9136711"><div class="ttname"><a href="#a9b4bd0e2b0917133b1b03712f9136711">Timer.CheckIfEndIsReached</a></div><div class="ttdeci">void CheckIfEndIsReached()</div><div class="ttdef"><b>Definition</b> Timer.cs:48</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -369,7 +531,29 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">double Timer.currentTime = 0</td>
+          <td class="memname">double Timer.currentTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a20ea3757f43477ef7b98329b358b09f6" name="a20ea3757f43477ef7b98329b358b09f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20ea3757f43477ef7b98329b358b09f6">&#9670;&#160;</a></span>isRunning</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Timer.isRunning</td>
         </tr>
       </table>
   </td>
@@ -391,7 +575,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float Timer.maxTime = 0</td>
+          <td class="memname">float Timer.maxTime</td>
         </tr>
       </table>
   </td>
@@ -408,11 +592,19 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Action Timer.onEnd</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -422,31 +614,117 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Action&lt;double&gt; Timer.onPlaying</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="aaa0018f2b29a6324d09d803aa77c72bf" name="aaa0018f2b29a6324d09d803aa77c72bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa0018f2b29a6324d09d803aa77c72bf">&#9670;&#160;</a></span>running</h2>
+<a id="a2dd3d4f06c78f14085f8ab28db74051e" name="a2dd3d4f06c78f14085f8ab28db74051e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dd3d4f06c78f14085f8ab28db74051e">&#9670;&#160;</a></span>shouldLoop</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Timer.running</td>
+          <td class="memname">bool Timer.shouldLoop</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
+<a name="doc-property-members" id="doc-property-members"></a><h2 id="header-doc-property-members" class="groupheader">Property Documentation</h2>
+<a id="aba22aafc410712b7e94355fb094af778" name="aba22aafc410712b7e94355fb094af778"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba22aafc410712b7e94355fb094af778">&#9670;&#160;</a></span>CurrentTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Timer.CurrentTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel get">get</span><span class="mlabel private-set">private set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   15</span>{ <span class="keyword">get</span> =&gt; (float)this.<a class="code hl_variable" href="#a6aa901e5847d6b7b0710894f963703b7">currentTime</a>; <span class="keyword">private</span> <span class="keyword">set</span> =&gt; this.currentTime = value; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a04e268e139fc3bdaf541dddc3ee599fe" name="a04e268e139fc3bdaf541dddc3ee599fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04e268e139fc3bdaf541dddc3ee599fe">&#9670;&#160;</a></span>IsRunning</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Timer.IsRunning</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel get">get</span><span class="mlabel private-set">private set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   13</span>{ <span class="keyword">get</span> =&gt; this.<a class="code hl_variable" href="#a20ea3757f43477ef7b98329b358b09f6">isRunning</a>; <span class="keyword">private</span> <span class="keyword">set</span> =&gt; this.isRunning = value; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a17d9ce703274a25917af263d20ab166a" name="a17d9ce703274a25917af263d20ab166a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17d9ce703274a25917af263d20ab166a">&#9670;&#160;</a></span>MaxTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Timer.MaxTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel get">get</span><span class="mlabel private-set">private set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   14</span>{ <span class="keyword">get</span> =&gt; this.<a class="code hl_variable" href="#a32d0c78ba75026468e34e41308c83981">maxTime</a>; <span class="keyword">private</span> <span class="keyword">set</span> =&gt; this.maxTime = value; }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/Lucas/Documents/School/HKU/PresentYourself/Mii_Commander/Assets/Scripts/<a class="el" href="_timer_8cs.html">Timer.cs</a></li>
+<li>C:/Users/Lucas/Documents/School/HKU/PresentYourself/Mii_Commander/Assets/Scripts/MiscHelper/<a class="el" href="_timer_8cs.html">Timer.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
