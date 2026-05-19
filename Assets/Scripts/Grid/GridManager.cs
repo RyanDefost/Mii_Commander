@@ -97,7 +97,8 @@ namespace Grid
         /// <summary>
         /// Creates a grid instance, and makes sure the position isn't taken again
         /// </summary>
-        private GridInstance RegisterGridPosition(GameObject gameObj, int foundIndex) => RegisterInGrid(new GridInstance(gameObj, foundIndex, this.generator, false));
+        private GridInstance RegisterGridPosition(GameObject gameObj, int foundIndex) => 
+            RegisterInGrid(new GridInstance(gameObj, foundIndex, this.generator, false));
 
         /// <summary>
         /// Registers a grid instance, making sure to occupy the space inside the grid.
@@ -106,13 +107,14 @@ namespace Grid
         /// <returns>the instance at the desired location, will return already existing obj if place already taken</returns>
         public GridInstance RegisterInGrid(GridInstance instance)
         {
-            GridInstance found = this.gridInstances.FirstOrDefault(a => a.index == instance.index);
+            GridInstance found =
+                this.gridInstances.FirstOrDefault(a => a.index == instance.index && a.offGrid == instance.offGrid);
             if (found != null) return found;
             
-            if (instance.offGrid)
-                this.availableOffGridPositions[instance.index] = null;
-            else
+            if (!instance.offGrid)
                 this.availablePositions[instance.index] = null;
+            else
+                this.availableOffGridPositions[instance.index] = null;
             
             this.gridInstances.Add(instance);
             return instance;

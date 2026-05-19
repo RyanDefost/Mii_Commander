@@ -61,7 +61,7 @@ public class GridMoveable : BoardItemComponent
 
     protected virtual void TriggerMovementToTarget()
     {
-        TriggerUpdateTarget();
+        TriggerUpdateTargetWithImmunityState();
         this.onUpdate += AwaitDistanceToTarget;
     }
 
@@ -77,7 +77,7 @@ public class GridMoveable : BoardItemComponent
             if (dist > this.previousDist)
             {
                 ResetTarget();
-                TriggerUpdateTarget();
+                TriggerUpdateTargetWithoutMove();
                 this.previousDist = null;
             }
             this.previousDist = dist;
@@ -95,19 +95,20 @@ public class GridMoveable : BoardItemComponent
         this.boardItem.OnAddToBoard?.Invoke();
     }
     
-    protected bool UpdateTarget()
+    protected bool UpdateTarget(bool usesMove)
     {
         if (this.Target != null)
             return true;
         this.grid ??= ComponentRegistry.GetComponent<GridManager>();
         if (this.grid)
-            SetTarget(this.grid.GetNearestPosition(this.transform.position, this.gameObject), !this.moveImmunity);
+            SetTarget(this.grid.GetNearestPosition(this.transform.position, this.gameObject), usesMove);
         else
-            ComponentRegistry.TrySubscribeForComponent<GridManager>(TriggerUpdateTarget);
+            ComponentRegistry.TrySubscribeForComponent<GridManager>(TriggerUpdateTargetWithoutMove);
         return this.Target != null;
     }
     
-    protected void TriggerUpdateTarget() => UpdateTarget();
+    protected void TriggerUpdateTargetWithoutMove() => UpdateTarget(false);
+    protected void TriggerUpdateTargetWithImmunityState() => UpdateTarget(!this.moveImmunity);
     
     public void SetTarget(GridManager.GridInstance newTarget, bool usesMove)
     {
@@ -121,8 +122,6 @@ public class GridMoveable : BoardItemComponent
         }
         else
             this.Target = newTarget;
-
-        Debug.Log(usesMove);
         if (usesMove)
             this.moveManagerRef.SetMove();
     }

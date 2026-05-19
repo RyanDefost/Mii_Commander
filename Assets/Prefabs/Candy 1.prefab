@@ -101,12 +101,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   boardItem: {fileID: 1365219245064566773}
   offset: 0.1
+  minimalDist: 1
+  moveImmunity: 0
   rb: {fileID: 8897784474759205449}
   movementStrength: 5
-  maxVelocity: 20
+  maxVelocity: 30
   dampening: 20
-  startTimerTime: 1
+  startDelay: 0
   endTimerTime: 10
+  stuckVelocityThreshold: 0.5
+  resistanceRampRate: 15
+  maxResistanceMultiplier: 10
 --- !u!114 &1365219245064566773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b9b6cfc501136949bf3a50b1b3b1999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  boardItem: {fileID: 0}
   interaction:
     m_PersistentCalls:
       m_Calls:

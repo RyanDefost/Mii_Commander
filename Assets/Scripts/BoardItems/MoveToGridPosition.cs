@@ -8,14 +8,19 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class MoveToGridPosition : GridMoveable
 {
+    [Header("Required Components")]
     [SerializeField] 
     private Rigidbody rb;
+    
+    [Header("Base movement")]
     [SerializeField]
     private float movementStrength = 5f;
     [SerializeField]
     private float maxVelocity = 20f;
     [SerializeField]
     private float dampening = 2f;
+    
+    [Header("Timers")]
     [SerializeField]
     private float startDelay;
     private Timer startDelayTimer;
@@ -23,6 +28,15 @@ public class MoveToGridPosition : GridMoveable
     private float endTimerTime = 15f;
     private Timer endTimer;
     private float usedMinimumForce;
+    
+    [Header("Resistance / Anti-Stuck")]
+    [SerializeField]
+    private float stuckVelocityThreshold = 0.5f;
+    [SerializeField]
+    private float resistanceRampRate = 15f;
+    [SerializeField]
+    private float maxResistanceMultiplier = 5f;
+    private float currentResistanceMultiplier = 1f;
 
     protected override void CustomOnValidate()
     {
@@ -33,7 +47,7 @@ public class MoveToGridPosition : GridMoveable
     protected override void TriggerMovementToTarget()
     {
         if (!HasTarget())
-            TriggerUpdateTarget();
+            TriggerUpdateTargetWithImmunityState();
         this.startDelayTimer = new Timer(this.startDelay,  false, true, EnableMovement);
         this.onUpdate += UpdateStartDelayTimer;
     }
@@ -50,7 +64,7 @@ public class MoveToGridPosition : GridMoveable
 
     private void EnableMovement()
     {
-        if (!UpdateTarget())
+        if (!UpdateTarget(!this.moveImmunity))
             return;
         this.usedMinimumForce = this.movementStrength;
         this.endTimer = new Timer(this.endTimerTime, false, true, SnapToTarget);
@@ -75,6 +89,7 @@ public class MoveToGridPosition : GridMoveable
         this.onUpdate -= UpdateEndTimer;
         
         this.endTimer.ResetAndReplay();
+        this.currentResistanceMultiplier = 1f;
     }
     
     private void ApplyForceTowardsTarget()
@@ -83,25 +98,44 @@ public class MoveToGridPosition : GridMoveable
             return;
         Vector3 targetPosition = GetTargetPosition();
         Vector3 diff = targetPosition - this.transform.position;
+        float distance = diff.magnitude;
 
         Vector3 velocity = this.rb.linearVelocity;
-        float dot = velocity.sqrMagnitude > 0.001f
+        float speed = velocity.magnitude;
+        
+        // If far from target but moving slower than the threshold, this means there's resistance
+        if (distance > 0.3f && speed < this.stuckVelocityThreshold)
+        {
+            this.currentResistanceMultiplier = Mathf.Min(
+                this.currentResistanceMultiplier + Time.deltaTime * this.resistanceRampRate,
+                this.maxResistanceMultiplier
+            );
+        }
+        else
+        {
+            // Smoothly lower the multiplier because there's no resistance
+            this.currentResistanceMultiplier =
+                Mathf.Max(this.currentResistanceMultiplier - Time.deltaTime * this.dampening, 1f);
+        }
+
+        float dot = speed > 0.001f
             ? Vector3.Dot(diff.normalized, velocity.normalized)
             : 0f;
-
-        // Reduce force when already moving toward target
         float alignmentFactor = 1f - Mathf.Clamp01(dot); 
-        // dot = 1 → factor = 0 (no extra push)
-        // dot = 0 → factor = 1 (normal)
-        // dot = -1 → factor = 2 (strong correction)
 
-        float force = Mathf.Max(diff.magnitude, this.usedMinimumForce) * alignmentFactor;
-        this.rb.AddForce(diff.normalized * force, ForceMode.Force);
+        // Apply Resistance Multiplier
+        float baseForce = Mathf.Max(distance, this.usedMinimumForce) * alignmentFactor;
+        float finalForce = baseForce * this.currentResistanceMultiplier;
         
-        if (this.rb.linearVelocity.magnitude > this.maxVelocity)
-            this.rb.linearVelocity = this.rb.linearVelocity.normalized * this.maxVelocity;
+        this.rb.AddForce(diff.normalized * finalForce, ForceMode.Force);
+        
+        // If stuck, allow a slightly higher max velocity temporarily to break free aggressively
+        float effectiveMaxVelocity = this.maxVelocity * (this.currentResistanceMultiplier > 1.5f ? 1.5f : 1f);
+        if (speed > effectiveMaxVelocity)
+            this.rb.linearVelocity = velocity.normalized * effectiveMaxVelocity;
 
-        if (!(diff.magnitude < 0.2f)) return;
+        // Arrival, dampening
+        if (!(distance < 0.2f)) return;
         this.rb.linearVelocity *= 1f - Time.deltaTime * this.dampening;
         this.usedMinimumForce = Mathf.Max(
             this.usedMinimumForce - Time.deltaTime * this.dampening,
