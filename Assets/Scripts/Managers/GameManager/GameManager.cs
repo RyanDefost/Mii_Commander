@@ -47,18 +47,14 @@ namespace Managers
         }
 
         private void OnDestroy() => ComponentRegistry.RemoveFromRegistry(this);
-
-        private void Update()
-        {
-            this.gameStateMachine.Update();
-        }
+        private void Update() => this.gameStateMachine.Update();
 
         private void InitGame()
         {
             this.gameStateMachine = new FiniteStateMachine<GameManager>(this, new PlayGameState());
             
-            this.moveManager.SetInitialMoveAmount(levelData.baseTurnAmount);
-            this.scoreManager.SetGoal(levelData.pointRequirement);
+            this.moveManager.SetInitialMoveAmount(this.levelData.baseTurnAmount);
+            this.scoreManager.SetGoal(this.levelData.pointRequirement);
         }
 
         private void InitStates()
@@ -69,7 +65,7 @@ namespace Managers
 
         public void SetGameState(GameState stateKey)
         {
-            if (states.TryGetValue(stateKey, out State<GameManager> state))
+            if (this.states.TryGetValue(stateKey, out State<GameManager> state))
             {
                 this.gameStateMachine.SetState(state);   
             }

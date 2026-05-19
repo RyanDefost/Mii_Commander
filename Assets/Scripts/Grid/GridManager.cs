@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Collections;
 using UnityEngine;
 
@@ -94,14 +95,27 @@ namespace Grid
         }
 
         /// <summary>
-        /// Creates a grid instance, and makes sure the position isnt taken again
+        /// Creates a grid instance, and makes sure the position isn't taken again
         /// </summary>
-        private GridInstance RegisterGridPosition(GameObject gameObj, int foundIndex)
+        private GridInstance RegisterGridPosition(GameObject gameObj, int foundIndex) => RegisterInGrid(new GridInstance(gameObj, foundIndex, this.generator, false));
+
+        /// <summary>
+        /// Registers a grid instance, making sure to occupy the space inside the grid.
+        /// </summary>
+        /// <param name="instance">instance to register</param>
+        /// <returns>the instance at the desired location, will return already existing obj if place already taken</returns>
+        public GridInstance RegisterInGrid(GridInstance instance)
         {
-            this.availablePositions[foundIndex] = null;
-            GridInstance newInstance = new(gameObj, foundIndex, this.generator, false);
-            this.gridInstances.Add(newInstance);
-            return newInstance;
+            GridInstance found = this.gridInstances.FirstOrDefault(a => a.index == instance.index);
+            if (found != null) return found;
+            
+            if (instance.offGrid)
+                this.availableOffGridPositions[instance.index] = null;
+            else
+                this.availablePositions[instance.index] = null;
+            
+            this.gridInstances.Add(instance);
+            return instance;
         }
 
         /// <summary>

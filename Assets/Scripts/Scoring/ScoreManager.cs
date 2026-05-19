@@ -16,7 +16,7 @@ namespace Scoring
         public Action OnChangeScore;
         public Action OnReachedGoal;
 
-        private void Awake() => this.score = startScore;
+        private void Awake() => this.score = this.startScore;
 
         /// <summary>
         /// Adds given value to score.
@@ -33,7 +33,7 @@ namespace Scoring
         private void SetScore(int score)
         {
             this.score = score;
-            OnChangeScore?.Invoke();
+            this.OnChangeScore?.Invoke();
 
             if (this.score >= this.scoreGoal)
             {

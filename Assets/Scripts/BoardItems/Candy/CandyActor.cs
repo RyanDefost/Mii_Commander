@@ -8,7 +8,7 @@ using UnityEngine;
 public class CandyActor : BoardItem
 {
     [SerializeField] private int points;
-    public int Points { get => points; private set => points = value; }
+    public int Points { get => this.points; private set => this.points = value; }
 
     public int candyType; // index reference to lookup
     
@@ -23,6 +23,16 @@ public class CandyActor : BoardItem
         this.handHandler = GetComponent<HandHandler>();
     }
 
-    public static void OnGrabReleased(Rigidbody rb, BoardItem boardItem, Vector2 handMovementDir, Vector2 throwForce) => 
-        HandHandler.OnGrabReleased(rb, boardItem, handMovementDir, throwForce);
+    public void OnGrabReleased(Rigidbody rb, Vector2 handMovementDir, Vector2 throwForce)
+    {
+        this.movement.moveImmunity = true;
+        HandHandler.OnGrabReleased(rb, this, handMovementDir, throwForce);
+        this.OnAddToBoard += RemovePlayerMoveImmunity;
+    }
+
+    private void RemovePlayerMoveImmunity()
+    {
+        this.movement.moveImmunity = false;
+        this.OnAddToBoard -= RemovePlayerMoveImmunity;
+    }
 }

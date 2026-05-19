@@ -34,8 +34,8 @@ namespace Scoring
         
         private void SetVisuals()
         {
-            int score = scoreManager.GetScore();
-            int goal = scoreManager.GetGoal();
+            int score = this.scoreManager.GetScore();
+            int goal = this.scoreManager.GetGoal();
             float fractionValue = CalculateFractionValue(score, goal);
             
             this.text.text = $"{score.ToString()}/{goal.ToString()}";
@@ -47,7 +47,7 @@ namespace Scoring
         private IEnumerator GradualApply(float finalValue)
         {
             float startValue = this.slider.value;
-            for (float i = 0; i < 1; i += (applySpeed * Time.deltaTime))
+            for (float i = 0; i < 1; i += (this.applySpeed * Time.deltaTime))
             {
                 this.slider.value = Mathf.Lerp(startValue, finalValue, i);  
                 yield return new WaitForSeconds(Time.deltaTime);

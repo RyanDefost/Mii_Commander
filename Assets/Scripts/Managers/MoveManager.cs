@@ -21,40 +21,36 @@ namespace Managers
         public Action OnChanged;
         public Action OnLastMove;
 
-        private void Start()
-        {
-            OnChanged += SetUI;
-        }
+        private void Start() => this.OnChanged += SetUI;
 
         public void SetMove()
         {
-            OnSetMove?.Invoke();
+            this.OnSetMove?.Invoke();
             SetMoveAmount(this.MoveAmount -1);
             
-            if(MoveAmount == 0) OnLastMove?.Invoke();
+            if(this.MoveAmount == 0) this.OnLastMove?.Invoke();
         }
 
         public void UndoMove()
         {
-            OnUndoMove?.Invoke();
+            this.OnUndoMove?.Invoke();
             SetMoveAmount(this.MoveAmount +1);
         }
         
-        public void ResetMoveAmount() => SetMoveAmount(initialMoveAmount);
+        public void ResetMoveAmount() => SetMoveAmount(this.initialMoveAmount);
 
         public void SetInitialMoveAmount(int amount)
         {
-            initialMoveAmount = amount;
-            SetMoveAmount(initialMoveAmount);
+            this.initialMoveAmount = amount;
+            SetMoveAmount(this.initialMoveAmount);
         }
         
         private void SetMoveAmount(int moveAmount)
         {
-            this.MoveAmount =Mathf.Clamp(moveAmount, clampAmount.min, clampAmount.max);
-            OnChanged?.Invoke();
+            this.MoveAmount = Mathf.Clamp(moveAmount, this.clampAmount.min, this.clampAmount.max);
+            this.OnChanged?.Invoke();
         }
 
-        private void SetUI() => moveAmountText.text = $"{MoveAmount} : Moves";
-        
+        private void SetUI() => this.moveAmountText.text = $"{this.MoveAmount} : Moves";
     }
 }

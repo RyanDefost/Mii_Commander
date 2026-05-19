@@ -17,20 +17,20 @@ namespace Managers
         
         public void Update()
         {
-            if ( currentState != null )
+            if (this.currentState != null )
             {
-                currentState.Update();
+                this.currentState.Update();
             }
         }
 
         public void SetState( State<T> newState )
         {
-            currentState?.Exit();
+            this.currentState?.Exit();
             
-            newState.Owner = owner;
+            newState.Owner = this.owner;
             newState.Start();
-            
-            currentState = newState;
+
+            this.currentState = newState;
         }
     }
 }

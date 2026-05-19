@@ -12,7 +12,7 @@ namespace Managers
         public void SetState()
         {
             this.gameManager = ComponentRegistry.GetComponent<GameManager>();
-            this.gameManager.SetGameState(state);
+            this.gameManager.SetGameState(this.state);
         }
     }
 }

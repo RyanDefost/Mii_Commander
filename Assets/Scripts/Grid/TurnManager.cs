@@ -36,7 +36,7 @@ namespace Grid
                     return;
                 moveComponent.ResetTarget();
                 moveComponent.SetTarget(this.gridManager.GetNearestPosition(
-                    instance.position + this.gridManager.CellSize.y * Vector3.down, instance.gameObj, instance));
+                    instance.position + this.gridManager.CellSize.y * Vector3.down, instance.gameObj, instance), false);
 
                 if (!moveComponent.HasTarget())
                 {

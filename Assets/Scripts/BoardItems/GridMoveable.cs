@@ -1,5 +1,6 @@
 ﻿using System;
 using Grid;
+using Managers;
 using UnityEngine;
 
 /// <summary>
@@ -9,15 +10,22 @@ using UnityEngine;
 public class GridMoveable : BoardItemComponent
 {
     private GridManager grid;
+    private MoveManager moveManagerRef;
     protected GridManager.GridInstance Target { get; private set; }
+    private GridManager.GridInstance oldTarget;
     [SerializeField]
     private float offset = 0.25f;
     [SerializeField]
     private float minimalDist = 1f;
-    private float? previousDist = null;
+    private float? previousDist;
     protected Action onUpdate;
+    public bool moveImmunity;
 
-    private void Start() => this.grid = ComponentRegistry.GetComponent<GridManager>();
+    private void Start()
+    {
+        this.grid = ComponentRegistry.GetComponent<GridManager>();
+        this.moveManagerRef = ComponentRegistry.GetComponent<GameManager>()?.MoveManager;
+    }
 
     public override void ConnectToBoardItem()
     { 
@@ -93,7 +101,7 @@ public class GridMoveable : BoardItemComponent
             return true;
         this.grid ??= ComponentRegistry.GetComponent<GridManager>();
         if (this.grid)
-            SetTarget(this.grid.GetNearestPosition(this.transform.position, this.gameObject));
+            SetTarget(this.grid.GetNearestPosition(this.transform.position, this.gameObject), !this.moveImmunity);
         else
             ComponentRegistry.TrySubscribeForComponent<GridManager>(TriggerUpdateTarget);
         return this.Target != null;
@@ -101,13 +109,30 @@ public class GridMoveable : BoardItemComponent
     
     protected void TriggerUpdateTarget() => UpdateTarget();
     
-    public void SetTarget(GridManager.GridInstance newTarget) => this.Target = newTarget;
-    
+    public void SetTarget(GridManager.GridInstance newTarget, bool usesMove)
+    {
+        if (this.moveManagerRef.MoveAmount == 0 && usesMove)
+        {
+            this.grid.ReleaseInstance(newTarget);
+            if (this.oldTarget == null)
+                return;
+            this.Target = this.oldTarget;
+            this.grid.RegisterInGrid(this.Target);
+        }
+        else
+            this.Target = newTarget;
+
+        Debug.Log(usesMove);
+        if (usesMove)
+            this.moveManagerRef.SetMove();
+    }
+
     public void ResetTarget()
     {
         if (this.Target == null)
             return;
         this.grid.ReleaseInstance(this.Target);
+        this.oldTarget = this.Target;
         this.Target = null;
     }
 
