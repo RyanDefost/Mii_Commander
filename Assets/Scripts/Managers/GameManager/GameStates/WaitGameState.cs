@@ -17,8 +17,7 @@ namespace Managers.GameStates
             
             this.Owner.MoveManager.SetMove();
             this.Owner.TurnManager.NextTurn();
-            
-            Debug.Log("ENTER WaitGameState");
+
         }
 
         public override void Update()
@@ -29,8 +28,7 @@ namespace Managers.GameStates
         public override void Exit()
         {
             this.Owner.TurnManager.OnreachedEnd -= TrySetScore;
-            
-            Debug.Log("EXIT WaitGameState");
+
         }
 
         private void TrySetScore(GridMoveable moveable)

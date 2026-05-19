@@ -28,15 +28,15 @@ namespace Grid
         {
             this.gridManager.ForAllGridItems(instance =>
             {
-                if (instance == null || !instance.gameObj)
+                if (instance == null || !instance.boardItem)
                     return;
 
-                GridMoveable moveComponent = instance.gameObj.GetComponent<GridMoveable>();
+                GridMoveable moveComponent = instance.boardItem.gameObject.GetComponent<GridMoveable>();
                 if (!moveComponent)
                     return;
                 moveComponent.ResetTarget();
                 moveComponent.SetTarget(this.gridManager.GetNearestPosition(
-                    instance.position + this.gridManager.CellSize.y * Vector3.down, instance.gameObj, instance));
+                    instance.position + this.gridManager.CellSize.y * Vector3.down, instance.boardItem, instance));
 
                 if (!moveComponent.HasTarget())
                 {

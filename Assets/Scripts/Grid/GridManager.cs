@@ -25,12 +25,12 @@ namespace Grid
         {
             public Vector3 position;
             public readonly int index;
-            public readonly GameObject gameObj;
+            public readonly BoardItem boardItem;
             public bool offGrid;
 
-            public GridInstance(GameObject gameObj, int foundIndex, GridGenerator generator, bool offGrid)
+            public GridInstance(BoardItem gameObj, int foundIndex, GridGenerator generator, bool offGrid)
             {
-                this.gameObj = gameObj;
+                this.boardItem = gameObj;
                 this.position = !offGrid ? generator.GetPosAt(foundIndex) : generator.GetOffGridPosAt(foundIndex);
                 this.index = foundIndex;
                 this.offGrid = offGrid;
@@ -51,10 +51,18 @@ namespace Grid
             ComponentRegistry.AddToRegistry(this);
         }
 
+        public void PrintInstances()
+        {
+            Debug.Log(gridInstances.Count);
+            foreach (GridInstance gridInstance in this.gridInstances)
+            {
+            }
+        }
+
         private void OnDestroy() => ComponentRegistry.RemoveFromRegistry(this);
 
         /// <summary>Tries to get a near available position both on grid and off grid</summary>
-        public GridInstance GetNearestPosition(Vector3 position, GameObject gameObj, GridInstance previous = null)
+        public GridInstance GetNearestPosition(Vector3 position, BoardItem gameObj, GridInstance previous = null)
         {
             Vector3? posToIgnore = null;
             bool isBottomRow = false;
@@ -70,7 +78,7 @@ namespace Grid
         }
 
         /// <summary>Used in case the grid is full, a last row underneath the board. Try to get a available position</summary>
-        public GridInstance GetNearestOffGridPosition(Vector3 position, GameObject gameObj, Vector3? posToIgnore = null, bool isAlreadyOffGrid = false)
+        public GridInstance GetNearestOffGridPosition(Vector3 position, BoardItem gameObj, Vector3? posToIgnore = null, bool isAlreadyOffGrid = false)
         {
             int foundIndexOffGrid = GetNearestIndex(position, this.availableOffGridPositions, posToIgnore);
             int foundIndex = GetNearestIndex(position, this.availablePositions, posToIgnore);
@@ -87,7 +95,7 @@ namespace Grid
         }
 
         /// <summary>Tries to find the nearest available position on the board</summary>
-        public GridInstance GetNearestGridPosition(Vector3 position, GameObject gameObj, Vector3? posToIgnore = null)
+        public GridInstance GetNearestGridPosition(Vector3 position, BoardItem gameObj, Vector3? posToIgnore = null)
         {
             int foundIndex = GetNearestIndex(position, this.availablePositions, posToIgnore);
             return foundIndex == -1 ? null : RegisterGridPosition(gameObj, foundIndex);
@@ -96,7 +104,7 @@ namespace Grid
         /// <summary>
         /// Creates a grid instance, and makes sure the position isnt taken again
         /// </summary>
-        private GridInstance RegisterGridPosition(GameObject gameObj, int foundIndex)
+        private GridInstance RegisterGridPosition(BoardItem gameObj, int foundIndex)
         {
             this.availablePositions[foundIndex] = null;
             GridInstance newInstance = new(gameObj, foundIndex, this.generator, false);
