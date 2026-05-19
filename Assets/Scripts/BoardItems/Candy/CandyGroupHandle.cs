@@ -37,7 +37,7 @@ public class CandyGroupHandle : IPoolable
         }
 
         this.playerHandRef = playerHandManager;
-        playerHandManager.OnGrabReleased += OnGrabReleased;
+        playerHandManager.OnRemovedFromHand += OnGrabReleased;
     }
 
     public void OnEnableObject()
@@ -58,7 +58,7 @@ public class CandyGroupHandle : IPoolable
     {
         foreach (CandyHandle instance in this.instances) 
             instance.actor.OnGrabReleased(instance.rb, handMovementDir, throwForce);
-        this.playerHandRef.OnGrabReleased -= OnGrabReleased;
+        this.playerHandRef.OnRemovedFromHand -= OnGrabReleased;
     }
 
     public void SetParent(Transform parent)

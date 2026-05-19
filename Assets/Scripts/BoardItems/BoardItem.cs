@@ -19,6 +19,7 @@ public class BoardItem : MonoBehaviour
     public Rigidbody Rb { get => this.rb; private set => this.rb = value; }
 
     public Action OnAddToHand;
+    public Action OnRemovedFromHand; 
     public Action OnInitiate;
     public Action OnAddToBoard;
     

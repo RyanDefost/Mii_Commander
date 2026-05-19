@@ -53,8 +53,17 @@ public class GridMoveable : BoardItemComponent
     
     private void Update() => this.onUpdate?.Invoke();
 
-    private void OnAddToHand() => SetMoving(false);
-    private void OnInitiate() => SetMoving(true);
+    private void OnAddToHand()
+    {
+        SetMoving(false);
+        this.onUpdate += LockLocalPosition;
+    }
+
+    private void OnInitiate()
+    {
+        SetMoving(true);
+        this.onUpdate -= LockLocalPosition;
+    }
 
     public void SetMoving(bool newState)
     {
@@ -63,6 +72,8 @@ public class GridMoveable : BoardItemComponent
         else
             StopMovementToTarget();
     }
+
+    private void LockLocalPosition() => this.transform.localPosition = Vector3.zero;
 
     protected virtual void StopMovementToTarget()
     {

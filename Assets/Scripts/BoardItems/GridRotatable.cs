@@ -8,19 +8,12 @@ using UnityEngine;
 public class GridRotatable : BoardItemComponent
 {
     private MoveManager moveManagerRef;
-    [SerializeField] private HandHandler handHandler;
     [SerializeField] private float rotationSpeed = 12f;
     [SerializeField] private float stepAngle = 9f;
     private float progression;
     private bool lockedRotation;
     private Vector3 lastRotation;
     private Vector3 rotation;
-
-    protected override void CustomOnValidate()
-    {
-        base.CustomOnValidate();
-        this.handHandler = GetComponent<HandHandler>();
-    }
 
     private void Start() => this.moveManagerRef = ComponentRegistry.GetComponent<GameManager>()?.MoveManager;
 
@@ -71,22 +64,25 @@ public class GridRotatable : BoardItemComponent
 
         this.progression = 0;
         this.moveManagerRef.SetMove();
+        
+        this.rotation = this.transform.localEulerAngles;
+        this.lockedRotation = true;
     }
     
     private void OnAddToHand()
     {
         this.boardItem.OnAddToBoard += OnAddToBoard;
-        this.handHandler.OnHandGrabRelease += OnGrabReleased;
+        this.boardItem.OnRemovedFromHand += OnRemovedFromHand;
         // lock rotation
         this.lockedRotation = true;
         this.lastRotation = this.transform.localEulerAngles;
         this.rotation = this.lastRotation;
     }
 
-    private void OnGrabReleased()
+    private void OnRemovedFromHand()
     {
         this.lockedRotation = false;
-        this.handHandler.OnHandGrabRelease -= OnGrabReleased;
+        this.boardItem.OnRemovedFromHand -= OnRemovedFromHand;
     }
 
     private void OnAddToBoard()
