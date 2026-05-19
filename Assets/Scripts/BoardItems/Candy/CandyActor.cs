@@ -17,7 +17,7 @@ public class CandyActor : BoardItem
     [SerializeField]
     private HandHandler handHandler;
     
-    protected override void CustomOnValidate()
+    protected virtual void CustomOnValidate()
     {
         this.movement = GetComponent<MoveToGridPosition>();
         this.handHandler = GetComponent<HandHandler>();

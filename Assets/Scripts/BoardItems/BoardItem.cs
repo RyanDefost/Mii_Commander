@@ -22,6 +22,7 @@ public class BoardItem : MonoBehaviour
     public Action OnRemovedFromHand; 
     public Action OnInitiate;
     public Action OnAddToBoard;
+    public Action OnActivate;
     
     private void OnValidate()
     {
@@ -39,10 +40,11 @@ public class BoardItem : MonoBehaviour
             boardItemComponent.ConnectToBoardItem();
     }
 
-    protected virtual void CustomOnValidate() {}
-    
     /// <summary>Called when released and on the playing field</summary>
     public void Initiate() => this.OnInitiate?.Invoke();
+    
+    /// <summary>Called when object should activate its ability, explode, push, pull, collect</summary>
+    public void Activate() => this.OnActivate?.Invoke();
 
     public T GetBoardComponent<T>() where T : BoardItemComponent
     {

@@ -13,7 +13,7 @@ namespace Managers.GameStates
             this.playerHandRef = ComponentRegistry.GetComponent<PlayerHandManager>();
             this.playerHandRef.SetCanGrab(true);
             
-            Debug.Log("ENTER PlayGameState");
+            // Debug.Log("ENTER PlayGameState");
         }
 
         public override void Update()
@@ -23,7 +23,7 @@ namespace Managers.GameStates
 
         public override void Exit()
         {
-            Debug.Log("EXIT PlayGameState");
+            // Debug.Log("EXIT PlayGameState");
         }
     }
 }

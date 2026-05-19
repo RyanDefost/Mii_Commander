@@ -141,7 +141,7 @@ public class GridMoveable : BoardItemComponent
             return true;
         this.grid ??= ComponentRegistry.GetComponent<GridManager>();
         if (this.grid)
-            SetTarget(this.grid.GetNearestPosition(this.transform.position, this.gameObject), usesMove);
+            SetTarget(this.grid.GetNearestPosition(this.transform.position, this.gameObject, this.boardItem), usesMove);
         else
             ComponentRegistry.TrySubscribeForComponent<GridManager>(TriggerUpdateTargetWithoutMove);
         return this.Target != null;
@@ -152,6 +152,7 @@ public class GridMoveable : BoardItemComponent
     
     public void SetTarget(GridManager.GridInstance newTarget, bool usesMove)
     {
+        // error here
         if (this.oldTarget != null && newTarget.offGrid == this.oldTarget.offGrid && newTarget.position == this.oldTarget.position)
         {
             this.Target = newTarget;
