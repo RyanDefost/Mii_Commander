@@ -8,10 +8,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class MoveToGridPosition : GridMoveable
 {
-    [Header("Required Components")]
-    [SerializeField] 
-    private Rigidbody rb;
-    
     [Header("Base movement")]
     [SerializeField]
     private float movementStrength = 5f;
@@ -37,12 +33,6 @@ public class MoveToGridPosition : GridMoveable
     [SerializeField]
     private float maxResistanceMultiplier = 5f;
     private float currentResistanceMultiplier = 1f;
-
-    protected override void CustomOnValidate()
-    {
-        if (Application.isPlaying) return;
-        this.rb = GetComponent<Rigidbody>();
-    }
     
     protected override void TriggerMovementToTarget()
     {

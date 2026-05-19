@@ -5,26 +5,38 @@ using UnityEngine;
 
 /// <summary>
 /// Makes a board item move to a target position on the grid.
-/// TODO: If the player is not allowed to move the piece it should snap back to previous target
 /// </summary>
 public class GridMoveable : BoardItemComponent
 {
+    [SerializeField] 
+    protected Rigidbody rb;
     private GridManager grid;
     private MoveManager moveManagerRef;
+    public bool moveImmunity;
+    
     protected GridManager.GridInstance Target { get; private set; }
     private GridManager.GridInstance oldTarget;
+    
     [SerializeField]
     private float offset = 0.25f;
     [SerializeField]
     private float minimalDist = 1f;
     private float? previousDist;
+    [SerializeField]
+    private float minVelocityToRecalculate = 1f;
+    
     protected Action onUpdate;
-    public bool moveImmunity;
 
     private void Start()
     {
         this.grid = ComponentRegistry.GetComponent<GridManager>();
         this.moveManagerRef = ComponentRegistry.GetComponent<GameManager>()?.MoveManager;
+    }
+    
+    protected override void CustomOnValidate()
+    {
+        if (Application.isPlaying) return;
+        this.rb = GetComponent<Rigidbody>();
     }
 
     public override void ConnectToBoardItem()
@@ -56,7 +68,8 @@ public class GridMoveable : BoardItemComponent
     {
         this.onUpdate -= SnapToTarget;
         this.onUpdate -= AwaitDistanceToTarget;
-        ResetTarget(); // TODO: logic for limited player moves here
+        ResetTarget();
+        this.previousDist = null;
     }
 
     protected virtual void TriggerMovementToTarget()
@@ -69,20 +82,35 @@ public class GridMoveable : BoardItemComponent
     {
         if (this.Target == null)
             return;
+        
         float dist = Vector3.Distance(this.transform.position, this.Target.position);
         this.previousDist ??= dist;
         
         if (dist > this.minimalDist)
         {
+            // The item is moving away from its target
             if (dist > this.previousDist)
             {
-                ResetTarget();
-                TriggerUpdateTargetWithoutMove();
-                this.previousDist = null;
+                float currentSpeed = this.rb ? this.rb.linearVelocity.magnitude : 0f;
+
+                // If its rolling past, get a new target
+                if (currentSpeed > this.minVelocityToRecalculate)
+                {
+                    ResetTarget(); 
+                    this.previousDist = null;
+                    UpdateTarget(false);
+                    return;
+                }
+
+                // edge case, off board or unmoving
+                SetMoving(false);
+                return;
             }
+            
             this.previousDist = dist;
             return;
         }
+        
         this.onUpdate += SnapToTarget;
         this.onUpdate -= AwaitDistanceToTarget;
     }
@@ -93,6 +121,7 @@ public class GridMoveable : BoardItemComponent
             return;
         this.transform.position = GetTargetPosition();
         this.boardItem.OnAddToBoard?.Invoke();
+        this.previousDist = null;
     }
     
     protected bool UpdateTarget(bool usesMove)
@@ -112,6 +141,12 @@ public class GridMoveable : BoardItemComponent
     
     public void SetTarget(GridManager.GridInstance newTarget, bool usesMove)
     {
+        if (this.oldTarget != null && newTarget.offGrid == this.oldTarget.offGrid && newTarget.position == this.oldTarget.position)
+        {
+            this.Target = newTarget;
+            return;
+        }
+        
         if (this.moveManagerRef.MoveAmount == 0 && usesMove)
         {
             this.grid.ReleaseInstance(newTarget);
