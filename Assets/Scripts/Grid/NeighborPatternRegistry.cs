@@ -11,7 +11,9 @@ namespace Grid
         [SerializeField]
         private List<PatternInstance> patterns = new();
         [SerializeField]
-        private Color toCheckColor;
+        private Color neighborColor;
+        [SerializeField]
+        private Color centerColor;
 
         [Serializable]
         public class PatternInstance
@@ -29,10 +31,10 @@ namespace Grid
             public string name;
             public NeighborPattern pattern;
 
-            public LivePattern(string name, Texture2D tex, Color toCheckColor)
+            public LivePattern(string name, Texture2D tex, Color neighborColor, Color centerColor)
             {
                 this.name = name;
-                this.pattern = new NeighborPattern(tex, toCheckColor);
+                this.pattern = new NeighborPattern(tex, neighborColor, centerColor);
             }
         }
 
@@ -44,11 +46,14 @@ namespace Grid
             this.usedPatterns.Clear();
             foreach (PatternInstance instance in 
                      this.patterns.Where(instance => instance.name != "" && instance.texture != null))
-                this.usedPatterns.Add(new LivePattern(instance.name, instance.texture, this.toCheckColor));
+                this.usedPatterns.Add(new LivePattern(instance.name, instance.texture, this.neighborColor, this.centerColor));
         }
 
         private void Start() => ComponentRegistry.AddToRegistry(this);
 
+        /// <summary>
+        /// Gets a struct containing a pattern, make sure to reget if the data changes inside the registry
+        /// </summary>
         public NeighborPattern? GetNeighborPattern(string patternName) =>
             this.usedPatterns.FirstOrDefault(a => a.name == patternName)?.pattern;
     }

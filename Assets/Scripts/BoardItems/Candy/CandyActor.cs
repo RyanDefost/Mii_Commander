@@ -1,5 +1,4 @@
-﻿using PlayerHand;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// Manages the in game logic of a piece of candy

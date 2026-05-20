@@ -1,5 +1,3 @@
-using System;
-using Grid;
 using UnityEngine;
 
 /// <summary>
@@ -73,9 +71,9 @@ public class MoveToGridPosition : GridMoveable
         if (this.Target == null)
             return;
         base.SnapToTarget();
-        this.rb.linearVelocity = Vector3.zero;
-        this.rb.angularVelocity = Vector3.zero;
-        this.rb.Sleep();
+        this.boardItem.Rb.linearVelocity = Vector3.zero;
+        this.boardItem.Rb.angularVelocity = Vector3.zero;
+        this.boardItem.Rb.Sleep();
         this.onUpdate -= UpdateEndTimer;
         
         this.endTimer.ResetAndReplay();
@@ -90,7 +88,7 @@ public class MoveToGridPosition : GridMoveable
         Vector3 diff = targetPosition - this.transform.position;
         float distance = diff.magnitude;
 
-        Vector3 velocity = this.rb.linearVelocity;
+        Vector3 velocity = this.boardItem.Rb.linearVelocity;
         float speed = velocity.magnitude;
         
         // If far from target but moving slower than the threshold, this means there's resistance
@@ -117,21 +115,21 @@ public class MoveToGridPosition : GridMoveable
         float baseForce = Mathf.Max(distance, this.usedMinimumForce) * alignmentFactor;
         float finalForce = baseForce * this.currentResistanceMultiplier;
         
-        this.rb.AddForce(diff.normalized * finalForce, ForceMode.Force);
+        this.boardItem.Rb.AddForce(diff.normalized * finalForce, ForceMode.Force);
         
         // If stuck, allow a slightly higher max velocity temporarily to break free aggressively
         float effectiveMaxVelocity = this.maxVelocity * (this.currentResistanceMultiplier > 1.5f ? 1.5f : 1f);
         if (speed > effectiveMaxVelocity)
-            this.rb.linearVelocity = velocity.normalized * effectiveMaxVelocity;
+            this.boardItem.Rb.linearVelocity = velocity.normalized * effectiveMaxVelocity;
 
         // Arrival, dampening
         if (!(distance < 0.2f)) return;
-        this.rb.linearVelocity *= 1f - Time.deltaTime * this.dampening;
+        this.boardItem.Rb.linearVelocity *= 1f - Time.deltaTime * this.dampening;
         this.usedMinimumForce = Mathf.Max(
             this.usedMinimumForce - Time.deltaTime * this.dampening,
             0f
         );
-        if (this.rb.linearVelocity.magnitude < 0.2f)
+        if (this.boardItem.Rb.linearVelocity.magnitude < 0.2f)
             SnapToTarget();
     }
 }

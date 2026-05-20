@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
+using Grid;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 /// <summary>
 /// Holds all board item events,
@@ -10,8 +10,7 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class BoardItem : MonoBehaviour
 {
-    [SerializeField]
-    private Interactable interactable;
+    public GridManager.GridInstance gridInstanceRef;
     [SerializeField, HideInInspector]
     private BoardItemComponent[] components;
     [SerializeField]
@@ -29,7 +28,7 @@ public class BoardItem : MonoBehaviour
         if (Application.isPlaying)
             return;
         this.rb = GetComponent<Rigidbody>();
-        this.interactable = GetComponentInChildren<Interactable>();
+        GetComponentInChildren<Interactable>();
         
         this.components = GetComponentsInChildren<BoardItemComponent>();
     }

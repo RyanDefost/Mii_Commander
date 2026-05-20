@@ -1,5 +1,4 @@
-﻿using System;
-using PlayerHand;
+﻿using PlayerHand;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

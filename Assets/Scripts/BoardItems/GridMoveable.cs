@@ -6,10 +6,9 @@ using UnityEngine;
 /// <summary>
 /// Makes a board item move to a target position on the grid.
 /// </summary>
+[RequireComponent(typeof(Rigidbody))]
 public class GridMoveable : BoardItemComponent
 {
-    [SerializeField] 
-    protected Rigidbody rb;
     private GridManager grid;
     private MoveManager moveManagerRef;
     public bool moveImmunity;
@@ -31,12 +30,6 @@ public class GridMoveable : BoardItemComponent
     {
         this.grid = ComponentRegistry.GetComponent<GridManager>();
         this.moveManagerRef = ComponentRegistry.GetComponent<GameManager>()?.MoveManager;
-    }
-    
-    protected override void CustomOnValidate()
-    {
-        if (Application.isPlaying) return;
-        this.rb = GetComponent<Rigidbody>();
     }
 
     public override void ConnectToBoardItem()
@@ -102,7 +95,7 @@ public class GridMoveable : BoardItemComponent
             // The item is moving away from its target
             if (dist > this.previousDist)
             {
-                float currentSpeed = this.rb ? this.rb.linearVelocity.magnitude : 0f;
+                float currentSpeed = this.boardItem.Rb ? this.boardItem.Rb.linearVelocity.magnitude : 0f;
 
                 // If its rolling past, get a new target
                 if (currentSpeed > this.minVelocityToRecalculate)

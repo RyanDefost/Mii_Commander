@@ -2,7 +2,6 @@ using System;
 using HelperStructs;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Managers
 {

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.Collections;
 using UnityEngine;
 
 namespace Grid
@@ -68,6 +66,9 @@ namespace Grid
                 this.index = index;
                 this.boardItem = boardItem;
                 this.moveable = moveable;
+
+                if (this.boardItem)
+                    this.boardItem.gridInstanceRef = this;
             }
         }
         
@@ -131,12 +132,21 @@ namespace Grid
             return foundIndex == -1 ? null : RegisterGridPosition(gameObj, item, foundIndex);
         }
 
+        /// <summary>
+        /// Gets an array of neighbors, based on a given pattern
+        /// </summary>
+        /// <param name="instance">mid-point of the pattern</param>
+        /// <param name="pattern">pattern around the desired</param>
+        /// <returns>an array of found neighbors and empty cells</returns>
         public GridInstance[] GetNeighbors(GridInstance instance, NeighborPattern pattern)
         {
             int distanceToLeft = instance.index.index % this.generator.Width;
             int distanceToRight = (this.generator.Width - 1) - distanceToLeft;
             
             GridInstance[] result = new GridInstance[pattern.width * pattern.height];
+
+            int centerX = pattern.center.x;
+            int centerY = pattern.center.y;
             
             foreach (Vector2Int pos in pattern.positions)
             {
@@ -156,7 +166,7 @@ namespace Grid
                 if ((isOffGrid && index >= this.openOffGridPositions.Count) || index < 0) // outside of grid
                     continue;
 
-                int baseIndex = pos.x + pos.y * pattern.width;
+                int baseIndex = (pos.x + centerX) + (pos.y + centerY) * pattern.width;
                 switch (isOffGrid) // check if position is taken, return neighbor if position was taken
                 {
                     case true when this.openOffGridPositions[index] == null:
@@ -167,7 +177,7 @@ namespace Grid
                         break;
                 }
             }
-            
+
             return result;
         }
 

@@ -42,7 +42,7 @@ namespace Grid
                 moveComponent.ResetTarget();
                 GridManager.GridInstance newTarget = this.gridManager.GetNearestPosition(
                     instance.position + this.gridManager.CellSize.y * Vector3.down, instance.gameObj,
-                    moveComponent.GetBoardItem(), instance);
+                    moveComponent.GetBoardItem(), instance); // TODO maybe replace this with a neighborpattern?
                 
                 if (newTarget != null)
                     moveComponent.SetTarget(newTarget, false);

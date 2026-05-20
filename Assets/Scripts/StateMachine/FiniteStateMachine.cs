@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace Managers
 {
     public class FiniteStateMachine<T>

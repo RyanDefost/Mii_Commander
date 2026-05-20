@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 5698657525678878846}
   - component: {fileID: 688603324041803321}
   - component: {fileID: 5353542823578788386}
+  - component: {fileID: 6935780993457236962}
   m_Layer: 0
   m_Name: Soda
   m_TagString: Untagged
@@ -394,11 +395,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecaf37c275eb4ee69e8061eab04b5d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardItem
-  interactable: {fileID: 1712001221833234084}
   components:
   - {fileID: 6104643331701795094}
   - {fileID: 5698657525678878846}
   - {fileID: 688603324041803321}
+  - {fileID: 6935780993457236962}
   rb: {fileID: 2089955879647102775}
 --- !u!114 &5698657525678878846
 MonoBehaviour:
@@ -413,7 +414,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridMoveable
   boardItem: {fileID: 2810408795809733440}
-  rb: {fileID: 2089955879647102775}
   moveImmunity: 0
   offset: 0.45
   minimalDist: 1
@@ -455,3 +455,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8426754826734729717, guid: 876503a8992940143af83701ea22b00f, type: 3}
+--- !u!114 &6935780993457236962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7128209094669073184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ff21a633014a05b1e428f822bcb5ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExplodeNearbyItemsAway
+  boardItem: {fileID: 2810408795809733440}
+  gridManager: {fileID: 0}
+  patternRegistry: {fileID: 0}
+  explosionPatternName: Star
