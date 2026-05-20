@@ -3612,7 +3612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acba714a69ce4677bbffef7df819552e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Synergy.SynergyLookUp
-  synergy: {fileID: 0}
+  synergy: {fileID: 11400000, guid: cbe4c48b3aeb2f79684d466aeb30b50d, type: 2}
 --- !u!4 &2055974845
 Transform:
   m_ObjectHideFlags: 0

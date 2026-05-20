@@ -51,14 +51,6 @@ namespace Grid
             ComponentRegistry.AddToRegistry(this);
         }
 
-        public void PrintInstances()
-        {
-            Debug.Log(gridInstances.Count);
-            foreach (GridInstance gridInstance in this.gridInstances)
-            {
-            }
-        }
-
         private void OnDestroy() => ComponentRegistry.RemoveFromRegistry(this);
 
         /// <summary>Tries to get a near available position both on grid and off grid</summary>
@@ -166,5 +158,10 @@ namespace Grid
             tempGridInstances.Sort((a, b) => a.position.y.CompareTo(b.position.y));
             tempGridInstances.ForEach(action);
         }
+
+        public List<Vector3?> GetPosition()
+        {
+            return this.generator.GetAllPositions();  
+        } 
     }
 }
