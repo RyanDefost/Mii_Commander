@@ -8,7 +8,7 @@ namespace Managers.GameStates
         
         public override void Start()
         {
-            this.Owner.TurnManager.OnreachedEnd += TrySetScore;
+            this.Owner.TurnManager.OnEndReached += TrySetScore;
             
             //Let player interact
             this.playerHandRef = ComponentRegistry.GetComponent<PlayerHandManager>();
@@ -27,7 +27,7 @@ namespace Managers.GameStates
 
         public override void Exit()
         {
-            this.Owner.TurnManager.OnreachedEnd -= TrySetScore;
+            this.Owner.TurnManager.OnEndReached -= TrySetScore;
             
             // Debug.Log("EXIT WaitGameState");
         }

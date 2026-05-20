@@ -4033,10 +4033,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6935780993457236962, guid: cdd2f3ff9d858e048bd3a1fe6dfa5ff0, type: 3}
-      propertyPath: explosionPatternName
-      value: Left
-      objectReference: {fileID: 0}
     - target: {fileID: 7128209094669073184, guid: cdd2f3ff9d858e048bd3a1fe6dfa5ff0, type: 3}
       propertyPath: m_Name
       value: Soda

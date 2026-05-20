@@ -20,4 +20,6 @@ public static class VectorExtensions
     /// <param name="b">Vector2 containing the new data</param>
     /// <returns></returns>
     public static Vector3 OverwriteXY(this Vector3 a, Vector2 b) => new(b.x, b.y, a.z);
+
+    public static Vector2 DirectionTo(this Vector2 a, Vector2 b) => (b - a).normalized;
 }

@@ -55,5 +55,13 @@ namespace Grid
                 Math.Abs(a.b - b.b) < tolerance && 
                 Math.Abs(a.a - b.a) < tolerance;
         }
+
+        public NeighborPattern(Vector2Int[] positions, Vector2Int center, int width, int height)
+        {
+            this.positions = positions;
+            this.center = center;
+            this.width = width;
+            this.height = height;
+        }
     }
 }
