@@ -8,7 +8,8 @@ public class ExplodeNearbyItemsAway : BoardItemComponent
     private NeighborPatternRegistry patternRegistry;
     private GameManager gameManagerRef;
     [SerializeField] private string explosionPatternName;
-    [SerializeField] private float explosionStrength = 1f;
+    [SerializeField] private float explosionStrengthTile = 1f;
+    [SerializeField] private float explosionStrengthVisual = 1f;
     [SerializeField] private float explosionTime = 1f;
 
     public override void ConnectToBoardItem() => this.boardItem.OnActivate += Activate;
@@ -31,12 +32,13 @@ public class ExplodeNearbyItemsAway : BoardItemComponent
             if (neighbor == null || !neighbor.gameObj) continue;
 
             GridMoveable moveComponent = neighbor.moveable;
-            if (!moveComponent) return;
+            if (!moveComponent) continue;
                 
             moveComponent.ResetTarget();
-            Vector3 posAway = this.boardItem.transform.position.XY().DirectionTo(neighbor.position.XY()) * this.explosionStrength;
-            GridManager.GridInstance newTarget = this.gridManager.GetNearestPosition(posAway, neighbor.gameObj,
+            Vector3 dirAway = this.boardItem.transform.position.XY().DirectionTo(neighbor.position.XY());
+            GridManager.GridInstance newTarget = this.gridManager.GetNearestPosition(neighbor.position + dirAway * this.explosionStrengthTile, neighbor.gameObj,
                 moveComponent.GetBoardItem(), neighbor);
+            moveComponent.ApplyImpulse(dirAway * this.explosionStrengthVisual);
                 
             if (newTarget != null)
                 moveComponent.SetTarget(newTarget, false);

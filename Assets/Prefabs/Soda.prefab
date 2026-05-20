@@ -468,6 +468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplodeNearbyItemsAway
   boardItem: {fileID: 2810408795809733440}
-  gridManager: {fileID: 0}
-  patternRegistry: {fileID: 0}
-  explosionPatternName: Star
+  explosionPatternName: Square3x3
+  explosionStrengthTile: 0.5
+  explosionStrengthVisual: 5
+  explosionTime: 2

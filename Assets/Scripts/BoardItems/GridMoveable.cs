@@ -177,4 +177,6 @@ public class GridMoveable : BoardItemComponent
     public bool HasTarget() => this.Target != null;
     
     protected Vector3 GetTargetPosition() => this.Target.position + Vector3.back * this.offset;
+
+    public void ApplyImpulse(Vector3 forceAway) => this.boardItem.Rb.AddForce(forceAway, ForceMode.Impulse);
 }

@@ -100,18 +100,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   boardItem: {fileID: 1365219245064566773}
+  moveImmunity: 0
   offset: 0.1
   minimalDist: 1
-  moveImmunity: 0
-  rb: {fileID: 8897784474759205449}
-  movementStrength: 5
-  maxVelocity: 30
-  dampening: 20
+  minVelocityToRecalculate: 1
+  physicsData:
+    movementStrength: 10
+    maxVelocity: 40
+    dampening: 5
+    stuckVelocityThreshold: 0.5
+    resistanceRampRate: 15
+    maxResistanceMultiplier: 20
   startDelay: 0
   endTimerTime: 10
-  stuckVelocityThreshold: 0.5
-  resistanceRampRate: 15
-  maxResistanceMultiplier: 10
 --- !u!114 &1365219245064566773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aae350310234c44bfcab900b460cb61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CandyComponent
-  interactable: {fileID: 5354653235715831597}
   components:
   - {fileID: 6753702778368679204}
   - {fileID: 8982616026848609941}

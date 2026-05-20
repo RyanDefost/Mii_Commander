@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -6,13 +7,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class MoveToGridPosition : GridMoveable
 {
-    [Header("Base movement")]
-    [SerializeField]
-    private float movementStrength = 5f;
-    [SerializeField]
-    private float maxVelocity = 20f;
-    [SerializeField]
-    private float dampening = 2f;
+    [SerializeField] 
+    private PhysicsData physicsData;
+    private float currentResistanceMultiplier = 1f;
     
     [Header("Timers")]
     [SerializeField]
@@ -23,14 +20,19 @@ public class MoveToGridPosition : GridMoveable
     private Timer endTimer;
     private float usedMinimumForce;
     
-    [Header("Resistance / Anti-Stuck")]
-    [SerializeField]
-    private float stuckVelocityThreshold = 0.5f;
-    [SerializeField]
-    private float resistanceRampRate = 15f;
-    [SerializeField]
-    private float maxResistanceMultiplier = 5f;
-    private float currentResistanceMultiplier = 1f;
+    [Serializable]
+    public class PhysicsData
+    {
+        [Header("Base movement")]
+        public float movementStrength = 5f;
+        public float maxVelocity = 20f;
+        public float dampening = 2f;
+        
+        [Header("Resistance / Anti-Stuck")]
+        public float stuckVelocityThreshold = 0.5f;
+        public float resistanceRampRate = 15f;
+        public float maxResistanceMultiplier = 5f;
+    }
     
     protected override void TriggerMovementToTarget()
     {
@@ -54,7 +56,7 @@ public class MoveToGridPosition : GridMoveable
     {
         if (!UpdateTarget(!this.moveImmunity))
             return;
-        this.usedMinimumForce = this.movementStrength;
+        this.usedMinimumForce = this.physicsData.movementStrength;
         this.endTimer = new Timer(this.endTimerTime, false, true, SnapToTarget);
         
         this.onUpdate += ApplyForceTowardsTarget;
@@ -92,18 +94,18 @@ public class MoveToGridPosition : GridMoveable
         float speed = velocity.magnitude;
         
         // If far from target but moving slower than the threshold, this means there's resistance
-        if (distance > 0.3f && speed < this.stuckVelocityThreshold)
+        if (distance > 0.3f && speed < this.physicsData.stuckVelocityThreshold)
         {
             this.currentResistanceMultiplier = Mathf.Min(
-                this.currentResistanceMultiplier + Time.deltaTime * this.resistanceRampRate,
-                this.maxResistanceMultiplier
+                this.currentResistanceMultiplier + Time.deltaTime * this.physicsData.resistanceRampRate,
+                this.physicsData.maxResistanceMultiplier
             );
         }
         else
         {
             // Smoothly lower the multiplier because there's no resistance
             this.currentResistanceMultiplier =
-                Mathf.Max(this.currentResistanceMultiplier - Time.deltaTime * this.dampening, 1f);
+                Mathf.Max(this.currentResistanceMultiplier - Time.deltaTime * this.physicsData.dampening, 1f);
         }
 
         float dot = speed > 0.001f
@@ -118,15 +120,15 @@ public class MoveToGridPosition : GridMoveable
         this.boardItem.Rb.AddForce(diff.normalized * finalForce, ForceMode.Force);
         
         // If stuck, allow a slightly higher max velocity temporarily to break free aggressively
-        float effectiveMaxVelocity = this.maxVelocity * (this.currentResistanceMultiplier > 1.5f ? 1.5f : 1f);
+        float effectiveMaxVelocity = this.physicsData.maxVelocity * (this.currentResistanceMultiplier > 1.5f ? 1.5f : 1f);
         if (speed > effectiveMaxVelocity)
             this.boardItem.Rb.linearVelocity = velocity.normalized * effectiveMaxVelocity;
 
         // Arrival, dampening
         if (!(distance < 0.2f)) return;
-        this.boardItem.Rb.linearVelocity *= 1f - Time.deltaTime * this.dampening;
+        this.boardItem.Rb.linearVelocity *= 1f - Time.deltaTime * this.physicsData.dampening;
         this.usedMinimumForce = Mathf.Max(
-            this.usedMinimumForce - Time.deltaTime * this.dampening,
+            this.usedMinimumForce - Time.deltaTime * this.physicsData.dampening,
             0f
         );
         if (this.boardItem.Rb.linearVelocity.magnitude < 0.2f)
