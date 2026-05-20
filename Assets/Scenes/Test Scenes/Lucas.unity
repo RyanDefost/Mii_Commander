@@ -548,6 +548,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 278568100}
   m_CullTransparentMesh: 1
+--- !u!1 &406152394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 406152395}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &406152395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406152394}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 547688271}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &412489391
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,7 +791,6 @@ GameObject:
   m_Component:
   - component: {fileID: 442968739}
   - component: {fileID: 442968742}
-  - component: {fileID: 442968741}
   - component: {fileID: 442968740}
   m_Layer: 0
   m_Name: HandCam
@@ -828,14 +858,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!81 &442968741
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 442968738}
-  m_Enabled: 1
 --- !u!20 &442968742
 Camera:
   m_ObjectHideFlags: 0
@@ -983,6 +1005,7 @@ Transform:
   - {fileID: 608119614}
   - {fileID: 2050022997}
   - {fileID: 462569216}
+  - {fileID: 406152395}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &608119613
@@ -1268,6 +1291,7 @@ GameObject:
   - component: {fileID: 689433973}
   - component: {fileID: 689433972}
   - component: {fileID: 689433971}
+  - component: {fileID: 689433978}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -1474,6 +1498,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &689433978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689433970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f48eda9232d4eada4de9f8f4887aa1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Grid.NeighborPatternRegistry
+  patterns:
+  - name: star
+    texture: {fileID: 2800000, guid: fa298a271a9eee24391865b3e2c55866, type: 3}
+  toCheckColor: {r: 1, g: 1, b: 1, a: 1}
+  usedPatterns:
+  - name: star
+    pattern:
+      positions:
+      - {x: 0, y: -1}
+      - {x: -1, y: 0}
+      - {x: 0, y: 0}
+      - {x: 1, y: 0}
+      - {x: 0, y: 1}
+      width: 3
+      height: 3
 --- !u!1 &705374796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1704,7 +1755,6 @@ GameObject:
   m_Component:
   - component: {fileID: 719718568}
   - component: {fileID: 719718571}
-  - component: {fileID: 719718570}
   - component: {fileID: 719718569}
   m_Layer: 0
   m_Name: MidCam
@@ -1772,14 +1822,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!81 &719718570
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 719718567}
-  m_Enabled: 1
 --- !u!20 &719718571
 Camera:
   m_ObjectHideFlags: 0
@@ -1935,10 +1977,6 @@ PrefabInstance:
     - target: {fileID: 2486186912250027246, guid: c283c6c7b4efc844a9b3f17d04b83761, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8897784474759205449, guid: c283c6c7b4efc844a9b3f17d04b83761, type: 3}
-      propertyPath: m_AngularDamping
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3638,7 +3676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b5ae6bee8145a6bec18015aca15aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHand.MovementHandler
-  camRef: {fileID: 719718571}
+  camRef: {fileID: 442968742}
   baseSensitivity: 0.008
   referenceScreenHeight: 1080
   accelerationRate: 0.08
@@ -3707,7 +3745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd37f98fe90444e3bca666eacc3aba41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHand.InteractionHandler
-  camRef: {fileID: 719718571}
+  camRef: {fileID: 442968742}
   movementHandler: {fileID: 2018210010}
   visualHandler: {fileID: 2018210011}
   layerMaskInteractables:
@@ -3935,10 +3973,6 @@ PrefabInstance:
     - target: {fileID: 1354899740253182830, guid: cdd2f3ff9d858e048bd3a1fe6dfa5ff0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2089955879647102775, guid: cdd2f3ff9d858e048bd3a1fe6dfa5ff0, type: 3}
-      propertyPath: m_AngularDamping
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7128209094669073184, guid: cdd2f3ff9d858e048bd3a1fe6dfa5ff0, type: 3}
       propertyPath: m_Name

@@ -152,8 +152,7 @@ public class GridMoveable : BoardItemComponent
     
     public void SetTarget(GridManager.GridInstance newTarget, bool usesMove)
     {
-        // error here
-        if (this.oldTarget != null && newTarget.offGrid == this.oldTarget.offGrid && newTarget.position == this.oldTarget.position)
+        if (this.oldTarget != null && newTarget.index.isOffGrid == this.oldTarget.index.isOffGrid && newTarget.position == this.oldTarget.position)
         {
             this.Target = newTarget;
             return;
