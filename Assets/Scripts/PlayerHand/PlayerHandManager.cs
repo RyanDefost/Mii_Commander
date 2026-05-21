@@ -82,7 +82,7 @@ namespace PlayerHand
             
             if (this.grabAction == null || !this.grabbing) return;
             if (CheckOnGrabReleased(ref this.grabbing, this.grabAction, this.visualHandler, this.movementHandler))
-                this.OnGrabReleased.Invoke(this.movementHandler.MovementDirection,  this.movementHandler.ThrowForce);
+                this.OnGrabReleased?.Invoke(this.movementHandler.MovementDirection,  this.movementHandler.ThrowForce);
         }
         
         private void OnGrabActionPerformed(InputAction.CallbackContext obj) => OnInteract(obj, this.interactionHandler);

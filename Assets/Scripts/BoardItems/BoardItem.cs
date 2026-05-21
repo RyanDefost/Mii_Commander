@@ -12,7 +12,7 @@ public class BoardItem : MonoBehaviour
 {
     [SerializeField]
     private Interactable interactable;
-    [SerializeField, HideInInspector]
+    [SerializeField]
     private BoardItemComponent[] components;
     [SerializeField]
     private Rigidbody rb;
@@ -21,11 +21,13 @@ public class BoardItem : MonoBehaviour
     public Action OnAddToHand;
     public Action OnInitiate;
     public Action OnAddToBoard;
+    public Action OnStarted;
     
     private void OnValidate()
     {
         if (Application.isPlaying)
             return;
+        
         this.rb = GetComponent<Rigidbody>();
         this.interactable = GetComponentInChildren<Interactable>();
         
@@ -34,8 +36,10 @@ public class BoardItem : MonoBehaviour
 
     private void Start()
     {
-        foreach (BoardItemComponent boardItemComponent in this.components) 
+        foreach (BoardItemComponent boardItemComponent in this.components)
             boardItemComponent.ConnectToBoardItem();
+        
+        OnStarted?.Invoke();
     }
 
     protected virtual void CustomOnValidate() {}

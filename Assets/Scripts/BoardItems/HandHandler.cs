@@ -14,7 +14,7 @@ public class HandHandler : BoardItemComponent
     public override void ConnectToBoardItem()
     { 
         this.playerHandRef = ComponentRegistry.GetComponent<PlayerHandManager>();
-        this.boardItem.OnAddToHand += OnAddToHand; 
+        this.boardItem.OnAddToHand += OnAddToHand;
     }
 
     private void OnDestroy() => this.boardItem.OnAddToHand -= OnAddToHand;
