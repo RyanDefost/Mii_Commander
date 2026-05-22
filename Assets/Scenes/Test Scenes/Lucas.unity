@@ -4049,10 +4049,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6935780993457236962, guid: cdd2f3ff9d858e048bd3a1fe6dfa5ff0, type: 3}
-      propertyPath: explosionTime
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7128209094669073184, guid: cdd2f3ff9d858e048bd3a1fe6dfa5ff0, type: 3}
       propertyPath: m_Name
       value: Soda
@@ -4060,7 +4056,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2996186481971399313, guid: cdd2f3ff9d858e048bd3a1fe6dfa5ff0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: cdd2f3ff9d858e048bd3a1fe6dfa5ff0, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -16,7 +16,6 @@ public class TempNeighborTester : BoardItemComponent
         if (!this.gridManager) return;
 
         GridManager.GridInstance[] foundNeighbors = this.gridManager.GetNeighbors(this.boardItem.gridInstanceRef, NeighborPattern.Down);
-        Debug.Log(foundNeighbors.Length);
         foreach (GridManager.GridInstance neighbor in foundNeighbors)
         {
             if (neighbor == null || !neighbor.gameObj) continue;

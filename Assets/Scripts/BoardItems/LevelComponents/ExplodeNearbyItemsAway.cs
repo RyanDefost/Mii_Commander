@@ -2,7 +2,7 @@
 using Managers;
 using UnityEngine;
 
-public class ExplodeNearbyItemsAway : BoardItemComponent
+public class ExplodeNearbyItemsAway : BoardItemComponent,  IBoardItemDisablable
 {
     private GridManager gridManager;
     private NeighborPatternRegistry patternRegistry;
@@ -11,9 +11,15 @@ public class ExplodeNearbyItemsAway : BoardItemComponent
     [SerializeField] private float explosionStrengthTile = 1f;
     [SerializeField] private float explosionStrengthVisual = 1f;
     [SerializeField] private float explosionTime = 1f;
+    private bool shouldActivateOnItsOwn = true;
+    
+    public override void ConnectToBoardItem()
+    {
+        if (this.shouldActivateOnItsOwn)
+            EnableActivate();
+    }
 
-    public override void ConnectToBoardItem() => this.boardItem.OnActivate += Activate;
-    private void OnDestroy() => this.boardItem.OnActivate -= Activate;
+    private void OnDestroy() => DisableActivate();
 
     private void Activate()
     {
@@ -52,4 +58,12 @@ public class ExplodeNearbyItemsAway : BoardItemComponent
         if (!this.gameManagerRef) return;
         this.gameManagerRef.TurnManager.AddToWaitTime(this.explosionTime);
     }
+
+    public void DisableActivate()
+    {
+        this.shouldActivateOnItsOwn = false;
+        this.boardItem.OnActivate -= Activate;
+    }
+
+    public void EnableActivate() => this.boardItem.OnActivate += Activate;
 }
