@@ -1,9 +1,11 @@
+using System.Collections.Generic;
+
 namespace Managers
 {
     public class FiniteStateMachine<T>
     {
         private T owner;
-        private State<T> currentState;
+        public State<T> CurrentState { get; private set; }
 
         public FiniteStateMachine(T owner , State<T> currentState)
         {
@@ -15,20 +17,20 @@ namespace Managers
         
         public void Update()
         {
-            if (this.currentState != null )
+            if ( CurrentState != null )
             {
-                this.currentState.Update();
+                CurrentState.Update();
             }
         }
 
         public void SetState( State<T> newState )
         {
-            this.currentState?.Exit();
+            CurrentState?.Exit();
             
-            newState.Owner = this.owner;
+            newState.Owner = owner;
             newState.Start();
-
-            this.currentState = newState;
+            
+            CurrentState = newState;
         }
     }
 }
