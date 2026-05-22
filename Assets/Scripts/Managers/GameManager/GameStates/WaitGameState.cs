@@ -1,4 +1,5 @@
 using PlayerHand;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Managers.GameStates
@@ -6,11 +7,14 @@ namespace Managers.GameStates
     public class WaitGameState : State<GameManager>
     {
         private PlayerHandManager playerHandRef;
-        
+
+        public WaitGameState(GameManager owner) : base(owner)
+        {
+            this.Owner.TurnManager.OnEndReached += TrySetScore;
+        }
+
         public override void Start()
         {
-            this.Owner.TurnManager.OnreachedEnd += TrySetScore;
-            
             //Let player interact
             this.playerHandRef = ComponentRegistry.GetComponent<PlayerHandManager>();
             this.playerHandRef.SetCanGrab(false);
@@ -18,7 +22,7 @@ namespace Managers.GameStates
             this.Owner.MoveManager.SetMove();
             this.Owner.TurnManager.NextTurn();
             
-            Debug.Log("ENTER WaitGameState");
+            // Debug.Log("ENTER WaitGameState");
         }
 
         public override void Update()
@@ -26,12 +30,7 @@ namespace Managers.GameStates
             this.Owner.SetGameState(GameState.PLAY);
         }
 
-        public override void Exit()
-        {
-            this.Owner.TurnManager.OnreachedEnd -= TrySetScore;
-            
-            Debug.Log("EXIT WaitGameState");
-        }
+        public override void Exit() { }
 
         private void TrySetScore(GridMoveable moveable)
         {

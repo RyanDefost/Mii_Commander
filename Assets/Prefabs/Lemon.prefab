@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3198954631575277286}
   - component: {fileID: 6574632748961841022}
   - component: {fileID: 2204325606334268918}
+  - component: {fileID: 4256399086136449842}
   m_Layer: 0
   m_Name: Lemon
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.64, y: 0.64, z: 0.64}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5983572208469154556}
@@ -52,7 +53,7 @@ Rigidbody:
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_AngularDamping: 5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -117,11 +118,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecaf37c275eb4ee69e8061eab04b5d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardItem
-  interactable: {fileID: 5354653235715831597}
   components:
   - {fileID: 8982616026848609941}
   - {fileID: 6574632748961841022}
   - {fileID: 2204325606334268918}
+  - {fileID: 4256399086136449842}
   rb: {fileID: 8897784474759205449}
 --- !u!114 &6574632748961841022
 MonoBehaviour:
@@ -136,8 +137,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridMoveable
   boardItem: {fileID: 3198954631575277286}
+  moveImmunity: 0
   offset: 0.25
-  minimalDist: 1
+  minimalDist: 0.5
+  minVelocityToRecalculate: 1
 --- !u!114 &2204325606334268918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,9 +154,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridRotatable
   boardItem: {fileID: 3198954631575277286}
-  handHandler: {fileID: 8982616026848609941}
   rotationSpeed: 50
-  stepAngle: 2
+  stepAngle: 9
+--- !u!114 &4256399086136449842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2427277321692252709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54cd41c1642b4fdeadb92f4800aaff03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TempNeighborTester
+  boardItem: {fileID: 3198954631575277286}
 --- !u!1 &3114438722924965209
 GameObject:
   m_ObjectHideFlags: 0

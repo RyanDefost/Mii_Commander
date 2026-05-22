@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Grid;
 using Managers.GameStates;
@@ -42,34 +41,30 @@ namespace Managers
 
         private void Start()
         {
-            InitStates();
             InitGame();
+            InitStates();
         }
 
         private void OnDestroy() => ComponentRegistry.RemoveFromRegistry(this);
-
-        private void Update()
-        {
-            this.gameStateMachine.Update();
-        }
+        private void Update() => this.gameStateMachine.Update();
 
         private void InitGame()
         {
-            this.gameStateMachine = new FiniteStateMachine<GameManager>(this, new PlayGameState());
+            this.gameStateMachine = new FiniteStateMachine<GameManager>(this, new PlayGameState(this));
             
-            this.moveManager.SetInitialMoveAmount(levelData.baseTurnAmount);
-            this.scoreManager.SetGoal(levelData.pointRequirement);
+            this.moveManager.SetInitialMoveAmount(this.levelData.baseTurnAmount);
+            this.scoreManager.SetGoal(this.levelData.pointRequirement);
         }
 
         private void InitStates()
         {
-            this.states.Add(GameState.PLAY, new PlayGameState());
-            this.states.Add(GameState.WAIT, new WaitGameState());
+            this.states.Add(GameState.PLAY, new PlayGameState(this));
+            this.states.Add(GameState.WAIT, new WaitGameState(this));
         }
 
         public void SetGameState(GameState stateKey)
         {
-            if (states.TryGetValue(stateKey, out State<GameManager> state))
+            if (this.states.TryGetValue(stateKey, out State<GameManager> state))
             {
                 if (state == this.gameStateMachine.CurrentState) return;
                 this.gameStateMachine.SetState(state);   

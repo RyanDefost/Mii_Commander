@@ -256,7 +256,11 @@ namespace Grid
 
         public List<Vector3?> GetAllPositions() => this.positions.Select(pos => (Vector3?)pos).ToList();
         public List<Vector3?> GetAllOffGridPositions() => this.positionsOffGrid.Select(pos => (Vector3?)pos).ToList();
-        public Vector3 GetPosAt(int index) => this.positions[index];
-        public Vector3 GetOffGridPosAt(int index) => this.positionsOffGrid[index];
+
+        public Vector3 GetPosAt(GridManager.GridIndex index) =>
+            index.isOffGrid ? GetOffGridPosAt(index.index) : GetOnGridPosAt(index.index);
+
+        private Vector3 GetOnGridPosAt(int index) => this.positions[index];
+        private Vector3 GetOffGridPosAt(int index) => this.positionsOffGrid[index];
     }
 }

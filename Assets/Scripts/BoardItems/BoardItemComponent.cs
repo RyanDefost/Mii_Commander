@@ -21,4 +21,6 @@ public class BoardItemComponent : MonoBehaviour
 
     /// <summary>Function for hooking into the various boardItem actions, make sure to unhook on destroy</summary>
     public virtual void ConnectToBoardItem() { }
+    
+    public BoardItem GetBoardItem() => this.boardItem;
 }
