@@ -41,9 +41,10 @@ namespace Grid
                 if (!moveComponent.HasTarget())
                 {
                     this.gridManager.ReleaseInstance(instance);
-                    OnreachedEnd?.Invoke(moveComponent);
+                    this.OnreachedEnd?.Invoke(moveComponent);
                     
                     Destroy(moveComponent.gameObject);
+                    return;
                 }
                 moveComponent.SetMoving(true);
             });
