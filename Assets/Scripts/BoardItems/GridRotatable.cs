@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Managers;
 using UnityEngine;
 
 /// <summary>
@@ -6,18 +6,15 @@ using UnityEngine;
 /// </summary>
 public class GridRotatable : BoardItemComponent
 {
-    [SerializeField] private HandHandler handHandler;
+    private MoveManager moveManagerRef;
     [SerializeField] private float rotationSpeed = 12f;
     [SerializeField] private float stepAngle = 9f;
     private float progression;
     private bool lockedRotation;
     private Vector3 lastRotation;
+    private Vector3 rotation;
 
-    protected override void CustomOnValidate()
-    {
-        base.CustomOnValidate();
-        this.handHandler = GetComponent<HandHandler>();
-    }
+    private void Start() => this.moveManagerRef = ComponentRegistry.GetComponent<GameManager>()?.MoveManager;
 
     public override void ConnectToBoardItem()
     {
@@ -43,7 +40,7 @@ public class GridRotatable : BoardItemComponent
         
         float angle = -this.stepAngle * Mathf.Sign(this.progression);
         this.transform.Rotate(0, 0, angle, Space.World);
-        this.lastRotation = this.transform.localEulerAngles;
+        this.rotation = this.transform.localEulerAngles;
             
         this.progression = 0;
     }
@@ -53,32 +50,49 @@ public class GridRotatable : BoardItemComponent
     /// </summary>
     private void SnapToNearestCardinalZ()
     {
-        Vector3 currentAngles = this.transform.localEulerAngles;
-        float snappedZ = Mathf.Round(currentAngles.z / 90f) * 90f;
-        this.transform.localRotation = Quaternion.Euler(currentAngles.x, currentAngles.y, snappedZ);
+        if (this.progression == 0)
+            return;
+        if (this.moveManagerRef.MoveAmount == 0)
+            this.transform.localRotation = Quaternion.Euler(this.lastRotation);
+        else
+        {
+            Vector3 currentAngles = this.transform.localEulerAngles;
+            float snappedZ = Mathf.Round(currentAngles.z / 90f) * 90f;
+            this.transform.localRotation = Quaternion.Euler(currentAngles.x, currentAngles.y, snappedZ);
+        }
 
         this.progression = 0;
+        this.moveManagerRef.SetMove();
+        
+        this.rotation = this.transform.localEulerAngles;
+        this.lockedRotation = true;
     }
     
     private void OnAddToHand()
     {
-        this.handHandler.OnHandGrabRelease += OnGrabReleased;
+        this.boardItem.OnAddToBoard += OnAddToBoard;
+        this.boardItem.OnRemovedFromHand += OnRemovedFromHand;
         // lock rotation
         this.lockedRotation = true;
         this.lastRotation = this.transform.localEulerAngles;
+        this.rotation = this.lastRotation;
     }
 
-    private void OnGrabReleased()
+    private void OnRemovedFromHand()
     {
         this.lockedRotation = false;
-        this.handHandler.OnHandGrabRelease -= OnGrabReleased;
+        this.boardItem.OnRemovedFromHand -= OnRemovedFromHand;
     }
 
-    private void OnAddToBoard() => SnapToNearestCardinalZ();
+    private void OnAddToBoard()
+    {
+        SnapToNearestCardinalZ();
+        this.boardItem.OnAddToBoard -= OnAddToBoard;
+    }
 
     private void Update()
     {
         if (this.lockedRotation)
-            this.transform.rotation = Quaternion.Euler(this.lastRotation);
+            this.transform.rotation = Quaternion.Euler(this.rotation);
     }
 }

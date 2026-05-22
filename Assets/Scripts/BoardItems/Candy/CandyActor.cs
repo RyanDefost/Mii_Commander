@@ -1,4 +1,3 @@
-﻿using PlayerHand;
 using UnityEngine;
 
 /// <summary>
@@ -8,7 +7,7 @@ using UnityEngine;
 public class CandyActor : BoardItem
 {
     [SerializeField] private int points;
-    public int Points { get => points; private set => points = value; }
+    public int Points { get => this.points; private set => this.points = value; }
 
     public int candyType; // index reference to lookup
     
@@ -17,21 +16,23 @@ public class CandyActor : BoardItem
     [SerializeField]
     private HandHandler handHandler;
     
-    protected override void CustomOnValidate()
+    protected virtual void CustomOnValidate()
     {
         this.movement = GetComponent<MoveToGridPosition>();
         this.handHandler = GetComponent<HandHandler>();
     }
 
-    public override void ActivateAbility()
+    public void OnGrabReleased(Rigidbody rb, Vector2 handMovementDir, Vector2 throwForce)
     {
-        
-        print("BASIC CANDY ABILITY");
-        this.transform.Rotate(0,180,0);
+        this.movement.moveImmunity = true;
+        HandHandler.OnGrabReleased(rb, this, handMovementDir, throwForce);
+        this.OnAddToBoard += RemovePlayerMoveImmunity;
     }
 
-    public static void OnGrabReleased(Rigidbody rb, BoardItem boardItem, Vector2 handMovementDir, Vector2 throwForce) => 
-        HandHandler.OnGrabReleased(rb, boardItem, handMovementDir, throwForce);
-
+    private void RemovePlayerMoveImmunity()
+    {
+        this.movement.moveImmunity = false;
+        this.OnAddToBoard -= RemovePlayerMoveImmunity;
+    }
     public void ApplyPointMultiplier(float multiplier) => this.points = Mathf.FloorToInt(this.points * multiplier);
 }

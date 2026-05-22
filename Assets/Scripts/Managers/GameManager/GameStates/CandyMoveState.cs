@@ -1,5 +1,6 @@
 using Grid;
 using PlayerHand;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Managers.GameStates
@@ -7,20 +8,22 @@ namespace Managers.GameStates
     public class CandyMoveState : State<GameManager>
     {
         private PlayerHandManager playerHandRef;
-        private GridManager gridManager;
-        
+
+        public WaitGameState(GameManager owner) : base(owner)
+        {
+            this.Owner.TurnManager.OnEndReached += TrySetScore;
+        }
+
         public override void Start()
         {
-            this.Owner.TurnManager.OnreachedEnd += TrySetScore;
-            
-            //Stop player interact
+            //Let player interact
             this.playerHandRef = ComponentRegistry.GetComponent<PlayerHandManager>();
             this.playerHandRef.SetCanGrab(false);
             
             this.Owner.MoveManager.SetMove();
             this.Owner.TurnManager.NextTurn();
             
-            Debug.Log("ENTER MOVECANDYSTATE");
+            // Debug.Log("ENTER WaitGameState");
         }
 
         public override void Update()
@@ -28,12 +31,7 @@ namespace Managers.GameStates
             this.Owner.SetGameState(GameState.CANDYACTIVATE);
         }
 
-        public override void Exit()
-        {
-            this.Owner.TurnManager.OnreachedEnd -= TrySetScore;
-            
-            Debug.Log("EXIT WaitGameState");
-        }
+        public override void Exit() { }
 
         private void TrySetScore(GridMoveable moveable)
         {
