@@ -5,7 +5,12 @@ namespace Managers.GameStates
     public class PlayGameState : State<GameManager>
     {
         private PlayerHandManager playerHandRef;
-        
+
+        public PlayGameState(GameManager owner) : base(owner)
+        {
+            
+        }
+
         public override void Start()
         {
             //Let player interact
