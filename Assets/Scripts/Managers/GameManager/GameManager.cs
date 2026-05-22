@@ -71,6 +71,7 @@ namespace Managers
         {
             if (states.TryGetValue(stateKey, out State<GameManager> state))
             {
+                if (state == this.gameStateMachine.CurrentState) return;
                 this.gameStateMachine.SetState(state);   
             }
         }
