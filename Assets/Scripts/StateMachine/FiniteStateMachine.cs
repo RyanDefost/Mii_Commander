@@ -5,7 +5,7 @@ namespace Managers
     public class FiniteStateMachine<T>
     {
         private T owner;
-        private State<T> currentState;
+        public State<T> CurrentState { get; private set; }
 
         public FiniteStateMachine(T owner , State<T> currentState)
         {
@@ -17,20 +17,20 @@ namespace Managers
         
         public void Update()
         {
-            if ( currentState != null )
+            if ( CurrentState != null )
             {
-                currentState.Update();
+                CurrentState.Update();
             }
         }
 
         public void SetState( State<T> newState )
         {
-            currentState?.Exit();
+            CurrentState?.Exit();
             
             newState.Owner = owner;
             newState.Start();
             
-            currentState = newState;
+            CurrentState = newState;
         }
     }
 }
