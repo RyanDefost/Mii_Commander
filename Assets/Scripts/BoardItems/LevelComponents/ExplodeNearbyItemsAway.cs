@@ -33,13 +33,15 @@ public class ExplodeNearbyItemsAway : BoardItemComponent, IBoardItemDisablable
         if (explosionPattern == null) return;
 
         GridManager.GridInstance[] foundNeighbors = this.gridManager.GetNeighbors(this.boardItem.gridInstanceRef, explosionPattern.Value);
+        int neighborsEffected = 0;
         foreach (GridManager.GridInstance neighbor in foundNeighbors)
         {
             if (neighbor == null || !neighbor.gameObj) continue;
 
             GridMoveable moveComponent = neighbor.moveable;
             if (!moveComponent) continue;
-                
+            neighborsEffected++;
+            
             moveComponent.ResetTarget();
             Vector3 dirAway = this.boardItem.transform.position.XY().DirectionTo(neighbor.position.XY());
             
@@ -53,10 +55,14 @@ public class ExplodeNearbyItemsAway : BoardItemComponent, IBoardItemDisablable
                 moveComponent.SetTarget(newTarget, false);
             moveComponent.SetMoving(true);
         }
-        
-        this.gameManagerRef ??= ComponentRegistry.GetComponent<GameManager>();
-        if (!this.gameManagerRef) return;
-        this.gameManagerRef.TurnManager.AddToWaitTime(this.explosionTime);
+
+        if (neighborsEffected > 1)
+        {
+            this.gameManagerRef ??= ComponentRegistry.GetComponent<GameManager>();
+            if (!this.gameManagerRef) return;
+            this.gameManagerRef.TurnManager.AddToWaitTime(this.explosionTime);
+        }
+        DisableActivate();
     }
 
     public void DisableActivate()
