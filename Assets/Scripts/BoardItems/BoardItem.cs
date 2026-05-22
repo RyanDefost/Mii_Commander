@@ -38,7 +38,7 @@ public class BoardItem : MonoBehaviour
             boardItemComponent.ConnectToBoardItem();
     }
 
-    protected virtual void ActivateAbility() {}
+    public virtual void ActivateAbility() {}
     
     protected virtual void CustomOnValidate() {}
     

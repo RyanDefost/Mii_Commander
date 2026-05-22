@@ -1,10 +1,14 @@
 using System;
+using System.Collections.Generic;
 using Managers;
+using UnityEngine;
 
 namespace Candy
 {
     public class MultiplierCandyActor : CandyActor
     {
+        [SerializeField] private float multiplier = 1.2f;
+        
         private GameManager gameManager;
 
         private void Start()
@@ -21,10 +25,17 @@ namespace Candy
                 ActivateAbility();
         }
         
-        protected override void ActivateAbility()
+        public override void ActivateAbility()
         {
-            print("Activate Ability");
             base.ActivateAbility();
+            
+            //GET SURROUNDING CANDY FUNC();
+            List<CandyActor> surroundingCandy = new();
+
+            foreach (CandyActor candy in surroundingCandy)
+            {
+                candy.ApplyPointMultiplier(this.multiplier);
+            }
         }
     }
 }

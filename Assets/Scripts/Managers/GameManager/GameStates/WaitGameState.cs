@@ -1,3 +1,4 @@
+using Grid;
 using PlayerHand;
 using UnityEngine;
 
@@ -6,9 +7,11 @@ namespace Managers.GameStates
     public class WaitGameState : State<GameManager>
     {
         private PlayerHandManager playerHandRef;
+        private GridManager gridManager;
         
         public override void Start()
         {
+            this.Owner.TurnManager.OnreachedEnd += TryActivateAbilities;
             this.Owner.TurnManager.OnreachedEnd += TrySetScore;
             
             //Let player interact
@@ -35,10 +38,14 @@ namespace Managers.GameStates
 
         private void TrySetScore(GridMoveable moveable)
         {
-            if (moveable.gameObject.TryGetComponent<CandyActor>(out CandyActor candyActor))
-            {
+            if (moveable.gameObject.TryGetComponent(out CandyActor candyActor))
                 this.Owner.ScoreManager.AddScore(candyActor.Points);
-            }
+        }
+
+        private static void TryActivateAbilities(GridMoveable moveable)
+        {
+            if (moveable.gameObject.TryGetComponent(out CandyActor candyActor))
+                candyActor.ActivateAbility();
         }
     }
 }

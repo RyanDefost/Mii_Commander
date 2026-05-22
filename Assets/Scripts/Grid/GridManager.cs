@@ -25,12 +25,12 @@ namespace Grid
         {
             public Vector3 position;
             public readonly int index;
-            public readonly GameObject gameObj;
+            public readonly BoardItem boardItem;
             public bool offGrid;
 
-            public GridInstance(GameObject gameObj, int foundIndex, GridGenerator generator, bool offGrid)
+            public GridInstance(BoardItem boardItem, int foundIndex, GridGenerator generator, bool offGrid)
             {
-                this.gameObj = gameObj;
+                this.boardItem = boardItem;
                 this.position = !offGrid ? generator.GetPosAt(foundIndex) : generator.GetOffGridPosAt(foundIndex);
                 this.index = foundIndex;
                 this.offGrid = offGrid;
@@ -54,7 +54,7 @@ namespace Grid
         private void OnDestroy() => ComponentRegistry.RemoveFromRegistry(this);
 
         /// <summary>Tries to get a near available position both on grid and off grid</summary>
-        public GridInstance GetNearestPosition(Vector3 position, GameObject gameObj, GridInstance previous = null)
+        public GridInstance GetNearestPosition(Vector3 position, BoardItem boardItem, GridInstance previous = null)
         {
             Vector3? posToIgnore = null;
             bool isBottomRow = false;
@@ -65,41 +65,41 @@ namespace Grid
             }
             
             if (!isBottomRow)
-                return GetNearestGridPosition(position, gameObj, posToIgnore);
-            return GetNearestOffGridPosition(position, gameObj, posToIgnore, previous.offGrid);
+                return GetNearestGridPosition(position, boardItem, posToIgnore);
+            return GetNearestOffGridPosition(position, boardItem, posToIgnore, previous.offGrid);
         }
 
         /// <summary>Used in case the grid is full, a last row underneath the board. Try to get a available position</summary>
-        public GridInstance GetNearestOffGridPosition(Vector3 position, GameObject gameObj, Vector3? posToIgnore = null, bool isAlreadyOffGrid = false)
+        public GridInstance GetNearestOffGridPosition(Vector3 position, BoardItem boardItem, Vector3? posToIgnore = null, bool isAlreadyOffGrid = false)
         {
             int foundIndexOffGrid = GetNearestIndex(position, this.availableOffGridPositions, posToIgnore);
             int foundIndex = GetNearestIndex(position, this.availablePositions, posToIgnore);
             
             if (foundIndexOffGrid == -1 && !isAlreadyOffGrid)
-                return RegisterGridPosition(gameObj, foundIndex);
+                return RegisterGridPosition(boardItem, foundIndex);
             if (isAlreadyOffGrid)
                 return null;
             
             this.availableOffGridPositions[foundIndexOffGrid] = null;
-            GridInstance newInstance = new(gameObj, foundIndexOffGrid, this.generator, true);
+            GridInstance newInstance = new(boardItem, foundIndexOffGrid, this.generator, true);
             this.gridInstances.Add(newInstance);
             return newInstance;
         }
 
         /// <summary>Tries to find the nearest available position on the board</summary>
-        public GridInstance GetNearestGridPosition(Vector3 position, GameObject gameObj, Vector3? posToIgnore = null)
+        public GridInstance GetNearestGridPosition(Vector3 position, BoardItem boardItem, Vector3? posToIgnore = null)
         {
             int foundIndex = GetNearestIndex(position, this.availablePositions, posToIgnore);
-            return foundIndex == -1 ? null : RegisterGridPosition(gameObj, foundIndex);
+            return foundIndex == -1 ? null : RegisterGridPosition(boardItem, foundIndex);
         }
 
         /// <summary>
         /// Creates a grid instance, and makes sure the position isnt taken again
         /// </summary>
-        private GridInstance RegisterGridPosition(GameObject gameObj, int foundIndex)
+        private GridInstance RegisterGridPosition(BoardItem boardItem, int foundIndex)
         {
             this.availablePositions[foundIndex] = null;
-            GridInstance newInstance = new(gameObj, foundIndex, this.generator, false);
+            GridInstance newInstance = new(boardItem, foundIndex, this.generator, false);
             this.gridInstances.Add(newInstance);
             return newInstance;
         }

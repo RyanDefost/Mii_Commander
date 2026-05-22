@@ -23,6 +23,10 @@ public class CandyActor : BoardItem
         this.handHandler = GetComponent<HandHandler>();
     }
 
+    public override void ActivateAbility() { print("BASIC CANDY ABILITY"); }
+
     public static void OnGrabReleased(Rigidbody rb, BoardItem boardItem, Vector2 handMovementDir, Vector2 throwForce) => 
         HandHandler.OnGrabReleased(rb, boardItem, handMovementDir, throwForce);
+
+    public void ApplyPointMultiplier(float multiplier) => this.points = Mathf.FloorToInt(this.points * multiplier);
 }

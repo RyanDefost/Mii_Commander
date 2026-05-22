@@ -93,7 +93,7 @@ public class GridMoveable : BoardItemComponent
             return true;
         this.grid ??= ComponentRegistry.GetComponent<GridManager>();
         if (this.grid)
-            SetTarget(this.grid.GetNearestPosition(this.transform.position, this.gameObject));
+            SetTarget(this.grid.GetNearestPosition(this.transform.position, this.boardItem));
         else
             ComponentRegistry.TrySubscribeForComponent<GridManager>(TriggerUpdateTarget);
         return this.Target != null;
