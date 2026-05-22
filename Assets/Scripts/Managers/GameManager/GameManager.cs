@@ -66,7 +66,8 @@ namespace Managers
         private void InitStates()
         {
             this.states.Add(GameState.PLAY, new PlayGameState());
-            this.states.Add(GameState.WAIT, new WaitGameState());
+            this.states.Add(GameState.CANDYMOVE, new CandyMoveState());
+            this.states.Add(GameState.CANDYACTIVATE, new CandyActivateState());
         }
 
         public void SetGameState(GameState stateKey)

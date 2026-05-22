@@ -94,7 +94,7 @@ namespace PlayerHand
             if (!interactionHandler.CurrentHover) return;
             interactionHandler.CurrentHover.Trigger();
         }
-    
+        
         /// <summary>
         /// Checks if grab was released
         /// </summary>

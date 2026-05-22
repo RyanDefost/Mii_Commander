@@ -4,29 +4,28 @@ using UnityEngine;
 
 namespace Managers.GameStates
 {
-    public class WaitGameState : State<GameManager>
+    public class CandyMoveState : State<GameManager>
     {
         private PlayerHandManager playerHandRef;
         private GridManager gridManager;
         
         public override void Start()
         {
-            this.Owner.TurnManager.OnreachedEnd += TryActivateAbilities;
             this.Owner.TurnManager.OnreachedEnd += TrySetScore;
             
-            //Let player interact
+            //Stop player interact
             this.playerHandRef = ComponentRegistry.GetComponent<PlayerHandManager>();
             this.playerHandRef.SetCanGrab(false);
             
             this.Owner.MoveManager.SetMove();
             this.Owner.TurnManager.NextTurn();
             
-            Debug.Log("ENTER WaitGameState");
+            Debug.Log("ENTER MOVECANDYSTATE");
         }
 
         public override void Update()
         {
-            this.Owner.SetGameState(GameState.PLAY);
+            this.Owner.SetGameState(GameState.CANDYACTIVATE);
         }
 
         public override void Exit()
@@ -42,10 +41,6 @@ namespace Managers.GameStates
                 this.Owner.ScoreManager.AddScore(candyActor.Points);
         }
 
-        private static void TryActivateAbilities(GridMoveable moveable)
-        {
-            if (moveable.gameObject.TryGetComponent(out CandyActor candyActor))
-                candyActor.ActivateAbility();
-        }
+
     }
 }

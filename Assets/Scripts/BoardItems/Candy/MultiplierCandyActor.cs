@@ -21,7 +21,7 @@ namespace Candy
 
         private void ActivateOnState(GameState newState)
         {
-            if (newState == GameState.WAIT)
+            if (newState == GameState.CANDYMOVE)
                 ActivateAbility();
         }
         
