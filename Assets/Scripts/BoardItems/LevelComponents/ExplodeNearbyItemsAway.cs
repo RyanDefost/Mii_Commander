@@ -2,7 +2,7 @@
 using Managers;
 using UnityEngine;
 
-public class ExplodeNearbyItemsAway : BoardItemComponent,  IBoardItemDisablable
+public class ExplodeNearbyItemsAway : BoardItemComponent, IBoardItemDisablable
 {
     private GridManager gridManager;
     private NeighborPatternRegistry patternRegistry;
@@ -21,7 +21,7 @@ public class ExplodeNearbyItemsAway : BoardItemComponent,  IBoardItemDisablable
 
     private void OnDestroy() => DisableActivate();
 
-    private void Activate()
+    public void Activate()
     {
         this.gridManager ??= ComponentRegistry.GetComponent<GridManager>();
         if (!this.gridManager) return;

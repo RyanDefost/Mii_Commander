@@ -4053,6 +4053,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soda
       objectReference: {fileID: 0}
+    - target: {fileID: 9047595396623391343, guid: cdd2f3ff9d858e048bd3a1fe6dfa5ff0, type: 3}
+      propertyPath: shakeDistanceDifference
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9047595396623391343, guid: cdd2f3ff9d858e048bd3a1fe6dfa5ff0, type: 3}
+      propertyPath: shakeDirectionDifference
+      value: -0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

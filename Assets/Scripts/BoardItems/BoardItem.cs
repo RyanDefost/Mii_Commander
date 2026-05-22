@@ -23,13 +23,9 @@ public class BoardItem : MonoBehaviour
     public Action OnAddToBoard;
     public Action OnActivate;
     
-    private void OnValidate()
+    private void Awake()
     {
-        if (Application.isPlaying)
-            return;
         this.rb = GetComponent<Rigidbody>();
-        GetComponentInChildren<Interactable>();
-        
         this.components = GetComponentsInChildren<BoardItemComponent>();
     }
 

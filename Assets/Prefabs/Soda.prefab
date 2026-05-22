@@ -546,6 +546,7 @@ GameObject:
   - component: {fileID: 6935780993457236962}
   - component: {fileID: 1859877875076216974}
   - component: {fileID: 8345801965639840213}
+  - component: {fileID: 9047595396623391343}
   m_Layer: 0
   m_Name: Soda
   m_TagString: Untagged
@@ -630,6 +631,7 @@ MonoBehaviour:
   - {fileID: 688603324041803321}
   - {fileID: 6935780993457236962}
   - {fileID: 1859877875076216974}
+  - {fileID: 9047595396623391343}
   rb: {fileID: 2089955879647102775}
 --- !u!114 &5698657525678878846
 MonoBehaviour:
@@ -734,6 +736,23 @@ MonoBehaviour:
   prefix: 
   suffix: 
   textComponent: {fileID: 268109293110073906}
+--- !u!114 &9047595396623391343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7128209094669073184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7356d83525df4c45870cff412038fd93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShakeDetector
+  boardItem: {fileID: 2810408795809733440}
+  toActivate: {fileID: 1859877875076216974}
+  shakeDistanceDifference: 1
+  shakeDirectionDifference: -0.7
+  shakeThreshold: 3
 --- !u!1 &8677340332721463335
 GameObject:
   m_ObjectHideFlags: 0

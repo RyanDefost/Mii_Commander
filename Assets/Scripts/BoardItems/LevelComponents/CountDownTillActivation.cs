@@ -3,22 +3,22 @@ using Grid;
 using Managers;
 using UnityEngine;
 
-public class CountDownTillActivation : BoardItemComponent, IUserInterfaceValueGetter
+public class CountDownTillActivation : BoardItemComponent, IUserInterfaceValueGetter, IBoardItemDisablable
 {
     [SerializeField] private BoardItemComponent toActivate;
     [SerializeField] private int count = 1;
     private IBoardItemDisablable currentToActivate;
     private int currentCount;
     private Action<object, Type> countChanged;
+    private bool shouldActivateOnItsOwn = true;
 
     protected override void CustomOnValidate()
     {
         base.CustomOnValidate();
+        this.enabled = this.toActivate;
         if (!this.toActivate || this.toActivate is IBoardItemDisablable) return;
         this.toActivate = null;
         Debug.LogError($"{GetType()}-{GetInstanceID()}: toActivate needs to be {nameof(IBoardItemDisablable)}");
-        
-        this.enabled = this.toActivate;
     }
 
     private void Awake()
@@ -29,28 +29,30 @@ public class CountDownTillActivation : BoardItemComponent, IUserInterfaceValueGe
 
     public override void ConnectToBoardItem()
     {
-        this.boardItem.OnActivate += Activate;
+        if (this.shouldActivateOnItsOwn)
+            this.boardItem.OnActivate += Activate;
         this.currentCount = this.count;
         this.countChanged.Invoke(this.currentCount, typeof(int));
     }
 
     private void OnDestroy() => this.boardItem.OnActivate -= Activate;
 
-    private void Activate()
+    public void Activate()
     {
         if (!this.enabled)
             return;
         this.currentCount--;
         this.countChanged.Invoke(this.currentCount, typeof(int));
 
-        if (this.currentCount < 1)
-        {
-            this.enabled = false;
-            return;        
-        }
         if (this.currentCount > 1) return;
-        
-        this.currentToActivate.EnableActivate();
+        if (this.currentCount == 1)
+        {
+            this.currentToActivate.EnableActivate();
+            return;
+        }
+
+        if (this.currentCount <= 0) 
+            this.enabled = false;
     }
 
     public void Reset()
@@ -82,4 +84,12 @@ public class CountDownTillActivation : BoardItemComponent, IUserInterfaceValueGe
     {
         if (valueName == "count") this.countChanged -= callback;
     }
+
+    public void DisableActivate()
+    {
+        this.shouldActivateOnItsOwn = false;
+        this.boardItem.OnActivate -= Activate;
+    }
+
+    public void EnableActivate() => this.boardItem.OnActivate += Activate;
 }
