@@ -4051,19 +4051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6935780993457236962, guid: cdd2f3ff9d858e048bd3a1fe6dfa5ff0, type: 3}
       propertyPath: explosionTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6935780993457236962, guid: cdd2f3ff9d858e048bd3a1fe6dfa5ff0, type: 3}
-      propertyPath: explosionPatternName
-      value: Square3x3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6935780993457236962, guid: cdd2f3ff9d858e048bd3a1fe6dfa5ff0, type: 3}
-      propertyPath: explosionStrengthTile
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6935780993457236962, guid: cdd2f3ff9d858e048bd3a1fe6dfa5ff0, type: 3}
-      propertyPath: explosionStrengthVisual
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7128209094669073184, guid: cdd2f3ff9d858e048bd3a1fe6dfa5ff0, type: 3}
       propertyPath: m_Name

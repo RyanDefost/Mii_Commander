@@ -7,6 +7,11 @@ namespace Grid
     [Serializable]
     public struct NeighborPattern
     {
+        public static readonly NeighborPattern Up = new(new Vector2Int[]{new(0, 1)}, new Vector2Int(1,1), 3, 3);
+        public static readonly NeighborPattern Down = new(new Vector2Int[]{new(0, -1)}, new Vector2Int(1,1), 3, 3);
+        public static readonly NeighborPattern Left = new(new Vector2Int[]{new(-1, 0)}, new Vector2Int(1,1), 3, 3);
+        public static readonly NeighborPattern Right = new(new Vector2Int[]{new(1, 0)}, new Vector2Int(1,1), 3, 3);
+        
         public Vector2Int[] positions;
         public Vector2Int center;
         public int width;

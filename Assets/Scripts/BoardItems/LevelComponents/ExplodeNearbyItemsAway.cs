@@ -36,8 +36,11 @@ public class ExplodeNearbyItemsAway : BoardItemComponent
                 
             moveComponent.ResetTarget();
             Vector3 dirAway = this.boardItem.transform.position.XY().DirectionTo(neighbor.position.XY());
-            GridManager.GridInstance newTarget = this.gridManager.GetNearestPosition(neighbor.position + dirAway * this.explosionStrengthTile, neighbor.gameObj,
+            
+            GridManager.GridInstance newTarget = this.gridManager.GetNearestPosition(
+                neighbor.position + dirAway * this.explosionStrengthTile, neighbor.gameObj,
                 moveComponent.GetBoardItem(), neighbor);
+            
             moveComponent.ApplyImpulse(dirAway * this.explosionStrengthVisual);
                 
             if (newTarget != null)
