@@ -27,6 +27,8 @@ namespace Managers
         private FiniteStateMachine<GameManager> gameStateMachine;
         private readonly Dictionary<GameState, State<GameManager>> states = new();
 
+        public Action<GameState> OnChangeState;
+        
         private void OnValidate()
         {
             if (Application.isPlaying)
@@ -72,6 +74,7 @@ namespace Managers
             if (states.TryGetValue(stateKey, out State<GameManager> state))
             {
                 this.gameStateMachine.SetState(state);   
+                OnChangeState?.Invoke(stateKey);
             }
         }
     }

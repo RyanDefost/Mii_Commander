@@ -38,6 +38,8 @@ public class BoardItem : MonoBehaviour
             boardItemComponent.ConnectToBoardItem();
     }
 
+    protected virtual void ActivateAbility() {}
+    
     protected virtual void CustomOnValidate() {}
     
     /// <summary>Called when released and on the playing field</summary>
