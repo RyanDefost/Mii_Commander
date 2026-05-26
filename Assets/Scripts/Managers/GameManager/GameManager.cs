@@ -21,6 +21,8 @@ namespace Managers
         
         //[SerializeField] private QuestManager questManager;
         
+        public Action<GameState> OnStateChange;
+        
         [Header("Game Settings")]
         [SerializeField] private LevelRef levelData;
         
@@ -54,6 +56,7 @@ namespace Managers
         private void InitGame()
         {
             this.gameStateMachine = new FiniteStateMachine<GameManager>(this, new PlayGameState(this));
+            this.OnStateChange?.Invoke(GameState.PLAY);
             
             this.moveManager.SetInitialMoveAmount(this.levelData.baseTurnAmount);
             this.scoreManager.SetGoal(this.levelData.pointRequirement);
@@ -72,7 +75,7 @@ namespace Managers
             {
                 if (state == this.gameStateMachine.CurrentState) return;
                 this.gameStateMachine.SetState(state);   
-                OnChangeState?.Invoke(stateKey);
+                this.OnStateChange?.Invoke(stateKey);
             }
         }
     }
