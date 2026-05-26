@@ -9,8 +9,8 @@ namespace Candy
     {
         [Header("Multiply Effect")]
         [SerializeField] private float multiplier = 1.2f;
-        [SerializeField] private bool canRepeat = true;
         [SerializeField] private string effectPatternName = "Square3x3";
+        [SerializeField] private bool canRepeat = true;
         [Header("Effected Candy")]
         [SerializeField] private bool effectAllCandy = false;
         [SerializeField] private List<int> effectedCandyTypeIndexes = new();
