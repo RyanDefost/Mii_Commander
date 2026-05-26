@@ -23,7 +23,7 @@ namespace Managers
             }
         }
 
-        public void SetState( State<T> newState )
+        public State<T> SetState( State<T> newState )
         {
             CurrentState?.Exit();
             
@@ -31,6 +31,7 @@ namespace Managers
             newState.Start();
             
             CurrentState = newState;
+            return CurrentState;
         }
     }
 }
