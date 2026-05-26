@@ -21,11 +21,11 @@ namespace Candy
 
         private void ActivateOnState(GameState newState)
         {
-            if (newState == GameState.CANDYMOVE)
-                ActivateAbility();
+            //if (newState == GameState.CANDYMOVE)
+                //ActivateAbility();
         }
         
-        public override void ActivateAbility()
+        /*public override void ActivateAbility()
         {
             base.ActivateAbility();
             
@@ -36,6 +36,6 @@ namespace Candy
             {
                 candy.ApplyPointMultiplier(this.multiplier);
             }
-        }
+        }*/
     }
 }

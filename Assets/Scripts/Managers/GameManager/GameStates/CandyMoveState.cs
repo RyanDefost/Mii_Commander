@@ -9,7 +9,7 @@ namespace Managers.GameStates
     {
         private PlayerHandManager playerHandRef;
 
-        public WaitGameState(GameManager owner) : base(owner)
+        public CandyMoveState(GameManager owner) : base(owner)
         {
             this.Owner.TurnManager.OnEndReached += TrySetScore;
         }
@@ -28,7 +28,7 @@ namespace Managers.GameStates
 
         public override void Update()
         {
-            this.Owner.SetGameState(GameState.CANDYACTIVATE);
+            this.Owner.SetGameState(GameState.PLAY);
         }
 
         public override void Exit() { }

@@ -15,7 +15,9 @@ namespace Managers.GameStates
         
         private Timer timer;
         private bool activatedAllAbilities = false;
-        
+
+        public CandyActivateState(GameManager owner) : base(owner) { }
+
         public override void Start()
         {
             this.boardItems =  GetBoardItems();
@@ -64,8 +66,8 @@ namespace Managers.GameStates
                 return;
             }
 
-            if (this.boardItems[this.currentAbilityCount])
-                this.boardItems[this.currentAbilityCount]?.ActivateAbility();
+            //if (this.boardItems[this.currentAbilityCount])
+                //this.boardItems[this.currentAbilityCount]?.ActivateAbility();
             
             this.currentAbilityCount++;
             
