@@ -34,5 +34,5 @@ public class CandyActor : BoardItem
         this.movement.moveImmunity = false;
         this.OnAddToBoard -= RemovePlayerMoveImmunity;
     }
-    public void ApplyPointMultiplier(float multiplier) => this.points = Mathf.FloorToInt(this.points * multiplier);
+    public void ApplyPointMultiplier(float multiplier) => this.points = Mathf.CeilToInt(this.points * multiplier);
 }

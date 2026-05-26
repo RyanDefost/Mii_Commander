@@ -287,6 +287,8 @@ MonoBehaviour:
   multiplier: 1.2
   canRepeat: 1
   effectPatternName: Square3x3
+  effectAllCandy: 1
+  effectedCandyTypeIndexes: 
 --- !u!1 &4735561865074822501
 GameObject:
   m_ObjectHideFlags: 0

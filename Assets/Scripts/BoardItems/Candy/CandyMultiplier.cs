@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Grid;
 using UnityEngine;
 
@@ -6,10 +7,13 @@ namespace Candy
 {
     public class CandyMultiplier : BoardItemComponent
     {
+        [Header("Multiply Effect")]
         [SerializeField] private float multiplier = 1.2f;
         [SerializeField] private bool canRepeat = true;
-        [Space]
         [SerializeField] private string effectPatternName = "Square3x3";
+        [Header("Effected Candy")]
+        [SerializeField] private bool effectAllCandy = false;
+        [SerializeField] private List<int> effectedCandyTypeIndexes = new();
 
         private NeighborPatternRegistry patternRegistry;
         private GridManager gridManager;
@@ -29,12 +33,9 @@ namespace Candy
             NeighborPattern? multiplierPattern = this.patternRegistry.GetNeighborPattern(this.effectPatternName);
             if (multiplierPattern == null) return;
             
-            //GET SURROUNDING CANDY FUNC();
-
             GridManager.GridInstance[] surroundingCandy =
                 gridManager.GetNeighbors(this.boardItem.gridInstanceRef, multiplierPattern.Value);
-
-            print(surroundingCandy.Length+ "|" + surroundingCandy);
+            
             
             foreach (GridManager.GridInstance gridInstance in surroundingCandy)
             {
@@ -42,10 +43,14 @@ namespace Candy
 
                 if (gridInstance.boardItem.gameObject.TryGetComponent(out CandyActor actor))
                 {
+                    if(effectedCandyTypeIndexes.All(index => actor.candyType != index) && !this.effectAllCandy) continue;
                     actor.ApplyPointMultiplier(this.multiplier);
-                    
                 }
             }
+            
+            if(!canRepeat) Deactivate();
         }
+
+        private void Deactivate() => this.boardItem.OnActivate -= Activate;
     }
 }
