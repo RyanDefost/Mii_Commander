@@ -1801,6 +1801,8 @@ MonoBehaviour:
       typeIndex: 0
     - chance: 50
       typeIndex: 1
+    - chance: 10
+      typeIndex: 2
 --- !u!114 &705374802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1820,6 +1822,9 @@ MonoBehaviour:
   - name: Sour
     candyPrefab: {fileID: 2427277321692252709, guid: e28cc7eff9843884c8af3aae2ec583f3, type: 3}
     index: 1
+  - name: Multi
+    candyPrefab: {fileID: 2637714566891053184, guid: de1ae42156338fa4097f0ea34b57ef2a, type: 3}
+    index: 2
 --- !u!1 &719718567
 GameObject:
   m_ObjectHideFlags: 0
@@ -4081,4 +4086,3 @@ SceneRoots:
   - {fileID: 1640442864}
   - {fileID: 224840620}
   - {fileID: 1112216106}
-  - {fileID: 870468538}
