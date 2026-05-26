@@ -87,4 +87,6 @@ public class Timer
     }
         
     public string GetCurrentTimeFormatted(bool countDown = false) => countDown ? GetSecondsInTimeFormatted(this.maxTime - this.currentTime) : GetSecondsInTimeFormatted(this.currentTime);
+
+    public void ResetWaitTime(float waitTime) => this.maxTime = waitTime;
 }

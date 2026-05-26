@@ -30,7 +30,7 @@ namespace PlayerHand
         
         private bool canGrab;
         private bool grabbing;
-        public Action<Vector2, Vector2> OnGrabReleased; // passes hand movementDir, and throw force
+        public Action<Vector2, Vector2> OnRemovedFromHand; // passes hand movementDir, and throw force
 
         private DeviceTracker deviceTracker;
 
@@ -82,7 +82,7 @@ namespace PlayerHand
             
             if (this.grabAction == null || !this.grabbing) return;
             if (CheckOnGrabReleased(ref this.grabbing, this.grabAction, this.visualHandler, this.movementHandler))
-                this.OnGrabReleased?.Invoke(this.movementHandler.MovementDirection,  this.movementHandler.ThrowForce);
+                this.OnRemovedFromHand.Invoke(this.movementHandler.MovementDirection,  this.movementHandler.ThrowForce);
         }
         
         private void OnGrabActionPerformed(InputAction.CallbackContext obj) => OnInteract(obj, this.interactionHandler);

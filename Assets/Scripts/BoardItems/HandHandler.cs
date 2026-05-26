@@ -1,5 +1,4 @@
-﻿using System;
-using PlayerHand;
+﻿using PlayerHand;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,7 +8,6 @@ using Random = UnityEngine.Random;
 public class HandHandler : BoardItemComponent
 {
     private PlayerHandManager playerHandRef;
-    public Action OnHandGrabRelease; 
     
     public override void ConnectToBoardItem()
     { 
@@ -23,7 +21,7 @@ public class HandHandler : BoardItemComponent
     {
         this.playerHandRef.SetStateToGrabbing();
         this.transform.SetParent(this.playerHandRef.transform);
-        this.playerHandRef.OnGrabReleased += OnGrabReleased;
+        this.playerHandRef.OnRemovedFromHand += OnGrabReleased;
     }
     
     /// <summary>
@@ -33,8 +31,8 @@ public class HandHandler : BoardItemComponent
     private void OnGrabReleased(Vector2 handMovementDir, Vector2 throwForce)
     {
         OnGrabReleased(this.boardItem.Rb, this.boardItem, handMovementDir, throwForce);
-        this.playerHandRef.OnGrabReleased -= OnGrabReleased;
-        this.OnHandGrabRelease?.Invoke();
+        this.playerHandRef.OnRemovedFromHand -= OnGrabReleased;
+        this.boardItem.OnRemovedFromHand?.Invoke();
     }
     
     /// <summary>

@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Linq;
+using Grid;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 /// <summary>
 /// Holds all board item events,
@@ -10,27 +10,23 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class BoardItem : MonoBehaviour
 {
-    [SerializeField]
-    private Interactable interactable;
-    [SerializeField]
+    public GridManager.GridInstance gridInstanceRef;
+    [SerializeField, HideInInspector]
     private BoardItemComponent[] components;
     [SerializeField]
     private Rigidbody rb;
     public Rigidbody Rb { get => this.rb; private set => this.rb = value; }
 
     public Action OnAddToHand;
+    public Action OnRemovedFromHand; 
     public Action OnInitiate;
     public Action OnAddToBoard;
+    public Action OnActivate;
     public Action OnStarted;
     
-    private void OnValidate()
+    private void Awake()
     {
-        if (Application.isPlaying)
-            return;
-        
         this.rb = GetComponent<Rigidbody>();
-        this.interactable = GetComponentInChildren<Interactable>();
-        
         this.components = GetComponentsInChildren<BoardItemComponent>();
     }
 
@@ -42,10 +38,11 @@ public class BoardItem : MonoBehaviour
         OnStarted?.Invoke();
     }
 
-    protected virtual void CustomOnValidate() {}
-    
     /// <summary>Called when released and on the playing field</summary>
     public void Initiate() => this.OnInitiate?.Invoke();
+    
+    /// <summary>Called when object should activate its ability, explode, push, pull, collect</summary>
+    public void Activate() => this.OnActivate?.Invoke();
 
     public T GetBoardComponent<T>() where T : BoardItemComponent
     {

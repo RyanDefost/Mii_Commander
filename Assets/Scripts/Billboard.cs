@@ -8,5 +8,5 @@ public class Billboard : MonoBehaviour
     private Camera camRef;
 
     private void Awake() => this.camRef = Camera.main;
-    private void Update() => this.transform.LookAt(this.camRef.transform.position, -Vector3.up);
+    private void LateUpdate() => this.transform.LookAt(this.camRef.transform.position, -Vector3.up);
 }
