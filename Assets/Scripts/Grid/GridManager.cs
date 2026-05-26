@@ -144,7 +144,7 @@ namespace Grid
             int distanceToRight = (this.generator.Width - 1) - distanceToLeft;
             
             GridInstance[] result = new GridInstance[pattern.width * pattern.height];
-
+            
             int centerX = pattern.center.x;
             int centerY = pattern.center.y;
             
