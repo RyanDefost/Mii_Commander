@@ -29,6 +29,8 @@ namespace Managers
         private FiniteStateMachine<GameManager> gameStateMachine;
         private readonly Dictionary<GameState, State<GameManager>> states = new();
 
+        public Action<GameState> OnChangeState;
+        
         private void OnValidate()
         {
             if (Application.isPlaying)
@@ -63,7 +65,8 @@ namespace Managers
         private void InitStates()
         {
             this.states.Add(GameState.PLAY, new PlayGameState(this));
-            this.states.Add(GameState.WAIT, new WaitGameState(this));
+            this.states.Add(GameState.CANDYMOVE, new CandyMoveState(this));
+            this.states.Add(GameState.CANDYACTIVATE, new CandyActivateState(this));
         }
 
         public void SetGameState(GameState stateKey)
