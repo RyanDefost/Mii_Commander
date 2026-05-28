@@ -4,6 +4,7 @@ namespace Managers
     {
         NONE = 0,
         PLAY,
-        WAIT
+        CANDYMOVE,
+        CANDYACTIVATE
     }
 }

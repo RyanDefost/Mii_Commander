@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Grid;
 using Managers;
 using UnityEngine;

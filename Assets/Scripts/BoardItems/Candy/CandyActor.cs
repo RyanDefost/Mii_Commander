@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 /// <summary>
 /// Manages the in game logic of a piece of candy
@@ -34,4 +34,5 @@ public class CandyActor : BoardItem
         this.movement.moveImmunity = false;
         this.OnAddToBoard -= RemovePlayerMoveImmunity;
     }
+    public void ApplyPointMultiplier(float multiplier) => this.points = Mathf.CeilToInt(this.points * multiplier);
 }

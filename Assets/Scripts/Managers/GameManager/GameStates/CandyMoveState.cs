@@ -1,14 +1,15 @@
+using Grid;
 using PlayerHand;
 using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Managers.GameStates
 {
-    public class WaitGameState : State<GameManager>
+    public class CandyMoveState : State<GameManager>
     {
         private PlayerHandManager playerHandRef;
 
-        public WaitGameState(GameManager owner) : base(owner)
+        public CandyMoveState(GameManager owner) : base(owner)
         {
             this.Owner.TurnManager.OnEndReached += TrySetScore;
         }
@@ -34,10 +35,10 @@ namespace Managers.GameStates
 
         private void TrySetScore(GridMoveable moveable)
         {
-            if (moveable.gameObject.TryGetComponent<CandyActor>(out CandyActor candyActor))
-            {
+            if (moveable.gameObject.TryGetComponent(out CandyActor candyActor))
                 this.Owner.ScoreManager.AddScore(candyActor.Points);
-            }
         }
+
+
     }
 }
