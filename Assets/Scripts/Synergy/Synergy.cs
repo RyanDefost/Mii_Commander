@@ -10,6 +10,8 @@ namespace Synergy
         public string patternName;
         public List<BoardItem> synergyItems = new List<BoardItem>();
 
+        public GameObject output;
+        
         public bool hasOrder;
     }
 }

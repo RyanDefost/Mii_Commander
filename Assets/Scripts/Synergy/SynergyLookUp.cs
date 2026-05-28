@@ -10,20 +10,22 @@ namespace Synergy
     {
         [SerializeField] private List<Synergy> synergyList = new();
 
-        private NeighborPatternRegistry neighborPatternRegistry = new();
+        private NeighborPatternRegistry neighborPatternRegistry;
         private GridManager gridManager;
 
-        private readonly Vector2Int[] directions =
+        private GridManager.GridInstance[] currentInstances;
+        
+        private readonly NeighborPattern[] directions =
         {
-            Vector2Int.left,
-            Vector2Int.right,
-            Vector2Int.up,
-            Vector2Int.down
+            NeighborPattern.Left,
+            NeighborPattern.Right,
+            NeighborPattern.Up,
+            NeighborPattern.Down
         };
 
         private void Awake() => ComponentRegistry.AddToRegistry(this);
 
-        public Synergy GetSynergy(GridManager.GridInstance gridInstanceRef)
+        public Tuple<Synergy, GridManager.GridInstance[]> GetSynergy(GridManager.GridInstance gridInstanceRef)
         {
             this.neighborPatternRegistry ??= ComponentRegistry.GetComponent<NeighborPatternRegistry>();
             if(!this.neighborPatternRegistry) Debug.LogWarning($"{nameof(this.neighborPatternRegistry)} is null");
@@ -34,22 +36,72 @@ namespace Synergy
             
             foreach (Synergy currentSynergy in synergyList)
             {
-                print(gridInstanceRef);
+                bool hasSynergy = CheckSynergy(currentSynergy, gridInstanceRef);
+                if(hasSynergy) return  Tuple.Create(currentSynergy, currentInstances);
                 
-                NeighborPattern? newPattern = NeighborPattern.Right;
+                /*NeighborPattern? newPattern = NeighborPattern.Right;
                 GridManager.GridInstance[] synergyItems = this.gridManager.GetNeighbors(gridInstanceRef, newPattern.Value);
                 
                 //Check Synergy.
                 bool hasSynergy = currentSynergy.hasOrder ? 
                    CheckOrderedSynergy(currentSynergy, synergyItems) : CheckUnOrderedSynergy(currentSynergy, synergyItems);
                 
-                if(hasSynergy) return currentSynergy;
+                if(hasSynergy) return currentSynergy;*/
             }
             
             return null;
         }
 
-        private static bool CheckOrderedSynergy(Synergy synergy, GridManager.GridInstance[] synergyItems)
+        private bool CheckSynergy(Synergy synergy, GridManager.GridInstance centerInstance)
+        {
+            List<BoardItem> synergyItems = synergy.synergyItems;
+            
+            foreach (NeighborPattern direction in directions)
+            {
+                bool directionHasSynergy = true;
+                GridManager.GridInstance currentInstance = centerInstance;
+                this.currentInstances = new GridManager.GridInstance[synergyItems.Count];
+
+                for (int i = 0; i < synergyItems.Count; i++)
+                {
+                    if (currentInstance == null) //TODO FIX UGLY CODE.
+                    {
+                        directionHasSynergy = false;
+                        break;
+                    }
+                    
+                    string currentName = (currentInstance.gameObj.name).Replace("(Clone)", "");
+                    if (currentName != synergyItems[i].gameObject.name)
+                    {
+                        directionHasSynergy = false;
+                        break;
+                    }
+                    
+                    this.currentInstances[i] = currentInstance;
+                    
+                    currentInstance = GetDirectNeighbor(currentInstance, direction);
+                }
+                
+                if(directionHasSynergy) return true;
+            }
+            
+            return false;
+        }
+
+        private GridManager.GridInstance GetDirectNeighbor(GridManager.GridInstance currentInstance, NeighborPattern direction)
+        {
+            GridManager.GridInstance[] nextInstances = this.gridManager.GetNeighbors(currentInstance, direction);
+            foreach (GridManager.GridInstance neighbor in nextInstances)
+            {
+                if (neighbor == null || !neighbor.gameObj) continue;
+                return neighbor;
+            }
+
+            return null;
+        }
+        
+
+        /*private static bool CheckOrderedSynergy(Synergy synergy, GridManager.GridInstance[] synergyItems)
         {
             print("Checking ordered synergy");
             List<BoardItem> lookupItems = synergy.synergyItems;
@@ -62,29 +114,22 @@ namespace Synergy
             }
             
             return true;
-        }
+        }*/
 
-        private static bool CheckUnOrderedSynergy(Synergy synergy, GridManager.GridInstance[] synergyItems)
+        /*private static bool CheckUnOrderedSynergy(Synergy synergy, GridManager.GridInstance[] synergyItems)
         {
             print("Checking unordered synergy");
             List<string> lookupNames = synergy.synergyItems.Select(synergyItem => synergyItem.name).ToList();
-            foreach (var VARIABLE in lookupNames)
-            {
-                print(VARIABLE);
-            }
-            
             
             foreach (GridManager.GridInstance item in synergyItems)
             {
-                print(item);
-                
-                /*if (lookupNames.Contains(item.gameObj.name))
+                if (lookupNames.Contains(item.gameObj.name))
                     lookupNames.Remove(item.gameObj.name);
                 else
-                    return false;*/
+                    return false;
             }
             
             return true;
-        }
+        }*/
     }
 }
