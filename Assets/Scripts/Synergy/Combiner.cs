@@ -12,14 +12,7 @@ namespace Synergy
         private NeighborPatternRegistry neighborPatternRegistry;
         private SynergyLookUp synergyLookUp;
         private GridManager gridManager;
-
-        private void Start()
-        {
-            this.neighborPatternRegistry = ComponentRegistry.GetComponent<NeighborPatternRegistry>();
-            this.synergyLookUp = ComponentRegistry.GetComponent<SynergyLookUp>();
-            this.gridManager = ComponentRegistry.GetComponent<GridManager>();
-        }
-
+        
         public override void ConnectToBoardItem()
         {
             if (this.shouldActivateOnItsOwn)
@@ -28,8 +21,20 @@ namespace Synergy
 
         public void Activate()
         {
-            var nextNeighbor = gridManager.GetNeighbors(this.boardItem.gridInstanceRef, NeighborPattern.Right);
-            this.synergyLookUp.GetSynergy(nextNeighbor.First());
+            this.neighborPatternRegistry ??= ComponentRegistry.GetComponent<NeighborPatternRegistry>();
+            this.synergyLookUp ??= ComponentRegistry.GetComponent<SynergyLookUp>();
+            this.gridManager ??= ComponentRegistry.GetComponent<GridManager>();
+            
+            NeighborPattern? sidePattern = NeighborPattern.Right;
+            GridManager.GridInstance[] foundNeighbors = this.gridManager.GetNeighbors(this.boardItem.gridInstanceRef, sidePattern.Value);
+            
+            foreach (GridManager.GridInstance neighbor in foundNeighbors)
+            {
+                if (neighbor == null || !neighbor.gameObj) continue;
+                
+                this.synergyLookUp.GetSynergy(neighbor);
+                return;
+            }
         }
 
         public void EnableActivate() => this.boardItem.OnActivate += Activate;

@@ -16,5 +16,4 @@ MonoBehaviour:
   synergyItems:
   - {fileID: 1365219245064566773, guid: e28cc7eff9843884c8af3aae2ec583f3, type: 3}
   - {fileID: 1365219245064566773, guid: e28cc7eff9843884c8af3aae2ec583f3, type: 3}
-  - {fileID: 1365219245064566773, guid: e28cc7eff9843884c8af3aae2ec583f3, type: 3}
   hasOrder: 0

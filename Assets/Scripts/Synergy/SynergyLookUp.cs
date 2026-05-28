@@ -13,7 +13,7 @@ namespace Synergy
         private NeighborPatternRegistry neighborPatternRegistry = new();
         private GridManager gridManager;
 
-        private Vector2Int[] directions =
+        private readonly Vector2Int[] directions =
         {
             Vector2Int.left,
             Vector2Int.right,
@@ -34,26 +34,16 @@ namespace Synergy
             
             foreach (Synergy currentSynergy in synergyList)
             {
-                //NeighborPattern? synergyPattern = this.neighborPatternRegistry.GetNeighborPattern(currentSynergy.patternName);
-                //if(synergyPattern == null) continue;
+                print(gridInstanceRef);
                 
-                //GridManager.GridInstance[] synergyItems = this.gridManager.GetNeighbors(gridInstanceRef, synergyPattern.Value);
+                NeighborPattern? newPattern = NeighborPattern.Right;
+                GridManager.GridInstance[] synergyItems = this.gridManager.GetNeighbors(gridInstanceRef, newPattern.Value);
                 
-                bool hasSynergy = false;
-                foreach (Vector2Int direction in directions)
-                {
-                    Vector2Int directionalPattern = direction * currentSynergy.synergyItems.Count;
-                    NeighborPattern? newPattern = new(new []{direction}, new Vector2Int(1,1), directionalPattern.x, directionalPattern.y);
-                    
-                    GridManager.GridInstance[] synergyItems = this.gridManager.GetNeighbors(gridInstanceRef, newPattern.Value);
-                    
-                    print(synergyItems.Length);
-                    //Check Synergy.
-                    //hasSynergy = currentSynergy.hasOrder ? 
-                       // CheckOrderedSynergy(currentSynergy, synergyItems) : CheckUnOrderedSynergy(currentSynergy, synergyItems);
-                }
+                //Check Synergy.
+                bool hasSynergy = currentSynergy.hasOrder ? 
+                   CheckOrderedSynergy(currentSynergy, synergyItems) : CheckUnOrderedSynergy(currentSynergy, synergyItems);
                 
-                //if(hasSynergy) return currentSynergy;
+                if(hasSynergy) return currentSynergy;
             }
             
             return null;
@@ -61,6 +51,7 @@ namespace Synergy
 
         private static bool CheckOrderedSynergy(Synergy synergy, GridManager.GridInstance[] synergyItems)
         {
+            print("Checking ordered synergy");
             List<BoardItem> lookupItems = synergy.synergyItems;
             
             //Loop trough both lists and check if both of them are the same candyType.
@@ -75,14 +66,22 @@ namespace Synergy
 
         private static bool CheckUnOrderedSynergy(Synergy synergy, GridManager.GridInstance[] synergyItems)
         {
+            print("Checking unordered synergy");
             List<string> lookupNames = synergy.synergyItems.Select(synergyItem => synergyItem.name).ToList();
-
+            foreach (var VARIABLE in lookupNames)
+            {
+                print(VARIABLE);
+            }
+            
+            
             foreach (GridManager.GridInstance item in synergyItems)
             {
-                if (lookupNames.Contains(item.gameObj.name))
+                print(item);
+                
+                /*if (lookupNames.Contains(item.gameObj.name))
                     lookupNames.Remove(item.gameObj.name);
                 else
-                    return false;
+                    return false;*/
             }
             
             return true;

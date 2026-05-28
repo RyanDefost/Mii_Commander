@@ -49,7 +49,7 @@ namespace Grid
                 this.usedPatterns.Add(new LivePattern(instance.name, instance.texture, this.neighborColor, this.centerColor));
         }
 
-        private void Awake() => ComponentRegistry.AddToRegistry(this);
+        private void Start() => ComponentRegistry.AddToRegistry(this);
 
         /// <summary>
         /// Gets a struct containing a pattern, make sure to reget if the data changes inside the registry
