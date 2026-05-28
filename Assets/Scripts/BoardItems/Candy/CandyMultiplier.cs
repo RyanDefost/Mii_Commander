@@ -34,21 +34,23 @@ namespace Candy
             if (multiplierPattern == null) return;
             
             GridManager.GridInstance[] surroundingCandy =
-                gridManager.GetNeighbors(this.boardItem.gridInstanceRef, multiplierPattern.Value);
+                this.gridManager.GetNeighbors(this.boardItem.gridInstanceRef, multiplierPattern.Value);
             
             
             foreach (GridManager.GridInstance gridInstance in surroundingCandy)
             {
                 if(gridInstance == null || gridInstance == this.boardItem.gridInstanceRef)  continue;
 
-                if (gridInstance.boardItem.gameObject.TryGetComponent(out CandyActor actor))
+                if (gridInstance.boardItem.GetType() == typeof(CandyActor))
                 {
+                    CandyActor actor = gridInstance.boardItem as CandyActor;
+                    
                     if(effectedCandyTypeIndexes.All(index => actor.candyType != index) && !this.effectAllCandy) continue;
                     actor.ApplyPointMultiplier(this.multiplier);
                 }
             }
             
-            if(!canRepeat) Deactivate();
+            if(!this.canRepeat) Deactivate();
         }
 
         private void Deactivate() => this.boardItem.OnActivate -= Activate;
