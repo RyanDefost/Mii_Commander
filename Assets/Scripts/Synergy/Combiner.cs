@@ -55,13 +55,6 @@ namespace Synergy
                     //Wait till object is initialized
                     if (currentOutput.TryGetComponent(out BoardItem boardItem))
                         boardItem.OnStarted += SetOutputToBoard;
-                    
-                    /*var inst = this.gridManager.GetNearestPosition(
-                        outputItem.gameObject.transform.position,
-                        outputItem.gameObject,
-                        outputItem.GetComponent<BoardItem>()
-                    );
-                    this.gridManager.RegisterInGrid(inst);*/
                 }
                 return;
             }
