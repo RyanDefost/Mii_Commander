@@ -53,7 +53,7 @@ public class ShopComponent : MonoBehaviour
         }
     }
 
-    private void GrabBoardItem()
+    private void GrabBoardItem(BoardItem startedBoardItem)
     {
         if (currentGrabbable.TryGetComponent(out HandHandler handHandler))
         {

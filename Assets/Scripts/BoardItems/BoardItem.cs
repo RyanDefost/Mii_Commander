@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Grid;
 using UnityEngine;
@@ -22,7 +23,7 @@ public class BoardItem : MonoBehaviour
     public Action OnInitiate;
     public Action OnAddToBoard;
     public Action OnActivate;
-    public Action OnStarted;
+    public Action<BoardItem> OnStarted;
     
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class BoardItem : MonoBehaviour
         foreach (BoardItemComponent boardItemComponent in this.components)
             boardItemComponent.ConnectToBoardItem();
         
-        OnStarted?.Invoke();
+        OnStarted?.Invoke(this);
     }
 
     /// <summary>Called when released and on the playing field</summary>

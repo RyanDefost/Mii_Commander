@@ -170,7 +170,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Synergy.Combiner
   boardItem: {fileID: 3198954631575277286}
-  shouldActivateOnItsOwn: 1
 --- !u!1 &3114438722924965209
 GameObject:
   m_ObjectHideFlags: 0

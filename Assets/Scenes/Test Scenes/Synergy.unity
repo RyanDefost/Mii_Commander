@@ -1282,7 +1282,7 @@ PrefabInstance:
     - target: {fileID: 2326345404673958767, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
       propertyPath: shopItem
       value: 
-      objectReference: {fileID: 11400000, guid: 483054ac3c9bf1a4498adb4e815cf7e6, type: 2}
+      objectReference: {fileID: 11400000, guid: e740ac291c33d05ea8e63944b1555d8e, type: 2}
     - target: {fileID: 2326345404673958767, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
       propertyPath: itemAmount
       value: 999
