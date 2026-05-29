@@ -255,7 +255,7 @@ MonoBehaviour:
   - {fileID: 1291884617605259549}
   rb: {fileID: 6052537823055790810}
   points: 2
-  candyType: 0
+  candyType: 3
   movement: {fileID: 5372677729061368150}
   handHandler: {fileID: 1291884617605259549}
 --- !u!114 &1291884617605259549
@@ -285,8 +285,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Candy.CandyMultiplier
   boardItem: {fileID: 7599870205593615304}
   multiplier: 1.2
-  canRepeat: 1
   effectPatternName: Square3x3
+  canRepeat: 1
   effectAllCandy: 1
   effectedCandyTypeIndexes: 
 --- !u!1 &4735561865074822501

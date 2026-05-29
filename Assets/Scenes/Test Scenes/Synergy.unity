@@ -2333,6 +2333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Synergy.SynergyLookUp
   synergyList:
+  - {fileID: 11400000, guid: 70d3cfb435814e457947dd2f56ae9b73, type: 2}
   - {fileID: 11400000, guid: f8aac0a4265b2c60aba127c71be241f2, type: 2}
 --- !u!4 &861752224
 Transform:
@@ -2832,7 +2833,7 @@ PrefabInstance:
     - target: {fileID: 2326345404673958767, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
       propertyPath: shopItem
       value: 
-      objectReference: {fileID: 11400000, guid: 483054ac3c9bf1a4498adb4e815cf7e6, type: 2}
+      objectReference: {fileID: 11400000, guid: 02a1f10e7e65d0cd48fe7f17b947188d, type: 2}
     - target: {fileID: 2326345404673958767, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
       propertyPath: itemAmount
       value: 999

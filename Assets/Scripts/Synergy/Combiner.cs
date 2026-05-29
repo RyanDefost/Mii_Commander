@@ -13,7 +13,8 @@ namespace Synergy
         private GridManager gridManager;
         private GameManager gameManager;
 
-        private GameObject currentOutput;
+        private GameObject currentOutput; //TODO: Might not work as intended if setting multiple synergies in 1 turn.
+        private int currentOutputPoints;
         
         public override void ConnectToBoardItem() => this.boardItem.OnActivate += Activate;
 
@@ -22,13 +23,13 @@ namespace Synergy
         /// </summary>
         private void Activate()
         {
-            //Init
+            //Init.
             this.neighborPatternRegistry ??= ComponentRegistry.GetComponent<NeighborPatternRegistry>();
             this.synergyLookUp ??= ComponentRegistry.GetComponent<SynergyLookUp>();
             this.gridManager ??= ComponentRegistry.GetComponent<GridManager>();
             this.gameManager ??= ComponentRegistry.GetComponent<GameManager>();
             
-            //Get Neighbors
+            //Get Neighbors.
             NeighborPattern? sidePattern = GetForwardNeighborPattern(this.transform.rotation.eulerAngles.z);
             GridManager.GridInstance[] foundNeighbors = this.gridManager.GetNeighbors(this.boardItem.gridInstanceRef, sidePattern.Value);
             
@@ -52,14 +53,18 @@ namespace Synergy
         private void ApplySynergy(Tuple<Synergy, GridManager.GridInstance[]> synergyInfo, GridManager.GridInstance neighbor)
         {
             this.gameManager.TurnManager.AddToWaitTime(2f);
-            
+
+            //On release combined instances.
             foreach (GridManager.GridInstance instance in synergyInfo.Item2)
             {
+                if (instance.boardItem is CandyActor actor) 
+                    currentOutputPoints += actor.Points;
+                
                 this.gridManager.ReleaseInstance(instance);
                 Destroy(instance.gameObj);
             }
                     
-            //Initialize GameObject
+            //Initialize GameObject.
             currentOutput = Instantiate(synergyInfo.Item1.output, neighbor.position, Quaternion.identity);
             if (currentOutput.TryGetComponent(out BoardItem boardItem))
                 boardItem.OnStarted += SetOutputToBoard;
@@ -87,6 +92,13 @@ namespace Synergy
         /// <summary>
         /// Initializes the currentOutput when object has started.
         /// </summary>
-        private void SetOutputToBoard() => currentOutput.GetComponent<BoardItem>().Initiate();
+        private void SetOutputToBoard()
+        {
+            BoardItem item = currentOutput.GetComponent<BoardItem>(); 
+            item.Initiate();
+
+            if (item is CandyActor actor)
+                actor.AddPoints(currentOutputPoints);
+        }
     }
 }

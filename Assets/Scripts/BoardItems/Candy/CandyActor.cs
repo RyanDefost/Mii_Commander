@@ -35,4 +35,5 @@ public class CandyActor : BoardItem
         this.OnAddToBoard -= RemovePlayerMoveImmunity;
     }
     public void ApplyPointMultiplier(float multiplier) => this.points = Mathf.CeilToInt(this.points * multiplier);
+    public void AddPoints(int points) => this.points += points;
 }
