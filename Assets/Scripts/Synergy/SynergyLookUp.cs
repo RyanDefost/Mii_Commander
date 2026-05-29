@@ -15,8 +15,7 @@ namespace Synergy
 
         private GridManager.GridInstance[] currentInstances;
         
-        private readonly NeighborPattern[] directions =
-        {
+        private readonly NeighborPattern[] directions = {
             NeighborPattern.Left,
             NeighborPattern.Right,
             NeighborPattern.Up,
@@ -24,112 +23,117 @@ namespace Synergy
         };
 
         private void Awake() => ComponentRegistry.AddToRegistry(this);
-
-        public Tuple<Synergy, GridManager.GridInstance[]> GetSynergy(GridManager.GridInstance gridInstanceRef)
+        
+        /// <summary>
+        /// Tries to return the found synergy and affected boardItems.
+        /// </summary>
+        /// <param name="gridInstanceRef">CenterPoint to check for possible synergy</param>
+        /// <returns></returns>
+        public Tuple<Synergy, GridManager.GridInstance[]> TryGetSynergy(GridManager.GridInstance gridInstanceRef)
         {
             this.neighborPatternRegistry ??= ComponentRegistry.GetComponent<NeighborPatternRegistry>();
-            if(!this.neighborPatternRegistry) Debug.LogWarning($"{nameof(this.neighborPatternRegistry)} is null");
-            
             this.gridManager ??= ComponentRegistry.GetComponent<GridManager>();
-            if(!this.gridManager) Debug.LogWarning($"{nameof(SynergyLookUp)} requires a GridManager");
 
-            
-            foreach (Synergy currentSynergy in synergyList)
-            {
-                bool hasSynergy = CheckSynergy(currentSynergy, gridInstanceRef);
-                if(hasSynergy) return  Tuple.Create(currentSynergy, currentInstances);
-                
-                /*NeighborPattern? newPattern = NeighborPattern.Right;
-                GridManager.GridInstance[] synergyItems = this.gridManager.GetNeighbors(gridInstanceRef, newPattern.Value);
-                
-                //Check Synergy.
-                bool hasSynergy = currentSynergy.hasOrder ? 
-                   CheckOrderedSynergy(currentSynergy, synergyItems) : CheckUnOrderedSynergy(currentSynergy, synergyItems);
-                
-                if(hasSynergy) return currentSynergy;*/
-            }
-            
-            return null;
+            //Loop over all synergies to find first applicable synergy.
+            return (from currentSynergy in synergyList let hasSynergy = CheckSynergy(currentSynergy, gridInstanceRef) 
+                where hasSynergy select Tuple.Create(currentSynergy, currentInstances)).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Loops over all possible directions and orders where the given synergy could be applied.
+        /// </summary>
+        /// <param name="synergy">The current Synergy that is being checked for existing</param>
+        /// <param name="centerInstance">StartingPoint from the instances to check</param>
+        /// <returns>Indication if the synergy is found with the centerInstance</returns>
         private bool CheckSynergy(Synergy synergy, GridManager.GridInstance centerInstance)
         {
             List<BoardItem> synergyItems = synergy.synergyItems;
-            
             foreach (NeighborPattern direction in directions)
             {
-                bool directionHasSynergy = true;
-                GridManager.GridInstance currentInstance = centerInstance;
-                this.currentInstances = new GridManager.GridInstance[synergyItems.Count];
-
-                for (int i = 0; i < synergyItems.Count; i++)
-                {
-                    if (currentInstance == null) //TODO FIX UGLY CODE.
-                    {
-                        directionHasSynergy = false;
-                        break;
-                    }
-                    
-                    string currentName = (currentInstance.gameObj.name).Replace("(Clone)", "");
-                    if (currentName != synergyItems[i].gameObject.name)
-                    {
-                        directionHasSynergy = false;
-                        break;
-                    }
-                    
-                    this.currentInstances[i] = currentInstance;
-                    
-                    currentInstance = GetDirectNeighbor(currentInstance, direction);
-                }
+                //Check for synergy from center.
+                bool hasCenterSynergy = CheckDirection(synergyItems, centerInstance, direction, synergy.hasOrder);
+                if(hasCenterSynergy) return true;
                 
-                if(directionHasSynergy) return true;
+                //Check for synergy towards center.
+                GridManager.GridInstance[] centerConnectedCandy = this.currentInstances;
+                foreach (GridManager.GridInstance instance in centerConnectedCandy)
+                {
+                    NeighborPattern inverseDirection = GetInverse(direction);
+                    bool hasInverseSynergy = CheckDirection(synergyItems, instance, inverseDirection, synergy.hasOrder);
+                    if(hasInverseSynergy) return true;
+                }
             }
             
             return false;
         }
+        
+        /// <summary>
+        /// Checks from the given center and direction if boardItems align with the expected SynergyItems. 
+        /// </summary>
+        /// <param name="synergyItems">List of BoardItems that are expected for a Synergy</param>
+        /// <param name="centerInstance">StartingPoint from the instances to check</param>
+        /// <param name="direction">direction to check towards from the centerPoint</param>
+        /// <param name="isOrdered">Checks differ depending on need for synergy order</param>
+        /// <returns>Indication if a synergy is found in the current direction</returns>
+        private bool CheckDirection(List<BoardItem> synergyItems, GridManager.GridInstance centerInstance, NeighborPattern direction, bool isOrdered = true)
+        {
+            GridManager.GridInstance currentInstance = centerInstance;
+            this.currentInstances = new GridManager.GridInstance[synergyItems.Count];
+            List<string> lookupNames = synergyItems.Select(synergyItem => synergyItem.name).ToList();
+            
+            bool hasSynergy = true;
+            for (int i = 0; i < synergyItems.Count; i++)
+            {
+                if (currentInstance == null) return false;
+                string correctedName = (currentInstance.gameObj.name).Replace("(Clone)", "");
+                
+                //Check if Synergy is Ordered.
+                if (isOrdered) 
+                {
+                    if (correctedName != synergyItems[i].gameObject.name) 
+                        hasSynergy = false;
+                }
+                //Check if Synergy is Unordered.
+                else
+                {
+                    if (lookupNames.Contains(correctedName))
+                        lookupNames.Remove(correctedName);
+                    else
+                        hasSynergy = false;
+                }
+                
+                this.currentInstances[i] = currentInstance;
+                currentInstance = GetDirectNeighbor(currentInstance, direction);
+            }
 
+            return hasSynergy;
+        }
+
+        /// <summary>
+        /// HelperFunction to inverse neighborPattern direction.
+        /// </summary>
+        /// <param name="neighborPattern">Pattern that needs to be inversed</param>
+        /// <returns>inversed Pattern</returns>
+        private static NeighborPattern GetInverse(NeighborPattern neighborPattern)
+        {
+            if(neighborPattern.Equals(NeighborPattern.Right)) return NeighborPattern.Left;
+            else if(neighborPattern.Equals(NeighborPattern.Left)) return NeighborPattern.Right;
+            else if(neighborPattern.Equals(NeighborPattern.Down)) return NeighborPattern.Up;
+            else if(neighborPattern.Equals(NeighborPattern.Up)) return NeighborPattern.Down;
+            
+            return default;
+        }
+
+        /// <summary>
+        /// Helper function that Gets the only relevant gridInstance that is not Null.
+        /// </summary>
+        /// <param name="currentInstance">Instance that checks for neighbors</param>
+        /// <param name="direction">NeighborPattern in needed direction</param>
+        /// <returns>Instance that has been found and != Null</returns>
         private GridManager.GridInstance GetDirectNeighbor(GridManager.GridInstance currentInstance, NeighborPattern direction)
         {
             GridManager.GridInstance[] nextInstances = this.gridManager.GetNeighbors(currentInstance, direction);
-            foreach (GridManager.GridInstance neighbor in nextInstances)
-            {
-                if (neighbor == null || !neighbor.gameObj) continue;
-                return neighbor;
-            }
-
-            return null;
+            return nextInstances.FirstOrDefault(neighbor => neighbor != null && neighbor.gameObj);
         }
-        
-
-        /*private static bool CheckOrderedSynergy(Synergy synergy, GridManager.GridInstance[] synergyItems)
-        {
-            print("Checking ordered synergy");
-            List<BoardItem> lookupItems = synergy.synergyItems;
-            
-            //Loop trough both lists and check if both of them are the same candyType.
-            for (int i = 0; lookupItems.Count <= 0; i++)
-            {
-                if (lookupItems[i].gameObject.name != synergyItems[i].gameObj.name)
-                    return false;
-            }
-            
-            return true;
-        }*/
-
-        /*private static bool CheckUnOrderedSynergy(Synergy synergy, GridManager.GridInstance[] synergyItems)
-        {
-            print("Checking unordered synergy");
-            List<string> lookupNames = synergy.synergyItems.Select(synergyItem => synergyItem.name).ToList();
-            
-            foreach (GridManager.GridInstance item in synergyItems)
-            {
-                if (lookupNames.Contains(item.gameObj.name))
-                    lookupNames.Remove(item.gameObj.name);
-                else
-                    return false;
-            }
-            
-            return true;
-        }*/
     }
 }

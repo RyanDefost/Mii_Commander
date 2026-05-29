@@ -7,11 +7,10 @@ namespace Synergy
     [CreateAssetMenu(fileName = "Synergy", menuName = "ScriptableObjects/Synergy", order = 1)]
     public class Synergy : ScriptableObject
     {
-        public string patternName;
-        public List<BoardItem> synergyItems = new List<BoardItem>();
-
-        public GameObject output;
+        public List<BoardItem> synergyItems = new();
         
-        public bool hasOrder;
+        [Header("Synergy info")]
+        public GameObject output;
+        public bool hasOrder = true;
     }
 }

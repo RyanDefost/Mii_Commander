@@ -34,7 +34,6 @@ public class GridMoveable : BoardItemComponent
 
     public override void ConnectToBoardItem()
     { 
-        print(this.gameObject);
         this.boardItem.OnAddToHand += OnAddToHand; 
         this.boardItem.OnInitiate += OnInitiate;
     }
