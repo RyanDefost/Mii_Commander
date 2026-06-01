@@ -31,7 +31,10 @@ public class CandyTypeLookup : MonoBehaviour
         }
     }
 
-    private void Awake() => ComponentRegistry.AddToRegistry(this);
+    private void Awake()
+    {
+        ComponentRegistry.AddToRegistry(this);   
+    }
     
     /// <summary>
     /// Exposes candy from lookup table

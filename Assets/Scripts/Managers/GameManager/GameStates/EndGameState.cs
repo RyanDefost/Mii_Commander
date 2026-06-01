@@ -7,6 +7,8 @@ namespace Managers.GameStates
     {
         private  GridManager gridManager;
         
+        private bool isDone = false;
+        
         public EndGameState(GameManager owner) : base(owner)
         {
             
@@ -24,8 +26,16 @@ namespace Managers.GameStates
 
         public override void Update()
         {
+            if(this.isDone) return;
+
             if (this.gridManager.HasActiveInstances())
+            {
                 this.Owner.SetGameState(GameState.CANDYMOVE);
+                return;
+            }
+            
+            isDone = true;
+            this.Owner.OnGameEnd?.Invoke();
         }
 
         public override void Exit()

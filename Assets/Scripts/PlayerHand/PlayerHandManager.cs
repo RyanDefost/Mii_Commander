@@ -89,10 +89,9 @@ namespace PlayerHand
 
         private void OnInteract(InputAction.CallbackContext obj, InteractionHandler interactionHandler)
         {
-            if(!this.canGrab) return;
             if (!obj.ReadValueAsButton()) return;
             if (!interactionHandler.CurrentHover) return;
-            interactionHandler.CurrentHover.Trigger();
+            interactionHandler.CurrentHover.Trigger(canGrab);
         }
         
         /// <summary>

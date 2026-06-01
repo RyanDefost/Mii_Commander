@@ -22,6 +22,7 @@ namespace Managers
         //[SerializeField] private QuestManager questManager;
         
         public Action<GameState> OnStateChange;
+        public Action OnGameEnd;
         
         [Header("Game Settings")]
         [SerializeField] private LevelRef levelData;
@@ -85,6 +86,7 @@ namespace Managers
         private void SetGameEndState()
         {
             this.HasEndedGame = true;
+            
             this.MoveManager.OnLastMove -= SetGameEndState;
         }
     }
