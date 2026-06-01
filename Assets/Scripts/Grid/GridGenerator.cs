@@ -15,8 +15,6 @@ namespace Grid
     {
         [SerializeField]
         private Material[] materials;
-        [SerializeField] 
-        private bool lastMaterialIsLockedCells;
         [SerializeField]
         private Bounds boardBounds;
         [SerializeField]
@@ -27,6 +25,8 @@ namespace Grid
         private Vector3[] positionsOffGrid;
         [SerializeField] 
         private int[] lockedPositionIndexes;
+        [SerializeField, Tooltip("Locked Cells override last material from 'materials' as visualisation")] 
+        private bool hasLockedCells;
         [Space]
         public Vector2 cellSize;
         public int Width => this.boardSize.x;
@@ -208,25 +208,19 @@ namespace Grid
             // Build CombineInstances per material
             for (int i = 0; i < totalCells; i++)
             {
-                int materialsLength = this.lastMaterialIsLockedCells ? this.materials.Length - 1 : this.materials.Length; 
+                int materialsLength = this.hasLockedCells ? this.materials.Length - 1 : this.materials.Length;
                 int matIndex = i % materialsLength;
                 
                 //if cell locked; set to last material
-                if (lockedPositionIndexes.Contains(i)) matIndex = this.materials.Length;
-                
-                if (!materialGroups.TryGetValue(matIndex, out List<CombineInstance> list))
-                {
-                    list = new List<CombineInstance>();
-                    materialGroups[matIndex] = list;
-                }
-                
-                Vector3 localPos = this.positions[i] - this.transform.position;
-                CombineInstance combine = new()
-                {
-                    mesh = this.cellMesh,
-                    transform = Matrix4x4.TRS(localPos + Vector3.back * 0.01f, Quaternion.identity, Vector3.one)
-                };
-                list.Add(combine);
+                if (lockedPositionIndexes.Contains(i) && hasLockedCells) continue;
+                BuildCombineInstances(i, matIndex, materialGroups);
+            }
+            
+            // Build CombineInstances for lockedMaterial
+            foreach (int lockedPositonIndex in lockedPositionIndexes)
+            {
+                int matIndex = this.materials.Length;
+                BuildCombineInstances(lockedPositonIndex, matIndex, materialGroups);
             }
             
             // Create submeshes for different materials
@@ -263,10 +257,30 @@ namespace Grid
             MeshRenderer meshRenderer = combinedObject.AddComponent<MeshRenderer>();
             meshRenderer.sharedMaterials = this.materials;
         }
+        
+        //Build CombineInstances per material
+        private void BuildCombineInstances(int currentIndex, int matIndex, Dictionary<int, List<CombineInstance>> materialGroups )
+        {
+            if (!materialGroups.TryGetValue(matIndex, out List<CombineInstance> list))
+            {
+                list = new List<CombineInstance>();
+                materialGroups[matIndex] = list;
+            }
+                
+            Vector3 localPos = this.positions[currentIndex] - this.transform.position;
+            CombineInstance combine = new()
+            {
+                mesh = this.cellMesh,
+                transform = Matrix4x4.TRS(localPos + Vector3.back * 0.01f, Quaternion.identity, Vector3.one)
+            };
+            list.Add(combine);
+        }
 
         public List<Vector3?> GetAllPositions() => this.positions.Select(pos => (Vector3?)pos).ToList();
         public List<Vector3?> GetAllOffGridPositions() => this.positionsOffGrid.Select(pos => (Vector3?)pos).ToList();
-        public List<Vector3> GetAllLockedPositions() => this.lockedPositionIndexes.Select(lockedIndex => this.positions[lockedIndex]).ToList();
+        
+        public List<Vector3> GetAllLockedPositions() => !hasLockedCells ? new List<Vector3>() : 
+            lockedPositionIndexes.Select(lockedIndex => this.positions[lockedIndex]).ToList();
         
         public Vector3 GetPosAt(GridManager.GridIndex index) =>
             index.isOffGrid ? GetOffGridPosAt(index.index) : GetOnGridPosAt(index.index);

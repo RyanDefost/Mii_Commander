@@ -1340,7 +1340,8 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: 1b7d3c35da59f744881e34b05929cc7e, type: 2}
   - {fileID: 2100000, guid: 4950cb24b5589014988a64feb239d52c, type: 2}
-  - {fileID: 2100000, guid: 23e96dbd08d0f6b498365c77542a6647, type: 2}
+  - {fileID: 2100000, guid: 54dd0d068be6f5f4389f6d549ef53daa, type: 2}
+  lastMaterialIsLockedCells: 1
   boardBounds:
     m_Center: {x: 0, y: 1, z: -4.809}
     m_Extent: {x: 2.15, y: 2.15, z: 0}
@@ -1403,7 +1404,6 @@ MonoBehaviour:
   - {x: 0.61428595, y: -1.457143, z: -4.809}
   - {x: 1.2285717, y: -1.457143, z: -4.809}
   - {x: 1.8428574, y: -1.457143, z: -4.809}
-  lockedMaterial: {fileID: 2100000, guid: 23e96dbd08d0f6b498365c77542a6647, type: 2}
   lockedPositionIndexes: 01000000050000000e000000
   cellSize: {x: 0.61428577, y: 0.61428577}
   cellMesh: {fileID: 4300000, guid: 1155ef8511d50dc48a21574733f595bd, type: 2}
