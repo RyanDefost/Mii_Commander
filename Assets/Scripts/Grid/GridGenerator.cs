@@ -15,6 +15,8 @@ namespace Grid
     {
         [SerializeField]
         private Material[] materials;
+        [SerializeField] 
+        private bool lastMaterialIsLockedCells;
         [SerializeField]
         private Bounds boardBounds;
         [SerializeField]
@@ -23,6 +25,9 @@ namespace Grid
         private Vector3[] positions;
         [SerializeField]
         private Vector3[] positionsOffGrid;
+        [SerializeField] 
+        private int[] lockedPositionIndexes;
+        [Space]
         public Vector2 cellSize;
         public int Width => this.boardSize.x;
         public int Height => this.boardSize.y;
@@ -203,7 +208,12 @@ namespace Grid
             // Build CombineInstances per material
             for (int i = 0; i < totalCells; i++)
             {
-                int matIndex = i % this.materials.Length;
+                int materialsLength = this.lastMaterialIsLockedCells ? this.materials.Length - 1 : this.materials.Length; 
+                int matIndex = i % materialsLength;
+                
+                //if cell locked; set to last material
+                if (lockedPositionIndexes.Contains(i)) matIndex = this.materials.Length;
+                
                 if (!materialGroups.TryGetValue(matIndex, out List<CombineInstance> list))
                 {
                     list = new List<CombineInstance>();
@@ -256,11 +266,13 @@ namespace Grid
 
         public List<Vector3?> GetAllPositions() => this.positions.Select(pos => (Vector3?)pos).ToList();
         public List<Vector3?> GetAllOffGridPositions() => this.positionsOffGrid.Select(pos => (Vector3?)pos).ToList();
-
+        public List<Vector3> GetAllLockedPositions() => this.lockedPositionIndexes.Select(lockedIndex => this.positions[lockedIndex]).ToList();
+        
         public Vector3 GetPosAt(GridManager.GridIndex index) =>
             index.isOffGrid ? GetOffGridPosAt(index.index) : GetOnGridPosAt(index.index);
 
         private Vector3 GetOnGridPosAt(int index) => this.positions[index];
         private Vector3 GetOffGridPosAt(int index) => this.positionsOffGrid[index];
+
     }
 }
