@@ -8,6 +8,8 @@ namespace Managers.GameStates
     public class CandyMoveState : State<GameManager>
     {
         private PlayerHandManager playerHandRef;
+        
+        private Timer waitTimer;
 
         public CandyMoveState(GameManager owner) : base(owner)
         {
@@ -23,12 +25,14 @@ namespace Managers.GameStates
             this.Owner.MoveManager.SetMove();
             this.Owner.TurnManager.NextTurn();
             
-            // Debug.Log("ENTER WaitGameState");
+            //Timer
+            this.waitTimer = new Timer(1f, false, false, ExitState);
+            this.waitTimer.ResetAndReplay();
         }
 
         public override void Update()
         {
-            this.Owner.SetGameState(GameState.PLAY);
+            this.waitTimer.UpdateTime(Time.deltaTime);
         }
 
         public override void Exit() { }
@@ -39,6 +43,6 @@ namespace Managers.GameStates
                 this.Owner.ScoreManager.AddScore(candyActor.Points);
         }
 
-
+        private void ExitState() => this.Owner.SetGameState(this.Owner.HasEndedGame ? GameState.END : GameState.PLAY);
     }
 }
