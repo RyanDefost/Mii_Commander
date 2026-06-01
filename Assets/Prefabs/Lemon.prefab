@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridMoveable
   boardItem: {fileID: 3198954631575277286}
+  canIgnoreLocks: 1
   moveImmunity: 0
   offset: 0.25
   minimalDist: 0.5
