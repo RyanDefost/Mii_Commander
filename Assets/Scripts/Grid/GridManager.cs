@@ -89,14 +89,14 @@ namespace Grid
         private void OnDestroy() => ComponentRegistry.RemoveFromRegistry(this);
 
         /// <summary>Tries to get a near available position both on grid and off grid</summary>
-        public GridInstance GetNearestPosition(Vector3 position, GameObject gameObj, BoardItem item, GridInstance previous = null)
+        public GridInstance GetNearestPosition(Vector3 position, GameObject gameObj, BoardItem item, GridInstance previous = null, bool ignoreLocked = false)
         {
-            Vector3? posToIgnore = null;
+            List<Vector3> posToIgnore = ignoreLocked ? new List<Vector3>() : this.generator.GetAllLockedPositions();
             bool isBottomRow = false;
             if (previous != null)
             {
                 isBottomRow = previous.index.index < this.generator.Width;
-                posToIgnore = previous.position;
+                posToIgnore.Add(previous.position);
             }
             
             if (!isBottomRow)
@@ -106,7 +106,7 @@ namespace Grid
 
         /// <summary>Used in case the grid is full, a last row underneath the board. Try to get a available position</summary>
         public GridInstance GetNearestOffGridPosition(Vector3 position, GameObject gameObj, BoardItem item,
-            Vector3? posToIgnore = null, bool isAlreadyOffGrid = false)
+            List<Vector3> posToIgnore = null, bool isAlreadyOffGrid = false)
         {
             int foundIndexOffGrid = GetNearestIndex(position, this.openOffGridPositions, posToIgnore);
             int foundIndex = GetNearestIndex(position, this.openOnGridPositions, posToIgnore);
@@ -126,7 +126,7 @@ namespace Grid
 
         /// <summary>Tries to find the nearest available position on the board</summary>
         public GridInstance GetNearestGridPosition(Vector3 position, GameObject gameObj, BoardItem item,
-            Vector3? posToIgnore = null)
+            List<Vector3> posToIgnore = null)
         {
             int foundIndex = GetNearestIndex(position, this.openOnGridPositions, posToIgnore);
             return foundIndex == -1 ? null : RegisterGridPosition(gameObj, item, foundIndex);
@@ -182,6 +182,17 @@ namespace Grid
         }
 
         /// <summary>
+        /// Checks given position if it is a locked gridInstance.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns></returns>
+        public bool CheckPositionLocked(Vector3 position)
+        {
+            List<Vector3> lockedPositions = this.generator.GetAllLockedPositions();
+            return lockedPositions.Contains(position);
+        }
+
+        /// <summary>
         /// Creates a grid instance, and makes sure the position isn't taken again
         /// </summary>
         private GridInstance RegisterGridPosition(GameObject gameObj, BoardItem item, int index)
@@ -219,14 +230,14 @@ namespace Grid
         /// <param name="positions">collection to look through</param>
         /// <param name="posToIgnore">optional position to ignore from the collection</param>
         /// <returns>index of nearest position</returns>
-        private static int GetNearestIndex(Vector3 position, List<Vector3?> positions, Vector3? posToIgnore = null)
+        private static int GetNearestIndex(Vector3 position, List<Vector3?> positions, List<Vector3> posToIgnore = null)
         {
             float smallestDistance = float.MaxValue;
             int foundIndex = -1;
             for (int i = 0; i < positions.Count; i++)
             {
                 Vector3? availablePosition = positions[i];
-                if (availablePosition == null || (posToIgnore.HasValue && availablePosition.Value == posToIgnore.Value)) continue;
+                if (availablePosition == null || (posToIgnore != null && posToIgnore.Contains(availablePosition.Value))) continue;
                 float distance = Vector3.Distance(position, availablePosition.Value);
                 if (!(distance <= smallestDistance)) continue;
                 smallestDistance = distance;
@@ -255,7 +266,7 @@ namespace Grid
 
             this.activeGrid.Remove(target.index);
         }
-
+        
         /// <summary>
         /// A method to call a method on all taken grid objects
         /// </summary>

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,6 +24,22 @@ namespace Grid
         private Vector3[] positions;
         [SerializeField]
         private Vector3[] positionsOffGrid;
+
+        [SerializeField, Header("Locked Cells")] 
+        private bool hasLockedCells;
+        [SerializeField] 
+        private Material lockedMaterial;
+        [SerializeField] 
+        private int[] lockedPositionIndexes;
+        [Space]
+        [SerializeField, Header("Start Cells")] 
+        private bool hasStartCells;
+        [SerializeField] 
+        private Material StartMaterial;
+        [SerializeField] 
+        private int[] startPositionIndexes;
+        [Space]
+        
         public Vector2 cellSize;
         public int Width => this.boardSize.x;
         public int Height => this.boardSize.y;
@@ -203,20 +220,34 @@ namespace Grid
             // Build CombineInstances per material
             for (int i = 0; i < totalCells; i++)
             {
+                //int materialsLength = this.hasLockedCells ? this.materials.Length - 1 : this.materials.Length;
                 int matIndex = i % this.materials.Length;
-                if (!materialGroups.TryGetValue(matIndex, out List<CombineInstance> list))
-                {
-                    list = new List<CombineInstance>();
-                    materialGroups[matIndex] = list;
-                }
                 
-                Vector3 localPos = this.positions[i] - this.transform.position;
-                CombineInstance combine = new()
-                {
-                    mesh = this.cellMesh,
-                    transform = Matrix4x4.TRS(localPos + Vector3.back * 0.01f, Quaternion.identity, Vector3.one)
-                };
-                list.Add(combine);
+                //if cell locked; set to last material
+                if (lockedPositionIndexes.Contains(i) && hasLockedCells) continue;
+                BuildCombineInstances(i, matIndex, materialGroups);
+            }
+            
+            //Resize array to add lockMaterial
+            Array.Resize(ref this.materials, this.materials.Length + 1);
+            this.materials[^1] = lockedMaterial;
+            
+            // Build CombineInstances for lockedMaterial
+            foreach (int lockedPositonIndex in lockedPositionIndexes)
+            {
+                int matIndex = this.materials.Length;
+                BuildCombineInstances(lockedPositonIndex, matIndex, materialGroups);
+            }
+            
+            //Resize array to add lockMaterial
+            Array.Resize(ref this.materials, this.materials.Length + 1);
+            this.materials[^1] = StartMaterial;
+            
+            // Build CombineInstances for lockedMaterial
+            foreach (int startPositonIndex in startPositionIndexes)
+            {
+                int matIndex = this.materials.Length;
+                BuildCombineInstances(startPositonIndex, matIndex, materialGroups);
             }
             
             // Create submeshes for different materials
@@ -253,14 +284,36 @@ namespace Grid
             MeshRenderer meshRenderer = combinedObject.AddComponent<MeshRenderer>();
             meshRenderer.sharedMaterials = this.materials;
         }
+        
+        //Build CombineInstances per material
+        private void BuildCombineInstances(int currentIndex, int matIndex, Dictionary<int, List<CombineInstance>> materialGroups )
+        {
+            if (!materialGroups.TryGetValue(matIndex, out List<CombineInstance> list))
+            {
+                list = new List<CombineInstance>();
+                materialGroups[matIndex] = list;
+            }
+                
+            Vector3 localPos = this.positions[currentIndex] - this.transform.position;
+            CombineInstance combine = new()
+            {
+                mesh = this.cellMesh,
+                transform = Matrix4x4.TRS(localPos + Vector3.back * 0.01f, Quaternion.identity, Vector3.one)
+            };
+            list.Add(combine);
+        }
 
         public List<Vector3?> GetAllPositions() => this.positions.Select(pos => (Vector3?)pos).ToList();
         public List<Vector3?> GetAllOffGridPositions() => this.positionsOffGrid.Select(pos => (Vector3?)pos).ToList();
-
+        
+        public List<Vector3> GetAllLockedPositions() => !hasLockedCells ? new List<Vector3>() : 
+            lockedPositionIndexes.Select(lockedIndex => this.positions[lockedIndex]).ToList();
+        
         public Vector3 GetPosAt(GridManager.GridIndex index) =>
             index.isOffGrid ? GetOffGridPosAt(index.index) : GetOnGridPosAt(index.index);
 
         private Vector3 GetOnGridPosAt(int index) => this.positions[index];
         private Vector3 GetOffGridPosAt(int index) => this.positionsOffGrid[index];
+
     }
 }
