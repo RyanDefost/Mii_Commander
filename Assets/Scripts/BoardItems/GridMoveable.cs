@@ -47,7 +47,7 @@ public class GridMoveable : BoardItemComponent
         this.boardItem.OnInitiate -= OnInitiate;
     }
     
-    private void Update() => this.onUpdate?.Invoke();
+    private void FixedUpdate() => this.onUpdate?.Invoke();
 
     private void OnAddToHand()
     {
