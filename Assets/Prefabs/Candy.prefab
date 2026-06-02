@@ -107,7 +107,7 @@ MonoBehaviour:
   minimalDist: 1
   minVelocityToRecalculate: 1
   physicsData:
-    movementStrength: 10
+    movementStrength: 20
     maxVelocity: 40
     dampening: 5
     stuckVelocityThreshold: 0.5
