@@ -11,6 +11,9 @@ public class GridMoveable : BoardItemComponent
 {
     private GridManager grid;
     private MoveManager moveManagerRef;
+    
+    [Space]
+    public bool canIgnoreLocks;
     public bool moveImmunity;
     
     protected GridManager.GridInstance Target { get; private set; }
@@ -134,7 +137,7 @@ public class GridMoveable : BoardItemComponent
             return true;
         this.grid ??= ComponentRegistry.GetComponent<GridManager>();
         if (this.grid)
-            SetTarget(this.grid.GetNearestPosition(this.transform.position, this.gameObject, this.boardItem), usesMove);
+            SetTarget(this.grid.GetNearestPosition(this.transform.position, this.gameObject, this.boardItem, null, this.canIgnoreLocks), usesMove);
         else
             ComponentRegistry.TrySubscribeForComponent<GridManager>(TriggerUpdateTargetWithoutMove);
         return this.Target != null;
