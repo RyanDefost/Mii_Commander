@@ -24,7 +24,6 @@ namespace HelperStructs
             if (!obj.TryGetComponent(out BoardItem boardItem) ||
                 obj.GetComponentInParent<PlayerHandManager>()) return;
             
-            print(this.gridManager);
             if(boardItem.gridInstanceRef != null)
                 this.gridManager.ReleaseInstance(boardItem.gridInstanceRef);
             Destroy(obj);
