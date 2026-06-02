@@ -1,38 +1,60 @@
-using System;
-using Grid;
+using System.Collections.Generic;
 using Managers;
+using PlayerHand;
 using Scoring;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using UnityEngine.Serialization;
 
 public class EndScreen : MonoBehaviour
 {
+    private PlayerHandManager playerHandManager;
     private GameManager gameManager;
     private ScoreManager scoreManager;
     
-    [SerializeField]private GameObject childPanel;
+    [SerializeField]private GameObject EndScreenPanel;
+    [SerializeField]private GameObject FinishScreenPanel;
     
+    [FormerlySerializedAs("scoreText")]
     [Header("UI Elements")]
-    [SerializeField] private TextMeshPro scoreText;
+    [SerializeField] private List<TextMeshPro> scoreTexts;
     [SerializeField] private TextMeshPro winStateText;
-    
 
     private void Start()
     {
+        this.playerHandManager ??= ComponentRegistry.GetComponent<PlayerHandManager>();
         this.gameManager ??= ComponentRegistry.GetComponent<GameManager>();
         this.scoreManager ??= this.gameManager.ScoreManager;
         
-        childPanel.SetActive(false);
+        EndScreenPanel.SetActive(false);
+        FinishScreenPanel.SetActive(false);
+        
+        this.gameManager.ScoreManager.OnReachedGoal += GoalAchieved;
         this.gameManager.OnGameEnd += Activate;
     }
 
     private void Activate()
     {
-        SetScore(this.scoreManager.GetScore(), this.scoreManager.GetGoal(), scoreText, winStateText);
-        childPanel.SetActive(true);   
+        foreach (TextMeshPro text in scoreTexts)
+        {
+            SetScore(this.scoreManager.GetScore(), this.scoreManager.GetGoal(), text, winStateText);
+        }
+        EndScreenPanel.SetActive(true);
+        
+        this.gameManager.OnGameEnd -= Activate;
+    }
+
+    private void GoalAchieved()
+    {
+        foreach (TextMeshPro text in scoreTexts)
+        {
+            SetScore(this.scoreManager.GetScore(), this.scoreManager.GetGoal(), text, winStateText);
+        }
+        FinishScreenPanel.SetActive(true);
+        playerHandManager.SetCanGrab(false);
+        
+        this.gameManager.ScoreManager.OnReachedGoal -= GoalAchieved;
     }
     
     private static void SetScore(int score, int minScore, TextMeshPro textElement, TextMeshPro winTextElement)
@@ -41,6 +63,14 @@ public class EndScreen : MonoBehaviour
         winTextElement.text = score > minScore ? "You win!" : "You lose!";
     }
 
+    public void Continue()
+    {
+        this.FinishScreenPanel.SetActive(false);
+        playerHandManager.SetCanGrab(true);
+        
+        this.gameManager.ScoreManager.OnReachedGoal -= GoalAchieved;
+    }
+    
     public static void Restart() => SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
     public static void Quit() => Application.Quit();
 }

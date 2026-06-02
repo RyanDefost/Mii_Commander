@@ -19,7 +19,6 @@ namespace Managers.GameStates
             //Let player interact
             this.playerHandRef ??= ComponentRegistry.GetComponent<PlayerHandManager>();
             this.playerHandRef.SetCanGrab(true);
-            
         }
 
         public override void Update()

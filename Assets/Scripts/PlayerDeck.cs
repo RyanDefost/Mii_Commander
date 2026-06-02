@@ -60,7 +60,6 @@ public class PlayerDeck : MonoBehaviour
 
             foreach (CandyOption option in this.possibleCandies)
             {
-                print("CANDY OPTION " + option);
                 processedWeight += option.chance;
                 if (!(randomValue <= processedWeight)) continue;
                 

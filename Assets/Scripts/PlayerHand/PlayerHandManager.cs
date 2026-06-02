@@ -112,7 +112,11 @@ namespace PlayerHand
             this.visualHandler.SetSprite("Closed", this.movementHandler);
             this.grabbing = true;
         }
-        
-        public void SetCanGrab(bool canGrab) =>  this.canGrab = canGrab;
+
+        public void SetCanGrab(bool canGrab)
+        {
+            this.canGrab = canGrab;
+            print("NO GRABBING" + this.canGrab);  
+        }  
     }
 }
