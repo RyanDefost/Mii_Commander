@@ -52,8 +52,6 @@ public class EndScreen : MonoBehaviour
             SetScore(this.scoreManager.GetScore(), this.scoreManager.GetGoal(), text, winStateText);
         }
         FinishScreenPanel.SetActive(true);
-        playerHandManager.SetCanGrab(false);
-        
         this.gameManager.ScoreManager.OnReachedGoal -= GoalAchieved;
     }
     
@@ -66,8 +64,6 @@ public class EndScreen : MonoBehaviour
     public void Continue()
     {
         this.FinishScreenPanel.SetActive(false);
-        playerHandManager.SetCanGrab(true);
-        
         this.gameManager.ScoreManager.OnReachedGoal -= GoalAchieved;
     }
     
