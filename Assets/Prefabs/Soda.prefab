@@ -646,6 +646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridMoveable
   boardItem: {fileID: 2810408795809733440}
+  canIgnoreLocks: 0
   moveImmunity: 0
   offset: 0.45
   minimalDist: 1
@@ -751,7 +752,7 @@ MonoBehaviour:
   boardItem: {fileID: 2810408795809733440}
   toActivate: {fileID: 1859877875076216974}
   shakeDistanceDifference: 1
-  shakeDirectionDifference: -0.7
+  shakeDirectionDifference: -0.4
   shakeThreshold: 3
 --- !u!1 &8677340332721463335
 GameObject:
