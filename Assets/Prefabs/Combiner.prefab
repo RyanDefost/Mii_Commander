@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridMoveable
   boardItem: {fileID: 3198954631575277286}
+  canIgnoreLocks: 0
   moveImmunity: 0
   offset: 0.25
   minimalDist: 0.5
@@ -170,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Synergy.Combiner
   boardItem: {fileID: 3198954631575277286}
-  shouldActivateOnItsOwn: 1
+  visualizer: {fileID: 8038698875990162935}
 --- !u!1 &3114438722924965209
 GameObject:
   m_ObjectHideFlags: 0
