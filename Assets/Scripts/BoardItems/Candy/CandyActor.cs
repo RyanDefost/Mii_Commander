@@ -1,15 +1,18 @@
+using System;
 using UnityEngine;
 
 /// <summary>
 /// Manages the in game logic of a piece of candy
 /// </summary>
 [RequireComponent(typeof(MoveToGridPosition), typeof(HandHandler))]
-public class CandyActor : BoardItem
+public class CandyActor : BoardItem, IUserInterfaceValueGetter
 {
     [SerializeField] private int points;
     public int Points { get => this.points; private set => this.points = value; }
 
     public int candyType; // index reference to lookup
+
+    private Action<object, Type> OnchangePoints;
     
     [SerializeField]
     private MoveToGridPosition movement;
@@ -36,4 +39,32 @@ public class CandyActor : BoardItem
     }
     public void ApplyPointMultiplier(float multiplier) => this.points = Mathf.CeilToInt(this.points * multiplier);
     public void AddPoints(int points) => this.points += points;
+
+    public void ApplyPointMultiplier(float multiplier)
+    {
+        this.points = Mathf.CeilToInt(this.points * multiplier);   
+        this.OnchangePoints?.Invoke(this.points, typeof(int));
+    }
+    
+    public object GetValue(string valueName, out Type returnType)
+    {
+        if (valueName == "points")
+        {
+            returnType = typeof(int);
+            return this.Points;
+        }
+
+        returnType = null;
+        return null;
+    }
+
+    public void SubscribeOnChangeValue(string valueName, Action<object, Type> callback)
+    {
+        if (valueName == "points") this.OnchangePoints += callback;
+    }
+
+    public void UnSubscribeOnChangeValue(string valueName, Action<object, Type> callback)
+    {
+        if (valueName == "points") this.OnchangePoints -= callback;
+    }
 }
