@@ -2094,8 +2094,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CandyTypeLookup
   options:
-  - name: Sweet
-    candyPrefab: {fileID: 2427277321692252709, guid: d2d0231140d814541bd628f37b73ca0c, type: 3}
+  - name: Exploding
+    candyPrefab: {fileID: 2427277321692252709, guid: 7eaf65b4ee377d14ebc55c6dcf281aab, type: 3}
     index: 0
   - name: Sour
     candyPrefab: {fileID: 2427277321692252709, guid: e28cc7eff9843884c8af3aae2ec583f3, type: 3}

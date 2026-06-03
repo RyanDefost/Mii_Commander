@@ -32,7 +32,7 @@ public class CountDownTillActivation : BoardItemComponent, IUserInterfaceValueGe
         if (this.shouldActivateOnItsOwn)
             this.boardItem.OnActivate += Activate;
         this.currentCount = this.count;
-        this.countChanged.Invoke(this.currentCount, typeof(int));
+        this.countChanged?.Invoke(this.currentCount, typeof(int));
     }
 
     private void OnDestroy() => this.boardItem.OnActivate -= Activate;
@@ -42,7 +42,7 @@ public class CountDownTillActivation : BoardItemComponent, IUserInterfaceValueGe
         if (!this.enabled)
             return;
         this.currentCount--;
-        this.countChanged.Invoke(this.currentCount, typeof(int));
+        this.countChanged?.Invoke(this.currentCount, typeof(int));
 
         if (this.currentCount > 1) return;
         if (this.currentCount == 1)
@@ -59,7 +59,7 @@ public class CountDownTillActivation : BoardItemComponent, IUserInterfaceValueGe
     {
         this.enabled = true;
         this.currentCount = this.count;
-        this.countChanged.Invoke(this.currentCount, typeof(int));
+        this.countChanged?.Invoke(this.currentCount, typeof(int));
         this.currentToActivate.DisableActivate();
     }
 
