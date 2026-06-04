@@ -1,4 +1,5 @@
 using Grid;
+using HelperStructs;
 using PlayerHand;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace Managers.GameStates
     public class CandyMoveState : State<GameManager>
     {
         private PlayerHandManager playerHandRef;
-
+        
         public CandyMoveState(GameManager owner) : base(owner)
         {
             this.Owner.TurnManager.OnEndReached += TrySetScore;
@@ -19,6 +20,8 @@ namespace Managers.GameStates
             //Let player interact
             this.playerHandRef = ComponentRegistry.GetComponent<PlayerHandManager>();
             this.playerHandRef.SetCanGrab(false);
+            
+            this.Owner.candyCleaner.CleanBoard(); //TODO: REMOVE
             
             this.Owner.MoveManager.SetMove();
             this.Owner.TurnManager.NextTurn();

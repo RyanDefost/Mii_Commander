@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Grid;
+using HelperStructs;
 using Managers.GameStates;
 using Scoring;
 using UnityEngine;
@@ -20,6 +21,9 @@ namespace Managers
         public  ScoreManager ScoreManager { get => this.scoreManager; private set => this.scoreManager = value; }
         
         //[SerializeField] private QuestManager questManager;
+        
+        //TEMP TODO: REMOVE
+        public CandyCleaner candyCleaner;
         
         public Action<GameState> OnStateChange;
         
