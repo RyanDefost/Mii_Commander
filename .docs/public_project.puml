@@ -38,6 +38,14 @@ class CandyTypeOption {
   + candyPrefab : GameObject
   + index : int
 }
+MonoBehaviour(DiscardPile) {
+}
+struct Bounds<T1, T2> {
+  + min : T1
+  + max : T2
+}
+MonoBehaviour(MoveDeactivator) {
+}
 MonoBehaviour(PlayerDeck) {
   + chance : float
   + typeIndex : int
@@ -62,27 +70,34 @@ class Quest {
   + GetText() : string
 }
 MonoBehaviour(BoardItem) {
+  + gridInstanceRef : GridManager.GridInstance
   + OnAddToHand : Action
+  + OnRemovedFromHand : Action
   + OnInitiate : Action
   + OnAddToBoard : Action
+  + OnActivate : Action
+  + OnStarted : Action
   + Initiate() : void
+  + Activate() : void
 }
 MonoBehaviour(BoardItemComponent) {
   + ConnectToBoardItem() : virtual void
+  + GetBoardItem() : BoardItem
 }
 class GridMoveable {
+  + moveImmunity : bool
   + ConnectToBoardItem() : override void
   + SetMoving() : void
   + SetTarget() : void
   + ResetTarget() : void
   + HasTarget() : bool
+  + ApplyImpulse() : void
 }
 class GridRotatable {
   + ConnectToBoardItem() : override void
   + RotateClockWise() : void
 }
 class HandHandler {
-  + OnHandGrabRelease : Action
   + ConnectToBoardItem() : override void
   + AddToHand() : void
   + OnGrabReleased() : static void
@@ -93,10 +108,28 @@ MonoBehaviour(Interactable) {
   + HasBoardItemParent() : bool
 }
 class MoveToGridPosition {
+  + movementStrength : float
+  + maxVelocity : float
+  + dampening : float
+  + stuckVelocityThreshold : float
+  + resistanceRampRate : float
+  + maxResistanceMultiplier : float
+}
+class PhysicsData {
+  + movementStrength : float
+  + maxVelocity : float
+  + dampening : float
+  + stuckVelocityThreshold : float
+  + resistanceRampRate : float
+  + maxResistanceMultiplier : float
 }
 class CandyActor {
   + candyType : int
-  + OnGrabReleased() : static void
+  + OnGrabReleased() : void
+  + ApplyPointMultiplier() : void
+  + GetValue() : object
+  + SubscribeOnChangeValue() : void
+  + UnSubscribeOnChangeValue() : void
 }
 class CandyGroupHandle {
   + OnEnableObject() : void
@@ -108,34 +141,146 @@ class CandyHandle {
   + actor : readonly CandyActor
   + gameObject : readonly GameObject
 }
+class CandyMultiplier {
+  + ConnectToBoardItem() : override void
+}
+class CountDownTillActivation {
+  + ConnectToBoardItem() : override void
+  + Activate() : void
+  + Reset() : void
+  + GetValue() : object
+  + SubscribeOnChangeValue() : void
+  + UnSubscribeOnChangeValue() : void
+  + DisableActivate() : void
+  + EnableActivate() : void
+}
+class ExplodeNearbyItemsAway {
+  + ConnectToBoardItem() : override void
+  + Activate() : void
+  + DisableActivate() : void
+  + EnableActivate() : void
+}
+interface IBoardItemDisablable {
+  + Activate() : void
+  + DisableActivate() : void
+  + EnableActivate() : void
+}
+class ShakeDetector {
+  + ConnectToBoardItem() : override void
+}
+class TempNeighborTester {
+  + ConnectToBoardItem() : override void
+}
+class PatternInstanceDrawer {
+  + GetPropertyHeight() : override float
+  + OnGUI() : override void
+}
+ScriptableObject(LevelRef) {
+  + pointRequirement : int
+  + baseTurnAmount : int
+}
 MonoBehaviour(GridGenerator) {
-  + cellSize : Vector2
   + Width : int
   + Height : int
   + GetAllPositions() : List<Vector3?>
   + GetAllOffGridPositions() : List<Vector3?>
+  + GetAllLockedPositions() : List<Vector3>
   + GetPosAt() : Vector3
-  + GetOffGridPosAt() : Vector3
 }
 MonoBehaviour(GridManager) {
-  + position : Vector3
   + index : readonly int
+  + isOffGrid : readonly bool
+  + position : Vector3
+  + index : readonly GridIndex
   + gameObj : readonly GameObject
-  + offGrid : bool
+  + boardItem : readonly BoardItem
+  + moveable : readonly GridMoveable
+  + CompareTo() : int
+  + Equals() : bool
+  + Equals() : override bool
+  + GetHashCode() : override int
   + GetNearestPosition() : GridInstance
   + GetNearestOffGridPosition() : GridInstance
   + GetNearestGridPosition() : GridInstance
+  + GetNeighbors() : GridInstance[]
+  + CheckPositionLocked() : bool
+  + RegisterInGrid() : GridInstance
   + ReleaseInstance() : void
   + ForAllGridItems() : void
 }
+struct GridIndex {
+  + index : readonly int
+  + isOffGrid : readonly bool
+  + CompareTo() : int
+  + Equals() : bool
+  + Equals() : override bool
+  + GetHashCode() : override int
+}
 class GridInstance {
   + position : Vector3
-  + index : readonly int
+  + index : readonly GridIndex
   + gameObj : readonly GameObject
-  + offGrid : bool
+  + boardItem : readonly BoardItem
+  + moveable : readonly GridMoveable
+}
+struct NeighborPattern {
+  + Up : static readonly NeighborPattern
+  + Down : static readonly NeighborPattern
+  + Left : static readonly NeighborPattern
+  + Right : static readonly NeighborPattern
+  + positions : Vector2Int[]
+  + center : Vector2Int
+  + width : int
+  + height : int
+}
+MonoBehaviour(NeighborPatternRegistry) {
+  + name : string
+  + texture : Texture2D
+  + pattern : NeighborPattern
+  + GetNeighborPattern() : NeighborPattern?
+}
+class PatternInstance {
+  + name : string
+  + texture : Texture2D
+}
+class LivePattern {
+  + name : string
+  + pattern : NeighborPattern
 }
 MonoBehaviour(TurnManager) {
+  + OnEndReached : Action<GridMoveable>
   + NextTurn() : void
+  + AddToWaitTime() : void
+}
+MonoBehaviour(MoveManager) {
+  + OnSetMove : Action
+  + OnUndoMove : Action
+  + OnChanged : Action
+  + OnLastMove : Action
+  + SetMove() : void
+  + UndoMove() : void
+  + ResetMoveAmount() : void
+  + SetInitialMoveAmount() : void
+}
+MonoBehaviour(GameManager) {
+  + OnStateChange : Action<GameState>
+  + OnChangeState : Action<GameState>
+  + SetGameState() : void
+}
+class CandyActivateState {
+  + Start() : override void
+  + Update() : override void
+  + Exit() : override void
+}
+class CandyMoveState {
+  + Start() : override void
+  + Update() : override void
+  + Exit() : override void
+}
+class PlayGameState {
+  + Start() : override void
+  + Update() : override void
+  + Exit() : override void
 }
 class ComponentRegistry {
   + ComponentType : string
@@ -154,6 +299,11 @@ MonoBehaviour(FPSCounter) {
 }
 interface IPoolable {
 }
+interface IUserInterfaceValueGetter {
+  + GetValue() : object
+  + SubscribeOnChangeValue() : void
+  + UnSubscribeOnChangeValue() : void
+}
 MonoBehaviour(ResolutionTracker) {
   + OnResolutionChanged : static Action<int, int>
 }
@@ -170,10 +320,14 @@ class Timer {
   + UnregisterOnPlayingListener() : void
   + GetSecondsInTimeFormatted() : static string
   + GetCurrentTimeFormatted() : string
+  + ResetWaitTime() : void
+}
+MonoBehaviour(UserInterfaceValueToTMP) {
 }
 class VectorExtensions {
   + XY() : static Vector2
   + OverwriteXY() : static Vector3
+  + DirectionTo() : static Vector2
 }
 MonoBehaviour(InteractionHandler) {
   + IsHoldingInteractable() : bool
@@ -188,8 +342,9 @@ MonoBehaviour(MovementHandler) {
   + ResetToOriginalZ() : void
 }
 MonoBehaviour(PlayerHandManager) {
-  + OnGrabReleased : Action<Vector2, Vector2>
+  + OnRemovedFromHand : Action<Vector2, Vector2>
   + SetStateToGrabbing() : void
+  + SetCanGrab() : void
 }
 MonoBehaviour(VisualHandler) {
   + key : string
@@ -202,30 +357,107 @@ struct VisualState {
   + visual : Sprite
   + z : float
 }
+MonoBehaviour(ScoreManager) {
+  + OnChangeScore : Action
+  + OnReachedGoal : Action
+  + AddScore() : void
+  + RemoveScore() : void
+  + GetScore() : int
+  + GetGoal() : int
+  + SetGoal() : void
+}
+MonoBehaviour(ScoreVisualiser) {
+}
+MonoBehaviour(ShopComponent) {
+  + Interact() : void
+  + UpdateVisuals() : void
+}
+ScriptableObject(ShopItem) {
+  + shopObject : GameObject
+  + cost : int
+  + itemSprite : Sprite
+  + itemName : string
+}
+class FiniteStateMachine<T> {
+  + Update() : void
+  + SetState() : State<T>
+}
+MonoBehaviour(GameStateSetter) {
+  + SetState() : void
+}
+class State<T> {
+  + Start() : abstract void
+  + Update() : abstract void
+  + Exit() : abstract void
+}
 
 BoardItem <|-- CandyActor
 BoardItem --> BoardItemComponent
-BoardItem --> Interactable
+BoardItem --> GridInstance
+BoardItem --> GridManager
+BoardItemComponent <|-- CandyMultiplier
+BoardItemComponent <|-- CountDownTillActivation
+BoardItemComponent <|-- ExplodeNearbyItemsAway
 BoardItemComponent <|-- GridMoveable
 BoardItemComponent <|-- GridRotatable
 BoardItemComponent <|-- HandHandler
+BoardItemComponent <|-- ShakeDetector
+BoardItemComponent <|-- TempNeighborTester
 BoardItemComponent --> BoardItem
+CandyActivateState --> BoardItem
+CandyActivateState --> GridManager
+CandyActivateState --> Timer
 CandyActor --> HandHandler
 CandyActor --> MoveToGridPosition
 CandyGroupHandle --> CandyActor
 CandyGroupHandle --> CandyHandle
 CandyGroupHandle --> PlayerHandManager
 CandyHandle --> CandyActor
+CandyMoveState --> PlayerHandManager
+CandyMultiplier --> BoardItem
+CandyMultiplier --> CandyActor
+CandyMultiplier --> GridInstance
+CandyMultiplier --> GridManager
+CandyMultiplier --> NeighborPattern
+CandyMultiplier --> NeighborPatternRegistry
 CandyTypeLookup --> CandyTypeOption
 ComponentRegistry --> Subscriber
+CountDownTillActivation --> BoardItemComponent
+CountDownTillActivation --> IBoardItemDisablable
 DeckOption --> CandyOption
 DeckOption --> CandyTypeLookup
+DiscardPile --> GridManager
+DiscardPile --> PlayerHandManager
+ExplodeNearbyItemsAway --> GameManager
+ExplodeNearbyItemsAway --> GridInstance
+ExplodeNearbyItemsAway --> GridManager
+ExplodeNearbyItemsAway --> GridMoveable
+ExplodeNearbyItemsAway --> NeighborPattern
+ExplodeNearbyItemsAway --> NeighborPatternRegistry
+GameManager --> FiniteStateMachine
+GameManager --> LevelRef
+GameManager --> MoveManager
+GameManager --> ScoreManager
+GameManager --> State
+GameManager --> TurnManager
+GameStateSetter --> GameManager
+GridGenerator --> Bounds
+GridInstance --> BoardItem
+GridInstance --> GridIndex
+GridInstance --> GridMoveable
+GridManager --> BoardItem
 GridManager --> GridGenerator
+GridManager --> GridIndex
 GridManager --> GridInstance
+GridManager --> GridMoveable
 GridMoveable <|-- MoveToGridPosition
+GridMoveable --> GridInstance
 GridMoveable --> GridManager
-GridRotatable --> HandHandler
+GridMoveable --> MoveManager
+GridRotatable --> MoveManager
 HandHandler --> PlayerHandManager
+IBoardItemDisablable <|.. CountDownTillActivation
+IBoardItemDisablable <|.. ExplodeNearbyItemsAway
 Interactable --> BoardItem
 InteractionHandler --> Interactable
 InteractionHandler --> MovementHandler
@@ -234,7 +466,16 @@ IPoolable <|.. CandyGroupHandle
 ItemRotationHandler --> GridRotatable
 ItemRotationHandler --> Interactable
 ItemRotationHandler --> InteractionHandler
+IUserInterfaceValueGetter <|.. CandyActor
+IUserInterfaceValueGetter <|.. CountDownTillActivation
+LivePattern --> NeighborPattern
+MoveManager --> Bounds
+MovementHandler --> Bounds
+MoveToGridPosition --> PhysicsData
 MoveToGridPosition --> Timer
+NeighborPatternRegistry --> LivePattern
+NeighborPatternRegistry --> NeighborPattern
+NeighborPatternRegistry --> PatternInstance
 PlayerDeck --> CandyGroupHandle
 PlayerDeck --> CandyOption
 PlayerDeck --> CandyTypeLookup
@@ -245,8 +486,24 @@ PlayerHandManager --> InteractionHandler
 PlayerHandManager --> ItemRotationHandler
 PlayerHandManager --> MovementHandler
 PlayerHandManager --> VisualHandler
+PlayGameState --> PlayerHandManager
 QuestSystem --> Quest
+ScoreVisualiser --> GameManager
+ScoreVisualiser --> ScoreManager
+ShakeDetector --> BoardItemComponent
+ShakeDetector --> IBoardItemDisablable
+ShopComponent --> GameManager
+ShopComponent --> ScoreManager
+ShopComponent --> ShopItem
+State <|-- CandyActivateState
+State <|-- CandyMoveState
+State <|-- PlayGameState
+TempNeighborTester --> GameManager
+TempNeighborTester --> GridInstance
+TempNeighborTester --> GridManager
+TurnManager --> GridInstance
 TurnManager --> GridManager
-TurnManager --> MoveToGridPosition
+TurnManager --> GridMoveable
+TurnManager --> Timer
 VisualHandler --> VisualState
 @enduml

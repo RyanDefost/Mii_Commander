@@ -1,0 +1,7 @@
+<map id="ScriptableObject" name="ScriptableObject">
+<area shape="rect" id="Node000001" title=" " alt="" coords="138,5,244,75"/>
+<area shape="rect" id="Node000002" href="$class_helper_structs_1_1_shop_1_1_shop_item.html" title=" " alt="" coords="5,123,190,256"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,85,141,125,137,121,160,89"/>
+<area shape="rect" id="Node000003" href="$class_managers_1_1_level_ref.html" title=" " alt="" coords="214,144,358,235"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="222,85,260,144,255,144,220,90"/>
+</map>

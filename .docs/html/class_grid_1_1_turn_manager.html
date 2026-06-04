@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('class_grid_1_1
 <div class="dynheader">
 Inheritance diagram for Grid.TurnManager:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_grid_1_1_turn_manager__inherit__graph.svg" width="184" height="219"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_grid_1_1_turn_manager__inherit__graph.svg" width="186" height="400"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Collaboration diagram for Grid.TurnManager:</div>
@@ -138,18 +138,105 @@ Collaboration diagram for Grid.TurnManager:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a631199681bfaef7511854594161ec107" id="r_a631199681bfaef7511854594161ec107"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a631199681bfaef7511854594161ec107">NextTurn</a> ()</td></tr>
 <tr class="memdesc:a631199681bfaef7511854594161ec107"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves all relevant items downwards.  <br /></td></tr>
+<tr class="memitem:a0cfdd89d776dd1dcbcf047412997a7b1" id="r_a0cfdd89d776dd1dcbcf047412997a7b1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0cfdd89d776dd1dcbcf047412997a7b1">AddToWaitTime</a> (float time)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:ac15e3c48fb10be2413ee4135b7f568c3" id="r_ac15e3c48fb10be2413ee4135b7f568c3"><td class="memItemLeft">Action&lt; <a class="el" href="class_grid_moveable.html">GridMoveable</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ac15e3c48fb10be2413ee4135b7f568c3">OnEndReached</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a034764d61a6d9f3dd310d1687737bc34" id="r_a034764d61a6d9f3dd310d1687737bc34"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a034764d61a6d9f3dd310d1687737bc34">OnValidate</a> ()</td></tr>
+<tr class="memitem:a1f36b59f34f1a91df7cedd23b0861719" id="r_a1f36b59f34f1a91df7cedd23b0861719"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a1f36b59f34f1a91df7cedd23b0861719">Start</a> ()</td></tr>
+<tr class="memitem:af01b75c1b223d01d9ca430e2ede7956c" id="r_af01b75c1b223d01d9ca430e2ede7956c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af01b75c1b223d01d9ca430e2ede7956c">Update</a> ()</td></tr>
+<tr class="memitem:ab1d00a7784e4a7cc3f7d12fbd40713ce" id="r_ab1d00a7784e4a7cc3f7d12fbd40713ce"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ab1d00a7784e4a7cc3f7d12fbd40713ce">MoveAllItemsDown</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a153f499076074e63ab8adf45c81ab597" id="r_a153f499076074e63ab8adf45c81ab597"><td class="memItemLeft"><a class="el" href="class_grid_1_1_grid_manager.html">GridManager</a>&#160;</td><td class="memItemRight"><a class="el" href="#a153f499076074e63ab8adf45c81ab597">gridManager</a></td></tr>
+<tr class="memitem:a269411345e4e02b4f09e685a7a238e2c" id="r_a269411345e4e02b4f09e685a7a238e2c"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a269411345e4e02b4f09e685a7a238e2c">waitTime</a></td></tr>
+<tr class="memitem:a2cc4dfffe9386bb95e2f0275b6c6581a" id="r_a2cc4dfffe9386bb95e2f0275b6c6581a"><td class="memItemLeft"><a class="el" href="class_timer.html">Timer</a>&#160;</td><td class="memItemRight"><a class="el" href="#a2cc4dfffe9386bb95e2f0275b6c6581a">waitTimer</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Handles turns on the grid, moving anything on the grid down. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a0cfdd89d776dd1dcbcf047412997a7b1" name="a0cfdd89d776dd1dcbcf047412997a7b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cfdd89d776dd1dcbcf047412997a7b1">&#9670;&#160;</a></span>AddToWaitTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Grid.TurnManager.AddToWaitTime </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>time</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   76</span>=&gt; this.waitTime += time;</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab1d00a7784e4a7cc3f7d12fbd40713ce" name="ab1d00a7784e4a7cc3f7d12fbd40713ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1d00a7784e4a7cc3f7d12fbd40713ce">&#9670;&#160;</a></span>MoveAllItemsDown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Grid.TurnManager.MoveAllItemsDown </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   46</span>        {</div>
+<div class="line"><span class="lineno">   47</span>            this.gridManager.ForAllGridItems(instance =&gt;</div>
+<div class="line"><span class="lineno">   48</span>            {</div>
+<div class="line"><span class="lineno">   49</span>                <span class="keywordflow">if</span> (instance == <span class="keyword">null</span> || !instance.gameObj) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>                <span class="keywordflow">if</span>(this.gridManager.CheckPositionLocked(instance.position)) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   52</span>                </div>
+<div class="line"><span class="lineno">   53</span>                GridMoveable moveComponent = instance.moveable;</div>
+<div class="line"><span class="lineno">   54</span>                <span class="keywordflow">if</span> (!moveComponent) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   55</span>                </div>
+<div class="line"><span class="lineno">   56</span>                moveComponent.<a class="code hl_function" href="class_grid_moveable.html#a62aed54cbfec41f7a202c9113c85e2cd">ResetTarget</a>();</div>
+<div class="line"><span class="lineno">   57</span>                GridManager.GridInstance newTarget = this.gridManager.GetNearestPosition(</div>
+<div class="line"><span class="lineno">   58</span>                    instance.position + <span class="keyword">this</span>.gridManager.CellSize.y * Vector3.down, instance.gameObj,</div>
+<div class="line"><span class="lineno">   59</span>                    moveComponent.<a class="code hl_function" href="class_board_item_component.html#a816a721991d178114bf102c72275b5bf">GetBoardItem</a>(), instance); <span class="comment">// TODO maybe replace this with a neighborpattern?</span></div>
+<div class="line"><span class="lineno">   60</span>                </div>
+<div class="line"><span class="lineno">   61</span>                <span class="keywordflow">if</span> (newTarget != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   62</span>                    moveComponent.<a class="code hl_function" href="class_grid_moveable.html#ab01ddfb20c54646efb47a17ab716a013">SetTarget</a>(newTarget, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>                <span class="keywordflow">if</span> (!moveComponent.<a class="code hl_function" href="class_grid_moveable.html#a055e40f60a43d5ede705b7d13c1c9bf3">HasTarget</a>())</div>
+<div class="line"><span class="lineno">   65</span>                {</div>
+<div class="line"><span class="lineno">   66</span>                    this.gridManager.ReleaseInstance(instance);</div>
+<div class="line"><span class="lineno">   67</span>                    this.OnEndReached?.Invoke(moveComponent);</div>
+<div class="line"><span class="lineno">   68</span>                    </div>
+<div class="line"><span class="lineno">   69</span>                    Destroy(moveComponent.gameObject);</div>
+<div class="line"><span class="lineno">   70</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   71</span>                }</div>
+<div class="line"><span class="lineno">   72</span>                moveComponent.<a class="code hl_function" href="class_grid_moveable.html#a38f13831bfea8acda67fe4c40d6b79c8">SetMoving</a>(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   73</span>            });</div>
+<div class="line"><span class="lineno">   74</span>        }</div>
+<div class="ttc" id="aclass_board_item_component_html_a816a721991d178114bf102c72275b5bf"><div class="ttname"><a href="class_board_item_component.html#a816a721991d178114bf102c72275b5bf">BoardItemComponent.GetBoardItem</a></div><div class="ttdeci">BoardItem GetBoardItem()</div><div class="ttdef"><b>Definition</b> BoardItemComponent.cs:26</div></div>
+<div class="ttc" id="aclass_grid_moveable_html_a055e40f60a43d5ede705b7d13c1c9bf3"><div class="ttname"><a href="class_grid_moveable.html#a055e40f60a43d5ede705b7d13c1c9bf3">GridMoveable.HasTarget</a></div><div class="ttdeci">bool HasTarget()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:180</div></div>
+<div class="ttc" id="aclass_grid_moveable_html_a38f13831bfea8acda67fe4c40d6b79c8"><div class="ttname"><a href="class_grid_moveable.html#a38f13831bfea8acda67fe4c40d6b79c8">GridMoveable.SetMoving</a></div><div class="ttdeci">void SetMoving(bool newState)</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:64</div></div>
+<div class="ttc" id="aclass_grid_moveable_html_a62aed54cbfec41f7a202c9113c85e2cd"><div class="ttname"><a href="class_grid_moveable.html#a62aed54cbfec41f7a202c9113c85e2cd">GridMoveable.ResetTarget</a></div><div class="ttdeci">void ResetTarget()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:171</div></div>
+<div class="ttc" id="aclass_grid_moveable_html_ab01ddfb20c54646efb47a17ab716a013"><div class="ttname"><a href="class_grid_moveable.html#ab01ddfb20c54646efb47a17ab716a013">GridMoveable.SetTarget</a></div><div class="ttdeci">void SetTarget(GridManager.GridInstance newTarget, bool usesMove)</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:149</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a631199681bfaef7511854594161ec107" name="a631199681bfaef7511854594161ec107"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a631199681bfaef7511854594161ec107">&#9670;&#160;</a></span>NextTurn()</h2>
 
@@ -166,31 +253,17 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Moves all relevant items downwards. </p>
-<div class="fragment"><div class="line"><span class="lineno">   25</span>        {</div>
-<div class="line"><span class="lineno">   26</span>            this.gridManager.ForAllGridItems(instance =&gt;</div>
-<div class="line"><span class="lineno">   27</span>            {</div>
-<div class="line"><span class="lineno">   28</span>                <span class="keywordflow">if</span> (instance == <span class="keyword">null</span> || instance.gameObj == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">   29</span>                    <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   30</span> </div>
-<div class="line"><span class="lineno">   31</span>                MoveToGridPosition moveComponent = instance.gameObj.GetComponent&lt;MoveToGridPosition&gt;();</div>
-<div class="line"><span class="lineno">   32</span>                <span class="keywordflow">if</span> (!moveComponent)</div>
-<div class="line"><span class="lineno">   33</span>                    <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   34</span>                moveComponent.<a class="code hl_function" href="class_grid_moveable.html#a62aed54cbfec41f7a202c9113c85e2cd">ResetTarget</a>();</div>
-<div class="line"><span class="lineno">   35</span>                moveComponent.<a class="code hl_function" href="class_grid_moveable.html#ac22be57bc2a530cda7c781a5b6770715">SetTarget</a>(this.gridManager.GetNearestPosition(</div>
-<div class="line"><span class="lineno">   36</span>                    instance.position + <span class="keyword">this</span>.gridManager.CellSize.y * Vector3.down, instance.gameObj, instance));</div>
-<div class="line"><span class="lineno">   37</span> </div>
-<div class="line"><span class="lineno">   38</span>                <span class="keywordflow">if</span> (!moveComponent.<a class="code hl_function" href="class_grid_moveable.html#a055e40f60a43d5ede705b7d13c1c9bf3">HasTarget</a>())</div>
-<div class="line"><span class="lineno">   39</span>                {</div>
-<div class="line"><span class="lineno">   40</span>                    this.gridManager.ReleaseInstance(instance);</div>
-<div class="line"><span class="lineno">   41</span>                    Destroy(moveComponent.gameObject);</div>
-<div class="line"><span class="lineno">   42</span>                }</div>
-<div class="line"><span class="lineno">   43</span>                moveComponent.<a class="code hl_function" href="class_grid_moveable.html#a38f13831bfea8acda67fe4c40d6b79c8">SetMoving</a>(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   44</span>            });</div>
-<div class="line"><span class="lineno">   45</span>        }</div>
-<div class="ttc" id="aclass_grid_moveable_html_a055e40f60a43d5ede705b7d13c1c9bf3"><div class="ttname"><a href="class_grid_moveable.html#a055e40f60a43d5ede705b7d13c1c9bf3">GridMoveable.HasTarget</a></div><div class="ttdeci">bool HasTarget()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:118</div></div>
-<div class="ttc" id="aclass_grid_moveable_html_a38f13831bfea8acda67fe4c40d6b79c8"><div class="ttname"><a href="class_grid_moveable.html#a38f13831bfea8acda67fe4c40d6b79c8">GridMoveable.SetMoving</a></div><div class="ttdeci">void SetMoving(bool newState)</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:43</div></div>
-<div class="ttc" id="aclass_grid_moveable_html_a62aed54cbfec41f7a202c9113c85e2cd"><div class="ttname"><a href="class_grid_moveable.html#a62aed54cbfec41f7a202c9113c85e2cd">GridMoveable.ResetTarget</a></div><div class="ttdeci">void ResetTarget()</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:110</div></div>
-<div class="ttc" id="aclass_grid_moveable_html_ac22be57bc2a530cda7c781a5b6770715"><div class="ttname"><a href="class_grid_moveable.html#ac22be57bc2a530cda7c781a5b6770715">GridMoveable.SetTarget</a></div><div class="ttdeci">void SetTarget(GridManager.GridInstance newTarget)</div><div class="ttdef"><b>Definition</b> GridMoveable.cs:108</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   31</span>        {</div>
+<div class="line"><span class="lineno">   32</span>            this.waitTime = 0;</div>
+<div class="line"><span class="lineno">   33</span>            this.gridManager.ForAllGridItems(instance =&gt;</div>
+<div class="line"><span class="lineno">   34</span>            {</div>
+<div class="line"><span class="lineno">   35</span>                <span class="keywordflow">if</span> (instance == <span class="keyword">null</span> || !instance.gameObj) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   36</span>                instance.boardItem?.Activate();</div>
+<div class="line"><span class="lineno">   37</span>            });</div>
+<div class="line"><span class="lineno">   38</span> </div>
+<div class="line"><span class="lineno">   39</span>            this.waitTimer.ResetWaitTime(this.waitTime);</div>
+<div class="line"><span class="lineno">   40</span>            this.waitTimer.ResetAndReplay();</div>
+<div class="line"><span class="lineno">   41</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -216,12 +289,64 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   16</span>        {</div>
-<div class="line"><span class="lineno">   17</span>            <span class="keywordflow">if</span> (Application.isPlaying)</div>
-<div class="line"><span class="lineno">   18</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   19</span>            this.gridManager = GetComponent&lt;GridManager&gt;();</div>
-<div class="line"><span class="lineno">   20</span>            this.enabled = this.gridManager;</div>
-<div class="line"><span class="lineno">   21</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   20</span>        {</div>
+<div class="line"><span class="lineno">   21</span>            <span class="keywordflow">if</span> (Application.isPlaying)</div>
+<div class="line"><span class="lineno">   22</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   23</span>            this.gridManager = GetComponent&lt;GridManager&gt;();</div>
+<div class="line"><span class="lineno">   24</span>            this.enabled = this.gridManager;</div>
+<div class="line"><span class="lineno">   25</span>        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1f36b59f34f1a91df7cedd23b0861719" name="a1f36b59f34f1a91df7cedd23b0861719"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f36b59f34f1a91df7cedd23b0861719">&#9670;&#160;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Grid.TurnManager.Start </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   27</span>=&gt; this.waitTimer = <span class="keyword">new</span> Timer(1f, <span class="keyword">false</span>, <span class="keyword">false</span>, MoveAllItemsDown);</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af01b75c1b223d01d9ca430e2ede7956c" name="af01b75c1b223d01d9ca430e2ede7956c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af01b75c1b223d01d9ca430e2ede7956c">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Grid.TurnManager.Update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   43</span>=&gt; this.waitTimer.UpdateTime(Time.deltaTime);</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -237,6 +362,64 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_grid_1_1_grid_manager.html">GridManager</a> Grid.TurnManager.gridManager</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac15e3c48fb10be2413ee4135b7f568c3" name="ac15e3c48fb10be2413ee4135b7f568c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac15e3c48fb10be2413ee4135b7f568c3">&#9670;&#160;</a></span>OnEndReached</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Action&lt;<a class="el" href="class_grid_moveable.html">GridMoveable</a>&gt; Grid.TurnManager.OnEndReached</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a269411345e4e02b4f09e685a7a238e2c" name="a269411345e4e02b4f09e685a7a238e2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a269411345e4e02b4f09e685a7a238e2c">&#9670;&#160;</a></span>waitTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Grid.TurnManager.waitTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2cc4dfffe9386bb95e2f0275b6c6581a" name="a2cc4dfffe9386bb95e2f0275b6c6581a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cc4dfffe9386bb95e2f0275b6c6581a">&#9670;&#160;</a></span>waitTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_timer.html">Timer</a> Grid.TurnManager.waitTimer</td>
         </tr>
       </table>
   </td>

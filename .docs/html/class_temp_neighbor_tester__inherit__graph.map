@@ -1,0 +1,7 @@
+<map id="TempNeighborTester" name="TempNeighborTester">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,320,221,469"/>
+<area shape="rect" id="Node000002" href="$class_board_item_component.html" title="A component that&#39;s able to hook into the functions of a board item." alt="" coords="9,123,217,272"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,284,116,321,111,320,112,289"/>
+<area shape="rect" id="Node000003" href="$class_mono_behaviour.html" title=" " alt="" coords="63,5,164,75"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="114,87,116,123,111,122,113,92"/>
+</map>

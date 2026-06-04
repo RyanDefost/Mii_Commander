@@ -174,26 +174,26 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   21</span>    {</div>
-<div class="line"><span class="lineno">   22</span>        <span class="keywordflow">if</span> (change is not (InputActionChange.ActionStarted or InputActionChange.ActionPerformed)) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   23</span>        InputAction action = (InputAction)obj;</div>
-<div class="line"><span class="lineno">   24</span>        InputDevice currentDevice = action.activeControl.device;</div>
-<div class="line"><span class="lineno">   25</span>        </div>
-<div class="line"><span class="lineno">   26</span>        <span class="keywordflow">if</span> (currentDevice == this.<a class="code hl_property" href="#aef7d42dd9ca99290ba3d5a27510056f8">LastDevice</a>)</div>
-<div class="line"><span class="lineno">   27</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   28</span>        this.LastDevice = currentDevice;</div>
-<div class="line"><span class="lineno">   29</span> </div>
-<div class="line"><span class="lineno">   30</span>        <span class="comment">// switch (currentDevice) //Could be useful, leave for now, TODO remove later</span></div>
-<div class="line"><span class="lineno">   31</span>        <span class="comment">// {</span></div>
-<div class="line"><span class="lineno">   32</span>        <span class="comment">//     case Gamepad:</span></div>
-<div class="line"><span class="lineno">   33</span>        <span class="comment">//         Debug.Log(&quot;Switched to Gamepad!&quot;);</span></div>
-<div class="line"><span class="lineno">   34</span>        <span class="comment">//         break;</span></div>
-<div class="line"><span class="lineno">   35</span>        <span class="comment">//     case Mouse or Keyboard:</span></div>
-<div class="line"><span class="lineno">   36</span>        <span class="comment">//         Debug.Log(&quot;Switched to Keyboard/Mouse!&quot;);</span></div>
-<div class="line"><span class="lineno">   37</span>        <span class="comment">//         break;</span></div>
-<div class="line"><span class="lineno">   38</span>        <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">   39</span>    }</div>
-<div class="ttc" id="aclass_device_tracker_html_aef7d42dd9ca99290ba3d5a27510056f8"><div class="ttname"><a href="#aef7d42dd9ca99290ba3d5a27510056f8">DeviceTracker.LastDevice</a></div><div class="ttdeci">InputDevice LastDevice</div><div class="ttdef"><b>Definition</b> DeviceTracker.cs:10</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   20</span>    {</div>
+<div class="line"><span class="lineno">   21</span>        <span class="keywordflow">if</span> (change is not (InputActionChange.ActionStarted or InputActionChange.ActionPerformed)) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   22</span>        InputAction action = (InputAction)obj;</div>
+<div class="line"><span class="lineno">   23</span>        InputDevice currentDevice = action.activeControl.device;</div>
+<div class="line"><span class="lineno">   24</span>        </div>
+<div class="line"><span class="lineno">   25</span>        <span class="keywordflow">if</span> (currentDevice == this.<a class="code hl_property" href="#aef7d42dd9ca99290ba3d5a27510056f8">LastDevice</a>)</div>
+<div class="line"><span class="lineno">   26</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   27</span>        this.LastDevice = currentDevice;</div>
+<div class="line"><span class="lineno">   28</span> </div>
+<div class="line"><span class="lineno">   29</span>        <span class="comment">// switch (currentDevice) //Could be useful, leave for now, TODO remove later</span></div>
+<div class="line"><span class="lineno">   30</span>        <span class="comment">// {</span></div>
+<div class="line"><span class="lineno">   31</span>        <span class="comment">//     case Gamepad:</span></div>
+<div class="line"><span class="lineno">   32</span>        <span class="comment">//         Debug.Log(&quot;Switched to Gamepad!&quot;);</span></div>
+<div class="line"><span class="lineno">   33</span>        <span class="comment">//         break;</span></div>
+<div class="line"><span class="lineno">   34</span>        <span class="comment">//     case Mouse or Keyboard:</span></div>
+<div class="line"><span class="lineno">   35</span>        <span class="comment">//         Debug.Log(&quot;Switched to Keyboard/Mouse!&quot;);</span></div>
+<div class="line"><span class="lineno">   36</span>        <span class="comment">//         break;</span></div>
+<div class="line"><span class="lineno">   37</span>        <span class="comment">// }</span></div>
+<div class="line"><span class="lineno">   38</span>    }</div>
+<div class="ttc" id="aclass_device_tracker_html_aef7d42dd9ca99290ba3d5a27510056f8"><div class="ttname"><a href="#aef7d42dd9ca99290ba3d5a27510056f8">DeviceTracker.LastDevice</a></div><div class="ttdeci">InputDevice LastDevice</div><div class="ttdef"><b>Definition</b> DeviceTracker.cs:9</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -219,8 +219,8 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   18</span>=&gt; InputSystem.onActionChange -= <a class="code hl_function" href="#a29f0ba38d44158c71750565bc82af6e0">OnActionChange</a>;</div>
-<div class="ttc" id="aclass_device_tracker_html_a29f0ba38d44158c71750565bc82af6e0"><div class="ttname"><a href="#a29f0ba38d44158c71750565bc82af6e0">DeviceTracker.OnActionChange</a></div><div class="ttdeci">void OnActionChange(object obj, InputActionChange change)</div><div class="ttdef"><b>Definition</b> DeviceTracker.cs:20</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   17</span>=&gt; InputSystem.onActionChange -= <a class="code hl_function" href="#a29f0ba38d44158c71750565bc82af6e0">OnActionChange</a>;</div>
+<div class="ttc" id="aclass_device_tracker_html_a29f0ba38d44158c71750565bc82af6e0"><div class="ttname"><a href="#a29f0ba38d44158c71750565bc82af6e0">DeviceTracker.OnActionChange</a></div><div class="ttdeci">void OnActionChange(object obj, InputActionChange change)</div><div class="ttdef"><b>Definition</b> DeviceTracker.cs:19</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -246,7 +246,7 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   15</span>=&gt; InputSystem.onActionChange += <a class="code hl_function" href="#a29f0ba38d44158c71750565bc82af6e0">OnActionChange</a>;</div>
+<div class="fragment"><div class="line"><span class="lineno">   14</span>=&gt; InputSystem.onActionChange += <a class="code hl_function" href="#a29f0ba38d44158c71750565bc82af6e0">OnActionChange</a>;</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -272,7 +272,7 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   12</span>=&gt; ComponentRegistry.AddToRegistry(<span class="keyword">this</span>);</div>
+<div class="fragment"><div class="line"><span class="lineno">   11</span>=&gt; ComponentRegistry.AddToRegistry(<span class="keyword">this</span>);</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -296,7 +296,7 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   10</span>{<span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>;}</div>
+<div class="fragment"><div class="line"><span class="lineno">    9</span>{<span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>;}</div>
 </div><!-- fragment -->
 </div>
 </div>

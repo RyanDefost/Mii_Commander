@@ -1,0 +1,17 @@
+<map id="Managers.MoveManager" name="Managers.MoveManager">
+<area shape="rect" id="Node000001" title=" " alt="" coords="230,384,410,613"/>
+<area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="5,163,106,232"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,241,232,395,227,397,94,246"/>
+<area shape="rect" id="Node000003" href="$struct_helper_structs_1_1_bounds-2-g.html" title=" " alt="" coords="130,147,278,248"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="204,245,211,302,225,359,229,369,223,368,220,361,205,303,202,250"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="156,5,182,75"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="172,72,181,122,183,130,178,130,176,123,171,77"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="224,5,250,75"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="231,72,220,131,215,130,229,77"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="307,163,332,232"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="321,230,322,368,317,367,318,234"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="408,163,530,232"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="470,230,463,294,455,328,442,361,421,396,418,392,437,359,450,326,458,293,467,234"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="590,163,638,232"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="617,230,612,295,602,330,584,362,551,397,511,427,469,451,426,469,424,464,466,446,508,423,547,393,580,358,597,328,607,294,614,234"/>
+</map>

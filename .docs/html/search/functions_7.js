@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['initiate_0',['Initiate',['../class_board_item.html#aae0747156612c7495f20f4eff324b207',1,'BoardItem']]],
-  ['isholdinginteractable_1',['IsHoldingInteractable',['../class_player_hand_1_1_interaction_handler.html#a8b48ede5a0dec8a33fcb1d0136ef3886',1,'PlayerHand::InteractionHandler']]]
+  ['hasboarditemparent_0',['HasBoardItemParent',['../class_interactable.html#ad55caaec7aab49f61b5246cee2fd416a',1,'Interactable']]],
+  ['hastarget_1',['HasTarget',['../class_grid_moveable.html#a055e40f60a43d5ede705b7d13c1c9bf3',1,'GridMoveable']]]
 ];

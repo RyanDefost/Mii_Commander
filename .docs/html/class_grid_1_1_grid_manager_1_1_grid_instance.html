@@ -121,30 +121,31 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('class_grid_1_1
 </div><!--header-->
 <div class="contents">
 
-<p>Representation of a taken grid position.  
+<p>Represents a taken grid position, and houses needed references to the item inside.  
  <a href="#details">More...</a></p>
 <div class="dynheader">
 Collaboration diagram for Grid.GridManager.GridInstance:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_grid_1_1_grid_manager_1_1_grid_instance__coll__graph.svg" width="335" height="270"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_grid_1_1_grid_manager_1_1_grid_instance__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7c7e96f31f7652fdba5dc7bbbc6da664" id="r_a7c7e96f31f7652fdba5dc7bbbc6da664"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a7c7e96f31f7652fdba5dc7bbbc6da664">GridInstance</a> (GameObject gameObj, int foundIndex, <a class="el" href="class_grid_1_1_grid_generator.html">GridGenerator</a> generator, bool offGrid)</td></tr>
+<tr class="memitem:abe91a3b1f6525bf74da86d053afb7faf" id="r_abe91a3b1f6525bf74da86d053afb7faf"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#abe91a3b1f6525bf74da86d053afb7faf">GridInstance</a> (GameObject gameObj, <a class="el" href="struct_grid_1_1_grid_manager_1_1_grid_index.html">GridIndex</a> index, <a class="el" href="class_grid_1_1_grid_generator.html">GridGenerator</a> generator, <a class="el" href="class_board_item.html">BoardItem</a> boardItem, <a class="el" href="class_grid_moveable.html">GridMoveable</a> moveable)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a5fa9ccc46d6cb3006834ab4f48495b80" id="r_a5fa9ccc46d6cb3006834ab4f48495b80"><td class="memItemLeft">Vector3&#160;</td><td class="memItemRight"><a class="el" href="#a5fa9ccc46d6cb3006834ab4f48495b80">position</a></td></tr>
-<tr class="memitem:adc2a7043dfa1032d73d8594dff2abf69" id="r_adc2a7043dfa1032d73d8594dff2abf69"><td class="memItemLeft">readonly int&#160;</td><td class="memItemRight"><a class="el" href="#adc2a7043dfa1032d73d8594dff2abf69">index</a></td></tr>
+<tr class="memitem:a81bc88a2ea65bae2550ed922945d8d99" id="r_a81bc88a2ea65bae2550ed922945d8d99"><td class="memItemLeft">readonly <a class="el" href="struct_grid_1_1_grid_manager_1_1_grid_index.html">GridIndex</a>&#160;</td><td class="memItemRight"><a class="el" href="#a81bc88a2ea65bae2550ed922945d8d99">index</a></td></tr>
 <tr class="memitem:a08cfc7c2bd2d10a53e82ef6e745d07d9" id="r_a08cfc7c2bd2d10a53e82ef6e745d07d9"><td class="memItemLeft">readonly GameObject&#160;</td><td class="memItemRight"><a class="el" href="#a08cfc7c2bd2d10a53e82ef6e745d07d9">gameObj</a></td></tr>
-<tr class="memitem:a9a251d8a4235e03ab1322f8b826d79ed" id="r_a9a251d8a4235e03ab1322f8b826d79ed"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a9a251d8a4235e03ab1322f8b826d79ed">offGrid</a></td></tr>
+<tr class="memitem:a3ef28df12ed415dedd4a5df91ace1e0c" id="r_a3ef28df12ed415dedd4a5df91ace1e0c"><td class="memItemLeft">readonly <a class="el" href="class_board_item.html">BoardItem</a>&#160;</td><td class="memItemRight"><a class="el" href="#a3ef28df12ed415dedd4a5df91ace1e0c">boardItem</a></td></tr>
+<tr class="memitem:ad8c4d8546f8d56285096b262a069c936" id="r_ad8c4d8546f8d56285096b262a069c936"><td class="memItemLeft">readonly <a class="el" href="class_grid_moveable.html">GridMoveable</a>&#160;</td><td class="memItemRight"><a class="el" href="#ad8c4d8546f8d56285096b262a069c936">moveable</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Representation of a taken grid position. </p>
+<div class="textblock"><p>Represents a taken grid position, and houses needed references to the item inside. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a7c7e96f31f7652fdba5dc7bbbc6da664" name="a7c7e96f31f7652fdba5dc7bbbc6da664"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c7e96f31f7652fdba5dc7bbbc6da664">&#9670;&#160;</a></span>GridInstance()</h2>
+<a id="abe91a3b1f6525bf74da86d053afb7faf" name="abe91a3b1f6525bf74da86d053afb7faf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe91a3b1f6525bf74da86d053afb7faf">&#9670;&#160;</a></span>GridInstance()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -157,7 +158,7 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>foundIndex</em></span>, </td>
+          <td class="paramtype"><a class="el" href="struct_grid_1_1_grid_manager_1_1_grid_index.html">GridIndex</a></td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -167,20 +168,43 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>offGrid</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="class_board_item.html">BoardItem</a></td>          <td class="paramname"><span class="paramname"><em>boardItem</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_grid_moveable.html">GridMoveable</a></td>          <td class="paramname"><span class="paramname"><em>moveable</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   32</span>            {</div>
-<div class="line"><span class="lineno">   33</span>                this.gameObj = gameObj;</div>
-<div class="line"><span class="lineno">   34</span>                this.position = !offGrid ? generator.GetPosAt(foundIndex) : generator.GetOffGridPosAt(foundIndex);</div>
-<div class="line"><span class="lineno">   35</span>                this.index = foundIndex;</div>
-<div class="line"><span class="lineno">   36</span>                this.offGrid = offGrid;</div>
-<div class="line"><span class="lineno">   37</span>            }</div>
+<div class="fragment"><div class="line"><span class="lineno">   64</span>            {</div>
+<div class="line"><span class="lineno">   65</span>                this.gameObj = gameObj;</div>
+<div class="line"><span class="lineno">   66</span>                this.position = generator.GetPosAt(index);</div>
+<div class="line"><span class="lineno">   67</span>                this.index = index;</div>
+<div class="line"><span class="lineno">   68</span>                this.boardItem = boardItem;</div>
+<div class="line"><span class="lineno">   69</span>                this.moveable = moveable;</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>                <span class="keywordflow">if</span> (this.boardItem)</div>
+<div class="line"><span class="lineno">   72</span>                    this.boardItem.gridInstanceRef = <span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">   73</span>            }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
+<a id="a3ef28df12ed415dedd4a5df91ace1e0c" name="a3ef28df12ed415dedd4a5df91ace1e0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ef28df12ed415dedd4a5df91ace1e0c">&#9670;&#160;</a></span>boardItem</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="class_board_item.html">BoardItem</a> Grid.GridManager.GridInstance.boardItem</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a08cfc7c2bd2d10a53e82ef6e745d07d9" name="a08cfc7c2bd2d10a53e82ef6e745d07d9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a08cfc7c2bd2d10a53e82ef6e745d07d9">&#9670;&#160;</a></span>gameObj</h2>
 
@@ -195,28 +219,28 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="adc2a7043dfa1032d73d8594dff2abf69" name="adc2a7043dfa1032d73d8594dff2abf69"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc2a7043dfa1032d73d8594dff2abf69">&#9670;&#160;</a></span>index</h2>
+<a id="a81bc88a2ea65bae2550ed922945d8d99" name="a81bc88a2ea65bae2550ed922945d8d99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81bc88a2ea65bae2550ed922945d8d99">&#9670;&#160;</a></span>index</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">readonly int Grid.GridManager.GridInstance.index</td>
+          <td class="memname">readonly <a class="el" href="struct_grid_1_1_grid_manager_1_1_grid_index.html">GridIndex</a> Grid.GridManager.GridInstance.index</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a9a251d8a4235e03ab1322f8b826d79ed" name="a9a251d8a4235e03ab1322f8b826d79ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a251d8a4235e03ab1322f8b826d79ed">&#9670;&#160;</a></span>offGrid</h2>
+<a id="ad8c4d8546f8d56285096b262a069c936" name="ad8c4d8546f8d56285096b262a069c936"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8c4d8546f8d56285096b262a069c936">&#9670;&#160;</a></span>moveable</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool Grid.GridManager.GridInstance.offGrid</td>
+          <td class="memname">readonly <a class="el" href="class_grid_moveable.html">GridMoveable</a> Grid.GridManager.GridInstance.moveable</td>
         </tr>
       </table>
 </div><div class="memdoc">

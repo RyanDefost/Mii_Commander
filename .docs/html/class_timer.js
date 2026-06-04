@@ -10,6 +10,7 @@ var class_timer =
     [ "RegisterOnPlayingListener", "class_timer.html#acf8f5e725d6e66ac9658361f811045b9", null ],
     [ "Reset", "class_timer.html#a076af8892f86d50320215cfece9f2ab9", null ],
     [ "ResetAndReplay", "class_timer.html#af050f049bbddff63c50a0ecd7141dd6d", null ],
+    [ "ResetWaitTime", "class_timer.html#a9b40c6e8ab5d22c875cd8e8cad941b0c", null ],
     [ "Stop", "class_timer.html#abd6454fc5a2bad2f2af9afdcdfb9ae22", null ],
     [ "UnregisterOnEndListener", "class_timer.html#a2efd620eb75f0960d3c66cf1c5d0863a", null ],
     [ "UnregisterOnPlayingListener", "class_timer.html#a275ee3b90a69bda880057aeb316204ac", null ],

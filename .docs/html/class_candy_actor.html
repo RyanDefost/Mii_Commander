@@ -136,48 +136,58 @@ Collaboration diagram for CandyActor:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a169943257a14f427f560f29bc56fc203" id="r_a169943257a14f427f560f29bc56fc203"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a169943257a14f427f560f29bc56fc203">OnGrabReleased</a> (Rigidbody rb, Vector2 handMovementDir, Vector2 throwForce)</td></tr>
+<tr class="memitem:af2224b77fd09348bb913c51135287dd6" id="r_af2224b77fd09348bb913c51135287dd6"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af2224b77fd09348bb913c51135287dd6">ApplyPointMultiplier</a> (float multiplier)</td></tr>
+<tr class="memitem:a84eabff765571ad04c5140dbc89ac4b6" id="r_a84eabff765571ad04c5140dbc89ac4b6"><td class="memItemLeft">object&#160;</td><td class="memItemRight"><a class="el" href="#a84eabff765571ad04c5140dbc89ac4b6">GetValue</a> (string valueName, out Type returnType)</td></tr>
+<tr class="memdesc:a84eabff765571ad04c5140dbc89ac4b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a value inside the class based on its name.  <br /></td></tr>
+<tr class="memitem:a3e6abfa5523e49afd8426f74260478f2" id="r_a3e6abfa5523e49afd8426f74260478f2"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a3e6abfa5523e49afd8426f74260478f2">SubscribeOnChangeValue</a> (string valueName, Action&lt; object, Type &gt; callback)</td></tr>
+<tr class="memitem:aa145565a425a8d3c446f8afa07c3c77b" id="r_aa145565a425a8d3c446f8afa07c3c77b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa145565a425a8d3c446f8afa07c3c77b">UnSubscribeOnChangeValue</a> (string valueName, Action&lt; object, Type &gt; callback)</td></tr>
 <tr class="memitem:aae0747156612c7495f20f4eff324b207" id="r_aae0747156612c7495f20f4eff324b207"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#aae0747156612c7495f20f4eff324b207">Initiate</a> ()</td></tr>
 <tr class="memdesc:aae0747156612c7495f20f4eff324b207"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when released and on the playing field.  <br /></td></tr>
+<tr class="memitem:ae7c359cb3984c23e9e43af52a9353654" id="r_ae7c359cb3984c23e9e43af52a9353654"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#ae7c359cb3984c23e9e43af52a9353654">Activate</a> ()</td></tr>
+<tr class="memdesc:ae7c359cb3984c23e9e43af52a9353654"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when object should activate its ability, explode, push, pull, collect.  <br /></td></tr>
 <tr class="memitem:a136315afd7c091159d6eb33f3d0b6ad5" id="r_a136315afd7c091159d6eb33f3d0b6ad5"><td class="memItemLeft">T&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#a136315afd7c091159d6eb33f3d0b6ad5">GetBoardComponent&lt; T &gt;</a> ()</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a899ffc39e2023c4197690c47d14be5d7" id="r_a899ffc39e2023c4197690c47d14be5d7"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a899ffc39e2023c4197690c47d14be5d7">OnGrabReleased</a> (Rigidbody rb, <a class="el" href="class_board_item.html">BoardItem</a> boardItem, Vector2 handMovementDir, Vector2 throwForce)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aba5486a28ecd67a4ce95c9642cb79855" id="r_aba5486a28ecd67a4ce95c9642cb79855"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#aba5486a28ecd67a4ce95c9642cb79855">candyType</a></td></tr>
+<tr class="memitem:a2da944bc0b2f95003522adc91181a8c8" id="r_a2da944bc0b2f95003522adc91181a8c8"><td class="memItemLeft"><a class="el" href="class_grid_1_1_grid_manager_1_1_grid_instance.html">GridManager.GridInstance</a>&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#a2da944bc0b2f95003522adc91181a8c8">gridInstanceRef</a></td></tr>
 <tr class="memitem:a949560ca6e921760354b6397c35ee3eb" id="r_a949560ca6e921760354b6397c35ee3eb"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#a949560ca6e921760354b6397c35ee3eb">OnAddToHand</a></td></tr>
+<tr class="memitem:a2e643e94d07f57ee0ad3e27be7eeec1c" id="r_a2e643e94d07f57ee0ad3e27be7eeec1c"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#a2e643e94d07f57ee0ad3e27be7eeec1c">OnRemovedFromHand</a></td></tr>
 <tr class="memitem:ad87a4083cc320e3b586b6ad1dbbe0d40" id="r_ad87a4083cc320e3b586b6ad1dbbe0d40"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#ad87a4083cc320e3b586b6ad1dbbe0d40">OnInitiate</a></td></tr>
 <tr class="memitem:af9f8b133f3476af4bf5aa65fbdd8fae0" id="r_af9f8b133f3476af4bf5aa65fbdd8fae0"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#af9f8b133f3476af4bf5aa65fbdd8fae0">OnAddToBoard</a></td></tr>
+<tr class="memitem:a68dd292d0761556a2b9858aab3a9bb19" id="r_a68dd292d0761556a2b9858aab3a9bb19"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#a68dd292d0761556a2b9858aab3a9bb19">OnActivate</a></td></tr>
+<tr class="memitem:a3611ff84245ffc1975d524a0a6aca3d4" id="r_a3611ff84245ffc1975d524a0a6aca3d4"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#a3611ff84245ffc1975d524a0a6aca3d4">OnStarted</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:ae017256ee86b9c8a04d7a197194acb18" id="r_ae017256ee86b9c8a04d7a197194acb18"><td class="memItemLeft">override void&#160;</td><td class="memItemRight"><a class="el" href="#ae017256ee86b9c8a04d7a197194acb18">CustomOnValidate</a> ()</td></tr>
+<tr class="memitem:ac655023672e6c155d89ea677a3af37cc" id="r_ac655023672e6c155d89ea677a3af37cc"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#ac655023672e6c155d89ea677a3af37cc">CustomOnValidate</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-properties" class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
+<tr class="memitem:a35aeaf58357c0ab5ddc887e7638c3cbf" id="r_a35aeaf58357c0ab5ddc887e7638c3cbf"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a35aeaf58357c0ab5ddc887e7638c3cbf">Points</a><code> [get, private set]</code></td></tr>
 <tr class="memitem:abfb2e1b22ab63063ec78fa0d240bb5e6" id="r_abfb2e1b22ab63063ec78fa0d240bb5e6"><td class="memItemLeft">Rigidbody&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#abfb2e1b22ab63063ec78fa0d240bb5e6">Rb</a><code> [get, private set]</code></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a4e1f2458b9c44ac7de445567240718de" id="r_a4e1f2458b9c44ac7de445567240718de"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#a4e1f2458b9c44ac7de445567240718de">OnValidate</a> ()</td></tr>
+<tr class="memitem:a6cb00e83d2c69de5da51ba4182b6d808" id="r_a6cb00e83d2c69de5da51ba4182b6d808"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a6cb00e83d2c69de5da51ba4182b6d808">RemovePlayerMoveImmunity</a> ()</td></tr>
+<tr class="memitem:aa0b642e838634824266350bab0b97cf8" id="r_aa0b642e838634824266350bab0b97cf8"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#aa0b642e838634824266350bab0b97cf8">Awake</a> ()</td></tr>
 <tr class="memitem:a69653e25189731fcb1576adc3276e198" id="r_a69653e25189731fcb1576adc3276e198"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#a69653e25189731fcb1576adc3276e198">Start</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:ae7a3980c51e5aa1b6d39ec55c887a933" id="r_ae7a3980c51e5aa1b6d39ec55c887a933"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#ae7a3980c51e5aa1b6d39ec55c887a933">points</a></td></tr>
+<tr class="memitem:a91eac4531b0de9f7c7f48d92cf56393b" id="r_a91eac4531b0de9f7c7f48d92cf56393b"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a91eac4531b0de9f7c7f48d92cf56393b">points</a></td></tr>
+<tr class="memitem:a68d96d424630c020d1726d3cb6fdf2ad" id="r_a68d96d424630c020d1726d3cb6fdf2ad"><td class="memItemLeft">Action&lt; object, Type &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a68d96d424630c020d1726d3cb6fdf2ad">OnchangePoints</a></td></tr>
 <tr class="memitem:a090297cd83ccca9c39deecef5887b2a9" id="r_a090297cd83ccca9c39deecef5887b2a9"><td class="memItemLeft"><a class="el" href="class_move_to_grid_position.html">MoveToGridPosition</a>&#160;</td><td class="memItemRight"><a class="el" href="#a090297cd83ccca9c39deecef5887b2a9">movement</a></td></tr>
 <tr class="memitem:abce413323bd4d0eab4ce0866f15427df" id="r_abce413323bd4d0eab4ce0866f15427df"><td class="memItemLeft"><a class="el" href="class_hand_handler.html">HandHandler</a>&#160;</td><td class="memItemRight"><a class="el" href="#abce413323bd4d0eab4ce0866f15427df">handHandler</a></td></tr>
-<tr class="memitem:a684c45c02374cdf0d47cd0f7d946c467" id="r_a684c45c02374cdf0d47cd0f7d946c467"><td class="memItemLeft"><a class="el" href="class_interactable.html">Interactable</a>&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#a684c45c02374cdf0d47cd0f7d946c467">interactable</a></td></tr>
 <tr class="memitem:a1fb6090de83301ef7afd398b4ac96bc5" id="r_a1fb6090de83301ef7afd398b4ac96bc5"><td class="memItemLeft"><a class="el" href="class_board_item_component.html">BoardItemComponent</a>[]&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#a1fb6090de83301ef7afd398b4ac96bc5">components</a></td></tr>
 <tr class="memitem:a12b109c2ffb024e8b28781a1d0f2809f" id="r_a12b109c2ffb024e8b28781a1d0f2809f"><td class="memItemLeft">Rigidbody&#160;</td><td class="memItemRight"><a class="el" href="class_board_item.html#a12b109c2ffb024e8b28781a1d0f2809f">rb</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manages the in game logic of a piece of candy. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="ae017256ee86b9c8a04d7a197194acb18" name="ae017256ee86b9c8a04d7a197194acb18"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae017256ee86b9c8a04d7a197194acb18">&#9670;&#160;</a></span>CustomOnValidate()</h2>
+<a id="ae7c359cb3984c23e9e43af52a9353654" name="ae7c359cb3984c23e9e43af52a9353654"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7c359cb3984c23e9e43af52a9353654">&#9670;&#160;</a></span>Activate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -186,7 +196,88 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override void CandyActor.CustomOnValidate </td>
+          <td class="memname">void BoardItem.Activate </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inherited">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called when object should activate its ability, explode, push, pull, collect. </p>
+<div class="fragment"><div class="line"><span class="lineno">   45</span>=&gt; this.<a class="code hl_variable" href="class_board_item.html#a68dd292d0761556a2b9858aab3a9bb19">OnActivate</a>?.Invoke();</div>
+<div class="ttc" id="aclass_board_item_html_a68dd292d0761556a2b9858aab3a9bb19"><div class="ttname"><a href="class_board_item.html#a68dd292d0761556a2b9858aab3a9bb19">BoardItem.OnActivate</a></div><div class="ttdeci">Action OnActivate</div><div class="ttdef"><b>Definition</b> BoardItem.cs:24</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af2224b77fd09348bb913c51135287dd6" name="af2224b77fd09348bb913c51135287dd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2224b77fd09348bb913c51135287dd6">&#9670;&#160;</a></span>ApplyPointMultiplier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CandyActor.ApplyPointMultiplier </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>multiplier</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   42</span>    {</div>
+<div class="line"><span class="lineno">   43</span>        this.points = Mathf.CeilToInt(this.<a class="code hl_variable" href="#a91eac4531b0de9f7c7f48d92cf56393b">points</a> * multiplier);   </div>
+<div class="line"><span class="lineno">   44</span>        this.<a class="code hl_variable" href="#a68d96d424630c020d1726d3cb6fdf2ad">OnchangePoints</a>?.Invoke(this.<a class="code hl_variable" href="#a91eac4531b0de9f7c7f48d92cf56393b">points</a>, typeof(<span class="keywordtype">int</span>));</div>
+<div class="line"><span class="lineno">   45</span>    }</div>
+<div class="ttc" id="aclass_candy_actor_html_a68d96d424630c020d1726d3cb6fdf2ad"><div class="ttname"><a href="#a68d96d424630c020d1726d3cb6fdf2ad">CandyActor.OnchangePoints</a></div><div class="ttdeci">Action&lt; object, Type &gt; OnchangePoints</div><div class="ttdef"><b>Definition</b> CandyActor.cs:15</div></div>
+<div class="ttc" id="aclass_candy_actor_html_a91eac4531b0de9f7c7f48d92cf56393b"><div class="ttname"><a href="#a91eac4531b0de9f7c7f48d92cf56393b">CandyActor.points</a></div><div class="ttdeci">int points</div><div class="ttdef"><b>Definition</b> CandyActor.cs:10</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa0b642e838634824266350bab0b97cf8" name="aa0b642e838634824266350bab0b97cf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0b642e838634824266350bab0b97cf8">&#9670;&#160;</a></span>Awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoardItem.Awake </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span><span class="mlabel inherited">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   28</span>    {</div>
+<div class="line"><span class="lineno">   29</span>        this.rb = GetComponent&lt;Rigidbody&gt;();</div>
+<div class="line"><span class="lineno">   30</span>        this.components = GetComponentsInChildren&lt;BoardItemComponent&gt;();</div>
+<div class="line"><span class="lineno">   31</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac655023672e6c155d89ea677a3af37cc" name="ac655023672e6c155d89ea677a3af37cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac655023672e6c155d89ea677a3af37cc">&#9670;&#160;</a></span>CustomOnValidate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CandyActor.CustomOnValidate </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -198,12 +289,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Reimplemented from <a class="el" href="class_board_item.html#ab225bc1ca181eeb439a7dcd204324f0f">BoardItem</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   19</span>    {</div>
-<div class="line"><span class="lineno">   20</span>        this.movement = GetComponent&lt;MoveToGridPosition&gt;();</div>
-<div class="line"><span class="lineno">   21</span>        this.handHandler = GetComponent&lt;HandHandler&gt;();</div>
-<div class="line"><span class="lineno">   22</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   23</span>    {</div>
+<div class="line"><span class="lineno">   24</span>        this.movement = GetComponent&lt;MoveToGridPosition&gt;();</div>
+<div class="line"><span class="lineno">   25</span>        this.handHandler = GetComponent&lt;HandHandler&gt;();</div>
+<div class="line"><span class="lineno">   26</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -237,13 +326,57 @@ Private Attributes</h2></td></tr>
 </dd>
 </dl>
 </div>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>                                            : BoardItemComponent</div>
-<div class="line"><span class="lineno">   47</span>    {</div>
-<div class="line"><span class="lineno">   48</span>        BoardItemComponent found = this.<a class="code hl_variable" href="class_board_item.html#a1fb6090de83301ef7afd398b4ac96bc5">components</a>.FirstOrDefault(c =&gt; c is T);</div>
-<div class="line"><span class="lineno">   49</span>        <span class="keywordflow">if</span> (!found) <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">return</span> (T)found;</div>
-<div class="line"><span class="lineno">   51</span>    }</div>
-<div class="ttc" id="aclass_board_item_html_a1fb6090de83301ef7afd398b4ac96bc5"><div class="ttname"><a href="class_board_item.html#a1fb6090de83301ef7afd398b4ac96bc5">BoardItem.components</a></div><div class="ttdeci">BoardItemComponent[] components</div><div class="ttdef"><b>Definition</b> BoardItem.cs:16</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   47</span>                                            : BoardItemComponent</div>
+<div class="line"><span class="lineno">   48</span>    {</div>
+<div class="line"><span class="lineno">   49</span>        BoardItemComponent found = this.<a class="code hl_variable" href="class_board_item.html#a1fb6090de83301ef7afd398b4ac96bc5">components</a>.FirstOrDefault(c =&gt; c is T);</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">if</span> (!found) <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   51</span>        <span class="keywordflow">return</span> (T)found;</div>
+<div class="line"><span class="lineno">   52</span>    }</div>
+<div class="ttc" id="aclass_board_item_html_a1fb6090de83301ef7afd398b4ac96bc5"><div class="ttname"><a href="class_board_item.html#a1fb6090de83301ef7afd398b4ac96bc5">BoardItem.components</a></div><div class="ttdeci">BoardItemComponent[] components</div><div class="ttdef"><b>Definition</b> BoardItem.cs:15</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a84eabff765571ad04c5140dbc89ac4b6" name="a84eabff765571ad04c5140dbc89ac4b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84eabff765571ad04c5140dbc89ac4b6">&#9670;&#160;</a></span>GetValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">object CandyActor.GetValue </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>valueName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out Type</td>          <td class="paramname"><span class="paramname"><em>returnType</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets a value inside the class based on its name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">valueName</td><td>name of the desired value, a key of sorts</td></tr>
+    <tr><td class="paramname">returnType</td><td>which type the returned obj is</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>desired object</dd></dl>
+
+<p>Implements <a class="el" href="interface_i_user_interface_value_getter.html#aff6651be9aa9d8b214685c43c6f88d6e">IUserInterfaceValueGetter</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>    {</div>
+<div class="line"><span class="lineno">   49</span>        <span class="keywordflow">if</span> (valueName == <span class="stringliteral">&quot;points&quot;</span>)</div>
+<div class="line"><span class="lineno">   50</span>        {</div>
+<div class="line"><span class="lineno">   51</span>            returnType = typeof(<span class="keywordtype">int</span>);</div>
+<div class="line"><span class="lineno">   52</span>            <span class="keywordflow">return</span> this.<a class="code hl_property" href="#a35aeaf58357c0ab5ddc887e7638c3cbf">Points</a>;</div>
+<div class="line"><span class="lineno">   53</span>        }</div>
+<div class="line"><span class="lineno">   54</span> </div>
+<div class="line"><span class="lineno">   55</span>        returnType = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   56</span>        <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   57</span>    }</div>
+<div class="ttc" id="aclass_candy_actor_html_a35aeaf58357c0ab5ddc887e7638c3cbf"><div class="ttname"><a href="#a35aeaf58357c0ab5ddc887e7638c3cbf">CandyActor.Points</a></div><div class="ttdeci">int Points</div><div class="ttdef"><b>Definition</b> CandyActor.cs:11</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -271,29 +404,21 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Called when released and on the playing field. </p>
-<div class="fragment"><div class="line"><span class="lineno">   44</span>=&gt; this.<a class="code hl_variable" href="class_board_item.html#ad87a4083cc320e3b586b6ad1dbbe0d40">OnInitiate</a>?.Invoke();</div>
+<div class="fragment"><div class="line"><span class="lineno">   42</span>=&gt; this.<a class="code hl_variable" href="class_board_item.html#ad87a4083cc320e3b586b6ad1dbbe0d40">OnInitiate</a>?.Invoke();</div>
 <div class="ttc" id="aclass_board_item_html_ad87a4083cc320e3b586b6ad1dbbe0d40"><div class="ttname"><a href="class_board_item.html#ad87a4083cc320e3b586b6ad1dbbe0d40">BoardItem.OnInitiate</a></div><div class="ttdeci">Action OnInitiate</div><div class="ttdef"><b>Definition</b> BoardItem.cs:22</div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a899ffc39e2023c4197690c47d14be5d7" name="a899ffc39e2023c4197690c47d14be5d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a899ffc39e2023c4197690c47d14be5d7">&#9670;&#160;</a></span>OnGrabReleased()</h2>
+<a id="a169943257a14f427f560f29bc56fc203" name="a169943257a14f427f560f29bc56fc203"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a169943257a14f427f560f29bc56fc203">&#9670;&#160;</a></span>OnGrabReleased()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void CandyActor.OnGrabReleased </td>
           <td>(</td>
           <td class="paramtype">Rigidbody</td>          <td class="paramname"><span class="paramname"><em>rb</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_board_item.html">BoardItem</a></td>          <td class="paramname"><span class="paramname"><em>boardItem</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -306,20 +431,19 @@ Private Attributes</h2></td></tr>
           <td class="paramtype">Vector2</td>          <td class="paramname"><span class="paramname"><em>throwForce</em></span>&#160;)</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   24</span>                                                                                                                      =&gt; </div>
-<div class="line"><span class="lineno">   25</span>        HandHandler.OnGrabReleased(<a class="code hl_variable" href="class_board_item.html#a12b109c2ffb024e8b28781a1d0f2809f">rb</a>, boardItem, handMovementDir, throwForce);</div>
-<div class="ttc" id="aclass_board_item_html_a12b109c2ffb024e8b28781a1d0f2809f"><div class="ttname"><a href="class_board_item.html#a12b109c2ffb024e8b28781a1d0f2809f">BoardItem.rb</a></div><div class="ttdeci">Rigidbody rb</div><div class="ttdef"><b>Definition</b> BoardItem.cs:18</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   29</span>    {</div>
+<div class="line"><span class="lineno">   30</span>        this.movement.moveImmunity = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   31</span>        HandHandler.OnGrabReleased(<a class="code hl_variable" href="class_board_item.html#a12b109c2ffb024e8b28781a1d0f2809f">rb</a>, <span class="keyword">this</span>, handMovementDir, throwForce);</div>
+<div class="line"><span class="lineno">   32</span>        this.OnAddToBoard += <a class="code hl_function" href="#a6cb00e83d2c69de5da51ba4182b6d808">RemovePlayerMoveImmunity</a>;</div>
+<div class="line"><span class="lineno">   33</span>    }</div>
+<div class="ttc" id="aclass_board_item_html_a12b109c2ffb024e8b28781a1d0f2809f"><div class="ttname"><a href="class_board_item.html#a12b109c2ffb024e8b28781a1d0f2809f">BoardItem.rb</a></div><div class="ttdeci">Rigidbody rb</div><div class="ttdef"><b>Definition</b> BoardItem.cs:17</div></div>
+<div class="ttc" id="aclass_candy_actor_html_a6cb00e83d2c69de5da51ba4182b6d808"><div class="ttname"><a href="#a6cb00e83d2c69de5da51ba4182b6d808">CandyActor.RemovePlayerMoveImmunity</a></div><div class="ttdeci">void RemovePlayerMoveImmunity()</div><div class="ttdef"><b>Definition</b> CandyActor.cs:35</div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a4e1f2458b9c44ac7de445567240718de" name="a4e1f2458b9c44ac7de445567240718de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e1f2458b9c44ac7de445567240718de">&#9670;&#160;</a></span>OnValidate()</h2>
+<a id="a6cb00e83d2c69de5da51ba4182b6d808" name="a6cb00e83d2c69de5da51ba4182b6d808"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cb00e83d2c69de5da51ba4182b6d808">&#9670;&#160;</a></span>RemovePlayerMoveImmunity()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -328,7 +452,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void BoardItem.OnValidate </td>
+          <td class="memname">void CandyActor.RemovePlayerMoveImmunity </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -336,18 +460,14 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span><span class="mlabel inherited">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   26</span>    {</div>
-<div class="line"><span class="lineno">   27</span>        <span class="keywordflow">if</span> (Application.isPlaying)</div>
-<div class="line"><span class="lineno">   28</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   29</span>        this.rb = GetComponent&lt;Rigidbody&gt;();</div>
-<div class="line"><span class="lineno">   30</span>        this.interactable = GetComponentInChildren&lt;Interactable&gt;();</div>
-<div class="line"><span class="lineno">   31</span>        </div>
-<div class="line"><span class="lineno">   32</span>        this.components = GetComponentsInChildren&lt;BoardItemComponent&gt;();</div>
-<div class="line"><span class="lineno">   33</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   36</span>    {</div>
+<div class="line"><span class="lineno">   37</span>        this.movement.moveImmunity = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   38</span>        this.OnAddToBoard -= <a class="code hl_function" href="#a6cb00e83d2c69de5da51ba4182b6d808">RemovePlayerMoveImmunity</a>;</div>
+<div class="line"><span class="lineno">   39</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -373,11 +493,66 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   36</span>    {</div>
-<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">foreach</span> (BoardItemComponent boardItemComponent <span class="keywordflow">in</span> this.<a class="code hl_variable" href="class_board_item.html#a1fb6090de83301ef7afd398b4ac96bc5">components</a>) </div>
-<div class="line"><span class="lineno">   38</span>            boardItemComponent.<a class="code hl_function" href="class_board_item_component.html#a8bfba0af81c157c68dfc7193db5d9887">ConnectToBoardItem</a>();</div>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>    {</div>
+<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">foreach</span> (BoardItemComponent boardItemComponent <span class="keywordflow">in</span> this.<a class="code hl_variable" href="class_board_item.html#a1fb6090de83301ef7afd398b4ac96bc5">components</a>)</div>
+<div class="line"><span class="lineno">   36</span>            boardItemComponent.<a class="code hl_function" href="class_board_item_component.html#a8bfba0af81c157c68dfc7193db5d9887">ConnectToBoardItem</a>();</div>
+<div class="line"><span class="lineno">   37</span>        </div>
+<div class="line"><span class="lineno">   38</span>        <a class="code hl_variable" href="class_board_item.html#a3611ff84245ffc1975d524a0a6aca3d4">OnStarted</a>?.Invoke();</div>
 <div class="line"><span class="lineno">   39</span>    }</div>
-<div class="ttc" id="aclass_board_item_component_html_a8bfba0af81c157c68dfc7193db5d9887"><div class="ttname"><a href="class_board_item_component.html#a8bfba0af81c157c68dfc7193db5d9887">BoardItemComponent.ConnectToBoardItem</a></div><div class="ttdeci">virtual void ConnectToBoardItem()</div><div class="ttdoc">Function for hooking into the various boardItem actions, make sure to unhook on destroy.</div><div class="ttdef"><b>Definition</b> BoardItemComponent.cs:23</div></div>
+<div class="ttc" id="aclass_board_item_component_html_a8bfba0af81c157c68dfc7193db5d9887"><div class="ttname"><a href="class_board_item_component.html#a8bfba0af81c157c68dfc7193db5d9887">BoardItemComponent.ConnectToBoardItem</a></div><div class="ttdeci">virtual void ConnectToBoardItem()</div><div class="ttdoc">Function for hooking into the various boardItem actions, make sure to unhook on destroy.</div><div class="ttdef"><b>Definition</b> BoardItemComponent.cs:24</div></div>
+<div class="ttc" id="aclass_board_item_html_a3611ff84245ffc1975d524a0a6aca3d4"><div class="ttname"><a href="class_board_item.html#a3611ff84245ffc1975d524a0a6aca3d4">BoardItem.OnStarted</a></div><div class="ttdeci">Action OnStarted</div><div class="ttdef"><b>Definition</b> BoardItem.cs:25</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3e6abfa5523e49afd8426f74260478f2" name="a3e6abfa5523e49afd8426f74260478f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e6abfa5523e49afd8426f74260478f2">&#9670;&#160;</a></span>SubscribeOnChangeValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CandyActor.SubscribeOnChangeValue </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>valueName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Action&lt; object, Type &gt;</td>          <td class="paramname"><span class="paramname"><em>callback</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="interface_i_user_interface_value_getter.html#a4414b80bd15429fd8963f5fa6888d5eb">IUserInterfaceValueGetter</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>    {</div>
+<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">if</span> (valueName == <span class="stringliteral">&quot;points&quot;</span>) this.OnchangePoints += callback;</div>
+<div class="line"><span class="lineno">   62</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa145565a425a8d3c446f8afa07c3c77b" name="aa145565a425a8d3c446f8afa07c3c77b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa145565a425a8d3c446f8afa07c3c77b">&#9670;&#160;</a></span>UnSubscribeOnChangeValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CandyActor.UnSubscribeOnChangeValue </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>valueName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Action&lt; object, Type &gt;</td>          <td class="paramname"><span class="paramname"><em>callback</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="interface_i_user_interface_value_getter.html#a5b0f59c8943fb5f5ec95bd9268535235">IUserInterfaceValueGetter</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   65</span>    {</div>
+<div class="line"><span class="lineno">   66</span>        <span class="keywordflow">if</span> (valueName == <span class="stringliteral">&quot;points&quot;</span>) this.OnchangePoints -= callback;</div>
+<div class="line"><span class="lineno">   67</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -418,6 +593,28 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a2da944bc0b2f95003522adc91181a8c8" name="a2da944bc0b2f95003522adc91181a8c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2da944bc0b2f95003522adc91181a8c8">&#9670;&#160;</a></span>gridInstanceRef</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_grid_1_1_grid_manager_1_1_grid_instance.html">GridManager.GridInstance</a> BoardItem.gridInstanceRef</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inherited">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="abce413323bd4d0eab4ce0866f15427df" name="abce413323bd4d0eab4ce0866f15427df"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abce413323bd4d0eab4ce0866f15427df">&#9670;&#160;</a></span>handHandler</h2>
 
@@ -440,28 +637,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a684c45c02374cdf0d47cd0f7d946c467" name="a684c45c02374cdf0d47cd0f7d946c467"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a684c45c02374cdf0d47cd0f7d946c467">&#9670;&#160;</a></span>interactable</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_interactable.html">Interactable</a> BoardItem.interactable</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span><span class="mlabel inherited">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a090297cd83ccca9c39deecef5887b2a9" name="a090297cd83ccca9c39deecef5887b2a9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a090297cd83ccca9c39deecef5887b2a9">&#9670;&#160;</a></span>movement</h2>
 
@@ -478,6 +653,28 @@ Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a68dd292d0761556a2b9858aab3a9bb19" name="a68dd292d0761556a2b9858aab3a9bb19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68dd292d0761556a2b9858aab3a9bb19">&#9670;&#160;</a></span>OnActivate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Action BoardItem.OnActivate</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inherited">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -528,6 +725,28 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a68d96d424630c020d1726d3cb6fdf2ad" name="a68d96d424630c020d1726d3cb6fdf2ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68d96d424630c020d1726d3cb6fdf2ad">&#9670;&#160;</a></span>OnchangePoints</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Action&lt;object, Type&gt; CandyActor.OnchangePoints</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ad87a4083cc320e3b586b6ad1dbbe0d40" name="ad87a4083cc320e3b586b6ad1dbbe0d40"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad87a4083cc320e3b586b6ad1dbbe0d40">&#9670;&#160;</a></span>OnInitiate</h2>
 
@@ -550,8 +769,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae7a3980c51e5aa1b6d39ec55c887a933" name="ae7a3980c51e5aa1b6d39ec55c887a933"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7a3980c51e5aa1b6d39ec55c887a933">&#9670;&#160;</a></span>points</h2>
+<a id="a2e643e94d07f57ee0ad3e27be7eeec1c" name="a2e643e94d07f57ee0ad3e27be7eeec1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e643e94d07f57ee0ad3e27be7eeec1c">&#9670;&#160;</a></span>OnRemovedFromHand</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -560,7 +779,51 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float CandyActor.points</td>
+          <td class="memname">Action BoardItem.OnRemovedFromHand</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inherited">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3611ff84245ffc1975d524a0a6aca3d4" name="a3611ff84245ffc1975d524a0a6aca3d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3611ff84245ffc1975d524a0a6aca3d4">&#9670;&#160;</a></span>OnStarted</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Action BoardItem.OnStarted</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inherited">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a91eac4531b0de9f7c7f48d92cf56393b" name="a91eac4531b0de9f7c7f48d92cf56393b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91eac4531b0de9f7c7f48d92cf56393b">&#9670;&#160;</a></span>points</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CandyActor.points</td>
         </tr>
       </table>
   </td>
@@ -595,6 +858,29 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a name="doc-property-members" id="doc-property-members"></a><h2 id="header-doc-property-members" class="groupheader">Property Documentation</h2>
+<a id="a35aeaf58357c0ab5ddc887e7638c3cbf" name="a35aeaf58357c0ab5ddc887e7638c3cbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35aeaf58357c0ab5ddc887e7638c3cbf">&#9670;&#160;</a></span>Points</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CandyActor.Points</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel get">get</span><span class="mlabel private-set">private set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   11</span>{ <span class="keyword">get</span> =&gt; this.<a class="code hl_variable" href="#a91eac4531b0de9f7c7f48d92cf56393b">points</a>; <span class="keyword">private</span> <span class="keyword">set</span> =&gt; this.points = value; }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="abfb2e1b22ab63063ec78fa0d240bb5e6" name="abfb2e1b22ab63063ec78fa0d240bb5e6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abfb2e1b22ab63063ec78fa0d240bb5e6">&#9670;&#160;</a></span>Rb</h2>
 
@@ -614,7 +900,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   19</span>{ <span class="keyword">get</span> =&gt; this.<a class="code hl_variable" href="class_board_item.html#a12b109c2ffb024e8b28781a1d0f2809f">rb</a>; <span class="keyword">private</span> <span class="keyword">set</span> =&gt; this.rb = value; }</div>
+<div class="fragment"><div class="line"><span class="lineno">   18</span>{ <span class="keyword">get</span> =&gt; this.<a class="code hl_variable" href="class_board_item.html#a12b109c2ffb024e8b28781a1d0f2809f">rb</a>; <span class="keyword">private</span> <span class="keyword">set</span> =&gt; this.rb = value; }</div>
 </div><!-- fragment -->
 </div>
 </div>

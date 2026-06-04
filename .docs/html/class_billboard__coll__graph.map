@@ -1,5 +1,5 @@
 <map id="Billboard" name="Billboard">
-<area shape="rect" id="Node000001" title="A simple component, that makes the transform follow the camera." alt="" coords="57,147,155,237"/>
+<area shape="rect" id="Node000001" title="A simple component, that makes the transform follow the camera." alt="" coords="45,147,168,237"/>
 <area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="5,5,106,75"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,86,94,147,89,147,71,91"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="130,5,187,75"/>

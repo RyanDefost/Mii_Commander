@@ -1,8 +1,14 @@
 <map id="C:/Users/Lucas/Documents/School/HKU/PresentYourself/Mii_Commander/Assets/Scripts" name="C:/Users/Lucas/Documents/School/HKU/PresentYourself/Mii_Commander/Assets/Scripts">
 <area shape="rect" id="node2" href="dir_978d3659516c4cf2e3e571799192f701.html" title="BoardItems" alt="" coords="124,64,212,91"/>
-<area shape="rect" id="node3" href="dir_19e1d439eeef92eecfbbf638e4718082.html" title="Grid" alt="" coords="236,64,281,91"/>
-<area shape="rect" id="node4" href="dir_08f21b82c2a849edc38ce0f449be602e.html" title="MiscHelper" alt="" coords="306,64,393,91"/>
-<area shape="rect" id="node5" href="dir_13c80f2c83e123a86a81e9863c980346.html" title="PlayerHand" alt="" coords="417,64,506,91"/>
-<area shape="rect" id="clust2" href="dir_f13b41af88cf68434578284aaf699e39.html" alt="" coords="27,53,517,101"/>
-<area shape="rect" id="clust1" href="dir_84bbf7b3c7f28a5a18725745e1505219.html" title="Assets" alt="" coords="16,16,528,112"/>
+<area shape="rect" id="node3" href="dir_0261d5286017c38b9af36d6d3ff94a53.html" title="Editor" alt="" coords="236,64,292,91"/>
+<area shape="rect" id="node4" href="dir_fa8dfad4fa7b3aba7dc6b32aaffa684e.html" title="GameData" alt="" coords="315,64,400,91"/>
+<area shape="rect" id="node5" href="dir_19e1d439eeef92eecfbbf638e4718082.html" title="Grid" alt="" coords="424,64,469,91"/>
+<area shape="rect" id="node6" href="dir_54917bde386a5ef9e0c3f63ca6b256ef.html" title="Managers" alt="" coords="493,64,571,91"/>
+<area shape="rect" id="node7" href="dir_08f21b82c2a849edc38ce0f449be602e.html" title="MiscHelper" alt="" coords="595,64,682,91"/>
+<area shape="rect" id="node8" href="dir_13c80f2c83e123a86a81e9863c980346.html" title="PlayerHand" alt="" coords="706,64,795,91"/>
+<area shape="rect" id="node9" href="dir_eb58e17c884e297cb1d29aa74c9d05ca.html" title="Scoring" alt="" coords="819,64,885,91"/>
+<area shape="rect" id="node10" href="dir_e840a82b157631d4f8760037a47ca310.html" title="Shop" alt="" coords="909,64,960,91"/>
+<area shape="rect" id="node11" href="dir_7c6112dd506d4a035e270b648216a36b.html" title="StateMachine" alt="" coords="984,64,1085,91"/>
+<area shape="rect" id="clust2" href="dir_f13b41af88cf68434578284aaf699e39.html" alt="" coords="27,53,1096,101"/>
+<area shape="rect" id="clust1" href="dir_84bbf7b3c7f28a5a18725745e1505219.html" title="Assets" alt="" coords="16,16,1107,112"/>
 </map>

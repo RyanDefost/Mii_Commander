@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using GameData;
 using Grid;
 using Managers.GameStates;
+using Managers.Quest;
 using Scoring;
 using UnityEngine;
 
@@ -17,7 +19,11 @@ namespace Managers
         public TurnManager TurnManager { get => this.turnManager; private set => this.turnManager = value; }
         
         [SerializeField] private ScoreManager scoreManager;
-        public  ScoreManager ScoreManager { get => this.scoreManager; private set => this.scoreManager = value; }
+        public ScoreManager ScoreManager { get => this.scoreManager; private set => this.scoreManager = value; }
+        
+        [SerializeField]
+        private QuestManager questManager;
+        public QuestManager QuestManager { get => this.questManager; private set => this.questManager = value; }
         
         //[SerializeField] private QuestManager questManager;
         
@@ -30,7 +36,7 @@ namespace Managers
         private readonly Dictionary<GameState, State<GameManager>> states = new();
 
         public Action<GameState> OnChangeState;
-        
+
         private void OnValidate()
         {
             if (Application.isPlaying)
@@ -39,7 +45,7 @@ namespace Managers
             this.moveManager = FindFirstObjectByType<MoveManager>();
             this.turnManager = FindFirstObjectByType<TurnManager>();
             this.scoreManager = FindFirstObjectByType<ScoreManager>();
-            //this.questManager = FindFirstObjectByType<QuestManager>();
+            this.questManager = FindFirstObjectByType<QuestManager>();
         }
 
         private void Awake() => ComponentRegistry.AddToRegistry(this);
@@ -55,6 +61,8 @@ namespace Managers
 
         private void InitGame()
         {
+            this.questManager.SetQuests(this.levelData.GetQuests());
+            
             this.gameStateMachine = new FiniteStateMachine<GameManager>(this, new PlayGameState(this));
             this.OnStateChange?.Invoke(GameState.PLAY);
             

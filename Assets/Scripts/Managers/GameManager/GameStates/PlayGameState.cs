@@ -20,10 +20,7 @@ namespace Managers.GameStates
             // Debug.Log("ENTER PlayGameState");
         }
 
-        public override void Update()
-        {
-            //throw new System.NotImplementedException();
-        }
+        public override void Update() => this.Owner.QuestManager.UpdateQuests();
 
         public override void Exit()
         {

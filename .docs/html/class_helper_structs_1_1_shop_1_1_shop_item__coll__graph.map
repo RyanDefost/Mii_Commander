@@ -1,0 +1,13 @@
+<map id="HelperStructs.Shop.ShopItem" name="HelperStructs.Shop.ShopItem">
+<area shape="rect" id="Node000001" title=" " alt="" coords="198,147,383,216"/>
+<area shape="rect" id="Node000002" href="$class_scriptable_object.html" title=" " alt="" coords="5,5,112,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,80,187,120,231,147,225,147,184,125,121,86"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="136,5,219,75"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="184,72,193,98,206,121,218,136,213,136,201,124,188,100,182,77"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="278,5,303,75"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="292,73,293,131,288,129,289,77"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="340,5,385,75"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="355,73,336,124,329,135,326,131,331,121,351,76"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="447,5,489,75"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="458,73,445,101,426,125,399,144,397,139,422,121,441,98,454,76"/>
+</map>
