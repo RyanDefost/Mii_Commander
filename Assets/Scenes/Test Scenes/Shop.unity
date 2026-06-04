@@ -1047,6 +1047,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412489391}
   m_CullTransparentMesh: 1
+--- !u!114 &429399356 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3198954631575277286, guid: c283c6c7b4efc844a9b3f17d04b83761, type: 3}
+  m_PrefabInstance: {fileID: 1323539632}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecaf37c275eb4ee69e8061eab04b5d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoardItem
 --- !u!1 &437845532
 GameObject:
   m_ObjectHideFlags: 0
@@ -1808,6 +1819,8 @@ MonoBehaviour:
   - {x: -0.5866666, y: -2.2391777, z: -4.51}
   - {x: 0.07999992, y: -2.2391777, z: -4.51}
   - {x: 0.7466669, y: -2.2391777, z: -4.51}
+  lockedPositionIndexes: 
+  hasLockedCells: 0
   cellSize: {x: 0.6666667, y: 0.5555556}
   cellMesh: {fileID: 4300000, guid: 65e78ac2f04d88ac1bbcd95d145a78e0, type: 2}
 --- !u!64 &689433974
@@ -2973,6 +2986,22 @@ PrefabInstance:
     - target: {fileID: 2486186912250027246, guid: c283c6c7b4efc844a9b3f17d04b83761, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574632748961841022, guid: c283c6c7b4efc844a9b3f17d04b83761, type: 3}
+      propertyPath: boardItem
+      value: 
+      objectReference: {fileID: 429399356}
+    - target: {fileID: 6574632748961841022, guid: c283c6c7b4efc844a9b3f17d04b83761, type: 3}
+      propertyPath: minimalDist
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574632748961841022, guid: c283c6c7b4efc844a9b3f17d04b83761, type: 3}
+      propertyPath: canIgnoreLocks
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574632748961841022, guid: c283c6c7b4efc844a9b3f17d04b83761, type: 3}
+      propertyPath: minVelocityToRecalculate
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

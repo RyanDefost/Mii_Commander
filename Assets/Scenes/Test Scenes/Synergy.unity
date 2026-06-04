@@ -1808,6 +1808,8 @@ MonoBehaviour:
   - {x: -0.5866666, y: -2.2391777, z: -4.51}
   - {x: 0.07999992, y: -2.2391777, z: -4.51}
   - {x: 0.7466669, y: -2.2391777, z: -4.51}
+  lockedPositionIndexes: 
+  hasLockedCells: 0
   cellSize: {x: 0.6666667, y: 0.5555556}
   cellMesh: {fileID: 4300000, guid: 65e78ac2f04d88ac1bbcd95d145a78e0, type: 2}
 --- !u!64 &689433974

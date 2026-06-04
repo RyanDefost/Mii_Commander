@@ -8,42 +8,25 @@ namespace Synergy
 {
     public class Combiner : BoardItemComponent
     {
-        [SerializeField] private GameObject visualizer;
-        
-        private NeighborPatternRegistry neighborPatternRegistry;
         private SynergyLookUp synergyLookUp;
         private GridManager gridManager;
         private GameManager gameManager;
-
-        private GridRotatable gridRotatable;
         
         private GameObject currentOutput; //TODO: Might not work as intended if setting multiple synergies in 1 turn.
         private int currentOutputPoints;
 
-        public override void ConnectToBoardItem()
-        {
-            this.boardItem.OnActivate += Activate;
-            //this.boardItem.OnAddToHand += OnAddToHand;
-            
-            visualizer.SetActive(false);
-            visualizer.transform.SetParent(null);
-        }
-
-        private void Start()
-        {
-            this.neighborPatternRegistry ??= ComponentRegistry.GetComponent<NeighborPatternRegistry>();
-            this.synergyLookUp ??= ComponentRegistry.GetComponent<SynergyLookUp>();
-            this.gridManager ??= ComponentRegistry.GetComponent<GridManager>();
-            this.gameManager ??= ComponentRegistry.GetComponent<GameManager>();   
-            
-            this.gridRotatable = this.GetComponent<GridRotatable>();
-        }
+        public override void ConnectToBoardItem() => this.boardItem.OnActivate += Activate;
 
         /// <summary>
         /// When activated, needed pattern direction is chosen and checks synergyLookup for possible synergies.
         /// </summary>
         private void Activate()
         {
+            //Init
+            this.synergyLookUp ??= ComponentRegistry.GetComponent<SynergyLookUp>();
+            this.gridManager ??= ComponentRegistry.GetComponent<GridManager>();
+            this.gameManager ??= ComponentRegistry.GetComponent<GameManager>();   
+            
             //Get Neighbors.
             NeighborPattern? sidePattern = GetForwardNeighborPattern(this.transform.rotation.eulerAngles.z);
             GridManager.GridInstance[] foundNeighbors = this.gridManager.GetNeighbors(this.boardItem.gridInstanceRef, sidePattern.Value);
@@ -60,28 +43,6 @@ namespace Synergy
             }
         }
 
-        private void OnAddToBoard()
-        {
-            GridManager.GridInstance newTarget = this.gridManager.GetNearestPosition(
-                this.boardItem.gridInstanceRef.position + this.gridManager.CellSize.y * this.gridRotatable.StaticForwardDirection, 
-                this.boardItem.gridInstanceRef.gameObj, this.boardItem, this.boardItem.gridInstanceRef); 
-            
-            print(newTarget.position);
-            visualizer.SetActive(true);
-            visualizer.transform.position = newTarget.position;
-            
-            this.boardItem.OnAddToHand += OnAddToHand;
-            this.boardItem.OnAddToBoard -= OnAddToBoard;
-        }
-
-        private void OnAddToHand()
-        {
-            visualizer.SetActive(false);
-            
-            this.boardItem.OnAddToHand -= OnAddToHand;
-            this.boardItem.OnAddToBoard += OnAddToBoard;   
-        }
-        
         /// <summary>
         /// Applies and Sets changes required for the synergy.
         /// </summary>

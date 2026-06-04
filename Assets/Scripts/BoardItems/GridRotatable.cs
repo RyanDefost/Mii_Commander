@@ -95,7 +95,7 @@ public class GridRotatable : BoardItemComponent
         this.boardItem.OnAddToBoard -= OnAddToBoard;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (this.lockedRotation)
             this.transform.rotation = Quaternion.Euler(this.rotation);

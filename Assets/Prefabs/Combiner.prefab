@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6574632748961841022}
   - component: {fileID: 2204325606334268918}
   - component: {fileID: 1922888715375262050}
+  - component: {fileID: 7423674275805117655}
   m_Layer: 0
   m_Name: Combiner
   m_TagString: Untagged
@@ -138,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridMoveable
   boardItem: {fileID: 3198954631575277286}
-  canIgnoreLocks: 0
+  canIgnoreLocks: 1
   moveImmunity: 0
   offset: 0.25
   minimalDist: 0.5
@@ -171,7 +172,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Synergy.Combiner
   boardItem: {fileID: 3198954631575277286}
+--- !u!114 &7423674275805117655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2427277321692252709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4ff3ffc8d54662b3870d217a8118bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Synergy.InteractionVisualizer
+  boardItem: {fileID: 3198954631575277286}
   visualizer: {fileID: 8038698875990162935}
+  heightOffset: -0.1
 --- !u!1 &3114438722924965209
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,10 +746,10 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.3529412}
+  m_Color: {r: 0.6620035, g: 1, b: 0, a: 0.3529412}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
