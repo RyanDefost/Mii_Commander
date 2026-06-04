@@ -35,8 +35,8 @@ namespace Synergy
             this.gridManager ??= ComponentRegistry.GetComponent<GridManager>();
 
             //Loop over all synergies to find first applicable synergy.
-            return (from currentSynergy in synergyList let hasSynergy = CheckSynergy(currentSynergy, gridInstanceRef) 
-                where hasSynergy select Tuple.Create(currentSynergy, currentInstances)).FirstOrDefault();
+            return (from currentSynergy in this.synergyList let hasSynergy = CheckSynergy(currentSynergy, gridInstanceRef) 
+                where hasSynergy select Tuple.Create(currentSynergy, this.currentInstances)).FirstOrDefault();
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Synergy
         private bool CheckSynergy(Synergy synergy, GridManager.GridInstance centerInstance)
         {
             List<BoardItem> synergyItems = synergy.synergyItems;
-            foreach (NeighborPattern direction in directions)
+            foreach (NeighborPattern direction in this.directions)
             {
                 //Check for synergy from center.
                 bool hasCenterSynergy = CheckDirection(synergyItems, centerInstance, direction, synergy.hasOrder);

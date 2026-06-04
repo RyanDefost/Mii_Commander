@@ -56,15 +56,15 @@ namespace Synergy
             foreach (GridManager.GridInstance instance in synergyInfo.Item2)
             {
                 if (instance.boardItem is CandyActor actor) 
-                    currentOutputPoints += actor.Points;
+                    this.currentOutputPoints += actor.Points;
                 
                 this.gridManager.ReleaseInstance(instance);
                 Destroy(instance.gameObj);
             }
                     
             //Initialize GameObject.
-            currentOutput = Instantiate(synergyInfo.Item1.output, neighbor.position, Quaternion.identity);
-            if (currentOutput.TryGetComponent(out BoardItem boardItem))
+            this.currentOutput = Instantiate(synergyInfo.Item1.output, neighbor.position, Quaternion.identity);
+            if (this.currentOutput.TryGetComponent(out BoardItem boardItem))
                 boardItem.OnStarted += SetOutputToBoard;
         }
         
@@ -92,11 +92,11 @@ namespace Synergy
         /// </summary>
         private void SetOutputToBoard()
         {
-            BoardItem item = currentOutput.GetComponent<BoardItem>(); 
+            BoardItem item = this.currentOutput.GetComponent<BoardItem>(); 
             item.Initiate();
 
             if (item is CandyActor actor)
-                actor.AddPoints(currentOutputPoints);
+                actor.AddPoints(this.currentOutputPoints);
         }
     }
 }

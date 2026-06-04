@@ -82,7 +82,7 @@ namespace Synergy
 
         private void ParentVisual()
         {
-            lastParentPosition = this.transform.position;
+            this.lastParentPosition = this.transform.position;
         }
 
         private void UnparentVisual()
@@ -93,7 +93,7 @@ namespace Synergy
                 return;
             }
             
-            Vector3 direction = this.transform.position - lastParentPosition;
+            Vector3 direction = this.transform.position - this.lastParentPosition;
             this.visualizer.transform.position += new Vector3(direction.x, direction.y, 0);   
         } 
         
