@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Grid
@@ -79,11 +80,12 @@ namespace Grid
             this.generator = GetComponent<GridGenerator>();
         }
 
+        private void Awake() => ComponentRegistry.AddToRegistry(this);
+
         private void Start()
         {
             this.openOffGridPositions ??= this.generator.GetAllOffGridPositions();
             this.openOnGridPositions ??= this.generator.GetAllPositions();
-            ComponentRegistry.AddToRegistry(this);
         }
 
         private void OnDestroy() => ComponentRegistry.RemoveFromRegistry(this);
