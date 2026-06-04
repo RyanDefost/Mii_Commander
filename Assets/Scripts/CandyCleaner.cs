@@ -1,34 +1,48 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using Scoring;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace HelperStructs
 {
     public class CandyCleaner : MonoBehaviour
     {
-        public void CleanBoard()
-        {
-            StartCoroutine(PushCandy());
-        }
+        [Header("Push Settings")]
+        [SerializeField] private Vector2 pushSpeedRangeY = new(-7, -10);
+        [SerializeField] private Vector2 pushSpeedRangeZ = new(-3, -5);
+        [Space, SerializeField] private Vector2 pushBufferRange = new Vector2(0.01f, 0.04f);
+
+        private void Awake() => ComponentRegistry.AddToRegistry(this);
+
+        public void CleanBoard() => StartCoroutine(PushCandy());
 
         private IEnumerator PushCandy()
         {
-            GridMoveable[] moveables = Object.FindObjectsByType<GridMoveable>(FindObjectsSortMode.None);
+            GridMoveable[] moveables = FindObjectsByType<GridMoveable>(FindObjectsSortMode.None); //TODO: ALSO GRABS ITEMS THAT WILL BE DESTROYED!
             foreach (GridMoveable moveable in moveables)
             {
-                if (moveable.GetBoardItem().gridInstanceRef != null) continue;
-
-                int randY = Random.Range(-7, -10);
-                int randZ = Random.Range(-3, -5);
-                float wait = Random.Range(0.01f, 0.04f);
+                BoardItem boardItem = moveable.GetBoardItem();
+                if (boardItem.gridInstanceRef != null) continue;
                 
-                moveable.ApplyImpulse(new Vector3(0, randY, randZ));
-                Destroy(moveable.gameObject, 5f);
+                moveable.ApplyImpulse(new Vector3(
+                    0,
+                    Random.Range(pushSpeedRangeY.x, pushSpeedRangeY.y),
+                    Random.Range(pushSpeedRangeZ.y, pushSpeedRangeZ.y))
+                );
                 
-                yield return new WaitForSeconds(wait);
+                StartCoroutine(SetForDestroy(boardItem, 5f));
+                yield return new WaitForSeconds(Random.Range(pushBufferRange.x, pushBufferRange.y));
             }
+        }
+
+        private static IEnumerator SetForDestroy(BoardItem boardItem, float time)
+        {
+            yield return new WaitForSeconds(time);
             
-            
-            
+            if(boardItem.gameObject || boardItem.gridInstanceRef == null)
+                DestroyImmediate(boardItem.gameObject);
         }
     }
 }

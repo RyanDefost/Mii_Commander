@@ -9,6 +9,7 @@ namespace Managers.GameStates
     public class CandyMoveState : State<GameManager>
     {
         private PlayerHandManager playerHandRef;
+        private CandyCleaner candyCleaner;
         
         public CandyMoveState(GameManager owner) : base(owner)
         {
@@ -21,7 +22,9 @@ namespace Managers.GameStates
             this.playerHandRef = ComponentRegistry.GetComponent<PlayerHandManager>();
             this.playerHandRef.SetCanGrab(false);
             
-            this.Owner.candyCleaner.CleanBoard(); //TODO: REMOVE
+            this.candyCleaner ??= ComponentRegistry.GetComponent<CandyCleaner>();
+            if(this.candyCleaner) this.candyCleaner.CleanBoard();
+            this.Owner.TurnManager.AddToWaitTime(1f); //TODO: DOES NOT WORK FOR ABILITY WAITING.
             
             this.Owner.MoveManager.SetMove();
             this.Owner.TurnManager.NextTurn();

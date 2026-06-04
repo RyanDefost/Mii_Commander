@@ -22,9 +22,6 @@ namespace Managers
         
         //[SerializeField] private QuestManager questManager;
         
-        //TEMP TODO: REMOVE
-        public CandyCleaner candyCleaner;
-        
         public Action<GameState> OnStateChange;
         
         [Header("Game Settings")]
