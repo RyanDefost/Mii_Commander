@@ -36,6 +36,8 @@ public class EndScreen : MonoBehaviour
 
     private void Activate()
     {
+        this.gameManager.SetGameState(GameState.USERINTERFACE);
+        
         foreach (TextMeshPro text in scoreTexts)
         {
             SetScore(this.scoreManager.GetScore(), this.scoreManager.GetGoal(), text, winStateText);
@@ -47,6 +49,8 @@ public class EndScreen : MonoBehaviour
 
     private void GoalAchieved()
     {
+        this.gameManager.SetGameState(GameState.USERINTERFACE);
+        
         foreach (TextMeshPro text in scoreTexts)
         {
             SetScore(this.scoreManager.GetScore(), this.scoreManager.GetGoal(), text, winStateText);
@@ -63,6 +67,8 @@ public class EndScreen : MonoBehaviour
 
     public void Continue()
     {
+        this.gameManager.SetGameState(GameState.PLAY);
+        
         this.FinishScreenPanel.SetActive(false);
         this.gameManager.ScoreManager.OnReachedGoal -= GoalAchieved;
     }

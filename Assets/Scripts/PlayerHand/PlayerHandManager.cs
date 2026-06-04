@@ -116,7 +116,6 @@ namespace PlayerHand
         public void SetCanGrab(bool canGrab)
         {
             this.canGrab = canGrab;
-            print("NO GRABBING" + this.canGrab);  
         }  
     }
 }

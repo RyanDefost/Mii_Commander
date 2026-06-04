@@ -70,6 +70,7 @@ namespace Managers
             this.states.Add(GameState.PLAY, new PlayGameState(this));
             this.states.Add(GameState.CANDYMOVE, new CandyMoveState(this));
             this.states.Add(GameState.CANDYACTIVATE, new CandyActivateState(this));
+            this.states.Add(GameState.USERINTERFACE, new UserInterfaceState(this));
             this.states.Add(GameState.END, new EndGameState(this));
         }
 
