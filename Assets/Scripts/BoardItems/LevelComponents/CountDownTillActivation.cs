@@ -32,7 +32,7 @@ namespace BoardItems
             if (this.shouldActivateOnItsOwn)
                 this.boardItem.OnActivate += Activate;
             this.currentCount = this.count;
-            this.countChanged.Invoke(this.currentCount, typeof(int));
+            this.countChanged?.Invoke(this.currentCount, typeof(int));
         }
 
         private void OnDestroy() => this.boardItem.OnActivate -= Activate;
