@@ -10,12 +10,14 @@ namespace Managers.Quest
         private GameManager gameManagerRef;
         [SerializeField] private int pointRequirement;
         private int pointsOnInit;
+        private string amountText;
 
-        public override string GetText() => $"Get {this.gameManagerRef?.ScoreManager?.GetScore() - this.pointsOnInit}/{this.pointRequirement} points";
+        public override string GetText() => $"Get {this.gameManagerRef?.ScoreManager?.GetScore() - this.pointsOnInit}/{this.pointRequirement} {this.amountText}";
 
         public override void Init(QuestVisual visual)
         {
             base.Init(visual);
+            this.amountText = this.pointRequirement == 1 ? "point" : "points";
             this.gameManagerRef ??= ComponentRegistry.GetComponent<GameManager>();
             if (!this.gameManagerRef.ScoreManager) return;
             this.gameManagerRef.ScoreManager.OnChangeScore += CallOnTextChange;

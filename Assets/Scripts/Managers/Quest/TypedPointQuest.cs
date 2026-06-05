@@ -11,16 +11,19 @@ namespace Managers.Quest
         [SerializeField] private int pointRequirement;
         private int lastPoints;
         private int collectedPoints;
+        
+        private string amountText;
 
         public override string GetText()
         {
             CandyTypeLookup.CandyTypeOption candy = ComponentRegistry.GetComponent<CandyTypeLookup>()?.Get(this.candyType);
-            return candy != null ? $"Get {this.collectedPoints}/{this.pointRequirement} {candy.name} points" : $"Get {this.collectedPoints}/{this.pointRequirement} points";
+            return candy != null ? $"Get {this.collectedPoints}/{this.pointRequirement} {candy.name} {this.amountText}" : $"Get {this.collectedPoints}/{this.pointRequirement} {this.amountText}";
         }
 
         public override void Init(QuestVisual visual)
         {
             base.Init(visual);
+            this.amountText = this.pointRequirement == 1 ? "point" : "points";
             this.gameManagerRef ??= ComponentRegistry.GetComponent<GameManager>();
             if (!this.gameManagerRef.ScoreManager) return;
             this.gameManagerRef.ScoreManager.OnChangeScore += CustomUpdate;

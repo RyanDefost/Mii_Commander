@@ -1318,7 +1318,7 @@ MonoBehaviour:
   moveManager: {fileID: 36105583}
   turnManager: {fileID: 689433971}
   scoreManager: {fileID: 462569218}
-  questManager: {fileID: 0}
+  questManager: {fileID: 824862530}
   levelData: {fileID: 11400000, guid: e5d94e483e7bf7dc6bb41b8766f44e75, type: 2}
 --- !u!1 &635590239
 GameObject:
