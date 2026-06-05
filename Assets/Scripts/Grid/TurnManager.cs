@@ -58,6 +58,7 @@ namespace Grid
                     instance.position + this.gridManager.CellSize.y * Vector3.down, instance.gameObj,
                     moveComponent.GetBoardItem(), instance); // TODO maybe replace this with a neighborpattern?
                 
+                
                 if (newTarget != null)
                     moveComponent.SetTarget(newTarget, false);
 
@@ -69,6 +70,7 @@ namespace Grid
                     Destroy(moveComponent.gameObject);
                     return;
                 }
+                
                 moveComponent.SetMoving(true);
             });
         }

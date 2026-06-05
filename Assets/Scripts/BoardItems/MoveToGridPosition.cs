@@ -39,14 +39,14 @@ public class MoveToGridPosition : GridMoveable
         if (!HasTarget())
             TriggerUpdateTargetWithImmunityState();
         this.startDelayTimer = new Timer(this.startDelay,  false, true, EnableMovement);
-        this.onUpdate += UpdateStartDelayTimer;
+        this.onFixedUpdate += UpdateStartDelayTimer;
     }
 
     protected override void StopMovementToTarget()
     {
-        this.onUpdate -= UpdateStartDelayTimer;
-        this.onUpdate -= ApplyForceTowardsTarget;
-        this.onUpdate -= UpdateEndTimer;
+        this.onFixedUpdate -= UpdateStartDelayTimer;
+        this.onFixedUpdate -= ApplyForceTowardsTarget;
+        this.onFixedUpdate -= UpdateEndTimer;
         ResetTarget();
     }
 
@@ -59,9 +59,9 @@ public class MoveToGridPosition : GridMoveable
         this.usedMinimumForce = this.physicsData.movementStrength;
         this.endTimer = new Timer(this.endTimerTime, false, true, SnapToTarget);
         
-        this.onUpdate += ApplyForceTowardsTarget;
-        this.onUpdate += UpdateEndTimer;
-        this.onUpdate -= UpdateStartDelayTimer;
+        this.onFixedUpdate += ApplyForceTowardsTarget;
+        this.onFixedUpdate += UpdateEndTimer;
+        this.onFixedUpdate -= UpdateStartDelayTimer;
         
         this.startDelayTimer.ResetAndReplay();
     }
@@ -76,7 +76,7 @@ public class MoveToGridPosition : GridMoveable
         this.boardItem.Rb.linearVelocity = Vector3.zero;
         this.boardItem.Rb.angularVelocity = Vector3.zero;
         this.boardItem.Rb.Sleep();
-        this.onUpdate -= UpdateEndTimer;
+        this.onFixedUpdate -= UpdateEndTimer;
         
         this.endTimer.ResetAndReplay();
         this.currentResistanceMultiplier = 1f;
