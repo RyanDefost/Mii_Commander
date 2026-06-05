@@ -14,6 +14,7 @@ namespace Managers.GameStates
         public CandyMoveState(GameManager owner) : base(owner)
         {
             this.Owner.TurnManager.OnEndReached += TrySetScore;
+            this.candyCleaner = ComponentRegistry.GetComponent<CandyCleaner>();
         }
 
         public override void Start()
@@ -22,14 +23,12 @@ namespace Managers.GameStates
             this.playerHandRef = ComponentRegistry.GetComponent<PlayerHandManager>();
             this.playerHandRef.SetCanGrab(false);
             
-            this.candyCleaner ??= ComponentRegistry.GetComponent<CandyCleaner>();
+            
             if(this.candyCleaner) this.candyCleaner.CleanBoard();
             this.Owner.TurnManager.AddToWaitTime(1f); //TODO: DOES NOT WORK FOR ABILITY WAITING.
-            
+                                                            //SHOULD BE CHANGED IN FUTURE FOR BETTER PACING
             this.Owner.MoveManager.SetMove();
             this.Owner.TurnManager.NextTurn();
-            
-            // Debug.Log("ENTER WaitGameState");
         }
 
         public override void Update()
