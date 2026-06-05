@@ -142,9 +142,6 @@ namespace Grid
         /// <returns>an array of found neighbors and empty cells</returns>
         public GridInstance[] GetNeighbors(GridInstance instance, NeighborPattern pattern)
         {
-            int distanceToLeft = instance.index.index % this.generator.Width;
-            int distanceToRight = (this.generator.Width - 1) - distanceToLeft;
-            
             GridInstance[] result = new GridInstance[pattern.width * pattern.height];
             
             int centerX = pattern.center.x;
@@ -152,20 +149,7 @@ namespace Grid
             
             foreach (Vector2Int pos in pattern.positions)
             {
-                if (pos.x < -distanceToLeft || pos.x > distanceToRight || pos == Vector2Int.zero) continue; // outside of grid
-
-                int index = pos.x + (pos.y * this.generator.Width) + instance.index.index;
-                if (instance.index.isOffGrid)
-                    index += this.openOnGridPositions.Count;
-                
-                bool isOffGrid = false;
-                if (index >= this.openOnGridPositions.Count)
-                {
-                    index -= this.openOnGridPositions.Count;
-                    isOffGrid = true;
-                }
-                
-                if ((isOffGrid && index >= this.openOffGridPositions.Count) || index < 0) // outside of grid
+                if (!TryGetPatternPositionIndex(instance, pos, out int index, out bool isOffGrid))
                     continue;
 
                 int baseIndex = (pos.x + centerX) + (pos.y + centerY) * pattern.width;
@@ -181,6 +165,49 @@ namespace Grid
             }
 
             return result;
+        }
+        
+        public Vector3? TryGetTileFromPattern(int i, GridInstance instance, NeighborPattern pattern)
+        {
+            int x = i % pattern.width - pattern.center.x;
+            int y = i / pattern.width - pattern.center.y;
+            Vector2Int pos = new (x, y);
+
+            if (Array.IndexOf(pattern.positions, pos) < 0)
+                return null;
+            
+            if (!TryGetPatternPositionIndex(instance, pos, out int index, out bool isOffGrid))
+                return null;
+            
+            return isOffGrid ? this.openOffGridPositions[index] : this.openOnGridPositions[index];
+        }
+        
+        private bool TryGetPatternPositionIndex(GridInstance instance, Vector2Int pos, out int index, out bool isOffGrid)
+        {
+            int distanceToLeft = instance.index.index % this.generator.Width;
+            int distanceToRight = (this.generator.Width - 1) - distanceToLeft;
+
+            if (pos.x < -distanceToLeft || pos.x > distanceToRight || pos == Vector2Int.zero)
+            {
+                index = 0;
+                isOffGrid = false;
+                return false;
+            }
+
+            index = pos.x + (pos.y * this.generator.Width) + instance.index.index;
+            if (instance.index.isOffGrid)
+                index += this.openOnGridPositions.Count;
+
+            isOffGrid = false;
+            if (index >= this.openOnGridPositions.Count)
+            {
+                index -= this.openOnGridPositions.Count;
+                isOffGrid = true;
+            }
+
+            if ((isOffGrid && index >= this.openOffGridPositions.Count) || index < 0) return false;
+
+            return true;
         }
 
         /// <summary>
