@@ -5,7 +5,7 @@ namespace Managers.GameStates
 {
     public class EndGameState : State<GameManager> 
     {
-        private  GridManager gridManager;
+        private GridManager gridManager;
         
         private bool isDone = false;
         
@@ -18,16 +18,12 @@ namespace Managers.GameStates
         {
             Debug.unityLogger.Log("Beginning game state");
             this.gridManager ??= ComponentRegistry.GetComponent<GridManager>();
-            if (this.gridManager.HasActiveInstances())
-            {
-                Debug.Log("True");
-            }
         }
 
         public override void Update()
         {
             if(this.isDone) return;
-
+            
             if (this.gridManager.HasActiveInstances())
             {
                 this.Owner.SetGameState(GameState.CANDYMOVE);

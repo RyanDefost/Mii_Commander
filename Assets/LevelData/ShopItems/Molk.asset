@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a89d551602a4631bc09d56a753a5bec, type: 3}
-  m_Name: Combiner
+  m_Name: Molk
   m_EditorClassIdentifier: Assembly-CSharp::HelperStructs.Shop.ShopItem
-  shopObject: {fileID: 2427277321692252709, guid: c88ea02afeaebd9a5b9c4b9a356a163d, type: 3}
-  cost: 10
+  shopObject: {fileID: 1784258961695943953, guid: 91f23aac7aa17794a96d384090b11fc1, type: 3}
+  cost: 50
   itemSprite: {fileID: 21300000, guid: e43ff728b756ae24c85c0fe3ac25c641, type: 3}
-  itemName: Combiner
+  itemName: Molk

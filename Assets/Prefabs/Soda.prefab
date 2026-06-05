@@ -421,6 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   boardItem: {fileID: 2810408795809733440}
+  interactionOverride: 0
   interaction:
     m_PersistentCalls:
       m_Calls:
@@ -547,6 +548,7 @@ GameObject:
   - component: {fileID: 1859877875076216974}
   - component: {fileID: 8345801965639840213}
   - component: {fileID: 9047595396623391343}
+  - component: {fileID: 3917291898560472247}
   m_Layer: 0
   m_Name: Soda
   m_TagString: Untagged
@@ -646,8 +648,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridMoveable
   boardItem: {fileID: 2810408795809733440}
-  canIgnoreLocks: 0
+  isActiveSearching: 1
   moveImmunity: 0
+  startCellName: locked
   offset: 0.45
   minimalDist: 1
   minVelocityToRecalculate: 1
@@ -754,6 +757,23 @@ MonoBehaviour:
   shakeDistanceDifference: 1
   shakeDirectionDifference: -0.4
   shakeThreshold: 3
+--- !u!114 &3917291898560472247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7128209094669073184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8b7f7e2ebdc49e88fcfde32aaff37c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Synergy.IngredientComponent
+  boardItem: {fileID: 2810408795809733440}
+  ingredients:
+  - {fileID: 2427277321692252709, guid: 7eaf65b4ee377d14ebc55c6dcf281aab, type: 3}
+  - {fileID: 2427277321692252709, guid: 7eaf65b4ee377d14ebc55c6dcf281aab, type: 3}
+  - {fileID: 2427277321692252709, guid: 7eaf65b4ee377d14ebc55c6dcf281aab, type: 3}
 --- !u!1 &8677340332721463335
 GameObject:
   m_ObjectHideFlags: 0

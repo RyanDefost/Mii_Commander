@@ -63,7 +63,7 @@ public class GridMoveable : BoardItemComponent
 
     private void OnInitiate()
     {
-        SetMoving(true);
+        //SetMoving(true);
         this.onUpdate += CheckForSearch;
         this.onFixedUpdate -= LockLocalPosition;
     }
