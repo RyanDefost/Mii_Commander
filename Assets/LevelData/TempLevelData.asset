@@ -16,4 +16,4 @@ MonoBehaviour:
   baseTurnAmount: 30
   quests:
   - {fileID: 11400000, guid: afa9411358587a849ab4ff9ccea47012, type: 2}
-  - {fileID: 11400000, guid: afa9411358587a849ab4ff9ccea47012, type: 2}
+  - {fileID: 11400000, guid: c754535221e6c9542aeddbd920b6cfbe, type: 2}

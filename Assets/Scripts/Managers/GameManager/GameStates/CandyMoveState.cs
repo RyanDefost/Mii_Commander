@@ -36,7 +36,7 @@ namespace Managers.GameStates
         private void TrySetScore(GridMoveable moveable)
         {
             if (moveable.gameObject.TryGetComponent(out CandyActor candyActor))
-                this.Owner.ScoreManager.AddScore(candyActor.Points);
+                this.Owner.ScoreManager.AddScore(candyActor.Points, candyActor.candyType);
         }
 
 

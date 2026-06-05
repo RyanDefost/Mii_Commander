@@ -73,7 +73,7 @@ public class ShopComponent : MonoBehaviour
         itemNameRenderer.text = shopItem.itemName;
     }
     
-    private void UpdateBuyableState()
+    private void UpdateBuyableState(int _ = -1)
     {
         this.isBuyable = this.scoreManager.GetScore() >= this.shopItem.cost;
         this.grayOutSpriteRenderer.enabled = !this.isBuyable;

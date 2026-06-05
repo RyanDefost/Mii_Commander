@@ -22,7 +22,7 @@ namespace Managers.Quest
             this.pointsOnInit = this.gameManagerRef.ScoreManager.GetScore();
         }
 
-        private void CallOnTextChange() => this.OnTextChange?.Invoke(GetText());
+        private void CallOnTextChange(int _ = -1) => this.OnTextChange?.Invoke(GetText());
         protected override bool CheckCondition() => this.gameManagerRef?.ScoreManager?.GetScore() - this.pointsOnInit >= this.pointRequirement;
 
         protected override void Disable() => this.gameManagerRef.ScoreManager.OnChangeScore -= CallOnTextChange;
