@@ -2,6 +2,7 @@ using System;
 using Grid;
 using Managers;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 /// <summary>
 /// Makes a board item move to a target position on the grid.
@@ -28,7 +29,12 @@ public class GridMoveable : BoardItemComponent
     private float minVelocityToRecalculate = 1f;
     
     protected Action onUpdate;
+    protected Action onFixedUpdate;
 
+    public Action OnMoved;
+    public Action OnStartMoving;
+    private bool hasMoved;
+    
     private void Start()
     {
         this.grid = ComponentRegistry.GetComponent<GridManager>();
@@ -47,22 +53,26 @@ public class GridMoveable : BoardItemComponent
         this.boardItem.OnInitiate -= OnInitiate;
     }
     
-    private void FixedUpdate() => this.onUpdate?.Invoke();
+    private void Update() => this.onUpdate?.Invoke();
+    private void FixedUpdate() => this.onFixedUpdate?.Invoke();
 
     private void OnAddToHand()
     {
         SetMoving(false);
-        this.onUpdate += LockLocalPosition;
+        this.onFixedUpdate += LockLocalPosition;
     }
 
     private void OnInitiate()
     {
         SetMoving(true);
-        this.onUpdate -= LockLocalPosition;
+        this.onFixedUpdate -= LockLocalPosition;
     }
 
     public void SetMoving(bool newState)
     {
+        OnStartMoving?.Invoke();
+        this.hasMoved = false;
+        
         if (newState)
             TriggerMovementToTarget();
         else
@@ -74,7 +84,7 @@ public class GridMoveable : BoardItemComponent
     protected virtual void StopMovementToTarget()
     {
         this.onUpdate -= SnapToTarget;
-        this.onUpdate -= AwaitDistanceToTarget;
+        this.onFixedUpdate -= AwaitDistanceToTarget;
         ResetTarget();
         this.previousDist = null;
     }
@@ -82,7 +92,7 @@ public class GridMoveable : BoardItemComponent
     protected virtual void TriggerMovementToTarget()
     {
         TriggerUpdateTargetWithImmunityState();
-        this.onUpdate += AwaitDistanceToTarget;
+        this.onFixedUpdate += AwaitDistanceToTarget;
     }
 
     private void AwaitDistanceToTarget()
@@ -119,16 +129,24 @@ public class GridMoveable : BoardItemComponent
         }
         
         this.onUpdate += SnapToTarget;
-        this.onUpdate -= AwaitDistanceToTarget;
+        this.onFixedUpdate -= AwaitDistanceToTarget;
     }
     
     protected virtual void SnapToTarget()
     {
         if (this.Target == null)
             return;
+
+        
         this.transform.position = GetTargetPosition();
         this.boardItem.OnAddToBoard?.Invoke();
         this.previousDist = null;
+        
+        if (this.hasMoved) 
+            return;
+        
+        this.hasMoved = true;
+        this.OnMoved?.Invoke();
     }
     
     protected bool UpdateTarget(bool usesMove)

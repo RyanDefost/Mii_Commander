@@ -143,7 +143,7 @@ namespace Grid
         public GridInstance[] GetNeighbors(GridInstance instance, NeighborPattern pattern)
         {
             GridInstance[] result = new GridInstance[pattern.width * pattern.height];
-
+            
             int centerX = pattern.center.x;
             int centerY = pattern.center.y;
             

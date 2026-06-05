@@ -1047,17 +1047,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412489391}
   m_CullTransparentMesh: 1
---- !u!114 &429399356 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3198954631575277286, guid: c283c6c7b4efc844a9b3f17d04b83761, type: 3}
-  m_PrefabInstance: {fileID: 1323539632}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecaf37c275eb4ee69e8061eab04b5d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BoardItem
 --- !u!1 &437845532
 GameObject:
   m_ObjectHideFlags: 0
@@ -2316,6 +2305,53 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
+--- !u!1 &861752222
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 861752224}
+  - component: {fileID: 861752223}
+  m_Layer: 0
+  m_Name: LookupThing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &861752223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861752222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c2681055584728be179f52cf93d9e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Synergy.SynergyLookUp
+  synergyList:
+  - {fileID: 11400000, guid: 70d3cfb435814e457947dd2f56ae9b73, type: 2}
+  - {fileID: 11400000, guid: f8aac0a4265b2c60aba127c71be241f2, type: 2}
+--- !u!4 &861752224
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861752222}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1615, y: 0.52411, z: -4.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &993095163
 GameObject:
   m_ObjectHideFlags: 0
@@ -2799,7 +2835,7 @@ PrefabInstance:
     - target: {fileID: 2326345404673958767, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
       propertyPath: shopItem
       value: 
-      objectReference: {fileID: 11400000, guid: 483054ac3c9bf1a4498adb4e815cf7e6, type: 2}
+      objectReference: {fileID: 11400000, guid: 02a1f10e7e65d0cd48fe7f17b947188d, type: 2}
     - target: {fileID: 2326345404673958767, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
       propertyPath: itemAmount
       value: 999
@@ -2986,22 +3022,6 @@ PrefabInstance:
     - target: {fileID: 2486186912250027246, guid: c283c6c7b4efc844a9b3f17d04b83761, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6574632748961841022, guid: c283c6c7b4efc844a9b3f17d04b83761, type: 3}
-      propertyPath: boardItem
-      value: 
-      objectReference: {fileID: 429399356}
-    - target: {fileID: 6574632748961841022, guid: c283c6c7b4efc844a9b3f17d04b83761, type: 3}
-      propertyPath: minimalDist
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6574632748961841022, guid: c283c6c7b4efc844a9b3f17d04b83761, type: 3}
-      propertyPath: canIgnoreLocks
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6574632748961841022, guid: c283c6c7b4efc844a9b3f17d04b83761, type: 3}
-      propertyPath: minVelocityToRecalculate
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4164,7 +4184,7 @@ PrefabInstance:
     - target: {fileID: 2326345404673958767, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
       propertyPath: shopItem
       value: 
-      objectReference: {fileID: 11400000, guid: 483054ac3c9bf1a4498adb4e815cf7e6, type: 2}
+      objectReference: {fileID: 11400000, guid: 99d7e363b62306ea98f67a4d6229c674, type: 2}
     - target: {fileID: 2326345404673958767, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
       propertyPath: itemAmount
       value: 999
@@ -4612,3 +4632,4 @@ SceneRoots:
   - {fileID: 224840620}
   - {fileID: 1112216106}
   - {fileID: 1323539632}
+  - {fileID: 861752224}

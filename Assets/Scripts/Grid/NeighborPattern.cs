@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Grid
 {
     [Serializable]
-    public struct NeighborPattern
+    public struct NeighborPattern : IEquatable<NeighborPattern>
     {
         public static readonly NeighborPattern Up = new(new Vector2Int[]{new(0, 1)}, new Vector2Int(1,1), 3, 3);
         public static readonly NeighborPattern Down = new(new Vector2Int[]{new(0, -1)}, new Vector2Int(1,1), 3, 3);
@@ -67,6 +67,21 @@ namespace Grid
             this.center = center;
             this.width = width;
             this.height = height;
+        }
+
+        public bool Equals(NeighborPattern other)
+        {
+            return Equals(positions, other.positions) && center.Equals(other.center) && width == other.width && height == other.height;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is NeighborPattern other && Equals(other);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(positions, center, width, height);
         }
     }
 }
