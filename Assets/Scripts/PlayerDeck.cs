@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Managers;
 using PlayerHand;
 using UnityEngine;
 
@@ -76,7 +77,7 @@ public class PlayerDeck : MonoBehaviour
         this.enabled = this.playerHandManager;
     }
 
-    private void Awake() => this.candyPool = new ObjectPool<CandyGroupHandle>();
+    private void Start() => this.candyPool = new ObjectPool<CandyGroupHandle>();
 
     /// <summary>Gets a randomized hand full of candy and adds it to the hand</summary>
     public void AddToHand()

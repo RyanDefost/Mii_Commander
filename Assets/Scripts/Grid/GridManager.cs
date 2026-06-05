@@ -317,5 +317,11 @@ namespace Grid
             tempGridInstances.Sort((a, b) => a.position.y.CompareTo(b.position.y));
             tempGridInstances.ForEach(action);
         }
+
+        /// <summary>
+        /// Returns true if there are any boardItems present on the Grid
+        /// </summary>
+        /// <returns>if any instances are present on the grid</returns>
+        public bool HasActiveInstances() => activeGrid.Count > 0; //TODO: ADD CHECK FOR LOCKED ITEMS.
     }
 }
