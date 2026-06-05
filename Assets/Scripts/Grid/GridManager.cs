@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -91,9 +92,10 @@ namespace Grid
         private void OnDestroy() => ComponentRegistry.RemoveFromRegistry(this);
 
         /// <summary>Tries to get a near available position both on grid and off grid</summary>
-        public GridInstance GetNearestPosition(Vector3 position, GameObject gameObj, BoardItem item, GridInstance previous = null, bool ignoreLocked = false)
+        public GridInstance GetNearestPosition(Vector3 position, GameObject gameObj, BoardItem item, 
+            GridInstance previous = null, bool ignoreLocked = false)
         {
-            List<Vector3> posToIgnore = ignoreLocked ? new List<Vector3>() : this.generator.GetAllLockedPositions();
+            List<Vector3> posToIgnore = ignoreLocked ? new List<Vector3>() : this.generator.GetPassPositions("locked");
             bool isBottomRow = false;
             if (previous != null)
             {
@@ -104,6 +106,15 @@ namespace Grid
             if (!isBottomRow)
                 return GetNearestGridPosition(position, gameObj, item, posToIgnore);
             return GetNearestOffGridPosition(position, gameObj, item, posToIgnore, previous.index.isOffGrid);
+        }
+
+        public GridInstance GetNearestCellPassPosition(string passName, Vector3 position, GameObject gameObj, BoardItem item)
+        {
+            List<Vector3> passPositions = this.generator.GetPassPositions(passName);
+            List<Vector3> posToIgnore = this.generator.GetAllPositions().Cast<Vector3>()
+                .Where(pos => !passPositions.Contains(pos)).ToList();
+            
+            return GetNearestGridPosition(position, gameObj, item, posToIgnore);
         }
 
         /// <summary>Used in case the grid is full, a last row underneath the board. Try to get a available position</summary>
@@ -142,30 +153,14 @@ namespace Grid
         /// <returns>an array of found neighbors and empty cells</returns>
         public GridInstance[] GetNeighbors(GridInstance instance, NeighborPattern pattern)
         {
-            int distanceToLeft = instance.index.index % this.generator.Width;
-            int distanceToRight = (this.generator.Width - 1) - distanceToLeft;
-            
             GridInstance[] result = new GridInstance[pattern.width * pattern.height];
-
+            
             int centerX = pattern.center.x;
             int centerY = pattern.center.y;
             
             foreach (Vector2Int pos in pattern.positions)
             {
-                if (pos.x < -distanceToLeft || pos.x > distanceToRight || pos == Vector2Int.zero) continue; // outside of grid
-
-                int index = pos.x + (pos.y * this.generator.Width) + instance.index.index;
-                if (instance.index.isOffGrid)
-                    index += this.openOnGridPositions.Count;
-                
-                bool isOffGrid = false;
-                if (index >= this.openOnGridPositions.Count)
-                {
-                    index -= this.openOnGridPositions.Count;
-                    isOffGrid = true;
-                }
-                
-                if ((isOffGrid && index >= this.openOffGridPositions.Count) || index < 0) // outside of grid
+                if (!TryGetPatternPositionIndex(instance, pos, out int index, out bool isOffGrid))
                     continue;
 
                 int baseIndex = (pos.x + centerX) + (pos.y + centerY) * pattern.width;
@@ -182,6 +177,49 @@ namespace Grid
 
             return result;
         }
+        
+        public Vector3? TryGetTileFromPattern(int i, GridInstance instance, NeighborPattern pattern)
+        {
+            int x = i % pattern.width - pattern.center.x;
+            int y = i / pattern.width - pattern.center.y;
+            Vector2Int pos = new (x, y);
+
+            if (Array.IndexOf(pattern.positions, pos) < 0)
+                return null;
+            
+            if (!TryGetPatternPositionIndex(instance, pos, out int index, out bool isOffGrid))
+                return null;
+            
+            return isOffGrid ? this.openOffGridPositions[index] : this.openOnGridPositions[index];
+        }
+        
+        private bool TryGetPatternPositionIndex(GridInstance instance, Vector2Int pos, out int index, out bool isOffGrid)
+        {
+            int distanceToLeft = instance.index.index % this.generator.Width;
+            int distanceToRight = (this.generator.Width - 1) - distanceToLeft;
+
+            if (pos.x < -distanceToLeft || pos.x > distanceToRight || pos == Vector2Int.zero)
+            {
+                index = 0;
+                isOffGrid = false;
+                return false;
+            }
+
+            index = pos.x + (pos.y * this.generator.Width) + instance.index.index;
+            if (instance.index.isOffGrid)
+                index += this.openOnGridPositions.Count;
+
+            isOffGrid = false;
+            if (index >= this.openOnGridPositions.Count)
+            {
+                index -= this.openOnGridPositions.Count;
+                isOffGrid = true;
+            }
+
+            if ((isOffGrid && index >= this.openOffGridPositions.Count) || index < 0) return false;
+
+            return true;
+        }
 
         /// <summary>
         /// Checks given position if it is a locked gridInstance.
@@ -190,7 +228,7 @@ namespace Grid
         /// <returns></returns>
         public bool CheckPositionLocked(Vector3 position)
         {
-            List<Vector3> lockedPositions = this.generator.GetAllLockedPositions();
+            List<Vector3> lockedPositions = this.generator.GetPassPositions("locked");
             return lockedPositions.Contains(position);
         }
 

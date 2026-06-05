@@ -59,7 +59,7 @@ public class CountDownTillActivation : BoardItemComponent, IUserInterfaceValueGe
     {
         this.enabled = true;
         this.currentCount = this.count;
-        this.countChanged.Invoke(this.currentCount, typeof(int));
+        this.countChanged?.Invoke(this.currentCount, typeof(int));
         this.currentToActivate.DisableActivate();
     }
 
