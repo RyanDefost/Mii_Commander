@@ -328,8 +328,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   boardItem: {fileID: 1365219245064566773}
-  canIgnoreLocks: 0
+  isActiveSearching: 0
   moveImmunity: 0
+  startCellName: start
   offset: 0.1
   minimalDist: 1
   minVelocityToRecalculate: 1

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TempLevelData
   m_EditorClassIdentifier: Assembly-CSharp::Managers.LevelRef
   pointRequirement: 300
-  baseTurnAmount: 30
+  baseTurnAmount: 15

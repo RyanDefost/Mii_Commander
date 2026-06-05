@@ -11,15 +11,15 @@ public class GridMoveable : BoardItemComponent
 {
     private GridManager grid;
     private MoveManager moveManagerRef;
-    
-    [Space]
-    public bool canIgnoreLocks;
+
+    public bool isActiveSearching = true;
     public bool moveImmunity;
-    
+    [Space]
+    public string startCellName = "start";
     protected GridManager.GridInstance Target { get; private set; }
     private GridManager.GridInstance oldTarget;
     
-    [SerializeField]
+    [Space, SerializeField]
     private float offset = 0.25f;
     [SerializeField]
     private float minimalDist = 1f;
@@ -28,7 +28,12 @@ public class GridMoveable : BoardItemComponent
     private float minVelocityToRecalculate = 1f;
     
     protected Action onUpdate;
+    protected Action onFixedUpdate;
 
+    public Action OnMoved;
+    public Action OnStartMoving;
+    private bool hasMoved;
+    
     private void Start()
     {
         this.grid = ComponentRegistry.GetComponent<GridManager>();
@@ -47,22 +52,35 @@ public class GridMoveable : BoardItemComponent
         this.boardItem.OnInitiate -= OnInitiate;
     }
     
-    private void FixedUpdate() => this.onUpdate?.Invoke();
+    private void Update() => this.onUpdate?.Invoke();
+    private void FixedUpdate() => this.onFixedUpdate?.Invoke();
 
     private void OnAddToHand()
     {
         SetMoving(false);
-        this.onUpdate += LockLocalPosition;
+        this.onFixedUpdate += LockLocalPosition;
     }
 
     private void OnInitiate()
     {
         SetMoving(true);
-        this.onUpdate -= LockLocalPosition;
+        this.onUpdate += CheckForSearch;
+        this.onFixedUpdate -= LockLocalPosition;
+    }
+
+    private void CheckForSearch()
+    {
+        if(!this.isActiveSearching) return;
+        
+        SetMoving(true);
+        this.onUpdate -= CheckForSearch;
     }
 
     public void SetMoving(bool newState)
     {
+        this.OnStartMoving?.Invoke();
+        this.hasMoved = false;
+        
         if (newState)
             TriggerMovementToTarget();
         else
@@ -74,7 +92,7 @@ public class GridMoveable : BoardItemComponent
     protected virtual void StopMovementToTarget()
     {
         this.onUpdate -= SnapToTarget;
-        this.onUpdate -= AwaitDistanceToTarget;
+        this.onFixedUpdate -= AwaitDistanceToTarget;
         ResetTarget();
         this.previousDist = null;
     }
@@ -82,7 +100,7 @@ public class GridMoveable : BoardItemComponent
     protected virtual void TriggerMovementToTarget()
     {
         TriggerUpdateTargetWithImmunityState();
-        this.onUpdate += AwaitDistanceToTarget;
+        this.onFixedUpdate += AwaitDistanceToTarget;
     }
 
     private void AwaitDistanceToTarget()
@@ -119,16 +137,24 @@ public class GridMoveable : BoardItemComponent
         }
         
         this.onUpdate += SnapToTarget;
-        this.onUpdate -= AwaitDistanceToTarget;
+        this.onFixedUpdate -= AwaitDistanceToTarget;
     }
     
     protected virtual void SnapToTarget()
     {
         if (this.Target == null)
             return;
+
+        
         this.transform.position = GetTargetPosition();
         this.boardItem.OnAddToBoard?.Invoke();
         this.previousDist = null;
+        
+        if (this.hasMoved) 
+            return;
+        
+        this.hasMoved = true;
+        this.OnMoved?.Invoke();
     }
     
     protected bool UpdateTarget(bool usesMove)
@@ -137,7 +163,7 @@ public class GridMoveable : BoardItemComponent
             return true;
         this.grid ??= ComponentRegistry.GetComponent<GridManager>();
         if (this.grid)
-            SetTarget(this.grid.GetNearestPosition(this.transform.position, this.gameObject, this.boardItem, null, this.canIgnoreLocks), usesMove);
+            SetTarget(this.grid.GetNearestCellPassPosition(this.startCellName , this.transform.position, this.gameObject, this.boardItem), usesMove);
         else
             ComponentRegistry.TrySubscribeForComponent<GridManager>(TriggerUpdateTargetWithoutMove);
         return this.Target != null;

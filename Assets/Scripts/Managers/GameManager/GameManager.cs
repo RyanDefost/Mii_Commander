@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Grid;
+using HelperStructs;
 using Managers.GameStates;
 using Scoring;
 using UnityEngine;
@@ -22,6 +23,7 @@ namespace Managers
         //[SerializeField] private QuestManager questManager;
         
         public Action<GameState> OnStateChange;
+        public Action OnGameEnd;
         
         [Header("Game Settings")]
         [SerializeField] private LevelRef levelData;
@@ -29,8 +31,8 @@ namespace Managers
         private FiniteStateMachine<GameManager> gameStateMachine;
         private readonly Dictionary<GameState, State<GameManager>> states = new();
 
-        public Action<GameState> OnChangeState;
-        
+        public bool HasEndedGame { get; private set; }
+
         private void OnValidate()
         {
             if (Application.isPlaying)
@@ -60,6 +62,8 @@ namespace Managers
             
             this.moveManager.SetInitialMoveAmount(this.levelData.baseTurnAmount);
             this.scoreManager.SetGoal(this.levelData.pointRequirement);
+            
+            this.MoveManager.OnLastMove += SetGameEndState;
         }
 
         private void InitStates()
@@ -67,6 +71,8 @@ namespace Managers
             this.states.Add(GameState.PLAY, new PlayGameState(this));
             this.states.Add(GameState.CANDYMOVE, new CandyMoveState(this));
             this.states.Add(GameState.CANDYACTIVATE, new CandyActivateState(this));
+            this.states.Add(GameState.USERINTERFACE, new UserInterfaceState(this));
+            this.states.Add(GameState.END, new EndGameState(this));
         }
 
         public void SetGameState(GameState stateKey)
@@ -77,6 +83,13 @@ namespace Managers
                 this.gameStateMachine.SetState(state);   
                 this.OnStateChange?.Invoke(stateKey);
             }
+        }
+
+        private void SetGameEndState()
+        {
+            this.HasEndedGame = true;
+            
+            this.MoveManager.OnLastMove -= SetGameEndState;
         }
     }
 }

@@ -484,7 +484,7 @@ MonoBehaviour:
   - {fileID: 1291884617605259549}
   rb: {fileID: 6052537823055790810}
   points: 2
-  candyType: 0
+  candyType: 3
   movement: {fileID: 5372677729061368150}
   handHandler: {fileID: 1291884617605259549}
 --- !u!114 &1291884617605259549
