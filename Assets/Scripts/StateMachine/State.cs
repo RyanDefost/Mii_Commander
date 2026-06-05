@@ -1,4 +1,4 @@
-namespace Managers
+namespace StateMachine
 {
     [System.Serializable]
     public abstract class State<T>

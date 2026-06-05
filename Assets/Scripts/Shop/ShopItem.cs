@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace HelperStructs.Shop
+namespace Shop
 {
     [CreateAssetMenu(fileName = "Shop", menuName = "ScriptableObjects/ShopItem", order = 1)]
     public class ShopItem : ScriptableObject

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BoardItems;
 using Grid;
+using StateMachine;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -63,7 +64,7 @@ namespace Managers.GameStates
         {
             if (this.boardItems.Count == 0 || this.currentAbilityCount >= this.boardItems.Count)
             {
-                activatedAllAbilities = true;
+                this.activatedAllAbilities = true;
                 return;
             }
 

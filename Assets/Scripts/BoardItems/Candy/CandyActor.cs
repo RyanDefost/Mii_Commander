@@ -34,38 +34,40 @@ namespace BoardItems
             this.OnAddToBoard += RemovePlayerMoveImmunity;
         }
 
-        private void RemovePlayerMoveImmunity()
-        {
-            this.movement.moveImmunity = false;
-            this.OnAddToBoard -= RemovePlayerMoveImmunity;
-        }
-
-        public void ApplyPointMultiplier(float multiplier)
-        {
-            this.points = Mathf.CeilToInt(this.points * multiplier);   
-            this.OnchangePoints?.Invoke(this.points, typeof(int));
-        }
+    private void RemovePlayerMoveImmunity()
+    {
+        this.movement.moveImmunity = false;
+        this.OnAddToBoard -= RemovePlayerMoveImmunity;
+    }
     
-        public object GetValue(string valueName, out Type returnType)
-        {
-            if (valueName == "points")
-            {
-                returnType = typeof(int);
-                return this.Points;
-            }
+    public void AddPoints(int points) => this.points += points;
 
-            returnType = null;
-            return null;
+    public void ApplyPointMultiplier(float multiplier)
+    {
+        this.points = Mathf.CeilToInt(this.points * multiplier);   
+        this.OnchangePoints?.Invoke(this.points, typeof(int));
+    }
+    
+    public object GetValue(string valueName, out Type returnType)
+    {
+        if (valueName == "points")
+        {
+            returnType = typeof(int);
+            return this.Points;
         }
 
-        public void SubscribeOnChangeValue(string valueName, Action<object, Type> callback)
-        {
-            if (valueName == "points") this.OnchangePoints += callback;
-        }
+        returnType = null;
+        return null;
+    }
 
-        public void UnSubscribeOnChangeValue(string valueName, Action<object, Type> callback)
-        {
-            if (valueName == "points") this.OnchangePoints -= callback;
-        }
+    public void SubscribeOnChangeValue(string valueName, Action<object, Type> callback)
+    {
+        if (valueName == "points") this.OnchangePoints += callback;
+    }
+
+    public void UnSubscribeOnChangeValue(string valueName, Action<object, Type> callback)
+    {
+        if (valueName == "points") this.OnchangePoints -= callback;
+    }
     }
 }

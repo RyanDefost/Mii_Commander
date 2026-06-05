@@ -1,6 +1,7 @@
+using Managers;
 using UnityEngine;
 
-namespace Managers
+namespace StateMachine
 {
     public class GameStateSetter : MonoBehaviour
     {

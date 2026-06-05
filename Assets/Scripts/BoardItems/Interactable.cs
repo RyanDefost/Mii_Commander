@@ -9,10 +9,15 @@ namespace BoardItems
     public class Interactable : MonoBehaviour
     {
         public BoardItem boardItem;
+        public bool interactionOverride;
         [SerializeField]
         private UnityEvent interaction;
 
-        public void Trigger() => this.interaction.Invoke();
+        public void Trigger(bool canInteract)
+        {
+            if(!canInteract && !this.interactionOverride) return;
+            this.interaction?.Invoke();  
+        } 
 
         public bool HasBoardItemParent() => this.boardItem;
     }

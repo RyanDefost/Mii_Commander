@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Grid;
 using UnityEngine;
@@ -24,7 +25,7 @@ namespace BoardItems
         public Action OnInitiate;
         public Action OnAddToBoard;
         public Action OnActivate;
-        public Action OnStarted;
+        public Action<BoardItem> OnStarted;
     
         private void Awake()
         {
@@ -32,13 +33,13 @@ namespace BoardItems
             this.components = GetComponentsInChildren<BoardItemComponent>();
         }
 
-        private void Start()
-        {
-            foreach (BoardItemComponent boardItemComponent in this.components)
-                boardItemComponent.ConnectToBoardItem();
-        
-            this.OnStarted?.Invoke();
-        }
+    private void Start()
+    {
+        foreach (BoardItemComponent boardItemComponent in this.components)
+            boardItemComponent.ConnectToBoardItem();
+
+        this.OnStarted?.Invoke(this);
+    }
 
         /// <summary>Called when released and on the playing field</summary>
         public void Initiate() => this.OnInitiate?.Invoke();

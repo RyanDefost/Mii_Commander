@@ -22,6 +22,8 @@ namespace PlayerHand
             get => this.currentHover;
             private set => this.currentHover = value; 
         }
+        
+        private bool canGrab;
 
         private void OnValidate()
         {
@@ -95,5 +97,7 @@ namespace PlayerHand
         }
 
         public bool IsHoldingInteractable() => this.visualHandler.CurrentState == "Closed";
+        
+        public void SetCanGrab(bool canGrab) =>  this.canGrab = canGrab;
     }
 }

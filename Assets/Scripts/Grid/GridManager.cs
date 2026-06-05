@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using BoardItems;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -92,9 +93,10 @@ namespace Grid
         private void OnDestroy() => ComponentRegistry.RemoveFromRegistry(this);
 
         /// <summary>Tries to get a near available position both on grid and off grid</summary>
-        public GridInstance GetNearestPosition(Vector3 position, GameObject gameObj, BoardItem item, GridInstance previous = null, bool ignoreLocked = false)
+        public GridInstance GetNearestPosition(Vector3 position, GameObject gameObj, BoardItem item, 
+            GridInstance previous = null, bool ignoreLocked = false)
         {
-            List<Vector3> posToIgnore = ignoreLocked ? new List<Vector3>() : this.generator.GetAllLockedPositions();
+            List<Vector3> posToIgnore = ignoreLocked ? new List<Vector3>() : this.generator.GetPassPositions("locked");
             bool isBottomRow = false;
             if (previous != null)
             {
@@ -105,6 +107,15 @@ namespace Grid
             if (!isBottomRow)
                 return GetNearestGridPosition(position, gameObj, item, posToIgnore);
             return GetNearestOffGridPosition(position, gameObj, item, posToIgnore, previous.index.isOffGrid);
+        }
+
+        public GridInstance GetNearestCellPassPosition(string passName, Vector3 position, GameObject gameObj, BoardItem item)
+        {
+            List<Vector3> passPositions = this.generator.GetPassPositions(passName);
+            List<Vector3> posToIgnore = this.generator.GetAllPositions().Cast<Vector3>()
+                .Where(pos => !passPositions.Contains(pos)).ToList();
+            
+            return GetNearestGridPosition(position, gameObj, item, posToIgnore);
         }
 
         /// <summary>Used in case the grid is full, a last row underneath the board. Try to get a available position</summary>
@@ -144,7 +155,7 @@ namespace Grid
         public GridInstance[] GetNeighbors(GridInstance instance, NeighborPattern pattern)
         {
             GridInstance[] result = new GridInstance[pattern.width * pattern.height];
-
+            
             int centerX = pattern.center.x;
             int centerY = pattern.center.y;
             
@@ -218,7 +229,7 @@ namespace Grid
         /// <returns></returns>
         public bool CheckPositionLocked(Vector3 position)
         {
-            List<Vector3> lockedPositions = this.generator.GetAllLockedPositions();
+            List<Vector3> lockedPositions = this.generator.GetPassPositions("locked");
             return lockedPositions.Contains(position);
         }
 
@@ -307,5 +318,11 @@ namespace Grid
             tempGridInstances.Sort((a, b) => a.position.y.CompareTo(b.position.y));
             tempGridInstances.ForEach(action);
         }
+
+        /// <summary>
+        /// Returns true if there are any boardItems present on the Grid
+        /// </summary>
+        /// <returns>if any instances are present on the grid</returns>
+        public bool HasActiveInstances() => this.activeGrid.Count > 0; //TODO: ADD CHECK FOR LOCKED ITEMS.
     }
 }

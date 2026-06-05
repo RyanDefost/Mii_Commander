@@ -36,21 +36,21 @@ namespace BoardItems
             public float maxResistanceMultiplier = 5f;
         }
     
-        protected override void TriggerMovementToTarget()
-        {
-            if (!HasTarget())
-                TriggerUpdateTargetWithImmunityState();
-            this.startDelayTimer = new Timer(this.startDelay,  false, true, EnableMovement);
-            this.onUpdate += UpdateStartDelayTimer;
-        }
+    protected override void TriggerMovementToTarget()
+    {
+        if (!HasTarget())
+            TriggerUpdateTargetWithImmunityState();
+        this.startDelayTimer = new Timer(this.startDelay,  false, true, EnableMovement);
+        this.onFixedUpdate += UpdateStartDelayTimer;
+    }
 
-        protected override void StopMovementToTarget()
-        {
-            this.onUpdate -= UpdateStartDelayTimer;
-            this.onUpdate -= ApplyForceTowardsTarget;
-            this.onUpdate -= UpdateEndTimer;
-            ResetTarget();
-        }
+    protected override void StopMovementToTarget()
+    {
+        this.onFixedUpdate -= UpdateStartDelayTimer;
+        this.onFixedUpdate -= ApplyForceTowardsTarget;
+        this.onFixedUpdate -= UpdateEndTimer;
+        ResetTarget();
+    }
 
         private void UpdateStartDelayTimer() => this.startDelayTimer.UpdateTime(Time.deltaTime);
 
@@ -61,24 +61,24 @@ namespace BoardItems
             this.usedMinimumForce = this.physicsData.movementStrength;
             this.endTimer = new Timer(this.endTimerTime, false, true, SnapToTarget);
         
-            this.onUpdate += ApplyForceTowardsTarget;
-            this.onUpdate += UpdateEndTimer;
-            this.onUpdate -= UpdateStartDelayTimer;
+        this.onFixedUpdate += ApplyForceTowardsTarget;
+        this.onFixedUpdate += UpdateEndTimer;
+        this.onFixedUpdate -= UpdateStartDelayTimer;
         
             this.startDelayTimer.ResetAndReplay();
         }
 
         private void UpdateEndTimer() => this.endTimer.UpdateTime(Time.deltaTime);
 
-        protected override void SnapToTarget()
-        {
-            if (this.Target == null)
-                return;
-            base.SnapToTarget();
-            this.boardItem.Rb.linearVelocity = Vector3.zero;
-            this.boardItem.Rb.angularVelocity = Vector3.zero;
-            this.boardItem.Rb.Sleep();
-            this.onUpdate -= UpdateEndTimer;
+    protected override void SnapToTarget()
+    {
+        if (this.Target == null)
+            return;
+        base.SnapToTarget();
+        this.boardItem.Rb.linearVelocity = Vector3.zero;
+        this.boardItem.Rb.angularVelocity = Vector3.zero;
+        this.boardItem.Rb.Sleep();
+        this.onFixedUpdate -= UpdateEndTimer;
         
             this.endTimer.ResetAndReplay();
             this.currentResistanceMultiplier = 1f;
