@@ -1,8 +1,6 @@
-﻿using System;
-using Scoring;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Managers.Quest
+namespace Managers.QuestManagement
 {
     [CreateAssetMenu(fileName = "PointQuest", menuName = "Quests/PointQuest")]
     public class PointQuest : Quest

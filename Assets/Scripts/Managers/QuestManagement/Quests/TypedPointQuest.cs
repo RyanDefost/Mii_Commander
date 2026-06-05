@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Managers.Quest
+namespace Managers.QuestManagement
 {
     [CreateAssetMenu(fileName = "TypedPointQuest", menuName = "Quests/TypedPointQuest")]
     public class TypedPointQuest : Quest

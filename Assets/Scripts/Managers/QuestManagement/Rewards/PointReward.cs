@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Managers.Quest
+namespace Managers.QuestManagement.Rewards
 {
     [CreateAssetMenu(fileName = "PointReward", menuName = "QuestRewards/PointReward")]
     public class PointReward : QuestReward

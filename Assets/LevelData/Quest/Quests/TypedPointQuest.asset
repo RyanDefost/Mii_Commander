@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 806a745fcf60417b94096186c90dca73, type: 3}
-  m_Name: PointQuest
-  m_EditorClassIdentifier: Assembly-CSharp::Managers.Quest.PointQuest
-  reward: {fileID: 11400000, guid: 2085b7227b5b5fd4cadbf68945bb627f, type: 2}
+  m_Script: {fileID: 11500000, guid: 3611c66e92b943b991d374ed5b9b7f16, type: 3}
+  m_Name: TypedPointQuest
+  m_EditorClassIdentifier: Assembly-CSharp::Managers.Quest.TypedPointQuest
+  reward: {fileID: 11400000, guid: 8f17190182ce775468a8b55d1098241b, type: 2}
+  candyType: 0
   pointRequirement: 20

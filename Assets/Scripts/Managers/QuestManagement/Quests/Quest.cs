@@ -1,7 +1,8 @@
 ﻿using System;
+using Managers.QuestManagement.Rewards;
 using UnityEngine;
 
-namespace Managers.Quest
+namespace Managers.QuestManagement
 {
     public abstract class Quest : ScriptableObject
     {

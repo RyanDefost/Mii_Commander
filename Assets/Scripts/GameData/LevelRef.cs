@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Managers.Quest;
+using Managers.QuestManagement;
 using UnityEngine;
 
 namespace GameData

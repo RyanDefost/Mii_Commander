@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using GameData;
 using Grid;
 using Managers.GameStates;
-using Managers.Quest;
+using Managers.QuestManagement;
 using Scoring;
 using UnityEngine;
 

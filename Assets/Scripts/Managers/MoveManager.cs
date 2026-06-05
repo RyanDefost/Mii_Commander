@@ -50,6 +50,12 @@ namespace Managers
             this.OnChanged?.Invoke();
         }
 
+        public void AddMoveAmount(int amount)
+        {
+            this.MoveAmount = Mathf.Clamp(this.MoveAmount + amount, this.clampAmount.min, this.clampAmount.max);
+            this.OnChanged?.Invoke();
+        }
+
         private void SetUI() => this.moveAmountText.text = $"{this.MoveAmount} : Moves";
     }
 }

@@ -1,8 +1,7 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
-namespace Managers.Quest
+namespace Managers.QuestManagement
 {
     public class QuestVisual : MonoBehaviour
     {

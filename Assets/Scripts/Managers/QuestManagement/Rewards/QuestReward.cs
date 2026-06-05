@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Managers.Quest
+namespace Managers.QuestManagement.Rewards
 {
     public abstract class QuestReward : ScriptableObject
     {

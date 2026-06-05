@@ -1,8 +1,7 @@
-﻿using System;
-using BoardItems;
+﻿using BoardItems;
 using UnityEngine;
 
-namespace Managers.Quest
+namespace Managers.QuestManagement
 {
     [CreateAssetMenu(fileName = "ItemActivationQuest", menuName = "Quests/ItemActivationQuest")]
     public class ItemActivationQuest : Quest
