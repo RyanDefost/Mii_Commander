@@ -1723,6 +1723,8 @@ MonoBehaviour:
     texture: {fileID: 2800000, guid: cb9982bb89dfa0349a41fca63a8b2d95, type: 3}
   - name: Square3x3
     texture: {fileID: 2800000, guid: 86eaa856e25fde9478ff00fb9e6b9404, type: 3}
+  - name: Square5x5
+    texture: {fileID: 2800000, guid: 7b2ec4f9050f00c4aa8b3a84447541dd, type: 3}
   neighborColor: {r: 1, g: 1, b: 1, a: 1}
   centerColor: {r: 1, g: 1, b: 0, a: 1}
   usedPatterns:
@@ -1804,6 +1806,32 @@ MonoBehaviour:
       center: {x: 1, y: 1}
       width: 3
       height: 3
+  - name: Square5x5
+    pattern:
+      positions:
+      - {x: -1, y: -2}
+      - {x: 0, y: -2}
+      - {x: 1, y: -2}
+      - {x: -2, y: -1}
+      - {x: -1, y: -1}
+      - {x: 0, y: -1}
+      - {x: 1, y: -1}
+      - {x: 2, y: -1}
+      - {x: -2, y: 0}
+      - {x: -1, y: 0}
+      - {x: 1, y: 0}
+      - {x: 2, y: 0}
+      - {x: -2, y: 1}
+      - {x: -1, y: 1}
+      - {x: 0, y: 1}
+      - {x: 1, y: 1}
+      - {x: 2, y: 1}
+      - {x: -1, y: 2}
+      - {x: 0, y: 2}
+      - {x: 1, y: 2}
+      center: {x: 2, y: 2}
+      width: 5
+      height: 5
 --- !u!1 &705374796
 GameObject:
   m_ObjectHideFlags: 0
@@ -2251,6 +2279,68 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Managers.Quest.QuestManager
   uiParent: {fileID: 637224567}
   questPrefab: {fileID: 7065890437509222879, guid: c6a3e74615dd23a43b561ccd051cb000, type: 3}
+--- !u!1001 &924892042
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1112216106}
+    m_Modifications:
+    - target: {fileID: 1784258961695943953, guid: 91f23aac7aa17794a96d384090b11fc1, type: 3}
+      propertyPath: m_Name
+      value: Milk
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003549341302284044, guid: 91f23aac7aa17794a96d384090b11fc1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.4834301
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003549341302284044, guid: 91f23aac7aa17794a96d384090b11fc1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.7034321
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003549341302284044, guid: 91f23aac7aa17794a96d384090b11fc1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.602
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003549341302284044, guid: 91f23aac7aa17794a96d384090b11fc1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003549341302284044, guid: 91f23aac7aa17794a96d384090b11fc1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003549341302284044, guid: 91f23aac7aa17794a96d384090b11fc1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003549341302284044, guid: 91f23aac7aa17794a96d384090b11fc1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003549341302284044, guid: 91f23aac7aa17794a96d384090b11fc1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003549341302284044, guid: 91f23aac7aa17794a96d384090b11fc1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003549341302284044, guid: 91f23aac7aa17794a96d384090b11fc1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 91f23aac7aa17794a96d384090b11fc1, type: 3}
+--- !u!4 &924892043 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8003549341302284044, guid: 91f23aac7aa17794a96d384090b11fc1, type: 3}
+  m_PrefabInstance: {fileID: 924892042}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &961417484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2421,6 +2511,7 @@ Transform:
   - {fileID: 961417485}
   - {fileID: 1204984333941940330}
   - {fileID: 158062796}
+  - {fileID: 924892043}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1157147934
