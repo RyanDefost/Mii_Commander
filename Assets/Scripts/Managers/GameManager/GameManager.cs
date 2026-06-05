@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Grid;
+using HelperStructs;
 using Managers.GameStates;
 using Scoring;
 using UnityEngine;

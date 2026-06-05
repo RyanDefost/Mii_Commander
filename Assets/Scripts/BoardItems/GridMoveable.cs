@@ -2,7 +2,6 @@ using System;
 using Grid;
 using Managers;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 /// <summary>
 /// Makes a board item move to a target position on the grid.
@@ -12,15 +11,15 @@ public class GridMoveable : BoardItemComponent
 {
     private GridManager grid;
     private MoveManager moveManagerRef;
-    
-    [Space]
-    public bool canIgnoreLocks;
+
+    public bool isActiveSearching = true;
     public bool moveImmunity;
-    
+    [Space]
+    public string startCellName = "start";
     protected GridManager.GridInstance Target { get; private set; }
     private GridManager.GridInstance oldTarget;
     
-    [SerializeField]
+    [Space, SerializeField]
     private float offset = 0.25f;
     [SerializeField]
     private float minimalDist = 1f;
@@ -65,7 +64,16 @@ public class GridMoveable : BoardItemComponent
     private void OnInitiate()
     {
         SetMoving(true);
+        this.onUpdate += CheckForSearch;
         this.onFixedUpdate -= LockLocalPosition;
+    }
+
+    private void CheckForSearch()
+    {
+        if(!isActiveSearching) return;
+        
+        SetMoving(true);
+        this.onUpdate -= CheckForSearch;
     }
 
     public void SetMoving(bool newState)
@@ -155,7 +163,7 @@ public class GridMoveable : BoardItemComponent
             return true;
         this.grid ??= ComponentRegistry.GetComponent<GridManager>();
         if (this.grid)
-            SetTarget(this.grid.GetNearestPosition(this.transform.position, this.gameObject, this.boardItem, null, this.canIgnoreLocks), usesMove);
+            SetTarget(this.grid.GetNearestCellPassPosition(this.startCellName , this.transform.position, this.gameObject, this.boardItem), usesMove);
         else
             ComponentRegistry.TrySubscribeForComponent<GridManager>(TriggerUpdateTargetWithoutMove);
         return this.Target != null;
