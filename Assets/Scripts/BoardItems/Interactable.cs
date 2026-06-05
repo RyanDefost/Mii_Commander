@@ -13,7 +13,7 @@ public class Interactable : MonoBehaviour
 
     public void Trigger(bool canInteract)
     {
-        if(!canInteract && !interactionOverride) return;
+        if(!canInteract && !this.interactionOverride) return;
         this.interaction?.Invoke();  
     } 
 

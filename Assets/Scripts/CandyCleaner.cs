@@ -26,16 +26,16 @@ namespace HelperStructs
             foreach (GridMoveable moveable in moveables)
             {
                 BoardItem boardItem = moveable.GetBoardItem();
-                if (boardItem.gridInstanceRef != null || destroyRequested.Contains(boardItem)) continue;
+                if (boardItem.gridInstanceRef != null || this.destroyRequested.Contains(boardItem)) continue;
                 
                 moveable.ApplyImpulse(new Vector3(
                     0,
-                    Random.Range(pushSpeedRangeY.x, pushSpeedRangeY.y),
-                    Random.Range(pushSpeedRangeZ.y, pushSpeedRangeZ.y))
+                    Random.Range(this.pushSpeedRangeY.x, this.pushSpeedRangeY.y),
+                    Random.Range(this.pushSpeedRangeZ.y, this.pushSpeedRangeZ.y))
                 );
                 
                 StartCoroutine(SetForDestroy(boardItem, 5f));
-                yield return new WaitForSeconds(Random.Range(pushBufferRange.x, pushBufferRange.y));
+                yield return new WaitForSeconds(Random.Range(this.pushBufferRange.x, this.pushBufferRange.y));
             }
         }
 

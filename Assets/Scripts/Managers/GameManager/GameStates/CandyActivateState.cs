@@ -62,7 +62,7 @@ namespace Managers.GameStates
         {
             if (this.boardItems.Count == 0 || this.currentAbilityCount >= this.boardItems.Count)
             {
-                activatedAllAbilities = true;
+                this.activatedAllAbilities = true;
                 return;
             }
 

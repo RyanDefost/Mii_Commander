@@ -70,7 +70,7 @@ public class GridMoveable : BoardItemComponent
 
     private void CheckForSearch()
     {
-        if(!isActiveSearching) return;
+        if(!this.isActiveSearching) return;
         
         SetMoving(true);
         this.onUpdate -= CheckForSearch;
@@ -78,7 +78,7 @@ public class GridMoveable : BoardItemComponent
 
     public void SetMoving(bool newState)
     {
-        OnStartMoving?.Invoke();
+        this.OnStartMoving?.Invoke();
         this.hasMoved = false;
         
         if (newState)

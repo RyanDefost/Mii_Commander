@@ -45,7 +45,7 @@ namespace Candy
                 {
                     CandyActor actor = gridInstance.boardItem as CandyActor;
                     
-                    if(effectedCandyTypeIndexes.All(index => actor.candyType != index) && !this.effectAllCandy) continue;
+                    if(this.effectedCandyTypeIndexes.All(index => actor.candyType != index) && !this.effectAllCandy) continue;
                     actor.ApplyPointMultiplier(this.multiplier);
                 }
             }

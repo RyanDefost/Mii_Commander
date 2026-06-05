@@ -676,7 +676,12 @@ MonoBehaviour:
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
-      - m_Data: -48296
+      - m_Data: -71288
+      - m_Data: -68646
+      - m_Data: -61184
+      - m_Data: -60650
+      - m_Data: -55020
+      - m_Data: -48464
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -2032,7 +2037,7 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scenes/Test Scenes
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -2042,25 +2047,25 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets
+  - Assets/Scenes/Test Scenes
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\Lucas\Documents\School\HKU\PresentYourself\Mii_Commander
   m_LockTracker:
     m_IsLocked: 0
   m_LastLocalAssetsSearchArea: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
+    scrollPos: {x: 0, y: 178}
     m_SelectedIDs:
-    - m_Data: 63706
+    - m_Data: 64028
     m_LastClickedID:
-      m_Data: 63706
+      m_Data: 64028
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 63872
-    - m_Data: 63874
-    - m_Data: 63876
-    - m_Data: 63878
-    - m_Data: 63880
+    - m_Data: 64048
+    - m_Data: 64050
+    - m_Data: 64052
+    - m_Data: 64054
+    - m_Data: 64056
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2093,11 +2098,11 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 63872
-    - m_Data: 63874
-    - m_Data: 63876
-    - m_Data: 63878
-    - m_Data: 63880
+    - m_Data: 64048
+    - m_Data: 64050
+    - m_Data: 64052
+    - m_Data: 64054
+    - m_Data: 64056
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2125,8 +2130,8 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
     m_SelectedInstanceIDs:
-    - m_Data: 44866
-    m_LastClickedInstanceID: 44866
+    - m_Data: 63892
+    m_LastClickedInstanceID: 63892
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs:
     - m_Data: 61792
@@ -2160,7 +2165,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 61}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 16
   m_SkipHiddenPackages: 1
   m_DirectoriesAreaWidth: 130

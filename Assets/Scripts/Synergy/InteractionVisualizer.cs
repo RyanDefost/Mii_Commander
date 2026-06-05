@@ -20,8 +20,8 @@ namespace Synergy
         
         public override void ConnectToBoardItem()
         {
-            visualizer.transform.SetParent(null);
-            visualizer.SetActive(false);
+            this.visualizer.transform.SetParent(null);
+            this.visualizer.SetActive(false);
             
             this.gridRotatable = this.GetComponent<GridRotatable>();
             this.gridMoveable = this.GetComponent<GridMoveable>();
@@ -31,7 +31,7 @@ namespace Synergy
             this.boardItem.OnAddToHand += HideVisual;
         }
         
-        private void OnDestroy() => Destroy(visualizer);
+        private void OnDestroy() => Destroy(this.visualizer);
         
         /// <summary>
         /// Gets visual position and activates visual.
@@ -58,7 +58,7 @@ namespace Synergy
             
             //Set visual transform.
             this.visualizer.transform.rotation = Quaternion.Euler(Vector3.zero);
-            this.visualizer.transform.position = newTarget.position + new Vector3(0,0,heightOffset);
+            this.visualizer.transform.position = newTarget.position + new Vector3(0,0, this.heightOffset);
 
             this.visualizer.SetActive(true);
             

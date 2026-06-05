@@ -91,7 +91,7 @@ namespace PlayerHand
         {
             if (!obj.ReadValueAsButton()) return;
             if (!interactionHandler.CurrentHover) return;
-            interactionHandler.CurrentHover.Trigger(canGrab);
+            interactionHandler.CurrentHover.Trigger(this.canGrab);
         }
         
         /// <summary>

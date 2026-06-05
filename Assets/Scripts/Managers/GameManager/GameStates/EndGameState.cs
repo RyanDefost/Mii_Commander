@@ -18,7 +18,7 @@ namespace Managers.GameStates
         {
             Debug.unityLogger.Log("Beginning game state");
             this.gridManager ??= ComponentRegistry.GetComponent<GridManager>();
-            if (gridManager.HasActiveInstances())
+            if (this.gridManager.HasActiveInstances())
             {
                 Debug.Log("True");
             }
@@ -33,8 +33,8 @@ namespace Managers.GameStates
                 this.Owner.SetGameState(GameState.CANDYMOVE);
                 return;
             }
-            
-            isDone = true;
+
+            this.isDone = true;
             this.Owner.OnGameEnd?.Invoke();
         }
 

@@ -322,6 +322,6 @@ namespace Grid
         /// Returns true if there are any boardItems present on the Grid
         /// </summary>
         /// <returns>if any instances are present on the grid</returns>
-        public bool HasActiveInstances() => activeGrid.Count > 0; //TODO: ADD CHECK FOR LOCKED ITEMS.
+        public bool HasActiveInstances() => this.activeGrid.Count > 0; //TODO: ADD CHECK FOR LOCKED ITEMS.
     }
 }

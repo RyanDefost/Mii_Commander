@@ -205,7 +205,7 @@ namespace Grid
 
             //Set cellPassIndexes
             List<int> cellPassIndexes = new();
-            foreach (GridCellPass pass in cellPasses)
+            foreach (GridCellPass pass in this.cellPasses)
                 cellPassIndexes.AddRange(pass.positionIndexes);
             
             // Build CombineInstances per material
@@ -219,7 +219,7 @@ namespace Grid
             }
 
             // Build CombineInstances for all cellPass materials
-            foreach (GridCellPass cellPass in cellPasses)
+            foreach (GridCellPass cellPass in this.cellPasses)
             {
                 //Resize array to add lockMaterial
                 Array.Resize(ref this.materials, this.materials.Length + 1);
@@ -291,7 +291,7 @@ namespace Grid
 
         public List<Vector3> GetPassPositions(string passName)
         {
-            GridCellPass pass = cellPasses.FirstOrDefault(cellPass => cellPass.name == passName);
+            GridCellPass pass = this.cellPasses.FirstOrDefault(cellPass => cellPass.name == passName);
             if (pass.name != null) 
                 return pass.positionIndexes.Select(index => this.positions[index]).ToList();
             

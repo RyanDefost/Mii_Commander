@@ -26,9 +26,9 @@ public class EndScreen : MonoBehaviour
         this.playerHandManager ??= ComponentRegistry.GetComponent<PlayerHandManager>();
         this.gameManager ??= ComponentRegistry.GetComponent<GameManager>();
         this.scoreManager ??= this.gameManager.ScoreManager;
-        
-        EndScreenPanel.SetActive(false);
-        FinishScreenPanel.SetActive(false);
+
+        this.EndScreenPanel.SetActive(false);
+        this.FinishScreenPanel.SetActive(false);
         
         this.gameManager.ScoreManager.OnReachedGoal += GoalAchieved;
         this.gameManager.OnGameEnd += Activate;
@@ -38,11 +38,12 @@ public class EndScreen : MonoBehaviour
     {
         this.gameManager.SetGameState(GameState.USERINTERFACE);
         
-        foreach (TextMeshPro text in scoreTexts)
+        foreach (TextMeshPro text in this.scoreTexts)
         {
-            SetScore(this.scoreManager.GetScore(), this.scoreManager.GetGoal(), text, winStateText);
+            SetScore(this.scoreManager.GetScore(), this.scoreManager.GetGoal(), text, this.winStateText);
         }
-        EndScreenPanel.SetActive(true);
+
+        this.EndScreenPanel.SetActive(true);
         
         this.gameManager.OnGameEnd -= Activate;
     }
@@ -51,11 +52,12 @@ public class EndScreen : MonoBehaviour
     {
         this.gameManager.SetGameState(GameState.USERINTERFACE);
         
-        foreach (TextMeshPro text in scoreTexts)
+        foreach (TextMeshPro text in this.scoreTexts)
         {
-            SetScore(this.scoreManager.GetScore(), this.scoreManager.GetGoal(), text, winStateText);
+            SetScore(this.scoreManager.GetScore(), this.scoreManager.GetGoal(), text, this.winStateText);
         }
-        FinishScreenPanel.SetActive(true);
+
+        this.FinishScreenPanel.SetActive(true);
         this.gameManager.ScoreManager.OnReachedGoal -= GoalAchieved;
     }
     

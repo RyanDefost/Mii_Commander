@@ -13,7 +13,7 @@ namespace HelperStructs
             GameObject obj = other.gameObject;
             
             if (!obj.TryGetComponent(out GridMoveable movable)) return;
-            movable.ApplyImpulse(pushDirection);
+            movable.ApplyImpulse(this.pushDirection);
         }
     }
 }
