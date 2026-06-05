@@ -1,4 +1,6 @@
-﻿using Managers;
+﻿using System.Linq;
+using Managers;
+using Unity.Mathematics;
 using UnityEngine;
 
 /// <summary>
@@ -13,6 +15,8 @@ public class GridRotatable : BoardItemComponent
     private bool lockedRotation;
     private Vector3 lastRotation;
     private Vector3 rotation;
+    
+    public Vector3 StaticForwardDirection { get; private set; }
 
     private void Start() => this.moveManagerRef = ComponentRegistry.GetComponent<GameManager>()?.MoveManager;
 
@@ -65,6 +69,7 @@ public class GridRotatable : BoardItemComponent
         this.moveManagerRef.SetMove();
         
         this.rotation = this.transform.localEulerAngles;
+        this.StaticForwardDirection = GetForwardDirection(this.transform.localEulerAngles.z); 
         this.lockedRotation = true;
     }
     
@@ -90,9 +95,23 @@ public class GridRotatable : BoardItemComponent
         this.boardItem.OnAddToBoard -= OnAddToBoard;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (this.lockedRotation)
             this.transform.rotation = Quaternion.Euler(this.rotation);
     }
+
+    private static Vector3 GetForwardDirection(float rotation)
+    {
+        int[] directions = { 0, 90, 180, 270 };
+        int nearest = directions.OrderBy(x => Mathf.Abs((long) x - rotation)).First();
+        return nearest switch
+        {
+            0 => Vector3.up,
+            90 => Vector3.left,
+            180 => Vector3.down,
+            270 => Vector3.right,
+            var _ => Vector3.up
+        };
+    } 
 }

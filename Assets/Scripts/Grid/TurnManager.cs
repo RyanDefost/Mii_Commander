@@ -48,6 +48,8 @@ namespace Grid
             {
                 if (instance == null || !instance.gameObj) return;
 
+                if(this.gridManager.CheckPositionLocked(instance.position)) return;
+                
                 GridMoveable moveComponent = instance.moveable;
                 if (!moveComponent) return;
                 

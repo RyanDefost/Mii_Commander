@@ -14,7 +14,7 @@ namespace Synergy
         private GridManager gridManager;
         private GameManager gameManager;
 
-        private int splityPoints = 0;
+        private int splitPoints = 0;
         
         public override void ConnectToBoardItem() => this.boardItem.OnActivate += Activate;
 
@@ -48,7 +48,7 @@ namespace Synergy
             if(ingredients.Count == 0) return;
             
             if (splitInstance.boardItem is CandyActor actor) 
-                splityPoints = actor.Points;
+                this.splitPoints = actor.Points;
             
             //Release splitInstance
             this.gridManager.ReleaseInstance(splitInstance);
@@ -88,14 +88,14 @@ namespace Synergy
         /// <summary>
         /// Initializes the currentOutput when object has started.
         /// </summary>
-        private void SetOutputToBoard(BoardItem startedBoardItem)
+        private void SetOutputToBoard(BoardItem item)
         {
-            startedBoardItem.Initiate();
+            item.Initiate();
             
-            if (startedBoardItem is CandyActor actor)
-                actor.AddPoints(this.splityPoints);
+            if (item is CandyActor actor)
+                actor.AddPoints(this.splitPoints);
             
-            startedBoardItem.OnStarted -= SetOutputToBoard;
+            item.OnStarted -= SetOutputToBoard;
         }
     }
 }

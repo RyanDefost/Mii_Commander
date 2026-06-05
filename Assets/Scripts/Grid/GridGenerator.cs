@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,21 +14,20 @@ namespace Grid
     /// </summary>
     public class GridGenerator : MonoBehaviour
     {
-        [SerializeField]
-        private Material[] materials;
-        [SerializeField]
-        private Bounds boardBounds;
-        [SerializeField]
-        private Vector2Int boardSize;
-        [SerializeField]
-        private Vector3[] positions;
-        [SerializeField]
-        private Vector3[] positionsOffGrid;
+        [SerializeField] private Material[] materials;
+        [SerializeField] private Bounds boardBounds;
+        [SerializeField] private Vector2Int boardSize;
+        [SerializeField] private Vector3[] positions;
+        [SerializeField] private Vector3[] positionsOffGrid;
+
+        [Space, SerializeField, Tooltip("Passes are extensions to the existing boardCells to create a checkable category")] 
+        private List<GridCellPass> cellPasses;
+
+        [Space]
         public Vector2 cellSize;
         public int Width => this.boardSize.x;
         public int Height => this.boardSize.y;
-        [SerializeField]
-        private Mesh cellMesh;
+        [SerializeField] private Mesh cellMesh;
 
 #if UNITY_EDITOR
         private void OnValidate()
@@ -35,7 +35,7 @@ namespace Grid
             if (Application.isPlaying)
                 return;
             this.enabled = this.materials is { Length: > 0 } && this.cellMesh;
-        
+
             this.boardBounds.center = this.transform.position + Vector3.back * 0.01f;
 
             this.positions = new Vector3[this.boardSize.x * this.boardSize.y];
@@ -47,7 +47,7 @@ namespace Grid
                 int index = position.x + (position.y * this.boardSize.x);
                 this.positions[index] = bottomLeft + offset;
             });
-            
+
             this.positionsOffGrid = new Vector3[this.boardSize.x];
             Vector3 gridBottomLeft = this.boardBounds.center - (this.boardBounds.size * 0.5f);
             for (int i = 0; i < this.boardSize.x; i++)
@@ -78,7 +78,7 @@ namespace Grid
                 Gizmos.color = Color.blue;
                 Gizmos.DrawWireSphere(position, 0.1f);
             }
-            
+
             foreach (Vector3 position in this.positionsOffGrid)
             {
                 Gizmos.color = Color.red;
@@ -106,12 +106,12 @@ namespace Grid
                         (y + 0.5f) * cellHeight,
                         0
                     );
-                
+
                     atCell.Invoke(offset, cellSize, bottomLeft, new Vector2Int(x, y));
                 }
             }
         }
-    
+
         private Mesh GenerateCellMesh()
         {
             Mesh mesh = new() { name = "GridCellMesh" };
@@ -120,21 +120,24 @@ namespace Grid
             float halfHeight = this.cellSize.y * 0.5f;
 
             // 1. Define Vertices (relative to center 0,0)
-            Vector3[] vertices = {
+            Vector3[] vertices =
+            {
                 new(-halfWidth, -halfHeight, 0), // Bottom Left  (Index 0)
-                new( halfWidth, -halfHeight, 0), // Bottom Right (Index 1)
-                new(-halfWidth,  halfHeight, 0), // Top Left     (Index 2)
-                new( halfWidth,  halfHeight, 0)  // Top Right    (Index 3)
+                new(halfWidth, -halfHeight, 0), // Bottom Right (Index 1)
+                new(-halfWidth, halfHeight, 0), // Top Left     (Index 2)
+                new(halfWidth, halfHeight, 0) // Top Right    (Index 3)
             };
 
             // 2. Define Triangles (Clockwise winding order)
-            int[] triangles = {
+            int[] triangles =
+            {
                 0, 2, 1, // First Triangle
-                2, 3, 1  // Second Triangle
+                2, 3, 1 // Second Triangle
             };
 
             // 3. Define UVs (for textures)
-            Vector2[] uvs = {
+            Vector2[] uvs =
+            {
                 new(0, 0),
                 new(1, 0),
                 new(0, 1),
@@ -145,13 +148,13 @@ namespace Grid
             mesh.vertices = vertices;
             mesh.triangles = triangles;
             mesh.uv = uvs;
-    
+
             // Calculate normals so it reacts to light
             mesh.RecalculateNormals();
 
             return mesh;
         }
-    
+
 #if UNITY_EDITOR
         private void SaveMeshAsset()
         {
@@ -166,7 +169,7 @@ namespace Grid
             string scenePath = scene.path; // e.g., Assets/Scenes/MainLevel.unity
             string sceneDirectory = Path.GetDirectoryName(scenePath);
             string sceneName = Path.GetFileNameWithoutExtension(scenePath);
-        
+
             // 2. Define the target folder (SceneName folder)
             string folderPath = Path.Combine(sceneDirectory, sceneName);
 
@@ -178,10 +181,10 @@ namespace Grid
 
             // 4. Generate/Prepare the mesh
             this.cellMesh = GenerateCellMesh();
-        
+
             // 5. Save the mesh as an .asset file
             string assetPath = Path.Combine(folderPath, "GridCellMesh.asset");
-        
+
             // Use CreateAsset if new, or overwrite if it exists
             AssetDatabase.CreateAsset(this.cellMesh, assetPath);
             AssetDatabase.SaveAssets();
@@ -195,30 +198,40 @@ namespace Grid
         {
             if (this.cellMesh == null || this.materials == null || this.materials.Length == 0)
                 return;
-            
+
             // Prepare lists for mesh combination
             int totalCells = this.positions.Length;
             Dictionary<int, List<CombineInstance>> materialGroups = new();
+
+            //Set cellPassIndexes
+            List<int> cellPassIndexes = new();
+            foreach (GridCellPass pass in this.cellPasses)
+                cellPassIndexes.AddRange(pass.positionIndexes);
             
             // Build CombineInstances per material
             for (int i = 0; i < totalCells; i++)
             {
-                int matIndex = i % this.materials.Length;
-                if (!materialGroups.TryGetValue(matIndex, out List<CombineInstance> list))
-                {
-                    list = new List<CombineInstance>();
-                    materialGroups[matIndex] = list;
-                }
+                //if cell locked; set to last material
+                if (cellPassIndexes.Contains(i)) continue;
                 
-                Vector3 localPos = this.positions[i] - this.transform.position;
-                CombineInstance combine = new()
-                {
-                    mesh = this.cellMesh,
-                    transform = Matrix4x4.TRS(localPos + Vector3.back * 0.01f, Quaternion.identity, Vector3.one)
-                };
-                list.Add(combine);
+                int matIndex = i % this.materials.Length;
+                BuildCombineInstances(i, matIndex, materialGroups);
             }
-            
+
+            // Build CombineInstances for all cellPass materials
+            foreach (GridCellPass cellPass in this.cellPasses)
+            {
+                //Resize array to add lockMaterial
+                Array.Resize(ref this.materials, this.materials.Length + 1);
+                this.materials[^1] = cellPass.material;
+
+                foreach (int posIndex in cellPass.positionIndexes)
+                {
+                    int matIndex = this.materials.Length;
+                    BuildCombineInstances(posIndex, matIndex, materialGroups);
+                }
+            }
+
             // Create submeshes for different materials
             List<CombineInstance> subMeshes = new();
             // List<Mesh> combinedMeshes = new();
@@ -234,11 +247,11 @@ namespace Grid
                 };
                 subMeshes.Add(subCombine);
             }
-            
+
             // Final combined mesh with multiple material slots if needed
             Mesh finalMesh = new() { name = "CombinedGridMesh" };
             finalMesh.CombineMeshes(subMeshes.ToArray(), false, false);
-            
+
             // Single unified GameObject
             GameObject combinedObject = new("CombinedGrid")
             {
@@ -254,13 +267,43 @@ namespace Grid
             meshRenderer.sharedMaterials = this.materials;
         }
 
+        //Build CombineInstances per material
+        private void BuildCombineInstances(int currentIndex, int matIndex,
+            Dictionary<int, List<CombineInstance>> materialGroups)
+        {
+            if (!materialGroups.TryGetValue(matIndex, out List<CombineInstance> list))
+            {
+                list = new List<CombineInstance>();
+                materialGroups[matIndex] = list;
+            }
+
+            Vector3 localPos = this.positions[currentIndex] - this.transform.position;
+            CombineInstance combine = new()
+            {
+                mesh = this.cellMesh,
+                transform = Matrix4x4.TRS(localPos + Vector3.back * 0.01f, Quaternion.identity, Vector3.one)
+            };
+            list.Add(combine);
+        }
+
         public List<Vector3?> GetAllPositions() => this.positions.Select(pos => (Vector3?)pos).ToList();
         public List<Vector3?> GetAllOffGridPositions() => this.positionsOffGrid.Select(pos => (Vector3?)pos).ToList();
 
-        public Vector3 GetPosAt(GridManager.GridIndex index) =>
+        public List<Vector3> GetPassPositions(string passName)
+        {
+            GridCellPass pass = this.cellPasses.FirstOrDefault(cellPass => cellPass.name == passName);
+            if (pass.name != null) 
+                return pass.positionIndexes.Select(index => this.positions[index]).ToList();
+            
+            Debug.LogWarning($"Pass {passName} does not exist!");
+            return new List<Vector3>();
+        }
+
+    public Vector3 GetPosAt(GridManager.GridIndex index) =>
             index.isOffGrid ? GetOffGridPosAt(index.index) : GetOnGridPosAt(index.index);
 
         private Vector3 GetOnGridPosAt(int index) => this.positions[index];
         private Vector3 GetOffGridPosAt(int index) => this.positionsOffGrid[index];
+
     }
 }

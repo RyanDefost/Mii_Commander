@@ -71,7 +71,7 @@ namespace Grid
 
         public bool Equals(NeighborPattern other)
         {
-            return Equals(positions, other.positions) && center.Equals(other.center) && width == other.width && height == other.height;
+            return Equals(this.positions, other.positions) && this.center.Equals(other.center) && this.width == other.width && this.height == other.height;
         }
 
         public override bool Equals(object obj)
@@ -81,7 +81,7 @@ namespace Grid
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(positions, center, width, height);
+            return HashCode.Combine(this.positions, this.center, this.width, this.height);
         }
     }
 }

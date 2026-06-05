@@ -8,14 +8,13 @@ namespace Synergy
 {
     public class Combiner : BoardItemComponent
     {
-        private NeighborPatternRegistry neighborPatternRegistry;
         private SynergyLookUp synergyLookUp;
         private GridManager gridManager;
         private GameManager gameManager;
-
+        
         private GameObject currentOutput; //TODO: Might not work as intended if setting multiple synergies in 1 turn.
         private int currentOutputPoints;
-        
+
         public override void ConnectToBoardItem() => this.boardItem.OnActivate += Activate;
 
         /// <summary>
@@ -23,11 +22,10 @@ namespace Synergy
         /// </summary>
         private void Activate()
         {
-            //Init.
-            this.neighborPatternRegistry ??= ComponentRegistry.GetComponent<NeighborPatternRegistry>();
+            //Init
             this.synergyLookUp ??= ComponentRegistry.GetComponent<SynergyLookUp>();
             this.gridManager ??= ComponentRegistry.GetComponent<GridManager>();
-            this.gameManager ??= ComponentRegistry.GetComponent<GameManager>();
+            this.gameManager ??= ComponentRegistry.GetComponent<GameManager>();   
             
             //Get Neighbors.
             NeighborPattern? sidePattern = GetForwardNeighborPattern(this.transform.rotation.eulerAngles.z);
@@ -58,15 +56,15 @@ namespace Synergy
             foreach (GridManager.GridInstance instance in synergyInfo.Item2)
             {
                 if (instance.boardItem is CandyActor actor) 
-                    currentOutputPoints += actor.Points;
+                    this.currentOutputPoints += actor.Points;
                 
                 this.gridManager.ReleaseInstance(instance);
                 Destroy(instance.gameObj);
             }
                     
             //Initialize GameObject.
-            currentOutput = Instantiate(synergyInfo.Item1.output, neighbor.position, Quaternion.identity);
-            if (currentOutput.TryGetComponent(out BoardItem boardItem))
+            this.currentOutput = Instantiate(synergyInfo.Item1.output, neighbor.position, Quaternion.identity);
+            if (this.currentOutput.TryGetComponent(out BoardItem boardItem))
                 boardItem.OnStarted += SetOutputToBoard;
         }
         
@@ -78,7 +76,7 @@ namespace Synergy
         private static NeighborPattern GetForwardNeighborPattern(float rotation)
         {
             int[] directions = { 0, 90, 180, 270 };
-            int nearest = directions.OrderBy(x => Math.Abs((long) x - rotation)).First();
+            int nearest = directions.OrderBy(x => Math.Abs(x - rotation)).First();
             return nearest switch
             {
                 0 => NeighborPattern.Up,
@@ -92,14 +90,14 @@ namespace Synergy
         /// <summary>
         /// Initializes the currentOutput when object has started.
         /// </summary>
-        private void SetOutputToBoard(BoardItem startedBoardItem)
+        private void SetOutputToBoard(BoardItem item)
         {
-            startedBoardItem.Initiate();
+            item.Initiate();
 
-            if (startedBoardItem is CandyActor actor)
-                actor.AddPoints(currentOutputPoints);
+            if (item is CandyActor actor)
+                actor.AddPoints(this.currentOutputPoints);
             
-            startedBoardItem.OnStarted -= SetOutputToBoard;
+            item.OnStarted -= SetOutputToBoard;
         }
     }
 }

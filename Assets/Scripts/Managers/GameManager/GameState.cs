@@ -5,6 +5,8 @@ namespace Managers
         NONE = 0,
         PLAY,
         CANDYMOVE,
-        CANDYACTIVATE
+        CANDYACTIVATE,
+        USERINTERFACE,
+        END
     }
 }

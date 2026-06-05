@@ -7,6 +7,6 @@ namespace Synergy
     {
         [SerializeField] private List<GameObject> ingredients = new();
         
-        public List<GameObject> GetIngredients() => ingredients;
+        public List<GameObject> GetIngredients() => this.ingredients;
     }
 }

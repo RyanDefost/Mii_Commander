@@ -29,7 +29,7 @@ public class ShopComponent : MonoBehaviour
     private void Start()
     {
         this.gameManager = ComponentRegistry.GetComponent<GameManager>();
-        this.scoreManager = gameManager.ScoreManager;
+        this.scoreManager = this.gameManager.ScoreManager;
         
         this.scoreManager.OnChangeScore += UpdateBuyableState;
         
@@ -44,10 +44,10 @@ public class ShopComponent : MonoBehaviour
     public void Interact()
     {
         if(!this.isBuyable) return;
-        
-        currentGrabbable = Instantiate(this.shopItem.shopObject, this.transform.position, this.transform.rotation);
 
-        if (currentGrabbable.TryGetComponent(out BoardItem boardItem))
+        this.currentGrabbable = Instantiate(this.shopItem.shopObject, this.transform.position, this.transform.rotation);
+
+        if (this.currentGrabbable.TryGetComponent(out BoardItem boardItem))
         {
             boardItem.OnStarted += GrabBoardItem;
         }
@@ -55,7 +55,7 @@ public class ShopComponent : MonoBehaviour
 
     private void GrabBoardItem(BoardItem startedBoardItem)
     {
-        if (currentGrabbable.TryGetComponent(out HandHandler handHandler))
+        if (this.currentGrabbable.TryGetComponent(out HandHandler handHandler))
         {
             handHandler.AddToHand();
             
@@ -69,8 +69,8 @@ public class ShopComponent : MonoBehaviour
     
     public void UpdateVisuals()
     {
-        itemSpriteRenderer.sprite = shopItem.itemSprite;
-        itemNameRenderer.text = shopItem.itemName;
+        this.itemSpriteRenderer.sprite = this.shopItem.itemSprite;
+        this.itemNameRenderer.text = this.shopItem.itemName;
     }
     
     private void UpdateBuyableState()

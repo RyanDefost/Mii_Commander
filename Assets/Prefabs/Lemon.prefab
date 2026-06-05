@@ -15,8 +15,6 @@ GameObject:
   - component: {fileID: 3198954631575277286}
   - component: {fileID: 6574632748961841022}
   - component: {fileID: 2204325606334268918}
-  - component: {fileID: 4256399086136449842}
-  - component: {fileID: -6406561745128889967}
   m_Layer: 0
   m_Name: Lemon
   m_TagString: Untagged
@@ -123,7 +121,7 @@ MonoBehaviour:
   - {fileID: 8982616026848609941}
   - {fileID: 6574632748961841022}
   - {fileID: 2204325606334268918}
-  - {fileID: 4256399086136449842}
+  - {fileID: 0}
   rb: {fileID: 8897784474759205449}
 --- !u!114 &6574632748961841022
 MonoBehaviour:
@@ -138,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridMoveable
   boardItem: {fileID: 3198954631575277286}
+  canIgnoreLocks: 1
   moveImmunity: 0
   offset: 0.25
   minimalDist: 0.5
@@ -157,37 +156,6 @@ MonoBehaviour:
   boardItem: {fileID: 3198954631575277286}
   rotationSpeed: 50
   stepAngle: 9
---- !u!114 &4256399086136449842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2427277321692252709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54cd41c1642b4fdeadb92f4800aaff03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TempNeighborTester
-  boardItem: {fileID: 3198954631575277286}
---- !u!114 &-6406561745128889967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2427277321692252709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8b7f7e2ebdc49e88fcfde32aaff37c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Synergy.IngredientComponent
-  boardItem: {fileID: 3198954631575277286}
-  ingredients:
-  - {fileID: 2427277321692252709, guid: e28cc7eff9843884c8af3aae2ec583f3, type: 3}
-  - {fileID: 2427277321692252709, guid: e28cc7eff9843884c8af3aae2ec583f3, type: 3}
-  - {fileID: 2427277321692252709, guid: e28cc7eff9843884c8af3aae2ec583f3, type: 3}
-  - {fileID: 2427277321692252709, guid: e28cc7eff9843884c8af3aae2ec583f3, type: 3}
 --- !u!1 &3114438722924965209
 GameObject:
   m_ObjectHideFlags: 0

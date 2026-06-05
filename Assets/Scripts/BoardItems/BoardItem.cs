@@ -12,7 +12,7 @@ using UnityEngine;
 public class BoardItem : MonoBehaviour
 {
     public GridManager.GridInstance gridInstanceRef;
-    [SerializeField, HideInInspector]
+    [SerializeField, HideInInspector] 
     private BoardItemComponent[] components;
     [SerializeField]
     private Rigidbody rb;
@@ -35,8 +35,8 @@ public class BoardItem : MonoBehaviour
     {
         foreach (BoardItemComponent boardItemComponent in this.components)
             boardItemComponent.ConnectToBoardItem();
-        
-        OnStarted?.Invoke(this);
+
+        this.OnStarted?.Invoke(this);
     }
 
     /// <summary>Called when released and on the playing field</summary>
