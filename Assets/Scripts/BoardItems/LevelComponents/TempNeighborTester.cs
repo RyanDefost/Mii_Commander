@@ -1,31 +1,33 @@
 ﻿using Grid;
 using Managers;
-using UnityEngine;
 
-public class TempNeighborTester : BoardItemComponent
+namespace BoardItems
 {
-    private GridManager gridManager;
-    private GameManager gameManagerRef;
-
-    public override void ConnectToBoardItem() => this.boardItem.OnActivate += Activate;
-    private void OnDestroy() => this.boardItem.OnActivate -= Activate;
-
-    private void Activate()
+    public class TempNeighborTester : BoardItemComponent
     {
-        this.gridManager ??= ComponentRegistry.GetComponent<GridManager>();
-        if (!this.gridManager) return;
+        private GridManager gridManager;
+        private GameManager gameManagerRef;
 
-        GridManager.GridInstance[] foundNeighbors = this.gridManager.GetNeighbors(this.boardItem.gridInstanceRef, NeighborPattern.Down);
-        foreach (GridManager.GridInstance neighbor in foundNeighbors)
+        public override void ConnectToBoardItem() => this.boardItem.OnActivate += Activate;
+        private void OnDestroy() => this.boardItem.OnActivate -= Activate;
+
+        private void Activate()
         {
-            if (neighbor == null || !neighbor.gameObj) continue;
+            this.gridManager ??= ComponentRegistry.GetComponent<GridManager>();
+            if (!this.gridManager) return;
 
-            this.gridManager.ReleaseInstance(neighbor);
-            Destroy(neighbor.gameObj);
-        }
+            GridManager.GridInstance[] foundNeighbors = this.gridManager.GetNeighbors(this.boardItem.gridInstanceRef, NeighborPattern.Down);
+            foreach (GridManager.GridInstance neighbor in foundNeighbors)
+            {
+                if (neighbor == null || !neighbor.gameObj) continue;
+
+                this.gridManager.ReleaseInstance(neighbor);
+                Destroy(neighbor.gameObj);
+            }
         
-        this.gameManagerRef ??= ComponentRegistry.GetComponent<GameManager>();
-        if (!this.gameManagerRef) return;
-        this.gameManagerRef.TurnManager.AddToWaitTime(0.2f);
+            this.gameManagerRef ??= ComponentRegistry.GetComponent<GameManager>();
+            if (!this.gameManagerRef) return;
+            this.gameManagerRef.TurnManager.AddToWaitTime(0.2f);
+        }
     }
 }

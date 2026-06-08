@@ -2,9 +2,10 @@ using System;
 using System.Linq;
 using Grid;
 using Managers;
+using Synergy;
 using UnityEngine;
 
-namespace Synergy
+namespace BoardItems
 {
     public class Combiner : BoardItemComponent
     {
@@ -36,7 +37,7 @@ namespace Synergy
             {
                 if (neighbor == null || !neighbor.gameObj) continue;
 
-                Tuple<Synergy, GridManager.GridInstance[]> synergyInfo = this.synergyLookUp.TryGetSynergy(neighbor);
+                Tuple<Synergy.Synergy, GridManager.GridInstance[]> synergyInfo = this.synergyLookUp.TryGetSynergy(neighbor);
                 if (synergyInfo == null) continue;
                 
                 ApplySynergy(synergyInfo, neighbor);
@@ -48,7 +49,7 @@ namespace Synergy
         /// </summary>
         /// <param name="synergyInfo">Synergy Type and relevant boardItems.</param>
         /// <param name="neighbor">BoardItem that interacted with the combiner.</param>
-        private void ApplySynergy(Tuple<Synergy, GridManager.GridInstance[]> synergyInfo, GridManager.GridInstance neighbor)
+        private void ApplySynergy(Tuple<Synergy.Synergy, GridManager.GridInstance[]> synergyInfo, GridManager.GridInstance neighbor)
         {
             this.gameManager.TurnManager.AddToWaitTime(2f);
 

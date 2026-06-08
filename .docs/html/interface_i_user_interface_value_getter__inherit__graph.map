@@ -1,0 +1,7 @@
+<map id="IUserInterfaceValueGetter" name="IUserInterfaceValueGetter">
+<area shape="rect" id="Node000001" title=" " alt="" coords="137,5,357,213"/>
+<area shape="rect" id="Node000002" href="$class_candy_actor.html" title="Manages the in game logic of a piece of candy." alt="" coords="5,288,237,784"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,225,197,289,192,287,211,230"/>
+<area shape="rect" id="Node000003" href="$class_count_down_till_activation.html" title=" " alt="" coords="262,261,482,811"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="282,225,294,262,289,261,281,230"/>
+</map>

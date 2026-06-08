@@ -1,0 +1,9 @@
+<map id="Managers.State&lt; T &gt;" name="Managers.State&lt; T &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="268,5,402,139"/>
+<area shape="rect" id="Node000002" href="$class_managers_1_1_game_states_1_1_candy_activate_state.html" title=" " alt="" coords="5,187,203,496"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="256,146,218,188,205,204,201,200,214,185,259,141"/>
+<area shape="rect" id="Node000003" href="$class_managers_1_1_game_states_1_1_candy_move_state.html" title=" " alt="" coords="228,232,442,451"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="336,151,338,233,332,231,334,156"/>
+<area shape="rect" id="Node000004" href="$class_managers_1_1_game_states_1_1_play_game_state.html" title=" " alt="" coords="466,251,671,432"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="413,141,456,185,508,251,503,251,452,188,412,146"/>
+</map>

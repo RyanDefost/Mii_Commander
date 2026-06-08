@@ -1,6 +1,4 @@
-using System.Collections.Generic;
-
-namespace Managers
+namespace StateMachine
 {
     public class FiniteStateMachine<T>
     {

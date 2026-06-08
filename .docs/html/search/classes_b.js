@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['resolutiontracker_0',['ResolutionTracker',['../class_resolution_tracker.html',1,'']]]
+  ['objectpool_2d1_2dg_0',['ObjectPool-1-g',['../class_object_pool-1-g.html',1,'']]]
 ];

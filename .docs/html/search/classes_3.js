@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fpscounter_0',['FPSCounter',['../class_f_p_s_counter.html',1,'']]]
+  ['explodenearbyitemsaway_0',['ExplodeNearbyItemsAway',['../class_explode_nearby_items_away.html',1,'']]]
 ];

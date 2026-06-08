@@ -1,5 +1,17 @@
 var searchData=
 [
-  ['deactivateobject_0',['DeactivateObject',['../class_object_pool-1-g.html#a7cd87ebb092a4450c453910aca5f8eed',1,'ObjectPool-1-g']]],
-  ['decayspeedmultiplier_1',['DecaySpeedMultiplier',['../class_player_hand_1_1_movement_handler.html#a1bbb1e4abfdd123a2d95a0f501304a3e',1,'PlayerHand::MovementHandler']]]
+  ['calculatefractionvalue_0',['CalculateFractionValue',['../class_scoring_1_1_score_visualiser.html#afe1dc04ab762766fbf9b876868221e1d',1,'Scoring::ScoreVisualiser']]],
+  ['calculategrid_1',['CalculateGrid',['../class_grid_1_1_grid_generator.html#a6da73434708f7cf21eb129bb91f362e8',1,'Grid::GridGenerator']]],
+  ['candyactivatestate_2',['CandyActivateState',['../class_managers_1_1_game_states_1_1_candy_activate_state.html#aed64c21eb957f3978608e05d6c55ecb5',1,'Managers::GameStates::CandyActivateState']]],
+  ['candygrouphandle_3',['CandyGroupHandle',['../class_candy_group_handle.html#a16eb62267c08011cb74594daec9a49c2',1,'CandyGroupHandle']]],
+  ['candyhandle_4',['CandyHandle',['../class_candy_handle.html#ab90e478a9950b09771736e8cd2aa1788',1,'CandyHandle']]],
+  ['candymovestate_5',['CandyMoveState',['../class_managers_1_1_game_states_1_1_candy_move_state.html#aab562dec2f9b0eb4130e7f7d9327671b',1,'Managers::GameStates::CandyMoveState']]],
+  ['checkifendisreached_6',['CheckIfEndIsReached',['../class_timer.html#a9b4bd0e2b0917133b1b03712f9136711',1,'Timer']]],
+  ['checkongrabreleased_7',['CheckOnGrabReleased',['../class_player_hand_1_1_player_hand_manager.html#a94e32f965af5656962ea551388ecae4f',1,'PlayerHand::PlayerHandManager']]],
+  ['checkpositionlocked_8',['CheckPositionLocked',['../class_grid_1_1_grid_manager.html#ad348f679d4f48fa7b8d32168e69c2ff4',1,'Grid::GridManager']]],
+  ['checkresolution_9',['CheckResolution',['../class_resolution_tracker.html#adf5bcd6a6e81c6a395c1ca00e7791cc0',1,'ResolutionTracker']]],
+  ['clamptobounds_10',['ClampToBounds',['../class_player_hand_1_1_movement_handler.html#a986d4eaa31f7ba2fde60b317cf386ca1',1,'PlayerHand::MovementHandler']]],
+  ['compareto_11',['CompareTo',['../struct_grid_1_1_grid_manager_1_1_grid_index.html#aaabfe19f43d085923c41efe923e13e01',1,'Grid::GridManager::GridIndex']]],
+  ['connecttoboarditem_12',['ConnectToBoardItem',['../class_board_item_component.html#a8bfba0af81c157c68dfc7193db5d9887',1,'BoardItemComponent.ConnectToBoardItem()'],['../class_candy_1_1_candy_multiplier.html#a66ffaeade7abfd71f2f285f05c3a2e6a',1,'Candy.CandyMultiplier.ConnectToBoardItem()'],['../class_grid_moveable.html#a7361c4ec8d8754495627a260a2f378ca',1,'GridMoveable.ConnectToBoardItem()'],['../class_grid_rotatable.html#ad0c172554cea008dbf6c25f0f63ba729',1,'GridRotatable.ConnectToBoardItem()'],['../class_hand_handler.html#afd12b5107a6df85038488b51a66d9d6f',1,'HandHandler.ConnectToBoardItem()'],['../class_count_down_till_activation.html#a9efc34f1c363c6e4b9ee0540e0fc58e9',1,'CountDownTillActivation.ConnectToBoardItem()'],['../class_explode_nearby_items_away.html#a0d83ccff6842b24f6ebf19e4af235503',1,'ExplodeNearbyItemsAway.ConnectToBoardItem()'],['../class_shake_detector.html#a33d9977c44cea0d8278f6e6cbf91e7cd',1,'ShakeDetector.ConnectToBoardItem()'],['../class_temp_neighbor_tester.html#a7b39dd1d5cbb40c5672ae60dd938332b',1,'TempNeighborTester.ConnectToBoardItem()']]],
+  ['customonvalidate_13',['CustomOnValidate',['../class_board_item_component.html#a700e24890a170e7561871e1b636415b3',1,'BoardItemComponent.CustomOnValidate()'],['../class_candy_actor.html#ac655023672e6c155d89ea677a3af37cc',1,'CandyActor.CustomOnValidate()'],['../class_count_down_till_activation.html#a66088959d10cc63124a52fa164042c1c',1,'CountDownTillActivation.CustomOnValidate()'],['../class_shake_detector.html#a9fb6261e0e3b1a60efd93fb6de2ae62b',1,'ShakeDetector.CustomOnValidate()']]]
 ];

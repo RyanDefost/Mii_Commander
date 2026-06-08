@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Synergy
+namespace BoardItems
 {
     public class IngredientComponent : BoardItemComponent
     {

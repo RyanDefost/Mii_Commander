@@ -1,9 +1,25 @@
 var searchData=
 [
-  ['timer_0',['Timer',['../class_timer.html#a41d982fe727007f8d5b52403b2152922',1,'Timer']]],
-  ['trigger_1',['Trigger',['../class_interactable.html#a5e78666911c054edafc27235192f366e',1,'Interactable']]],
-  ['triggermovementtotarget_2',['TriggerMovementToTarget',['../class_grid_moveable.html#ad3b904cdc188809fad3f37c40bfc32c8',1,'GridMoveable.TriggerMovementToTarget()'],['../class_move_to_grid_position.html#aeaf3a955c64e136e3dde15e81f7c274d',1,'MoveToGridPosition.TriggerMovementToTarget()']]],
-  ['triggerupdatetarget_3',['TriggerUpdateTarget',['../class_grid_moveable.html#a576efe9566d325145e1e135fd3e5dcfd',1,'GridMoveable']]],
-  ['trycallsubscribers_4',['TryCallSubscribers',['../class_component_registry.html#a8db18f3a640879a7ec56624a3175d0fa',1,'ComponentRegistry']]],
-  ['trysubscribeforcomponent_3c_20t_20_3e_5',['TrySubscribeForComponent&lt; T &gt;',['../class_component_registry.html#a9e50e6f99e819a303b10ff452e51801b',1,'ComponentRegistry']]]
+  ['recalculatebounds_0',['RecalculateBounds',['../class_player_hand_1_1_movement_handler.html#a4b2ad34b4a70c617f755168499aca1de',1,'PlayerHand::MovementHandler']]],
+  ['recalculatepixeldensityscale_1',['RecalculatePixelDensityScale',['../class_player_hand_1_1_movement_handler.html#a854227fd9fecc2793b6aefed029aa1f3',1,'PlayerHand::MovementHandler']]],
+  ['registergridposition_2',['RegisterGridPosition',['../class_grid_1_1_grid_manager.html#ae8a8d41cd6cc0bac54a0fdfb17c6c875',1,'Grid::GridManager']]],
+  ['registeringrid_3',['RegisterInGrid',['../class_grid_1_1_grid_manager.html#a6c1d75f696407774be3b11b5fcb760fa',1,'Grid::GridManager']]],
+  ['registeronendlistener_4',['RegisterOnEndListener',['../class_timer.html#ae3e58f1c074dc1dc06a3ab125b8a9994',1,'Timer']]],
+  ['registeronplayinglistener_5',['RegisterOnPlayingListener',['../class_timer.html#acf8f5e725d6e66ac9658361f811045b9',1,'Timer']]],
+  ['releaseinstance_6',['ReleaseInstance',['../class_grid_1_1_grid_manager.html#a1e2a91fac8503047529114bd166d87c8',1,'Grid::GridManager']]],
+  ['removefrompool_7',['RemoveFromPool',['../class_object_pool-1-g.html#adee5368a69a65ff45d0f2af9f1b3656f',1,'ObjectPool-1-g']]],
+  ['removefromregistry_8',['RemoveFromRegistry',['../class_component_registry.html#a75c83b2b4dddef2b06bfbba30eb71758',1,'ComponentRegistry']]],
+  ['removeplayermoveimmunity_9',['RemovePlayerMoveImmunity',['../class_candy_actor.html#a6cb00e83d2c69de5da51ba4182b6d808',1,'CandyActor']]],
+  ['removescore_10',['RemoveScore',['../class_scoring_1_1_score_manager.html#ac3306b7a0cab521cef849dbdb42ba639',1,'Scoring::ScoreManager']]],
+  ['replaceinregistry_11',['ReplaceInRegistry',['../class_component_registry.html#a2e6de7a1b05d47e272a1a4529ba6cff6',1,'ComponentRegistry']]],
+  ['requestobject_12',['RequestObject',['../class_object_pool-1-g.html#af2e407c6ee935d43c1994e39bf9661a4',1,'ObjectPool-1-g']]],
+  ['reset_13',['Reset',['../class_count_down_till_activation.html#ad88f75247c6bc7688d322a6e1919b5bb',1,'CountDownTillActivation.Reset()'],['../class_timer.html#a076af8892f86d50320215cfece9f2ab9',1,'Timer.Reset()']]],
+  ['resetandreplay_14',['ResetAndReplay',['../class_timer.html#af050f049bbddff63c50a0ecd7141dd6d',1,'Timer']]],
+  ['resethover_15',['ResetHover',['../class_player_hand_1_1_interaction_handler.html#a29768ade450b331e1ed1bd7504d24723',1,'PlayerHand::InteractionHandler']]],
+  ['resetmoveamount_16',['ResetMoveAmount',['../class_managers_1_1_move_manager.html#acaef5e2aad4045576c6a248a25e521d6',1,'Managers::MoveManager']]],
+  ['resetscore_17',['ResetScore',['../class_scoring_1_1_score_manager.html#a9771fe67b1044c879643545869099a08',1,'Scoring::ScoreManager']]],
+  ['resettarget_18',['ResetTarget',['../class_grid_moveable.html#a62aed54cbfec41f7a202c9113c85e2cd',1,'GridMoveable']]],
+  ['resettooriginalz_19',['ResetToOriginalZ',['../class_player_hand_1_1_movement_handler.html#a76ff87c8d0e769c48499fd90d9946b7f',1,'PlayerHand::MovementHandler']]],
+  ['resetwaittime_20',['ResetWaitTime',['../class_timer.html#a9b40c6e8ab5d22c875cd8e8cad941b0c',1,'Timer']]],
+  ['rotateclockwise_21',['RotateClockWise',['../class_grid_rotatable.html#af59d9c13f0d0625d2e5c64036602db3e',1,'GridRotatable']]]
 ];

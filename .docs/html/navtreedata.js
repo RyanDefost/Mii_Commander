@@ -27,7 +27,11 @@ var NAVTREE =
   [ "Mii_Commander", "index.html", [
     [ "Project Architecture Map", "index.html", null ],
     [ "Packages", "namespaces.html", [
-      [ "Package List", "namespaces.html", "namespaces_dup" ]
+      [ "Package List", "namespaces.html", "namespaces_dup" ],
+      [ "Package Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ]
+      ] ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
@@ -35,8 +39,8 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ],
+        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Variables", "functions_vars.html", "functions_vars" ],
         [ "Properties", "functions_prop.html", null ]
       ] ]
     ] ],
@@ -53,8 +57,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_billboard_8cs.html",
-"class_grid_rotatable.html#aa8f5666cf7d4dbbe286200127facba7c",
-"class_player_hand_1_1_visual_handler.html#a897cada49c1e27460af3ab5197451fc3"
+"class_grid_1_1_grid_generator.html#a5d79b1e2e28da2071a7077db6d06a920",
+"class_managers_1_1_game_manager.html#a58bf0371884a2640fd0e1982cb2eaec4",
+"class_player_hand_1_1_interaction_handler.html#ae9f6be2ef157f131739ad045969e2944",
+"class_shop_component.html#a3b1f1e535eb2345f0cea3fad61547ebe"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';

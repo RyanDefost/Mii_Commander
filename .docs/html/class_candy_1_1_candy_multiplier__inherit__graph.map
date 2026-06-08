@@ -1,0 +1,7 @@
+<map id="Candy.CandyMultiplier" name="Candy.CandyMultiplier">
+<area shape="rect" id="Node000001" title=" " alt="" coords="10,320,209,629"/>
+<area shape="rect" id="Node000002" href="$class_board_item_component.html" title="A component that&#39;s able to hook into the functions of a board item." alt="" coords="5,123,213,272"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,285,112,321,107,320,109,290"/>
+<area shape="rect" id="Node000003" href="$class_mono_behaviour.html" title=" " alt="" coords="59,5,160,75"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="110,87,112,123,107,123,109,92"/>
+</map>

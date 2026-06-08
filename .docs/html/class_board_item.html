@@ -131,24 +131,26 @@ Inheritance diagram for BoardItem:</div>
 <div class="dynheader">
 Collaboration diagram for BoardItem:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_board_item__coll__graph.svg" width="618" height="566"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_board_item__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aae0747156612c7495f20f4eff324b207" id="r_aae0747156612c7495f20f4eff324b207"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aae0747156612c7495f20f4eff324b207">Initiate</a> ()</td></tr>
 <tr class="memdesc:aae0747156612c7495f20f4eff324b207"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when released and on the playing field.  <br /></td></tr>
+<tr class="memitem:ae7c359cb3984c23e9e43af52a9353654" id="r_ae7c359cb3984c23e9e43af52a9353654"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ae7c359cb3984c23e9e43af52a9353654">Activate</a> ()</td></tr>
+<tr class="memdesc:ae7c359cb3984c23e9e43af52a9353654"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when object should activate its ability, explode, push, pull, collect.  <br /></td></tr>
 <tr class="memitem:a136315afd7c091159d6eb33f3d0b6ad5" id="r_a136315afd7c091159d6eb33f3d0b6ad5"><td class="memItemLeft">T&#160;</td><td class="memItemRight"><a class="el" href="#a136315afd7c091159d6eb33f3d0b6ad5">GetBoardComponent&lt; T &gt;</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a2da944bc0b2f95003522adc91181a8c8" id="r_a2da944bc0b2f95003522adc91181a8c8"><td class="memItemLeft"><a class="el" href="class_grid_1_1_grid_manager_1_1_grid_instance.html">GridManager.GridInstance</a>&#160;</td><td class="memItemRight"><a class="el" href="#a2da944bc0b2f95003522adc91181a8c8">gridInstanceRef</a></td></tr>
 <tr class="memitem:a949560ca6e921760354b6397c35ee3eb" id="r_a949560ca6e921760354b6397c35ee3eb"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="#a949560ca6e921760354b6397c35ee3eb">OnAddToHand</a></td></tr>
+<tr class="memitem:a2e643e94d07f57ee0ad3e27be7eeec1c" id="r_a2e643e94d07f57ee0ad3e27be7eeec1c"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="#a2e643e94d07f57ee0ad3e27be7eeec1c">OnRemovedFromHand</a></td></tr>
 <tr class="memitem:ad87a4083cc320e3b586b6ad1dbbe0d40" id="r_ad87a4083cc320e3b586b6ad1dbbe0d40"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="#ad87a4083cc320e3b586b6ad1dbbe0d40">OnInitiate</a></td></tr>
 <tr class="memitem:af9f8b133f3476af4bf5aa65fbdd8fae0" id="r_af9f8b133f3476af4bf5aa65fbdd8fae0"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="#af9f8b133f3476af4bf5aa65fbdd8fae0">OnAddToBoard</a></td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:ab225bc1ca181eeb439a7dcd204324f0f" id="r_ab225bc1ca181eeb439a7dcd204324f0f"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#ab225bc1ca181eeb439a7dcd204324f0f">CustomOnValidate</a> ()</td></tr>
+<tr class="memitem:a68dd292d0761556a2b9858aab3a9bb19" id="r_a68dd292d0761556a2b9858aab3a9bb19"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="#a68dd292d0761556a2b9858aab3a9bb19">OnActivate</a></td></tr>
+<tr class="memitem:a3611ff84245ffc1975d524a0a6aca3d4" id="r_a3611ff84245ffc1975d524a0a6aca3d4"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="#a3611ff84245ffc1975d524a0a6aca3d4">OnStarted</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-properties" class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -156,20 +158,40 @@ Properties</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a4e1f2458b9c44ac7de445567240718de" id="r_a4e1f2458b9c44ac7de445567240718de"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a4e1f2458b9c44ac7de445567240718de">OnValidate</a> ()</td></tr>
+<tr class="memitem:aa0b642e838634824266350bab0b97cf8" id="r_aa0b642e838634824266350bab0b97cf8"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa0b642e838634824266350bab0b97cf8">Awake</a> ()</td></tr>
 <tr class="memitem:a69653e25189731fcb1576adc3276e198" id="r_a69653e25189731fcb1576adc3276e198"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a69653e25189731fcb1576adc3276e198">Start</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a684c45c02374cdf0d47cd0f7d946c467" id="r_a684c45c02374cdf0d47cd0f7d946c467"><td class="memItemLeft"><a class="el" href="class_interactable.html">Interactable</a>&#160;</td><td class="memItemRight"><a class="el" href="#a684c45c02374cdf0d47cd0f7d946c467">interactable</a></td></tr>
 <tr class="memitem:a1fb6090de83301ef7afd398b4ac96bc5" id="r_a1fb6090de83301ef7afd398b4ac96bc5"><td class="memItemLeft"><a class="el" href="class_board_item_component.html">BoardItemComponent</a>[]&#160;</td><td class="memItemRight"><a class="el" href="#a1fb6090de83301ef7afd398b4ac96bc5">components</a></td></tr>
 <tr class="memitem:a12b109c2ffb024e8b28781a1d0f2809f" id="r_a12b109c2ffb024e8b28781a1d0f2809f"><td class="memItemLeft">Rigidbody&#160;</td><td class="memItemRight"><a class="el" href="#a12b109c2ffb024e8b28781a1d0f2809f">rb</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Holds all board item events, used to let board item specific components hook into logic and represent a single toy/item. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="ab225bc1ca181eeb439a7dcd204324f0f" name="ab225bc1ca181eeb439a7dcd204324f0f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab225bc1ca181eeb439a7dcd204324f0f">&#9670;&#160;</a></span>CustomOnValidate()</h2>
+<a id="ae7c359cb3984c23e9e43af52a9353654" name="ae7c359cb3984c23e9e43af52a9353654"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7c359cb3984c23e9e43af52a9353654">&#9670;&#160;</a></span>Activate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoardItem.Activate </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Called when object should activate its ability, explode, push, pull, collect. </p>
+<div class="fragment"><div class="line"><span class="lineno">   45</span>=&gt; this.<a class="code hl_variable" href="#a68dd292d0761556a2b9858aab3a9bb19">OnActivate</a>?.Invoke();</div>
+<div class="ttc" id="aclass_board_item_html_a68dd292d0761556a2b9858aab3a9bb19"><div class="ttname"><a href="#a68dd292d0761556a2b9858aab3a9bb19">BoardItem.OnActivate</a></div><div class="ttdeci">Action OnActivate</div><div class="ttdef"><b>Definition</b> BoardItem.cs:24</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa0b642e838634824266350bab0b97cf8" name="aa0b642e838634824266350bab0b97cf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0b642e838634824266350bab0b97cf8">&#9670;&#160;</a></span>Awake()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -178,7 +200,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void BoardItem.CustomOnValidate </td>
+          <td class="memname">void BoardItem.Awake </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -186,13 +208,14 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Reimplemented in <a class="el" href="class_candy_actor.html#ae017256ee86b9c8a04d7a197194acb18">CandyActor</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   41</span>{}</div>
+<div class="fragment"><div class="line"><span class="lineno">   28</span>    {</div>
+<div class="line"><span class="lineno">   29</span>        this.rb = GetComponent&lt;Rigidbody&gt;();</div>
+<div class="line"><span class="lineno">   30</span>        this.components = GetComponentsInChildren&lt;BoardItemComponent&gt;();</div>
+<div class="line"><span class="lineno">   31</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -218,13 +241,13 @@ Private Attributes</h2></td></tr>
 </dd>
 </dl>
 </div>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>                                            : BoardItemComponent</div>
-<div class="line"><span class="lineno">   47</span>    {</div>
-<div class="line"><span class="lineno">   48</span>        BoardItemComponent found = this.<a class="code hl_variable" href="#a1fb6090de83301ef7afd398b4ac96bc5">components</a>.FirstOrDefault(c =&gt; c is T);</div>
-<div class="line"><span class="lineno">   49</span>        <span class="keywordflow">if</span> (!found) <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">return</span> (T)found;</div>
-<div class="line"><span class="lineno">   51</span>    }</div>
-<div class="ttc" id="aclass_board_item_html_a1fb6090de83301ef7afd398b4ac96bc5"><div class="ttname"><a href="#a1fb6090de83301ef7afd398b4ac96bc5">BoardItem.components</a></div><div class="ttdeci">BoardItemComponent[] components</div><div class="ttdef"><b>Definition</b> BoardItem.cs:16</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   47</span>                                            : BoardItemComponent</div>
+<div class="line"><span class="lineno">   48</span>    {</div>
+<div class="line"><span class="lineno">   49</span>        BoardItemComponent found = this.<a class="code hl_variable" href="#a1fb6090de83301ef7afd398b4ac96bc5">components</a>.FirstOrDefault(c =&gt; c is T);</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">if</span> (!found) <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   51</span>        <span class="keywordflow">return</span> (T)found;</div>
+<div class="line"><span class="lineno">   52</span>    }</div>
+<div class="ttc" id="aclass_board_item_html_a1fb6090de83301ef7afd398b4ac96bc5"><div class="ttname"><a href="#a1fb6090de83301ef7afd398b4ac96bc5">BoardItem.components</a></div><div class="ttdeci">BoardItemComponent[] components</div><div class="ttdef"><b>Definition</b> BoardItem.cs:15</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -244,41 +267,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Called when released and on the playing field. </p>
-<div class="fragment"><div class="line"><span class="lineno">   44</span>=&gt; this.<a class="code hl_variable" href="#ad87a4083cc320e3b586b6ad1dbbe0d40">OnInitiate</a>?.Invoke();</div>
+<div class="fragment"><div class="line"><span class="lineno">   42</span>=&gt; this.<a class="code hl_variable" href="#ad87a4083cc320e3b586b6ad1dbbe0d40">OnInitiate</a>?.Invoke();</div>
 <div class="ttc" id="aclass_board_item_html_ad87a4083cc320e3b586b6ad1dbbe0d40"><div class="ttname"><a href="#ad87a4083cc320e3b586b6ad1dbbe0d40">BoardItem.OnInitiate</a></div><div class="ttdeci">Action OnInitiate</div><div class="ttdef"><b>Definition</b> BoardItem.cs:22</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a4e1f2458b9c44ac7de445567240718de" name="a4e1f2458b9c44ac7de445567240718de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e1f2458b9c44ac7de445567240718de">&#9670;&#160;</a></span>OnValidate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BoardItem.OnValidate </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   26</span>    {</div>
-<div class="line"><span class="lineno">   27</span>        <span class="keywordflow">if</span> (Application.isPlaying)</div>
-<div class="line"><span class="lineno">   28</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   29</span>        this.rb = GetComponent&lt;Rigidbody&gt;();</div>
-<div class="line"><span class="lineno">   30</span>        this.interactable = GetComponentInChildren&lt;Interactable&gt;();</div>
-<div class="line"><span class="lineno">   31</span>        </div>
-<div class="line"><span class="lineno">   32</span>        this.components = GetComponentsInChildren&lt;BoardItemComponent&gt;();</div>
-<div class="line"><span class="lineno">   33</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -304,11 +294,14 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   36</span>    {</div>
-<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">foreach</span> (BoardItemComponent boardItemComponent <span class="keywordflow">in</span> this.<a class="code hl_variable" href="#a1fb6090de83301ef7afd398b4ac96bc5">components</a>) </div>
-<div class="line"><span class="lineno">   38</span>            boardItemComponent.<a class="code hl_function" href="class_board_item_component.html#a8bfba0af81c157c68dfc7193db5d9887">ConnectToBoardItem</a>();</div>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>    {</div>
+<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">foreach</span> (BoardItemComponent boardItemComponent <span class="keywordflow">in</span> this.<a class="code hl_variable" href="#a1fb6090de83301ef7afd398b4ac96bc5">components</a>)</div>
+<div class="line"><span class="lineno">   36</span>            boardItemComponent.<a class="code hl_function" href="class_board_item_component.html#a8bfba0af81c157c68dfc7193db5d9887">ConnectToBoardItem</a>();</div>
+<div class="line"><span class="lineno">   37</span>        </div>
+<div class="line"><span class="lineno">   38</span>        <a class="code hl_variable" href="#a3611ff84245ffc1975d524a0a6aca3d4">OnStarted</a>?.Invoke();</div>
 <div class="line"><span class="lineno">   39</span>    }</div>
-<div class="ttc" id="aclass_board_item_component_html_a8bfba0af81c157c68dfc7193db5d9887"><div class="ttname"><a href="class_board_item_component.html#a8bfba0af81c157c68dfc7193db5d9887">BoardItemComponent.ConnectToBoardItem</a></div><div class="ttdeci">virtual void ConnectToBoardItem()</div><div class="ttdoc">Function for hooking into the various boardItem actions, make sure to unhook on destroy.</div><div class="ttdef"><b>Definition</b> BoardItemComponent.cs:23</div></div>
+<div class="ttc" id="aclass_board_item_component_html_a8bfba0af81c157c68dfc7193db5d9887"><div class="ttname"><a href="class_board_item_component.html#a8bfba0af81c157c68dfc7193db5d9887">BoardItemComponent.ConnectToBoardItem</a></div><div class="ttdeci">virtual void ConnectToBoardItem()</div><div class="ttdoc">Function for hooking into the various boardItem actions, make sure to unhook on destroy.</div><div class="ttdef"><b>Definition</b> BoardItemComponent.cs:24</div></div>
+<div class="ttc" id="aclass_board_item_html_a3611ff84245ffc1975d524a0a6aca3d4"><div class="ttname"><a href="#a3611ff84245ffc1975d524a0a6aca3d4">BoardItem.OnStarted</a></div><div class="ttdeci">Action OnStarted</div><div class="ttdef"><b>Definition</b> BoardItem.cs:25</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -335,24 +328,30 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a684c45c02374cdf0d47cd0f7d946c467" name="a684c45c02374cdf0d47cd0f7d946c467"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a684c45c02374cdf0d47cd0f7d946c467">&#9670;&#160;</a></span>interactable</h2>
+<a id="a2da944bc0b2f95003522adc91181a8c8" name="a2da944bc0b2f95003522adc91181a8c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2da944bc0b2f95003522adc91181a8c8">&#9670;&#160;</a></span>gridInstanceRef</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_interactable.html">Interactable</a> BoardItem.interactable</td>
+          <td class="memname"><a class="el" href="class_grid_1_1_grid_manager_1_1_grid_instance.html">GridManager.GridInstance</a> BoardItem.gridInstanceRef</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a68dd292d0761556a2b9858aab3a9bb19" name="a68dd292d0761556a2b9858aab3a9bb19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68dd292d0761556a2b9858aab3a9bb19">&#9670;&#160;</a></span>OnActivate</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Action BoardItem.OnActivate</td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>
@@ -393,6 +392,34 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">Action BoardItem.OnInitiate</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2e643e94d07f57ee0ad3e27be7eeec1c" name="a2e643e94d07f57ee0ad3e27be7eeec1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e643e94d07f57ee0ad3e27be7eeec1c">&#9670;&#160;</a></span>OnRemovedFromHand</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Action BoardItem.OnRemovedFromHand</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3611ff84245ffc1975d524a0a6aca3d4" name="a3611ff84245ffc1975d524a0a6aca3d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3611ff84245ffc1975d524a0a6aca3d4">&#9670;&#160;</a></span>OnStarted</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Action BoardItem.OnStarted</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -441,8 +468,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   19</span>{ <span class="keyword">get</span> =&gt; this.<a class="code hl_variable" href="#a12b109c2ffb024e8b28781a1d0f2809f">rb</a>; <span class="keyword">private</span> <span class="keyword">set</span> =&gt; this.rb = value; }</div>
-<div class="ttc" id="aclass_board_item_html_a12b109c2ffb024e8b28781a1d0f2809f"><div class="ttname"><a href="#a12b109c2ffb024e8b28781a1d0f2809f">BoardItem.rb</a></div><div class="ttdeci">Rigidbody rb</div><div class="ttdef"><b>Definition</b> BoardItem.cs:18</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   18</span>{ <span class="keyword">get</span> =&gt; this.<a class="code hl_variable" href="#a12b109c2ffb024e8b28781a1d0f2809f">rb</a>; <span class="keyword">private</span> <span class="keyword">set</span> =&gt; this.rb = value; }</div>
+<div class="ttc" id="aclass_board_item_html_a12b109c2ffb024e8b28781a1d0f2809f"><div class="ttname"><a href="#a12b109c2ffb024e8b28781a1d0f2809f">BoardItem.rb</a></div><div class="ttdeci">Rigidbody rb</div><div class="ttdef"><b>Definition</b> BoardItem.cs:17</div></div>
 </div><!-- fragment -->
 </div>
 </div>

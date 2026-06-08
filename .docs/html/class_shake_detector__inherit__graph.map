@@ -1,0 +1,7 @@
+<map id="ShakeDetector" name="ShakeDetector">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,320,224,715"/>
+<area shape="rect" id="Node000002" href="$class_board_item_component.html" title="A component that&#39;s able to hook into the functions of a board item." alt="" coords="11,123,219,272"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,284,117,321,112,320,114,290"/>
+<area shape="rect" id="Node000003" href="$class_mono_behaviour.html" title=" " alt="" coords="64,5,165,75"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="115,87,117,123,112,123,115,92"/>
+</map>

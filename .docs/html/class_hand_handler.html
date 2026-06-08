@@ -140,15 +140,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:afd12b5107a6df85038488b51a66d9d6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function for hooking into the various boardItem actions, make sure to unhook on destroy.  <br /></td></tr>
 <tr class="memitem:a40bc0df1639bb2632b58acf4e31df31f" id="r_a40bc0df1639bb2632b58acf4e31df31f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a40bc0df1639bb2632b58acf4e31df31f">AddToHand</a> ()</td></tr>
 <tr class="memdesc:a40bc0df1639bb2632b58acf4e31df31f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restricts its own physics, adds to the player hand, and hooks into the player hand events.  <br /></td></tr>
+<tr class="memitem:a816a721991d178114bf102c72275b5bf" id="r_a816a721991d178114bf102c72275b5bf"><td class="memItemLeft"><a class="el" href="class_board_item.html">BoardItem</a>&#160;</td><td class="memItemRight"><a class="el" href="class_board_item_component.html#a816a721991d178114bf102c72275b5bf">GetBoardItem</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a9ef3c0aad12b9d2836abb745c83ce2a0" id="r_a9ef3c0aad12b9d2836abb745c83ce2a0"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a9ef3c0aad12b9d2836abb745c83ce2a0">OnGrabReleased</a> (Rigidbody rb, <a class="el" href="class_board_item.html">BoardItem</a> boardItem, Vector2 handMovementDir, Vector2 throwForce)</td></tr>
 <tr class="memdesc:a9ef3c0aad12b9d2836abb745c83ce2a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static function that handles the throwing logic.  <br /></td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a7b4ce8cead68d9b8f71d77a5d196f0e6" id="r_a7b4ce8cead68d9b8f71d77a5d196f0e6"><td class="memItemLeft">Action&#160;</td><td class="memItemRight"><a class="el" href="#a7b4ce8cead68d9b8f71d77a5d196f0e6">OnHandGrabRelease</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -190,13 +187,13 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Restricts its own physics, adds to the player hand, and hooks into the player hand events. </p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>    {</div>
-<div class="line"><span class="lineno">   47</span>        this.<a class="code hl_variable" href="class_board_item_component.html#abdc37bbf43d8b710e1e261653f33cf54">boardItem</a>.OnAddToHand?.Invoke();</div>
-<div class="line"><span class="lineno">   48</span>    </div>
-<div class="line"><span class="lineno">   49</span>        this.boardItem.Rb.constraints = RigidbodyConstraints.FreezePosition;</div>
-<div class="line"><span class="lineno">   50</span>        this.transform.localPosition = Vector3.zero;</div>
-<div class="line"><span class="lineno">   51</span>    }</div>
-<div class="ttc" id="aclass_board_item_component_html_abdc37bbf43d8b710e1e261653f33cf54"><div class="ttname"><a href="class_board_item_component.html#abdc37bbf43d8b710e1e261653f33cf54">BoardItemComponent.boardItem</a></div><div class="ttdeci">BoardItem boardItem</div><div class="ttdef"><b>Definition</b> BoardItemComponent.cs:9</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   44</span>    {</div>
+<div class="line"><span class="lineno">   45</span>        this.<a class="code hl_variable" href="class_board_item_component.html#abdc37bbf43d8b710e1e261653f33cf54">boardItem</a>.OnAddToHand?.Invoke();</div>
+<div class="line"><span class="lineno">   46</span>    </div>
+<div class="line"><span class="lineno">   47</span>        this.boardItem.Rb.constraints = RigidbodyConstraints.FreezePosition;</div>
+<div class="line"><span class="lineno">   48</span>        this.transform.localPosition = Vector3.zero;</div>
+<div class="line"><span class="lineno">   49</span>    }</div>
+<div class="ttc" id="aclass_board_item_component_html_abdc37bbf43d8b710e1e261653f33cf54"><div class="ttname"><a href="class_board_item_component.html#abdc37bbf43d8b710e1e261653f33cf54">BoardItemComponent.boardItem</a></div><div class="ttdeci">BoardItem boardItem</div><div class="ttdef"><b>Definition</b> BoardItemComponent.cs:10</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -226,11 +223,11 @@ Private Attributes</h2></td></tr>
 <p>Function for hooking into the various boardItem actions, make sure to unhook on destroy. </p>
 
 <p>Reimplemented from <a class="el" href="class_board_item_component.html#a8bfba0af81c157c68dfc7193db5d9887">BoardItemComponent</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   15</span>    { </div>
-<div class="line"><span class="lineno">   16</span>        this.playerHandRef = ComponentRegistry.GetComponent&lt;PlayerHandManager&gt;();</div>
-<div class="line"><span class="lineno">   17</span>        this.boardItem.OnAddToHand += <a class="code hl_function" href="#aad8013e83243a73249b2ed9448c77b19">OnAddToHand</a>; </div>
-<div class="line"><span class="lineno">   18</span>    }</div>
-<div class="ttc" id="aclass_hand_handler_html_aad8013e83243a73249b2ed9448c77b19"><div class="ttname"><a href="#aad8013e83243a73249b2ed9448c77b19">HandHandler.OnAddToHand</a></div><div class="ttdeci">void OnAddToHand()</div><div class="ttdef"><b>Definition</b> HandHandler.cs:22</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   13</span>    { </div>
+<div class="line"><span class="lineno">   14</span>        this.playerHandRef = ComponentRegistry.GetComponent&lt;PlayerHandManager&gt;();</div>
+<div class="line"><span class="lineno">   15</span>        this.boardItem.OnAddToHand += <a class="code hl_function" href="#aad8013e83243a73249b2ed9448c77b19">OnAddToHand</a>;</div>
+<div class="line"><span class="lineno">   16</span>    }</div>
+<div class="ttc" id="aclass_hand_handler_html_aad8013e83243a73249b2ed9448c77b19"><div class="ttname"><a href="#aad8013e83243a73249b2ed9448c77b19">HandHandler.OnAddToHand</a></div><div class="ttdeci">void OnAddToHand()</div><div class="ttdef"><b>Definition</b> HandHandler.cs:20</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -259,8 +256,34 @@ Private Attributes</h2></td></tr>
 
 <p>OnValidate so that <a class="el" href="class_board_item_component.html" title="A component that&#39;s able to hook into the functions of a board item.">BoardItemComponent</a>'s OnValidate doesnt get overwritten. </p>
 
-<p>Reimplemented in <a class="el" href="class_grid_rotatable.html#a5e84123a11b6033f4da824affd4712df">GridRotatable</a>, and <a class="el" href="class_move_to_grid_position.html#aebc45640349ca3e1cd2250b79348d1e5">MoveToGridPosition</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   20</span>{}</div>
+<p>Reimplemented in <a class="el" href="class_count_down_till_activation.html#a66088959d10cc63124a52fa164042c1c">CountDownTillActivation</a>, and <a class="el" href="class_shake_detector.html#a9fb6261e0e3b1a60efd93fb6de2ae62b">ShakeDetector</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   21</span>{}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a816a721991d178114bf102c72275b5bf" name="a816a721991d178114bf102c72275b5bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a816a721991d178114bf102c72275b5bf">&#9670;&#160;</a></span>GetBoardItem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_board_item.html">BoardItem</a> BoardItemComponent.GetBoardItem </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inherited">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   26</span>=&gt; this.<a class="code hl_variable" href="class_board_item_component.html#abdc37bbf43d8b710e1e261653f33cf54">boardItem</a>;</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -286,13 +309,13 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   23</span>    {</div>
-<div class="line"><span class="lineno">   24</span>        this.<a class="code hl_variable" href="#a03cd3482fb157a0df468716526037d07">playerHandRef</a>.SetStateToGrabbing();</div>
-<div class="line"><span class="lineno">   25</span>        this.transform.SetParent(this.<a class="code hl_variable" href="#a03cd3482fb157a0df468716526037d07">playerHandRef</a>.transform);</div>
-<div class="line"><span class="lineno">   26</span>        this.playerHandRef.OnGrabReleased += <a class="code hl_function" href="#a29b3650034d1d8b35406b62c82ca2acd">OnGrabReleased</a>;</div>
-<div class="line"><span class="lineno">   27</span>    }</div>
-<div class="ttc" id="aclass_hand_handler_html_a03cd3482fb157a0df468716526037d07"><div class="ttname"><a href="#a03cd3482fb157a0df468716526037d07">HandHandler.playerHandRef</a></div><div class="ttdeci">PlayerHandManager playerHandRef</div><div class="ttdef"><b>Definition</b> HandHandler.cs:11</div></div>
-<div class="ttc" id="aclass_hand_handler_html_a29b3650034d1d8b35406b62c82ca2acd"><div class="ttname"><a href="#a29b3650034d1d8b35406b62c82ca2acd">HandHandler.OnGrabReleased</a></div><div class="ttdeci">void OnGrabReleased(Vector2 handMovementDir, Vector2 throwForce)</div><div class="ttdoc">Frees its physics restrictions, and adds any force the hand wanted to impose on it.</div><div class="ttdef"><b>Definition</b> HandHandler.cs:33</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   21</span>    {</div>
+<div class="line"><span class="lineno">   22</span>        this.<a class="code hl_variable" href="#a03cd3482fb157a0df468716526037d07">playerHandRef</a>.SetStateToGrabbing();</div>
+<div class="line"><span class="lineno">   23</span>        this.transform.SetParent(this.<a class="code hl_variable" href="#a03cd3482fb157a0df468716526037d07">playerHandRef</a>.transform);</div>
+<div class="line"><span class="lineno">   24</span>        this.playerHandRef.OnRemovedFromHand += <a class="code hl_function" href="#a29b3650034d1d8b35406b62c82ca2acd">OnGrabReleased</a>;</div>
+<div class="line"><span class="lineno">   25</span>    }</div>
+<div class="ttc" id="aclass_hand_handler_html_a03cd3482fb157a0df468716526037d07"><div class="ttname"><a href="#a03cd3482fb157a0df468716526037d07">HandHandler.playerHandRef</a></div><div class="ttdeci">PlayerHandManager playerHandRef</div><div class="ttdef"><b>Definition</b> HandHandler.cs:10</div></div>
+<div class="ttc" id="aclass_hand_handler_html_a29b3650034d1d8b35406b62c82ca2acd"><div class="ttname"><a href="#a29b3650034d1d8b35406b62c82ca2acd">HandHandler.OnGrabReleased</a></div><div class="ttdeci">void OnGrabReleased(Vector2 handMovementDir, Vector2 throwForce)</div><div class="ttdoc">Frees its physics restrictions, and adds any force the hand wanted to impose on it.</div><div class="ttdef"><b>Definition</b> HandHandler.cs:31</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -318,7 +341,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   20</span>=&gt; this.boardItem.OnAddToHand -= <a class="code hl_function" href="#aad8013e83243a73249b2ed9448c77b19">OnAddToHand</a>;</div>
+<div class="fragment"><div class="line"><span class="lineno">   18</span>=&gt; this.boardItem.OnAddToHand -= <a class="code hl_function" href="#aad8013e83243a73249b2ed9448c77b19">OnAddToHand</a>;</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -360,18 +383,18 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Static function that handles the throwing logic. </p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span>    {</div>
-<div class="line"><span class="lineno">   56</span>        rb.transform.parent = rb.transform.parent.parent;</div>
-<div class="line"><span class="lineno">   57</span>        rb.constraints = RigidbodyConstraints.None;</div>
-<div class="line"><span class="lineno">   58</span>        Vector3 throwVel = throwForce;</div>
-<div class="line"><span class="lineno">   59</span>        <span class="keywordflow">if</span> (throwForce.magnitude &gt; 0.1f)</div>
-<div class="line"><span class="lineno">   60</span>        {</div>
-<div class="line"><span class="lineno">   61</span>            throwVel += Quaternion.Euler(0, 0, <a class="code hl_typedef" href="_board_item_8cs.html#a832e8f52fca5a678819ec96269dcb532">Random</a>.Range(-90, 90)) * handMovementDir;</div>
-<div class="line"><span class="lineno">   62</span>            rb.AddForce(throwVel, ForceMode.Impulse);</div>
-<div class="line"><span class="lineno">   63</span>        }</div>
-<div class="line"><span class="lineno">   64</span>        <a class="code hl_variable" href="class_board_item_component.html#abdc37bbf43d8b710e1e261653f33cf54">boardItem</a>.Initiate();</div>
-<div class="line"><span class="lineno">   65</span>    }</div>
-<div class="ttc" id="a_board_item_8cs_html_a832e8f52fca5a678819ec96269dcb532"><div class="ttname"><a href="_board_item_8cs.html#a832e8f52fca5a678819ec96269dcb532">Random</a></div><div class="ttdeci">UnityEngine.Random Random</div><div class="ttdef"><b>Definition</b> BoardItem.cs:4</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   53</span>    {</div>
+<div class="line"><span class="lineno">   54</span>        rb.transform.parent = rb.transform.parent.parent;</div>
+<div class="line"><span class="lineno">   55</span>        rb.constraints = RigidbodyConstraints.None;</div>
+<div class="line"><span class="lineno">   56</span>        Vector3 throwVel = throwForce;</div>
+<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">if</span> (throwForce.magnitude &gt; 0.1f)</div>
+<div class="line"><span class="lineno">   58</span>        {</div>
+<div class="line"><span class="lineno">   59</span>            throwVel += Quaternion.Euler(0, 0, <a class="code hl_typedef" href="_hand_handler_8cs.html#a832e8f52fca5a678819ec96269dcb532">Random</a>.Range(-90, 90)) * handMovementDir;</div>
+<div class="line"><span class="lineno">   60</span>            rb.AddForce(throwVel, ForceMode.Impulse);</div>
+<div class="line"><span class="lineno">   61</span>        }</div>
+<div class="line"><span class="lineno">   62</span>        <a class="code hl_variable" href="class_board_item_component.html#abdc37bbf43d8b710e1e261653f33cf54">boardItem</a>.Initiate();</div>
+<div class="line"><span class="lineno">   63</span>    }</div>
+<div class="ttc" id="a_hand_handler_8cs_html_a832e8f52fca5a678819ec96269dcb532"><div class="ttname"><a href="_hand_handler_8cs.html#a832e8f52fca5a678819ec96269dcb532">Random</a></div><div class="ttdeci">UnityEngine.Random Random</div><div class="ttdef"><b>Definition</b> HandHandler.cs:3</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -403,12 +426,11 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Frees its physics restrictions, and adds any force the hand wanted to impose on it. </p>
-<div class="fragment"><div class="line"><span class="lineno">   34</span>    {</div>
-<div class="line"><span class="lineno">   35</span>        <a class="code hl_function" href="#a29b3650034d1d8b35406b62c82ca2acd">OnGrabReleased</a>(this.<a class="code hl_variable" href="class_board_item_component.html#abdc37bbf43d8b710e1e261653f33cf54">boardItem</a>.Rb, <span class="keyword">this</span>.boardItem, handMovementDir, throwForce);</div>
-<div class="line"><span class="lineno">   36</span>        this.playerHandRef.OnGrabReleased -= <a class="code hl_function" href="#a29b3650034d1d8b35406b62c82ca2acd">OnGrabReleased</a>;</div>
-<div class="line"><span class="lineno">   37</span>        this.<a class="code hl_variable" href="#a7b4ce8cead68d9b8f71d77a5d196f0e6">OnHandGrabRelease</a>?.Invoke();</div>
-<div class="line"><span class="lineno">   38</span>    }</div>
-<div class="ttc" id="aclass_hand_handler_html_a7b4ce8cead68d9b8f71d77a5d196f0e6"><div class="ttname"><a href="#a7b4ce8cead68d9b8f71d77a5d196f0e6">HandHandler.OnHandGrabRelease</a></div><div class="ttdeci">Action OnHandGrabRelease</div><div class="ttdef"><b>Definition</b> HandHandler.cs:12</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>    {</div>
+<div class="line"><span class="lineno">   33</span>        <a class="code hl_function" href="#a29b3650034d1d8b35406b62c82ca2acd">OnGrabReleased</a>(this.<a class="code hl_variable" href="class_board_item_component.html#abdc37bbf43d8b710e1e261653f33cf54">boardItem</a>.Rb, <span class="keyword">this</span>.boardItem, handMovementDir, throwForce);</div>
+<div class="line"><span class="lineno">   34</span>        this.playerHandRef.OnRemovedFromHand -= <a class="code hl_function" href="#a29b3650034d1d8b35406b62c82ca2acd">OnGrabReleased</a>;</div>
+<div class="line"><span class="lineno">   35</span>        this.<a class="code hl_variable" href="class_board_item_component.html#abdc37bbf43d8b710e1e261653f33cf54">boardItem</a>.OnRemovedFromHand?.Invoke();</div>
+<div class="line"><span class="lineno">   36</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -434,13 +456,13 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   12</span>    {</div>
-<div class="line"><span class="lineno">   13</span>        <span class="keywordflow">if</span> (Application.isPlaying)</div>
-<div class="line"><span class="lineno">   14</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   15</span>        this.boardItem = GetComponent&lt;BoardItem&gt;();</div>
-<div class="line"><span class="lineno">   16</span>        <a class="code hl_function" href="class_board_item_component.html#a700e24890a170e7561871e1b636415b3">CustomOnValidate</a>();</div>
-<div class="line"><span class="lineno">   17</span>    }</div>
-<div class="ttc" id="aclass_board_item_component_html_a700e24890a170e7561871e1b636415b3"><div class="ttname"><a href="class_board_item_component.html#a700e24890a170e7561871e1b636415b3">BoardItemComponent.CustomOnValidate</a></div><div class="ttdeci">virtual void CustomOnValidate()</div><div class="ttdoc">OnValidate so that BoardItemComponent&#39;s OnValidate doesnt get overwritten.</div><div class="ttdef"><b>Definition</b> BoardItemComponent.cs:20</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   13</span>    {</div>
+<div class="line"><span class="lineno">   14</span>        <span class="keywordflow">if</span> (Application.isPlaying)</div>
+<div class="line"><span class="lineno">   15</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   16</span>        this.boardItem = GetComponent&lt;BoardItem&gt;();</div>
+<div class="line"><span class="lineno">   17</span>        <a class="code hl_function" href="class_board_item_component.html#a700e24890a170e7561871e1b636415b3">CustomOnValidate</a>();</div>
+<div class="line"><span class="lineno">   18</span>    }</div>
+<div class="ttc" id="aclass_board_item_component_html_a700e24890a170e7561871e1b636415b3"><div class="ttname"><a href="class_board_item_component.html#a700e24890a170e7561871e1b636415b3">BoardItemComponent.CustomOnValidate</a></div><div class="ttdeci">virtual void CustomOnValidate()</div><div class="ttdoc">OnValidate so that BoardItemComponent&#39;s OnValidate doesnt get overwritten.</div><div class="ttdef"><b>Definition</b> BoardItemComponent.cs:21</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -463,20 +485,6 @@ Private Attributes</h2></td></tr>
 <span class="mlabels"><span class="mlabel protected">protected</span><span class="mlabel inherited">inherited</span></span>  </td>
   </tr>
 </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7b4ce8cead68d9b8f71d77a5d196f0e6" name="a7b4ce8cead68d9b8f71d77a5d196f0e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b4ce8cead68d9b8f71d77a5d196f0e6">&#9670;&#160;</a></span>OnHandGrabRelease</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Action HandHandler.OnHandGrabRelease</td>
-        </tr>
-      </table>
 </div><div class="memdoc">
 
 </div>

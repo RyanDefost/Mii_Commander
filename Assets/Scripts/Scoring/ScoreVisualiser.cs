@@ -31,7 +31,7 @@ namespace Scoring
             SetVisuals();
         }
         
-        private void SetVisuals()
+        private void SetVisuals(int _ = -1)
         {
             int score = this.scoreManager.GetScore();
             int goal = this.scoreManager.GetGoal();

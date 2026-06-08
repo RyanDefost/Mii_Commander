@@ -1,3 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$class_timer.html" title="A simple timer that sends out events for timer based functions." alt="" coords="5,5,60,32"/>
+<area shape="rect" id="Node000000" href="$class_managers_1_1_state-1-g.html" title=" " alt="" coords="5,80,150,107"/>
+<area shape="rect" id="Node000001" href="$class_managers_1_1_game_states_1_1_candy_activate_state.html" title=" " alt="" coords="198,5,395,48"/>
+<area shape="poly" id="edge46_Node000000_Node000001" title=" " alt="" coords="138,72,226,47,222,50,140,77"/>
+<area shape="rect" id="Node000002" href="$class_managers_1_1_game_states_1_1_candy_move_state.html" title=" " alt="" coords="198,72,395,115"/>
+<area shape="poly" id="edge47_Node000000_Node000002" title=" " alt="" coords="165,91,200,93,195,94,166,96"/>
+<area shape="rect" id="Node000003" href="$class_managers_1_1_game_states_1_1_play_game_state.html" title=" " alt="" coords="204,139,389,181"/>
+<area shape="poly" id="edge48_Node000000_Node000003" title=" " alt="" coords="139,109,226,137,221,139,138,114"/>
 </map>

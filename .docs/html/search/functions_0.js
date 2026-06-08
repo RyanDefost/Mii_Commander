@@ -1,13 +1,18 @@
 var searchData=
 [
-  ['activateobject_0',['ActivateObject',['../class_object_pool-1-g.html#a08cd8ff4bcfc4b360de9d89a3e0f16e0',1,'ObjectPool-1-g']]],
-  ['addrangetopool_1',['AddRangeToPool',['../class_object_pool-1-g.html#a93fa8480cfc9bdb68247203e0edb02ac',1,'ObjectPool-1-g']]],
-  ['addtohand_2',['AddToHand',['../class_hand_handler.html#a40bc0df1639bb2632b58acf4e31df31f',1,'HandHandler.AddToHand()'],['../class_player_deck.html#a8d5604e33894c1d561da5d9bcf4e2092',1,'PlayerDeck.AddToHand()']]],
-  ['addtomaxtime_3',['AddToMaxTime',['../class_timer.html#a678bef26ac9fca5663a5cef4ffaa1f7b',1,'Timer']]],
-  ['addtoregistry_4',['AddToRegistry',['../class_component_registry.html#ada1775506a8f11a9605a63c2ab4cefdc',1,'ComponentRegistry']]],
-  ['animatezposition_5',['AnimateZPosition',['../class_player_hand_1_1_movement_handler.html#a70ba2e50c8430258207b90f526cd66bc',1,'PlayerHand::MovementHandler']]],
-  ['applyforcetowardstarget_6',['ApplyForceTowardsTarget',['../class_move_to_grid_position.html#a09884c679960ed45bac11f79d7d95a94',1,'MoveToGridPosition']]],
-  ['applymousedelta_7',['ApplyMouseDelta',['../class_player_hand_1_1_movement_handler.html#a1af76cd06eafe219eb797ef5053ec959',1,'PlayerHand::MovementHandler']]],
-  ['awaitdistancetotarget_8',['AwaitDistanceToTarget',['../class_grid_moveable.html#a41d6d6280fa6141f129e56c921c6301a',1,'GridMoveable']]],
-  ['awake_9',['Awake',['../class_billboard.html#a3bacdb5a79947fdee7cac2a119a765b2',1,'Billboard.Awake()'],['../class_candy_type_lookup.html#a7bf2249894e8e83b5f4480c546249600',1,'CandyTypeLookup.Awake()'],['../class_player_deck.html#a17e4db0f137a9cb40bb5cd4552a364cf',1,'PlayerDeck.Awake()'],['../class_player_hand_1_1_movement_handler.html#a4b98e12c0f87ce901fcf70fbe4201cd6',1,'PlayerHand.MovementHandler.Awake()'],['../class_player_hand_1_1_player_hand_manager.html#a4874cdf2f1838d7e0f8dda934b19dbcc',1,'PlayerHand.PlayerHandManager.Awake()']]]
+  ['activate_0',['Activate',['../class_board_item.html#ae7c359cb3984c23e9e43af52a9353654',1,'BoardItem.Activate()'],['../class_candy_1_1_candy_multiplier.html#a9ca0f8564754d89fda4b0b070988ce62',1,'Candy.CandyMultiplier.Activate()'],['../class_count_down_till_activation.html#a67410fa20a0551b20e22bd4ab507ec0b',1,'CountDownTillActivation.Activate()'],['../class_explode_nearby_items_away.html#a5c712a13dc90cf94340c7e79054cd96b',1,'ExplodeNearbyItemsAway.Activate()'],['../interface_i_board_item_disablable.html#a3764928c8987d16f5df77a6b3f572ef3',1,'IBoardItemDisablable.Activate()'],['../class_temp_neighbor_tester.html#af149e5d329c236cde51bec39bed909b8',1,'TempNeighborTester.Activate()']]],
+  ['activateobject_1',['ActivateObject',['../class_object_pool-1-g.html#a08cd8ff4bcfc4b360de9d89a3e0f16e0',1,'ObjectPool-1-g']]],
+  ['addrangetopool_2',['AddRangeToPool',['../class_object_pool-1-g.html#a93fa8480cfc9bdb68247203e0edb02ac',1,'ObjectPool-1-g']]],
+  ['addscore_3',['AddScore',['../class_scoring_1_1_score_manager.html#aeeb355f0a4d7852f3b4738a4ce8cbc12',1,'Scoring::ScoreManager']]],
+  ['addtohand_4',['AddToHand',['../class_hand_handler.html#a40bc0df1639bb2632b58acf4e31df31f',1,'HandHandler.AddToHand()'],['../class_player_deck.html#a8d5604e33894c1d561da5d9bcf4e2092',1,'PlayerDeck.AddToHand()']]],
+  ['addtomaxtime_5',['AddToMaxTime',['../class_timer.html#a678bef26ac9fca5663a5cef4ffaa1f7b',1,'Timer']]],
+  ['addtoregistry_6',['AddToRegistry',['../class_component_registry.html#ada1775506a8f11a9605a63c2ab4cefdc',1,'ComponentRegistry']]],
+  ['addtowaittime_7',['AddToWaitTime',['../class_grid_1_1_turn_manager.html#a0cfdd89d776dd1dcbcf047412997a7b1',1,'Grid::TurnManager']]],
+  ['animatezposition_8',['AnimateZPosition',['../class_player_hand_1_1_movement_handler.html#a70ba2e50c8430258207b90f526cd66bc',1,'PlayerHand::MovementHandler']]],
+  ['applyforcetowardstarget_9',['ApplyForceTowardsTarget',['../class_move_to_grid_position.html#a09884c679960ed45bac11f79d7d95a94',1,'MoveToGridPosition']]],
+  ['applyimpulse_10',['ApplyImpulse',['../class_grid_moveable.html#a90b40a75627fa0626ebf51d24a38d4b8',1,'GridMoveable']]],
+  ['applymousedelta_11',['ApplyMouseDelta',['../class_player_hand_1_1_movement_handler.html#a1af76cd06eafe219eb797ef5053ec959',1,'PlayerHand::MovementHandler']]],
+  ['applypointmultiplier_12',['ApplyPointMultiplier',['../class_candy_actor.html#af2224b77fd09348bb913c51135287dd6',1,'CandyActor']]],
+  ['awaitdistancetotarget_13',['AwaitDistanceToTarget',['../class_grid_moveable.html#a41d6d6280fa6141f129e56c921c6301a',1,'GridMoveable']]],
+  ['awake_14',['Awake',['../class_billboard.html#a3bacdb5a79947fdee7cac2a119a765b2',1,'Billboard.Awake()'],['../class_board_item.html#aa0b642e838634824266350bab0b97cf8',1,'BoardItem.Awake()'],['../class_count_down_till_activation.html#a09485dbbcc154ab63a97338ed17d5362',1,'CountDownTillActivation.Awake()'],['../class_shake_detector.html#af0b52320eec8ec167e8b5f3ca5b4d820',1,'ShakeDetector.Awake()'],['../class_candy_type_lookup.html#a7bf2249894e8e83b5f4480c546249600',1,'CandyTypeLookup.Awake()'],['../class_grid_1_1_grid_manager.html#a1da864b3caf81092769bbd6aa225400d',1,'Grid.GridManager.Awake()'],['../class_managers_1_1_game_manager.html#a58bf0371884a2640fd0e1982cb2eaec4',1,'Managers.GameManager.Awake()'],['../class_player_deck.html#a17e4db0f137a9cb40bb5cd4552a364cf',1,'PlayerDeck.Awake()'],['../class_player_hand_1_1_movement_handler.html#a4b98e12c0f87ce901fcf70fbe4201cd6',1,'PlayerHand.MovementHandler.Awake()'],['../class_player_hand_1_1_player_hand_manager.html#a4874cdf2f1838d7e0f8dda934b19dbcc',1,'PlayerHand.PlayerHandManager.Awake()'],['../class_scoring_1_1_score_manager.html#ac2985d135189bdd03931bd7639121822',1,'Scoring.ScoreManager.Awake()']]]
 ];

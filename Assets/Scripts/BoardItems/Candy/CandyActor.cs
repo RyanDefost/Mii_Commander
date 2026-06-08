@@ -1,36 +1,38 @@
 using System;
 using UnityEngine;
 
-/// <summary>
-/// Manages the in game logic of a piece of candy
-/// </summary>
-[RequireComponent(typeof(MoveToGridPosition), typeof(HandHandler))]
-public class CandyActor : BoardItem, IUserInterfaceValueGetter
+namespace BoardItems
 {
-    [SerializeField] private int points;
-    public int Points { get => this.points; private set => this.points = value; }
-
-    public int candyType; // index reference to lookup
-
-    private Action<object, Type> OnchangePoints;
-    
-    [SerializeField]
-    private MoveToGridPosition movement;
-    [SerializeField]
-    private HandHandler handHandler;
-    
-    protected virtual void CustomOnValidate()
+    /// <summary>
+    /// Manages the in game logic of a piece of candy
+    /// </summary>
+    [RequireComponent(typeof(MoveToGridPosition), typeof(HandHandler))]
+    public class CandyActor : BoardItem, IUserInterfaceValueGetter
     {
-        this.movement = GetComponent<MoveToGridPosition>();
-        this.handHandler = GetComponent<HandHandler>();
-    }
+        [SerializeField] private int points;
+        public int Points { get => this.points; private set => this.points = value; }
 
-    public void OnGrabReleased(Rigidbody rb, Vector2 handMovementDir, Vector2 throwForce)
-    {
-        this.movement.moveImmunity = true;
-        HandHandler.OnGrabReleased(rb, this, handMovementDir, throwForce);
-        this.OnAddToBoard += RemovePlayerMoveImmunity;
-    }
+        public int candyType; // index reference to lookup
+
+        private Action<object, Type> OnchangePoints;
+    
+        [SerializeField]
+        private MoveToGridPosition movement;
+        [SerializeField]
+        private HandHandler handHandler;
+    
+        protected virtual void CustomOnValidate()
+        {
+            this.movement = GetComponent<MoveToGridPosition>();
+            this.handHandler = GetComponent<HandHandler>();
+        }
+
+        public void OnGrabReleased(Rigidbody rb, Vector2 handMovementDir, Vector2 throwForce)
+        {
+            this.movement.moveImmunity = true;
+            HandHandler.OnGrabReleased(rb, this, handMovementDir, throwForce);
+            this.OnAddToBoard += RemovePlayerMoveImmunity;
+        }
 
     private void RemovePlayerMoveImmunity()
     {
@@ -66,5 +68,6 @@ public class CandyActor : BoardItem, IUserInterfaceValueGetter
     public void UnSubscribeOnChangeValue(string valueName, Action<object, Type> callback)
     {
         if (valueName == "points") this.OnchangePoints -= callback;
+    }
     }
 }

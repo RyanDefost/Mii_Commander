@@ -1,15 +1,20 @@
 var searchData=
 [
-  ['pixeldensityscale_0',['pixelDensityScale',['../class_player_hand_1_1_movement_handler.html#a22dbd19de16fa88f06dbe932e99797ac',1,'PlayerHand::MovementHandler']]],
-  ['playerhandmanager_1',['playerHandManager',['../class_player_deck.html#acf53b50fd47149509e79a460821f213a',1,'PlayerDeck']]],
-  ['playerhandref_2',['playerHandRef',['../class_candy_group_handle.html#abb6f8ddcc939bb9353f28c54621f86b8',1,'CandyGroupHandle.playerHandRef'],['../class_hand_handler.html#a03cd3482fb157a0df468716526037d07',1,'HandHandler.playerHandRef']]],
-  ['pointrequirement_3',['pointRequirement',['../class_quest_system_1_1_quest.html#a20de1ed85999e9441f75c75d305628d4',1,'QuestSystem::Quest']]],
-  ['points_4',['points',['../class_candy_actor.html#ae7a3980c51e5aa1b6d39ec55c887a933',1,'CandyActor']]],
-  ['position_5',['position',['../class_grid_1_1_grid_manager_1_1_grid_instance.html#a5fa9ccc46d6cb3006834ab4f48495b80',1,'Grid::GridManager::GridInstance']]],
-  ['positions_6',['positions',['../class_grid_1_1_grid_generator.html#a264d22d135cd56e2763359d9bf8e2dc9',1,'Grid::GridGenerator']]],
-  ['positionsoffgrid_7',['positionsOffGrid',['../class_grid_1_1_grid_generator.html#a6a9c03712337f3c65070f8564862b099',1,'Grid::GridGenerator']]],
-  ['possiblecandies_8',['possibleCandies',['../class_player_deck_1_1_deck_option.html#ac3d7557c48afcb0d9a638ad64ec66818',1,'PlayerDeck::DeckOption']]],
-  ['previousdist_9',['previousDist',['../class_grid_moveable.html#afc6e08e8c33d76a424fc2e839123366c',1,'GridMoveable']]],
-  ['previousposition_10',['previousPosition',['../class_player_hand_1_1_movement_handler.html#ab927aff331f71848b1e0740e630d5751',1,'PlayerHand::MovementHandler']]],
-  ['progression_11',['progression',['../class_grid_rotatable.html#a47bf8ba62e02da51f9525a9b8ce56cbb',1,'GridRotatable']]]
+  ['pattern_0',['pattern',['../class_grid_1_1_neighbor_pattern_registry_1_1_live_pattern.html#af726f18113295cf58bdf5669d4cac48a',1,'Grid::NeighborPatternRegistry::LivePattern']]],
+  ['patternregistry_1',['patternRegistry',['../class_candy_1_1_candy_multiplier.html#ab51eeca6ffa58ecd7029c1c9f1ddb7bd',1,'Candy.CandyMultiplier.patternRegistry'],['../class_explode_nearby_items_away.html#a85657ba8c73ce61c2e4784df279351b7',1,'ExplodeNearbyItemsAway.patternRegistry']]],
+  ['physicsdata_2',['physicsData',['../class_move_to_grid_position.html#a2a3143a25cb7b5b2689d0554b62a47ed',1,'MoveToGridPosition']]],
+  ['pixeldensityscale_3',['pixelDensityScale',['../class_player_hand_1_1_movement_handler.html#a22dbd19de16fa88f06dbe932e99797ac',1,'PlayerHand::MovementHandler']]],
+  ['playerhandmanager_4',['playerHandManager',['../class_player_deck.html#acf53b50fd47149509e79a460821f213a',1,'PlayerDeck']]],
+  ['playerhandref_5',['playerHandRef',['../class_candy_group_handle.html#abb6f8ddcc939bb9353f28c54621f86b8',1,'CandyGroupHandle.playerHandRef'],['../class_hand_handler.html#a03cd3482fb157a0df468716526037d07',1,'HandHandler.playerHandRef'],['../class_managers_1_1_game_states_1_1_candy_move_state.html#a73163c97dfdc3a63d5022f280184d76d',1,'Managers.GameStates.CandyMoveState.playerHandRef'],['../class_managers_1_1_game_states_1_1_play_game_state.html#a7f41b1f6e2497f76e2eae248d500b710',1,'Managers.GameStates.PlayGameState.playerHandRef']]],
+  ['pointrequirement_6',['pointRequirement',['../class_managers_1_1_level_ref.html#a730760fa9722449756f1d3ef8f7f583d',1,'Managers.LevelRef.pointRequirement'],['../class_quest_system_1_1_quest.html#a20de1ed85999e9441f75c75d305628d4',1,'QuestSystem.Quest.pointRequirement']]],
+  ['points_7',['points',['../class_candy_actor.html#a91eac4531b0de9f7c7f48d92cf56393b',1,'CandyActor']]],
+  ['position_8',['position',['../class_grid_1_1_grid_manager_1_1_grid_instance.html#a5fa9ccc46d6cb3006834ab4f48495b80',1,'Grid::GridManager::GridInstance']]],
+  ['positions_9',['positions',['../class_grid_1_1_grid_generator.html#a264d22d135cd56e2763359d9bf8e2dc9',1,'Grid.GridGenerator.positions'],['../struct_grid_1_1_neighbor_pattern.html#a54e72094adb7a9ec8adbaef7a0e0a210',1,'Grid.NeighborPattern.positions']]],
+  ['positionsoffgrid_10',['positionsOffGrid',['../class_grid_1_1_grid_generator.html#a6a9c03712337f3c65070f8564862b099',1,'Grid::GridGenerator']]],
+  ['possiblecandies_11',['possibleCandies',['../class_player_deck_1_1_deck_option.html#ac3d7557c48afcb0d9a638ad64ec66818',1,'PlayerDeck::DeckOption']]],
+  ['prefix_12',['prefix',['../class_user_interface_value_to_t_m_p.html#a4f4b43c541a91d3e71d545d1c001dee4',1,'UserInterfaceValueToTMP']]],
+  ['previousdist_13',['previousDist',['../class_grid_moveable.html#afc6e08e8c33d76a424fc2e839123366c',1,'GridMoveable']]],
+  ['previousposition_14',['previousPosition',['../class_player_hand_1_1_movement_handler.html#ab927aff331f71848b1e0740e630d5751',1,'PlayerHand::MovementHandler']]],
+  ['progression_15',['progression',['../class_grid_rotatable.html#a47bf8ba62e02da51f9525a9b8ce56cbb',1,'GridRotatable']]],
+  ['pushdirection_16',['pushDirection',['../class_helper_structs_1_1_move_deactivator.html#ac13c91da8d35392c701d7576fd430b06',1,'HelperStructs::MoveDeactivator']]]
 ];
