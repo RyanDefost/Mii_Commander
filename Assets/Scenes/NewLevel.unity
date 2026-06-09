@@ -2637,6 +2637,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6186713857404773952, guid: 23f17c9e0b606f27bab10776590146c1, type: 3}
+      propertyPath: cellPasses.Array.data[0].positionIndexes.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186713857404773952, guid: 23f17c9e0b606f27bab10776590146c1, type: 3}
+      propertyPath: 'cellPasses.Array.data[0].positionIndexes.Array.data[11]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186713857404773952, guid: 23f17c9e0b606f27bab10776590146c1, type: 3}
+      propertyPath: 'cellPasses.Array.data[0].positionIndexes.Array.data[12]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186713857404773952, guid: 23f17c9e0b606f27bab10776590146c1, type: 3}
+      propertyPath: 'cellPasses.Array.data[0].positionIndexes.Array.data[13]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186713857404773952, guid: 23f17c9e0b606f27bab10776590146c1, type: 3}
+      propertyPath: 'cellPasses.Array.data[0].positionIndexes.Array.data[14]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186713857404773952, guid: 23f17c9e0b606f27bab10776590146c1, type: 3}
+      propertyPath: 'cellPasses.Array.data[0].positionIndexes.Array.data[15]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186713857404773952, guid: 23f17c9e0b606f27bab10776590146c1, type: 3}
+      propertyPath: 'cellPasses.Array.data[0].positionIndexes.Array.data[16]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186713857404773952, guid: 23f17c9e0b606f27bab10776590146c1, type: 3}
+      propertyPath: 'cellPasses.Array.data[0].positionIndexes.Array.data[17]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186713857404773952, guid: 23f17c9e0b606f27bab10776590146c1, type: 3}
+      propertyPath: 'cellPasses.Array.data[0].positionIndexes.Array.data[18]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186713857404773952, guid: 23f17c9e0b606f27bab10776590146c1, type: 3}
+      propertyPath: 'cellPasses.Array.data[0].positionIndexes.Array.data[19]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186713857404773952, guid: 23f17c9e0b606f27bab10776590146c1, type: 3}
+      propertyPath: 'cellPasses.Array.data[0].positionIndexes.Array.data[20]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186713857404773952, guid: 23f17c9e0b606f27bab10776590146c1, type: 3}
+      propertyPath: 'cellPasses.Array.data[0].positionIndexes.Array.data[21]'
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
