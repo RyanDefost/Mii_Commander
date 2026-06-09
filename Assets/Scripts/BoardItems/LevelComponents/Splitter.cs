@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Grid;
@@ -6,7 +5,7 @@ using Managers;
 using Unity.Mathematics;
 using UnityEngine;
 
-namespace Synergy
+namespace BoardItems
 {
     public class Splitter : BoardItemComponent
     {

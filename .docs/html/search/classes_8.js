@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['objectpool_2d1_2dg_0',['ObjectPool-1-g',['../class_object_pool-1-g.html',1,'']]]
+  ['levelref_0',['LevelRef',['../class_managers_1_1_level_ref.html',1,'Managers']]],
+  ['livepattern_1',['LivePattern',['../class_grid_1_1_neighbor_pattern_registry_1_1_live_pattern.html',1,'Grid::NeighborPatternRegistry']]]
 ];

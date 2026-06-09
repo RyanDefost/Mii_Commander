@@ -1,10 +1,26 @@
 var searchData=
 [
-  ['shouldloop_0',['shouldLoop',['../class_timer.html#a2dd3d4f06c78f14085f8ab28db74051e',1,'Timer']]],
-  ['smoothedvelocity_1',['smoothedVelocity',['../class_player_hand_1_1_movement_handler.html#a1deefc7abc3383019634992ba3605180',1,'PlayerHand::MovementHandler']]],
-  ['sprites_2',['sprites',['../class_player_hand_1_1_visual_handler.html#ac60dcd96efdf77e83129a5dfc5c9350a',1,'PlayerHand::VisualHandler']]],
-  ['startdelay_3',['startDelay',['../class_move_to_grid_position.html#ac1a4f83d719f0b1a6d997cbd2e868e49',1,'MoveToGridPosition']]],
-  ['startdelaytimer_4',['startDelayTimer',['../class_move_to_grid_position.html#a57267575cb5befb603cc2a64ea10315f',1,'MoveToGridPosition']]],
-  ['stepangle_5',['stepAngle',['../class_grid_rotatable.html#aa8f5666cf7d4dbbe286200127facba7c',1,'GridRotatable']]],
-  ['subscribers_6',['Subscribers',['../class_component_registry.html#ad4c0f5c13e1d84d8c1d1bc3392a5295b',1,'ComponentRegistry']]]
+  ['score_0',['score',['../class_scoring_1_1_score_manager.html#a6d08ac6eb72018010e5023aac0b11929',1,'Scoring::ScoreManager']]],
+  ['scoregoal_1',['scoreGoal',['../class_scoring_1_1_score_manager.html#a72b068e2dd701209bcf4557abe0e41d0',1,'Scoring::ScoreManager']]],
+  ['scoremanager_2',['scoreManager',['../class_managers_1_1_game_manager.html#ad73ad9f4336eb53531664c97b3562f02',1,'Managers.GameManager.scoreManager'],['../class_scoring_1_1_score_visualiser.html#a24b64bec331c6369492b7cd55ba06300',1,'Scoring.ScoreVisualiser.scoreManager'],['../class_shop_component.html#a6ab162f5c72cf863e456d58426d72a56',1,'ShopComponent.scoreManager']]],
+  ['shakecount_3',['shakeCount',['../class_shake_detector.html#aba9f5ce0e5c18862945bafdd9fb1873a',1,'ShakeDetector']]],
+  ['shakedirectiondifference_4',['shakeDirectionDifference',['../class_shake_detector.html#ab416e565ce418b378cbdb2b175191610',1,'ShakeDetector']]],
+  ['shakedistancedifference_5',['shakeDistanceDifference',['../class_shake_detector.html#a836cdc91b27646990d16eb3b02e39fb1',1,'ShakeDetector']]],
+  ['shakethreshold_6',['shakeThreshold',['../class_shake_detector.html#ac293ee3525488dc074b318a327cf6398',1,'ShakeDetector']]],
+  ['shopitem_7',['shopItem',['../class_shop_component.html#a3b1f1e535eb2345f0cea3fad61547ebe',1,'ShopComponent']]],
+  ['shopobject_8',['shopObject',['../class_helper_structs_1_1_shop_1_1_shop_item.html#acfb9cfda25a42517bb58adc49d744014',1,'HelperStructs::Shop::ShopItem']]],
+  ['shouldactivateonitsown_9',['shouldActivateOnItsOwn',['../class_count_down_till_activation.html#a4a9da7e2497438cd2a59489cce758bbd',1,'CountDownTillActivation.shouldActivateOnItsOwn'],['../class_explode_nearby_items_away.html#a18da6fd537539f46c310d0c28770265c',1,'ExplodeNearbyItemsAway.shouldActivateOnItsOwn']]],
+  ['shouldloop_10',['shouldLoop',['../class_timer.html#a2dd3d4f06c78f14085f8ab28db74051e',1,'Timer']]],
+  ['slider_11',['slider',['../class_scoring_1_1_score_visualiser.html#a4a2d0be547cf473cb08d5c9acb9b24cc',1,'Scoring::ScoreVisualiser']]],
+  ['smoothedvelocity_12',['smoothedVelocity',['../class_player_hand_1_1_movement_handler.html#a1deefc7abc3383019634992ba3605180',1,'PlayerHand::MovementHandler']]],
+  ['sprites_13',['sprites',['../class_player_hand_1_1_visual_handler.html#ac60dcd96efdf77e83129a5dfc5c9350a',1,'PlayerHand::VisualHandler']]],
+  ['startdelay_14',['startDelay',['../class_move_to_grid_position.html#ac1a4f83d719f0b1a6d997cbd2e868e49',1,'MoveToGridPosition']]],
+  ['startdelaytimer_15',['startDelayTimer',['../class_move_to_grid_position.html#a57267575cb5befb603cc2a64ea10315f',1,'MoveToGridPosition']]],
+  ['startscore_16',['startScore',['../class_scoring_1_1_score_manager.html#af6d4740ede6602aca3d2cf68ab0a557d',1,'Scoring::ScoreManager']]],
+  ['state_17',['state',['../class_managers_1_1_game_state_setter.html#a3b24445c08ddd0e22c23c8dfdb37e8a0',1,'Managers::GameStateSetter']]],
+  ['states_18',['states',['../class_managers_1_1_game_manager.html#a92c678bb9357133958d699f812b16ace',1,'Managers::GameManager']]],
+  ['stepangle_19',['stepAngle',['../class_grid_rotatable.html#aa8f5666cf7d4dbbe286200127facba7c',1,'GridRotatable']]],
+  ['stuckvelocitythreshold_20',['stuckVelocityThreshold',['../class_move_to_grid_position_1_1_physics_data.html#a022ce9c7c03b9258cdee73b8b196fbe6',1,'MoveToGridPosition::PhysicsData']]],
+  ['subscribers_21',['Subscribers',['../class_component_registry.html#ad4c0f5c13e1d84d8c1d1bc3392a5295b',1,'ComponentRegistry']]],
+  ['suffix_22',['suffix',['../class_user_interface_value_to_t_m_p.html#a490b1ffe4f83b7d6c310990472799571',1,'UserInterfaceValueToTMP']]]
 ];

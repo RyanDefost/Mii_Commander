@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['forallgriditems_0',['ForAllGridItems',['../class_grid_1_1_grid_manager.html#a108ad106ff03b94b262881a790517e02',1,'Grid::GridManager']]]
+  ['enableactivate_0',['EnableActivate',['../class_count_down_till_activation.html#a0729f892e0390bd453e98e6584589c7b',1,'CountDownTillActivation.EnableActivate()'],['../class_explode_nearby_items_away.html#a90b51d806ffd82f37d9620d732db1d35',1,'ExplodeNearbyItemsAway.EnableActivate()'],['../interface_i_board_item_disablable.html#aa37d9bb457cc4cff65b77acbddcddafe',1,'IBoardItemDisablable.EnableActivate()']]],
+  ['enablemovement_1',['EnableMovement',['../class_move_to_grid_position.html#a3c008617025d2c0c8d2e231303e1152b',1,'MoveToGridPosition']]],
+  ['equals_2',['Equals',['../struct_grid_1_1_grid_manager_1_1_grid_index.html#a95a44cc1ab9daaa1ebc20be0f8ca973b',1,'Grid.GridManager.GridIndex.Equals(GridIndex other)'],['../struct_grid_1_1_grid_manager_1_1_grid_index.html#a80194338a99c21b5d8b005b322ad149e',1,'Grid.GridManager.GridIndex.Equals(object obj)']]],
+  ['exit_3',['Exit',['../class_managers_1_1_game_states_1_1_candy_activate_state.html#a51eb21b85c73fc738d9b93178f2a4bed',1,'Managers.GameStates.CandyActivateState.Exit()'],['../class_managers_1_1_game_states_1_1_candy_move_state.html#ab2f04e63944fca44e277c6eeda24305c',1,'Managers.GameStates.CandyMoveState.Exit()'],['../class_managers_1_1_game_states_1_1_play_game_state.html#a89ac32a1db7df3e7421b7afb54e2981e',1,'Managers.GameStates.PlayGameState.Exit()'],['../class_managers_1_1_state-1-g.html#a3150bd5a918322163f987fc8741804db',1,'Managers.State-1-g.Exit()']]]
 ];

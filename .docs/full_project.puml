@@ -28,7 +28,7 @@ hide empty members
 MonoBehaviour(Billboard) {
   - camRef : Camera
   - Awake() : void
-  - Update() : void
+  - LateUpdate() : void
 }
 MonoBehaviour(CandyTypeLookup) {
   PrivateSerialized(options : List<CandyTypeOption>)
@@ -45,6 +45,23 @@ class CandyTypeOption {
   + name : string
   + candyPrefab : GameObject
   + index : int
+}
+MonoBehaviour(DiscardPile) {
+  - gridManager : GridManager
+  - handManager : PlayerHandManager
+  - obj : GameObject
+  - Start() : void
+  - OnTriggerEnter() : void
+}
+struct Bounds<T1, T2> {
+  + min : T1
+  + max : T2
+  - Bounds() : public
+}
+MonoBehaviour(MoveDeactivator) {
+  PrivateSerialized(pushDirection : Vector3)
+  - obj : GameObject
+  - OnTriggerStay() : void
 }
 MonoBehaviour(PlayerDeck) {
   PrivateSerialized(playerHandManager : PlayerHandManager)
@@ -96,77 +113,90 @@ class Quest {
   + GetText() : string
 }
 MonoBehaviour(BoardItem) {
-  PrivateSerialized(interactable : Interactable)
+  + gridInstanceRef : GridManager.GridInstance
   - components : SerializeField, HideInInspector] private BoardItemComponent[]
   PrivateSerialized(rb : Rigidbody)
   - set : private
   + OnAddToHand : Action
+  + OnRemovedFromHand : Action
   + OnInitiate : Action
   + OnAddToBoard : Action
+  + OnActivate : Action
+  + OnStarted : Action
   - found : BoardItemComponent
   - null : return
-  - OnValidate() : void
+  - Awake() : void
   - Start() : void
-  - CustomOnValidate() : virtual void
   + Initiate() : void
+  + Activate() : void
 }
 MonoBehaviour(BoardItemComponent) {
   - boardItem : SerializeField, HideInInspector] protected BoardItem
   - OnValidate() : void
   - CustomOnValidate() : virtual void
   + ConnectToBoardItem() : virtual void
+  + GetBoardItem() : BoardItem
 }
 class GridMoveable {
   - grid : GridManager
+  - moveManagerRef : MoveManager
+  - canIgnoreLocks : Space] public bool
+  + moveImmunity : bool
   - set : private
+  - oldTarget : GridManager.GridInstance
   PrivateSerialized(offset : float)
   PrivateSerialized(minimalDist : float)
   - previousDist : float?
+  PrivateSerialized(minVelocityToRecalculate : float)
   - onUpdate : Action
   - dist : float
+  - currentSpeed : float
   - true : return
   - Start() : void
   + ConnectToBoardItem() : override void
   - OnDestroy() : void
-  - Update() : void
+  - FixedUpdate() : void
   - OnAddToHand() : void
   - OnInitiate() : void
   + SetMoving() : void
   - StopMovementToTarget() : else
+  - LockLocalPosition() : void
   - StopMovementToTarget() : virtual void
   - TriggerMovementToTarget() : virtual void
   - AwaitDistanceToTarget() : void
   - SnapToTarget() : virtual void
   - UpdateTarget() : bool
-  - TriggerUpdateTarget() : void
+  - TriggerUpdateTargetWithoutMove() : void
+  - TriggerUpdateTargetWithImmunityState() : void
   + SetTarget() : void
   + ResetTarget() : void
   + HasTarget() : bool
   - GetTargetPosition() : Vector3
+  + ApplyImpulse() : void
 }
 class GridRotatable {
-  PrivateSerialized(handHandler : HandHandler)
+  - moveManagerRef : MoveManager
   PrivateSerialized(rotationSpeed : float)
   PrivateSerialized(stepAngle : float)
   - progression : float
   - lockedRotation : bool
   - lastRotation : Vector3
+  - rotation : Vector3
   - angle : float
   - currentAngles : Vector3
   - snappedZ : float
-  - CustomOnValidate() : override void
+  - Start() : void
   + ConnectToBoardItem() : override void
   - OnDestroy() : void
   + RotateClockWise() : void
   - SnapToNearestCardinalZ() : void
   - OnAddToHand() : void
-  - OnGrabReleased() : void
+  - OnRemovedFromHand() : void
   - OnAddToBoard() : void
   - Update() : void
 }
 class HandHandler {
   - playerHandRef : PlayerHandManager
-  + OnHandGrabRelease : Action
   - throwVel : Vector3
   + ConnectToBoardItem() : override void
   - OnDestroy() : void
@@ -182,22 +212,29 @@ MonoBehaviour(Interactable) {
   + HasBoardItemParent() : bool
 }
 class MoveToGridPosition {
-  PrivateSerialized(rb : Rigidbody)
-  PrivateSerialized(movementStrength : float)
-  PrivateSerialized(maxVelocity : float)
-  PrivateSerialized(dampening : float)
+  PrivateSerialized(physicsData : PhysicsData)
+  - currentResistanceMultiplier : float
   PrivateSerialized(startDelay : float)
   - startDelayTimer : Timer
   PrivateSerialized(endTimerTime : float)
   - endTimer : Timer
   - usedMinimumForce : float
+  + movementStrength : float
+  + maxVelocity : float
+  + dampening : float
+  + stuckVelocityThreshold : float
+  + resistanceRampRate : float
+  + maxResistanceMultiplier : float
   - targetPosition : Vector3
   - diff : Vector3
+  - distance : float
   - velocity : Vector3
+  - speed : float
   - dot : float
   - alignmentFactor : float
-  - force : float
-  - CustomOnValidate() : override void
+  - baseForce : float
+  - finalForce : float
+  - effectiveMaxVelocity : float
   - TriggerMovementToTarget() : override void
   - Timer() : new
   - StopMovementToTarget() : override void
@@ -207,13 +244,30 @@ class MoveToGridPosition {
   - SnapToTarget() : override void
   - ApplyForceTowardsTarget() : void
 }
+class PhysicsData {
+  + movementStrength : float
+  + maxVelocity : float
+  + dampening : float
+  + stuckVelocityThreshold : float
+  + resistanceRampRate : float
+  + maxResistanceMultiplier : float
+}
 class CandyActor {
-  PrivateSerialized(points : float)
+  PrivateSerialized(points : int)
+  - set : private
   + candyType : int
+  - OnchangePoints : Action<object, Type>
   PrivateSerialized(movement : MoveToGridPosition)
   PrivateSerialized(handHandler : HandHandler)
-  - CustomOnValidate() : override void
-  + OnGrabReleased() : static void
+  - null : return
+  - CustomOnValidate() : virtual void
+  + OnGrabReleased() : void
+  - RemovePlayerMoveImmunity() : void
+  + ApplyPointMultiplier() : void
+  - typeof() : this.points,
+  + GetValue() : object
+  + SubscribeOnChangeValue() : void
+  + UnSubscribeOnChangeValue() : void
 }
 class CandyGroupHandle {
   - instances : readonly List<CandyHandle>
@@ -238,13 +292,128 @@ class CandyHandle {
   + gameObject : readonly GameObject
   - CandyHandle() : public
 }
+class CandyMultiplier {
+  PrivateSerialized(multiplier : float)
+  PrivateSerialized(effectPatternName : string)
+  PrivateSerialized(canRepeat : bool)
+  PrivateSerialized(effectAllCandy : bool)
+  PrivateSerialized(effectedCandyTypeIndexes : List<int>)
+  - patternRegistry : NeighborPatternRegistry
+  - gridManager : GridManager
+  - multiplierPattern : NeighborPattern?
+  - surroundingCandy : GridManager.GridInstance[]
+  - actor : CandyActor
+  - CandyActor : gridInstance.boardItem as
+  + ConnectToBoardItem() : override void
+  - OnDestroy() : void
+  - Activate() : void
+  - Deactivate() : void
+}
+class CountDownTillActivation {
+  PrivateSerialized(toActivate : BoardItemComponent)
+  PrivateSerialized(count : int)
+  - currentToActivate : IBoardItemDisablable
+  - currentCount : int
+  - countChanged : Action<object, Type>
+  - shouldActivateOnItsOwn : bool
+  - null : return
+  - CustomOnValidate() : override void
+  - Awake() : void
+  + ConnectToBoardItem() : override void
+  - typeof() : this.currentCount,
+  - OnDestroy() : void
+  + Activate() : void
+  + Reset() : void
+  + GetValue() : object
+  + SubscribeOnChangeValue() : void
+  + UnSubscribeOnChangeValue() : void
+  + DisableActivate() : void
+  + EnableActivate() : void
+}
+class ExplodeNearbyItemsAway {
+  - gridManager : GridManager
+  - patternRegistry : NeighborPatternRegistry
+  - gameManagerRef : GameManager
+  PrivateSerialized(explosionPatternName : string)
+  PrivateSerialized(explosionStrengthTile : float)
+  PrivateSerialized(explosionStrengthVisual : float)
+  PrivateSerialized(explosionTime : float)
+  - shouldActivateOnItsOwn : bool
+  - explosionPattern : NeighborPattern?
+  - foundNeighbors : GridManager.GridInstance[]
+  - neighborsEffected : int
+  - moveComponent : GridMoveable
+  - dirAway : Vector3
+  - newTarget : GridManager.GridInstance
+  + ConnectToBoardItem() : override void
+  - OnDestroy() : void
+  + Activate() : void
+  + DisableActivate() : void
+  + EnableActivate() : void
+}
+interface IBoardItemDisablable {
+  + Activate() : void
+  + DisableActivate() : void
+  + EnableActivate() : void
+}
+class ShakeDetector {
+  PrivateSerialized(toActivate : BoardItemComponent)
+  PrivateSerialized(shakeDistanceDifference : float)
+  - shakeDirectionDifference : float
+  PrivateSerialized(shakeThreshold : int)
+  - lastPosition : Vector3?
+  - lastDir : Vector3
+  - shakeCount : int
+  - currentToActivate : IBoardItemDisablable
+  - isBeingHeld : bool
+  - diff : Vector3
+  - dir : Vector3
+  - Range() : SerializeField,
+  - CustomOnValidate() : override void
+  - Awake() : void
+  + ConnectToBoardItem() : override void
+  - OnRemovedFromHand() : void
+  - OnAddToHand() : void
+  - Update() : void
+}
+class TempNeighborTester {
+  - gridManager : GridManager
+  - gameManagerRef : GameManager
+  - foundNeighbors : GridManager.GridInstance[]
+  + ConnectToBoardItem() : override void
+  - OnDestroy() : void
+  - Activate() : void
+}
+class PatternInstanceDrawer {
+  - nameProp : SerializedProperty
+  - textureProp : SerializedProperty
+  - nameRect : Rect
+  - structureWidth : float
+  - previewWidth : float
+  - objectFieldRect : Rect
+  - texturePreviewRect : Rect
+  - tex : Texture2D
+  - Texture2D : textureProp.objectReferenceValue as
+  - oldFilter : FilterMode
+  + GetPropertyHeight() : override float
+  + OnGUI() : override void
+  - GUIContent() : nameRect, nameProp, new
+  - typeof() : objectFieldRect, GUIContent.none, textureProp.objectReferenceValue,
+  - Color() : texturePreviewRect, new
+}
+ScriptableObject(LevelRef) {
+  + pointRequirement : int
+  + baseTurnAmount : int
+}
 MonoBehaviour(GridGenerator) {
   PrivateSerialized(materials : Material[])
   PrivateSerialized(boardBounds : Bounds)
   PrivateSerialized(boardSize : Vector2Int)
   PrivateSerialized(positions : Vector3[])
   PrivateSerialized(positionsOffGrid : Vector3[])
-  + cellSize : Vector2
+  PrivateSerialized(lockedPositionIndexes : int[])
+  - hasLockedCells : bool
+  - cellSize : Space] public Vector2
   + Width : int
   + Height : int
   PrivateSerialized(cellMesh : Mesh)
@@ -274,10 +443,8 @@ MonoBehaviour(GridGenerator) {
   - totalCells : int
   - materialGroups : Dictionary<int, List<CombineInstance>>
   - totalCells : i <
+  - materialsLength : int
   - matIndex : int
-  - localPos : Vector3
-  - combine : CombineInstance
-  - transform : this.cellMesh,
   - subMeshes : List<CombineInstance>
   - subMesh : Mesh
   - subCombine : CombineInstance
@@ -287,6 +454,10 @@ MonoBehaviour(GridGenerator) {
   - position : this.transform,
   - rotation : this.transform.position,
   - meshRenderer : MeshRenderer
+  - localPos : Vector3
+  - combine : CombineInstance
+  - transform : this.cellMesh,
+  - Tooltip() : SerializeField,
   - OnValidate() : if UNITY_EDITOR private void
   - OnDrawGizmosSelected() : endif private void
   - CalculateGrid() : void
@@ -294,40 +465,65 @@ MonoBehaviour(GridGenerator) {
   - GenerateCellMesh() : Mesh
   - SaveMeshAsset() : if UNITY_EDITOR private void
   - Start() : endif private void
+  - BuildCombineInstances() : void
   + GetAllPositions() : List<Vector3?>
   + GetAllOffGridPositions() : List<Vector3?>
+  + GetAllLockedPositions() : List<Vector3>
   + GetPosAt() : Vector3
-  + GetOffGridPosAt() : Vector3
+  - GetOffGridPosAt() : index.isOffGrid ?
+  - GetOnGridPosAt() : Vector3
+  - GetOffGridPosAt() : Vector3
 }
 MonoBehaviour(GridManager) {
   PrivateSerialized(generator : GridGenerator)
-  - gridInstances : readonly List<GridInstance>
-  - availablePositions : List<Vector3?>
-  - availableOffGridPositions : List<Vector3?>
+  - activeGrid : readonly Dictionary<GridIndex, GridInstance>
+  - openOnGridPositions : List<Vector3?>
+  - openOffGridPositions : List<Vector3?>
   - set : private
-  + position : Vector3
   + index : readonly int
+  + isOffGrid : readonly bool
+  + position : Vector3
+  + index : readonly GridIndex
   + gameObj : readonly GameObject
-  + offGrid : bool
-  - previous : Vector3 position, GameObject gameObj, GridInstance
-  - posToIgnore : Vector3?
+  + boardItem : readonly BoardItem
+  + moveable : readonly GridMoveable
+  - previous : Vector3 position, GameObject gameObj, BoardItem item, GridInstance
+  - ignoreLocked : null, bool
+  - posToIgnore : List<Vector3>
   - isBottomRow : bool
-  - posToIgnore : Vector3 position, GameObject gameObj, Vector3?
+  - posToIgnore : Vector3 position, GameObject gameObj, BoardItem item, List<Vector3>
   - isAlreadyOffGrid : null, bool
   - foundIndexOffGrid : int
   - foundIndex : int
   - null : return
   - newInstance : GridInstance
-  - newInstance : return
   - foundIndex : return
-  - posToIgnore : Vector3 position, List<Vector3?> positions, Vector3?
+  - distanceToLeft : int
+  - distanceToRight : int
+  - result : GridInstance[]
+  - centerX : int
+  - centerY : int
+  - index : int
+  - isOffGrid : bool
+  - baseIndex : int
+  - result : return
+  - lockedPositions : List<Vector3>
+  - found : return
+  - instance : return
+  - posToIgnore : Vector3 position, List<Vector3?> positions, List<Vector3>
   - smallestDistance : float
   - i : int
   - availablePosition : Vector3?
   - distance : float
   - tempGridInstances : List<GridInstance>
+  - GridIndex() : public
+  + CompareTo() : int
+  + Equals() : bool
+  + Equals() : override bool
+  + GetHashCode() : override int
   - GridInstance() : public
   - OnValidate() : void
+  - Awake() : void
   - Start() : void
   - OnDestroy() : void
   + GetNearestPosition() : GridInstance
@@ -335,24 +531,164 @@ MonoBehaviour(GridManager) {
   - GetNearestOffGridPosition() : return
   + GetNearestOffGridPosition() : GridInstance
   - RegisterGridPosition() : return
+  - GridIndex() : gameObj, new
+  - RegisterInGrid() : return
   + GetNearestGridPosition() : GridInstance
+  + GetNeighbors() : GridInstance[]
+  - GridIndex() : this.activeGrid[new
+  + CheckPositionLocked() : bool
   - RegisterGridPosition() : GridInstance
+  - GridInstance() : new
+  + RegisterInGrid() : GridInstance
   - GetNearestIndex() : static int
   + ReleaseInstance() : void
   + ForAllGridItems() : void
 }
+struct GridIndex {
+  + index : readonly int
+  + isOffGrid : readonly bool
+  - GridIndex() : public
+  + CompareTo() : int
+  + Equals() : bool
+  + Equals() : override bool
+  + GetHashCode() : override int
+}
 class GridInstance {
   + position : Vector3
-  + index : readonly int
+  + index : readonly GridIndex
   + gameObj : readonly GameObject
-  + offGrid : bool
+  + boardItem : readonly BoardItem
+  + moveable : readonly GridMoveable
   - GridInstance() : public
+}
+struct NeighborPattern {
+  + Up : static readonly NeighborPattern
+  + Down : static readonly NeighborPattern
+  + Left : static readonly NeighborPattern
+  + Right : static readonly NeighborPattern
+  + positions : Vector2Int[]
+  + center : Vector2Int
+  + width : int
+  + height : int
+  - tolerance : const float
+  - pixels : Color32[]
+  - foundPositions : List<Vector2Int>
+  - y : int
+  - x : int
+  - pixel : Color32
+  - Vector2Int() : new
+  - NeighborPattern() : public
+  - CheckColor() : bool
+}
+MonoBehaviour(NeighborPatternRegistry) {
+  - patterns : if UNITY_EDITOR [SerializeField] private List<PatternInstance>
+  PrivateSerialized(neighborColor : Color)
+  PrivateSerialized(centerColor : Color)
+  + name : string
+  + texture : Texture2D
+  - usedPatterns : endif [SerializeField, HideInInspector] private List<LivePattern>
+  + pattern : NeighborPattern
+  - LivePattern() : public
+  - NeighborPattern() : new
+  - OnValidate() : void
+  - LivePattern() : new
+  - Start() : void
+  + GetNeighborPattern() : NeighborPattern?
+}
+class PatternInstance {
+  + name : string
+  + texture : Texture2D
+}
+class LivePattern {
+  + name : string
+  + pattern : NeighborPattern
+  - LivePattern() : public
+  - NeighborPattern() : new
 }
 MonoBehaviour(TurnManager) {
   PrivateSerialized(gridManager : GridManager)
-  - moveComponent : MoveToGridPosition
+  - waitTime : float
+  - waitTimer : Timer
+  + OnEndReached : Action<GridMoveable>
+  - moveComponent : GridMoveable
+  - newTarget : GridManager.GridInstance
   - OnValidate() : void
+  - Start() : void
+  - Timer() : new
   + NextTurn() : void
+  - Update() : void
+  - MoveAllItemsDown() : void
+  + AddToWaitTime() : void
+}
+MonoBehaviour(MoveManager) {
+  PrivateSerialized(clampAmount : Bounds<int, int>)
+  - initialMoveAmount : int
+  PrivateSerialized(moveAmountText : TextMeshProUGUI)
+  - set : private
+  + OnSetMove : Action
+  + OnUndoMove : Action
+  + OnChanged : Action
+  + OnLastMove : Action
+  - Start() : void
+  + SetMove() : void
+  + UndoMove() : void
+  + ResetMoveAmount() : void
+  + SetInitialMoveAmount() : void
+  - SetMoveAmount() : void
+  - SetUI() : void
+}
+MonoBehaviour(GameManager) {
+  PrivateSerialized(moveManager : MoveManager)
+  - set : private
+  PrivateSerialized(turnManager : TurnManager)
+  PrivateSerialized(scoreManager : ScoreManager)
+  + OnStateChange : Action<GameState>
+  PrivateSerialized(levelData : LevelRef)
+  - gameStateMachine : FiniteStateMachine<GameManager>
+  - states : readonly Dictionary<GameState, State<GameManager>>
+  + OnChangeState : Action<GameState>
+  - OnValidate() : void
+  - Awake() : void
+  - Start() : void
+  - OnDestroy() : void
+  - Update() : void
+  - InitGame() : void
+  - PlayGameState() : this, new
+  - InitStates() : void
+  - PlayGameState() : GameState.PLAY, new
+  - CandyMoveState() : GameState.CANDYMOVE, new
+  - CandyActivateState() : GameState.CANDYACTIVATE, new
+  + SetGameState() : void
+}
+class CandyActivateState {
+  - gridManager : GridManager
+  - boardItems : List<BoardItem>
+  - currentAbilityCount : int
+  - timer : Timer
+  - activatedAllAbilities : bool
+  - boardItems : return
+  - CandyActivateState() : public
+  + Start() : override void
+  + Update() : override void
+  + Exit() : override void
+  - GetBoardItems() : List<BoardItem>
+  - TryActivateAbilities() : void
+  - Timer() : new
+}
+class CandyMoveState {
+  - playerHandRef : PlayerHandManager
+  - CandyMoveState() : public
+  + Start() : override void
+  + Update() : override void
+  + Exit() : override void
+  - TrySetScore() : void
+}
+class PlayGameState {
+  - playerHandRef : PlayerHandManager
+  - PlayGameState() : public
+  + Start() : override void
+  + Update() : override void
+  + Exit() : override void
 }
 class ComponentRegistry {
   - Components : static readonly Dictionary<string, Component>
@@ -399,6 +735,11 @@ interface IPoolable {
   - OnEnableObject() : void
   - OnDisableObject() : void
 }
+interface IUserInterfaceValueGetter {
+  + GetValue() : object
+  + SubscribeOnChangeValue() : void
+  + UnSubscribeOnChangeValue() : void
+}
 MonoBehaviour(ResolutionTracker) {
   + OnResolutionChanged : static Action<int, int>
   - lastResolution : static Vector2Int
@@ -438,10 +779,26 @@ class Timer {
   + GetSecondsInTimeFormatted() : static string
   + GetCurrentTimeFormatted() : string
   - GetSecondsInTimeFormatted() : countDown ?
+  + ResetWaitTime() : void
+}
+MonoBehaviour(UserInterfaceValueToTMP) {
+  PrivateSerialized(valueHolder : Component)
+  PrivateSerialized(valueName : string)
+  PrivateSerialized(prefix : string)
+  PrivateSerialized(suffix : string)
+  PrivateSerialized(textComponent : TMP_Text)
+  - result : object
+  - formattedValue : string
+  - formattedValue : else
+  - OnValidate() : void
+  - Start() : void
+  - OnDestroy() : void
+  - OnChanged() : void
 }
 class VectorExtensions {
   + XY() : static Vector2
   + OverwriteXY() : static Vector3
+  + DirectionTo() : static Vector2
 }
 MonoBehaviour(InteractionHandler) {
   PrivateSerialized(camRef : Camera)
@@ -554,8 +911,9 @@ MonoBehaviour(PlayerHandManager) {
   - inputActionMap : InputActionMap
   - moveAction : InputAction
   - grabAction : InputAction
+  - canGrab : bool
   - grabbing : bool
-  + OnGrabReleased : Action<Vector2, Vector2>
+  + OnRemovedFromHand : Action<Vector2, Vector2>
   - deviceTracker : DeviceTracker
   - delta : Vector2
   - false : return
@@ -565,9 +923,10 @@ MonoBehaviour(PlayerHandManager) {
   - OnDestroy() : void
   - Update() : void
   - OnGrabActionPerformed() : void
-  - OnInteract() : static void
+  - OnInteract() : void
   - CheckOnGrabReleased() : static bool
   + SetStateToGrabbing() : void
+  + SetCanGrab() : void
 }
 MonoBehaviour(VisualHandler) {
   PrivateSerialized(visual : SpriteRenderer)
@@ -587,30 +946,153 @@ struct VisualState {
   + visual : Sprite
   + z : float
 }
+MonoBehaviour(ScoreManager) {
+  PrivateSerialized(startScore : int)
+  - score : int
+  - scoreGoal : int
+  + OnChangeScore : Action
+  + OnReachedGoal : Action
+  - Awake() : void
+  + AddScore() : void
+  + RemoveScore() : void
+  - SetScore() : void
+  - ResetScore() : void
+  + GetScore() : int
+  + GetGoal() : int
+  + SetGoal() : void
+}
+MonoBehaviour(ScoreVisualiser) {
+  PrivateSerialized(slider : Slider)
+  PrivateSerialized(text : TextMeshProUGUI)
+  - gameManager : GameManager
+  - scoreManager : ScoreManager
+  PrivateSerialized(applySpeed : float)
+  - runningRoutine : Coroutine
+  - score : int
+  - goal : int
+  - fractionValue : float
+  - startValue : float
+  - i : float
+  - percentage : float
+  - fractionValue : return
+  - Start() : void
+  - SetVisuals() : void
+  - GradualApply() : IEnumerator
+  - WaitForSeconds() : yield return new
+  - CalculateFractionValue() : float
+}
+MonoBehaviour(ShopComponent) {
+  PrivateSerialized(shopItem : ShopItem)
+  PrivateSerialized(itemAmount : int)
+  - currentItemAmount : int
+  - itemSpriteRenderer : Space] [SerializeField] private SpriteRenderer
+  PrivateSerialized(itemNameRenderer : TextMeshPro)
+  PrivateSerialized(amountRenderer : TextMeshPro)
+  PrivateSerialized(grayOutSpriteRenderer : SpriteRenderer)
+  - gameManager : GameManager
+  - scoreManager : ScoreManager
+  - isBuyable : bool
+  - currentGrabbable : GameObject
+  - Start() : void
+  - OnDestroy() : void
+  + Interact() : void
+  - GrabBoardItem() : void
+  + UpdateVisuals() : void
+  - UpdateBuyableState() : void
+}
+ScriptableObject(ShopItem) {
+  + shopObject : GameObject
+  + cost : int
+  + itemSprite : Sprite
+  + itemName : string
+}
+class FiniteStateMachine<T> {
+  - owner : T
+  - set : private
+  - CurrentState : return
+  - FiniteStateMachine() : public
+  + Update() : void
+  + SetState() : State<T>
+}
+MonoBehaviour(GameStateSetter) {
+  PrivateSerialized(state : GameState)
+  - gameManager : GameManager
+  + SetState() : void
+}
+class State<T> {
+  - State() : protected
+  + Start() : abstract void
+  + Update() : abstract void
+  + Exit() : abstract void
+}
 
 BoardItem <|-- CandyActor
 BoardItem --> BoardItemComponent
-BoardItem --> Interactable
+BoardItem --> GridInstance
+BoardItem --> GridManager
+BoardItemComponent <|-- CandyMultiplier
+BoardItemComponent <|-- CountDownTillActivation
+BoardItemComponent <|-- ExplodeNearbyItemsAway
 BoardItemComponent <|-- GridMoveable
 BoardItemComponent <|-- GridRotatable
 BoardItemComponent <|-- HandHandler
+BoardItemComponent <|-- ShakeDetector
+BoardItemComponent <|-- TempNeighborTester
 BoardItemComponent --> BoardItem
+CandyActivateState --> BoardItem
+CandyActivateState --> GridManager
+CandyActivateState --> Timer
 CandyActor --> HandHandler
 CandyActor --> MoveToGridPosition
 CandyGroupHandle --> CandyActor
 CandyGroupHandle --> CandyHandle
 CandyGroupHandle --> PlayerHandManager
 CandyHandle --> CandyActor
+CandyMoveState --> PlayerHandManager
+CandyMultiplier --> BoardItem
+CandyMultiplier --> CandyActor
+CandyMultiplier --> GridInstance
+CandyMultiplier --> GridManager
+CandyMultiplier --> NeighborPattern
+CandyMultiplier --> NeighborPatternRegistry
 CandyTypeLookup --> CandyTypeOption
 ComponentRegistry --> Subscriber
+CountDownTillActivation --> BoardItemComponent
+CountDownTillActivation --> IBoardItemDisablable
 DeckOption --> CandyOption
 DeckOption --> CandyTypeLookup
+DiscardPile --> GridManager
+DiscardPile --> PlayerHandManager
+ExplodeNearbyItemsAway --> GameManager
+ExplodeNearbyItemsAway --> GridInstance
+ExplodeNearbyItemsAway --> GridManager
+ExplodeNearbyItemsAway --> GridMoveable
+ExplodeNearbyItemsAway --> NeighborPattern
+ExplodeNearbyItemsAway --> NeighborPatternRegistry
+GameManager --> FiniteStateMachine
+GameManager --> LevelRef
+GameManager --> MoveManager
+GameManager --> ScoreManager
+GameManager --> State
+GameManager --> TurnManager
+GameStateSetter --> GameManager
+GridGenerator --> Bounds
+GridInstance --> BoardItem
+GridInstance --> GridIndex
+GridInstance --> GridMoveable
+GridManager --> BoardItem
 GridManager --> GridGenerator
+GridManager --> GridIndex
 GridManager --> GridInstance
+GridManager --> GridMoveable
 GridMoveable <|-- MoveToGridPosition
+GridMoveable --> GridInstance
 GridMoveable --> GridManager
-GridRotatable --> HandHandler
+GridMoveable --> MoveManager
+GridRotatable --> MoveManager
 HandHandler --> PlayerHandManager
+IBoardItemDisablable <|.. CountDownTillActivation
+IBoardItemDisablable <|.. ExplodeNearbyItemsAway
 Interactable --> BoardItem
 InteractionHandler --> Interactable
 InteractionHandler --> MovementHandler
@@ -619,7 +1101,16 @@ IPoolable <|.. CandyGroupHandle
 ItemRotationHandler --> GridRotatable
 ItemRotationHandler --> Interactable
 ItemRotationHandler --> InteractionHandler
+IUserInterfaceValueGetter <|.. CandyActor
+IUserInterfaceValueGetter <|.. CountDownTillActivation
+LivePattern --> NeighborPattern
+MoveManager --> Bounds
+MovementHandler --> Bounds
+MoveToGridPosition --> PhysicsData
 MoveToGridPosition --> Timer
+NeighborPatternRegistry --> LivePattern
+NeighborPatternRegistry --> NeighborPattern
+NeighborPatternRegistry --> PatternInstance
 PlayerDeck --> CandyGroupHandle
 PlayerDeck --> CandyOption
 PlayerDeck --> CandyTypeLookup
@@ -630,8 +1121,24 @@ PlayerHandManager --> InteractionHandler
 PlayerHandManager --> ItemRotationHandler
 PlayerHandManager --> MovementHandler
 PlayerHandManager --> VisualHandler
+PlayGameState --> PlayerHandManager
 QuestSystem --> Quest
+ScoreVisualiser --> GameManager
+ScoreVisualiser --> ScoreManager
+ShakeDetector --> BoardItemComponent
+ShakeDetector --> IBoardItemDisablable
+ShopComponent --> GameManager
+ShopComponent --> ScoreManager
+ShopComponent --> ShopItem
+State <|-- CandyActivateState
+State <|-- CandyMoveState
+State <|-- PlayGameState
+TempNeighborTester --> GameManager
+TempNeighborTester --> GridInstance
+TempNeighborTester --> GridManager
+TurnManager --> GridInstance
 TurnManager --> GridManager
-TurnManager --> MoveToGridPosition
+TurnManager --> GridMoveable
+TurnManager --> Timer
 VisualHandler --> VisualState
 @enduml

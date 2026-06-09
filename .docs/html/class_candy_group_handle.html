@@ -197,7 +197,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   25</span>            </div>
 <div class="line"><span class="lineno">   26</span>            GameObject gameObject = Object.Instantiate(prefab, parent);</div>
 <div class="line"><span class="lineno">   27</span>            gameObject.transform.localPosition = Vector3.zero;</div>
-<div class="line"><span class="lineno">   28</span>            gameObject.transform.position += <span class="keyword">new</span> Vector3(<a class="code hl_typedef" href="_board_item_8cs.html#a832e8f52fca5a678819ec96269dcb532">Random</a>.Range(-clumpingDist, clumpingDist), <a class="code hl_typedef" href="_board_item_8cs.html#a832e8f52fca5a678819ec96269dcb532">Random</a>.Range(-clumpingDist, clumpingDist), 0);</div>
+<div class="line"><span class="lineno">   28</span>            gameObject.transform.position += <span class="keyword">new</span> Vector3(<a class="code hl_typedef" href="_hand_handler_8cs.html#a832e8f52fca5a678819ec96269dcb532">Random</a>.Range(-clumpingDist, clumpingDist), <a class="code hl_typedef" href="_hand_handler_8cs.html#a832e8f52fca5a678819ec96269dcb532">Random</a>.Range(-clumpingDist, clumpingDist), 0);</div>
 <div class="line"><span class="lineno">   29</span> </div>
 <div class="line"><span class="lineno">   30</span>            Rigidbody rb = gameObject.GetComponent&lt;Rigidbody&gt;();</div>
 <div class="line"><span class="lineno">   31</span>            rb.constraints = RigidbodyConstraints.FreezePosition;</div>
@@ -209,9 +209,9 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   37</span>        }</div>
 <div class="line"><span class="lineno">   38</span> </div>
 <div class="line"><span class="lineno">   39</span>        this.playerHandRef = playerHandManager;</div>
-<div class="line"><span class="lineno">   40</span>        playerHandManager.OnGrabReleased += <a class="code hl_function" href="#ac7fb4d163d58564502c0defd37a297b4">OnGrabReleased</a>;</div>
+<div class="line"><span class="lineno">   40</span>        playerHandManager.OnRemovedFromHand += <a class="code hl_function" href="#ac7fb4d163d58564502c0defd37a297b4">OnGrabReleased</a>;</div>
 <div class="line"><span class="lineno">   41</span>    }</div>
-<div class="ttc" id="a_board_item_8cs_html_a832e8f52fca5a678819ec96269dcb532"><div class="ttname"><a href="_board_item_8cs.html#a832e8f52fca5a678819ec96269dcb532">Random</a></div><div class="ttdeci">UnityEngine.Random Random</div><div class="ttdef"><b>Definition</b> BoardItem.cs:4</div></div>
+<div class="ttc" id="a_hand_handler_8cs_html_a832e8f52fca5a678819ec96269dcb532"><div class="ttname"><a href="_hand_handler_8cs.html#a832e8f52fca5a678819ec96269dcb532">Random</a></div><div class="ttdeci">UnityEngine.Random Random</div><div class="ttdef"><b>Definition</b> HandHandler.cs:3</div></div>
 <div class="ttc" id="aclass_candy_group_handle_html_a4bf7ef7b831f877880191dfd0256ec88"><div class="ttname"><a href="#a4bf7ef7b831f877880191dfd0256ec88">CandyGroupHandle.instances</a></div><div class="ttdeci">readonly List&lt; CandyHandle &gt; instances</div><div class="ttdef"><b>Definition</b> CandyGroupHandle.cs:14</div></div>
 <div class="ttc" id="aclass_candy_group_handle_html_ac7fb4d163d58564502c0defd37a297b4"><div class="ttname"><a href="#ac7fb4d163d58564502c0defd37a297b4">CandyGroupHandle.OnGrabReleased</a></div><div class="ttdeci">void OnGrabReleased(Vector2 handMovementDir, Vector2 throwForce)</div><div class="ttdef"><b>Definition</b> CandyGroupHandle.cs:57</div></div>
 <div class="ttc" id="aclass_player_deck_1_1_deck_option_html_a2f29da83654c817c06fa1bb8488c701b"><div class="ttname"><a href="class_player_deck_1_1_deck_option.html#a2f29da83654c817c06fa1bb8488c701b">PlayerDeck.DeckOption.GetCandy</a></div><div class="ttdeci">void GetCandy(out GameObject prefab, out int typeIndex)</div><div class="ttdoc">Gets a candy from the weighted candylist.</div><div class="ttdef"><b>Definition</b> PlayerDeck.cs:46</div></div>
@@ -300,9 +300,10 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   58</span>    {</div>
 <div class="line"><span class="lineno">   59</span>        <span class="keywordflow">foreach</span> (CandyHandle instance <span class="keywordflow">in</span> this.<a class="code hl_variable" href="#a4bf7ef7b831f877880191dfd0256ec88">instances</a>) </div>
-<div class="line"><span class="lineno">   60</span>            CandyActor.OnGrabReleased(instance.<a class="code hl_variable" href="class_candy_handle.html#ae312e2bcf440ddc406307a8627b60ea9">rb</a>, instance.<a class="code hl_variable" href="class_candy_handle.html#aad3ff74dd31e3067518880e42ab40f6f">actor</a>, handMovementDir, throwForce);</div>
-<div class="line"><span class="lineno">   61</span>        this.playerHandRef.OnGrabReleased -= <a class="code hl_function" href="#ac7fb4d163d58564502c0defd37a297b4">OnGrabReleased</a>;</div>
+<div class="line"><span class="lineno">   60</span>            instance.<a class="code hl_variable" href="class_candy_handle.html#aad3ff74dd31e3067518880e42ab40f6f">actor</a>.<a class="code hl_function" href="class_candy_actor.html#a169943257a14f427f560f29bc56fc203">OnGrabReleased</a>(instance.<a class="code hl_variable" href="class_candy_handle.html#ae312e2bcf440ddc406307a8627b60ea9">rb</a>, handMovementDir, throwForce);</div>
+<div class="line"><span class="lineno">   61</span>        this.playerHandRef.OnRemovedFromHand -= <a class="code hl_function" href="#ac7fb4d163d58564502c0defd37a297b4">OnGrabReleased</a>;</div>
 <div class="line"><span class="lineno">   62</span>    }</div>
+<div class="ttc" id="aclass_candy_actor_html_a169943257a14f427f560f29bc56fc203"><div class="ttname"><a href="class_candy_actor.html#a169943257a14f427f560f29bc56fc203">CandyActor.OnGrabReleased</a></div><div class="ttdeci">void OnGrabReleased(Rigidbody rb, Vector2 handMovementDir, Vector2 throwForce)</div><div class="ttdef"><b>Definition</b> CandyActor.cs:28</div></div>
 <div class="ttc" id="aclass_candy_handle_html_aad3ff74dd31e3067518880e42ab40f6f"><div class="ttname"><a href="class_candy_handle.html#aad3ff74dd31e3067518880e42ab40f6f">CandyHandle.actor</a></div><div class="ttdeci">readonly CandyActor actor</div><div class="ttdef"><b>Definition</b> CandyHandle.cs:10</div></div>
 <div class="ttc" id="aclass_candy_handle_html_ae312e2bcf440ddc406307a8627b60ea9"><div class="ttname"><a href="class_candy_handle.html#ae312e2bcf440ddc406307a8627b60ea9">CandyHandle.rb</a></div><div class="ttdeci">readonly Rigidbody rb</div><div class="ttdef"><b>Definition</b> CandyHandle.cs:9</div></div>
 </div><!-- fragment -->
@@ -327,7 +328,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   67</span>        {</div>
 <div class="line"><span class="lineno">   68</span>            instance.gameObject.transform.parent = parent;</div>
 <div class="line"><span class="lineno">   69</span>            instance.gameObject.transform.localPosition = Vector3.zero;</div>
-<div class="line"><span class="lineno">   70</span>            instance.gameObject.transform.position += <span class="keyword">new</span> Vector3(<a class="code hl_typedef" href="_board_item_8cs.html#a832e8f52fca5a678819ec96269dcb532">Random</a>.Range(-1, 1), <a class="code hl_typedef" href="_board_item_8cs.html#a832e8f52fca5a678819ec96269dcb532">Random</a>.Range(-1, 1), 0);</div>
+<div class="line"><span class="lineno">   70</span>            instance.gameObject.transform.position += <span class="keyword">new</span> Vector3(<a class="code hl_typedef" href="_hand_handler_8cs.html#a832e8f52fca5a678819ec96269dcb532">Random</a>.Range(-1, 1), <a class="code hl_typedef" href="_hand_handler_8cs.html#a832e8f52fca5a678819ec96269dcb532">Random</a>.Range(-1, 1), 0);</div>
 <div class="line"><span class="lineno">   71</span>        }</div>
 <div class="line"><span class="lineno">   72</span>    }</div>
 </div><!-- fragment -->

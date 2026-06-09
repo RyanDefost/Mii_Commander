@@ -1,81 +1,81 @@
-using System;
-using System.Collections.Generic;
-using HelperStructs.Shop;
+using BoardItems;
 using Managers;
-using PlayerHand;
 using Scoring;
 using TMPro;
 using UnityEngine;
 
-public class ShopComponent : MonoBehaviour
+namespace Shop
 {
-    [SerializeField] private ShopItem shopItem;
-    [SerializeField] private int itemAmount;
-    private int currentItemAmount;
-    
-    [Space]
-    [SerializeField] private SpriteRenderer itemSpriteRenderer;
-    [SerializeField] private TextMeshPro itemNameRenderer;
-    [SerializeField] private TextMeshPro amountRenderer;
-    [SerializeField] private SpriteRenderer grayOutSpriteRenderer;
-    
-    private GameManager gameManager;
-    private ScoreManager scoreManager;
-
-    private bool isBuyable = false;
-
-    private GameObject currentGrabbable;
-    
-    private void Start()
+    public class ShopComponent : MonoBehaviour
     {
-        this.gameManager = ComponentRegistry.GetComponent<GameManager>();
-        this.scoreManager = this.gameManager.ScoreManager;
-        
-        this.scoreManager.OnChangeScore += UpdateBuyableState;
-        
-        this.currentItemAmount = this.itemAmount;
-        
-        UpdateVisuals();
-        UpdateBuyableState();
-    }
+        [SerializeField] private ShopItem shopItem;
+        [SerializeField] private int itemAmount;
+        private int currentItemAmount;
     
-    private void OnDestroy() => this.scoreManager.OnChangeScore -= UpdateBuyableState;
+        [Space]
+        [SerializeField] private SpriteRenderer itemSpriteRenderer;
+        [SerializeField] private TextMeshPro itemNameRenderer;
+        [SerializeField] private TextMeshPro amountRenderer;
+        [SerializeField] private SpriteRenderer grayOutSpriteRenderer;
+    
+        private GameManager gameManager;
+        private ScoreManager scoreManager;
 
-    public void Interact()
-    {
-        if(!this.isBuyable) return;
+        private bool isBuyable = false;
 
-        this.currentGrabbable = Instantiate(this.shopItem.shopObject, this.transform.position, this.transform.rotation);
-
-        if (this.currentGrabbable.TryGetComponent(out BoardItem boardItem))
+        private GameObject currentGrabbable;
+    
+        private void Start()
         {
-            boardItem.OnStarted += GrabBoardItem;
-        }
-    }
-
-    private void GrabBoardItem(BoardItem startedBoardItem)
-    {
-        if (this.currentGrabbable.TryGetComponent(out HandHandler handHandler))
-        {
-            handHandler.AddToHand();
-            
-            this.scoreManager.RemoveScore(this.shopItem.cost);
-            this.currentItemAmount--;
-            
+            this.gameManager = ComponentRegistry.GetComponent<GameManager>();
+            this.scoreManager = this.gameManager.ScoreManager;
+        
+            this.scoreManager.OnChangeScore += UpdateBuyableState;
+        
+            this.currentItemAmount = this.itemAmount;
+        
+            UpdateVisuals();
             UpdateBuyableState();
         }
+    
+        private void OnDestroy() => this.scoreManager.OnChangeScore -= UpdateBuyableState;
+
+        public void Interact()
+        {
+            if(!this.isBuyable) return;
+
+            this.currentGrabbable = Instantiate(this.shopItem.shopObject, this.transform.position, this.transform.rotation);
+
+            if (this.currentGrabbable.TryGetComponent(out BoardItem boardItem))
+            {
+                boardItem.OnStarted += GrabBoardItem;
+            }
+        }
+
+        private void GrabBoardItem(BoardItem startedBoardItem)
+        {
+            if (this.currentGrabbable.TryGetComponent(out HandHandler handHandler))
+            {
+                handHandler.AddToHand();
+            
+                this.scoreManager.RemoveScore(this.shopItem.cost);
+                this.currentItemAmount--;
+            
+                UpdateBuyableState();
+            }
         
-    }
+        }
     
-    public void UpdateVisuals()
-    {
-        this.itemSpriteRenderer.sprite = this.shopItem.itemSprite;
-        this.itemNameRenderer.text = this.shopItem.itemName;
-    }
+        public void UpdateVisuals()
+        {
+            this.itemSpriteRenderer.sprite = this.shopItem.itemSprite;
+            this.itemNameRenderer.text = this.shopItem.itemName;
+        }
     
-    private void UpdateBuyableState()
-    {
-        this.isBuyable = this.scoreManager.GetScore() >= this.shopItem.cost;
-        this.grayOutSpriteRenderer.enabled = !this.isBuyable;
+        private void UpdateBuyableState(int _ = -1)
+        {
+            this.isBuyable = this.scoreManager.GetScore() >= this.shopItem.cost;
+            this.grayOutSpriteRenderer.enabled = !this.isBuyable;
+        }
     }
 }

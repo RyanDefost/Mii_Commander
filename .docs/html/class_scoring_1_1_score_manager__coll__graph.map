@@ -1,0 +1,9 @@
+<map id="Scoring.ScoreManager" name="Scoring.ScoreManager">
+<area shape="rect" id="Node000001" title="Keeps track of the current score and needed amount." alt="" coords="59,189,225,424"/>
+<area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="5,5,106,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,86,107,190,102,190,71,91"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="130,5,155,75"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="143,72,145,173,140,172,141,77"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="221,5,269,75"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="241,72,233,119,218,166,215,175,210,172,213,164,227,118,238,77"/>
+</map>

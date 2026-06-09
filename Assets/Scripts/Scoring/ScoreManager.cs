@@ -13,7 +13,7 @@ namespace Scoring
         private int score = 1;
         private int scoreGoal = 1;
 
-        public Action OnChangeScore;
+        public Action<int> OnChangeScore;
         public Action OnReachedGoal;
 
         private void Awake() => this.score = this.startScore;
@@ -22,7 +22,8 @@ namespace Scoring
         /// Adds given value to score.
         /// </summary>
         /// <param name="score">added int value</param>
-        public void AddScore(int score) => SetScore(this.score + score);
+        /// <param name="id">candy id</param>
+        public void AddScore(int score, int id) => SetScore(this.score + score, id);
         
         /// <summary>
         /// Removes given value from score.
@@ -30,10 +31,10 @@ namespace Scoring
         /// <param name="score">added int value</param>
         public void RemoveScore(int score)  => SetScore(this.score - score);
         
-        private void SetScore(int score)
+        private void SetScore(int score, int id = -1)
         {
             this.score = score;
-            this.OnChangeScore?.Invoke();
+            this.OnChangeScore?.Invoke(id);
 
             if (this.score >= this.scoreGoal)
             {

@@ -144,6 +144,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:acf8f5e725d6e66ac9658361f811045b9" id="r_acf8f5e725d6e66ac9658361f811045b9"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#acf8f5e725d6e66ac9658361f811045b9">RegisterOnPlayingListener</a> (Action&lt; double &gt; listener)</td></tr>
 <tr class="memitem:a275ee3b90a69bda880057aeb316204ac" id="r_a275ee3b90a69bda880057aeb316204ac"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a275ee3b90a69bda880057aeb316204ac">UnregisterOnPlayingListener</a> (Action&lt; double &gt; listener)</td></tr>
 <tr class="memitem:a026414468ed84394f140cbe062cc1d54" id="r_a026414468ed84394f140cbe062cc1d54"><td class="memItemLeft">string&#160;</td><td class="memItemRight"><a class="el" href="#a026414468ed84394f140cbe062cc1d54">GetCurrentTimeFormatted</a> (bool countDown=false)</td></tr>
+<tr class="memitem:a9b40c6e8ab5d22c875cd8e8cad941b0c" id="r_a9b40c6e8ab5d22c875cd8e8cad941b0c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9b40c6e8ab5d22c875cd8e8cad941b0c">ResetWaitTime</a> (float waitTime)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -429,6 +430,24 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   61</span>        <a class="code hl_function" href="#a69c8a7b2630f5bad50440345acf46afc">Play</a>();</div>
 <div class="line"><span class="lineno">   62</span>    }</div>
 <div class="ttc" id="aclass_timer_html_a076af8892f86d50320215cfece9f2ab9"><div class="ttname"><a href="#a076af8892f86d50320215cfece9f2ab9">Timer.Reset</a></div><div class="ttdeci">void Reset()</div><div class="ttdef"><b>Definition</b> Timer.cs:57</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9b40c6e8ab5d22c875cd8e8cad941b0c" name="a9b40c6e8ab5d22c875cd8e8cad941b0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b40c6e8ab5d22c875cd8e8cad941b0c">&#9670;&#160;</a></span>ResetWaitTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Timer.ResetWaitTime </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>waitTime</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   91</span>=&gt; this.maxTime = waitTime;</div>
 </div><!-- fragment -->
 </div>
 </div>

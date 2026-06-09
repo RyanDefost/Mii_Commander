@@ -1,13 +1,23 @@
 <map id="BoardItemComponent" name="BoardItemComponent">
-<area shape="rect" id="Node000001" title="A component that&#39;s able to hook into the functions of a board item." alt="" coords="244,123,452,251"/>
-<area shape="rect" id="Node000003" href="$class_grid_moveable.html" title="Makes a board item move to a target position on the grid. TODO: If the player is not allowed to move ..." alt="" coords="15,299,214,912"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="256,263,228,300,216,320,211,318,224,297,259,258"/>
-<area shape="rect" id="Node000005" href="$class_grid_rotatable.html" title="Handles board item rotation, uses a player move." alt="" coords="238,416,457,795"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="348,263,350,417,345,416,347,268"/>
-<area shape="rect" id="Node000006" href="$class_hand_handler.html" title="Lets a boardItem connect to the player hand." alt="" coords="482,451,712,760"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="437,258,471,297,515,372,551,451,545,451,511,374,467,300,437,263"/>
-<area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="297,5,398,75"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="348,87,350,123,345,123,347,92"/>
-<area shape="rect" id="Node000004" href="$class_move_to_grid_position.html" title="Animates a piece of candy towards a grid position, via physics, I forgot how it works...." alt="" coords="5,960,223,1381"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="115,924,117,960,112,960,114,930"/>
+<area shape="rect" id="Node000001" title="A component that&#39;s able to hook into the functions of a board item." alt="" coords="834,123,1042,272"/>
+<area shape="rect" id="Node000003" href="$class_candy_1_1_candy_multiplier.html" title=" " alt="" coords="5,605,204,915"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="817,205,661,217,482,238,397,253,321,272,260,295,217,322,191,351,168,383,150,418,136,455,116,531,106,606,101,605,111,530,131,453,145,416,164,380,187,347,214,318,258,290,320,267,396,248,481,233,660,212,822,202"/>
+<area shape="rect" id="Node000004" href="$class_count_down_till_activation.html" title=" " alt="" coords="228,485,448,1035"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="817,217,719,235,613,259,522,288,487,304,463,322,432,358,407,398,386,441,370,486,365,485,381,439,402,395,428,354,459,318,484,300,520,283,612,254,717,230,821,213"/>
+<area shape="rect" id="Node000005" href="$class_explode_nearby_items_away.html" title=" " alt="" coords="473,592,689,928"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="819,238,758,273,728,296,703,322,662,384,632,453,611,524,596,593,591,591,605,522,627,451,658,381,699,318,725,292,755,269,822,234"/>
+<area shape="rect" id="Node000006" href="$class_grid_moveable.html" title="Makes a board item move to a target position on the grid." alt="" coords="713,320,926,1200"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="921,284,915,321,910,319,918,289"/>
+<area shape="rect" id="Node000008" href="$class_grid_rotatable.html" title="Handles board item rotation, uses a player move." alt="" coords="950,560,1163,960"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="958,284,1017,560,1012,560,956,289"/>
+<area shape="rect" id="Node000009" href="$class_hand_handler.html" title="Lets a boardItem connect to the player hand." alt="" coords="1188,616,1419,904"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1055,233,1121,269,1151,292,1178,318,1202,351,1223,387,1256,464,1279,542,1294,617,1289,615,1274,543,1251,465,1218,390,1197,354,1173,322,1148,296,1119,273,1056,239"/>
+<area shape="rect" id="Node000010" href="$class_shake_detector.html" title=" " alt="" coords="1443,563,1662,957"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1056,211,1162,229,1273,252,1370,282,1407,299,1433,318,1456,343,1476,371,1508,432,1530,497,1545,564,1540,562,1525,499,1503,434,1472,374,1452,347,1430,322,1404,304,1368,287,1272,257,1162,234,1058,216"/>
+<area shape="rect" id="Node000011" href="$class_temp_neighbor_tester.html" title=" " alt="" coords="1686,685,1902,835"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1056,201,1219,211,1402,232,1489,248,1567,267,1631,290,1676,318,1711,357,1739,401,1761,450,1776,500,1787,551,1794,600,1799,687,1794,684,1789,600,1782,552,1771,502,1756,452,1735,404,1707,360,1672,322,1629,295,1565,272,1488,253,1401,238,1219,217,1058,206"/>
+<area shape="rect" id="Node000002" href="$class_mono_behaviour.html" title=" " alt="" coords="888,5,988,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="939,87,941,124,936,122,937,92"/>
+<area shape="rect" id="Node000007" href="$class_move_to_grid_position.html" title="Animates a piece of candy towards a grid position, via physics, I forgot how it works...." alt="" coords="714,1248,924,1605"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="821,1213,822,1250,817,1247,818,1217"/>
 </map>

@@ -1,5 +1,6 @@
 using Grid;
 using PlayerHand;
+using StateMachine;
 
 namespace Managers.GameStates
 {
@@ -23,6 +24,7 @@ namespace Managers.GameStates
 
         public override void Update()
         {
+            this.Owner.QuestManager.UpdateQuests();
             if(this.Owner.HasEndedGame)
                 this.Owner.SetGameState(GameState.END);
         }

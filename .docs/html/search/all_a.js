@@ -1,10 +1,20 @@
 var searchData=
 [
   ['lastdevice_0',['LastDevice',['../class_device_tracker.html#aef7d42dd9ca99290ba3d5a27510056f8',1,'DeviceTracker']]],
-  ['lastresolution_1',['lastResolution',['../class_resolution_tracker.html#aeecace55ce9d7198eaefe7ea32783885',1,'ResolutionTracker']]],
-  ['lastrotation_2',['lastRotation',['../class_grid_rotatable.html#a19c1a741e36f5c96f35d427b8dca7a9e',1,'GridRotatable']]],
-  ['laststickdirection_3',['lastStickDirection',['../class_player_hand_1_1_item_rotation_handler.html#af83435fbc6fff066a3e795add8433644',1,'PlayerHand::ItemRotationHandler']]],
-  ['layermaskinteractables_4',['layerMaskInteractables',['../class_player_hand_1_1_interaction_handler.html#a647648c0d731974dce5909472edb8c7e',1,'PlayerHand::InteractionHandler']]],
-  ['loadquests_5',['LoadQuests',['../class_quest_system.html#ab5172ff07f59e023395a025b190ffa6f',1,'QuestSystem']]],
-  ['lockedrotation_6',['lockedRotation',['../class_grid_rotatable.html#a430893a402d61504fb4721e0890e18cf',1,'GridRotatable']]]
+  ['lastdir_1',['lastDir',['../class_shake_detector.html#a10b62d10e02e5a7d2a883907693d28e4',1,'ShakeDetector']]],
+  ['lastposition_2',['lastPosition',['../class_shake_detector.html#a2781b5a0c686da8154b66b3dd644f743',1,'ShakeDetector']]],
+  ['lastresolution_3',['lastResolution',['../class_resolution_tracker.html#aeecace55ce9d7198eaefe7ea32783885',1,'ResolutionTracker']]],
+  ['lastrotation_4',['lastRotation',['../class_grid_rotatable.html#a19c1a741e36f5c96f35d427b8dca7a9e',1,'GridRotatable']]],
+  ['laststickdirection_5',['lastStickDirection',['../class_player_hand_1_1_item_rotation_handler.html#af83435fbc6fff066a3e795add8433644',1,'PlayerHand::ItemRotationHandler']]],
+  ['lateupdate_6',['LateUpdate',['../class_billboard.html#ac815b1bed569fe03a8b1831e52e025d9',1,'Billboard']]],
+  ['layermaskinteractables_7',['layerMaskInteractables',['../class_player_hand_1_1_interaction_handler.html#a647648c0d731974dce5909472edb8c7e',1,'PlayerHand::InteractionHandler']]],
+  ['left_8',['Left',['../struct_grid_1_1_neighbor_pattern.html#af957fe756a9bddd54d739791ab542bcf',1,'Grid::NeighborPattern']]],
+  ['leveldata_9',['levelData',['../class_managers_1_1_game_manager.html#a86b8ef3efcd77902fdc8e043bb20ae38',1,'Managers::GameManager']]],
+  ['levelref_10',['LevelRef',['../class_managers_1_1_level_ref.html',1,'Managers']]],
+  ['levelref_2ecs_11',['LevelRef.cs',['../_level_ref_8cs.html',1,'']]],
+  ['livepattern_12',['LivePattern',['../class_grid_1_1_neighbor_pattern_registry_1_1_live_pattern.html',1,'Grid.NeighborPatternRegistry.LivePattern'],['../class_grid_1_1_neighbor_pattern_registry_1_1_live_pattern.html#a2d04640721143c6bd2c651bd204a95c8',1,'Grid.NeighborPatternRegistry.LivePattern.LivePattern()']]],
+  ['loadquests_13',['LoadQuests',['../class_quest_system.html#ab5172ff07f59e023395a025b190ffa6f',1,'QuestSystem']]],
+  ['lockedpositionindexes_14',['lockedPositionIndexes',['../class_grid_1_1_grid_generator.html#a509b61061cc357abc903580c50079217',1,'Grid::GridGenerator']]],
+  ['lockedrotation_15',['lockedRotation',['../class_grid_rotatable.html#a430893a402d61504fb4721e0890e18cf',1,'GridRotatable']]],
+  ['locklocalposition_16',['LockLocalPosition',['../class_grid_moveable.html#aa66ffb67d28279b8777aa4607532a0ee',1,'GridMoveable']]]
 ];

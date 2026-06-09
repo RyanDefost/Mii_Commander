@@ -1,6 +1,7 @@
+using BoardItems;
 using Grid;
-using HelperStructs;
 using PlayerHand;
+using StateMachine;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -47,7 +48,7 @@ namespace Managers.GameStates
         private void TrySetScore(GridMoveable moveable)
         {
             if (moveable.gameObject.TryGetComponent(out CandyActor candyActor))
-                this.Owner.ScoreManager.AddScore(candyActor.Points);
+                this.Owner.ScoreManager.AddScore(candyActor.Points, candyActor.candyType);
         }
 
         private void ExitState() => this.Owner.SetGameState(this.Owner.HasEndedGame ? GameState.END : GameState.PLAY);

@@ -1,6 +1,9 @@
-﻿public interface IBoardItemDisablable
+﻿namespace BoardItems
 {
-    public void Activate();
-    public void DisableActivate();
-    public void EnableActivate();
+    public interface IBoardItemDisablable
+    {
+        public void Activate();
+        public void DisableActivate();
+        public void EnableActivate();
+    }
 }

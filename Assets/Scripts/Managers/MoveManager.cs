@@ -1,5 +1,4 @@
 using System;
-using HelperStructs;
 using TMPro;
 using UnityEngine;
 
@@ -47,6 +46,12 @@ namespace Managers
         private void SetMoveAmount(int moveAmount)
         {
             this.MoveAmount = Mathf.Clamp(moveAmount, this.clampAmount.min, this.clampAmount.max);
+            this.OnChanged?.Invoke();
+        }
+
+        public void AddMoveAmount(int amount)
+        {
+            this.MoveAmount = Mathf.Clamp(this.MoveAmount + amount, this.clampAmount.min, this.clampAmount.max);
             this.OnChanged?.Invoke();
         }
 

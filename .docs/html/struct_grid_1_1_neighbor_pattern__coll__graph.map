@@ -1,0 +1,12 @@
+<map id="Grid.NeighborPattern" name="Grid.NeighborPattern">
+<area shape="rect" id="Node000001" title=" " alt="" coords="101,459,306,613"/>
+<area shape="rect" id="Node000002" href="$struct_grid_1_1_neighbor_pattern.html" title=" " alt="" coords="101,168,306,323"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="205,320,206,442,201,441,202,324"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="305,222,325,230,333,245,330,255,324,262,320,258,326,252,328,246,322,234,307,227"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="54,5,124,75"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="65,77,43,119,24,169,13,212,8,246,11,280,24,322,39,355,58,387,105,445,100,447,54,390,34,358,19,324,6,281,3,246,8,211,18,167,38,116,66,72"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="108,72,155,153,150,154,108,77"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="359,5,384,75"/>
+<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="383,72,398,123,408,187,409,256,404,290,394,324,378,358,358,391,309,449,306,445,353,388,373,356,389,322,399,289,404,255,403,187,393,124,382,77"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="358,58,280,157,275,153,361,54"/>
+</map>

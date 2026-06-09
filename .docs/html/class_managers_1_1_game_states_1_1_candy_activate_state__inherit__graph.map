@@ -1,0 +1,5 @@
+<map id="Managers.GameStates.CandyActivateState" name="Managers.GameStates.CandyActivateState">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,187,203,496"/>
+<area shape="rect" id="Node000002" href="$class_managers_1_1_state-1-g.html" title=" " alt="" coords="38,5,171,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,151,107,187,102,187,104,156"/>
+</map>

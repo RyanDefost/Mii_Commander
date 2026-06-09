@@ -4,10 +4,12 @@ var class_player_hand_1_1_player_hand_manager =
     [ "CheckOnGrabReleased", "class_player_hand_1_1_player_hand_manager.html#a94e32f965af5656962ea551388ecae4f", null ],
     [ "OnDestroy", "class_player_hand_1_1_player_hand_manager.html#a61339edfbea43144b02bfad907136a41", null ],
     [ "OnGrabActionPerformed", "class_player_hand_1_1_player_hand_manager.html#a6d2bd69cf2e7304147751cf620d5e9f0", null ],
-    [ "OnInteract", "class_player_hand_1_1_player_hand_manager.html#aafc7368d664e832f890bc3843361849b", null ],
+    [ "OnInteract", "class_player_hand_1_1_player_hand_manager.html#a6ce40ec804358c6fe847cf3ec7b42d70", null ],
     [ "OnValidate", "class_player_hand_1_1_player_hand_manager.html#a81c1d05ece9addb6569733cb6aaa85d3", null ],
+    [ "SetCanGrab", "class_player_hand_1_1_player_hand_manager.html#af91073831733bc27df9d90fd46d6a26e", null ],
     [ "SetStateToGrabbing", "class_player_hand_1_1_player_hand_manager.html#aacdc406229143236a83878cf855d706c", null ],
     [ "Update", "class_player_hand_1_1_player_hand_manager.html#ab627badecc6bfb76689ad930c792ebdd", null ],
+    [ "canGrab", "class_player_hand_1_1_player_hand_manager.html#af0288ab3389eaefe65ed7d129a60c15f", null ],
     [ "deviceTracker", "class_player_hand_1_1_player_hand_manager.html#aaa777bf6d3b3819af9579a9f2a0d7418", null ],
     [ "gamePadExtraSensitivity", "class_player_hand_1_1_player_hand_manager.html#a45eb701759fba8eb62594b00c2a8f1fa", null ],
     [ "grabAction", "class_player_hand_1_1_player_hand_manager.html#a19105acccb94403f76ad80d86ccadace", null ],
@@ -18,6 +20,6 @@ var class_player_hand_1_1_player_hand_manager =
     [ "itemRotationHandler", "class_player_hand_1_1_player_hand_manager.html#a1c28b432079b96b7a4edbf53dadb91e9", null ],
     [ "moveAction", "class_player_hand_1_1_player_hand_manager.html#a922b6625932359b30199f2b529792b13", null ],
     [ "movementHandler", "class_player_hand_1_1_player_hand_manager.html#aa402364222a811623eaf5a7b71087ebb", null ],
-    [ "OnGrabReleased", "class_player_hand_1_1_player_hand_manager.html#a44e29aecee57ba15655faec08ea36812", null ],
+    [ "OnRemovedFromHand", "class_player_hand_1_1_player_hand_manager.html#a00006a5bd6f136635fe924e41ec25f2e", null ],
     [ "visualHandler", "class_player_hand_1_1_player_hand_manager.html#a792e69b21289cb9a5812180aa97e4a20", null ]
 ];

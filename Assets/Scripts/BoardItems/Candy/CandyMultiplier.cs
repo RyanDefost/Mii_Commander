@@ -3,7 +3,7 @@ using System.Linq;
 using Grid;
 using UnityEngine;
 
-namespace Candy
+namespace BoardItems
 {
     public class CandyMultiplier : BoardItemComponent
     {

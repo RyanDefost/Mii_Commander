@@ -1,0 +1,5 @@
+<map id="HelperStructs.Shop.ShopItem" name="HelperStructs.Shop.ShopItem">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,123,190,256"/>
+<area shape="rect" id="Node000002" href="$class_scriptable_object.html" title=" " alt="" coords="44,5,151,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,87,100,124,95,122,97,92"/>
+</map>

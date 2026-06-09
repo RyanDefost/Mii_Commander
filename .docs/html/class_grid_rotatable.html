@@ -140,11 +140,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ad0c172554cea008dbf6c25f0f63ba729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function for hooking into the various boardItem actions, make sure to unhook on destroy.  <br /></td></tr>
 <tr class="memitem:af59d9c13f0d0625d2e5c64036602db3e" id="r_af59d9c13f0d0625d2e5c64036602db3e"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af59d9c13f0d0625d2e5c64036602db3e">RotateClockWise</a> (float clockWiseProgression)</td></tr>
 <tr class="memdesc:af59d9c13f0d0625d2e5c64036602db3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotates the object clockwise along its Z-axis by a step.  <br /></td></tr>
+<tr class="memitem:a816a721991d178114bf102c72275b5bf" id="r_a816a721991d178114bf102c72275b5bf"><td class="memItemLeft"><a class="el" href="class_board_item.html">BoardItem</a>&#160;</td><td class="memItemRight"><a class="el" href="class_board_item_component.html#a816a721991d178114bf102c72275b5bf">GetBoardItem</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a5e84123a11b6033f4da824affd4712df" id="r_a5e84123a11b6033f4da824affd4712df"><td class="memItemLeft">override void&#160;</td><td class="memItemRight"><a class="el" href="#a5e84123a11b6033f4da824affd4712df">CustomOnValidate</a> ()</td></tr>
-<tr class="memdesc:a5e84123a11b6033f4da824affd4712df"><td class="mdescLeft">&#160;</td><td class="mdescRight">OnValidate so that <a class="el" href="class_board_item_component.html" title="A component that&#39;s able to hook into the functions of a board item.">BoardItemComponent</a>'s OnValidate doesnt get overwritten.  <br /></td></tr>
+<tr class="memitem:a700e24890a170e7561871e1b636415b3" id="r_a700e24890a170e7561871e1b636415b3"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="class_board_item_component.html#a700e24890a170e7561871e1b636415b3">CustomOnValidate</a> ()</td></tr>
+<tr class="memdesc:a700e24890a170e7561871e1b636415b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">OnValidate so that <a class="el" href="class_board_item_component.html" title="A component that&#39;s able to hook into the functions of a board item.">BoardItemComponent</a>'s OnValidate doesnt get overwritten.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -152,23 +153,25 @@ Protected Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:ac346aca2f61936336f5b6015956adf41" id="r_ac346aca2f61936336f5b6015956adf41"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ac346aca2f61936336f5b6015956adf41">Start</a> ()</td></tr>
 <tr class="memitem:a61b03ebaa28c2850c44ae3fcf8860248" id="r_a61b03ebaa28c2850c44ae3fcf8860248"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a61b03ebaa28c2850c44ae3fcf8860248">OnDestroy</a> ()</td></tr>
 <tr class="memitem:a65976814667c77738451e4629663c2a9" id="r_a65976814667c77738451e4629663c2a9"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a65976814667c77738451e4629663c2a9">SnapToNearestCardinalZ</a> ()</td></tr>
 <tr class="memdesc:a65976814667c77738451e4629663c2a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Snaps the Z rotation to the nearest 90-degree cardinal direction.  <br /></td></tr>
 <tr class="memitem:a8cf92f683a09b6efab9c047833a1d346" id="r_a8cf92f683a09b6efab9c047833a1d346"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a8cf92f683a09b6efab9c047833a1d346">OnAddToHand</a> ()</td></tr>
-<tr class="memitem:a07c65b3e7337bd275de12f4760e9ab4b" id="r_a07c65b3e7337bd275de12f4760e9ab4b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a07c65b3e7337bd275de12f4760e9ab4b">OnGrabReleased</a> ()</td></tr>
+<tr class="memitem:a225f5331e23d104af49876dd6526cca7" id="r_a225f5331e23d104af49876dd6526cca7"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a225f5331e23d104af49876dd6526cca7">OnRemovedFromHand</a> ()</td></tr>
 <tr class="memitem:a825af7dbb5f10fa5bf6f86953f2a6c5a" id="r_a825af7dbb5f10fa5bf6f86953f2a6c5a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a825af7dbb5f10fa5bf6f86953f2a6c5a">OnAddToBoard</a> ()</td></tr>
 <tr class="memitem:a2572bea861ac23f523935fee6e5fe3ac" id="r_a2572bea861ac23f523935fee6e5fe3ac"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2572bea861ac23f523935fee6e5fe3ac">Update</a> ()</td></tr>
 <tr class="memitem:a2fa5182c957f732c7d34da3e0c5f9c92" id="r_a2fa5182c957f732c7d34da3e0c5f9c92"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_board_item_component.html#a2fa5182c957f732c7d34da3e0c5f9c92">OnValidate</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a7babbe7bf0f6c8bf94524e94eeecd426" id="r_a7babbe7bf0f6c8bf94524e94eeecd426"><td class="memItemLeft"><a class="el" href="class_hand_handler.html">HandHandler</a>&#160;</td><td class="memItemRight"><a class="el" href="#a7babbe7bf0f6c8bf94524e94eeecd426">handHandler</a></td></tr>
+<tr class="memitem:a4a46c5b72279b0cf11dbadd6b9dad323" id="r_a4a46c5b72279b0cf11dbadd6b9dad323"><td class="memItemLeft"><a class="el" href="class_managers_1_1_move_manager.html">MoveManager</a>&#160;</td><td class="memItemRight"><a class="el" href="#a4a46c5b72279b0cf11dbadd6b9dad323">moveManagerRef</a></td></tr>
 <tr class="memitem:a1ef7b3e848b5864557a228a387ccfb20" id="r_a1ef7b3e848b5864557a228a387ccfb20"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a1ef7b3e848b5864557a228a387ccfb20">rotationSpeed</a> = 12f</td></tr>
 <tr class="memitem:aa8f5666cf7d4dbbe286200127facba7c" id="r_aa8f5666cf7d4dbbe286200127facba7c"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#aa8f5666cf7d4dbbe286200127facba7c">stepAngle</a> = 9f</td></tr>
 <tr class="memitem:a47bf8ba62e02da51f9525a9b8ce56cbb" id="r_a47bf8ba62e02da51f9525a9b8ce56cbb"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a47bf8ba62e02da51f9525a9b8ce56cbb">progression</a></td></tr>
 <tr class="memitem:a430893a402d61504fb4721e0890e18cf" id="r_a430893a402d61504fb4721e0890e18cf"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a430893a402d61504fb4721e0890e18cf">lockedRotation</a></td></tr>
 <tr class="memitem:a19c1a741e36f5c96f35d427b8dca7a9e" id="r_a19c1a741e36f5c96f35d427b8dca7a9e"><td class="memItemLeft">Vector3&#160;</td><td class="memItemRight"><a class="el" href="#a19c1a741e36f5c96f35d427b8dca7a9e">lastRotation</a></td></tr>
+<tr class="memitem:a143320710fd08f21b2b7ff74cbb3bc30" id="r_a143320710fd08f21b2b7ff74cbb3bc30"><td class="memItemLeft">Vector3&#160;</td><td class="memItemRight"><a class="el" href="#a143320710fd08f21b2b7ff74cbb3bc30">rotation</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Handles board item rotation, uses a player move. </p>
@@ -199,17 +202,17 @@ Private Attributes</h2></td></tr>
 <p>Function for hooking into the various boardItem actions, make sure to unhook on destroy. </p>
 
 <p>Reimplemented from <a class="el" href="class_board_item_component.html#a8bfba0af81c157c68dfc7193db5d9887">BoardItemComponent</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   23</span>    {</div>
-<div class="line"><span class="lineno">   24</span>        this.boardItem.OnAddToHand += <a class="code hl_function" href="#a8cf92f683a09b6efab9c047833a1d346">OnAddToHand</a>;</div>
-<div class="line"><span class="lineno">   25</span>        this.boardItem.OnAddToBoard += <a class="code hl_function" href="#a825af7dbb5f10fa5bf6f86953f2a6c5a">OnAddToBoard</a>;</div>
-<div class="line"><span class="lineno">   26</span>    }</div>
-<div class="ttc" id="aclass_grid_rotatable_html_a825af7dbb5f10fa5bf6f86953f2a6c5a"><div class="ttname"><a href="#a825af7dbb5f10fa5bf6f86953f2a6c5a">GridRotatable.OnAddToBoard</a></div><div class="ttdeci">void OnAddToBoard()</div><div class="ttdef"><b>Definition</b> GridRotatable.cs:77</div></div>
-<div class="ttc" id="aclass_grid_rotatable_html_a8cf92f683a09b6efab9c047833a1d346"><div class="ttname"><a href="#a8cf92f683a09b6efab9c047833a1d346">GridRotatable.OnAddToHand</a></div><div class="ttdeci">void OnAddToHand()</div><div class="ttdef"><b>Definition</b> GridRotatable.cs:63</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   20</span>    {</div>
+<div class="line"><span class="lineno">   21</span>        this.boardItem.OnAddToHand += <a class="code hl_function" href="#a8cf92f683a09b6efab9c047833a1d346">OnAddToHand</a>;</div>
+<div class="line"><span class="lineno">   22</span>        this.boardItem.OnAddToBoard += <a class="code hl_function" href="#a825af7dbb5f10fa5bf6f86953f2a6c5a">OnAddToBoard</a>;</div>
+<div class="line"><span class="lineno">   23</span>    }</div>
+<div class="ttc" id="aclass_grid_rotatable_html_a825af7dbb5f10fa5bf6f86953f2a6c5a"><div class="ttname"><a href="#a825af7dbb5f10fa5bf6f86953f2a6c5a">GridRotatable.OnAddToBoard</a></div><div class="ttdeci">void OnAddToBoard()</div><div class="ttdef"><b>Definition</b> GridRotatable.cs:87</div></div>
+<div class="ttc" id="aclass_grid_rotatable_html_a8cf92f683a09b6efab9c047833a1d346"><div class="ttname"><a href="#a8cf92f683a09b6efab9c047833a1d346">GridRotatable.OnAddToHand</a></div><div class="ttdeci">void OnAddToHand()</div><div class="ttdef"><b>Definition</b> GridRotatable.cs:71</div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a5e84123a11b6033f4da824affd4712df" name="a5e84123a11b6033f4da824affd4712df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e84123a11b6033f4da824affd4712df">&#9670;&#160;</a></span>CustomOnValidate()</h2>
+<a id="a700e24890a170e7561871e1b636415b3" name="a700e24890a170e7561871e1b636415b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a700e24890a170e7561871e1b636415b3">&#9670;&#160;</a></span>CustomOnValidate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -218,7 +221,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override void GridRotatable.CustomOnValidate </td>
+          <td class="memname">virtual void BoardItemComponent.CustomOnValidate </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -226,18 +229,42 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span><span class="mlabel inherited">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>OnValidate so that <a class="el" href="class_board_item_component.html" title="A component that&#39;s able to hook into the functions of a board item.">BoardItemComponent</a>'s OnValidate doesnt get overwritten. </p>
 
-<p>Reimplemented from <a class="el" href="class_board_item_component.html#a700e24890a170e7561871e1b636415b3">BoardItemComponent</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   17</span>    {</div>
-<div class="line"><span class="lineno">   18</span>        base.CustomOnValidate();</div>
-<div class="line"><span class="lineno">   19</span>        this.handHandler = GetComponent&lt;HandHandler&gt;();</div>
-<div class="line"><span class="lineno">   20</span>    }</div>
+<p>Reimplemented in <a class="el" href="class_count_down_till_activation.html#a66088959d10cc63124a52fa164042c1c">CountDownTillActivation</a>, and <a class="el" href="class_shake_detector.html#a9fb6261e0e3b1a60efd93fb6de2ae62b">ShakeDetector</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   21</span>{}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a816a721991d178114bf102c72275b5bf" name="a816a721991d178114bf102c72275b5bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a816a721991d178114bf102c72275b5bf">&#9670;&#160;</a></span>GetBoardItem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_board_item.html">BoardItem</a> BoardItemComponent.GetBoardItem </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inherited">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   26</span>=&gt; this.<a class="code hl_variable" href="class_board_item_component.html#abdc37bbf43d8b710e1e261653f33cf54">boardItem</a>;</div>
+<div class="ttc" id="aclass_board_item_component_html_abdc37bbf43d8b710e1e261653f33cf54"><div class="ttname"><a href="class_board_item_component.html#abdc37bbf43d8b710e1e261653f33cf54">BoardItemComponent.boardItem</a></div><div class="ttdeci">BoardItem boardItem</div><div class="ttdef"><b>Definition</b> BoardItemComponent.cs:10</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -263,8 +290,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   77</span>=&gt; <a class="code hl_function" href="#a65976814667c77738451e4629663c2a9">SnapToNearestCardinalZ</a>();</div>
-<div class="ttc" id="aclass_grid_rotatable_html_a65976814667c77738451e4629663c2a9"><div class="ttname"><a href="#a65976814667c77738451e4629663c2a9">GridRotatable.SnapToNearestCardinalZ</a></div><div class="ttdeci">void SnapToNearestCardinalZ()</div><div class="ttdoc">Snaps the Z rotation to the nearest 90-degree cardinal direction.</div><div class="ttdef"><b>Definition</b> GridRotatable.cs:54</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   88</span>    {</div>
+<div class="line"><span class="lineno">   89</span>        <a class="code hl_function" href="#a65976814667c77738451e4629663c2a9">SnapToNearestCardinalZ</a>();</div>
+<div class="line"><span class="lineno">   90</span>        this.boardItem.OnAddToBoard -= <a class="code hl_function" href="#a825af7dbb5f10fa5bf6f86953f2a6c5a">OnAddToBoard</a>;</div>
+<div class="line"><span class="lineno">   91</span>    }</div>
+<div class="ttc" id="aclass_grid_rotatable_html_a65976814667c77738451e4629663c2a9"><div class="ttname"><a href="#a65976814667c77738451e4629663c2a9">GridRotatable.SnapToNearestCardinalZ</a></div><div class="ttdeci">void SnapToNearestCardinalZ()</div><div class="ttdoc">Snaps the Z rotation to the nearest 90-degree cardinal direction.</div><div class="ttdef"><b>Definition</b> GridRotatable.cs:51</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -290,13 +320,16 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   64</span>    {</div>
-<div class="line"><span class="lineno">   65</span>        this.handHandler.OnHandGrabRelease += <a class="code hl_function" href="#a07c65b3e7337bd275de12f4760e9ab4b">OnGrabReleased</a>;</div>
-<div class="line"><span class="lineno">   66</span>        <span class="comment">// lock rotation</span></div>
-<div class="line"><span class="lineno">   67</span>        this.lockedRotation = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   68</span>        this.lastRotation = this.transform.localEulerAngles;</div>
-<div class="line"><span class="lineno">   69</span>    }</div>
-<div class="ttc" id="aclass_grid_rotatable_html_a07c65b3e7337bd275de12f4760e9ab4b"><div class="ttname"><a href="#a07c65b3e7337bd275de12f4760e9ab4b">GridRotatable.OnGrabReleased</a></div><div class="ttdeci">void OnGrabReleased()</div><div class="ttdef"><b>Definition</b> GridRotatable.cs:71</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>    {</div>
+<div class="line"><span class="lineno">   73</span>        this.boardItem.OnAddToBoard += <a class="code hl_function" href="#a825af7dbb5f10fa5bf6f86953f2a6c5a">OnAddToBoard</a>;</div>
+<div class="line"><span class="lineno">   74</span>        this.boardItem.OnRemovedFromHand += <a class="code hl_function" href="#a225f5331e23d104af49876dd6526cca7">OnRemovedFromHand</a>;</div>
+<div class="line"><span class="lineno">   75</span>        <span class="comment">// lock rotation</span></div>
+<div class="line"><span class="lineno">   76</span>        this.lockedRotation = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   77</span>        this.lastRotation = this.transform.localEulerAngles;</div>
+<div class="line"><span class="lineno">   78</span>        this.rotation = this.<a class="code hl_variable" href="#a19c1a741e36f5c96f35d427b8dca7a9e">lastRotation</a>;</div>
+<div class="line"><span class="lineno">   79</span>    }</div>
+<div class="ttc" id="aclass_grid_rotatable_html_a19c1a741e36f5c96f35d427b8dca7a9e"><div class="ttname"><a href="#a19c1a741e36f5c96f35d427b8dca7a9e">GridRotatable.lastRotation</a></div><div class="ttdeci">Vector3 lastRotation</div><div class="ttdef"><b>Definition</b> GridRotatable.cs:14</div></div>
+<div class="ttc" id="aclass_grid_rotatable_html_a225f5331e23d104af49876dd6526cca7"><div class="ttname"><a href="#a225f5331e23d104af49876dd6526cca7">GridRotatable.OnRemovedFromHand</a></div><div class="ttdeci">void OnRemovedFromHand()</div><div class="ttdef"><b>Definition</b> GridRotatable.cs:81</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -322,15 +355,15 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   29</span>    {</div>
-<div class="line"><span class="lineno">   30</span>        this.boardItem.OnAddToHand -= <a class="code hl_function" href="#a8cf92f683a09b6efab9c047833a1d346">OnAddToHand</a>;</div>
-<div class="line"><span class="lineno">   31</span>        this.boardItem.OnAddToBoard -= <a class="code hl_function" href="#a825af7dbb5f10fa5bf6f86953f2a6c5a">OnAddToBoard</a>;</div>
-<div class="line"><span class="lineno">   32</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>    {</div>
+<div class="line"><span class="lineno">   27</span>        this.boardItem.OnAddToHand -= <a class="code hl_function" href="#a8cf92f683a09b6efab9c047833a1d346">OnAddToHand</a>;</div>
+<div class="line"><span class="lineno">   28</span>        this.boardItem.OnAddToBoard -= <a class="code hl_function" href="#a825af7dbb5f10fa5bf6f86953f2a6c5a">OnAddToBoard</a>;</div>
+<div class="line"><span class="lineno">   29</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a07c65b3e7337bd275de12f4760e9ab4b" name="a07c65b3e7337bd275de12f4760e9ab4b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07c65b3e7337bd275de12f4760e9ab4b">&#9670;&#160;</a></span>OnGrabReleased()</h2>
+<a id="a225f5331e23d104af49876dd6526cca7" name="a225f5331e23d104af49876dd6526cca7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a225f5331e23d104af49876dd6526cca7">&#9670;&#160;</a></span>OnRemovedFromHand()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -339,7 +372,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void GridRotatable.OnGrabReleased </td>
+          <td class="memname">void GridRotatable.OnRemovedFromHand </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -351,10 +384,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   72</span>    {</div>
-<div class="line"><span class="lineno">   73</span>        this.lockedRotation = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   74</span>        this.handHandler.OnHandGrabRelease -= <a class="code hl_function" href="#a07c65b3e7337bd275de12f4760e9ab4b">OnGrabReleased</a>;</div>
-<div class="line"><span class="lineno">   75</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   82</span>    {</div>
+<div class="line"><span class="lineno">   83</span>        this.lockedRotation = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   84</span>        this.boardItem.OnRemovedFromHand -= <a class="code hl_function" href="#a225f5331e23d104af49876dd6526cca7">OnRemovedFromHand</a>;</div>
+<div class="line"><span class="lineno">   85</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -380,13 +413,13 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   12</span>    {</div>
-<div class="line"><span class="lineno">   13</span>        <span class="keywordflow">if</span> (Application.isPlaying)</div>
-<div class="line"><span class="lineno">   14</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   15</span>        this.boardItem = GetComponent&lt;BoardItem&gt;();</div>
-<div class="line"><span class="lineno">   16</span>        <a class="code hl_function" href="class_board_item_component.html#a700e24890a170e7561871e1b636415b3">CustomOnValidate</a>();</div>
-<div class="line"><span class="lineno">   17</span>    }</div>
-<div class="ttc" id="aclass_board_item_component_html_a700e24890a170e7561871e1b636415b3"><div class="ttname"><a href="class_board_item_component.html#a700e24890a170e7561871e1b636415b3">BoardItemComponent.CustomOnValidate</a></div><div class="ttdeci">virtual void CustomOnValidate()</div><div class="ttdoc">OnValidate so that BoardItemComponent&#39;s OnValidate doesnt get overwritten.</div><div class="ttdef"><b>Definition</b> BoardItemComponent.cs:20</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   13</span>    {</div>
+<div class="line"><span class="lineno">   14</span>        <span class="keywordflow">if</span> (Application.isPlaying)</div>
+<div class="line"><span class="lineno">   15</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   16</span>        this.boardItem = GetComponent&lt;BoardItem&gt;();</div>
+<div class="line"><span class="lineno">   17</span>        <a class="code hl_function" href="class_board_item_component.html#a700e24890a170e7561871e1b636415b3">CustomOnValidate</a>();</div>
+<div class="line"><span class="lineno">   18</span>    }</div>
+<div class="ttc" id="aclass_board_item_component_html_a700e24890a170e7561871e1b636415b3"><div class="ttname"><a href="class_board_item_component.html#a700e24890a170e7561871e1b636415b3">BoardItemComponent.CustomOnValidate</a></div><div class="ttdeci">virtual void CustomOnValidate()</div><div class="ttdoc">OnValidate so that BoardItemComponent&#39;s OnValidate doesnt get overwritten.</div><div class="ttdef"><b>Definition</b> BoardItemComponent.cs:21</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -412,17 +445,17 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">   39</span>    {</div>
-<div class="line"><span class="lineno">   40</span>        this.progression += clockWiseProgression * Time.deltaTime * this.<a class="code hl_variable" href="#a1ef7b3e848b5864557a228a387ccfb20">rotationSpeed</a>;</div>
-<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">if</span> (!(Mathf.Abs(<span class="keyword">this</span>.progression) &gt;= <span class="keyword">this</span>.stepAngle))</div>
-<div class="line"><span class="lineno">   42</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   43</span>        </div>
-<div class="line"><span class="lineno">   44</span>        <span class="keywordtype">float</span> angle = -this.stepAngle * Mathf.Sign(this.<a class="code hl_variable" href="#a47bf8ba62e02da51f9525a9b8ce56cbb">progression</a>);</div>
-<div class="line"><span class="lineno">   45</span>        this.transform.Rotate(0, 0, angle, Space.World);</div>
-<div class="line"><span class="lineno">   46</span>        this.lastRotation = this.transform.localEulerAngles;</div>
-<div class="line"><span class="lineno">   47</span>            </div>
-<div class="line"><span class="lineno">   48</span>        this.progression = 0;</div>
-<div class="line"><span class="lineno">   49</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   36</span>    {</div>
+<div class="line"><span class="lineno">   37</span>        this.progression += clockWiseProgression * Time.deltaTime * this.<a class="code hl_variable" href="#a1ef7b3e848b5864557a228a387ccfb20">rotationSpeed</a>;</div>
+<div class="line"><span class="lineno">   38</span>        <span class="keywordflow">if</span> (!(Mathf.Abs(<span class="keyword">this</span>.progression) &gt;= <span class="keyword">this</span>.stepAngle))</div>
+<div class="line"><span class="lineno">   39</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   40</span>        </div>
+<div class="line"><span class="lineno">   41</span>        <span class="keywordtype">float</span> angle = -this.stepAngle * Mathf.Sign(this.<a class="code hl_variable" href="#a47bf8ba62e02da51f9525a9b8ce56cbb">progression</a>);</div>
+<div class="line"><span class="lineno">   42</span>        this.transform.Rotate(0, 0, angle, Space.World);</div>
+<div class="line"><span class="lineno">   43</span>        this.rotation = this.transform.localEulerAngles;</div>
+<div class="line"><span class="lineno">   44</span>            </div>
+<div class="line"><span class="lineno">   45</span>        this.progression = 0;</div>
+<div class="line"><span class="lineno">   46</span>    }</div>
 <div class="ttc" id="aclass_grid_rotatable_html_a1ef7b3e848b5864557a228a387ccfb20"><div class="ttname"><a href="#a1ef7b3e848b5864557a228a387ccfb20">GridRotatable.rotationSpeed</a></div><div class="ttdeci">float rotationSpeed</div><div class="ttdef"><b>Definition</b> GridRotatable.cs:10</div></div>
 <div class="ttc" id="aclass_grid_rotatable_html_a47bf8ba62e02da51f9525a9b8ce56cbb"><div class="ttname"><a href="#a47bf8ba62e02da51f9525a9b8ce56cbb">GridRotatable.progression</a></div><div class="ttdeci">float progression</div><div class="ttdef"><b>Definition</b> GridRotatable.cs:12</div></div>
 </div><!-- fragment -->
@@ -452,13 +485,51 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Snaps the Z rotation to the nearest 90-degree cardinal direction. </p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span>    {</div>
-<div class="line"><span class="lineno">   56</span>        Vector3 currentAngles = this.transform.localEulerAngles;</div>
-<div class="line"><span class="lineno">   57</span>        <span class="keywordtype">float</span> snappedZ = Mathf.Round(currentAngles.z / 90f) * 90f;</div>
-<div class="line"><span class="lineno">   58</span>        this.transform.localRotation = Quaternion.Euler(currentAngles.x, currentAngles.y, snappedZ);</div>
-<div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>        this.progression = 0;</div>
-<div class="line"><span class="lineno">   61</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   52</span>    {</div>
+<div class="line"><span class="lineno">   53</span>        <span class="keywordflow">if</span> (this.<a class="code hl_variable" href="#a47bf8ba62e02da51f9525a9b8ce56cbb">progression</a> == 0)</div>
+<div class="line"><span class="lineno">   54</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   55</span>        <span class="keywordflow">if</span> (this.<a class="code hl_variable" href="#a4a46c5b72279b0cf11dbadd6b9dad323">moveManagerRef</a>.MoveAmount == 0)</div>
+<div class="line"><span class="lineno">   56</span>            this.transform.localRotation = Quaternion.Euler(this.<a class="code hl_variable" href="#a19c1a741e36f5c96f35d427b8dca7a9e">lastRotation</a>);</div>
+<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   58</span>        {</div>
+<div class="line"><span class="lineno">   59</span>            Vector3 currentAngles = this.transform.localEulerAngles;</div>
+<div class="line"><span class="lineno">   60</span>            <span class="keywordtype">float</span> snappedZ = Mathf.Round(currentAngles.z / 90f) * 90f;</div>
+<div class="line"><span class="lineno">   61</span>            this.transform.localRotation = Quaternion.Euler(currentAngles.x, currentAngles.y, snappedZ);</div>
+<div class="line"><span class="lineno">   62</span>        }</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>        this.progression = 0;</div>
+<div class="line"><span class="lineno">   65</span>        this.<a class="code hl_variable" href="#a4a46c5b72279b0cf11dbadd6b9dad323">moveManagerRef</a>.SetMove();</div>
+<div class="line"><span class="lineno">   66</span>        </div>
+<div class="line"><span class="lineno">   67</span>        this.rotation = this.transform.localEulerAngles;</div>
+<div class="line"><span class="lineno">   68</span>        this.lockedRotation = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   69</span>    }</div>
+<div class="ttc" id="aclass_grid_rotatable_html_a4a46c5b72279b0cf11dbadd6b9dad323"><div class="ttname"><a href="#a4a46c5b72279b0cf11dbadd6b9dad323">GridRotatable.moveManagerRef</a></div><div class="ttdeci">MoveManager moveManagerRef</div><div class="ttdef"><b>Definition</b> GridRotatable.cs:9</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac346aca2f61936336f5b6015956adf41" name="ac346aca2f61936336f5b6015956adf41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac346aca2f61936336f5b6015956adf41">&#9670;&#160;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GridRotatable.Start </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   17</span>=&gt; this.moveManagerRef = ComponentRegistry.GetComponent&lt;GameManager&gt;()?.MoveManager;</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -484,11 +555,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   80</span>    {</div>
-<div class="line"><span class="lineno">   81</span>        <span class="keywordflow">if</span> (this.<a class="code hl_variable" href="#a430893a402d61504fb4721e0890e18cf">lockedRotation</a>)</div>
-<div class="line"><span class="lineno">   82</span>            this.transform.rotation = Quaternion.Euler(this.<a class="code hl_variable" href="#a19c1a741e36f5c96f35d427b8dca7a9e">lastRotation</a>);</div>
-<div class="line"><span class="lineno">   83</span>    }</div>
-<div class="ttc" id="aclass_grid_rotatable_html_a19c1a741e36f5c96f35d427b8dca7a9e"><div class="ttname"><a href="#a19c1a741e36f5c96f35d427b8dca7a9e">GridRotatable.lastRotation</a></div><div class="ttdeci">Vector3 lastRotation</div><div class="ttdef"><b>Definition</b> GridRotatable.cs:14</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   94</span>    {</div>
+<div class="line"><span class="lineno">   95</span>        <span class="keywordflow">if</span> (this.<a class="code hl_variable" href="#a430893a402d61504fb4721e0890e18cf">lockedRotation</a>)</div>
+<div class="line"><span class="lineno">   96</span>            this.transform.rotation = Quaternion.Euler(this.<a class="code hl_variable" href="#a143320710fd08f21b2b7ff74cbb3bc30">rotation</a>);</div>
+<div class="line"><span class="lineno">   97</span>    }</div>
+<div class="ttc" id="aclass_grid_rotatable_html_a143320710fd08f21b2b7ff74cbb3bc30"><div class="ttname"><a href="#a143320710fd08f21b2b7ff74cbb3bc30">GridRotatable.rotation</a></div><div class="ttdeci">Vector3 rotation</div><div class="ttdef"><b>Definition</b> GridRotatable.cs:15</div></div>
 <div class="ttc" id="aclass_grid_rotatable_html_a430893a402d61504fb4721e0890e18cf"><div class="ttname"><a href="#a430893a402d61504fb4721e0890e18cf">GridRotatable.lockedRotation</a></div><div class="ttdeci">bool lockedRotation</div><div class="ttdef"><b>Definition</b> GridRotatable.cs:13</div></div>
 </div><!-- fragment -->
 </div>
@@ -510,28 +581,6 @@ Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel protected">protected</span><span class="mlabel inherited">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7babbe7bf0f6c8bf94524e94eeecd426" name="a7babbe7bf0f6c8bf94524e94eeecd426"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7babbe7bf0f6c8bf94524e94eeecd426">&#9670;&#160;</a></span>handHandler</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_hand_handler.html">HandHandler</a> GridRotatable.handHandler</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -582,6 +631,28 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a4a46c5b72279b0cf11dbadd6b9dad323" name="a4a46c5b72279b0cf11dbadd6b9dad323"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a46c5b72279b0cf11dbadd6b9dad323">&#9670;&#160;</a></span>moveManagerRef</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_managers_1_1_move_manager.html">MoveManager</a> GridRotatable.moveManagerRef</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a47bf8ba62e02da51f9525a9b8ce56cbb" name="a47bf8ba62e02da51f9525a9b8ce56cbb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a47bf8ba62e02da51f9525a9b8ce56cbb">&#9670;&#160;</a></span>progression</h2>
 
@@ -593,6 +664,28 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">float GridRotatable.progression</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a143320710fd08f21b2b7ff74cbb3bc30" name="a143320710fd08f21b2b7ff74cbb3bc30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a143320710fd08f21b2b7ff74cbb3bc30">&#9670;&#160;</a></span>rotation</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector3 GridRotatable.rotation</td>
         </tr>
       </table>
   </td>

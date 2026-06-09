@@ -1,0 +1,47 @@
+<map id="Managers.GameStates.CandyActivateState" name="Managers.GameStates.CandyActivateState">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1076,1651,1264,1875"/>
+<area shape="rect" id="Node000002" href="$class_managers_1_1_state-1-g.html" title=" " alt="" coords="5,1163,139,1296"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,1308,68,1387,80,1472,92,1515,108,1555,131,1592,159,1625,189,1646,227,1665,273,1682,326,1697,447,1721,582,1738,721,1749,856,1755,1078,1762,1073,1762,856,1761,721,1754,582,1743,446,1726,325,1702,271,1687,225,1670,186,1651,156,1629,126,1595,104,1557,87,1516,75,1473,63,1387,65,1313"/>
+<area shape="rect" id="Node000003" href="$class_grid_1_1_grid_manager.html" title="Manages everything in the grid." alt="" coords="797,880,1056,1579"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1057,1511,1115,1637,1110,1635,1055,1516"/>
+<area shape="rect" id="Node000004" href="$class_mono_behaviour.html" title=" " alt="" coords="999,5,1100,75"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1057,87,1075,222,1088,412,1090,521,1088,633,1081,746,1065,856,1059,890,1054,887,1060,856,1075,746,1083,633,1085,521,1083,413,1069,222,1056,92"/>
+<area shape="rect" id="Node000005" href="$class_grid_1_1_grid_generator.html" title="Handles the possible positions within the grid, and generates the mesh." alt="" coords="430,245,686,709"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="1038,86,1023,121,998,146,970,157,934,161,846,158,759,156,724,160,699,170,661,205,630,247,625,244,657,201,696,166,723,155,759,151,847,153,934,155,969,151,995,142,1018,118,1035,91"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="661,707,700,785,792,969,787,970,695,788,660,712"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="456,5,520,75"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="494,72,521,229,515,228,493,77"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="557,5,612,75"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="583,72,575,229,570,228,582,77"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="668,5,738,75"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="695,72,676,145,648,230,643,228,671,143,693,77"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="773,5,836,75"/>
+<area shape="poly" id="edge9_Node000005_Node000009" title=" " alt="" coords="799,72,788,112,778,130,765,146,747,156,731,159,715,161,699,170,672,199,648,232,643,230,668,196,696,166,713,156,730,154,746,151,761,142,773,127,783,110,797,77"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="186,5,211,75"/>
+<area shape="poly" id="edge17_Node000001_Node000010" title=" " alt="" coords="202,71,216,171,238,319,275,506,330,718,365,831,406,945,452,1059,505,1172,565,1281,631,1387,705,1486,787,1577,850,1629,921,1671,993,1704,1062,1732,1057,1731,991,1709,918,1676,847,1633,784,1581,701,1489,627,1390,560,1284,500,1174,447,1061,401,947,360,832,325,720,270,507,233,320,210,171,202,77"/>
+<area shape="poly" id="edge10_Node000005_Node000010" title=" " alt="" coords="210,59,267,142,343,236,421,327,416,328,338,240,263,146,211,65"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="1208,5,1243,75"/>
+<area shape="poly" id="edge24_Node000001_Node000011" title=" " alt="" coords="1228,72,1234,300,1236,680,1233,906,1226,1145,1213,1389,1195,1627,1193,1636,1189,1632,1190,1626,1208,1388,1220,1145,1227,906,1231,680,1229,300,1226,77"/>
+<area shape="poly" id="edge11_Node000005_Node000011" title=" " alt="" coords="1206,50,1161,72,1103,101,1070,126,1055,137,1033,147,1000,153,959,154,861,152,766,152,727,158,699,170,666,198,639,232,635,230,663,195,696,166,726,153,765,147,861,146,959,149,1000,147,1031,141,1052,132,1066,121,1100,96,1159,67,1210,47"/>
+<area shape="rect" id="Node000017" href="$class_timer.html" title="A simple timer that sends out events for timer based functions." alt="" coords="1364,168,1583,787"/>
+<area shape="poly" id="edge21_Node000017_Node000011" title=" " alt="" coords="1243,69,1358,270,1353,270,1242,74"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="913,5,968,75"/>
+<area shape="poly" id="edge12_Node000005_Node000012" title=" " alt="" coords="937,72,927,113,916,131,902,146,875,161,849,166,823,165,799,159,775,154,750,152,725,156,699,170,667,199,641,232,636,230,663,195,696,166,723,151,750,147,775,149,800,154,824,159,848,161,873,156,899,142,912,128,922,111,935,77"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="372,5,415,75"/>
+<area shape="poly" id="edge13_Node000005_Node000013" title=" " alt="" coords="405,72,432,143,464,229,459,230,427,145,405,77"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="710,427,917,528"/>
+<area shape="poly" id="edge14_Node000003_Node000014" title=" " alt="" coords="817,525,830,675,850,856,851,864,846,862,845,856,824,675,815,530"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="941,443,1044,512"/>
+<area shape="poly" id="edge15_Node000003_Node000015" title=" " alt="" coords="985,509,957,643,942,726,930,811,926,864,921,862,925,810,936,725,952,641,982,514"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="1262,1195,1378,1264"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="1319,1262,1312,1332,1298,1423,1277,1526,1247,1628,1243,1637,1239,1633,1242,1626,1272,1525,1293,1422,1307,1331,1316,1266"/>
+<area shape="poly" id="edge18_Node000001_Node000017" title=" " alt="" coords="1512,784,1518,973,1514,1074,1505,1177,1489,1281,1466,1385,1434,1485,1392,1580,1369,1616,1342,1648,1311,1677,1278,1702,1276,1697,1307,1673,1338,1644,1365,1612,1387,1577,1429,1483,1460,1383,1484,1280,1500,1177,1509,1074,1513,973,1510,789"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="1354,5,1403,75"/>
+<area shape="poly" id="edge19_Node000017_Node000018" title=" " alt="" coords="1386,72,1403,143,1405,152,1399,150,1398,145,1385,77"/>
+<area shape="rect" id="Node000019" title=" " alt="" coords="1473,5,1509,75"/>
+<area shape="poly" id="edge20_Node000017_Node000019" title=" " alt="" coords="1491,72,1489,152,1484,150,1489,77"/>
+<area shape="rect" id="Node000020" title=" " alt="" coords="1564,5,1612,75"/>
+<area shape="poly" id="edge22_Node000017_Node000020" title=" " alt="" coords="1581,72,1561,153,1557,150,1578,77"/>
+<area shape="rect" id="Node000021" title=" " alt="" coords="1636,5,1746,75"/>
+<area shape="poly" id="edge23_Node000017_Node000021" title=" " alt="" coords="1676,72,1593,243,1588,240,1673,77"/>
+</map>

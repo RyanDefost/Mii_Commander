@@ -167,7 +167,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13.75
+  m_fontSize: 15.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -247,8 +247,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 5.5}
-  m_SizeDelta: {x: -24, y: -13}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -24, y: -3.9999995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8746034108022516295
 MonoBehaviour:
@@ -265,8 +265,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
+    m_Top: 2
+    m_Bottom: 2
   m_ChildAlignment: 0
   m_Spacing: 4
   m_ChildForceExpandWidth: 1
@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 1971308203146891702}
   - component: {fileID: 6762345012400374136}
   - component: {fileID: 1229784614955912650}
+  - component: {fileID: 1071782302481951905}
   m_Layer: 5
   m_Name: Quest
   m_TagString: Untagged
@@ -352,6 +353,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1071782302481951905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7065890437509222879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4aacf0627942c7b40bc88a08dd7760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Managers.Quest.QuestVisual
+  textObj: {fileID: 3531753253759070157}
+  animator: {fileID: 1229784614955912650}
+  slideOutClip: {fileID: 7400000, guid: 0f9730a13c09ce240956545885af2d5b, type: 2}
 --- !u!1 &8834756339527958737
 GameObject:
   m_ObjectHideFlags: 0

@@ -137,10 +137,11 @@ Collaboration diagram for PlayerHand.PlayerHandManager:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aacdc406229143236a83878cf855d706c" id="r_aacdc406229143236a83878cf855d706c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aacdc406229143236a83878cf855d706c">SetStateToGrabbing</a> ()</td></tr>
+<tr class="memitem:af91073831733bc27df9d90fd46d6a26e" id="r_af91073831733bc27df9d90fd46d6a26e"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af91073831733bc27df9d90fd46d6a26e">SetCanGrab</a> (bool canGrab)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a44e29aecee57ba15655faec08ea36812" id="r_a44e29aecee57ba15655faec08ea36812"><td class="memItemLeft">Action&lt; Vector2, Vector2 &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a44e29aecee57ba15655faec08ea36812">OnGrabReleased</a></td></tr>
+<tr class="memitem:a00006a5bd6f136635fe924e41ec25f2e" id="r_a00006a5bd6f136635fe924e41ec25f2e"><td class="memItemLeft">Action&lt; Vector2, Vector2 &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a00006a5bd6f136635fe924e41ec25f2e">OnRemovedFromHand</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -149,10 +150,10 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a61339edfbea43144b02bfad907136a41" id="r_a61339edfbea43144b02bfad907136a41"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a61339edfbea43144b02bfad907136a41">OnDestroy</a> ()</td></tr>
 <tr class="memitem:ab627badecc6bfb76689ad930c792ebdd" id="r_ab627badecc6bfb76689ad930c792ebdd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ab627badecc6bfb76689ad930c792ebdd">Update</a> ()</td></tr>
 <tr class="memitem:a6d2bd69cf2e7304147751cf620d5e9f0" id="r_a6d2bd69cf2e7304147751cf620d5e9f0"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a6d2bd69cf2e7304147751cf620d5e9f0">OnGrabActionPerformed</a> (InputAction.CallbackContext obj)</td></tr>
+<tr class="memitem:a6ce40ec804358c6fe847cf3ec7b42d70" id="r_a6ce40ec804358c6fe847cf3ec7b42d70"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a6ce40ec804358c6fe847cf3ec7b42d70">OnInteract</a> (InputAction.CallbackContext obj, <a class="el" href="class_player_hand_1_1_interaction_handler.html">InteractionHandler</a> interactionHandler)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-methods" class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
-<tr class="memitem:aafc7368d664e832f890bc3843361849b" id="r_aafc7368d664e832f890bc3843361849b"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#aafc7368d664e832f890bc3843361849b">OnInteract</a> (InputAction.CallbackContext obj, <a class="el" href="class_player_hand_1_1_interaction_handler.html">InteractionHandler</a> interactionHandler)</td></tr>
 <tr class="memitem:a94e32f965af5656962ea551388ecae4f" id="r_a94e32f965af5656962ea551388ecae4f"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a94e32f965af5656962ea551388ecae4f">CheckOnGrabReleased</a> (ref bool grabbing, InputAction grabAction, <a class="el" href="class_player_hand_1_1_visual_handler.html">VisualHandler</a> visualHandler, <a class="el" href="class_player_hand_1_1_movement_handler.html">MovementHandler</a> movementHandler)</td></tr>
 <tr class="memdesc:a94e32f965af5656962ea551388ecae4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if grab was released.  <br /></td></tr>
 </table><table class="memberdecls">
@@ -167,6 +168,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a6daedc1494b68d59f18b0ec62dddf2f0" id="r_a6daedc1494b68d59f18b0ec62dddf2f0"><td class="memItemLeft">InputActionMap&#160;</td><td class="memItemRight"><a class="el" href="#a6daedc1494b68d59f18b0ec62dddf2f0">inputActionMap</a></td></tr>
 <tr class="memitem:a922b6625932359b30199f2b529792b13" id="r_a922b6625932359b30199f2b529792b13"><td class="memItemLeft">InputAction&#160;</td><td class="memItemRight"><a class="el" href="#a922b6625932359b30199f2b529792b13">moveAction</a></td></tr>
 <tr class="memitem:a19105acccb94403f76ad80d86ccadace" id="r_a19105acccb94403f76ad80d86ccadace"><td class="memItemLeft">InputAction&#160;</td><td class="memItemRight"><a class="el" href="#a19105acccb94403f76ad80d86ccadace">grabAction</a></td></tr>
+<tr class="memitem:af0288ab3389eaefe65ed7d129a60c15f" id="r_af0288ab3389eaefe65ed7d129a60c15f"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#af0288ab3389eaefe65ed7d129a60c15f">canGrab</a></td></tr>
 <tr class="memitem:a1f76be813f7dbf1b03b92dff8c04c496" id="r_a1f76be813f7dbf1b03b92dff8c04c496"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a1f76be813f7dbf1b03b92dff8c04c496">grabbing</a></td></tr>
 <tr class="memitem:aaa777bf6d3b3819af9579a9f2a0d7418" id="r_aaa777bf6d3b3819af9579a9f2a0d7418"><td class="memItemLeft"><a class="el" href="class_device_tracker.html">DeviceTracker</a>&#160;</td><td class="memItemRight"><a class="el" href="#aaa777bf6d3b3819af9579a9f2a0d7418">deviceTracker</a></td></tr>
 </table>
@@ -195,20 +197,22 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   48</span>        {</div>
-<div class="line"><span class="lineno">   49</span>            this.inputActionMap = this.inputActionAsset.FindActionMap(<span class="stringliteral">&quot;Player&quot;</span>);</div>
-<div class="line"><span class="lineno">   50</span>            this.inputActionMap.Enable();</div>
-<div class="line"><span class="lineno">   51</span>            this.moveAction = this.inputActionMap.FindAction(<span class="stringliteral">&quot;Move&quot;</span>);</div>
-<div class="line"><span class="lineno">   52</span>            this.grabAction = this.inputActionMap.FindAction(<span class="stringliteral">&quot;Grab&quot;</span>);</div>
-<div class="line"><span class="lineno">   53</span>            this.itemRotationHandler.rotateAction = this.inputActionMap.FindAction(<span class="stringliteral">&quot;Rotate&quot;</span>);</div>
-<div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>            this.grabAction.performed += OnGrabActionPerformed;</div>
-<div class="line"><span class="lineno">   56</span>        </div>
-<div class="line"><span class="lineno">   57</span>            Cursor.visible = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   58</span>            Cursor.lockState = CursorLockMode.Locked;</div>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>        {</div>
+<div class="line"><span class="lineno">   50</span>            ComponentRegistry.AddToRegistry(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   51</span>            </div>
+<div class="line"><span class="lineno">   52</span>            this.canGrab = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   53</span>            </div>
+<div class="line"><span class="lineno">   54</span>            this.inputActionMap = this.inputActionAsset.FindActionMap(<span class="stringliteral">&quot;Player&quot;</span>);</div>
+<div class="line"><span class="lineno">   55</span>            this.inputActionMap.Enable();</div>
+<div class="line"><span class="lineno">   56</span>            this.moveAction = this.inputActionMap.FindAction(<span class="stringliteral">&quot;Move&quot;</span>);</div>
+<div class="line"><span class="lineno">   57</span>            this.grabAction = this.inputActionMap.FindAction(<span class="stringliteral">&quot;Grab&quot;</span>);</div>
+<div class="line"><span class="lineno">   58</span>            this.itemRotationHandler.rotateAction = this.inputActionMap.FindAction(<span class="stringliteral">&quot;Rotate&quot;</span>);</div>
 <div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>            ComponentRegistry.AddToRegistry(<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   61</span>        }</div>
+<div class="line"><span class="lineno">   60</span>            this.grabAction.performed += OnGrabActionPerformed;</div>
+<div class="line"><span class="lineno">   61</span>        </div>
+<div class="line"><span class="lineno">   62</span>            Cursor.visible = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   63</span>            Cursor.lockState = CursorLockMode.Locked;</div>
+<div class="line"><span class="lineno">   64</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -251,12 +255,12 @@ Private Attributes</h2></td></tr>
 
 <p>Checks if grab was released. </p>
 <dl class="section return"><dt>Returns</dt><dd>true when grab was released</dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">  100</span>        {</div>
-<div class="line"><span class="lineno">  101</span>            <span class="keywordflow">if</span> (grabAction.ReadValue&lt;<span class="keywordtype">float</span>&gt;() &gt; 0) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  102</span>            visualHandler.SetSprite(<span class="stringliteral">&quot;Pointing&quot;</span>, movementHandler);</div>
-<div class="line"><span class="lineno">  103</span>            grabbing = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  104</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  105</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  104</span>        {</div>
+<div class="line"><span class="lineno">  105</span>            <span class="keywordflow">if</span> (grabAction.ReadValue&lt;<span class="keywordtype">float</span>&gt;() &gt; 0) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  106</span>            visualHandler.SetSprite(<span class="stringliteral">&quot;Pointing&quot;</span>, movementHandler);</div>
+<div class="line"><span class="lineno">  107</span>            grabbing = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  108</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  109</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -282,10 +286,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   64</span>        {</div>
-<div class="line"><span class="lineno">   65</span>            ComponentRegistry.RemoveFromRegistry(<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   66</span>            this.grabAction.performed -= OnGrabActionPerformed;</div>
-<div class="line"><span class="lineno">   67</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   67</span>        {</div>
+<div class="line"><span class="lineno">   68</span>            ComponentRegistry.RemoveFromRegistry(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   69</span>            this.grabAction.performed -= OnGrabActionPerformed;</div>
+<div class="line"><span class="lineno">   70</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -311,12 +315,12 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   85</span>=&gt; OnInteract(obj, this.interactionHandler);</div>
+<div class="fragment"><div class="line"><span class="lineno">   88</span>=&gt; OnInteract(obj, this.interactionHandler);</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="aafc7368d664e832f890bc3843361849b" name="aafc7368d664e832f890bc3843361849b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aafc7368d664e832f890bc3843361849b">&#9670;&#160;</a></span>OnInteract()</h2>
+<a id="a6ce40ec804358c6fe847cf3ec7b42d70" name="a6ce40ec804358c6fe847cf3ec7b42d70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ce40ec804358c6fe847cf3ec7b42d70">&#9670;&#160;</a></span>OnInteract()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -337,15 +341,16 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel private">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   88</span>        {</div>
-<div class="line"><span class="lineno">   89</span>            <span class="keywordflow">if</span> (!obj.ReadValueAsButton()) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   90</span>            <span class="keywordflow">if</span> (!interactionHandler.CurrentHover) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   91</span>            interactionHandler.CurrentHover.Trigger();</div>
-<div class="line"><span class="lineno">   92</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   91</span>        {</div>
+<div class="line"><span class="lineno">   92</span>            <span class="keywordflow">if</span>(!this.canGrab) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   93</span>            <span class="keywordflow">if</span> (!obj.ReadValueAsButton()) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   94</span>            <span class="keywordflow">if</span> (!interactionHandler.CurrentHover) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   95</span>            interactionHandler.CurrentHover.Trigger();</div>
+<div class="line"><span class="lineno">   96</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -371,15 +376,33 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   37</span>        {</div>
-<div class="line"><span class="lineno">   38</span>            <span class="keywordflow">if</span> (Application.isPlaying)</div>
-<div class="line"><span class="lineno">   39</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   40</span>            this.visualHandler = GetComponent&lt;VisualHandler&gt;();</div>
-<div class="line"><span class="lineno">   41</span>            this.movementHandler = GetComponent&lt;MovementHandler&gt;();</div>
-<div class="line"><span class="lineno">   42</span>            this.interactionHandler = GetComponent&lt;InteractionHandler&gt;();</div>
-<div class="line"><span class="lineno">   43</span>            this.itemRotationHandler = GetComponent&lt;ItemRotationHandler&gt;();</div>
-<div class="line"><span class="lineno">   44</span>            this.enabled = this.visualHandler.enabled &amp;&amp; this.movementHandler.enabled &amp;&amp; this.interactionHandler.enabled &amp;&amp; this.inputActionAsset;</div>
-<div class="line"><span class="lineno">   45</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   38</span>        {</div>
+<div class="line"><span class="lineno">   39</span>            <span class="keywordflow">if</span> (Application.isPlaying)</div>
+<div class="line"><span class="lineno">   40</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   41</span>            this.visualHandler = GetComponent&lt;VisualHandler&gt;();</div>
+<div class="line"><span class="lineno">   42</span>            this.movementHandler = GetComponent&lt;MovementHandler&gt;();</div>
+<div class="line"><span class="lineno">   43</span>            this.interactionHandler = GetComponent&lt;InteractionHandler&gt;();</div>
+<div class="line"><span class="lineno">   44</span>            this.itemRotationHandler = GetComponent&lt;ItemRotationHandler&gt;();</div>
+<div class="line"><span class="lineno">   45</span>            this.enabled = this.visualHandler.enabled &amp;&amp; this.movementHandler.enabled &amp;&amp; this.interactionHandler.enabled &amp;&amp; this.inputActionAsset;</div>
+<div class="line"><span class="lineno">   46</span>        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af91073831733bc27df9d90fd46d6a26e" name="af91073831733bc27df9d90fd46d6a26e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af91073831733bc27df9d90fd46d6a26e">&#9670;&#160;</a></span>SetCanGrab()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlayerHand.PlayerHandManager.SetCanGrab </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>canGrab</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  117</span>=&gt;  this.canGrab = canGrab;</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -397,10 +420,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  108</span>        {</div>
-<div class="line"><span class="lineno">  109</span>            this.visualHandler.SetSprite(<span class="stringliteral">&quot;Closed&quot;</span>, this.movementHandler);</div>
-<div class="line"><span class="lineno">  110</span>            this.grabbing = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  111</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  112</span>        {</div>
+<div class="line"><span class="lineno">  113</span>            this.visualHandler.SetSprite(<span class="stringliteral">&quot;Closed&quot;</span>, this.movementHandler);</div>
+<div class="line"><span class="lineno">  114</span>            this.grabbing = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  115</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -426,24 +449,46 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   70</span>        {</div>
-<div class="line"><span class="lineno">   71</span>            <span class="keywordflow">if</span> (this.moveAction != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">   72</span>            {</div>
-<div class="line"><span class="lineno">   73</span>                this.deviceTracker ??= ComponentRegistry.GetComponent&lt;DeviceTracker&gt;();</div>
-<div class="line"><span class="lineno">   74</span>                Vector2 delta = this.moveAction.ReadValue&lt;Vector2&gt;();</div>
-<div class="line"><span class="lineno">   75</span>                <span class="keywordflow">if</span> (this.deviceTracker &amp;&amp; this.deviceTracker.LastDevice is Gamepad)</div>
-<div class="line"><span class="lineno">   76</span>                    delta *= this.gamePadExtraSensitivity;</div>
-<div class="line"><span class="lineno">   77</span>                this.movementHandler.ApplyMouseDelta(delta);</div>
-<div class="line"><span class="lineno">   78</span>            }</div>
-<div class="line"><span class="lineno">   79</span>            </div>
-<div class="line"><span class="lineno">   80</span>            <span class="keywordflow">if</span> (this.grabAction == <span class="keyword">null</span> || !this.grabbing) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   81</span>            <span class="keywordflow">if</span> (CheckOnGrabReleased(ref this.grabbing, this.grabAction, this.visualHandler, this.movementHandler))</div>
-<div class="line"><span class="lineno">   82</span>                this.OnGrabReleased.Invoke(this.movementHandler.MovementDirection,  <span class="keyword">this</span>.movementHandler.ThrowForce);</div>
-<div class="line"><span class="lineno">   83</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   73</span>        {</div>
+<div class="line"><span class="lineno">   74</span>            <span class="keywordflow">if</span> (this.moveAction != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   75</span>            {</div>
+<div class="line"><span class="lineno">   76</span>                this.deviceTracker ??= ComponentRegistry.GetComponent&lt;DeviceTracker&gt;();</div>
+<div class="line"><span class="lineno">   77</span>                Vector2 delta = this.moveAction.ReadValue&lt;Vector2&gt;();</div>
+<div class="line"><span class="lineno">   78</span>                <span class="keywordflow">if</span> (this.deviceTracker &amp;&amp; this.deviceTracker.LastDevice is Gamepad)</div>
+<div class="line"><span class="lineno">   79</span>                    delta *= this.gamePadExtraSensitivity;</div>
+<div class="line"><span class="lineno">   80</span>                this.movementHandler.ApplyMouseDelta(delta);</div>
+<div class="line"><span class="lineno">   81</span>            }</div>
+<div class="line"><span class="lineno">   82</span>            </div>
+<div class="line"><span class="lineno">   83</span>            <span class="keywordflow">if</span> (this.grabAction == <span class="keyword">null</span> || !this.grabbing) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   84</span>            <span class="keywordflow">if</span> (CheckOnGrabReleased(ref this.grabbing, this.grabAction, this.visualHandler, this.movementHandler))</div>
+<div class="line"><span class="lineno">   85</span>                this.OnRemovedFromHand.Invoke(this.movementHandler.MovementDirection,  <span class="keyword">this</span>.movementHandler.ThrowForce);</div>
+<div class="line"><span class="lineno">   86</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
+<a id="af0288ab3389eaefe65ed7d129a60c15f" name="af0288ab3389eaefe65ed7d129a60c15f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0288ab3389eaefe65ed7d129a60c15f">&#9670;&#160;</a></span>canGrab</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PlayerHand.PlayerHandManager.canGrab</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aaa777bf6d3b3819af9579a9f2a0d7418" name="aaa777bf6d3b3819af9579a9f2a0d7418"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaa777bf6d3b3819af9579a9f2a0d7418">&#9670;&#160;</a></span>deviceTracker</h2>
 
@@ -664,14 +709,14 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a44e29aecee57ba15655faec08ea36812" name="a44e29aecee57ba15655faec08ea36812"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a44e29aecee57ba15655faec08ea36812">&#9670;&#160;</a></span>OnGrabReleased</h2>
+<a id="a00006a5bd6f136635fe924e41ec25f2e" name="a00006a5bd6f136635fe924e41ec25f2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00006a5bd6f136635fe924e41ec25f2e">&#9670;&#160;</a></span>OnRemovedFromHand</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Action&lt;Vector2, Vector2&gt; PlayerHand.PlayerHandManager.OnGrabReleased</td>
+          <td class="memname">Action&lt;Vector2, Vector2&gt; PlayerHand.PlayerHandManager.OnRemovedFromHand</td>
         </tr>
       </table>
 </div><div class="memdoc">

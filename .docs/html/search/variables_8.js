@@ -1,14 +1,22 @@
 var searchData=
 [
   ['inactivepool_0',['inactivePool',['../class_object_pool-1-g.html#a619392bd729e7d33a04681ac0d745724',1,'ObjectPool-1-g']]],
-  ['index_1',['index',['../class_candy_type_lookup_1_1_candy_type_option.html#a357de8bef9e8c55fe2564c47daee377e',1,'CandyTypeLookup.CandyTypeOption.index'],['../class_grid_1_1_grid_manager_1_1_grid_instance.html#adc2a7043dfa1032d73d8594dff2abf69',1,'Grid.GridManager.GridInstance.index']]],
-  ['inputactionasset_2',['inputActionAsset',['../class_player_hand_1_1_player_hand_manager.html#a6fc914f17942d8e572479fba85349e55',1,'PlayerHand::PlayerHandManager']]],
-  ['inputactionmap_3',['inputActionMap',['../class_player_hand_1_1_player_hand_manager.html#a6daedc1494b68d59f18b0ec62dddf2f0',1,'PlayerHand::PlayerHandManager']]],
-  ['instances_4',['instances',['../class_candy_group_handle.html#a4bf7ef7b831f877880191dfd0256ec88',1,'CandyGroupHandle']]],
-  ['interactable_5',['interactable',['../class_board_item.html#a684c45c02374cdf0d47cd0f7d946c467',1,'BoardItem']]],
+  ['index_1',['index',['../class_candy_type_lookup_1_1_candy_type_option.html#a357de8bef9e8c55fe2564c47daee377e',1,'CandyTypeLookup.CandyTypeOption.index'],['../struct_grid_1_1_grid_manager_1_1_grid_index.html#a48a3462e717bfa3fde439ac79b65da94',1,'Grid.GridManager.GridIndex.index'],['../class_grid_1_1_grid_manager_1_1_grid_instance.html#a81bc88a2ea65bae2550ed922945d8d99',1,'Grid.GridManager.GridInstance.index']]],
+  ['initialmoveamount_2',['initialMoveAmount',['../class_managers_1_1_move_manager.html#a683079de298f8796cf79bb5d846dc110',1,'Managers::MoveManager']]],
+  ['inputactionasset_3',['inputActionAsset',['../class_player_hand_1_1_player_hand_manager.html#a6fc914f17942d8e572479fba85349e55',1,'PlayerHand::PlayerHandManager']]],
+  ['inputactionmap_4',['inputActionMap',['../class_player_hand_1_1_player_hand_manager.html#a6daedc1494b68d59f18b0ec62dddf2f0',1,'PlayerHand::PlayerHandManager']]],
+  ['instances_5',['instances',['../class_candy_group_handle.html#a4bf7ef7b831f877880191dfd0256ec88',1,'CandyGroupHandle']]],
   ['interaction_6',['interaction',['../class_interactable.html#aa1d901b508c7c3d045a5d5c4e39077cd',1,'Interactable']]],
   ['interactionhandler_7',['interactionHandler',['../class_player_hand_1_1_item_rotation_handler.html#a15ef1d3372dc3008fdcb6d9227e6eb61',1,'PlayerHand.ItemRotationHandler.interactionHandler'],['../class_player_hand_1_1_player_hand_manager.html#a8c2df7b8aca0ca0a1d29d92a4af672df',1,'PlayerHand.PlayerHandManager.interactionHandler']]],
   ['isanimatingz_8',['isAnimatingZ',['../class_player_hand_1_1_movement_handler.html#a4fe40f7031d734ca26f0cfdc076ef632',1,'PlayerHand::MovementHandler']]],
-  ['isrunning_9',['isRunning',['../class_timer.html#a20ea3757f43477ef7b98329b358b09f6',1,'Timer']]],
-  ['itemrotationhandler_10',['itemRotationHandler',['../class_player_hand_1_1_player_hand_manager.html#a1c28b432079b96b7a4edbf53dadb91e9',1,'PlayerHand::PlayerHandManager']]]
+  ['isbeingheld_9',['isBeingHeld',['../class_shake_detector.html#a8eea44ded716766fce74c525acae0a87',1,'ShakeDetector']]],
+  ['isbuyable_10',['isBuyable',['../class_shop_component.html#a88ea94dac610fcb88abc29eacaaaf347',1,'ShopComponent']]],
+  ['isoffgrid_11',['isOffGrid',['../struct_grid_1_1_grid_manager_1_1_grid_index.html#aaca76a2fdc1655f5ff244deb73589edf',1,'Grid::GridManager::GridIndex']]],
+  ['isrunning_12',['isRunning',['../class_timer.html#a20ea3757f43477ef7b98329b358b09f6',1,'Timer']]],
+  ['itemamount_13',['itemAmount',['../class_shop_component.html#a7eeb2e717c41a803e5d0312f42f30f15',1,'ShopComponent']]],
+  ['itemname_14',['itemName',['../class_helper_structs_1_1_shop_1_1_shop_item.html#a71c19ec3f36ce80aa3cdc1f7684c4696',1,'HelperStructs::Shop::ShopItem']]],
+  ['itemnamerenderer_15',['itemNameRenderer',['../class_shop_component.html#a60cf525645d44720df70655578fcc672',1,'ShopComponent']]],
+  ['itemrotationhandler_16',['itemRotationHandler',['../class_player_hand_1_1_player_hand_manager.html#a1c28b432079b96b7a4edbf53dadb91e9',1,'PlayerHand::PlayerHandManager']]],
+  ['itemsprite_17',['itemSprite',['../class_helper_structs_1_1_shop_1_1_shop_item.html#af7bbac48f5c7601399118ac7540ddf40',1,'HelperStructs::Shop::ShopItem']]],
+  ['itemspriterenderer_18',['itemSpriteRenderer',['../class_shop_component.html#a07921703a50a4cf957580fc5797500b5',1,'ShopComponent']]]
 ];
