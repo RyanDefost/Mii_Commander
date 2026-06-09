@@ -498,6 +498,52 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &318299718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 318299719}
+  - component: {fileID: 318299720}
+  m_Layer: 0
+  m_Name: QuestManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &318299719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318299718}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 547688271}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &318299720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318299718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adc35aa65c3b38b4d90fd975a5318311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Managers.Quest.QuestManager
+  uiParent: {fileID: 1971011209}
+  questPrefab: {fileID: 7065890437509222879, guid: c6a3e74615dd23a43b561ccd051cb000, type: 3}
 --- !u!1 &332280969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,6 +1791,7 @@ Transform:
   - {fileID: 2050022997}
   - {fileID: 462569216}
   - {fileID: 865853117}
+  - {fileID: 318299719}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &549796036
@@ -2222,7 +2269,7 @@ MonoBehaviour:
   moveManager: {fileID: 36105583}
   turnManager: {fileID: 689433971}
   scoreManager: {fileID: 462569218}
-  questManager: {fileID: 1971011210}
+  questManager: {fileID: 318299720}
   levelData: {fileID: 11400000, guid: e5d94e483e7bf7dc6bb41b8766f44e75, type: 2}
 --- !u!1 &675376728
 GameObject:
@@ -5071,9 +5118,10 @@ Transform:
   - {fileID: 1777537646}
   - {fileID: 1204018241}
   - {fileID: 1165477595}
-  - {fileID: 677728086}
-  - {fileID: 1886620523}
   - {fileID: 357532186}
+  - {fileID: 1886620523}
+  - {fileID: 677728086}
+  - {fileID: 1896694613}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1149207527
@@ -8658,6 +8706,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1189079588}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1896694612
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1896694613}
+  - component: {fileID: 1896694614}
+  m_Layer: 0
+  m_Name: RewardSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1896694613
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896694612}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.5, y: 4, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1112216106}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1896694614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896694612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07df21c7e2da44f889488e3faaab814c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Managers.QuestManagement.Rewards.RewardSpawnPoint
 --- !u!1 &1928423496
 GameObject:
   m_ObjectHideFlags: 0
@@ -9848,8 +9940,7 @@ SceneRoots:
   - {fileID: 1248604690}
   - {fileID: 547688271}
   - {fileID: 1112216106}
-  - {fileID: 2018210008}
-  - {fileID: 689433977}
   - {fileID: 2082867051}
   - {fileID: 484745760}
-  - {fileID: 278710245}
+  - {fileID: 689433977}
+  - {fileID: 2018210008}
