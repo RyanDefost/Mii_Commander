@@ -36,16 +36,15 @@ public class CandyCleaner : MonoBehaviour
         }
     }
 
-        private IEnumerator SetForDestroy(BoardItem boardItem, float time)
-        {
-            this.destroyRequested.Add(boardItem);
-            yield return new WaitForSeconds(time);
-            this.destroyRequested.Remove(boardItem);
+    private IEnumerator SetForDestroy(BoardItem boardItem, float time)
+    {
+        this.destroyRequested.Add(boardItem);
+        yield return new WaitForSeconds(time);
+        this.destroyRequested.Remove(boardItem);
+        
+        if (!boardItem) yield break;
+        if (boardItem.gridInstanceRef == null)
+            DestroyImmediate(boardItem.gameObject);
             
-            if (boardItem == null) yield break;
-            if (boardItem.gridInstanceRef == null)
-                DestroyImmediate(boardItem.gameObject);
-                
-        }
     }
 }
