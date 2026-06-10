@@ -41,9 +41,10 @@ public class CandyCleaner : MonoBehaviour
         this.destroyRequested.Add(boardItem);
         yield return new WaitForSeconds(time);
         this.destroyRequested.Remove(boardItem);
-
-        if (boardItem is null) yield break;
-        if(boardItem.gridInstanceRef == null)
+        
+        if (boardItem == null) yield break;
+        if (boardItem.gridInstanceRef == null)
             DestroyImmediate(boardItem.gameObject);
+            
     }
 }

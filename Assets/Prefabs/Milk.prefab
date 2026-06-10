@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   boardItem: {fileID: 4722408874013014629}
+  interactionOverride: 0
   interaction:
     m_PersistentCalls:
       m_Calls:
@@ -233,8 +234,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridMoveable
   boardItem: {fileID: 4722408874013014629}
-  canIgnoreLocks: 0
+  isActiveSearching: 1
   moveImmunity: 0
+  startCellName: locked
   offset: 0.45
   minimalDist: 1
   minVelocityToRecalculate: 1

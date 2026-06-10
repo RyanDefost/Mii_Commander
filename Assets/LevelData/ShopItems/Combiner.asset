@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HelperStructs.Shop.ShopItem
   shopObject: {fileID: 2427277321692252709, guid: c88ea02afeaebd9a5b9c4b9a356a163d, type: 3}
   cost: 10
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: e43ff728b756ae24c85c0fe3ac25c641, type: 3}
   itemName: Combiner
