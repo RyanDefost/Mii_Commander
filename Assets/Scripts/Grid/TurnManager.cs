@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using BoardItems;
 using UnityEngine;
 
@@ -15,6 +17,9 @@ namespace Grid
         private float waitTime;
         private Timer waitTimer;
 
+        private List<GridMoveable> waitingMoves =  new();
+        private bool isDestroying = false;
+        
         public Action<GridMoveable> OnEndReached;
         
         private void OnValidate()
@@ -68,13 +73,36 @@ namespace Grid
                     this.gridManager.ReleaseInstance(instance);
                     this.OnEndReached?.Invoke(moveComponent);
                     
-                    Destroy(moveComponent.gameObject);
+                    Destroy(moveComponent.gameObject, 5f);
+                    moveComponent.SetMoving(false);
+                    this.isDestroying = true;
                     return;
                 }
                 
-                moveComponent.SetMoving(true);
+                waitingMoves.Add(moveComponent);
             });
+
+            StartCoroutine(SetMoving());
         }
+
+        private IEnumerator SetMoving()
+        {
+            if (this.isDestroying)
+            {
+                print("Is destroying"); // THERE IS MORE LOGIC FOR MOVING THAT IS DONE BEFORE THIS
+                yield return new WaitForSeconds(10f); // SO THE STILL MOVE DOWN.
+            }
+            
+            print("Is moving");
+            foreach (var moveable in waitingMoves)
+            {
+                moveable.SetMoving(true);
+            }
+            
+            this.waitingMoves.Clear();
+            this.isDestroying = false;
+        }
+        
 
         public void AddToWaitTime(float time) => this.waitTime += time;
     }
