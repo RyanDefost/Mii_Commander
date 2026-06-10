@@ -104,6 +104,7 @@ MonoBehaviour:
   boardItem: {fileID: 1365219245064566773}
   isActiveSearching: 0
   moveImmunity: 0
+  canIgnoreLocks: 0
   startCellName: start
   offset: 0.1
   minimalDist: 1
@@ -272,6 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   boardItem: {fileID: 0}
+  interactionOverride: 0
   interaction:
     m_PersistentCalls:
       m_Calls:
@@ -549,7 +551,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: e43ff728b756ae24c85c0fe3ac25c641, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3f12195c45b7c8428acd1770be32e1a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -583,7 +585,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6510951612231659180}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.5315487, w: 0.8470277}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -591,7 +593,7 @@ Transform:
   - {fileID: 6148647229302320703}
   - {fileID: 351321594348130825}
   m_Father: {fileID: 2486186912250027246}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -64.22}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &7041616733793367250
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,7 +813,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: f746de5d7c9fcd44aa28a15789401ade, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e9c5f4966769f3a43b38f1defe6b7238, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -860,13 +862,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7798142899282796273}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.37586004, y: 0.5989401, z: 0.37586004, w: 0.5989401}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.16, y: 0.16, z: 0.16}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6662873135990976949}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 64.22}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
 --- !u!212 &6330976683784303132
 SpriteRenderer:
   serializedVersion: 2
@@ -916,7 +918,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: e43ff728b756ae24c85c0fe3ac25c641, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3f12195c45b7c8428acd1770be32e1a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -945,8 +947,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.69, z: 1}
-  m_Center: {x: 1.62, y: 0.99, z: 0}
+  m_Size: {x: 1.3359803, y: 0.69, z: 1}
+  m_Center: {x: 2.159358, y: 3.8857806e-14, z: 0.00000006854742}
 --- !u!65 &6342010254182029557
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -966,5 +968,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.69, z: 1}
-  m_Center: {x: -1.62, y: -0.99, z: 0}
+  m_Size: {x: 1.4072652, y: 0.6899999, z: 1}
+  m_Center: {x: -2.1237142, y: -2.220446e-14, z: 0.000000066901904}
