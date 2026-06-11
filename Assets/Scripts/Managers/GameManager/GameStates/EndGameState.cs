@@ -33,7 +33,8 @@ namespace Managers.GameStates
         {
             if(this.isDone) return;
             
-            if (this.gridManager.HasActiveInstances())
+            
+            if (this.gridManager.HasActiveUnlockedInstances())
             {
                 this.Owner.SetGameState(GameState.CANDYMOVE);
                 return;
