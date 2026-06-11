@@ -130,6 +130,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad2894809934a97b669e4a9035f04e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Managers.MoveManager
+--- !u!114 &166079354 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7801661002221109956, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+  m_PrefabInstance: {fileID: 6953988026250842904}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca4c6d5b4ff4650bfc014b4370b961a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopComponent
 --- !u!4 &278710245 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7023219220071471699, guid: cf73733b87079ae11ac5dddd619f0191, type: 3}
@@ -667,6 +678,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hovering:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &705374800
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -811,7 +825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.9529412, b: 0.8901961, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -846,6 +860,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPSCounter
   counter: {fileID: 713789235}
   updateInterval: 0.5
+--- !u!114 &725752470 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5844709344866523383, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+  m_PrefabInstance: {fileID: 6953988026250842904}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca4c6d5b4ff4650bfc014b4370b961a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopComponent
 --- !u!1 &756619525
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,8 +937,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4293129215
+  m_fontColor: {r: 1, g: 0.953504, b: 0.8915094, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1616,6 +1641,17 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1401460283 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7486872917958528576, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+  m_PrefabInstance: {fileID: 6953988026250842904}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca4c6d5b4ff4650bfc014b4370b961a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopComponent
 --- !u!1 &1453381926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1954,6 +1990,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hovering:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &1777537650
 SpriteRenderer:
   serializedVersion: 2
@@ -2079,8 +2118,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4293129215
+  m_fontColor: {r: 1, g: 0.953504, b: 0.8915094, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2150,6 +2189,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1816064871}
   m_CullTransparentMesh: 1
+--- !u!114 &1835022548 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5113465055129648283, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+  m_PrefabInstance: {fileID: 6953988026250842904}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca4c6d5b4ff4650bfc014b4370b961a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopComponent
 --- !u!4 &1886620523 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5517678046621223251, guid: e0a90ee2416133ca1b5ea5d3b83abe25, type: 3}
@@ -2895,6 +2945,118 @@ PrefabInstance:
     - target: {fileID: 3965941725570975638, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5164071157318677841, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5164071157318677841, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5164071157318677841, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1835022548}
+    - target: {fileID: 5164071157318677841, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5164071157318677841, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Hovering
+      objectReference: {fileID: 0}
+    - target: {fileID: 5164071157318677841, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Shop.ShopComponent, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5164071157318677841, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782707776943624509, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782707776943624509, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782707776943624509, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 725752470}
+    - target: {fileID: 5782707776943624509, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782707776943624509, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Hovering
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782707776943624509, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Shop.ShopComponent, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782707776943624509, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402349312750438282, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402349312750438282, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402349312750438282, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1401460283}
+    - target: {fileID: 7402349312750438282, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402349312750438282, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Hovering
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402349312750438282, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Shop.ShopComponent, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402349312750438282, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861538254101252878, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861538254101252878, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861538254101252878, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 166079354}
+    - target: {fileID: 7861538254101252878, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861538254101252878, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Hovering
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861538254101252878, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Shop.ShopComponent, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861538254101252878, guid: 1898037f0b9e22ad7aa0785ffd430bb6, type: 3}
+      propertyPath: hovering.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

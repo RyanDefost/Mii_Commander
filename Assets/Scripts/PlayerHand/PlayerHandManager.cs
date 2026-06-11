@@ -79,6 +79,8 @@ namespace PlayerHand
                     delta *= this.gamePadExtraSensitivity;
                 this.movementHandler.ApplyMouseDelta(delta);
             }
+
+            interactionHandler.CurrentHover?.OnHover();
             
             if (this.grabAction == null || !this.grabbing) return;
             if (CheckOnGrabReleased(ref this.grabbing, this.grabAction, this.visualHandler, this.movementHandler))

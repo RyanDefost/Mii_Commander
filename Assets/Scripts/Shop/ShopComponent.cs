@@ -1,3 +1,4 @@
+using System;
 using BoardItems;
 using Managers;
 using Scoring;
@@ -17,7 +18,10 @@ namespace Shop
         [SerializeField] private TextMeshPro itemNameRenderer;
         [SerializeField] private TextMeshPro amountRenderer;
         [SerializeField] private SpriteRenderer grayOutSpriteRenderer;
-    
+        [Space]
+        [SerializeField] private GameObject hoveringTextBox;
+        private Timer visabilityTimer;
+        
         private GameManager gameManager;
         private ScoreManager scoreManager;
 
@@ -50,6 +54,28 @@ namespace Shop
             {
                 boardItem.OnStarted += GrabBoardItem;
             }
+        }
+
+        private void Update()
+        {
+            this.visabilityTimer?.UpdateTime(Time.deltaTime);
+        }
+
+        public void Hovering()
+        {
+            if (this.visabilityTimer == null)
+            {
+                this.visabilityTimer = new Timer(0.5f, false, true, removeVisual);
+                this.hoveringTextBox?.SetActive(true);
+            }
+            
+            this.visabilityTimer.ResetAndReplay();
+        }
+
+        private void removeVisual()
+        {
+            this.visabilityTimer = null;
+            this.hoveringTextBox?.SetActive(false);
         }
 
         private void GrabBoardItem(BoardItem startedBoardItem)
