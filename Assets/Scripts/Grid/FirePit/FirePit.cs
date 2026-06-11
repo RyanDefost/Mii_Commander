@@ -28,6 +28,7 @@ namespace Grid.FirePit
         private void Activate()
         {
             if(staysOpen) return;
+            print("OPEN");
             this.animator.Play(openCloseAnimation.name);   
         }
 

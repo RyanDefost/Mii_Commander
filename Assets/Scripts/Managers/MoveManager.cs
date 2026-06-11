@@ -26,7 +26,7 @@ namespace Managers
             this.OnSetMove?.Invoke();
             SetMoveAmount(this.MoveAmount -1);
             
-            if(this.MoveAmount == 0) this.OnLastMove?.Invoke();
+            if(this.MoveAmount <= 0) this.OnLastMove?.Invoke();
         }
 
         public void UndoMove()

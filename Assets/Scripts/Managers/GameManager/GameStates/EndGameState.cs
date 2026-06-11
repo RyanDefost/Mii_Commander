@@ -22,10 +22,11 @@ namespace Managers.GameStates
             Debug.unityLogger.Log("Beginning END state");
             this.gridManager ??= ComponentRegistry.GetComponent<GridManager>();
             
+            this.Owner.TurnManager.SetWaitOnDestroy(false);
+            
             this.firePit ??= Object.FindFirstObjectByType<FirePit>();
             this.firePit.SetFixedOpenState(true);
             
-            this.Owner.TurnManager.SetWaitOnDestroy(false);
         }
 
         public override void Update()

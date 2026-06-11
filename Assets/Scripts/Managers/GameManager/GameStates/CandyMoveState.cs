@@ -11,7 +11,7 @@ namespace Managers.GameStates
     {
         private PlayerHandManager playerHandRef;
 
-        private Timer waitTimer;
+        //private Timer waitTimer;
 
         private CandyCleaner candyCleaner;
 
@@ -34,20 +34,11 @@ namespace Managers.GameStates
             //SHOULD BE CHANGED IN FUTURE FOR BETTER PACING
             this.Owner.MoveManager.SetMove();
             this.Owner.TurnManager.NextTurn();
-
-            //Timer
-            //this.waitTimer = new Timer(1f, false, false, ExitState);
-            //this.waitTimer.ResetAndReplay();
         }
 
-        public override void Update()
-        {
-            //this.waitTimer.UpdateTime(Time.deltaTime);
-        }
+        public override void Update() { }
 
-        public override void Exit()
-        {
-        }
+        public override void Exit() { }
 
         private void TrySetScore(GridMoveable moveable)
         {
