@@ -1900,9 +1900,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -0.68074274, y: 1.5919361, z: 24.772476}
+    m_Target: {x: -3.8319485, y: -0.60411805, z: 22.152098}
     speed: 2
-    m_Value: {x: -5.9824862, y: -0.6792343, z: 17.84535}
+    m_Value: {x: -0.68074274, y: 1.5919361, z: 24.772476}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1911,7 +1911,7 @@ MonoBehaviour:
   m_ValidateTrueMetals: 0
   m_DoValidateTrueMetals: 0
   m_SceneViewState:
-    m_AlwaysRefresh: 0
+    m_AlwaysRefresh: 1
     showFog: 1
     showSkybox: 1
     showFlares: 1
@@ -1948,13 +1948,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.0014973157, y: 0.059963595, z: 0.00008938791, w: 0.99820244}
+    m_Target: {x: 0.0059838635, y: -0.073433906, z: 0.00044066476, w: 0.9972927}
     speed: 2
-    m_Value: {x: -0.031220486, y: 0.19073033, z: -0.006067803, w: -0.9811357}
+    m_Value: {x: 0.0014973158, y: -0.0599636, z: -0.00008938792, w: -0.99820244}
   m_Size:
-    m_Target: 19.369007
+    m_Target: 18.22658
     speed: 2
-    m_Value: 13.608618
+    m_Value: 19.369007
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -2061,12 +2061,12 @@ MonoBehaviour:
       m_Data: 64028
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 48070
-    - m_Data: 48072
-    - m_Data: 48074
-    - m_Data: 48076
-    - m_Data: 48078
-    - m_Data: 48080
+    - m_Data: 48440
+    - m_Data: 48442
+    - m_Data: 48444
+    - m_Data: 48446
+    - m_Data: 48448
+    - m_Data: 48450
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2099,12 +2099,12 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 48070
-    - m_Data: 48072
-    - m_Data: 48074
-    - m_Data: 48076
-    - m_Data: 48078
-    - m_Data: 48080
+    - m_Data: 48440
+    - m_Data: 48442
+    - m_Data: 48444
+    - m_Data: 48446
+    - m_Data: 48448
+    - m_Data: 48450
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

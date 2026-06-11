@@ -18,9 +18,13 @@ namespace Grid
         private Timer waitTimer;
 
         private List<GridMoveable> waitingMoves =  new();
+        private bool waitToDestroy = true;
         private bool isDestroying = false;
         
         public Action<GridMoveable> OnEndReached;
+        
+        public Action OnWaitingToMove;
+        public Action OnDoneMoving;
         
         private void OnValidate()
         {
@@ -59,6 +63,8 @@ namespace Grid
                 GridMoveable moveComponent = instance.moveable;
                 if (!moveComponent) return;
                 
+                moveComponent.SetMoving(false);
+                
                 moveComponent.ResetTarget();
                 GridManager.GridInstance newTarget = this.gridManager.GetNearestPosition(
                     instance.position + this.gridManager.CellSize.y * Vector3.down, instance.gameObj,
@@ -79,31 +85,35 @@ namespace Grid
                     return;
                 }
                 
+                //moveComponent.SetMoving(true);
                 waitingMoves.Add(moveComponent);
             });
 
             StartCoroutine(SetMoving());
+            //print("Done!");
         }
 
         private IEnumerator SetMoving()
         {
-            if (this.isDestroying)
+            if (this.isDestroying && this.waitToDestroy)
             {
-                print("Is destroying"); // THERE IS MORE LOGIC FOR MOVING THAT IS DONE BEFORE THIS
-                yield return new WaitForSeconds(10f); // SO THE STILL MOVE DOWN.
+                this.OnWaitingToMove?.Invoke();
+                yield return new WaitForSeconds(4f);
             }
+            this.isDestroying = false;
             
-            print("Is moving");
             foreach (var moveable in waitingMoves)
             {
                 moveable.SetMoving(true);
             }
+            yield return new WaitForSeconds(2f);
             
             this.waitingMoves.Clear();
-            this.isDestroying = false;
+            this.OnDoneMoving?.Invoke();
         }
         
 
         public void AddToWaitTime(float time) => this.waitTime += time;
+        public void SetWaitOnDestroy(bool wait) => this.waitToDestroy = wait;
     }
 }
