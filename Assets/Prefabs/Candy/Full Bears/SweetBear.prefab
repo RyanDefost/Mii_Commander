@@ -184,7 +184,6 @@ MonoBehaviour:
   boardItem: {fileID: 1365219245064566773}
   ingredients:
   - {fileID: 2427277321692252709, guid: 9eb82fb161ccc3b03a28719a2fe4a895, type: 3}
-  - {fileID: 2427277321692252709, guid: 9eb82fb161ccc3b03a28719a2fe4a895, type: 3}
 --- !u!1 &4573164708967338231
 GameObject:
   m_ObjectHideFlags: 0

@@ -2858,10 +2858,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Systems / Managers
       objectReference: {fileID: 0}
-    - target: {fileID: 5257704126999067699, guid: b9cdf46bc4b50dbf58479861d15a83d4, type: 3}
-      propertyPath: synergyList.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5835814601871313977, guid: b9cdf46bc4b50dbf58479861d15a83d4, type: 3}
       propertyPath: moveManager
       value: 
