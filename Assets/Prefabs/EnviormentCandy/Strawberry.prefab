@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 6574632748961841022}
   - component: {fileID: 2204325606334268918}
   - component: {fileID: -8371042514576783753}
-  - component: {fileID: 8199351611253238255}
+  - component: {fileID: 3507776637826759068}
   m_Layer: 0
-  m_Name: Lemon
+  m_Name: Strawberry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,11 +174,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Synergy.IngredientComponent
   boardItem: {fileID: 3198954631575277286}
   ingredients:
-  - {fileID: 2427277321692252709, guid: e28cc7eff9843884c8af3aae2ec583f3, type: 3}
-  - {fileID: 2427277321692252709, guid: e28cc7eff9843884c8af3aae2ec583f3, type: 3}
-  - {fileID: 2427277321692252709, guid: e28cc7eff9843884c8af3aae2ec583f3, type: 3}
-  - {fileID: 2427277321692252709, guid: e28cc7eff9843884c8af3aae2ec583f3, type: 3}
---- !u!114 &8199351611253238255
+  - {fileID: 2427277321692252709, guid: d2d0231140d814541bd628f37b73ca0c, type: 3}
+  - {fileID: 2427277321692252709, guid: d2d0231140d814541bd628f37b73ca0c, type: 3}
+  - {fileID: 2427277321692252709, guid: d2d0231140d814541bd628f37b73ca0c, type: 3}
+  - {fileID: 2427277321692252709, guid: d2d0231140d814541bd628f37b73ca0c, type: 3}
+--- !u!114 &3507776637826759068
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,7 +195,7 @@ MonoBehaviour:
   effectPatternName: Square3x3
   canRepeat: 1
   effectAllCandy: 0
-  effectedCandyTypeIndexes: 010000000300000004000000060000000800000009000000
+  effectedCandyTypeIndexes: 000000000200000004000000050000000700000009000000
 --- !u!1 &3114438722924965209
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +442,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3658e3bf3c032aa47beb3326647d9e80, type: 2}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -653,7 +653,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d5182b10d06ba594cb79e8685215ee6f, type: 2}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

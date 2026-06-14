@@ -376,8 +376,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Synergy.SynergyLookUp
   synergyList:
-  - {fileID: 11400000, guid: f8aac0a4265b2c60aba127c71be241f2, type: 2}
-  - {fileID: 11400000, guid: 70d3cfb435814e457947dd2f56ae9b73, type: 2}
+  - {fileID: 11400000, guid: f4e04453c21a42ceca7596c859e0ec11, type: 2}
+  - {fileID: 11400000, guid: 6f27ca8550ed2aa50936772a4cd57e2a, type: 2}
+  - {fileID: 11400000, guid: 53065d83dd38813daa5769cd9992e8b7, type: 2}
+  - {fileID: 11400000, guid: 3856b95db52d4c35da5ff4880d05292d, type: 2}
+  - {fileID: 11400000, guid: 0888c7f2dc98f77b7a681ef5820e0277, type: 2}
+  - {fileID: 11400000, guid: 9eb14c451202eb7b386bc5f37c6399f4, type: 2}
+  - {fileID: 11400000, guid: 26b8cf92854a041fb9f526218735fde6, type: 2}
+  - {fileID: 11400000, guid: 75f1a28fc0eb51e17a81e86d5ae5641a, type: 2}
 --- !u!1 &8802719725274035613
 GameObject:
   m_ObjectHideFlags: 0
