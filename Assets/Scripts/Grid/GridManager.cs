@@ -324,5 +324,18 @@ namespace Grid
         /// </summary>
         /// <returns>if any instances are present on the grid</returns>
         public bool HasActiveInstances() => this.activeGrid.Count > 0; //TODO: ADD CHECK FOR LOCKED ITEMS.
+
+        /// <summary>
+        /// Returns true if there are any boardItems present on the Grid that are not locked
+        /// </summary>
+        /// <returns>if any non-locked instances are present on the grid</returns>
+        public bool HasActiveUnlockedInstances()
+        {
+            List<Vector3> passPositions = this.generator.GetPassPositions("locked");
+            List<KeyValuePair<GridIndex, GridInstance>> relevantInstances = this.activeGrid
+                .Where(pos => !passPositions.Contains(pos.Value.position)).ToList();
+            
+            return relevantInstances.Count > 0;
+        }
     }
 }
