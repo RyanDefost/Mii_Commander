@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using BoardItems;
 using UnityEngine;
 
@@ -14,8 +16,20 @@ namespace Grid
         private GridManager gridManager;
         private float waitTime;
         private Timer waitTimer;
-
+        
+        [SerializeField] float waitTimeToDestroy = 4;
+        private Timer TimerToDestroy;
+        [SerializeField] float waitTimeAfterMoving = 2;
+        private Timer TimeAfterMoving;
+        
+        private List<GridMoveable> waitingMoves =  new();
+        private bool waitToDestroy = true;
+        private bool isDestroying;
+        
         public Action<GridMoveable> OnEndReached;
+        
+        public Action OnWaitingToMove;
+        public Action OnDoneMoving;
         
         private void OnValidate()
         {
@@ -41,10 +55,17 @@ namespace Grid
             this.waitTimer.ResetAndReplay();
         }
 
-        private void Update() => this.waitTimer.UpdateTime(Time.deltaTime);
+        private void Update()
+        {
+            this.waitTimer.UpdateTime(Time.deltaTime);
+
+            this.TimerToDestroy?.UpdateTime(Time.deltaTime);
+            this.TimeAfterMoving?.UpdateTime(Time.deltaTime);
+        } 
 
         private void MoveAllItemsDown()
         {
+            this.waitingMoves.Clear();
             this.gridManager.ForAllGridItems(instance =>
             {
                 if (instance == null || !instance.gameObj) return;
@@ -53,6 +74,8 @@ namespace Grid
                 
                 GridMoveable moveComponent = instance.moveable;
                 if (!moveComponent) return;
+                
+                moveComponent.SetMoving(false);
                 
                 moveComponent.ResetTarget();
                 GridManager.GridInstance newTarget = this.gridManager.GetNearestPosition(
@@ -68,14 +91,36 @@ namespace Grid
                     this.gridManager.ReleaseInstance(instance);
                     this.OnEndReached?.Invoke(moveComponent);
                     
-                    Destroy(moveComponent.gameObject);
+                    Destroy(moveComponent.gameObject, 5f);
+                    this.isDestroying = true;
                     return;
                 }
                 
-                moveComponent.SetMoving(true);
+                waitingMoves.Add(moveComponent);
             });
+
+            if (this.isDestroying && this.waitToDestroy)
+            {
+                this.isDestroying = false;
+                this.OnWaitingToMove?.Invoke();
+                
+                this.TimerToDestroy = new Timer(waitTimeToDestroy, false, true, Moving);
+                return;
+            }
+            Moving();
         }
 
+        private void Moving()
+        {
+            foreach (GridMoveable moveable in this.waitingMoves)
+                moveable.SetMoving(true);
+            
+            this.TimeAfterMoving = new Timer(waitTimeAfterMoving, false, true, OnStopMoving);
+        }
+
+        private void OnStopMoving() => this.OnDoneMoving?.Invoke();
+        
         public void AddToWaitTime(float time) => this.waitTime += time;
+        public void SetWaitOnDestroy(bool wait) => this.waitToDestroy = wait;
     }
 }
