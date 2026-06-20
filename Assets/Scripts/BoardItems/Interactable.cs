@@ -13,11 +13,16 @@ namespace BoardItems
         [SerializeField]
         private UnityEvent interaction;
 
+        [SerializeField] 
+        private UnityEvent hovering;
+
         public void Trigger(bool canInteract)
         {
             if(!canInteract && !this.interactionOverride) return;
             this.interaction?.Invoke();  
-        } 
+        }
+
+        public void OnHover() => this.hovering?.Invoke();
 
         public bool HasBoardItemParent() => this.boardItem;
     }
