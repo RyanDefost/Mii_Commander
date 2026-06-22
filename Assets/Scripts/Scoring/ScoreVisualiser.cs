@@ -11,8 +11,8 @@ namespace Scoring
     /// </summary>
     public class ScoreVisualiser: MonoBehaviour
     {
-        [SerializeField] private Slider slider;
         [SerializeField] private TextMeshProUGUI text;
+        [SerializeField] private Renderer LiquidRenderer;
         
         private GameManager gameManager;
         private ScoreManager scoreManager;
@@ -45,14 +45,17 @@ namespace Scoring
 
         private IEnumerator GradualApply(float finalValue)
         {
-            float startValue = this.slider.value;
+            float startValue = this.LiquidRenderer.material.GetFloat("_Height");
+            
             for (float i = 0; i < 1; i += (this.applySpeed * Time.deltaTime))
             {
-                this.slider.value = Mathf.Lerp(startValue, finalValue, i);  
+                this.LiquidRenderer.material.SetFloat("_Height", 
+                    Mathf.Lerp(startValue, finalValue, i)
+                );
                 yield return new WaitForSeconds(Time.deltaTime);
             }
             
-            this.slider.value = finalValue;
+            this.LiquidRenderer.material.SetFloat("_Height",finalValue);
         }
 
         private float CalculateFractionValue(float value, float maxValue)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using BoardItems;
+using Grid;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,7 +13,10 @@ public class CandyCleaner : MonoBehaviour
     [Space, SerializeField] private Vector2 pushBufferRange = new Vector2(0.01f, 0.04f);
 
     private readonly HashSet<BoardItem> destroyRequested =  new();
-        
+
+    [Space, SerializeField] private Animator animator;
+    [SerializeField] private AnimationClip playWind;
+    
     private void Awake() => ComponentRegistry.AddToRegistry(this);
 
     public void CleanBoard() => StartCoroutine(PushCandy());
@@ -20,11 +24,13 @@ public class CandyCleaner : MonoBehaviour
     private IEnumerator PushCandy()
     {
         GridMoveable[] moveables = FindObjectsByType<GridMoveable>(FindObjectsSortMode.None);
+        
         foreach (GridMoveable moveable in moveables)
         {
             BoardItem boardItem = moveable.GetBoardItem();
             if (boardItem.gridInstanceRef != null || this.destroyRequested.Contains(boardItem)) continue;
                 
+            animator.Play(playWind.name);
             moveable.ApplyImpulse(new Vector3(
                 0,
                 Random.Range(this.pushSpeedRangeY.x, this.pushSpeedRangeY.y),

@@ -9,6 +9,8 @@ namespace BoardItems
 {
     public class Combiner : BoardItemComponent
     {
+        [SerializeField] private GameObject effect;
+        
         private SynergyLookUp synergyLookUp;
         private GridManager gridManager;
         private GameManager gameManager;
@@ -56,8 +58,12 @@ namespace BoardItems
             //On release combined instances.
             foreach (GridManager.GridInstance instance in synergyInfo.Item2)
             {
-                if (instance.boardItem is CandyActor actor) 
+                if (instance.boardItem is CandyActor actor)
+                {
+                    GameObject effectObject = Instantiate(effect, actor.transform.position + new Vector3(0,0,-1f), Quaternion.identity);
+                    Destroy(effectObject, 5f);
                     this.currentOutputPoints += actor.Points;
+                }
                 
                 this.gridManager.ReleaseInstance(instance);
                 Destroy(instance.gameObj);
