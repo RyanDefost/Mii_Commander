@@ -1,3 +1,4 @@
+using System;
 using BoardItems;
 using Managers;
 using Scoring;
@@ -17,7 +18,10 @@ namespace Shop
         [SerializeField] private TextMeshPro itemNameRenderer;
         [SerializeField] private TextMeshPro amountRenderer;
         [SerializeField] private SpriteRenderer grayOutSpriteRenderer;
-    
+        [Space]
+        [SerializeField] private GameObject hoveringTextBox;
+        private Timer DisplayInfoBoxTimer;
+        
         private GameManager gameManager;
         private ScoreManager scoreManager;
 
@@ -40,6 +44,8 @@ namespace Shop
     
         private void OnDestroy() => this.scoreManager.OnChangeScore -= UpdateBuyableState;
 
+        private void Update() => this.DisplayInfoBoxTimer?.UpdateTime(Time.deltaTime);
+        
         public void Interact()
         {
             if(!this.isBuyable) return;
@@ -51,6 +57,24 @@ namespace Shop
                 boardItem.OnStarted += GrabBoardItem;
             }
         }
+        
+        public void Hovering()
+        {
+            if (this.DisplayInfoBoxTimer == null)
+            {
+                this.DisplayInfoBoxTimer = new Timer(0.5f, false, true, HideInfoBox);
+                this.hoveringTextBox?.SetActive(true);
+            }
+            
+            this.DisplayInfoBoxTimer.ResetAndReplay();
+        }
+
+        private void HideInfoBox()
+        {
+            this.DisplayInfoBoxTimer = null;
+            this.hoveringTextBox?.SetActive(false);
+        }
+
 
         private void GrabBoardItem(BoardItem startedBoardItem)
         {

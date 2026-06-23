@@ -25,8 +25,9 @@ namespace Managers.GameStates
         public override void Update()
         {
             this.Owner.QuestManager.UpdateQuests();
-            if(this.Owner.HasEndedGame)
-                this.Owner.SetGameState(GameState.END);
+            
+            /*if(this.Owner.HasEndedGame)
+                this.Owner.SetGameState(GameState.END);*/
         }
 
         public override void Exit()

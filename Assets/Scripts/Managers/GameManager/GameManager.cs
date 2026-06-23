@@ -37,18 +37,15 @@ namespace Managers
 
         public bool HasEndedGame { get; private set; }
 
-        private void OnValidate()
+        private void Awake()
         {
-            if (Application.isPlaying)
-                return;
+            ComponentRegistry.AddToRegistry(this);   
             
             this.moveManager = FindFirstObjectByType<MoveManager>();
             this.turnManager = FindFirstObjectByType<TurnManager>();
             this.scoreManager = FindFirstObjectByType<ScoreManager>();
             this.questManager = FindFirstObjectByType<QuestManager>();
         }
-
-        private void Awake() => ComponentRegistry.AddToRegistry(this);
 
         private void Start()
         {

@@ -10,14 +10,16 @@ namespace Managers.GameStates
     public class CandyMoveState : State<GameManager>
     {
         private PlayerHandManager playerHandRef;
-        
-        private Timer waitTimer;
+
+        //private Timer waitTimer;
 
         private CandyCleaner candyCleaner;
-        
+
         public CandyMoveState(GameManager owner) : base(owner)
         {
             this.Owner.TurnManager.OnEndReached += TrySetScore;
+            this.Owner.TurnManager.OnDoneMoving += ExitState;
+
             this.candyCleaner = ComponentRegistry.GetComponent<CandyCleaner>();
         }
 
@@ -26,22 +28,15 @@ namespace Managers.GameStates
             //Let player interact
             this.playerHandRef = ComponentRegistry.GetComponent<PlayerHandManager>();
             this.playerHandRef.SetCanGrab(false);
-            
-            if(this.candyCleaner) this.candyCleaner.CleanBoard();
+
+            if (this.candyCleaner) this.candyCleaner.CleanBoard();
             this.Owner.TurnManager.AddToWaitTime(1f); //TODO: DOES NOT WORK FOR ABILITY WAITING.
-                                                            //SHOULD BE CHANGED IN FUTURE FOR BETTER PACING
+            //SHOULD BE CHANGED IN FUTURE FOR BETTER PACING
             this.Owner.MoveManager.SetMove();
             this.Owner.TurnManager.NextTurn();
-            
-            //Timer
-            this.waitTimer = new Timer(1f, false, false, ExitState);
-            this.waitTimer.ResetAndReplay();
         }
 
-        public override void Update()
-        {
-            this.waitTimer.UpdateTime(Time.deltaTime);
-        }
+        public override void Update() { }
 
         public override void Exit() { }
 
@@ -51,6 +46,9 @@ namespace Managers.GameStates
                 this.Owner.ScoreManager.AddScore(candyActor.Points, candyActor.candyType);
         }
 
-        private void ExitState() => this.Owner.SetGameState(this.Owner.HasEndedGame ? GameState.END : GameState.PLAY);
+        private void ExitState()
+        {
+            this.Owner.SetGameState(this.Owner.HasEndedGame ? GameState.END : GameState.PLAY);
+        }
     }
 }
