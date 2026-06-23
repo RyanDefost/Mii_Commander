@@ -141,6 +141,7 @@ MonoBehaviour:
   boardItem: {fileID: 3198954631575277286}
   isActiveSearching: 1
   moveImmunity: 0
+  canIgnoreLocks: 0
   startCellName: locked
   offset: 0.25
   minimalDist: 0.5
@@ -173,6 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Synergy.Combiner
   boardItem: {fileID: 3198954631575277286}
+  effect: {fileID: 5335341619692712275, guid: 1c0286ce6d5c1abe798c99425549cb4d, type: 3}
 --- !u!114 &7423674275805117655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,6 +581,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hovering:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5333428407424723503
 GameObject:
   m_ObjectHideFlags: 0
