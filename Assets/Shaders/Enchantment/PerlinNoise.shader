@@ -13,7 +13,8 @@ Shader "Custom/PerlinNoise"
     {
         Tags{ "RenderType"="Transparent" "Queue"="Transparent"}
         Blend SrcAlpha OneMinusSrcAlpha
-
+        Cull Off
+        
         Pass
         {
             HLSLPROGRAM

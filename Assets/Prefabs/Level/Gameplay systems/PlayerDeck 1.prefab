@@ -136,6 +136,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hovering:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &5793232461138932393
 BoxCollider2D:
   m_ObjectHideFlags: 0
