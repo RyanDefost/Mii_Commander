@@ -27,7 +27,7 @@ namespace Synergy
             this.gridRotatable = this.GetComponent<GridRotatable>();
             this.gridMoveable = this.GetComponent<GridMoveable>();
             
-            this.gridMoveable.OnMoved += UnparentVisual;
+            //this.gridMoveable.OnMoved += UnparentVisual;
             
             this.boardItem.OnAddToHand += HideVisual;
         }
@@ -72,7 +72,7 @@ namespace Synergy
         /// </summary>
         private void HideVisual()
         {
-            this.visualizer.SetActive(false);
+            //this.visualizer.SetActive(false);
             
             this.lastParentPosition = Vector3.zero;
             this.gridMoveable.OnStartMoving -= ParentVisual;

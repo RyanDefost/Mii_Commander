@@ -1151,6 +1151,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hovering:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &499508776
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1970,10 +1973,21 @@ MonoBehaviour:
   moveOutClip: {fileID: 7400000, guid: ed0601f46ddec65e6b220fd43edfd7b0, type: 2}
   moveInClip: {fileID: 7400000, guid: aa3ede1caa854fc6b81e926f97f69fa5, type: 2}
   tutorials:
-  - videoClip: {fileID: 32900000, guid: 6c58726807b3e2040b16d77345ecea6c, type: 3}
-    infoText: THIS IS A VIDEO CLIP
-  - videoClip: {fileID: 32900000, guid: 6c58726807b3e2040b16d77345ecea6c, type: 3}
-    infoText: THIS IS TOTALY A DIFFERANT CLIP
+  - videoClip: {fileID: 32900000, guid: 3f6195950cd6e84138422603bd7dbea1, type: 3}
+    infoText: Grab Candy from the bag to place them on the board!
+  - videoClip: {fileID: 32900000, guid: b95e3e4cc40ca0c61989d5f976373cd7, type: 3}
+    infoText: When ready, press the NEXT button to move the candy down
+  - videoClip: {fileID: 32900000, guid: 97e87d6af4235ec9298af0fef96a1398, type: 3}
+    infoText: When candy reaches the bottom, they get added to your score
+  - videoClip: {fileID: 32900000, guid: 6855f8392fa7d46219b0294b2064390b, type: 3}
+    infoText: Items to help you can be bought from the shop on the right
+  - videoClip: {fileID: 32900000, guid: 3ba2a45b734c06eada9996fb99c48102, type: 3}
+    infoText: Items can be combined or split to increase their score!
+  - videoClip: {fileID: 32900000, guid: 175d63c0cca486f95929ca016ce988eb, type: 3}
+    infoText: Combiners and Splitters can be rotated by holding the right mouse button
+      to be used in other directions
+  - videoClip: {fileID: 32900000, guid: e612ee714e9ee7ce6806812d5f489c3d, type: 3}
+    infoText: You can always check what synergies are available on the cheatSheet.!
   textElements:
   - {fileID: 264695763}
   - {fileID: 2003653291}
@@ -2822,6 +2836,9 @@ MonoBehaviour:
           m_StringArgument: Develop
           m_BoolArgument: 0
         m_CallState: 2
+  hovering:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1533512373
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3715,6 +3732,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hovering:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

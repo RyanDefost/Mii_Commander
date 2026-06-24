@@ -100,7 +100,7 @@ namespace BoardItems
         private void SetOutputToBoard(BoardItem item)
         {
             item.Initiate();
-
+            
             if (item is CandyActor actor)
                 actor.AddPoints(this.currentOutputPoints);
             

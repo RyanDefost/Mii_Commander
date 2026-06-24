@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HelperStructs.Shop.ShopItem
   shopObject: {fileID: 1784258961695943953, guid: 91f23aac7aa17794a96d384090b11fc1, type: 3}
   cost: 50
-  itemSprite: {fileID: 21300000, guid: e43ff728b756ae24c85c0fe3ac25c641, type: 3}
+  itemSprite: {fileID: 21300000, guid: b3bd107aa7dcb70c3b6485b861fd799e, type: 3}
   itemName: Molk

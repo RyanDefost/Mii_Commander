@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HelperStructs.Shop.ShopItem
   shopObject: {fileID: 4255257817501227264, guid: 9da1db52a4c6da0c3a5e3ffe0ae70381, type: 3}
   cost: 10
-  itemSprite: {fileID: 21300000, guid: e43ff728b756ae24c85c0fe3ac25c641, type: 3}
+  itemSprite: {fileID: 21300000, guid: ceb78a03ab25dbe24a3b52c4b607609b, type: 3}
   itemName: Splitter
