@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HelperStructs.Shop.ShopItem
   shopObject: {fileID: 7128209094669073184, guid: cdd2f3ff9d858e048bd3a1fe6dfa5ff0, type: 3}
   cost: 100
-  itemSprite: {fileID: 21300000, guid: e43ff728b756ae24c85c0fe3ac25c641, type: 3}
+  itemSprite: {fileID: 21300000, guid: c1916e0476c18ee5796aec71714a6f04, type: 3}
   itemName: SodaSplosion

@@ -43,6 +43,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3965941725570975638}
     m_Modifications:
+    - target: {fileID: 1861550590575219068, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
+      propertyPath: m_text
+      value: '[COST: 000]
+
+        Wait and push candy away from it
+
+
+        Now
+        with more sugar'
+      objectReference: {fileID: 0}
     - target: {fileID: 2326345404673958767, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
       propertyPath: shopItem
       value: 
@@ -148,10 +158,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3965941725570975638}
     m_Modifications:
+    - target: {fileID: 1861550590575219068, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
+      propertyPath: m_text
+      value: '[COST: 000]
+
+        Shake or Wait for an explotion that moves everything
+        back
+
+
+        Now with more sugar'
+      objectReference: {fileID: 0}
     - target: {fileID: 2326345404673958767, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
       propertyPath: shopItem
       value: 
-      objectReference: {fileID: 11400000, guid: e740ac291c33d05ea8e63944b1555d8e, type: 2}
+      objectReference: {fileID: 11400000, guid: 02a1f10e7e65d0cd48fe7f17b947188d, type: 2}
     - target: {fileID: 2383544304477268645, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
       propertyPath: hovering.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -253,6 +273,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3965941725570975638}
     m_Modifications:
+    - target: {fileID: 1861550590575219068, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
+      propertyPath: m_text
+      value: '[COST: 000]
+
+        Combines bears and candy to increase their worth.
+
+
+        Alwats
+        watching...'
+      objectReference: {fileID: 0}
     - target: {fileID: 2326345404673958767, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
       propertyPath: shopItem
       value: 
@@ -358,10 +388,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3965941725570975638}
     m_Modifications:
+    - target: {fileID: 1861550590575219068, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
+      propertyPath: m_text
+      value: '[COST: 000]
+
+        Splits bears into halfs to recombine for a higher
+        score.
+
+
+        Don''t get to close.'
+      objectReference: {fileID: 0}
     - target: {fileID: 2326345404673958767, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
       propertyPath: shopItem
       value: 
-      objectReference: {fileID: 11400000, guid: 02a1f10e7e65d0cd48fe7f17b947188d, type: 2}
+      objectReference: {fileID: 11400000, guid: e740ac291c33d05ea8e63944b1555d8e, type: 2}
     - target: {fileID: 2383544304477268645, guid: c75619226c5acd1e1897610ab34c6a8e, type: 3}
       propertyPath: hovering.m_PersistentCalls.m_Calls.Array.size
       value: 1
