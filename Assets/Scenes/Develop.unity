@@ -3035,7 +3035,7 @@ PrefabInstance:
       objectReference: {fileID: 1264586916}
     - target: {fileID: 4707701104200010278, guid: a626f5ba772c990cdad389778efa974f, type: 3}
       propertyPath: options.Array.data[0].possibleCandies.Array.size
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4707701104200010278, guid: a626f5ba772c990cdad389778efa974f, type: 3}
       propertyPath: options.Array.data[0].possibleCandies.Array.data[2].chance
@@ -3059,7 +3059,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4974185583572602524, guid: a626f5ba772c990cdad389778efa974f, type: 3}
       propertyPath: options.Array.size
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4974185583572602524, guid: a626f5ba772c990cdad389778efa974f, type: 3}
       propertyPath: options.Array.data[10].name
@@ -3067,7 +3067,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4974185583572602524, guid: a626f5ba772c990cdad389778efa974f, type: 3}
       propertyPath: options.Array.data[11].name
-      value: FansyMixedBear
+      value: Strawberry
       objectReference: {fileID: 0}
     - target: {fileID: 4974185583572602524, guid: a626f5ba772c990cdad389778efa974f, type: 3}
       propertyPath: options.Array.data[10].index
@@ -3084,7 +3084,7 @@ PrefabInstance:
     - target: {fileID: 4974185583572602524, guid: a626f5ba772c990cdad389778efa974f, type: 3}
       propertyPath: options.Array.data[11].candyPrefab
       value: 
-      objectReference: {fileID: 2427277321692252709, guid: 44674de708cf6349585cdcc607682537, type: 3}
+      objectReference: {fileID: 2427277321692252709, guid: 361c32724f90902579792d909dc63df7, type: 3}
     - target: {fileID: 5122003373296715281, guid: a626f5ba772c990cdad389778efa974f, type: 3}
       propertyPath: m_SortingOrder
       value: 0

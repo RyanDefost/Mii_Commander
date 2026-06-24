@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 6574632748961841022}
   - component: {fileID: 2204325606334268918}
   - component: {fileID: 1922888715375262050}
-  - component: {fileID: 7423674275805117655}
   m_Layer: 0
   m_Name: Combiner
   m_TagString: Untagged
@@ -172,21 +171,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Synergy.Combiner
   boardItem: {fileID: 3198954631575277286}
   effect: {fileID: 5335341619692712275, guid: 1c0286ce6d5c1abe798c99425549cb4d, type: 3}
---- !u!114 &7423674275805117655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2427277321692252709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb4ff3ffc8d54662b3870d217a8118bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Synergy.InteractionVisualizer
-  boardItem: {fileID: 3198954631575277286}
-  visualizer: {fileID: 8038698875990162935}
-  heightOffset: -0.1
 --- !u!1 &2511633882741893983
 GameObject:
   m_ObjectHideFlags: 0
@@ -14871,6 +14855,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hovering:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5844900820023119567
 GameObject:
   m_ObjectHideFlags: 0
@@ -14998,7 +14985,7 @@ Transform:
   m_GameObject: {fileID: 8038698875990162935}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.78125, z: 0}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
