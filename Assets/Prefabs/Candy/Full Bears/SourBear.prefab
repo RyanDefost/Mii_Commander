@@ -138,7 +138,7 @@ MonoBehaviour:
   isActiveSearching: 0
   moveImmunity: 0
   canIgnoreLocks: 0
-  startCellName: start
+  startCellName: 
   offset: 0.1
   minimalDist: 1
   minVelocityToRecalculate: 1
