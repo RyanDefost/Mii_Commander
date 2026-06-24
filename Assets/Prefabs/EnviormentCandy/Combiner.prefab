@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridRotatable
   boardItem: {fileID: 3198954631575277286}
-  rotationSpeed: 50
-  stepAngle: 9
+  rotationSpeed: 300
+  stepAngle: 90
 --- !u!114 &1922888715375262050
 MonoBehaviour:
   m_ObjectHideFlags: 0

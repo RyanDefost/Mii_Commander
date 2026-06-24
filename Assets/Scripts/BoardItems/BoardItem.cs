@@ -33,13 +33,13 @@ namespace BoardItems
             this.components = GetComponentsInChildren<BoardItemComponent>();
         }
 
-    private void Start()
-    {
-        foreach (BoardItemComponent boardItemComponent in this.components)
-            boardItemComponent.ConnectToBoardItem();
+        private void Start()
+        {
+            foreach (BoardItemComponent boardItemComponent in this.components)
+                boardItemComponent.ConnectToBoardItem();
 
-        this.OnStarted?.Invoke(this);
-    }
+            this.OnStarted?.Invoke(this);
+        }
 
         /// <summary>Called when released and on the playing field</summary>
         public void Initiate() => this.OnInitiate?.Invoke();

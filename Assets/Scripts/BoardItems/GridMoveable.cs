@@ -166,7 +166,11 @@ namespace BoardItems
             return true;
         this.grid ??= ComponentRegistry.GetComponent<GridManager>();
         if (this.grid)
-            SetTarget(this.grid.GetNearestCellPassPosition(this.startCellName , this.transform.position, this.gameObject, this.boardItem), usesMove);
+            SetTarget(
+                this.startCellName == ""
+                    ? this.grid.GetNearestGridPosition(this.transform.position, this.gameObject, this.boardItem)
+                    : this.grid.GetNearestCellPassPosition(this.startCellName, this.transform.position, this.gameObject,
+                        this.boardItem), usesMove);
         else
             ComponentRegistry.TrySubscribeForComponent<GridManager>(TriggerUpdateTargetWithoutMove);
         return this.Target != null;
