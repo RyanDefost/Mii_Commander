@@ -37,7 +37,7 @@ namespace Grid
                 this.pattern = new NeighborPattern(tex, neighborColor, centerColor);
             }
         }
-
+#if UNITY_EDITOR
         private void OnValidate()
         {
             if (Application.isPlaying)
@@ -48,6 +48,7 @@ namespace Grid
                      this.patterns.Where(instance => instance.name != "" && instance.texture != null))
                 this.usedPatterns.Add(new LivePattern(instance.name, instance.texture, this.neighborColor, this.centerColor));
         }
+#endif
 
         private void Start() => ComponentRegistry.AddToRegistry(this);
 
