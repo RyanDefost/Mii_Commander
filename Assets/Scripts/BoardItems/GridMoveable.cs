@@ -37,7 +37,8 @@ namespace BoardItems
     public Action OnMoved;
     public Action OnStartMoving;
     private bool hasMoved;
-    
+    public bool skipCleaning;
+
     private void Start()
     {
         this.grid = ComponentRegistry.GetComponent<GridManager>();
@@ -187,7 +188,7 @@ namespace BoardItems
                 return;
             }
         
-            if (this.moveManagerRef.MoveAmount == 0 && usesMove)
+            if (usesMove && this.moveManagerRef.MoveAmount == 0)
             {
                 this.grid.ReleaseInstance(newTarget);
                 if (this.oldTarget == null)

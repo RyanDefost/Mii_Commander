@@ -60,7 +60,7 @@ namespace BoardItems
             {
                 if (instance.boardItem is CandyActor actor)
                 {
-                    GameObject effectObject = Instantiate(effect, actor.transform.position + new Vector3(0,0,-1f), Quaternion.identity);
+                    GameObject effectObject = Instantiate(this.effect, actor.transform.position + new Vector3(0,0,-1f), Quaternion.identity);
                     Destroy(effectObject, 5f);
                     this.currentOutputPoints += actor.Points;
                 }

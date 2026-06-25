@@ -19,7 +19,11 @@ namespace Managers
         public Action OnChanged;
         public Action OnLastMove;
 
-        private void Start() => this.OnChanged += SetUI;
+        private void Start()
+        {
+            this.OnChanged += SetUI;
+            SetUI();
+        }
 
         public void SetMove()
         {

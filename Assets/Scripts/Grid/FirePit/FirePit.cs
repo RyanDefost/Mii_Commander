@@ -27,8 +27,8 @@ namespace Grid.FirePit
 
         private void Activate()
         {
-            if(staysOpen) return;
-            this.animator.Play(openCloseAnimation.name);   
+            if(this.staysOpen) return;
+            this.animator.Play(this.openCloseAnimation.name);   
         }
 
         public void SetFixedOpenState(bool isOpen)
@@ -36,11 +36,11 @@ namespace Grid.FirePit
             switch (isOpen)
             {
                 case true when !this.staysOpen:
-                    this.animator.Play(StayOpenAnimation.name);
+                    this.animator.Play(this.StayOpenAnimation.name);
                     this.staysOpen = true;
                     break;
                 case false when this.staysOpen:
-                    this.animator.Play(StayClosedAnimation.name);
+                    this.animator.Play(this.StayClosedAnimation.name);
                     this.staysOpen = false;
                     break;
             }

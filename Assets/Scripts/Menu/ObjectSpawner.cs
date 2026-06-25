@@ -27,7 +27,7 @@ namespace Menu
 
         private void Update()
         {
-            if (this.currentSpawned >= maxSpawnAmount) return;
+            if (this.currentSpawned >= this.maxSpawnAmount) return;
         
             this.currentSpawned++;
             StartCoroutine(SpawnObjects());
@@ -35,14 +35,14 @@ namespace Menu
 
         private IEnumerator SpawnObjects()
         {
-            yield return new WaitForSeconds(Random.Range(minMaxSpawnTime.x, minMaxSpawnTime.y));
+            yield return new WaitForSeconds(Random.Range(this.minMaxSpawnTime.x, this.minMaxSpawnTime.y));
         
             GameObject spawnable = this.spawnables[Random.Range(0, this.spawnables.Count)]; 
             Vector3 spawnPoint = GetRandomPointInBounds(this.collider.bounds);
         
             GameObject spawnedObject = Instantiate(spawnable, spawnPoint, Quaternion.identity);
         
-            yield return new WaitForSeconds(despawnTime);
+            yield return new WaitForSeconds(this.despawnTime);
             DestroyImmediate(spawnedObject);
             this.currentSpawned--;
         }

@@ -95,8 +95,8 @@ namespace Grid
                     this.isDestroying = true;
                     return;
                 }
-                
-                waitingMoves.Add(moveComponent);
+
+                this.waitingMoves.Add(moveComponent);
             });
 
             if (this.isDestroying && this.waitToDestroy)
@@ -104,7 +104,7 @@ namespace Grid
                 this.isDestroying = false;
                 this.OnWaitingToMove?.Invoke();
                 
-                this.TimerToDestroy = new Timer(waitTimeToDestroy, false, true, Moving);
+                this.TimerToDestroy = new Timer(this.waitTimeToDestroy, false, true, Moving);
                 return;
             }
             Moving();
@@ -115,7 +115,7 @@ namespace Grid
             foreach (GridMoveable moveable in this.waitingMoves)
                 moveable.SetMoving(true);
             
-            this.TimeAfterMoving = new Timer(waitTimeAfterMoving, false, true, OnStopMoving);
+            this.TimeAfterMoving = new Timer(this.waitTimeAfterMoving, false, true, OnStopMoving);
         }
 
         private void OnStopMoving() => this.OnDoneMoving?.Invoke();

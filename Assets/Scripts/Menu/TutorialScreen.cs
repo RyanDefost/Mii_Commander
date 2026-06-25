@@ -36,25 +36,25 @@ namespace Menu
             this.animator = GetComponent<Animator>();
             this.videoPlayer = GetComponent<VideoPlayer>();
 
-            currentIndex++;
+            this.currentIndex++;
             this.animator.Play(this.moveInClip.name);
         }
 
         public void ToggleNextTutorial()
         {
-            if(isMoving) return;
-            isMoving = true;
-            
-            currentIndex++;
-            animator.Play(moveOutClip.name);   
+            if(this.isMoving) return;
+            this.isMoving = true;
+
+            this.currentIndex++;
+            this.animator.Play(this.moveOutClip.name);   
         }
         public void TogglePreviousTutorial()
         {
-            if(isMoving) return;
-            isMoving = true;
-            
-            currentIndex--;
-            animator.Play(moveOutClip.name);
+            if(this.isMoving) return;
+            this.isMoving = true;
+
+            this.currentIndex--;
+            this.animator.Play(this.moveOutClip.name);
         }
 
         /// <summary>
@@ -70,8 +70,8 @@ namespace Menu
         /// </summary>
         public void OnMoveIn()
         {
-            isMoving = false;
-            currentIndex = Mathf.Clamp(currentIndex, 0, tutorials.Count - 1);
+            this.isMoving = false;
+            this.currentIndex = Mathf.Clamp(this.currentIndex, 0, this.tutorials.Count - 1);
             
             SetTutorialInfo(this.tutorials[this.currentIndex]);
         }
