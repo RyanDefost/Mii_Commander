@@ -26,6 +26,7 @@ namespace BoardItems
                 deck.GetCandy(out GameObject prefab, out int typeIndex);
             
                 GameObject gameObject = Object.Instantiate(prefab, parent, false);
+                gameObject.name = prefab.name;
                 
                 Vector3 parentScale = parent.localScale;
                 Vector3 prefabScale = prefab.transform.localScale;

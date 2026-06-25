@@ -25,6 +25,7 @@ namespace Managers.QuestManagement
 
         private void CustomUpdate(string itemName, string abilityName)
         {
+            Debug.Log($"Triggered {itemName}'s ability '{abilityName}");
             if (itemName != this.itemName || abilityName != this.abilityName)
                 return;
             this.counter += 1;

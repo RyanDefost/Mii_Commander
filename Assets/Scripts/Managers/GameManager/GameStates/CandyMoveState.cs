@@ -30,6 +30,7 @@ namespace Managers.GameStates
             this.playerHandRef.SetCanGrab(false);
 
             if (this.candyCleaner) this.candyCleaner.CleanBoard();
+            Debug.Log("aaaaaa");
             this.Owner.TurnManager.AddToWaitTime(1f); //TODO: DOES NOT WORK FOR ABILITY WAITING.
             //SHOULD BE CHANGED IN FUTURE FOR BETTER PACING
             this.Owner.MoveManager.SetMove();

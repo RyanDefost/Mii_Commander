@@ -69,6 +69,7 @@ public class InitialItemSpawner : MonoBehaviour
             Vector3? spawnPos = positions[item.index];
             if (spawnPos == null) continue;
             GameObject spawnedObject = Instantiate(item.prefab, spawnPos.Value + Vector3.back, this.transform.rotation);
+            spawnedObject.name = item.prefab.name;
             BoardItem boardItem = spawnedObject.GetComponent<BoardItem>();
             GridMoveable moveComponent = spawnedObject.GetComponent<GridMoveable>();
 

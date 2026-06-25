@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using BoardItems;
 using UnityEngine;
 
 namespace Managers.QuestManagement.Rewards
@@ -11,7 +12,13 @@ namespace Managers.QuestManagement.Rewards
 
         public void Spawn(GameObject rewardObject, int rewardAmount, float spawnDelayInBetween) => 
             StartCoroutine(SpawnMultipleOverTime(rewardObject, rewardAmount, spawnDelayInBetween));
-        public void Spawn(GameObject rewardObject) => Instantiate(rewardObject, this.transform.position, this.transform.rotation);
+        public void Spawn(GameObject rewardObject)
+        {
+            GameObject instance = Instantiate(rewardObject, this.transform.position, this.transform.rotation);
+            instance.name = rewardObject.name;
+            if (instance.TryGetComponent(out GridMoveable gridMoveable))
+                gridMoveable.skipCleaning = true;
+        }
 
         private IEnumerator SpawnMultipleOverTime(GameObject rewardObject, int rewardAmount, float spawnDelayInBetween)
         {

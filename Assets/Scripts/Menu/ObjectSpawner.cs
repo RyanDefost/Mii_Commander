@@ -40,6 +40,7 @@ namespace Menu
             Vector3 spawnPoint = GetRandomPointInBounds(this.colliderRef.bounds);
         
             GameObject spawnedObject = Instantiate(spawnable, spawnPoint, Quaternion.identity);
+            spawnedObject.name = spawnable.name;
         
             yield return new WaitForSeconds(this.despawnTime);
             DestroyImmediate(spawnedObject);

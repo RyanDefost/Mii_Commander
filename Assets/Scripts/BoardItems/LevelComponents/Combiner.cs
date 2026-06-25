@@ -9,6 +9,8 @@ namespace BoardItems
 {
     public class Combiner : BoardItemComponent
     {
+        [SerializeField]
+        private string abilityName = "combine";
         [SerializeField] private GameObject effect;
         
         private SynergyLookUp synergyLookUp;
@@ -19,6 +21,7 @@ namespace BoardItems
         private int currentOutputPoints;
 
         public override void ConnectToBoardItem() => this.boardItem.OnActivate += Activate;
+        public override string GetAbilityName() => this.abilityName;
 
         /// <summary>
         /// When activated, needed pattern direction is chosen and checks synergyLookup for possible synergies.
@@ -71,6 +74,7 @@ namespace BoardItems
                     
             //Initialize GameObject.
             this.currentOutput = Instantiate(synergyInfo.Item1.output, neighbor.position, Quaternion.identity);
+            this.currentOutput.name = synergyInfo.Item1.output.name;
             if (this.currentOutput.TryGetComponent(out BoardItem boardItem))
                 boardItem.OnStarted += SetOutputToBoard;
         }

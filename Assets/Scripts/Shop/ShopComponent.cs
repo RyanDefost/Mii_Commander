@@ -51,11 +51,10 @@ namespace Shop
             if(!this.isBuyable) return;
 
             this.currentGrabbable = Instantiate(this.shopItem.shopObject, this.transform.position, this.transform.rotation);
-
-            if (this.currentGrabbable.TryGetComponent(out BoardItem boardItem))
-            {
+            this.currentGrabbable.name = this.shopItem.shopObject.name;
+            
+            if (this.currentGrabbable.TryGetComponent(out BoardItem boardItem)) 
                 boardItem.OnStarted += GrabBoardItem;
-            }
         }
         
         public void Hovering()
