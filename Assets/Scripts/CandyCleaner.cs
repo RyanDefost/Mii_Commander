@@ -28,13 +28,13 @@ public class CandyCleaner : MonoBehaviour
         foreach (GridMoveable moveable in moveables)
         {
             BoardItem boardItem = moveable.GetBoardItem();
-            if (boardItem.gridInstanceRef != null || this.destroyRequested.Contains(boardItem) || moveable.skipCleaning) continue;
+            if (boardItem.gridInstanceRef != null || !boardItem || this.destroyRequested.Contains(boardItem) || moveable.skipCleaning || !boardItem.Rb) continue;
 
             this.animator.Play(this.playWind.name);
             moveable.ApplyImpulse(new Vector3(
                 0,
                 Random.Range(this.pushSpeedRangeY.x, this.pushSpeedRangeY.y),
-                Random.Range(this.pushSpeedRangeZ.y, this.pushSpeedRangeZ.y)) * moveable.GetBoardItem().Rb.mass
+                Random.Range(this.pushSpeedRangeZ.y, this.pushSpeedRangeZ.y)) * boardItem.Rb.mass
             );
                 
             StartCoroutine(SetForDestroy(boardItem, 5f));

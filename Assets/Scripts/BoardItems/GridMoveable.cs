@@ -221,6 +221,10 @@ namespace BoardItems
     
         protected Vector3 GetTargetPosition() => this.Target.position + Vector3.back * this.offset;
 
-        public void ApplyImpulse(Vector3 forceAway) => this.boardItem.Rb.AddForce(forceAway, ForceMode.Impulse);
+        public void ApplyImpulse(Vector3 forceAway)
+        {
+            if (!this.boardItem || !this.boardItem.Rb || forceAway == Vector3.zero) return;
+            this.boardItem.Rb.AddForce(forceAway, ForceMode.Impulse);
+        }
     }
 }
