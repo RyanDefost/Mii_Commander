@@ -40,10 +40,14 @@ namespace Managers.QuestManagement
             return new WaitForSeconds(quest.GetDelay());
         }
 
-        public void UpdateQuests() => this.quests.ForEach(quest =>
+        public void UpdateQuests()
         {
-            if (!quest) return;
-            quest.Update();
-        });
+            List<Quest> questCopy = new(this.quests);
+            questCopy.ForEach(quest =>
+            {
+                if (!quest) return;
+                quest.Update();
+            });
+        }
     }
 }

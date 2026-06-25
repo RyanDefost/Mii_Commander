@@ -63,6 +63,8 @@ namespace Shop
             {
                 this.DisplayInfoBoxTimer = new Timer(0.5f, false, true, HideInfoBox);
                 this.hoveringTextBox?.SetActive(true);
+                TextMeshPro textComponent = this.hoveringTextBox?.GetComponentInChildren<TextMeshPro>();
+                if (textComponent != null) textComponent.text = this.shopItem.GetHoverText();
             }
             
             this.DisplayInfoBoxTimer.ResetAndReplay();
@@ -77,16 +79,14 @@ namespace Shop
 
         private void GrabBoardItem(BoardItem startedBoardItem)
         {
-            if (this.currentGrabbable.TryGetComponent(out HandHandler handHandler))
-            {
-                handHandler.AddToHand();
+            if (!this.currentGrabbable.TryGetComponent(out HandHandler handHandler)) return;
+            handHandler.AddToHand();
             
-                this.scoreManager.RemoveScore(this.shopItem.cost);
-                this.currentItemAmount--;
+            this.scoreManager.RemoveScore(this.shopItem.cost);
+            this.currentItemAmount--;
             
-                UpdateBuyableState();
-            }
-        
+            UpdateBuyableState();
+
         }
     
         public void UpdateVisuals()

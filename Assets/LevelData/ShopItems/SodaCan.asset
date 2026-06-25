@@ -16,3 +16,8 @@ MonoBehaviour:
   cost: 20
   itemSprite: {fileID: 21300000, guid: c1916e0476c18ee5796aec71714a6f04, type: 3}
   itemName: SodaSplosion
+  itemHoverText: 'Shake or Wait for an explotion that moves everything back
+
+
+    Now
+    with more sugar'

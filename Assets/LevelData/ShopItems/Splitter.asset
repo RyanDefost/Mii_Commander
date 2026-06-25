@@ -16,3 +16,8 @@ MonoBehaviour:
   cost: 10
   itemSprite: {fileID: 21300000, guid: ceb78a03ab25dbe24a3b52c4b607609b, type: 3}
   itemName: Splitter
+  itemHoverText: 'Splits bears into halfs to recombine for a higher score.
+
+
+    Don''t
+    get to close.'

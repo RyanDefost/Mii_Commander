@@ -16,3 +16,4 @@ MonoBehaviour:
   cost: 10
   itemSprite: {fileID: 21300000, guid: 5958baa9ebfe0606db313f3dbad70416, type: 3}
   itemName: Combiner
+  itemHoverText: Combines bears and candy to increase their worth.  Always watching...

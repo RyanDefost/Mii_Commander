@@ -343,12 +343,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4604019633655489510}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1354899740253182830}
+  m_Father: {fileID: 3934380885310964317}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1498492675056127178
 BoxCollider2D:
@@ -437,6 +437,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hovering:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5537748649795892440
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +470,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 8631364626303232662}
   m_Father: {fileID: 1354899740253182830}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8359512324671034119
@@ -571,7 +575,6 @@ Transform:
   m_Children:
   - {fileID: 7211422868435775542}
   - {fileID: 3934380885310964317}
-  - {fileID: 8631364626303232662}
   - {fileID: 1396696335839401122}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -650,10 +653,12 @@ MonoBehaviour:
   boardItem: {fileID: 2810408795809733440}
   isActiveSearching: 1
   moveImmunity: 0
+  canIgnoreLocks: 0
   startCellName: locked
   offset: 0.45
   minimalDist: 1
   minVelocityToRecalculate: 1
+  skipCleaning: 0
 --- !u!114 &688603324041803321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,7 +713,7 @@ MonoBehaviour:
   explosionPatternName: Square3x3
   explosionStrengthTile: 0.5
   explosionStrengthVisual: 5
-  explosionTime: 1
+  explosionTime: 0.5
 --- !u!114 &1859877875076216974
 MonoBehaviour:
   m_ObjectHideFlags: 0
