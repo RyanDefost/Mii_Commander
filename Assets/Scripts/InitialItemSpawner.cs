@@ -82,7 +82,7 @@ public class InitialItemSpawner : MonoBehaviour
                 if (newTarget == null) return;
 
                 moveComponent.SetTarget(newTarget, false);
-                moveComponent.SetMoving(true);
+                moveComponent.ForceSnap();
                 
                 if (spawnedObject.TryGetComponent(out CountDownTillActivation countDownTillActivation))
                     countDownTillActivation.EnableActivate();

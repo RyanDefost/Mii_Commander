@@ -75,16 +75,19 @@ namespace Grid
                 GridMoveable moveComponent = instance.moveable;
                 if (!moveComponent) return;
                 
-                moveComponent.SetMoving(false);
+                // moveComponent.SetMoving(false);
                 
-                moveComponent.ResetTarget();
                 GridManager.GridInstance newTarget = this.gridManager.GetNearestPosition(
                     instance.position + this.gridManager.CellSize.y * Vector3.down, instance.gameObj,
                     moveComponent.GetBoardItem(), instance); // TODO maybe replace this with a neighborpattern?
-                
-                
+
                 if (newTarget != null)
+                {
+                    moveComponent.ResetTarget();
                     moveComponent.SetTarget(newTarget, false);
+                    this.waitingMoves.Add(moveComponent);
+                }
+                else moveComponent.SetMoving(false);;
 
                 if (!moveComponent.HasTarget())
                 {

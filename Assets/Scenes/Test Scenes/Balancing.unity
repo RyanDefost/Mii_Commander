@@ -551,6 +551,10 @@ PrefabInstance:
       propertyPath: LiquidRenderer
       value: 
       objectReference: {fileID: 1149869159}
+    - target: {fileID: 2898832330922170845, guid: b9cdf46bc4b50dbf58479861d15a83d4, type: 3}
+      propertyPath: startScore
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4553355683190366252, guid: b9cdf46bc4b50dbf58479861d15a83d4, type: 3}
       propertyPath: m_Name
       value: Systems / Managers
@@ -4090,7 +4094,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8377456246870157975, guid: 23f17c9e0b606f27bab10776590146c1, type: 3}
       propertyPath: items.Array.size
-      value: 19
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377456246870157975, guid: 23f17c9e0b606f27bab10776590146c1, type: 3}
+      propertyPath: items.Array.data[2].index
+      value: 57
       objectReference: {fileID: 0}
     - target: {fileID: 8377456246870157975, guid: 23f17c9e0b606f27bab10776590146c1, type: 3}
       propertyPath: items.Array.data[17].index
@@ -4101,7 +4109,15 @@ PrefabInstance:
       value: 68
       objectReference: {fileID: 0}
     - target: {fileID: 8377456246870157975, guid: 23f17c9e0b606f27bab10776590146c1, type: 3}
+      propertyPath: items.Array.data[19].index
+      value: 58
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377456246870157975, guid: 23f17c9e0b606f27bab10776590146c1, type: 3}
       propertyPath: items.Array.data[18].prefab
+      value: 
+      objectReference: {fileID: 2427277321692252709, guid: e28cc7eff9843884c8af3aae2ec583f3, type: 3}
+    - target: {fileID: 8377456246870157975, guid: 23f17c9e0b606f27bab10776590146c1, type: 3}
+      propertyPath: items.Array.data[19].prefab
       value: 
       objectReference: {fileID: 2427277321692252709, guid: e28cc7eff9843884c8af3aae2ec583f3, type: 3}
     m_RemovedComponents: []
