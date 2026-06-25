@@ -16,18 +16,17 @@ namespace Menu
         [SerializeField] private Vector2Int minMaxSpawnTime;
         [SerializeField] private float despawnTime;
     
-    
-        private BoxCollider collider;
+        private BoxCollider colliderRef;
 
         private void Start()
         {
-            this.collider = GetComponent<BoxCollider>();
-            this.collider.isTrigger = true;
+            this.colliderRef = GetComponent<BoxCollider>();
+            this.colliderRef.isTrigger = true;
         }
 
         private void Update()
         {
-            if (this.currentSpawned >= maxSpawnAmount) return;
+            if (this.currentSpawned >= this.maxSpawnAmount) return;
         
             this.currentSpawned++;
             StartCoroutine(SpawnObjects());
@@ -35,14 +34,15 @@ namespace Menu
 
         private IEnumerator SpawnObjects()
         {
-            yield return new WaitForSeconds(Random.Range(minMaxSpawnTime.x, minMaxSpawnTime.y));
+            yield return new WaitForSeconds(Random.Range(this.minMaxSpawnTime.x, this.minMaxSpawnTime.y));
         
             GameObject spawnable = this.spawnables[Random.Range(0, this.spawnables.Count)]; 
-            Vector3 spawnPoint = GetRandomPointInBounds(this.collider.bounds);
+            Vector3 spawnPoint = GetRandomPointInBounds(this.colliderRef.bounds);
         
             GameObject spawnedObject = Instantiate(spawnable, spawnPoint, Quaternion.identity);
+            spawnedObject.name = spawnable.name;
         
-            yield return new WaitForSeconds(despawnTime);
+            yield return new WaitForSeconds(this.despawnTime);
             DestroyImmediate(spawnedObject);
             this.currentSpawned--;
         }

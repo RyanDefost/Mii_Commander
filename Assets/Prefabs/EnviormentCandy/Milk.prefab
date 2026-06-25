@@ -68,7 +68,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.010717928, y: 0.000008583069}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -121,6 +121,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hovering:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1784258961695943953
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +172,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1784258961695943953}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDamping: 0
   m_AngularDamping: 5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -236,10 +239,12 @@ MonoBehaviour:
   boardItem: {fileID: 4722408874013014629}
   isActiveSearching: 1
   moveImmunity: 0
+  canIgnoreLocks: 0
   startCellName: locked
   offset: 0.45
   minimalDist: 1
   minVelocityToRecalculate: 1
+  skipCleaning: 0
 --- !u!114 &8608874024882610248
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -59,7 +59,7 @@ namespace BoardItems
                 this.gameManager.TurnManager.AddToWaitTime(0.2f);
                 
                 GameObject currentOutput = Instantiate(ingredient, splitInstance.position, Quaternion.identity);    
-                
+                currentOutput.name = ingredient.name;
                 if (currentOutput.TryGetComponent(out BoardItem boardItem))
                     boardItem.OnStarted += SetOutputToBoard;
             }

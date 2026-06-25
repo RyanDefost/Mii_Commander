@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c9bef442b94cb1b80447319ae27187, type: 3}
   m_Name: SodaActivationQuest
   m_EditorClassIdentifier: Assembly-CSharp::Managers.Quest.ItemActivationQuest
-  reward: {fileID: 11400000, guid: 8d26642547a04604d99ee622c037d537, type: 2}
+  reward: {fileID: 11400000, guid: 2d05742026c003d409069f223190be4f, type: 2}
   itemName: Soda
   abilityName: Explosion
   requiredAmount: 1

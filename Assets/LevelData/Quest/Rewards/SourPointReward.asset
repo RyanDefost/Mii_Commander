@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb2b2812bbfa49649b102f25d5b99ac6, type: 3}
-  m_Name: PointReward
-  m_EditorClassIdentifier: Assembly-CSharp::Managers.Quest.PointReward
-  rewardValue: 50
+  m_Name: SourPointReward
+  m_EditorClassIdentifier: Assembly-CSharp::Managers.QuestManagement.Rewards.PointReward
+  candyType: 1
+  rewardValue: 20

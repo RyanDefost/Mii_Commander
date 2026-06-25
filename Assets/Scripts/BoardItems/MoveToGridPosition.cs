@@ -61,26 +61,26 @@ namespace BoardItems
             this.usedMinimumForce = this.physicsData.movementStrength;
             this.endTimer = new Timer(this.endTimerTime, false, true, SnapToTarget);
         
-        this.onFixedUpdate += ApplyForceTowardsTarget;
-        this.onFixedUpdate += UpdateEndTimer;
-        this.onFixedUpdate -= UpdateStartDelayTimer;
+            this.onFixedUpdate += ApplyForceTowardsTarget;
+            this.onFixedUpdate += UpdateEndTimer;
+            this.onFixedUpdate -= UpdateStartDelayTimer;
         
             this.startDelayTimer.ResetAndReplay();
         }
 
         private void UpdateEndTimer() => this.endTimer.UpdateTime(Time.deltaTime);
 
-    protected override void SnapToTarget()
-    {
-        if (this.Target == null)
-            return;
-        base.SnapToTarget();
-        this.boardItem.Rb.linearVelocity = Vector3.zero;
-        this.boardItem.Rb.angularVelocity = Vector3.zero;
-        this.boardItem.Rb.Sleep();
-        this.onFixedUpdate -= UpdateEndTimer;
+        protected override void SnapToTarget()
+        {
+            if (this.Target == null)
+                return;
+            base.SnapToTarget();
+            this.boardItem.Rb.linearVelocity = Vector3.zero;
+            this.boardItem.Rb.angularVelocity = Vector3.zero;
+            this.boardItem.Rb.Sleep();
+            this.onFixedUpdate -= UpdateEndTimer;
         
-            this.endTimer.ResetAndReplay();
+            this.endTimer?.ResetAndReplay();
             this.currentResistanceMultiplier = 1f;
         }
     

@@ -19,6 +19,7 @@ namespace Grid
         [SerializeField] private Vector2Int boardSize;
         [SerializeField] private Vector3[] positions;
         [SerializeField] private Vector3[] positionsOffGrid;
+        [SerializeField] private Vector3 offGridOffset;
 
         [Space, SerializeField, Tooltip("Passes are extensions to the existing boardCells to create a checkable category")] 
         private List<GridCellPass> cellPasses;
@@ -28,6 +29,7 @@ namespace Grid
         public int Width => this.boardSize.x;
         public int Height => this.boardSize.y;
         [SerializeField] private Mesh cellMesh;
+        public Action generationIsDone;
 
 #if UNITY_EDITOR
         private void OnValidate()
@@ -52,7 +54,7 @@ namespace Grid
             Vector3 gridBottomLeft = this.boardBounds.center - (this.boardBounds.size * 0.5f);
             for (int i = 0; i < this.boardSize.x; i++)
             {
-                Vector3 offset = new((i + 0.5f) * this.cellSize.x, -0.5f * this.cellSize.y, 0);
+                Vector3 offset = new Vector3((i + 0.5f) * this.cellSize.x, -0.5f * this.cellSize.y, 0f) + this.offGridOffset;
                 this.positionsOffGrid[i] = gridBottomLeft + offset;
             }
 
@@ -63,7 +65,7 @@ namespace Grid
         }
 #endif
 
-        private void OnDrawGizmosSelected()
+        private void OnDrawGizmos()
         {
             if (this.boardSize.x <= 0 || this.boardSize.y <= 0) return;
 
@@ -71,7 +73,34 @@ namespace Grid
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireCube(this.boardBounds.center, this.boardBounds.size);
 
-            CalculateGrid((offset, cellSize, bottomLeft, _) => Gizmos.DrawWireCube(bottomLeft + offset, cellSize));
+            bool CheckPasses(Vector2Int position, out Color color)
+            {
+                color = Color.yellow;
+                int index = position.x + (position.y * this.boardSize.x);
+                foreach (GridCellPass pass in this.cellPasses)
+                {
+                    if (!pass.positionIndexes.Contains(index)) continue;
+                    color = pass.material.color;
+                    return true;
+                }
+
+                return false;
+            }
+            
+            CalculateGrid((offset, cellSize, bottomLeft, position) =>
+            {
+                if (CheckPasses(position, out Color color))
+                {
+                    offset += Vector3.back * 0.01f;
+                    Gizmos.color = color;
+                    Gizmos.DrawCube(bottomLeft + offset, cellSize);
+                }
+                else
+                {
+                    Gizmos.color = color;
+                    Gizmos.DrawWireCube(bottomLeft + offset, cellSize);
+                }
+            });
 
             foreach (Vector3 position in this.positions)
             {
@@ -265,6 +294,8 @@ namespace Grid
             combinedObject.AddComponent<MeshFilter>().sharedMesh = finalMesh;
             MeshRenderer meshRenderer = combinedObject.AddComponent<MeshRenderer>();
             meshRenderer.sharedMaterials = this.materials;
+
+            generationIsDone?.Invoke();
         }
 
         //Build CombineInstances per material

@@ -12,5 +12,12 @@ namespace Shop
         [Header("Visual")]
         public Sprite itemSprite;
         public string itemName;
+        [TextArea]
+        public string itemHoverText;
+
+        public string GetHoverText()
+        {
+            return $"[COST:{this.cost}] \n{this.itemHoverText}";
+        }
     }
 }

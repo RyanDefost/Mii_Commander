@@ -24,8 +24,8 @@ namespace DefaultNamespace
 
         public void TogglePosition()
         {
-            this.animator.Play(isDown ? moveUpClip.name : moveDownClip.name);
-            isDown = !isDown;
+            this.animator.Play(this.isDown ? this.moveUpClip.name : this.moveDownClip.name);
+            this.isDown = !this.isDown;
         }
 
         private IEnumerator Move(Vector2 position, GameObject target)

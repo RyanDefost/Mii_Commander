@@ -75,16 +75,20 @@ namespace Grid
                 GridMoveable moveComponent = instance.moveable;
                 if (!moveComponent) return;
                 
-                moveComponent.SetMoving(false);
+                // moveComponent.SetMoving(false);
                 
-                moveComponent.ResetTarget();
                 GridManager.GridInstance newTarget = this.gridManager.GetNearestPosition(
                     instance.position + this.gridManager.CellSize.y * Vector3.down, instance.gameObj,
                     moveComponent.GetBoardItem(), instance); // TODO maybe replace this with a neighborpattern?
-                
-                
+
                 if (newTarget != null)
+                {
+                    moveComponent.ResetTarget();
                     moveComponent.SetTarget(newTarget, false);
+                    moveComponent.ApplyImpulse(instance.position.DirectionTo(newTarget.position) * moveComponent.GetBoardItem().Rb.mass);
+                    this.waitingMoves.Add(moveComponent);
+                }
+                else moveComponent.SetMoving(false);;
 
                 if (!moveComponent.HasTarget())
                 {
@@ -95,8 +99,8 @@ namespace Grid
                     this.isDestroying = true;
                     return;
                 }
-                
-                waitingMoves.Add(moveComponent);
+
+                this.waitingMoves.Add(moveComponent);
             });
 
             if (this.isDestroying && this.waitToDestroy)
@@ -104,7 +108,7 @@ namespace Grid
                 this.isDestroying = false;
                 this.OnWaitingToMove?.Invoke();
                 
-                this.TimerToDestroy = new Timer(waitTimeToDestroy, false, true, Moving);
+                this.TimerToDestroy = new Timer(this.waitTimeToDestroy, false, true, Moving);
                 return;
             }
             Moving();
@@ -115,7 +119,7 @@ namespace Grid
             foreach (GridMoveable moveable in this.waitingMoves)
                 moveable.SetMoving(true);
             
-            this.TimeAfterMoving = new Timer(waitTimeAfterMoving, false, true, OnStopMoving);
+            this.TimeAfterMoving = new Timer(this.waitTimeAfterMoving, false, true, OnStopMoving);
         }
 
         private void OnStopMoving() => this.OnDoneMoving?.Invoke();

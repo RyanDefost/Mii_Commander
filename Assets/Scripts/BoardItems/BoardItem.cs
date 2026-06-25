@@ -26,7 +26,7 @@ namespace BoardItems
         public Action OnAddToBoard;
         public Action OnActivate;
         public Action<BoardItem> OnStarted;
-    
+
         private void Awake()
         {
             this.rb = GetComponent<Rigidbody>();

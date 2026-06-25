@@ -88,10 +88,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b40b83ace338744a8e450b0a22ea7f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Managers.GameManager.GameManager
-  moveManager: {fileID: 0}
+  moveManager: {fileID: 1041427905063429616}
   turnManager: {fileID: 0}
-  scoreManager: {fileID: 0}
-  questManager: {fileID: 0}
+  scoreManager: {fileID: 2898832330922170845}
+  questManager: {fileID: 6076488127347747525}
   levelData: {fileID: 11400000, guid: e5d94e483e7bf7dc6bb41b8766f44e75, type: 2}
 --- !u!1 &936880125910603203
 GameObject:
@@ -207,7 +207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4553355683190366252}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Managers.MoveManager
   clampAmount:
     min: 0
-    max: 30
+    max: 999
   moveAmountText: {fileID: 0}
 --- !u!1 &6634991826656813621
 GameObject:
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a98d96eff854bd92890b80bb6faec5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
-  startScore: 200
+  startScore: 0
 --- !u!114 &2471299744142882345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,8 +328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4a6246d75748f9bf5adc196b7d9844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Managers.Scoring.ScoreVisualiser
-  slider: {fileID: 0}
   text: {fileID: 0}
+  LiquidRenderer: {fileID: 0}
   applySpeed: 2.5
 --- !u!1 &7648268822819025168
 GameObject:

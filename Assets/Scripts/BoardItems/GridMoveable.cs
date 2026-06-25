@@ -23,26 +23,27 @@ namespace BoardItems
         protected GridManager.GridInstance Target { get; private set; }
         private GridManager.GridInstance oldTarget;
     
-    [Space, SerializeField]
-    private float offset = 0.25f;
-    [SerializeField]
-    private float minimalDist = 1f;
-    private float? previousDist;
-    [SerializeField]
-    private float minVelocityToRecalculate = 1f;
-    
-    protected Action onUpdate;
-    protected Action onFixedUpdate;
+        [Space, SerializeField]
+        private float offset = 0.25f;
+        [SerializeField]
+        private float minimalDist = 1f;
+        private float? previousDist;
+        [SerializeField]
+        private float minVelocityToRecalculate = 1f;
+        
+        protected Action onUpdate;
+        protected Action onFixedUpdate;
 
-    public Action OnMoved;
-    public Action OnStartMoving;
-    private bool hasMoved;
-    
-    private void Start()
-    {
-        this.grid = ComponentRegistry.GetComponent<GridManager>();
-        this.moveManagerRef = ComponentRegistry.GetComponent<GameManager>()?.MoveManager;
-    }
+        public Action OnMoved;
+        public Action OnStartMoving;
+        private bool hasMoved;
+        public bool skipCleaning;
+
+        private void Start()
+        {
+            this.grid = ComponentRegistry.GetComponent<GridManager>();
+            this.moveManagerRef = ComponentRegistry.GetComponent<GameManager>()?.MoveManager;
+        }
 
         public override void ConnectToBoardItem()
         { 
@@ -56,61 +57,60 @@ namespace BoardItems
             this.boardItem.OnInitiate -= OnInitiate;
         }
     
-    private void Update() => this.onUpdate?.Invoke();
-    private void FixedUpdate() => this.onFixedUpdate?.Invoke();
+        private void Update() => this.onUpdate?.Invoke();
+        private void FixedUpdate() => this.onFixedUpdate?.Invoke();
 
-    private void OnAddToHand()
-    {
-        SetMoving(false);
-        this.onFixedUpdate += LockLocalPosition;
-    }
+        private void OnAddToHand()
+        {
+            SetMoving(false);
+            this.onFixedUpdate += LockLocalPosition;
+        }
 
-    private void OnInitiate()
-    {
-        //SetMoving(true);
-        this.onUpdate += CheckForSearch;
-        this.onFixedUpdate -= LockLocalPosition;
-    }
+        private void OnInitiate()
+        {
+            //SetMoving(true);
+            this.onUpdate += CheckForSearch;
+            this.onFixedUpdate -= LockLocalPosition;
+        }
 
-    private void CheckForSearch()
-    {
-        if(!this.isActiveSearching) return;
-        
-        SetMoving(true);
-        this.onUpdate -= CheckForSearch;
-    }
+        private void CheckForSearch()
+        {
+            if(!this.isActiveSearching) return;
+            
+            SetMoving(true);
+            this.onUpdate -= CheckForSearch;
+        }
 
-    public void SetMoving(bool newState)
-    {
-        this.OnStartMoving?.Invoke();
-        this.hasMoved = false;
-        
-        if (newState)
-            TriggerMovementToTarget();
-        else
-            StopMovementToTarget();
-    }
+        public void SetMoving(bool newState)
+        {
+            this.OnStartMoving?.Invoke();
+            this.hasMoved = false;
+            
+            if (newState)
+                TriggerMovementToTarget();
+            else
+                StopMovementToTarget();
+        }
 
-        private void LockLocalPosition() => this.transform.localPosition = Vector3.zero;
+            private void LockLocalPosition() => this.transform.localPosition = Vector3.zero;
 
-    protected virtual void StopMovementToTarget()
-    {
-        this.onUpdate -= SnapToTarget;
-        this.onFixedUpdate -= AwaitDistanceToTarget;
-        ResetTarget();
-        this.previousDist = null;
-    }
+        protected virtual void StopMovementToTarget()
+        {
+            this.onUpdate -= SnapToTarget;
+            this.onFixedUpdate -= AwaitDistanceToTarget;
+            ResetTarget();
+            this.previousDist = null;
+        }
 
-    protected virtual void TriggerMovementToTarget()
-    {
-        TriggerUpdateTargetWithImmunityState();
-        this.onFixedUpdate += AwaitDistanceToTarget;
-    }
+        protected virtual void TriggerMovementToTarget()
+        {
+            TriggerUpdateTargetWithImmunityState();
+            this.onFixedUpdate += AwaitDistanceToTarget;
+        }
 
         private void AwaitDistanceToTarget()
         {
-            if (this.Target == null)
-                return;
+            if (this.Target == null) return;
         
             float dist = Vector3.Distance(this.transform.position, this.Target.position);
             this.previousDist ??= dist;
@@ -139,42 +139,49 @@ namespace BoardItems
                 this.previousDist = dist;
                 return;
             }
+            
+            this.onUpdate += SnapToTarget;
+            this.onFixedUpdate -= AwaitDistanceToTarget;
+        }
         
-        this.onUpdate += SnapToTarget;
-        this.onFixedUpdate -= AwaitDistanceToTarget;
-    }
-    
-    protected virtual void SnapToTarget()
-    {
-        if (this.Target == null)
-            return;
+        public void ForceSnap()
+        {
+            this.onUpdate -= SnapToTarget;
+            this.onFixedUpdate -= AwaitDistanceToTarget;
+            SnapToTarget();
+        }
         
-        this.transform.position = GetTargetPosition();
-        this.boardItem.OnAddToBoard?.Invoke();
-        this.previousDist = null;
+        protected virtual void SnapToTarget()
+        {
+            if (this.Target == null)
+                return;
+            
+            this.transform.position = GetTargetPosition();
+            this.boardItem.OnAddToBoard?.Invoke();
+            this.previousDist = null;
+            
+            if (this.hasMoved) 
+                return;
+            
+            this.hasMoved = true;
+            this.OnMoved?.Invoke();
+        }
         
-        if (this.hasMoved) 
-            return;
-        
-        this.hasMoved = true;
-        this.OnMoved?.Invoke();
-    }
-    
-    protected bool UpdateTarget(bool usesMove)
-    {
-        if (this.Target != null)
-            return true;
-        this.grid ??= ComponentRegistry.GetComponent<GridManager>();
-        if (this.grid)
-            SetTarget(
-                this.startCellName == ""
-                    ? this.grid.GetNearestGridPosition(this.transform.position, this.gameObject, this.boardItem)
-                    : this.grid.GetNearestCellPassPosition(this.startCellName, this.transform.position, this.gameObject,
-                        this.boardItem), usesMove);
-        else
-            ComponentRegistry.TrySubscribeForComponent<GridManager>(TriggerUpdateTargetWithoutMove);
-        return this.Target != null;
-    }
+        protected bool UpdateTarget(bool usesMove)
+        {
+            if (this.Target != null)
+                return true;
+            this.grid ??= ComponentRegistry.GetComponent<GridManager>();
+            if (this.grid)
+                SetTarget(
+                    this.startCellName == ""
+                        ? this.grid.GetNearestGridPosition(this.transform.position, this.gameObject, this.boardItem)
+                        : this.grid.GetNearestCellPassPosition(this.startCellName, this.transform.position, this.gameObject,
+                            this.boardItem), usesMove);
+            else
+                ComponentRegistry.TrySubscribeForComponent<GridManager>(TriggerUpdateTargetWithoutMove);
+            return this.Target != null;
+        }
     
         protected void TriggerUpdateTargetWithoutMove() => UpdateTarget(false);
         protected void TriggerUpdateTargetWithImmunityState() => UpdateTarget(!this.moveImmunity);
@@ -187,7 +194,7 @@ namespace BoardItems
                 return;
             }
         
-            if (this.moveManagerRef.MoveAmount == 0 && usesMove)
+            if (usesMove && this.moveManagerRef.MoveAmount == 0)
             {
                 this.grid.ReleaseInstance(newTarget);
                 if (this.oldTarget == null)
@@ -214,6 +221,10 @@ namespace BoardItems
     
         protected Vector3 GetTargetPosition() => this.Target.position + Vector3.back * this.offset;
 
-        public void ApplyImpulse(Vector3 forceAway) => this.boardItem.Rb.AddForce(forceAway, ForceMode.Impulse);
+        public void ApplyImpulse(Vector3 forceAway)
+        {
+            if (!this.boardItem || !this.boardItem.Rb || forceAway == Vector3.zero) return;
+            this.boardItem.Rb.AddForce(forceAway, ForceMode.Impulse);
+        }
     }
 }

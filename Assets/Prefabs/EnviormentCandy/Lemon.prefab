@@ -145,6 +145,7 @@ MonoBehaviour:
   offset: 0.25
   minimalDist: 0.5
   minVelocityToRecalculate: 1
+  skipCleaning: 0
 --- !u!114 &2204325606334268918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,7 +535,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.010717928, y: 0.000008583069}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -587,6 +588,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hovering:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5333428407424723503
 GameObject:
   m_ObjectHideFlags: 0
