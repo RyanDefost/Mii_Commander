@@ -108,38 +108,37 @@ namespace BoardItems
         this.onFixedUpdate += AwaitDistanceToTarget;
     }
 
-        private void AwaitDistanceToTarget()
+    private void AwaitDistanceToTarget()
+    {
+        if (this.Target == null) return;
+    
+        float dist = Vector3.Distance(this.transform.position, this.Target.position);
+        this.previousDist ??= dist;
+    
+        if (dist > this.minimalDist)
         {
-            if (this.Target == null)
-                return;
-        
-            float dist = Vector3.Distance(this.transform.position, this.Target.position);
-            this.previousDist ??= dist;
-        
-            if (dist > this.minimalDist)
+            // The item is moving away from its target
+            if (dist > this.previousDist)
             {
-                // The item is moving away from its target
-                if (dist > this.previousDist)
+                float currentSpeed = this.boardItem.Rb ? this.boardItem.Rb.linearVelocity.magnitude : 0f;
+
+                // If its rolling past, get a new target
+                if (currentSpeed > this.minVelocityToRecalculate)
                 {
-                    float currentSpeed = this.boardItem.Rb ? this.boardItem.Rb.linearVelocity.magnitude : 0f;
-
-                    // If its rolling past, get a new target
-                    if (currentSpeed > this.minVelocityToRecalculate)
-                    {
-                        ResetTarget(); 
-                        this.previousDist = null;
-                        UpdateTarget(false);
-                        return;
-                    }
-
-                    // edge case, off board or unmoving
-                    SetMoving(false);
+                    ResetTarget(); 
+                    this.previousDist = null;
+                    UpdateTarget(false);
                     return;
                 }
-            
-                this.previousDist = dist;
+
+                // edge case, off board or unmoving
+                SetMoving(false);
                 return;
             }
+        
+            this.previousDist = dist;
+            return;
+        }
         
         this.onUpdate += SnapToTarget;
         this.onFixedUpdate -= AwaitDistanceToTarget;

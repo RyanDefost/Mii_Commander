@@ -68,14 +68,25 @@ public class InitialItemSpawner : MonoBehaviour
             if (item.index == -1 || !item.prefab) continue;
             Vector3? spawnPos = positions[item.index];
             if (spawnPos == null) continue;
-            GameObject spawnedObject = Instantiate(item.prefab, spawnPos.Value, this.transform.rotation);
+            GameObject spawnedObject = Instantiate(item.prefab, spawnPos.Value + Vector3.back, this.transform.rotation);
             BoardItem boardItem = spawnedObject.GetComponent<BoardItem>();
             GridMoveable moveComponent = spawnedObject.GetComponent<GridMoveable>();
-            
-            GridManager.GridInstance newTarget = this.gridManager.GetNearestPosition(spawnPos.Value, spawnedObject, boardItem);
-            if (newTarget == null) continue;
-            
-            moveComponent.SetTarget(newTarget, false);
+
+            boardItem.OnStarted += OnBoardItemOnStarted;
+            continue;
+
+            void OnBoardItemOnStarted(BoardItem _)
+            {
+                boardItem.OnStarted -= OnBoardItemOnStarted;
+                GridManager.GridInstance newTarget = this.gridManager.GetNearestPosition(spawnPos.Value, spawnedObject, boardItem);
+                if (newTarget == null) return;
+
+                moveComponent.SetTarget(newTarget, false);
+                moveComponent.SetMoving(true);
+                
+                if (spawnedObject.TryGetComponent(out CountDownTillActivation countDownTillActivation))
+                    countDownTillActivation.EnableActivate();
+            }
         }
     }
 }

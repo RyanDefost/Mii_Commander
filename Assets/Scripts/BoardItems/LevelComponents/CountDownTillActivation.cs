@@ -29,8 +29,7 @@ namespace BoardItems
 
         public override void ConnectToBoardItem()
         {
-            if (this.shouldActivateOnItsOwn)
-                this.boardItem.OnActivate += Activate;
+            if (this.shouldActivateOnItsOwn) this.boardItem.OnActivate += Activate;
             this.currentCount = this.count;
             this.countChanged?.Invoke(this.currentCount, typeof(int));
         }

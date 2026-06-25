@@ -25,7 +25,17 @@ namespace BoardItems
             {
                 deck.GetCandy(out GameObject prefab, out int typeIndex);
             
-                GameObject gameObject = Object.Instantiate(prefab, parent);
+                GameObject gameObject = Object.Instantiate(prefab, parent, false);
+                
+                Vector3 parentScale = parent.localScale;
+                Vector3 prefabScale = prefab.transform.localScale;
+
+                gameObject.transform.localScale = new Vector3(
+                    prefabScale.x / parentScale.x,
+                    prefabScale.y / parentScale.y,
+                    prefabScale.z / parentScale.z
+                );
+                
                 gameObject.transform.localPosition = Vector3.zero;
                 gameObject.transform.position += new Vector3(Random.Range(-clumpingDist, clumpingDist), Random.Range(-clumpingDist, clumpingDist), 0);
 
