@@ -85,6 +85,7 @@ namespace Grid
                 {
                     moveComponent.ResetTarget();
                     moveComponent.SetTarget(newTarget, false);
+                    moveComponent.ApplyImpulse(instance.position.DirectionTo(newTarget.position) * moveComponent.GetBoardItem().Rb.mass);
                     this.waitingMoves.Add(moveComponent);
                 }
                 else moveComponent.SetMoving(false);;

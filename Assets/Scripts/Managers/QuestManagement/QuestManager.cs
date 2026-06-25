@@ -20,7 +20,11 @@ namespace Managers.QuestManagement
             StartCoroutine(LoadQuests());
         }
 
-        public void AddQuest(Quest quest) => this.quests.Add(quest);
+        public void AddQuest(Quest quest)
+        {
+            this.quests.Add(quest);
+            LoadQuest(quest);
+        }
 
         private IEnumerator LoadQuests(float delay = 1)
         {

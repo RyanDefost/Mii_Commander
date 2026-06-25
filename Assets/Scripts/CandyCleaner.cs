@@ -34,7 +34,7 @@ public class CandyCleaner : MonoBehaviour
             moveable.ApplyImpulse(new Vector3(
                 0,
                 Random.Range(this.pushSpeedRangeY.x, this.pushSpeedRangeY.y),
-                Random.Range(this.pushSpeedRangeZ.y, this.pushSpeedRangeZ.y))
+                Random.Range(this.pushSpeedRangeZ.y, this.pushSpeedRangeZ.y)) * moveable.GetBoardItem().Rb.mass
             );
                 
             StartCoroutine(SetForDestroy(boardItem, 5f));

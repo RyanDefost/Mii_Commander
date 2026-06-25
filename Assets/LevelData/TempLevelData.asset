@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7643aa0683d43179627076f23d6f96f, type: 3}
   m_Name: TempLevelData
   m_EditorClassIdentifier: Assembly-CSharp::Managers.LevelRef
-  pointRequirement: 100
+  pointRequirement: 50
   baseTurnAmount: 20
   quests:
   - {fileID: 11400000, guid: 8a709ce04e54a9f4aac56d43e9fd3fe2, type: 2}

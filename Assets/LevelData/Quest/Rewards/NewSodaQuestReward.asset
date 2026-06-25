@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91f5bb9a0a6f4dd3941b43c798907f8f, type: 3}
-  m_Name: NewQuestReward
+  m_Name: NewSodaQuestReward
   m_EditorClassIdentifier: Assembly-CSharp::Managers.QuestManagement.Rewards.NewQuestReward
-  questTemplate: {fileID: 11400000, guid: c754535221e6c9542aeddbd920b6cfbe, type: 2}
+  questTemplate: {fileID: 11400000, guid: c290f811e525f644598e6922573fb048, type: 2}
