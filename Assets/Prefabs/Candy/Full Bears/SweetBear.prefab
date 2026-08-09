@@ -110,6 +110,7 @@ MonoBehaviour:
   offset: 0.1
   minimalDist: 1
   minVelocityToRecalculate: 1
+  skipCleaning: 0
   physicsData:
     movementStrength: 20
     maxVelocity: 40
